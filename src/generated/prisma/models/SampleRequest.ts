@@ -28,10 +28,14 @@ export type AggregateSampleRequest = {
 
 export type SampleRequestAvgAggregateOutputType = {
   quantity: number | null
+  cost: runtime.Decimal | null
+  revisionCount: number | null
 }
 
 export type SampleRequestSumAggregateOutputType = {
   quantity: number | null
+  cost: runtime.Decimal | null
+  revisionCount: number | null
 }
 
 export type SampleRequestMinAggregateOutputType = {
@@ -39,10 +43,21 @@ export type SampleRequestMinAggregateOutputType = {
   companyId: string | null
   sampleNo: string | null
   styleId: string | null
+  orderId: string | null
   sampleType: $Enums.SampleType | null
   quantity: number | null
   requestedDate: Date | null
   dueDate: Date | null
+  assignedDepartmentId: string | null
+  assignedToId: string | null
+  cost: runtime.Decimal | null
+  plannedCompletion: Date | null
+  actualCompletion: Date | null
+  sentDate: Date | null
+  courier: string | null
+  trackingNo: string | null
+  buyerResponse: string | null
+  revisionCount: number | null
   status: $Enums.SampleStatus | null
   notes: string | null
   createdById: string | null
@@ -55,10 +70,21 @@ export type SampleRequestMaxAggregateOutputType = {
   companyId: string | null
   sampleNo: string | null
   styleId: string | null
+  orderId: string | null
   sampleType: $Enums.SampleType | null
   quantity: number | null
   requestedDate: Date | null
   dueDate: Date | null
+  assignedDepartmentId: string | null
+  assignedToId: string | null
+  cost: runtime.Decimal | null
+  plannedCompletion: Date | null
+  actualCompletion: Date | null
+  sentDate: Date | null
+  courier: string | null
+  trackingNo: string | null
+  buyerResponse: string | null
+  revisionCount: number | null
   status: $Enums.SampleStatus | null
   notes: string | null
   createdById: string | null
@@ -71,10 +97,21 @@ export type SampleRequestCountAggregateOutputType = {
   companyId: number
   sampleNo: number
   styleId: number
+  orderId: number
   sampleType: number
   quantity: number
   requestedDate: number
   dueDate: number
+  assignedDepartmentId: number
+  assignedToId: number
+  cost: number
+  plannedCompletion: number
+  actualCompletion: number
+  sentDate: number
+  courier: number
+  trackingNo: number
+  buyerResponse: number
+  revisionCount: number
   status: number
   notes: number
   createdById: number
@@ -86,10 +123,14 @@ export type SampleRequestCountAggregateOutputType = {
 
 export type SampleRequestAvgAggregateInputType = {
   quantity?: true
+  cost?: true
+  revisionCount?: true
 }
 
 export type SampleRequestSumAggregateInputType = {
   quantity?: true
+  cost?: true
+  revisionCount?: true
 }
 
 export type SampleRequestMinAggregateInputType = {
@@ -97,10 +138,21 @@ export type SampleRequestMinAggregateInputType = {
   companyId?: true
   sampleNo?: true
   styleId?: true
+  orderId?: true
   sampleType?: true
   quantity?: true
   requestedDate?: true
   dueDate?: true
+  assignedDepartmentId?: true
+  assignedToId?: true
+  cost?: true
+  plannedCompletion?: true
+  actualCompletion?: true
+  sentDate?: true
+  courier?: true
+  trackingNo?: true
+  buyerResponse?: true
+  revisionCount?: true
   status?: true
   notes?: true
   createdById?: true
@@ -113,10 +165,21 @@ export type SampleRequestMaxAggregateInputType = {
   companyId?: true
   sampleNo?: true
   styleId?: true
+  orderId?: true
   sampleType?: true
   quantity?: true
   requestedDate?: true
   dueDate?: true
+  assignedDepartmentId?: true
+  assignedToId?: true
+  cost?: true
+  plannedCompletion?: true
+  actualCompletion?: true
+  sentDate?: true
+  courier?: true
+  trackingNo?: true
+  buyerResponse?: true
+  revisionCount?: true
   status?: true
   notes?: true
   createdById?: true
@@ -129,10 +192,21 @@ export type SampleRequestCountAggregateInputType = {
   companyId?: true
   sampleNo?: true
   styleId?: true
+  orderId?: true
   sampleType?: true
   quantity?: true
   requestedDate?: true
   dueDate?: true
+  assignedDepartmentId?: true
+  assignedToId?: true
+  cost?: true
+  plannedCompletion?: true
+  actualCompletion?: true
+  sentDate?: true
+  courier?: true
+  trackingNo?: true
+  buyerResponse?: true
+  revisionCount?: true
   status?: true
   notes?: true
   createdById?: true
@@ -232,10 +306,21 @@ export type SampleRequestGroupByOutputType = {
   companyId: string
   sampleNo: string
   styleId: string
+  orderId: string | null
   sampleType: $Enums.SampleType
   quantity: number
   requestedDate: Date
   dueDate: Date | null
+  assignedDepartmentId: string | null
+  assignedToId: string | null
+  cost: runtime.Decimal | null
+  plannedCompletion: Date | null
+  actualCompletion: Date | null
+  sentDate: Date | null
+  courier: string | null
+  trackingNo: string | null
+  buyerResponse: string | null
+  revisionCount: number
   status: $Enums.SampleStatus
   notes: string | null
   createdById: string | null
@@ -271,10 +356,21 @@ export type SampleRequestWhereInput = {
   companyId?: Prisma.StringFilter<"SampleRequest"> | string
   sampleNo?: Prisma.StringFilter<"SampleRequest"> | string
   styleId?: Prisma.StringFilter<"SampleRequest"> | string
+  orderId?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   sampleType?: Prisma.EnumSampleTypeFilter<"SampleRequest"> | $Enums.SampleType
   quantity?: Prisma.IntFilter<"SampleRequest"> | number
   requestedDate?: Prisma.DateTimeFilter<"SampleRequest"> | Date | string
   dueDate?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  assignedDepartmentId?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  assignedToId?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  cost?: Prisma.DecimalNullableFilter<"SampleRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  actualCompletion?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  sentDate?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  courier?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  trackingNo?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  buyerResponse?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  revisionCount?: Prisma.IntFilter<"SampleRequest"> | number
   status?: Prisma.EnumSampleStatusFilter<"SampleRequest"> | $Enums.SampleStatus
   notes?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   createdById?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
@@ -282,6 +378,10 @@ export type SampleRequestWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"SampleRequest"> | Date | string
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
+  order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  assignedDepartment?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
+  assignedTo?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  approvals?: Prisma.SampleApprovalListRelationFilter
 }
 
 export type SampleRequestOrderByWithRelationInput = {
@@ -289,10 +389,21 @@ export type SampleRequestOrderByWithRelationInput = {
   companyId?: Prisma.SortOrder
   sampleNo?: Prisma.SortOrder
   styleId?: Prisma.SortOrder
+  orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   sampleType?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   requestedDate?: Prisma.SortOrder
   dueDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedDepartmentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedToId?: Prisma.SortOrderInput | Prisma.SortOrder
+  cost?: Prisma.SortOrderInput | Prisma.SortOrder
+  plannedCompletion?: Prisma.SortOrderInput | Prisma.SortOrder
+  actualCompletion?: Prisma.SortOrderInput | Prisma.SortOrder
+  sentDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  courier?: Prisma.SortOrderInput | Prisma.SortOrder
+  trackingNo?: Prisma.SortOrderInput | Prisma.SortOrder
+  buyerResponse?: Prisma.SortOrderInput | Prisma.SortOrder
+  revisionCount?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -300,6 +411,10 @@ export type SampleRequestOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   company?: Prisma.CompanyOrderByWithRelationInput
   style?: Prisma.StyleOrderByWithRelationInput
+  order?: Prisma.OrderOrderByWithRelationInput
+  assignedDepartment?: Prisma.DepartmentOrderByWithRelationInput
+  assignedTo?: Prisma.UserOrderByWithRelationInput
+  approvals?: Prisma.SampleApprovalOrderByRelationAggregateInput
 }
 
 export type SampleRequestWhereUniqueInput = Prisma.AtLeast<{
@@ -311,10 +426,21 @@ export type SampleRequestWhereUniqueInput = Prisma.AtLeast<{
   companyId?: Prisma.StringFilter<"SampleRequest"> | string
   sampleNo?: Prisma.StringFilter<"SampleRequest"> | string
   styleId?: Prisma.StringFilter<"SampleRequest"> | string
+  orderId?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   sampleType?: Prisma.EnumSampleTypeFilter<"SampleRequest"> | $Enums.SampleType
   quantity?: Prisma.IntFilter<"SampleRequest"> | number
   requestedDate?: Prisma.DateTimeFilter<"SampleRequest"> | Date | string
   dueDate?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  assignedDepartmentId?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  assignedToId?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  cost?: Prisma.DecimalNullableFilter<"SampleRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  actualCompletion?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  sentDate?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  courier?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  trackingNo?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  buyerResponse?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  revisionCount?: Prisma.IntFilter<"SampleRequest"> | number
   status?: Prisma.EnumSampleStatusFilter<"SampleRequest"> | $Enums.SampleStatus
   notes?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   createdById?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
@@ -322,6 +448,10 @@ export type SampleRequestWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"SampleRequest"> | Date | string
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
+  order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  assignedDepartment?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
+  assignedTo?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  approvals?: Prisma.SampleApprovalListRelationFilter
 }, "id" | "companyId_sampleNo">
 
 export type SampleRequestOrderByWithAggregationInput = {
@@ -329,10 +459,21 @@ export type SampleRequestOrderByWithAggregationInput = {
   companyId?: Prisma.SortOrder
   sampleNo?: Prisma.SortOrder
   styleId?: Prisma.SortOrder
+  orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   sampleType?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   requestedDate?: Prisma.SortOrder
   dueDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedDepartmentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedToId?: Prisma.SortOrderInput | Prisma.SortOrder
+  cost?: Prisma.SortOrderInput | Prisma.SortOrder
+  plannedCompletion?: Prisma.SortOrderInput | Prisma.SortOrder
+  actualCompletion?: Prisma.SortOrderInput | Prisma.SortOrder
+  sentDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  courier?: Prisma.SortOrderInput | Prisma.SortOrder
+  trackingNo?: Prisma.SortOrderInput | Prisma.SortOrder
+  buyerResponse?: Prisma.SortOrderInput | Prisma.SortOrder
+  revisionCount?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -353,10 +494,21 @@ export type SampleRequestScalarWhereWithAggregatesInput = {
   companyId?: Prisma.StringWithAggregatesFilter<"SampleRequest"> | string
   sampleNo?: Prisma.StringWithAggregatesFilter<"SampleRequest"> | string
   styleId?: Prisma.StringWithAggregatesFilter<"SampleRequest"> | string
+  orderId?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
   sampleType?: Prisma.EnumSampleTypeWithAggregatesFilter<"SampleRequest"> | $Enums.SampleType
   quantity?: Prisma.IntWithAggregatesFilter<"SampleRequest"> | number
   requestedDate?: Prisma.DateTimeWithAggregatesFilter<"SampleRequest"> | Date | string
   dueDate?: Prisma.DateTimeNullableWithAggregatesFilter<"SampleRequest"> | Date | string | null
+  assignedDepartmentId?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
+  assignedToId?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
+  cost?: Prisma.DecimalNullableWithAggregatesFilter<"SampleRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.DateTimeNullableWithAggregatesFilter<"SampleRequest"> | Date | string | null
+  actualCompletion?: Prisma.DateTimeNullableWithAggregatesFilter<"SampleRequest"> | Date | string | null
+  sentDate?: Prisma.DateTimeNullableWithAggregatesFilter<"SampleRequest"> | Date | string | null
+  courier?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
+  trackingNo?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
+  buyerResponse?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
+  revisionCount?: Prisma.IntWithAggregatesFilter<"SampleRequest"> | number
   status?: Prisma.EnumSampleStatusWithAggregatesFilter<"SampleRequest"> | $Enums.SampleStatus
   notes?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
   createdById?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
@@ -371,6 +523,14 @@ export type SampleRequestCreateInput = {
   quantity?: number
   requestedDate?: Date | string
   dueDate?: Date | string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
   createdById?: string | null
@@ -378,6 +538,10 @@ export type SampleRequestCreateInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutSampleRequestsInput
   style: Prisma.StyleCreateNestedOneWithoutSampleRequestsInput
+  order?: Prisma.OrderCreateNestedOneWithoutSampleRequestsInput
+  assignedDepartment?: Prisma.DepartmentCreateNestedOneWithoutSampleRequestsInput
+  assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedSamplesInput
+  approvals?: Prisma.SampleApprovalCreateNestedManyWithoutSampleInput
 }
 
 export type SampleRequestUncheckedCreateInput = {
@@ -385,15 +549,27 @@ export type SampleRequestUncheckedCreateInput = {
   companyId: string
   sampleNo: string
   styleId: string
+  orderId?: string | null
   sampleType: $Enums.SampleType
   quantity?: number
   requestedDate?: Date | string
   dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  approvals?: Prisma.SampleApprovalUncheckedCreateNestedManyWithoutSampleInput
 }
 
 export type SampleRequestUpdateInput = {
@@ -403,6 +579,14 @@ export type SampleRequestUpdateInput = {
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -410,6 +594,10 @@ export type SampleRequestUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutSampleRequestsNestedInput
   style?: Prisma.StyleUpdateOneRequiredWithoutSampleRequestsNestedInput
+  order?: Prisma.OrderUpdateOneWithoutSampleRequestsNestedInput
+  assignedDepartment?: Prisma.DepartmentUpdateOneWithoutSampleRequestsNestedInput
+  assignedTo?: Prisma.UserUpdateOneWithoutAssignedSamplesNestedInput
+  approvals?: Prisma.SampleApprovalUpdateManyWithoutSampleNestedInput
 }
 
 export type SampleRequestUncheckedUpdateInput = {
@@ -417,15 +605,27 @@ export type SampleRequestUncheckedUpdateInput = {
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
   styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvals?: Prisma.SampleApprovalUncheckedUpdateManyWithoutSampleNestedInput
 }
 
 export type SampleRequestCreateManyInput = {
@@ -433,10 +633,21 @@ export type SampleRequestCreateManyInput = {
   companyId: string
   sampleNo: string
   styleId: string
+  orderId?: string | null
   sampleType: $Enums.SampleType
   quantity?: number
   requestedDate?: Date | string
   dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
   createdById?: string | null
@@ -451,6 +662,14 @@ export type SampleRequestUpdateManyMutationInput = {
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -463,10 +682,21 @@ export type SampleRequestUncheckedUpdateManyInput = {
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
   styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -494,10 +724,21 @@ export type SampleRequestCountOrderByAggregateInput = {
   companyId?: Prisma.SortOrder
   sampleNo?: Prisma.SortOrder
   styleId?: Prisma.SortOrder
+  orderId?: Prisma.SortOrder
   sampleType?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   requestedDate?: Prisma.SortOrder
   dueDate?: Prisma.SortOrder
+  assignedDepartmentId?: Prisma.SortOrder
+  assignedToId?: Prisma.SortOrder
+  cost?: Prisma.SortOrder
+  plannedCompletion?: Prisma.SortOrder
+  actualCompletion?: Prisma.SortOrder
+  sentDate?: Prisma.SortOrder
+  courier?: Prisma.SortOrder
+  trackingNo?: Prisma.SortOrder
+  buyerResponse?: Prisma.SortOrder
+  revisionCount?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
@@ -507,6 +748,8 @@ export type SampleRequestCountOrderByAggregateInput = {
 
 export type SampleRequestAvgOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
+  cost?: Prisma.SortOrder
+  revisionCount?: Prisma.SortOrder
 }
 
 export type SampleRequestMaxOrderByAggregateInput = {
@@ -514,10 +757,21 @@ export type SampleRequestMaxOrderByAggregateInput = {
   companyId?: Prisma.SortOrder
   sampleNo?: Prisma.SortOrder
   styleId?: Prisma.SortOrder
+  orderId?: Prisma.SortOrder
   sampleType?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   requestedDate?: Prisma.SortOrder
   dueDate?: Prisma.SortOrder
+  assignedDepartmentId?: Prisma.SortOrder
+  assignedToId?: Prisma.SortOrder
+  cost?: Prisma.SortOrder
+  plannedCompletion?: Prisma.SortOrder
+  actualCompletion?: Prisma.SortOrder
+  sentDate?: Prisma.SortOrder
+  courier?: Prisma.SortOrder
+  trackingNo?: Prisma.SortOrder
+  buyerResponse?: Prisma.SortOrder
+  revisionCount?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
@@ -530,10 +784,21 @@ export type SampleRequestMinOrderByAggregateInput = {
   companyId?: Prisma.SortOrder
   sampleNo?: Prisma.SortOrder
   styleId?: Prisma.SortOrder
+  orderId?: Prisma.SortOrder
   sampleType?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   requestedDate?: Prisma.SortOrder
   dueDate?: Prisma.SortOrder
+  assignedDepartmentId?: Prisma.SortOrder
+  assignedToId?: Prisma.SortOrder
+  cost?: Prisma.SortOrder
+  plannedCompletion?: Prisma.SortOrder
+  actualCompletion?: Prisma.SortOrder
+  sentDate?: Prisma.SortOrder
+  courier?: Prisma.SortOrder
+  trackingNo?: Prisma.SortOrder
+  buyerResponse?: Prisma.SortOrder
+  revisionCount?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
@@ -543,6 +808,13 @@ export type SampleRequestMinOrderByAggregateInput = {
 
 export type SampleRequestSumOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
+  cost?: Prisma.SortOrder
+  revisionCount?: Prisma.SortOrder
+}
+
+export type SampleRequestScalarRelationFilter = {
+  is?: Prisma.SampleRequestWhereInput
+  isNot?: Prisma.SampleRequestWhereInput
 }
 
 export type SampleRequestCreateNestedManyWithoutCompanyInput = {
@@ -584,6 +856,90 @@ export type SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput = {
   connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
   update?: Prisma.SampleRequestUpdateWithWhereUniqueWithoutCompanyInput | Prisma.SampleRequestUpdateWithWhereUniqueWithoutCompanyInput[]
   updateMany?: Prisma.SampleRequestUpdateManyWithWhereWithoutCompanyInput | Prisma.SampleRequestUpdateManyWithWhereWithoutCompanyInput[]
+  deleteMany?: Prisma.SampleRequestScalarWhereInput | Prisma.SampleRequestScalarWhereInput[]
+}
+
+export type SampleRequestCreateNestedManyWithoutAssignedToInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedToInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedToInput> | Prisma.SampleRequestCreateWithoutAssignedToInput[] | Prisma.SampleRequestUncheckedCreateWithoutAssignedToInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutAssignedToInput | Prisma.SampleRequestCreateOrConnectWithoutAssignedToInput[]
+  createMany?: Prisma.SampleRequestCreateManyAssignedToInputEnvelope
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+}
+
+export type SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedToInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedToInput> | Prisma.SampleRequestCreateWithoutAssignedToInput[] | Prisma.SampleRequestUncheckedCreateWithoutAssignedToInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutAssignedToInput | Prisma.SampleRequestCreateOrConnectWithoutAssignedToInput[]
+  createMany?: Prisma.SampleRequestCreateManyAssignedToInputEnvelope
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+}
+
+export type SampleRequestUpdateManyWithoutAssignedToNestedInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedToInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedToInput> | Prisma.SampleRequestCreateWithoutAssignedToInput[] | Prisma.SampleRequestUncheckedCreateWithoutAssignedToInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutAssignedToInput | Prisma.SampleRequestCreateOrConnectWithoutAssignedToInput[]
+  upsert?: Prisma.SampleRequestUpsertWithWhereUniqueWithoutAssignedToInput | Prisma.SampleRequestUpsertWithWhereUniqueWithoutAssignedToInput[]
+  createMany?: Prisma.SampleRequestCreateManyAssignedToInputEnvelope
+  set?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  disconnect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  delete?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  update?: Prisma.SampleRequestUpdateWithWhereUniqueWithoutAssignedToInput | Prisma.SampleRequestUpdateWithWhereUniqueWithoutAssignedToInput[]
+  updateMany?: Prisma.SampleRequestUpdateManyWithWhereWithoutAssignedToInput | Prisma.SampleRequestUpdateManyWithWhereWithoutAssignedToInput[]
+  deleteMany?: Prisma.SampleRequestScalarWhereInput | Prisma.SampleRequestScalarWhereInput[]
+}
+
+export type SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedToInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedToInput> | Prisma.SampleRequestCreateWithoutAssignedToInput[] | Prisma.SampleRequestUncheckedCreateWithoutAssignedToInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutAssignedToInput | Prisma.SampleRequestCreateOrConnectWithoutAssignedToInput[]
+  upsert?: Prisma.SampleRequestUpsertWithWhereUniqueWithoutAssignedToInput | Prisma.SampleRequestUpsertWithWhereUniqueWithoutAssignedToInput[]
+  createMany?: Prisma.SampleRequestCreateManyAssignedToInputEnvelope
+  set?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  disconnect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  delete?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  update?: Prisma.SampleRequestUpdateWithWhereUniqueWithoutAssignedToInput | Prisma.SampleRequestUpdateWithWhereUniqueWithoutAssignedToInput[]
+  updateMany?: Prisma.SampleRequestUpdateManyWithWhereWithoutAssignedToInput | Prisma.SampleRequestUpdateManyWithWhereWithoutAssignedToInput[]
+  deleteMany?: Prisma.SampleRequestScalarWhereInput | Prisma.SampleRequestScalarWhereInput[]
+}
+
+export type SampleRequestCreateNestedManyWithoutAssignedDepartmentInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedDepartmentInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedDepartmentInput> | Prisma.SampleRequestCreateWithoutAssignedDepartmentInput[] | Prisma.SampleRequestUncheckedCreateWithoutAssignedDepartmentInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutAssignedDepartmentInput | Prisma.SampleRequestCreateOrConnectWithoutAssignedDepartmentInput[]
+  createMany?: Prisma.SampleRequestCreateManyAssignedDepartmentInputEnvelope
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+}
+
+export type SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedDepartmentInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedDepartmentInput> | Prisma.SampleRequestCreateWithoutAssignedDepartmentInput[] | Prisma.SampleRequestUncheckedCreateWithoutAssignedDepartmentInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutAssignedDepartmentInput | Prisma.SampleRequestCreateOrConnectWithoutAssignedDepartmentInput[]
+  createMany?: Prisma.SampleRequestCreateManyAssignedDepartmentInputEnvelope
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+}
+
+export type SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedDepartmentInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedDepartmentInput> | Prisma.SampleRequestCreateWithoutAssignedDepartmentInput[] | Prisma.SampleRequestUncheckedCreateWithoutAssignedDepartmentInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutAssignedDepartmentInput | Prisma.SampleRequestCreateOrConnectWithoutAssignedDepartmentInput[]
+  upsert?: Prisma.SampleRequestUpsertWithWhereUniqueWithoutAssignedDepartmentInput | Prisma.SampleRequestUpsertWithWhereUniqueWithoutAssignedDepartmentInput[]
+  createMany?: Prisma.SampleRequestCreateManyAssignedDepartmentInputEnvelope
+  set?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  disconnect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  delete?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  update?: Prisma.SampleRequestUpdateWithWhereUniqueWithoutAssignedDepartmentInput | Prisma.SampleRequestUpdateWithWhereUniqueWithoutAssignedDepartmentInput[]
+  updateMany?: Prisma.SampleRequestUpdateManyWithWhereWithoutAssignedDepartmentInput | Prisma.SampleRequestUpdateManyWithWhereWithoutAssignedDepartmentInput[]
+  deleteMany?: Prisma.SampleRequestScalarWhereInput | Prisma.SampleRequestScalarWhereInput[]
+}
+
+export type SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedDepartmentInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedDepartmentInput> | Prisma.SampleRequestCreateWithoutAssignedDepartmentInput[] | Prisma.SampleRequestUncheckedCreateWithoutAssignedDepartmentInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutAssignedDepartmentInput | Prisma.SampleRequestCreateOrConnectWithoutAssignedDepartmentInput[]
+  upsert?: Prisma.SampleRequestUpsertWithWhereUniqueWithoutAssignedDepartmentInput | Prisma.SampleRequestUpsertWithWhereUniqueWithoutAssignedDepartmentInput[]
+  createMany?: Prisma.SampleRequestCreateManyAssignedDepartmentInputEnvelope
+  set?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  disconnect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  delete?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  update?: Prisma.SampleRequestUpdateWithWhereUniqueWithoutAssignedDepartmentInput | Prisma.SampleRequestUpdateWithWhereUniqueWithoutAssignedDepartmentInput[]
+  updateMany?: Prisma.SampleRequestUpdateManyWithWhereWithoutAssignedDepartmentInput | Prisma.SampleRequestUpdateManyWithWhereWithoutAssignedDepartmentInput[]
   deleteMany?: Prisma.SampleRequestScalarWhereInput | Prisma.SampleRequestScalarWhereInput[]
 }
 
@@ -637,6 +993,62 @@ export type EnumSampleStatusFieldUpdateOperationsInput = {
   set?: $Enums.SampleStatus
 }
 
+export type SampleRequestCreateNestedManyWithoutOrderInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutOrderInput, Prisma.SampleRequestUncheckedCreateWithoutOrderInput> | Prisma.SampleRequestCreateWithoutOrderInput[] | Prisma.SampleRequestUncheckedCreateWithoutOrderInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutOrderInput | Prisma.SampleRequestCreateOrConnectWithoutOrderInput[]
+  createMany?: Prisma.SampleRequestCreateManyOrderInputEnvelope
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+}
+
+export type SampleRequestUncheckedCreateNestedManyWithoutOrderInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutOrderInput, Prisma.SampleRequestUncheckedCreateWithoutOrderInput> | Prisma.SampleRequestCreateWithoutOrderInput[] | Prisma.SampleRequestUncheckedCreateWithoutOrderInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutOrderInput | Prisma.SampleRequestCreateOrConnectWithoutOrderInput[]
+  createMany?: Prisma.SampleRequestCreateManyOrderInputEnvelope
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+}
+
+export type SampleRequestUpdateManyWithoutOrderNestedInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutOrderInput, Prisma.SampleRequestUncheckedCreateWithoutOrderInput> | Prisma.SampleRequestCreateWithoutOrderInput[] | Prisma.SampleRequestUncheckedCreateWithoutOrderInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutOrderInput | Prisma.SampleRequestCreateOrConnectWithoutOrderInput[]
+  upsert?: Prisma.SampleRequestUpsertWithWhereUniqueWithoutOrderInput | Prisma.SampleRequestUpsertWithWhereUniqueWithoutOrderInput[]
+  createMany?: Prisma.SampleRequestCreateManyOrderInputEnvelope
+  set?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  disconnect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  delete?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  update?: Prisma.SampleRequestUpdateWithWhereUniqueWithoutOrderInput | Prisma.SampleRequestUpdateWithWhereUniqueWithoutOrderInput[]
+  updateMany?: Prisma.SampleRequestUpdateManyWithWhereWithoutOrderInput | Prisma.SampleRequestUpdateManyWithWhereWithoutOrderInput[]
+  deleteMany?: Prisma.SampleRequestScalarWhereInput | Prisma.SampleRequestScalarWhereInput[]
+}
+
+export type SampleRequestUncheckedUpdateManyWithoutOrderNestedInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutOrderInput, Prisma.SampleRequestUncheckedCreateWithoutOrderInput> | Prisma.SampleRequestCreateWithoutOrderInput[] | Prisma.SampleRequestUncheckedCreateWithoutOrderInput[]
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutOrderInput | Prisma.SampleRequestCreateOrConnectWithoutOrderInput[]
+  upsert?: Prisma.SampleRequestUpsertWithWhereUniqueWithoutOrderInput | Prisma.SampleRequestUpsertWithWhereUniqueWithoutOrderInput[]
+  createMany?: Prisma.SampleRequestCreateManyOrderInputEnvelope
+  set?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  disconnect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  delete?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  connect?: Prisma.SampleRequestWhereUniqueInput | Prisma.SampleRequestWhereUniqueInput[]
+  update?: Prisma.SampleRequestUpdateWithWhereUniqueWithoutOrderInput | Prisma.SampleRequestUpdateWithWhereUniqueWithoutOrderInput[]
+  updateMany?: Prisma.SampleRequestUpdateManyWithWhereWithoutOrderInput | Prisma.SampleRequestUpdateManyWithWhereWithoutOrderInput[]
+  deleteMany?: Prisma.SampleRequestScalarWhereInput | Prisma.SampleRequestScalarWhereInput[]
+}
+
+export type SampleRequestCreateNestedOneWithoutApprovalsInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutApprovalsInput, Prisma.SampleRequestUncheckedCreateWithoutApprovalsInput>
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutApprovalsInput
+  connect?: Prisma.SampleRequestWhereUniqueInput
+}
+
+export type SampleRequestUpdateOneRequiredWithoutApprovalsNestedInput = {
+  create?: Prisma.XOR<Prisma.SampleRequestCreateWithoutApprovalsInput, Prisma.SampleRequestUncheckedCreateWithoutApprovalsInput>
+  connectOrCreate?: Prisma.SampleRequestCreateOrConnectWithoutApprovalsInput
+  upsert?: Prisma.SampleRequestUpsertWithoutApprovalsInput
+  connect?: Prisma.SampleRequestWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SampleRequestUpdateToOneWithWhereWithoutApprovalsInput, Prisma.SampleRequestUpdateWithoutApprovalsInput>, Prisma.SampleRequestUncheckedUpdateWithoutApprovalsInput>
+}
+
 export type SampleRequestCreateWithoutCompanyInput = {
   id?: string
   sampleNo: string
@@ -644,27 +1056,51 @@ export type SampleRequestCreateWithoutCompanyInput = {
   quantity?: number
   requestedDate?: Date | string
   dueDate?: Date | string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   style: Prisma.StyleCreateNestedOneWithoutSampleRequestsInput
+  order?: Prisma.OrderCreateNestedOneWithoutSampleRequestsInput
+  assignedDepartment?: Prisma.DepartmentCreateNestedOneWithoutSampleRequestsInput
+  assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedSamplesInput
+  approvals?: Prisma.SampleApprovalCreateNestedManyWithoutSampleInput
 }
 
 export type SampleRequestUncheckedCreateWithoutCompanyInput = {
   id?: string
   sampleNo: string
   styleId: string
+  orderId?: string | null
   sampleType: $Enums.SampleType
   quantity?: number
   requestedDate?: Date | string
   dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  approvals?: Prisma.SampleApprovalUncheckedCreateNestedManyWithoutSampleInput
 }
 
 export type SampleRequestCreateOrConnectWithoutCompanyInput = {
@@ -701,15 +1137,186 @@ export type SampleRequestScalarWhereInput = {
   companyId?: Prisma.StringFilter<"SampleRequest"> | string
   sampleNo?: Prisma.StringFilter<"SampleRequest"> | string
   styleId?: Prisma.StringFilter<"SampleRequest"> | string
+  orderId?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   sampleType?: Prisma.EnumSampleTypeFilter<"SampleRequest"> | $Enums.SampleType
   quantity?: Prisma.IntFilter<"SampleRequest"> | number
   requestedDate?: Prisma.DateTimeFilter<"SampleRequest"> | Date | string
   dueDate?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  assignedDepartmentId?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  assignedToId?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  cost?: Prisma.DecimalNullableFilter<"SampleRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  actualCompletion?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  sentDate?: Prisma.DateTimeNullableFilter<"SampleRequest"> | Date | string | null
+  courier?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  trackingNo?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  buyerResponse?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  revisionCount?: Prisma.IntFilter<"SampleRequest"> | number
   status?: Prisma.EnumSampleStatusFilter<"SampleRequest"> | $Enums.SampleStatus
   notes?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   createdById?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SampleRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SampleRequest"> | Date | string
+}
+
+export type SampleRequestCreateWithoutAssignedToInput = {
+  id?: string
+  sampleNo: string
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutSampleRequestsInput
+  style: Prisma.StyleCreateNestedOneWithoutSampleRequestsInput
+  order?: Prisma.OrderCreateNestedOneWithoutSampleRequestsInput
+  assignedDepartment?: Prisma.DepartmentCreateNestedOneWithoutSampleRequestsInput
+  approvals?: Prisma.SampleApprovalCreateNestedManyWithoutSampleInput
+}
+
+export type SampleRequestUncheckedCreateWithoutAssignedToInput = {
+  id?: string
+  companyId: string
+  sampleNo: string
+  styleId: string
+  orderId?: string | null
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  approvals?: Prisma.SampleApprovalUncheckedCreateNestedManyWithoutSampleInput
+}
+
+export type SampleRequestCreateOrConnectWithoutAssignedToInput = {
+  where: Prisma.SampleRequestWhereUniqueInput
+  create: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedToInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedToInput>
+}
+
+export type SampleRequestCreateManyAssignedToInputEnvelope = {
+  data: Prisma.SampleRequestCreateManyAssignedToInput | Prisma.SampleRequestCreateManyAssignedToInput[]
+  skipDuplicates?: boolean
+}
+
+export type SampleRequestUpsertWithWhereUniqueWithoutAssignedToInput = {
+  where: Prisma.SampleRequestWhereUniqueInput
+  update: Prisma.XOR<Prisma.SampleRequestUpdateWithoutAssignedToInput, Prisma.SampleRequestUncheckedUpdateWithoutAssignedToInput>
+  create: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedToInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedToInput>
+}
+
+export type SampleRequestUpdateWithWhereUniqueWithoutAssignedToInput = {
+  where: Prisma.SampleRequestWhereUniqueInput
+  data: Prisma.XOR<Prisma.SampleRequestUpdateWithoutAssignedToInput, Prisma.SampleRequestUncheckedUpdateWithoutAssignedToInput>
+}
+
+export type SampleRequestUpdateManyWithWhereWithoutAssignedToInput = {
+  where: Prisma.SampleRequestScalarWhereInput
+  data: Prisma.XOR<Prisma.SampleRequestUpdateManyMutationInput, Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToInput>
+}
+
+export type SampleRequestCreateWithoutAssignedDepartmentInput = {
+  id?: string
+  sampleNo: string
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutSampleRequestsInput
+  style: Prisma.StyleCreateNestedOneWithoutSampleRequestsInput
+  order?: Prisma.OrderCreateNestedOneWithoutSampleRequestsInput
+  assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedSamplesInput
+  approvals?: Prisma.SampleApprovalCreateNestedManyWithoutSampleInput
+}
+
+export type SampleRequestUncheckedCreateWithoutAssignedDepartmentInput = {
+  id?: string
+  companyId: string
+  sampleNo: string
+  styleId: string
+  orderId?: string | null
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  approvals?: Prisma.SampleApprovalUncheckedCreateNestedManyWithoutSampleInput
+}
+
+export type SampleRequestCreateOrConnectWithoutAssignedDepartmentInput = {
+  where: Prisma.SampleRequestWhereUniqueInput
+  create: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedDepartmentInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedDepartmentInput>
+}
+
+export type SampleRequestCreateManyAssignedDepartmentInputEnvelope = {
+  data: Prisma.SampleRequestCreateManyAssignedDepartmentInput | Prisma.SampleRequestCreateManyAssignedDepartmentInput[]
+  skipDuplicates?: boolean
+}
+
+export type SampleRequestUpsertWithWhereUniqueWithoutAssignedDepartmentInput = {
+  where: Prisma.SampleRequestWhereUniqueInput
+  update: Prisma.XOR<Prisma.SampleRequestUpdateWithoutAssignedDepartmentInput, Prisma.SampleRequestUncheckedUpdateWithoutAssignedDepartmentInput>
+  create: Prisma.XOR<Prisma.SampleRequestCreateWithoutAssignedDepartmentInput, Prisma.SampleRequestUncheckedCreateWithoutAssignedDepartmentInput>
+}
+
+export type SampleRequestUpdateWithWhereUniqueWithoutAssignedDepartmentInput = {
+  where: Prisma.SampleRequestWhereUniqueInput
+  data: Prisma.XOR<Prisma.SampleRequestUpdateWithoutAssignedDepartmentInput, Prisma.SampleRequestUncheckedUpdateWithoutAssignedDepartmentInput>
+}
+
+export type SampleRequestUpdateManyWithWhereWithoutAssignedDepartmentInput = {
+  where: Prisma.SampleRequestScalarWhereInput
+  data: Prisma.XOR<Prisma.SampleRequestUpdateManyMutationInput, Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentInput>
 }
 
 export type SampleRequestCreateWithoutStyleInput = {
@@ -719,27 +1326,51 @@ export type SampleRequestCreateWithoutStyleInput = {
   quantity?: number
   requestedDate?: Date | string
   dueDate?: Date | string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutSampleRequestsInput
+  order?: Prisma.OrderCreateNestedOneWithoutSampleRequestsInput
+  assignedDepartment?: Prisma.DepartmentCreateNestedOneWithoutSampleRequestsInput
+  assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedSamplesInput
+  approvals?: Prisma.SampleApprovalCreateNestedManyWithoutSampleInput
 }
 
 export type SampleRequestUncheckedCreateWithoutStyleInput = {
   id?: string
   companyId: string
   sampleNo: string
+  orderId?: string | null
   sampleType: $Enums.SampleType
   quantity?: number
   requestedDate?: Date | string
   dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  approvals?: Prisma.SampleApprovalUncheckedCreateNestedManyWithoutSampleInput
 }
 
 export type SampleRequestCreateOrConnectWithoutStyleInput = {
@@ -768,14 +1399,229 @@ export type SampleRequestUpdateManyWithWhereWithoutStyleInput = {
   data: Prisma.XOR<Prisma.SampleRequestUpdateManyMutationInput, Prisma.SampleRequestUncheckedUpdateManyWithoutStyleInput>
 }
 
-export type SampleRequestCreateManyCompanyInput = {
+export type SampleRequestCreateWithoutOrderInput = {
   id?: string
+  sampleNo: string
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutSampleRequestsInput
+  style: Prisma.StyleCreateNestedOneWithoutSampleRequestsInput
+  assignedDepartment?: Prisma.DepartmentCreateNestedOneWithoutSampleRequestsInput
+  assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedSamplesInput
+  approvals?: Prisma.SampleApprovalCreateNestedManyWithoutSampleInput
+}
+
+export type SampleRequestUncheckedCreateWithoutOrderInput = {
+  id?: string
+  companyId: string
   sampleNo: string
   styleId: string
   sampleType: $Enums.SampleType
   quantity?: number
   requestedDate?: Date | string
   dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  approvals?: Prisma.SampleApprovalUncheckedCreateNestedManyWithoutSampleInput
+}
+
+export type SampleRequestCreateOrConnectWithoutOrderInput = {
+  where: Prisma.SampleRequestWhereUniqueInput
+  create: Prisma.XOR<Prisma.SampleRequestCreateWithoutOrderInput, Prisma.SampleRequestUncheckedCreateWithoutOrderInput>
+}
+
+export type SampleRequestCreateManyOrderInputEnvelope = {
+  data: Prisma.SampleRequestCreateManyOrderInput | Prisma.SampleRequestCreateManyOrderInput[]
+  skipDuplicates?: boolean
+}
+
+export type SampleRequestUpsertWithWhereUniqueWithoutOrderInput = {
+  where: Prisma.SampleRequestWhereUniqueInput
+  update: Prisma.XOR<Prisma.SampleRequestUpdateWithoutOrderInput, Prisma.SampleRequestUncheckedUpdateWithoutOrderInput>
+  create: Prisma.XOR<Prisma.SampleRequestCreateWithoutOrderInput, Prisma.SampleRequestUncheckedCreateWithoutOrderInput>
+}
+
+export type SampleRequestUpdateWithWhereUniqueWithoutOrderInput = {
+  where: Prisma.SampleRequestWhereUniqueInput
+  data: Prisma.XOR<Prisma.SampleRequestUpdateWithoutOrderInput, Prisma.SampleRequestUncheckedUpdateWithoutOrderInput>
+}
+
+export type SampleRequestUpdateManyWithWhereWithoutOrderInput = {
+  where: Prisma.SampleRequestScalarWhereInput
+  data: Prisma.XOR<Prisma.SampleRequestUpdateManyMutationInput, Prisma.SampleRequestUncheckedUpdateManyWithoutOrderInput>
+}
+
+export type SampleRequestCreateWithoutApprovalsInput = {
+  id?: string
+  sampleNo: string
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutSampleRequestsInput
+  style: Prisma.StyleCreateNestedOneWithoutSampleRequestsInput
+  order?: Prisma.OrderCreateNestedOneWithoutSampleRequestsInput
+  assignedDepartment?: Prisma.DepartmentCreateNestedOneWithoutSampleRequestsInput
+  assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedSamplesInput
+}
+
+export type SampleRequestUncheckedCreateWithoutApprovalsInput = {
+  id?: string
+  companyId: string
+  sampleNo: string
+  styleId: string
+  orderId?: string | null
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type SampleRequestCreateOrConnectWithoutApprovalsInput = {
+  where: Prisma.SampleRequestWhereUniqueInput
+  create: Prisma.XOR<Prisma.SampleRequestCreateWithoutApprovalsInput, Prisma.SampleRequestUncheckedCreateWithoutApprovalsInput>
+}
+
+export type SampleRequestUpsertWithoutApprovalsInput = {
+  update: Prisma.XOR<Prisma.SampleRequestUpdateWithoutApprovalsInput, Prisma.SampleRequestUncheckedUpdateWithoutApprovalsInput>
+  create: Prisma.XOR<Prisma.SampleRequestCreateWithoutApprovalsInput, Prisma.SampleRequestUncheckedCreateWithoutApprovalsInput>
+  where?: Prisma.SampleRequestWhereInput
+}
+
+export type SampleRequestUpdateToOneWithWhereWithoutApprovalsInput = {
+  where?: Prisma.SampleRequestWhereInput
+  data: Prisma.XOR<Prisma.SampleRequestUpdateWithoutApprovalsInput, Prisma.SampleRequestUncheckedUpdateWithoutApprovalsInput>
+}
+
+export type SampleRequestUpdateWithoutApprovalsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutSampleRequestsNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutSampleRequestsNestedInput
+  order?: Prisma.OrderUpdateOneWithoutSampleRequestsNestedInput
+  assignedDepartment?: Prisma.DepartmentUpdateOneWithoutSampleRequestsNestedInput
+  assignedTo?: Prisma.UserUpdateOneWithoutAssignedSamplesNestedInput
+}
+
+export type SampleRequestUncheckedUpdateWithoutApprovalsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type SampleRequestCreateManyCompanyInput = {
+  id?: string
+  sampleNo: string
+  styleId: string
+  orderId?: string | null
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
   createdById?: string | null
@@ -790,22 +1636,72 @@ export type SampleRequestUpdateWithoutCompanyInput = {
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   style?: Prisma.StyleUpdateOneRequiredWithoutSampleRequestsNestedInput
+  order?: Prisma.OrderUpdateOneWithoutSampleRequestsNestedInput
+  assignedDepartment?: Prisma.DepartmentUpdateOneWithoutSampleRequestsNestedInput
+  assignedTo?: Prisma.UserUpdateOneWithoutAssignedSamplesNestedInput
+  approvals?: Prisma.SampleApprovalUpdateManyWithoutSampleNestedInput
 }
 
 export type SampleRequestUncheckedUpdateWithoutCompanyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
   styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvals?: Prisma.SampleApprovalUncheckedUpdateManyWithoutSampleNestedInput
+}
+
+export type SampleRequestUncheckedUpdateManyWithoutCompanyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -813,14 +1709,211 @@ export type SampleRequestUncheckedUpdateWithoutCompanyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type SampleRequestUncheckedUpdateManyWithoutCompanyInput = {
+export type SampleRequestCreateManyAssignedToInput = {
+  id?: string
+  companyId: string
+  sampleNo: string
+  styleId: string
+  orderId?: string | null
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type SampleRequestUpdateWithoutAssignedToInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
-  styleId?: Prisma.StringFieldUpdateOperationsInput | string
   sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutSampleRequestsNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutSampleRequestsNestedInput
+  order?: Prisma.OrderUpdateOneWithoutSampleRequestsNestedInput
+  assignedDepartment?: Prisma.DepartmentUpdateOneWithoutSampleRequestsNestedInput
+  approvals?: Prisma.SampleApprovalUpdateManyWithoutSampleNestedInput
+}
+
+export type SampleRequestUncheckedUpdateWithoutAssignedToInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvals?: Prisma.SampleApprovalUncheckedUpdateManyWithoutSampleNestedInput
+}
+
+export type SampleRequestUncheckedUpdateManyWithoutAssignedToInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type SampleRequestCreateManyAssignedDepartmentInput = {
+  id?: string
+  companyId: string
+  sampleNo: string
+  styleId: string
+  orderId?: string | null
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type SampleRequestUpdateWithoutAssignedDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutSampleRequestsNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutSampleRequestsNestedInput
+  order?: Prisma.OrderUpdateOneWithoutSampleRequestsNestedInput
+  assignedTo?: Prisma.UserUpdateOneWithoutAssignedSamplesNestedInput
+  approvals?: Prisma.SampleApprovalUpdateManyWithoutSampleNestedInput
+}
+
+export type SampleRequestUncheckedUpdateWithoutAssignedDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvals?: Prisma.SampleApprovalUncheckedUpdateManyWithoutSampleNestedInput
+}
+
+export type SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -832,10 +1925,21 @@ export type SampleRequestCreateManyStyleInput = {
   id?: string
   companyId: string
   sampleNo: string
+  orderId?: string | null
   sampleType: $Enums.SampleType
   quantity?: number
   requestedDate?: Date | string
   dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
   createdById?: string | null
@@ -850,37 +1954,72 @@ export type SampleRequestUpdateWithoutStyleInput = {
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutSampleRequestsNestedInput
+  order?: Prisma.OrderUpdateOneWithoutSampleRequestsNestedInput
+  assignedDepartment?: Prisma.DepartmentUpdateOneWithoutSampleRequestsNestedInput
+  assignedTo?: Prisma.UserUpdateOneWithoutAssignedSamplesNestedInput
+  approvals?: Prisma.SampleApprovalUpdateManyWithoutSampleNestedInput
 }
 
 export type SampleRequestUncheckedUpdateWithoutStyleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvals?: Prisma.SampleApprovalUncheckedUpdateManyWithoutSampleNestedInput
 }
 
 export type SampleRequestUncheckedUpdateManyWithoutStyleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -888,6 +2027,141 @@ export type SampleRequestUncheckedUpdateManyWithoutStyleInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type SampleRequestCreateManyOrderInput = {
+  id?: string
+  companyId: string
+  sampleNo: string
+  styleId: string
+  sampleType: $Enums.SampleType
+  quantity?: number
+  requestedDate?: Date | string
+  dueDate?: Date | string | null
+  assignedDepartmentId?: string | null
+  assignedToId?: string | null
+  cost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Date | string | null
+  actualCompletion?: Date | string | null
+  sentDate?: Date | string | null
+  courier?: string | null
+  trackingNo?: string | null
+  buyerResponse?: string | null
+  revisionCount?: number
+  status?: $Enums.SampleStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type SampleRequestUpdateWithoutOrderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutSampleRequestsNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutSampleRequestsNestedInput
+  assignedDepartment?: Prisma.DepartmentUpdateOneWithoutSampleRequestsNestedInput
+  assignedTo?: Prisma.UserUpdateOneWithoutAssignedSamplesNestedInput
+  approvals?: Prisma.SampleApprovalUpdateManyWithoutSampleNestedInput
+}
+
+export type SampleRequestUncheckedUpdateWithoutOrderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvals?: Prisma.SampleApprovalUncheckedUpdateManyWithoutSampleNestedInput
+}
+
+export type SampleRequestUncheckedUpdateManyWithoutOrderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  sampleType?: Prisma.EnumSampleTypeFieldUpdateOperationsInput | $Enums.SampleType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  requestedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  assignedDepartmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  plannedCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualCompletion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sentDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type SampleRequestCountOutputType
+ */
+
+export type SampleRequestCountOutputType = {
+  approvals: number
+}
+
+export type SampleRequestCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  approvals?: boolean | SampleRequestCountOutputTypeCountApprovalsArgs
+}
+
+/**
+ * SampleRequestCountOutputType without action
+ */
+export type SampleRequestCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SampleRequestCountOutputType
+   */
+  select?: Prisma.SampleRequestCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * SampleRequestCountOutputType without action
+ */
+export type SampleRequestCountOutputTypeCountApprovalsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SampleApprovalWhereInput
+}
 
 
 export type SampleRequestSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -895,10 +2169,21 @@ export type SampleRequestSelect<ExtArgs extends runtime.Types.Extensions.Interna
   companyId?: boolean
   sampleNo?: boolean
   styleId?: boolean
+  orderId?: boolean
   sampleType?: boolean
   quantity?: boolean
   requestedDate?: boolean
   dueDate?: boolean
+  assignedDepartmentId?: boolean
+  assignedToId?: boolean
+  cost?: boolean
+  plannedCompletion?: boolean
+  actualCompletion?: boolean
+  sentDate?: boolean
+  courier?: boolean
+  trackingNo?: boolean
+  buyerResponse?: boolean
+  revisionCount?: boolean
   status?: boolean
   notes?: boolean
   createdById?: boolean
@@ -906,6 +2191,11 @@ export type SampleRequestSelect<ExtArgs extends runtime.Types.Extensions.Interna
   updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
+  order?: boolean | Prisma.SampleRequest$orderArgs<ExtArgs>
+  assignedDepartment?: boolean | Prisma.SampleRequest$assignedDepartmentArgs<ExtArgs>
+  assignedTo?: boolean | Prisma.SampleRequest$assignedToArgs<ExtArgs>
+  approvals?: boolean | Prisma.SampleRequest$approvalsArgs<ExtArgs>
+  _count?: boolean | Prisma.SampleRequestCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sampleRequest"]>
 
 export type SampleRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -913,10 +2203,21 @@ export type SampleRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   companyId?: boolean
   sampleNo?: boolean
   styleId?: boolean
+  orderId?: boolean
   sampleType?: boolean
   quantity?: boolean
   requestedDate?: boolean
   dueDate?: boolean
+  assignedDepartmentId?: boolean
+  assignedToId?: boolean
+  cost?: boolean
+  plannedCompletion?: boolean
+  actualCompletion?: boolean
+  sentDate?: boolean
+  courier?: boolean
+  trackingNo?: boolean
+  buyerResponse?: boolean
+  revisionCount?: boolean
   status?: boolean
   notes?: boolean
   createdById?: boolean
@@ -924,6 +2225,9 @@ export type SampleRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
+  order?: boolean | Prisma.SampleRequest$orderArgs<ExtArgs>
+  assignedDepartment?: boolean | Prisma.SampleRequest$assignedDepartmentArgs<ExtArgs>
+  assignedTo?: boolean | Prisma.SampleRequest$assignedToArgs<ExtArgs>
 }, ExtArgs["result"]["sampleRequest"]>
 
 export type SampleRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -931,10 +2235,21 @@ export type SampleRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   companyId?: boolean
   sampleNo?: boolean
   styleId?: boolean
+  orderId?: boolean
   sampleType?: boolean
   quantity?: boolean
   requestedDate?: boolean
   dueDate?: boolean
+  assignedDepartmentId?: boolean
+  assignedToId?: boolean
+  cost?: boolean
+  plannedCompletion?: boolean
+  actualCompletion?: boolean
+  sentDate?: boolean
+  courier?: boolean
+  trackingNo?: boolean
+  buyerResponse?: boolean
+  revisionCount?: boolean
   status?: boolean
   notes?: boolean
   createdById?: boolean
@@ -942,6 +2257,9 @@ export type SampleRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
+  order?: boolean | Prisma.SampleRequest$orderArgs<ExtArgs>
+  assignedDepartment?: boolean | Prisma.SampleRequest$assignedDepartmentArgs<ExtArgs>
+  assignedTo?: boolean | Prisma.SampleRequest$assignedToArgs<ExtArgs>
 }, ExtArgs["result"]["sampleRequest"]>
 
 export type SampleRequestSelectScalar = {
@@ -949,10 +2267,21 @@ export type SampleRequestSelectScalar = {
   companyId?: boolean
   sampleNo?: boolean
   styleId?: boolean
+  orderId?: boolean
   sampleType?: boolean
   quantity?: boolean
   requestedDate?: boolean
   dueDate?: boolean
+  assignedDepartmentId?: boolean
+  assignedToId?: boolean
+  cost?: boolean
+  plannedCompletion?: boolean
+  actualCompletion?: boolean
+  sentDate?: boolean
+  courier?: boolean
+  trackingNo?: boolean
+  buyerResponse?: boolean
+  revisionCount?: boolean
   status?: boolean
   notes?: boolean
   createdById?: boolean
@@ -960,18 +2289,29 @@ export type SampleRequestSelectScalar = {
   updatedAt?: boolean
 }
 
-export type SampleRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "sampleNo" | "styleId" | "sampleType" | "quantity" | "requestedDate" | "dueDate" | "status" | "notes" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["sampleRequest"]>
+export type SampleRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "sampleNo" | "styleId" | "orderId" | "sampleType" | "quantity" | "requestedDate" | "dueDate" | "assignedDepartmentId" | "assignedToId" | "cost" | "plannedCompletion" | "actualCompletion" | "sentDate" | "courier" | "trackingNo" | "buyerResponse" | "revisionCount" | "status" | "notes" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["sampleRequest"]>
 export type SampleRequestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
+  order?: boolean | Prisma.SampleRequest$orderArgs<ExtArgs>
+  assignedDepartment?: boolean | Prisma.SampleRequest$assignedDepartmentArgs<ExtArgs>
+  assignedTo?: boolean | Prisma.SampleRequest$assignedToArgs<ExtArgs>
+  approvals?: boolean | Prisma.SampleRequest$approvalsArgs<ExtArgs>
+  _count?: boolean | Prisma.SampleRequestCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SampleRequestIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
+  order?: boolean | Prisma.SampleRequest$orderArgs<ExtArgs>
+  assignedDepartment?: boolean | Prisma.SampleRequest$assignedDepartmentArgs<ExtArgs>
+  assignedTo?: boolean | Prisma.SampleRequest$assignedToArgs<ExtArgs>
 }
 export type SampleRequestIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
+  order?: boolean | Prisma.SampleRequest$orderArgs<ExtArgs>
+  assignedDepartment?: boolean | Prisma.SampleRequest$assignedDepartmentArgs<ExtArgs>
+  assignedTo?: boolean | Prisma.SampleRequest$assignedToArgs<ExtArgs>
 }
 
 export type $SampleRequestPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -979,16 +2319,31 @@ export type $SampleRequestPayload<ExtArgs extends runtime.Types.Extensions.Inter
   objects: {
     company: Prisma.$CompanyPayload<ExtArgs>
     style: Prisma.$StylePayload<ExtArgs>
+    order: Prisma.$OrderPayload<ExtArgs> | null
+    assignedDepartment: Prisma.$DepartmentPayload<ExtArgs> | null
+    assignedTo: Prisma.$UserPayload<ExtArgs> | null
+    approvals: Prisma.$SampleApprovalPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     companyId: string
     sampleNo: string
     styleId: string
+    orderId: string | null
     sampleType: $Enums.SampleType
     quantity: number
     requestedDate: Date
     dueDate: Date | null
+    assignedDepartmentId: string | null
+    assignedToId: string | null
+    cost: runtime.Decimal | null
+    plannedCompletion: Date | null
+    actualCompletion: Date | null
+    sentDate: Date | null
+    courier: string | null
+    trackingNo: string | null
+    buyerResponse: string | null
+    revisionCount: number
     status: $Enums.SampleStatus
     notes: string | null
     createdById: string | null
@@ -1390,6 +2745,10 @@ export interface Prisma__SampleRequestClient<T, Null = never, ExtArgs extends ru
   readonly [Symbol.toStringTag]: "PrismaPromise"
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   style<T extends Prisma.StyleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleDefaultArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  order<T extends Prisma.SampleRequest$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SampleRequest$orderArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  assignedDepartment<T extends Prisma.SampleRequest$assignedDepartmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SampleRequest$assignedDepartmentArgs<ExtArgs>>): Prisma.Prisma__DepartmentClient<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  assignedTo<T extends Prisma.SampleRequest$assignedToArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SampleRequest$assignedToArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  approvals<T extends Prisma.SampleRequest$approvalsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SampleRequest$approvalsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SampleApprovalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1423,10 +2782,21 @@ export interface SampleRequestFieldRefs {
   readonly companyId: Prisma.FieldRef<"SampleRequest", 'String'>
   readonly sampleNo: Prisma.FieldRef<"SampleRequest", 'String'>
   readonly styleId: Prisma.FieldRef<"SampleRequest", 'String'>
+  readonly orderId: Prisma.FieldRef<"SampleRequest", 'String'>
   readonly sampleType: Prisma.FieldRef<"SampleRequest", 'SampleType'>
   readonly quantity: Prisma.FieldRef<"SampleRequest", 'Int'>
   readonly requestedDate: Prisma.FieldRef<"SampleRequest", 'DateTime'>
   readonly dueDate: Prisma.FieldRef<"SampleRequest", 'DateTime'>
+  readonly assignedDepartmentId: Prisma.FieldRef<"SampleRequest", 'String'>
+  readonly assignedToId: Prisma.FieldRef<"SampleRequest", 'String'>
+  readonly cost: Prisma.FieldRef<"SampleRequest", 'Decimal'>
+  readonly plannedCompletion: Prisma.FieldRef<"SampleRequest", 'DateTime'>
+  readonly actualCompletion: Prisma.FieldRef<"SampleRequest", 'DateTime'>
+  readonly sentDate: Prisma.FieldRef<"SampleRequest", 'DateTime'>
+  readonly courier: Prisma.FieldRef<"SampleRequest", 'String'>
+  readonly trackingNo: Prisma.FieldRef<"SampleRequest", 'String'>
+  readonly buyerResponse: Prisma.FieldRef<"SampleRequest", 'String'>
+  readonly revisionCount: Prisma.FieldRef<"SampleRequest", 'Int'>
   readonly status: Prisma.FieldRef<"SampleRequest", 'SampleStatus'>
   readonly notes: Prisma.FieldRef<"SampleRequest", 'String'>
   readonly createdById: Prisma.FieldRef<"SampleRequest", 'String'>
@@ -1830,6 +3200,87 @@ export type SampleRequestDeleteManyArgs<ExtArgs extends runtime.Types.Extensions
    * Limit how many SampleRequests to delete.
    */
   limit?: number
+}
+
+/**
+ * SampleRequest.order
+ */
+export type SampleRequest$orderArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Order
+   */
+  select?: Prisma.OrderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Order
+   */
+  omit?: Prisma.OrderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrderInclude<ExtArgs> | null
+  where?: Prisma.OrderWhereInput
+}
+
+/**
+ * SampleRequest.assignedDepartment
+ */
+export type SampleRequest$assignedDepartmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Department
+   */
+  select?: Prisma.DepartmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Department
+   */
+  omit?: Prisma.DepartmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DepartmentInclude<ExtArgs> | null
+  where?: Prisma.DepartmentWhereInput
+}
+
+/**
+ * SampleRequest.assignedTo
+ */
+export type SampleRequest$assignedToArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * SampleRequest.approvals
+ */
+export type SampleRequest$approvalsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SampleApproval
+   */
+  select?: Prisma.SampleApprovalSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SampleApproval
+   */
+  omit?: Prisma.SampleApprovalOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SampleApprovalInclude<ExtArgs> | null
+  where?: Prisma.SampleApprovalWhereInput
+  orderBy?: Prisma.SampleApprovalOrderByWithRelationInput | Prisma.SampleApprovalOrderByWithRelationInput[]
+  cursor?: Prisma.SampleApprovalWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SampleApprovalScalarFieldEnum | Prisma.SampleApprovalScalarFieldEnum[]
 }
 
 /**

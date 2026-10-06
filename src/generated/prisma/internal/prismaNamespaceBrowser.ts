@@ -82,7 +82,14 @@ export const ModelName = {
   Bom: 'Bom',
   BomItem: 'BomItem',
   MrpRun: 'MrpRun',
-  MrpLine: 'MrpLine'
+  MrpLine: 'MrpLine',
+  Season: 'Season',
+  Order: 'Order',
+  OrderLine: 'OrderLine',
+  OrderAmendment: 'OrderAmendment',
+  StyleRevision: 'StyleRevision',
+  TechPack: 'TechPack',
+  SampleApproval: 'SampleApproval'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -341,6 +348,7 @@ export const StyleScalarFieldEnum = {
   buyerId: 'buyerId',
   name: 'name',
   season: 'season',
+  seasonId: 'seasonId',
   category: 'category',
   description: 'description',
   status: 'status',
@@ -391,10 +399,21 @@ export const SampleRequestScalarFieldEnum = {
   companyId: 'companyId',
   sampleNo: 'sampleNo',
   styleId: 'styleId',
+  orderId: 'orderId',
   sampleType: 'sampleType',
   quantity: 'quantity',
   requestedDate: 'requestedDate',
   dueDate: 'dueDate',
+  assignedDepartmentId: 'assignedDepartmentId',
+  assignedToId: 'assignedToId',
+  cost: 'cost',
+  plannedCompletion: 'plannedCompletion',
+  actualCompletion: 'actualCompletion',
+  sentDate: 'sentDate',
+  courier: 'courier',
+  trackingNo: 'trackingNo',
+  buyerResponse: 'buyerResponse',
+  revisionCount: 'revisionCount',
   status: 'status',
   notes: 'notes',
   createdById: 'createdById',
@@ -431,6 +450,7 @@ export const TnaPlanScalarFieldEnum = {
   id: 'id',
   companyId: 'companyId',
   styleId: 'styleId',
+  orderId: 'orderId',
   templateId: 'templateId',
   shipDate: 'shipDate',
   createdAt: 'createdAt',
@@ -516,6 +536,7 @@ export const MrpRunScalarFieldEnum = {
   id: 'id',
   companyId: 'companyId',
   bomId: 'bomId',
+  orderId: 'orderId',
   orderQty: 'orderQty',
   runDate: 'runDate',
   createdAt: 'createdAt'
@@ -530,10 +551,106 @@ export const MrpLineScalarFieldEnum = {
   bomItemId: 'bomItemId',
   grossQty: 'grossQty',
   stockQty: 'stockQty',
+  incomingQty: 'incomingQty',
+  reservedQty: 'reservedQty',
   netQty: 'netQty'
 } as const
 
 export type MrpLineScalarFieldEnum = (typeof MrpLineScalarFieldEnum)[keyof typeof MrpLineScalarFieldEnum]
+
+
+export const SeasonScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  code: 'code',
+  name: 'name',
+  createdAt: 'createdAt'
+} as const
+
+export type SeasonScalarFieldEnum = (typeof SeasonScalarFieldEnum)[keyof typeof SeasonScalarFieldEnum]
+
+
+export const OrderScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  orderNo: 'orderNo',
+  buyerId: 'buyerId',
+  buyerPoNo: 'buyerPoNo',
+  seasonId: 'seasonId',
+  currency: 'currency',
+  orderDate: 'orderDate',
+  shipDate: 'shipDate',
+  status: 'status',
+  notes: 'notes',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
+
+
+export const OrderLineScalarFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  styleId: 'styleId',
+  quantity: 'quantity',
+  unitPrice: 'unitPrice',
+  shipDate: 'shipDate',
+  createdAt: 'createdAt'
+} as const
+
+export type OrderLineScalarFieldEnum = (typeof OrderLineScalarFieldEnum)[keyof typeof OrderLineScalarFieldEnum]
+
+
+export const OrderAmendmentScalarFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  amendmentNo: 'amendmentNo',
+  reason: 'reason',
+  previousValues: 'previousValues',
+  createdById: 'createdById',
+  createdAt: 'createdAt'
+} as const
+
+export type OrderAmendmentScalarFieldEnum = (typeof OrderAmendmentScalarFieldEnum)[keyof typeof OrderAmendmentScalarFieldEnum]
+
+
+export const StyleRevisionScalarFieldEnum = {
+  id: 'id',
+  styleId: 'styleId',
+  revisionNo: 'revisionNo',
+  changeNote: 'changeNote',
+  createdById: 'createdById',
+  createdAt: 'createdAt'
+} as const
+
+export type StyleRevisionScalarFieldEnum = (typeof StyleRevisionScalarFieldEnum)[keyof typeof StyleRevisionScalarFieldEnum]
+
+
+export const TechPackScalarFieldEnum = {
+  id: 'id',
+  styleId: 'styleId',
+  title: 'title',
+  version: 'version',
+  fileUrl: 'fileUrl',
+  notes: 'notes',
+  createdAt: 'createdAt'
+} as const
+
+export type TechPackScalarFieldEnum = (typeof TechPackScalarFieldEnum)[keyof typeof TechPackScalarFieldEnum]
+
+
+export const SampleApprovalScalarFieldEnum = {
+  id: 'id',
+  sampleId: 'sampleId',
+  round: 'round',
+  decision: 'decision',
+  comments: 'comments',
+  decidedAt: 'decidedAt'
+} as const
+
+export type SampleApprovalScalarFieldEnum = (typeof SampleApprovalScalarFieldEnum)[keyof typeof SampleApprovalScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -550,6 +667,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {

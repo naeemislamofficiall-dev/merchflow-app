@@ -53,8 +53,13 @@ export const SampleType = {
   PROTO: 'PROTO',
   FIT: 'FIT',
   SIZE_SET: 'SIZE_SET',
+  SALESMAN: 'SALESMAN',
+  SMS: 'SMS',
   PP: 'PP',
-  SALESMAN: 'SALESMAN'
+  TOP: 'TOP',
+  SHIPMENT: 'SHIPMENT',
+  PHOTO: 'PHOTO',
+  WASH_TEST: 'WASH_TEST'
 } as const
 
 export type SampleType = (typeof SampleType)[keyof typeof SampleType]
@@ -62,10 +67,13 @@ export type SampleType = (typeof SampleType)[keyof typeof SampleType]
 
 export const SampleStatus = {
   REQUESTED: 'REQUESTED',
-  IN_PROGRESS: 'IN_PROGRESS',
+  IN_DEVELOPMENT: 'IN_DEVELOPMENT',
+  INTERNAL_QC: 'INTERNAL_QC',
   SENT: 'SENT',
+  BUYER_REVIEW: 'BUYER_REVIEW',
   APPROVED: 'APPROVED',
   REJECTED: 'REJECTED',
+  REVISION: 'REVISION',
   CANCELLED: 'CANCELLED'
 } as const
 
@@ -121,3 +129,24 @@ export const BomItemType = {
 } as const
 
 export type BomItemType = (typeof BomItemType)[keyof typeof BomItemType]
+
+
+export const OrderStatus = {
+  DRAFT: 'DRAFT',
+  CONFIRMED: 'CONFIRMED',
+  IN_PRODUCTION: 'IN_PRODUCTION',
+  PARTIALLY_SHIPPED: 'PARTIALLY_SHIPPED',
+  FULLY_SHIPPED: 'FULLY_SHIPPED',
+  CLOSED: 'CLOSED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus]
+
+
+export const SampleDecision = {
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type SampleDecision = (typeof SampleDecision)[keyof typeof SampleDecision]

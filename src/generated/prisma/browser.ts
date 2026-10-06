@@ -177,3 +177,38 @@ export type MrpRun = Prisma.MrpRunModel
  * 
  */
 export type MrpLine = Prisma.MrpLineModel
+/**
+ * Model Season
+ * 
+ */
+export type Season = Prisma.SeasonModel
+/**
+ * Model Order
+ * 
+ */
+export type Order = Prisma.OrderModel
+/**
+ * Model OrderLine
+ * 
+ */
+export type OrderLine = Prisma.OrderLineModel
+/**
+ * Model OrderAmendment
+ * 
+ */
+export type OrderAmendment = Prisma.OrderAmendmentModel
+/**
+ * Model StyleRevision
+ * 
+ */
+export type StyleRevision = Prisma.StyleRevisionModel
+/**
+ * Model TechPack
+ * 
+ */
+export type TechPack = Prisma.TechPackModel
+/**
+ * Model SampleApproval
+ * 
+ */
+export type SampleApproval = Prisma.SampleApprovalModel

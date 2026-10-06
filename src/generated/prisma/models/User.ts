@@ -242,6 +242,7 @@ export type UserWhereInput = {
   company?: Prisma.XOR<Prisma.CompanyNullableScalarRelationFilter, Prisma.CompanyWhereInput> | null
   factory?: Prisma.XOR<Prisma.FactoryNullableScalarRelationFilter, Prisma.FactoryWhereInput> | null
   auditLogs?: Prisma.AuditLogListRelationFilter
+  assignedSamples?: Prisma.SampleRequestListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -261,6 +262,7 @@ export type UserOrderByWithRelationInput = {
   company?: Prisma.CompanyOrderByWithRelationInput
   factory?: Prisma.FactoryOrderByWithRelationInput
   auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  assignedSamples?: Prisma.SampleRequestOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -283,6 +285,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   company?: Prisma.XOR<Prisma.CompanyNullableScalarRelationFilter, Prisma.CompanyWhereInput> | null
   factory?: Prisma.XOR<Prisma.FactoryNullableScalarRelationFilter, Prisma.FactoryWhereInput> | null
   auditLogs?: Prisma.AuditLogListRelationFilter
+  assignedSamples?: Prisma.SampleRequestListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -335,6 +338,7 @@ export type UserCreateInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -351,6 +355,7 @@ export type UserUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
 }
 
 export type UserUpdateInput = {
@@ -367,6 +372,7 @@ export type UserUpdateInput = {
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -383,6 +389,7 @@ export type UserUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -637,6 +644,22 @@ export type UserUpdateOneWithoutAuditLogsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.UserUpdateWithoutAuditLogsInput>, Prisma.UserUncheckedUpdateWithoutAuditLogsInput>
 }
 
+export type UserCreateNestedOneWithoutAssignedSamplesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAssignedSamplesInput, Prisma.UserUncheckedCreateWithoutAssignedSamplesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAssignedSamplesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAssignedSamplesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAssignedSamplesInput, Prisma.UserUncheckedCreateWithoutAssignedSamplesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAssignedSamplesInput
+  upsert?: Prisma.UserUpsertWithoutAssignedSamplesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAssignedSamplesInput, Prisma.UserUpdateWithoutAssignedSamplesInput>, Prisma.UserUncheckedUpdateWithoutAssignedSamplesInput>
+}
+
 export type UserCreateWithoutCompanyInput = {
   id?: string
   email: string
@@ -650,6 +673,7 @@ export type UserCreateWithoutCompanyInput = {
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
 }
 
 export type UserUncheckedCreateWithoutCompanyInput = {
@@ -665,6 +689,7 @@ export type UserUncheckedCreateWithoutCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
 }
 
 export type UserCreateOrConnectWithoutCompanyInput = {
@@ -724,6 +749,7 @@ export type UserCreateWithoutFactoryInput = {
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
 }
 
 export type UserUncheckedCreateWithoutFactoryInput = {
@@ -739,6 +765,7 @@ export type UserUncheckedCreateWithoutFactoryInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
 }
 
 export type UserCreateOrConnectWithoutFactoryInput = {
@@ -780,6 +807,7 @@ export type UserCreateWithoutRoleInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
 }
 
 export type UserUncheckedCreateWithoutRoleInput = {
@@ -795,6 +823,7 @@ export type UserUncheckedCreateWithoutRoleInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
 }
 
 export type UserCreateOrConnectWithoutRoleInput = {
@@ -836,6 +865,7 @@ export type UserCreateWithoutAuditLogsInput = {
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
 }
 
 export type UserUncheckedCreateWithoutAuditLogsInput = {
@@ -851,6 +881,7 @@ export type UserUncheckedCreateWithoutAuditLogsInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
 }
 
 export type UserCreateOrConnectWithoutAuditLogsInput = {
@@ -882,6 +913,7 @@ export type UserUpdateWithoutAuditLogsInput = {
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAuditLogsInput = {
@@ -897,6 +929,87 @@ export type UserUncheckedUpdateWithoutAuditLogsInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+}
+
+export type UserCreateWithoutAssignedSamplesInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  scope?: $Enums.Scope
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
+  factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+}
+
+export type UserUncheckedCreateWithoutAssignedSamplesInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  roleId: string
+  scope?: $Enums.Scope
+  companyId?: string | null
+  factoryId?: string | null
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+}
+
+export type UserCreateOrConnectWithoutAssignedSamplesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAssignedSamplesInput, Prisma.UserUncheckedCreateWithoutAssignedSamplesInput>
+}
+
+export type UserUpsertWithoutAssignedSamplesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAssignedSamplesInput, Prisma.UserUncheckedUpdateWithoutAssignedSamplesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAssignedSamplesInput, Prisma.UserUncheckedCreateWithoutAssignedSamplesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAssignedSamplesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAssignedSamplesInput, Prisma.UserUncheckedUpdateWithoutAssignedSamplesInput>
+}
+
+export type UserUpdateWithoutAssignedSamplesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
+  factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAssignedSamplesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
 }
 
 export type UserCreateManyCompanyInput = {
@@ -926,6 +1039,7 @@ export type UserUpdateWithoutCompanyInput = {
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCompanyInput = {
@@ -941,6 +1055,7 @@ export type UserUncheckedUpdateWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutCompanyInput = {
@@ -984,6 +1099,7 @@ export type UserUpdateWithoutFactoryInput = {
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFactoryInput = {
@@ -999,6 +1115,7 @@ export type UserUncheckedUpdateWithoutFactoryInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutFactoryInput = {
@@ -1042,6 +1159,7 @@ export type UserUpdateWithoutRoleInput = {
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRoleInput = {
@@ -1057,6 +1175,7 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -1080,10 +1199,12 @@ export type UserUncheckedUpdateManyWithoutRoleInput = {
 
 export type UserCountOutputType = {
   auditLogs: number
+  assignedSamples: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
+  assignedSamples?: boolean | UserCountOutputTypeCountAssignedSamplesArgs
 }
 
 /**
@@ -1101,6 +1222,13 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
  */
 export type UserCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.AuditLogWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAssignedSamplesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SampleRequestWhereInput
 }
 
 
@@ -1121,6 +1249,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   company?: boolean | Prisma.User$companyArgs<ExtArgs>
   factory?: boolean | Prisma.User$factoryArgs<ExtArgs>
   auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
+  assignedSamples?: boolean | Prisma.User$assignedSamplesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1181,6 +1310,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   company?: boolean | Prisma.User$companyArgs<ExtArgs>
   factory?: boolean | Prisma.User$factoryArgs<ExtArgs>
   auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
+  assignedSamples?: boolean | Prisma.User$assignedSamplesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1201,6 +1331,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     company: Prisma.$CompanyPayload<ExtArgs> | null
     factory: Prisma.$FactoryPayload<ExtArgs> | null
     auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    assignedSamples: Prisma.$SampleRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1613,6 +1744,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   company<T extends Prisma.User$companyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$companyArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   factory<T extends Prisma.User$factoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$factoryArgs<ExtArgs>>): Prisma.Prisma__FactoryClient<runtime.Types.Result.GetResult<Prisma.$FactoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   auditLogs<T extends Prisma.User$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  assignedSamples<T extends Prisma.User$assignedSamplesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$assignedSamplesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SampleRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2114,6 +2246,30 @@ export type User$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * User.assignedSamples
+ */
+export type User$assignedSamplesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SampleRequest
+   */
+  select?: Prisma.SampleRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SampleRequest
+   */
+  omit?: Prisma.SampleRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SampleRequestInclude<ExtArgs> | null
+  where?: Prisma.SampleRequestWhereInput
+  orderBy?: Prisma.SampleRequestOrderByWithRelationInput | Prisma.SampleRequestOrderByWithRelationInput[]
+  cursor?: Prisma.SampleRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SampleRequestScalarFieldEnum | Prisma.SampleRequestScalarFieldEnum[]
 }
 
 /**

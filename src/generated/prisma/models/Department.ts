@@ -209,6 +209,7 @@ export type DepartmentWhereInput = {
   factory?: Prisma.XOR<Prisma.FactoryScalarRelationFilter, Prisma.FactoryWhereInput>
   floor?: Prisma.XOR<Prisma.FloorNullableScalarRelationFilter, Prisma.FloorWhereInput> | null
   lines?: Prisma.LineListRelationFilter
+  sampleRequests?: Prisma.SampleRequestListRelationFilter
 }
 
 export type DepartmentOrderByWithRelationInput = {
@@ -223,6 +224,7 @@ export type DepartmentOrderByWithRelationInput = {
   factory?: Prisma.FactoryOrderByWithRelationInput
   floor?: Prisma.FloorOrderByWithRelationInput
   lines?: Prisma.LineOrderByRelationAggregateInput
+  sampleRequests?: Prisma.SampleRequestOrderByRelationAggregateInput
 }
 
 export type DepartmentWhereUniqueInput = Prisma.AtLeast<{
@@ -241,6 +243,7 @@ export type DepartmentWhereUniqueInput = Prisma.AtLeast<{
   factory?: Prisma.XOR<Prisma.FactoryScalarRelationFilter, Prisma.FactoryWhereInput>
   floor?: Prisma.XOR<Prisma.FloorNullableScalarRelationFilter, Prisma.FloorWhereInput> | null
   lines?: Prisma.LineListRelationFilter
+  sampleRequests?: Prisma.SampleRequestListRelationFilter
 }, "id" | "factoryId_code">
 
 export type DepartmentOrderByWithAggregationInput = {
@@ -281,6 +284,7 @@ export type DepartmentCreateInput = {
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
 }
 
 export type DepartmentUncheckedCreateInput = {
@@ -293,6 +297,7 @@ export type DepartmentUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
 }
 
 export type DepartmentUpdateInput = {
@@ -305,6 +310,7 @@ export type DepartmentUpdateInput = {
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
 export type DepartmentUncheckedUpdateInput = {
@@ -317,6 +323,7 @@ export type DepartmentUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
 export type DepartmentCreateManyInput = {
@@ -503,6 +510,22 @@ export type DepartmentUpdateOneWithoutLinesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.DepartmentUpdateToOneWithWhereWithoutLinesInput, Prisma.DepartmentUpdateWithoutLinesInput>, Prisma.DepartmentUncheckedUpdateWithoutLinesInput>
 }
 
+export type DepartmentCreateNestedOneWithoutSampleRequestsInput = {
+  create?: Prisma.XOR<Prisma.DepartmentCreateWithoutSampleRequestsInput, Prisma.DepartmentUncheckedCreateWithoutSampleRequestsInput>
+  connectOrCreate?: Prisma.DepartmentCreateOrConnectWithoutSampleRequestsInput
+  connect?: Prisma.DepartmentWhereUniqueInput
+}
+
+export type DepartmentUpdateOneWithoutSampleRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.DepartmentCreateWithoutSampleRequestsInput, Prisma.DepartmentUncheckedCreateWithoutSampleRequestsInput>
+  connectOrCreate?: Prisma.DepartmentCreateOrConnectWithoutSampleRequestsInput
+  upsert?: Prisma.DepartmentUpsertWithoutSampleRequestsInput
+  disconnect?: Prisma.DepartmentWhereInput | boolean
+  delete?: Prisma.DepartmentWhereInput | boolean
+  connect?: Prisma.DepartmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DepartmentUpdateToOneWithWhereWithoutSampleRequestsInput, Prisma.DepartmentUpdateWithoutSampleRequestsInput>, Prisma.DepartmentUncheckedUpdateWithoutSampleRequestsInput>
+}
+
 export type DepartmentCreateWithoutFactoryInput = {
   id?: string
   code: string
@@ -512,6 +535,7 @@ export type DepartmentCreateWithoutFactoryInput = {
   updatedAt?: Date | string
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
 }
 
 export type DepartmentUncheckedCreateWithoutFactoryInput = {
@@ -523,6 +547,7 @@ export type DepartmentUncheckedCreateWithoutFactoryInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
 }
 
 export type DepartmentCreateOrConnectWithoutFactoryInput = {
@@ -574,6 +599,7 @@ export type DepartmentCreateWithoutFloorInput = {
   updatedAt?: Date | string
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
 }
 
 export type DepartmentUncheckedCreateWithoutFloorInput = {
@@ -585,6 +611,7 @@ export type DepartmentUncheckedCreateWithoutFloorInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
 }
 
 export type DepartmentCreateOrConnectWithoutFloorInput = {
@@ -622,6 +649,7 @@ export type DepartmentCreateWithoutLinesInput = {
   updatedAt?: Date | string
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
 }
 
 export type DepartmentUncheckedCreateWithoutLinesInput = {
@@ -633,6 +661,7 @@ export type DepartmentUncheckedCreateWithoutLinesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
 }
 
 export type DepartmentCreateOrConnectWithoutLinesInput = {
@@ -660,6 +689,7 @@ export type DepartmentUpdateWithoutLinesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
 export type DepartmentUncheckedUpdateWithoutLinesInput = {
@@ -671,6 +701,71 @@ export type DepartmentUncheckedUpdateWithoutLinesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
+}
+
+export type DepartmentCreateWithoutSampleRequestsInput = {
+  id?: string
+  code: string
+  name: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
+  floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
+  lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
+}
+
+export type DepartmentUncheckedCreateWithoutSampleRequestsInput = {
+  id?: string
+  factoryId: string
+  floorId?: string | null
+  code: string
+  name: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
+}
+
+export type DepartmentCreateOrConnectWithoutSampleRequestsInput = {
+  where: Prisma.DepartmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.DepartmentCreateWithoutSampleRequestsInput, Prisma.DepartmentUncheckedCreateWithoutSampleRequestsInput>
+}
+
+export type DepartmentUpsertWithoutSampleRequestsInput = {
+  update: Prisma.XOR<Prisma.DepartmentUpdateWithoutSampleRequestsInput, Prisma.DepartmentUncheckedUpdateWithoutSampleRequestsInput>
+  create: Prisma.XOR<Prisma.DepartmentCreateWithoutSampleRequestsInput, Prisma.DepartmentUncheckedCreateWithoutSampleRequestsInput>
+  where?: Prisma.DepartmentWhereInput
+}
+
+export type DepartmentUpdateToOneWithWhereWithoutSampleRequestsInput = {
+  where?: Prisma.DepartmentWhereInput
+  data: Prisma.XOR<Prisma.DepartmentUpdateWithoutSampleRequestsInput, Prisma.DepartmentUncheckedUpdateWithoutSampleRequestsInput>
+}
+
+export type DepartmentUpdateWithoutSampleRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
+  floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
+  lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
+}
+
+export type DepartmentUncheckedUpdateWithoutSampleRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  factoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  floorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
 }
 
 export type DepartmentCreateManyFactoryInput = {
@@ -692,6 +787,7 @@ export type DepartmentUpdateWithoutFactoryInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
 export type DepartmentUncheckedUpdateWithoutFactoryInput = {
@@ -703,6 +799,7 @@ export type DepartmentUncheckedUpdateWithoutFactoryInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
 export type DepartmentUncheckedUpdateManyWithoutFactoryInput = {
@@ -734,6 +831,7 @@ export type DepartmentUpdateWithoutFloorInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
 export type DepartmentUncheckedUpdateWithoutFloorInput = {
@@ -745,6 +843,7 @@ export type DepartmentUncheckedUpdateWithoutFloorInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
 export type DepartmentUncheckedUpdateManyWithoutFloorInput = {
@@ -764,10 +863,12 @@ export type DepartmentUncheckedUpdateManyWithoutFloorInput = {
 
 export type DepartmentCountOutputType = {
   lines: number
+  sampleRequests: number
 }
 
 export type DepartmentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   lines?: boolean | DepartmentCountOutputTypeCountLinesArgs
+  sampleRequests?: boolean | DepartmentCountOutputTypeCountSampleRequestsArgs
 }
 
 /**
@@ -787,6 +888,13 @@ export type DepartmentCountOutputTypeCountLinesArgs<ExtArgs extends runtime.Type
   where?: Prisma.LineWhereInput
 }
 
+/**
+ * DepartmentCountOutputType without action
+ */
+export type DepartmentCountOutputTypeCountSampleRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SampleRequestWhereInput
+}
+
 
 export type DepartmentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -800,6 +908,7 @@ export type DepartmentSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
   floor?: boolean | Prisma.Department$floorArgs<ExtArgs>
   lines?: boolean | Prisma.Department$linesArgs<ExtArgs>
+  sampleRequests?: boolean | Prisma.Department$sampleRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.DepartmentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["department"]>
 
@@ -845,6 +954,7 @@ export type DepartmentInclude<ExtArgs extends runtime.Types.Extensions.InternalA
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
   floor?: boolean | Prisma.Department$floorArgs<ExtArgs>
   lines?: boolean | Prisma.Department$linesArgs<ExtArgs>
+  sampleRequests?: boolean | Prisma.Department$sampleRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.DepartmentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type DepartmentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -862,6 +972,7 @@ export type $DepartmentPayload<ExtArgs extends runtime.Types.Extensions.Internal
     factory: Prisma.$FactoryPayload<ExtArgs>
     floor: Prisma.$FloorPayload<ExtArgs> | null
     lines: Prisma.$LinePayload<ExtArgs>[]
+    sampleRequests: Prisma.$SampleRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1269,6 +1380,7 @@ export interface Prisma__DepartmentClient<T, Null = never, ExtArgs extends runti
   factory<T extends Prisma.FactoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FactoryDefaultArgs<ExtArgs>>): Prisma.Prisma__FactoryClient<runtime.Types.Result.GetResult<Prisma.$FactoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   floor<T extends Prisma.Department$floorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$floorArgs<ExtArgs>>): Prisma.Prisma__FloorClient<runtime.Types.Result.GetResult<Prisma.$FloorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   lines<T extends Prisma.Department$linesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$linesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sampleRequests<T extends Prisma.Department$sampleRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$sampleRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SampleRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1747,6 +1859,30 @@ export type Department$linesArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.LineScalarFieldEnum | Prisma.LineScalarFieldEnum[]
+}
+
+/**
+ * Department.sampleRequests
+ */
+export type Department$sampleRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SampleRequest
+   */
+  select?: Prisma.SampleRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SampleRequest
+   */
+  omit?: Prisma.SampleRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SampleRequestInclude<ExtArgs> | null
+  where?: Prisma.SampleRequestWhereInput
+  orderBy?: Prisma.SampleRequestOrderByWithRelationInput | Prisma.SampleRequestOrderByWithRelationInput[]
+  cursor?: Prisma.SampleRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SampleRequestScalarFieldEnum | Prisma.SampleRequestScalarFieldEnum[]
 }
 
 /**

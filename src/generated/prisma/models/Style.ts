@@ -31,6 +31,7 @@ export type StyleMinAggregateOutputType = {
   buyerId: string | null
   name: string | null
   season: string | null
+  seasonId: string | null
   category: string | null
   description: string | null
   status: $Enums.StyleStatus | null
@@ -46,6 +47,7 @@ export type StyleMaxAggregateOutputType = {
   buyerId: string | null
   name: string | null
   season: string | null
+  seasonId: string | null
   category: string | null
   description: string | null
   status: $Enums.StyleStatus | null
@@ -61,6 +63,7 @@ export type StyleCountAggregateOutputType = {
   buyerId: number
   name: number
   season: number
+  seasonId: number
   category: number
   description: number
   status: number
@@ -78,6 +81,7 @@ export type StyleMinAggregateInputType = {
   buyerId?: true
   name?: true
   season?: true
+  seasonId?: true
   category?: true
   description?: true
   status?: true
@@ -93,6 +97,7 @@ export type StyleMaxAggregateInputType = {
   buyerId?: true
   name?: true
   season?: true
+  seasonId?: true
   category?: true
   description?: true
   status?: true
@@ -108,6 +113,7 @@ export type StyleCountAggregateInputType = {
   buyerId?: true
   name?: true
   season?: true
+  seasonId?: true
   category?: true
   description?: true
   status?: true
@@ -196,6 +202,7 @@ export type StyleGroupByOutputType = {
   buyerId: string
   name: string
   season: string | null
+  seasonId: string | null
   category: string | null
   description: string | null
   status: $Enums.StyleStatus
@@ -232,6 +239,7 @@ export type StyleWhereInput = {
   buyerId?: Prisma.StringFilter<"Style"> | string
   name?: Prisma.StringFilter<"Style"> | string
   season?: Prisma.StringNullableFilter<"Style"> | string | null
+  seasonId?: Prisma.StringNullableFilter<"Style"> | string | null
   category?: Prisma.StringNullableFilter<"Style"> | string | null
   description?: Prisma.StringNullableFilter<"Style"> | string | null
   status?: Prisma.EnumStyleStatusFilter<"Style"> | $Enums.StyleStatus
@@ -240,6 +248,7 @@ export type StyleWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Style"> | Date | string
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   buyer?: Prisma.XOR<Prisma.BuyerScalarRelationFilter, Prisma.BuyerWhereInput>
+  seasonRef?: Prisma.XOR<Prisma.SeasonNullableScalarRelationFilter, Prisma.SeasonWhereInput> | null
   sampleRequests?: Prisma.SampleRequestListRelationFilter
   tnaPlans?: Prisma.TnaPlanListRelationFilter
   costSheets?: Prisma.CostSheetListRelationFilter
@@ -247,6 +256,9 @@ export type StyleWhereInput = {
   colors?: Prisma.StyleColorListRelationFilter
   sizes?: Prisma.StyleSizeListRelationFilter
   enquiryItems?: Prisma.EnquiryItemListRelationFilter
+  revisions?: Prisma.StyleRevisionListRelationFilter
+  techPacks?: Prisma.TechPackListRelationFilter
+  orderLines?: Prisma.OrderLineListRelationFilter
 }
 
 export type StyleOrderByWithRelationInput = {
@@ -256,6 +268,7 @@ export type StyleOrderByWithRelationInput = {
   buyerId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   season?: Prisma.SortOrderInput | Prisma.SortOrder
+  seasonId?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -264,6 +277,7 @@ export type StyleOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   company?: Prisma.CompanyOrderByWithRelationInput
   buyer?: Prisma.BuyerOrderByWithRelationInput
+  seasonRef?: Prisma.SeasonOrderByWithRelationInput
   sampleRequests?: Prisma.SampleRequestOrderByRelationAggregateInput
   tnaPlans?: Prisma.TnaPlanOrderByRelationAggregateInput
   costSheets?: Prisma.CostSheetOrderByRelationAggregateInput
@@ -271,6 +285,9 @@ export type StyleOrderByWithRelationInput = {
   colors?: Prisma.StyleColorOrderByRelationAggregateInput
   sizes?: Prisma.StyleSizeOrderByRelationAggregateInput
   enquiryItems?: Prisma.EnquiryItemOrderByRelationAggregateInput
+  revisions?: Prisma.StyleRevisionOrderByRelationAggregateInput
+  techPacks?: Prisma.TechPackOrderByRelationAggregateInput
+  orderLines?: Prisma.OrderLineOrderByRelationAggregateInput
 }
 
 export type StyleWhereUniqueInput = Prisma.AtLeast<{
@@ -284,6 +301,7 @@ export type StyleWhereUniqueInput = Prisma.AtLeast<{
   buyerId?: Prisma.StringFilter<"Style"> | string
   name?: Prisma.StringFilter<"Style"> | string
   season?: Prisma.StringNullableFilter<"Style"> | string | null
+  seasonId?: Prisma.StringNullableFilter<"Style"> | string | null
   category?: Prisma.StringNullableFilter<"Style"> | string | null
   description?: Prisma.StringNullableFilter<"Style"> | string | null
   status?: Prisma.EnumStyleStatusFilter<"Style"> | $Enums.StyleStatus
@@ -292,6 +310,7 @@ export type StyleWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Style"> | Date | string
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   buyer?: Prisma.XOR<Prisma.BuyerScalarRelationFilter, Prisma.BuyerWhereInput>
+  seasonRef?: Prisma.XOR<Prisma.SeasonNullableScalarRelationFilter, Prisma.SeasonWhereInput> | null
   sampleRequests?: Prisma.SampleRequestListRelationFilter
   tnaPlans?: Prisma.TnaPlanListRelationFilter
   costSheets?: Prisma.CostSheetListRelationFilter
@@ -299,6 +318,9 @@ export type StyleWhereUniqueInput = Prisma.AtLeast<{
   colors?: Prisma.StyleColorListRelationFilter
   sizes?: Prisma.StyleSizeListRelationFilter
   enquiryItems?: Prisma.EnquiryItemListRelationFilter
+  revisions?: Prisma.StyleRevisionListRelationFilter
+  techPacks?: Prisma.TechPackListRelationFilter
+  orderLines?: Prisma.OrderLineListRelationFilter
 }, "id" | "companyId_styleNo">
 
 export type StyleOrderByWithAggregationInput = {
@@ -308,6 +330,7 @@ export type StyleOrderByWithAggregationInput = {
   buyerId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   season?: Prisma.SortOrderInput | Prisma.SortOrder
+  seasonId?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -329,6 +352,7 @@ export type StyleScalarWhereWithAggregatesInput = {
   buyerId?: Prisma.StringWithAggregatesFilter<"Style"> | string
   name?: Prisma.StringWithAggregatesFilter<"Style"> | string
   season?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  seasonId?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
   category?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
   description?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
   status?: Prisma.EnumStyleStatusWithAggregatesFilter<"Style"> | $Enums.StyleStatus
@@ -350,6 +374,7 @@ export type StyleCreateInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
@@ -357,6 +382,9 @@ export type StyleCreateInput = {
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateInput = {
@@ -366,6 +394,7 @@ export type StyleUncheckedCreateInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -379,6 +408,9 @@ export type StyleUncheckedCreateInput = {
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUpdateInput = {
@@ -394,6 +426,7 @@ export type StyleUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
@@ -401,6 +434,9 @@ export type StyleUpdateInput = {
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateInput = {
@@ -410,6 +446,7 @@ export type StyleUncheckedUpdateInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -423,6 +460,9 @@ export type StyleUncheckedUpdateInput = {
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateManyInput = {
@@ -432,6 +472,7 @@ export type StyleCreateManyInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -460,6 +501,7 @@ export type StyleUncheckedUpdateManyInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -495,6 +537,7 @@ export type StyleCountOrderByAggregateInput = {
   buyerId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   season?: Prisma.SortOrder
+  seasonId?: Prisma.SortOrder
   category?: Prisma.SortOrder
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -510,6 +553,7 @@ export type StyleMaxOrderByAggregateInput = {
   buyerId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   season?: Prisma.SortOrder
+  seasonId?: Prisma.SortOrder
   category?: Prisma.SortOrder
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -525,6 +569,7 @@ export type StyleMinOrderByAggregateInput = {
   buyerId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   season?: Prisma.SortOrder
+  seasonId?: Prisma.SortOrder
   category?: Prisma.SortOrder
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -726,6 +771,90 @@ export type StyleUpdateOneRequiredWithoutBomsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.StyleUpdateToOneWithWhereWithoutBomsInput, Prisma.StyleUpdateWithoutBomsInput>, Prisma.StyleUncheckedUpdateWithoutBomsInput>
 }
 
+export type StyleCreateNestedManyWithoutSeasonRefInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutSeasonRefInput, Prisma.StyleUncheckedCreateWithoutSeasonRefInput> | Prisma.StyleCreateWithoutSeasonRefInput[] | Prisma.StyleUncheckedCreateWithoutSeasonRefInput[]
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutSeasonRefInput | Prisma.StyleCreateOrConnectWithoutSeasonRefInput[]
+  createMany?: Prisma.StyleCreateManySeasonRefInputEnvelope
+  connect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+}
+
+export type StyleUncheckedCreateNestedManyWithoutSeasonRefInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutSeasonRefInput, Prisma.StyleUncheckedCreateWithoutSeasonRefInput> | Prisma.StyleCreateWithoutSeasonRefInput[] | Prisma.StyleUncheckedCreateWithoutSeasonRefInput[]
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutSeasonRefInput | Prisma.StyleCreateOrConnectWithoutSeasonRefInput[]
+  createMany?: Prisma.StyleCreateManySeasonRefInputEnvelope
+  connect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+}
+
+export type StyleUpdateManyWithoutSeasonRefNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutSeasonRefInput, Prisma.StyleUncheckedCreateWithoutSeasonRefInput> | Prisma.StyleCreateWithoutSeasonRefInput[] | Prisma.StyleUncheckedCreateWithoutSeasonRefInput[]
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutSeasonRefInput | Prisma.StyleCreateOrConnectWithoutSeasonRefInput[]
+  upsert?: Prisma.StyleUpsertWithWhereUniqueWithoutSeasonRefInput | Prisma.StyleUpsertWithWhereUniqueWithoutSeasonRefInput[]
+  createMany?: Prisma.StyleCreateManySeasonRefInputEnvelope
+  set?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  disconnect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  delete?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  connect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  update?: Prisma.StyleUpdateWithWhereUniqueWithoutSeasonRefInput | Prisma.StyleUpdateWithWhereUniqueWithoutSeasonRefInput[]
+  updateMany?: Prisma.StyleUpdateManyWithWhereWithoutSeasonRefInput | Prisma.StyleUpdateManyWithWhereWithoutSeasonRefInput[]
+  deleteMany?: Prisma.StyleScalarWhereInput | Prisma.StyleScalarWhereInput[]
+}
+
+export type StyleUncheckedUpdateManyWithoutSeasonRefNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutSeasonRefInput, Prisma.StyleUncheckedCreateWithoutSeasonRefInput> | Prisma.StyleCreateWithoutSeasonRefInput[] | Prisma.StyleUncheckedCreateWithoutSeasonRefInput[]
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutSeasonRefInput | Prisma.StyleCreateOrConnectWithoutSeasonRefInput[]
+  upsert?: Prisma.StyleUpsertWithWhereUniqueWithoutSeasonRefInput | Prisma.StyleUpsertWithWhereUniqueWithoutSeasonRefInput[]
+  createMany?: Prisma.StyleCreateManySeasonRefInputEnvelope
+  set?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  disconnect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  delete?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  connect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  update?: Prisma.StyleUpdateWithWhereUniqueWithoutSeasonRefInput | Prisma.StyleUpdateWithWhereUniqueWithoutSeasonRefInput[]
+  updateMany?: Prisma.StyleUpdateManyWithWhereWithoutSeasonRefInput | Prisma.StyleUpdateManyWithWhereWithoutSeasonRefInput[]
+  deleteMany?: Prisma.StyleScalarWhereInput | Prisma.StyleScalarWhereInput[]
+}
+
+export type StyleCreateNestedOneWithoutOrderLinesInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutOrderLinesInput, Prisma.StyleUncheckedCreateWithoutOrderLinesInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutOrderLinesInput
+  connect?: Prisma.StyleWhereUniqueInput
+}
+
+export type StyleUpdateOneRequiredWithoutOrderLinesNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutOrderLinesInput, Prisma.StyleUncheckedCreateWithoutOrderLinesInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutOrderLinesInput
+  upsert?: Prisma.StyleUpsertWithoutOrderLinesInput
+  connect?: Prisma.StyleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StyleUpdateToOneWithWhereWithoutOrderLinesInput, Prisma.StyleUpdateWithoutOrderLinesInput>, Prisma.StyleUncheckedUpdateWithoutOrderLinesInput>
+}
+
+export type StyleCreateNestedOneWithoutRevisionsInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutRevisionsInput, Prisma.StyleUncheckedCreateWithoutRevisionsInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutRevisionsInput
+  connect?: Prisma.StyleWhereUniqueInput
+}
+
+export type StyleUpdateOneRequiredWithoutRevisionsNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutRevisionsInput, Prisma.StyleUncheckedCreateWithoutRevisionsInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutRevisionsInput
+  upsert?: Prisma.StyleUpsertWithoutRevisionsInput
+  connect?: Prisma.StyleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StyleUpdateToOneWithWhereWithoutRevisionsInput, Prisma.StyleUpdateWithoutRevisionsInput>, Prisma.StyleUncheckedUpdateWithoutRevisionsInput>
+}
+
+export type StyleCreateNestedOneWithoutTechPacksInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutTechPacksInput, Prisma.StyleUncheckedCreateWithoutTechPacksInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutTechPacksInput
+  connect?: Prisma.StyleWhereUniqueInput
+}
+
+export type StyleUpdateOneRequiredWithoutTechPacksNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutTechPacksInput, Prisma.StyleUncheckedCreateWithoutTechPacksInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutTechPacksInput
+  upsert?: Prisma.StyleUpsertWithoutTechPacksInput
+  connect?: Prisma.StyleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StyleUpdateToOneWithWhereWithoutTechPacksInput, Prisma.StyleUpdateWithoutTechPacksInput>, Prisma.StyleUncheckedUpdateWithoutTechPacksInput>
+}
+
 export type StyleCreateWithoutCompanyInput = {
   id?: string
   styleNo: string
@@ -738,6 +867,7 @@ export type StyleCreateWithoutCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
@@ -745,6 +875,9 @@ export type StyleCreateWithoutCompanyInput = {
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutCompanyInput = {
@@ -753,6 +886,7 @@ export type StyleUncheckedCreateWithoutCompanyInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -766,6 +900,9 @@ export type StyleUncheckedCreateWithoutCompanyInput = {
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutCompanyInput = {
@@ -804,6 +941,7 @@ export type StyleScalarWhereInput = {
   buyerId?: Prisma.StringFilter<"Style"> | string
   name?: Prisma.StringFilter<"Style"> | string
   season?: Prisma.StringNullableFilter<"Style"> | string | null
+  seasonId?: Prisma.StringNullableFilter<"Style"> | string | null
   category?: Prisma.StringNullableFilter<"Style"> | string | null
   description?: Prisma.StringNullableFilter<"Style"> | string | null
   status?: Prisma.EnumStyleStatusFilter<"Style"> | $Enums.StyleStatus
@@ -824,6 +962,7 @@ export type StyleCreateWithoutBuyerInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
@@ -831,6 +970,9 @@ export type StyleCreateWithoutBuyerInput = {
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutBuyerInput = {
@@ -839,6 +981,7 @@ export type StyleUncheckedCreateWithoutBuyerInput = {
   styleNo: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -852,6 +995,9 @@ export type StyleUncheckedCreateWithoutBuyerInput = {
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutBuyerInput = {
@@ -893,12 +1039,16 @@ export type StyleCreateWithoutEnquiryItemsInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutEnquiryItemsInput = {
@@ -908,6 +1058,7 @@ export type StyleUncheckedCreateWithoutEnquiryItemsInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -920,6 +1071,9 @@ export type StyleUncheckedCreateWithoutEnquiryItemsInput = {
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutEnquiryItemsInput = {
@@ -951,12 +1105,16 @@ export type StyleUpdateWithoutEnquiryItemsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutEnquiryItemsInput = {
@@ -966,6 +1124,7 @@ export type StyleUncheckedUpdateWithoutEnquiryItemsInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -978,6 +1137,9 @@ export type StyleUncheckedUpdateWithoutEnquiryItemsInput = {
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutColorsInput = {
@@ -993,12 +1155,16 @@ export type StyleCreateWithoutColorsInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutColorsInput = {
@@ -1008,6 +1174,7 @@ export type StyleUncheckedCreateWithoutColorsInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -1020,6 +1187,9 @@ export type StyleUncheckedCreateWithoutColorsInput = {
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutColorsInput = {
@@ -1051,12 +1221,16 @@ export type StyleUpdateWithoutColorsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutColorsInput = {
@@ -1066,6 +1240,7 @@ export type StyleUncheckedUpdateWithoutColorsInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -1078,6 +1253,9 @@ export type StyleUncheckedUpdateWithoutColorsInput = {
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutSizesInput = {
@@ -1093,12 +1271,16 @@ export type StyleCreateWithoutSizesInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutSizesInput = {
@@ -1108,6 +1290,7 @@ export type StyleUncheckedCreateWithoutSizesInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -1120,6 +1303,9 @@ export type StyleUncheckedCreateWithoutSizesInput = {
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutSizesInput = {
@@ -1151,12 +1337,16 @@ export type StyleUpdateWithoutSizesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutSizesInput = {
@@ -1166,6 +1356,7 @@ export type StyleUncheckedUpdateWithoutSizesInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -1178,6 +1369,9 @@ export type StyleUncheckedUpdateWithoutSizesInput = {
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutSampleRequestsInput = {
@@ -1193,12 +1387,16 @@ export type StyleCreateWithoutSampleRequestsInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutSampleRequestsInput = {
@@ -1208,6 +1406,7 @@ export type StyleUncheckedCreateWithoutSampleRequestsInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -1220,6 +1419,9 @@ export type StyleUncheckedCreateWithoutSampleRequestsInput = {
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutSampleRequestsInput = {
@@ -1251,12 +1453,16 @@ export type StyleUpdateWithoutSampleRequestsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutSampleRequestsInput = {
@@ -1266,6 +1472,7 @@ export type StyleUncheckedUpdateWithoutSampleRequestsInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -1278,6 +1485,9 @@ export type StyleUncheckedUpdateWithoutSampleRequestsInput = {
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutTnaPlansInput = {
@@ -1293,12 +1503,16 @@ export type StyleCreateWithoutTnaPlansInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutTnaPlansInput = {
@@ -1308,6 +1522,7 @@ export type StyleUncheckedCreateWithoutTnaPlansInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -1320,6 +1535,9 @@ export type StyleUncheckedCreateWithoutTnaPlansInput = {
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutTnaPlansInput = {
@@ -1351,12 +1569,16 @@ export type StyleUpdateWithoutTnaPlansInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutTnaPlansInput = {
@@ -1366,6 +1588,7 @@ export type StyleUncheckedUpdateWithoutTnaPlansInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -1378,6 +1601,9 @@ export type StyleUncheckedUpdateWithoutTnaPlansInput = {
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutCostSheetsInput = {
@@ -1393,12 +1619,16 @@ export type StyleCreateWithoutCostSheetsInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutCostSheetsInput = {
@@ -1408,6 +1638,7 @@ export type StyleUncheckedCreateWithoutCostSheetsInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -1420,6 +1651,9 @@ export type StyleUncheckedCreateWithoutCostSheetsInput = {
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutCostSheetsInput = {
@@ -1451,12 +1685,16 @@ export type StyleUpdateWithoutCostSheetsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutCostSheetsInput = {
@@ -1466,6 +1704,7 @@ export type StyleUncheckedUpdateWithoutCostSheetsInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -1478,6 +1717,9 @@ export type StyleUncheckedUpdateWithoutCostSheetsInput = {
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutBomsInput = {
@@ -1493,12 +1735,16 @@ export type StyleCreateWithoutBomsInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutBomsInput = {
@@ -1508,6 +1754,7 @@ export type StyleUncheckedCreateWithoutBomsInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -1520,6 +1767,9 @@ export type StyleUncheckedCreateWithoutBomsInput = {
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutBomsInput = {
@@ -1551,12 +1801,16 @@ export type StyleUpdateWithoutBomsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutBomsInput = {
@@ -1566,6 +1820,7 @@ export type StyleUncheckedUpdateWithoutBomsInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -1578,6 +1833,433 @@ export type StyleUncheckedUpdateWithoutBomsInput = {
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleCreateWithoutSeasonRefInput = {
+  id?: string
+  styleNo: string
+  name: string
+  season?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutStylesInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
+}
+
+export type StyleUncheckedCreateWithoutSeasonRefInput = {
+  id?: string
+  companyId: string
+  styleNo: string
+  buyerId: string
+  name: string
+  season?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
+}
+
+export type StyleCreateOrConnectWithoutSeasonRefInput = {
+  where: Prisma.StyleWhereUniqueInput
+  create: Prisma.XOR<Prisma.StyleCreateWithoutSeasonRefInput, Prisma.StyleUncheckedCreateWithoutSeasonRefInput>
+}
+
+export type StyleCreateManySeasonRefInputEnvelope = {
+  data: Prisma.StyleCreateManySeasonRefInput | Prisma.StyleCreateManySeasonRefInput[]
+  skipDuplicates?: boolean
+}
+
+export type StyleUpsertWithWhereUniqueWithoutSeasonRefInput = {
+  where: Prisma.StyleWhereUniqueInput
+  update: Prisma.XOR<Prisma.StyleUpdateWithoutSeasonRefInput, Prisma.StyleUncheckedUpdateWithoutSeasonRefInput>
+  create: Prisma.XOR<Prisma.StyleCreateWithoutSeasonRefInput, Prisma.StyleUncheckedCreateWithoutSeasonRefInput>
+}
+
+export type StyleUpdateWithWhereUniqueWithoutSeasonRefInput = {
+  where: Prisma.StyleWhereUniqueInput
+  data: Prisma.XOR<Prisma.StyleUpdateWithoutSeasonRefInput, Prisma.StyleUncheckedUpdateWithoutSeasonRefInput>
+}
+
+export type StyleUpdateManyWithWhereWithoutSeasonRefInput = {
+  where: Prisma.StyleScalarWhereInput
+  data: Prisma.XOR<Prisma.StyleUpdateManyMutationInput, Prisma.StyleUncheckedUpdateManyWithoutSeasonRefInput>
+}
+
+export type StyleCreateWithoutOrderLinesInput = {
+  id?: string
+  styleNo: string
+  name: string
+  season?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutStylesInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+}
+
+export type StyleUncheckedCreateWithoutOrderLinesInput = {
+  id?: string
+  companyId: string
+  styleNo: string
+  buyerId: string
+  name: string
+  season?: string | null
+  seasonId?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+}
+
+export type StyleCreateOrConnectWithoutOrderLinesInput = {
+  where: Prisma.StyleWhereUniqueInput
+  create: Prisma.XOR<Prisma.StyleCreateWithoutOrderLinesInput, Prisma.StyleUncheckedCreateWithoutOrderLinesInput>
+}
+
+export type StyleUpsertWithoutOrderLinesInput = {
+  update: Prisma.XOR<Prisma.StyleUpdateWithoutOrderLinesInput, Prisma.StyleUncheckedUpdateWithoutOrderLinesInput>
+  create: Prisma.XOR<Prisma.StyleCreateWithoutOrderLinesInput, Prisma.StyleUncheckedCreateWithoutOrderLinesInput>
+  where?: Prisma.StyleWhereInput
+}
+
+export type StyleUpdateToOneWithWhereWithoutOrderLinesInput = {
+  where?: Prisma.StyleWhereInput
+  data: Prisma.XOR<Prisma.StyleUpdateWithoutOrderLinesInput, Prisma.StyleUncheckedUpdateWithoutOrderLinesInput>
+}
+
+export type StyleUpdateWithoutOrderLinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleUncheckedUpdateWithoutOrderLinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleCreateWithoutRevisionsInput = {
+  id?: string
+  styleNo: string
+  name: string
+  season?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutStylesInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
+}
+
+export type StyleUncheckedCreateWithoutRevisionsInput = {
+  id?: string
+  companyId: string
+  styleNo: string
+  buyerId: string
+  name: string
+  season?: string | null
+  seasonId?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
+}
+
+export type StyleCreateOrConnectWithoutRevisionsInput = {
+  where: Prisma.StyleWhereUniqueInput
+  create: Prisma.XOR<Prisma.StyleCreateWithoutRevisionsInput, Prisma.StyleUncheckedCreateWithoutRevisionsInput>
+}
+
+export type StyleUpsertWithoutRevisionsInput = {
+  update: Prisma.XOR<Prisma.StyleUpdateWithoutRevisionsInput, Prisma.StyleUncheckedUpdateWithoutRevisionsInput>
+  create: Prisma.XOR<Prisma.StyleCreateWithoutRevisionsInput, Prisma.StyleUncheckedCreateWithoutRevisionsInput>
+  where?: Prisma.StyleWhereInput
+}
+
+export type StyleUpdateToOneWithWhereWithoutRevisionsInput = {
+  where?: Prisma.StyleWhereInput
+  data: Prisma.XOR<Prisma.StyleUpdateWithoutRevisionsInput, Prisma.StyleUncheckedUpdateWithoutRevisionsInput>
+}
+
+export type StyleUpdateWithoutRevisionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleUncheckedUpdateWithoutRevisionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleCreateWithoutTechPacksInput = {
+  id?: string
+  styleNo: string
+  name: string
+  season?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutStylesInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
+}
+
+export type StyleUncheckedCreateWithoutTechPacksInput = {
+  id?: string
+  companyId: string
+  styleNo: string
+  buyerId: string
+  name: string
+  season?: string | null
+  seasonId?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
+}
+
+export type StyleCreateOrConnectWithoutTechPacksInput = {
+  where: Prisma.StyleWhereUniqueInput
+  create: Prisma.XOR<Prisma.StyleCreateWithoutTechPacksInput, Prisma.StyleUncheckedCreateWithoutTechPacksInput>
+}
+
+export type StyleUpsertWithoutTechPacksInput = {
+  update: Prisma.XOR<Prisma.StyleUpdateWithoutTechPacksInput, Prisma.StyleUncheckedUpdateWithoutTechPacksInput>
+  create: Prisma.XOR<Prisma.StyleCreateWithoutTechPacksInput, Prisma.StyleUncheckedCreateWithoutTechPacksInput>
+  where?: Prisma.StyleWhereInput
+}
+
+export type StyleUpdateToOneWithWhereWithoutTechPacksInput = {
+  where?: Prisma.StyleWhereInput
+  data: Prisma.XOR<Prisma.StyleUpdateWithoutTechPacksInput, Prisma.StyleUncheckedUpdateWithoutTechPacksInput>
+}
+
+export type StyleUpdateWithoutTechPacksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleUncheckedUpdateWithoutTechPacksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateManyCompanyInput = {
@@ -1586,6 +2268,7 @@ export type StyleCreateManyCompanyInput = {
   buyerId: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -1606,6 +2289,7 @@ export type StyleUpdateWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
@@ -1613,6 +2297,9 @@ export type StyleUpdateWithoutCompanyInput = {
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutCompanyInput = {
@@ -1621,6 +2308,7 @@ export type StyleUncheckedUpdateWithoutCompanyInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -1634,6 +2322,9 @@ export type StyleUncheckedUpdateWithoutCompanyInput = {
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateManyWithoutCompanyInput = {
@@ -1642,6 +2333,7 @@ export type StyleUncheckedUpdateManyWithoutCompanyInput = {
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
@@ -1656,6 +2348,7 @@ export type StyleCreateManyBuyerInput = {
   styleNo: string
   name: string
   season?: string | null
+  seasonId?: string | null
   category?: string | null
   description?: string | null
   status?: $Enums.StyleStatus
@@ -1676,6 +2369,7 @@ export type StyleUpdateWithoutBuyerInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
@@ -1683,12 +2377,96 @@ export type StyleUpdateWithoutBuyerInput = {
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutBuyerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleUncheckedUpdateManyWithoutBuyerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type StyleCreateManySeasonRefInput = {
+  id?: string
+  companyId: string
+  styleNo: string
+  buyerId: string
+  name: string
+  season?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type StyleUpdateWithoutSeasonRefInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleUncheckedUpdateWithoutSeasonRefInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1704,12 +2482,16 @@ export type StyleUncheckedUpdateWithoutBuyerInput = {
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
 }
 
-export type StyleUncheckedUpdateManyWithoutBuyerInput = {
+export type StyleUncheckedUpdateManyWithoutSeasonRefInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1733,6 +2515,9 @@ export type StyleCountOutputType = {
   colors: number
   sizes: number
   enquiryItems: number
+  revisions: number
+  techPacks: number
+  orderLines: number
 }
 
 export type StyleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1743,6 +2528,9 @@ export type StyleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   colors?: boolean | StyleCountOutputTypeCountColorsArgs
   sizes?: boolean | StyleCountOutputTypeCountSizesArgs
   enquiryItems?: boolean | StyleCountOutputTypeCountEnquiryItemsArgs
+  revisions?: boolean | StyleCountOutputTypeCountRevisionsArgs
+  techPacks?: boolean | StyleCountOutputTypeCountTechPacksArgs
+  orderLines?: boolean | StyleCountOutputTypeCountOrderLinesArgs
 }
 
 /**
@@ -1804,6 +2592,27 @@ export type StyleCountOutputTypeCountEnquiryItemsArgs<ExtArgs extends runtime.Ty
   where?: Prisma.EnquiryItemWhereInput
 }
 
+/**
+ * StyleCountOutputType without action
+ */
+export type StyleCountOutputTypeCountRevisionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StyleRevisionWhereInput
+}
+
+/**
+ * StyleCountOutputType without action
+ */
+export type StyleCountOutputTypeCountTechPacksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TechPackWhereInput
+}
+
+/**
+ * StyleCountOutputType without action
+ */
+export type StyleCountOutputTypeCountOrderLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderLineWhereInput
+}
+
 
 export type StyleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1812,6 +2621,7 @@ export type StyleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   buyerId?: boolean
   name?: boolean
   season?: boolean
+  seasonId?: boolean
   category?: boolean
   description?: boolean
   status?: boolean
@@ -1820,6 +2630,7 @@ export type StyleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
+  seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
   sampleRequests?: boolean | Prisma.Style$sampleRequestsArgs<ExtArgs>
   tnaPlans?: boolean | Prisma.Style$tnaPlansArgs<ExtArgs>
   costSheets?: boolean | Prisma.Style$costSheetsArgs<ExtArgs>
@@ -1827,6 +2638,9 @@ export type StyleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   colors?: boolean | Prisma.Style$colorsArgs<ExtArgs>
   sizes?: boolean | Prisma.Style$sizesArgs<ExtArgs>
   enquiryItems?: boolean | Prisma.Style$enquiryItemsArgs<ExtArgs>
+  revisions?: boolean | Prisma.Style$revisionsArgs<ExtArgs>
+  techPacks?: boolean | Prisma.Style$techPacksArgs<ExtArgs>
+  orderLines?: boolean | Prisma.Style$orderLinesArgs<ExtArgs>
   _count?: boolean | Prisma.StyleCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["style"]>
 
@@ -1837,6 +2651,7 @@ export type StyleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   buyerId?: boolean
   name?: boolean
   season?: boolean
+  seasonId?: boolean
   category?: boolean
   description?: boolean
   status?: boolean
@@ -1845,6 +2660,7 @@ export type StyleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
+  seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
 }, ExtArgs["result"]["style"]>
 
 export type StyleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1854,6 +2670,7 @@ export type StyleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   buyerId?: boolean
   name?: boolean
   season?: boolean
+  seasonId?: boolean
   category?: boolean
   description?: boolean
   status?: boolean
@@ -1862,6 +2679,7 @@ export type StyleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
+  seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
 }, ExtArgs["result"]["style"]>
 
 export type StyleSelectScalar = {
@@ -1871,6 +2689,7 @@ export type StyleSelectScalar = {
   buyerId?: boolean
   name?: boolean
   season?: boolean
+  seasonId?: boolean
   category?: boolean
   description?: boolean
   status?: boolean
@@ -1879,10 +2698,11 @@ export type StyleSelectScalar = {
   updatedAt?: boolean
 }
 
-export type StyleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "styleNo" | "buyerId" | "name" | "season" | "category" | "description" | "status" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["style"]>
+export type StyleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "styleNo" | "buyerId" | "name" | "season" | "seasonId" | "category" | "description" | "status" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["style"]>
 export type StyleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
+  seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
   sampleRequests?: boolean | Prisma.Style$sampleRequestsArgs<ExtArgs>
   tnaPlans?: boolean | Prisma.Style$tnaPlansArgs<ExtArgs>
   costSheets?: boolean | Prisma.Style$costSheetsArgs<ExtArgs>
@@ -1890,15 +2710,20 @@ export type StyleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   colors?: boolean | Prisma.Style$colorsArgs<ExtArgs>
   sizes?: boolean | Prisma.Style$sizesArgs<ExtArgs>
   enquiryItems?: boolean | Prisma.Style$enquiryItemsArgs<ExtArgs>
+  revisions?: boolean | Prisma.Style$revisionsArgs<ExtArgs>
+  techPacks?: boolean | Prisma.Style$techPacksArgs<ExtArgs>
+  orderLines?: boolean | Prisma.Style$orderLinesArgs<ExtArgs>
   _count?: boolean | Prisma.StyleCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StyleIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
+  seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
 }
 export type StyleIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
+  seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
 }
 
 export type $StylePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1906,6 +2731,7 @@ export type $StylePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   objects: {
     company: Prisma.$CompanyPayload<ExtArgs>
     buyer: Prisma.$BuyerPayload<ExtArgs>
+    seasonRef: Prisma.$SeasonPayload<ExtArgs> | null
     sampleRequests: Prisma.$SampleRequestPayload<ExtArgs>[]
     tnaPlans: Prisma.$TnaPlanPayload<ExtArgs>[]
     costSheets: Prisma.$CostSheetPayload<ExtArgs>[]
@@ -1913,6 +2739,9 @@ export type $StylePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     colors: Prisma.$StyleColorPayload<ExtArgs>[]
     sizes: Prisma.$StyleSizePayload<ExtArgs>[]
     enquiryItems: Prisma.$EnquiryItemPayload<ExtArgs>[]
+    revisions: Prisma.$StyleRevisionPayload<ExtArgs>[]
+    techPacks: Prisma.$TechPackPayload<ExtArgs>[]
+    orderLines: Prisma.$OrderLinePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1921,6 +2750,7 @@ export type $StylePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     buyerId: string
     name: string
     season: string | null
+    seasonId: string | null
     category: string | null
     description: string | null
     status: $Enums.StyleStatus
@@ -2323,6 +3153,7 @@ export interface Prisma__StyleClient<T, Null = never, ExtArgs extends runtime.Ty
   readonly [Symbol.toStringTag]: "PrismaPromise"
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   buyer<T extends Prisma.BuyerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BuyerDefaultArgs<ExtArgs>>): Prisma.Prisma__BuyerClient<runtime.Types.Result.GetResult<Prisma.$BuyerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  seasonRef<T extends Prisma.Style$seasonRefArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$seasonRefArgs<ExtArgs>>): Prisma.Prisma__SeasonClient<runtime.Types.Result.GetResult<Prisma.$SeasonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   sampleRequests<T extends Prisma.Style$sampleRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$sampleRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SampleRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tnaPlans<T extends Prisma.Style$tnaPlansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$tnaPlansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaPlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   costSheets<T extends Prisma.Style$costSheetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$costSheetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CostSheetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2330,6 +3161,9 @@ export interface Prisma__StyleClient<T, Null = never, ExtArgs extends runtime.Ty
   colors<T extends Prisma.Style$colorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$colorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StyleColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sizes<T extends Prisma.Style$sizesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$sizesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StyleSizePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   enquiryItems<T extends Prisma.Style$enquiryItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$enquiryItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EnquiryItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  revisions<T extends Prisma.Style$revisionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$revisionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StyleRevisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  techPacks<T extends Prisma.Style$techPacksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$techPacksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TechPackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  orderLines<T extends Prisma.Style$orderLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$orderLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2365,6 +3199,7 @@ export interface StyleFieldRefs {
   readonly buyerId: Prisma.FieldRef<"Style", 'String'>
   readonly name: Prisma.FieldRef<"Style", 'String'>
   readonly season: Prisma.FieldRef<"Style", 'String'>
+  readonly seasonId: Prisma.FieldRef<"Style", 'String'>
   readonly category: Prisma.FieldRef<"Style", 'String'>
   readonly description: Prisma.FieldRef<"Style", 'String'>
   readonly status: Prisma.FieldRef<"Style", 'StyleStatus'>
@@ -2772,6 +3607,25 @@ export type StyleDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+ * Style.seasonRef
+ */
+export type Style$seasonRefArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Season
+   */
+  select?: Prisma.SeasonSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Season
+   */
+  omit?: Prisma.SeasonOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SeasonInclude<ExtArgs> | null
+  where?: Prisma.SeasonWhereInput
+}
+
+/**
  * Style.sampleRequests
  */
 export type Style$sampleRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2937,6 +3791,78 @@ export type Style$enquiryItemsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.EnquiryItemScalarFieldEnum | Prisma.EnquiryItemScalarFieldEnum[]
+}
+
+/**
+ * Style.revisions
+ */
+export type Style$revisionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StyleRevision
+   */
+  select?: Prisma.StyleRevisionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StyleRevision
+   */
+  omit?: Prisma.StyleRevisionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StyleRevisionInclude<ExtArgs> | null
+  where?: Prisma.StyleRevisionWhereInput
+  orderBy?: Prisma.StyleRevisionOrderByWithRelationInput | Prisma.StyleRevisionOrderByWithRelationInput[]
+  cursor?: Prisma.StyleRevisionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StyleRevisionScalarFieldEnum | Prisma.StyleRevisionScalarFieldEnum[]
+}
+
+/**
+ * Style.techPacks
+ */
+export type Style$techPacksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TechPack
+   */
+  select?: Prisma.TechPackSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TechPack
+   */
+  omit?: Prisma.TechPackOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TechPackInclude<ExtArgs> | null
+  where?: Prisma.TechPackWhereInput
+  orderBy?: Prisma.TechPackOrderByWithRelationInput | Prisma.TechPackOrderByWithRelationInput[]
+  cursor?: Prisma.TechPackWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TechPackScalarFieldEnum | Prisma.TechPackScalarFieldEnum[]
+}
+
+/**
+ * Style.orderLines
+ */
+export type Style$orderLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OrderLine
+   */
+  select?: Prisma.OrderLineSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OrderLine
+   */
+  omit?: Prisma.OrderLineOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrderLineInclude<ExtArgs> | null
+  where?: Prisma.OrderLineWhereInput
+  orderBy?: Prisma.OrderLineOrderByWithRelationInput | Prisma.OrderLineOrderByWithRelationInput[]
+  cursor?: Prisma.OrderLineWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OrderLineScalarFieldEnum | Prisma.OrderLineScalarFieldEnum[]
 }
 
 /**

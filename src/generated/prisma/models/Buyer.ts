@@ -234,6 +234,7 @@ export type BuyerWhereInput = {
   contacts?: Prisma.BuyerContactListRelationFilter
   enquiries?: Prisma.EnquiryListRelationFilter
   styles?: Prisma.StyleListRelationFilter
+  orders?: Prisma.OrderListRelationFilter
 }
 
 export type BuyerOrderByWithRelationInput = {
@@ -252,6 +253,7 @@ export type BuyerOrderByWithRelationInput = {
   contacts?: Prisma.BuyerContactOrderByRelationAggregateInput
   enquiries?: Prisma.EnquiryOrderByRelationAggregateInput
   styles?: Prisma.StyleOrderByRelationAggregateInput
+  orders?: Prisma.OrderOrderByRelationAggregateInput
 }
 
 export type BuyerWhereUniqueInput = Prisma.AtLeast<{
@@ -274,6 +276,7 @@ export type BuyerWhereUniqueInput = Prisma.AtLeast<{
   contacts?: Prisma.BuyerContactListRelationFilter
   enquiries?: Prisma.EnquiryListRelationFilter
   styles?: Prisma.StyleListRelationFilter
+  orders?: Prisma.OrderListRelationFilter
 }, "id" | "companyId_code">
 
 export type BuyerOrderByWithAggregationInput = {
@@ -325,6 +328,7 @@ export type BuyerCreateInput = {
   contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateInput = {
@@ -342,6 +346,7 @@ export type BuyerUncheckedCreateInput = {
   contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUpdateInput = {
@@ -359,6 +364,7 @@ export type BuyerUpdateInput = {
   contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateInput = {
@@ -376,6 +382,7 @@ export type BuyerUncheckedUpdateInput = {
   contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerCreateManyInput = {
@@ -565,6 +572,20 @@ export type BuyerUpdateOneRequiredWithoutStylesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BuyerUpdateToOneWithWhereWithoutStylesInput, Prisma.BuyerUpdateWithoutStylesInput>, Prisma.BuyerUncheckedUpdateWithoutStylesInput>
 }
 
+export type BuyerCreateNestedOneWithoutOrdersInput = {
+  create?: Prisma.XOR<Prisma.BuyerCreateWithoutOrdersInput, Prisma.BuyerUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.BuyerCreateOrConnectWithoutOrdersInput
+  connect?: Prisma.BuyerWhereUniqueInput
+}
+
+export type BuyerUpdateOneRequiredWithoutOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.BuyerCreateWithoutOrdersInput, Prisma.BuyerUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.BuyerCreateOrConnectWithoutOrdersInput
+  upsert?: Prisma.BuyerUpsertWithoutOrdersInput
+  connect?: Prisma.BuyerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BuyerUpdateToOneWithWhereWithoutOrdersInput, Prisma.BuyerUpdateWithoutOrdersInput>, Prisma.BuyerUncheckedUpdateWithoutOrdersInput>
+}
+
 export type BuyerCreateWithoutCompanyInput = {
   id?: string
   code: string
@@ -579,6 +600,7 @@ export type BuyerCreateWithoutCompanyInput = {
   contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateWithoutCompanyInput = {
@@ -595,6 +617,7 @@ export type BuyerUncheckedCreateWithoutCompanyInput = {
   contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerCreateOrConnectWithoutCompanyInput = {
@@ -654,6 +677,7 @@ export type BuyerCreateWithoutContactsInput = {
   company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
   enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateWithoutContactsInput = {
@@ -670,6 +694,7 @@ export type BuyerUncheckedCreateWithoutContactsInput = {
   updatedAt?: Date | string
   enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerCreateOrConnectWithoutContactsInput = {
@@ -702,6 +727,7 @@ export type BuyerUpdateWithoutContactsInput = {
   company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
   enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateWithoutContactsInput = {
@@ -718,6 +744,7 @@ export type BuyerUncheckedUpdateWithoutContactsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerCreateWithoutEnquiriesInput = {
@@ -734,6 +761,7 @@ export type BuyerCreateWithoutEnquiriesInput = {
   company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
   contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateWithoutEnquiriesInput = {
@@ -750,6 +778,7 @@ export type BuyerUncheckedCreateWithoutEnquiriesInput = {
   updatedAt?: Date | string
   contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerCreateOrConnectWithoutEnquiriesInput = {
@@ -782,6 +811,7 @@ export type BuyerUpdateWithoutEnquiriesInput = {
   company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
   contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateWithoutEnquiriesInput = {
@@ -798,6 +828,7 @@ export type BuyerUncheckedUpdateWithoutEnquiriesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerCreateWithoutStylesInput = {
@@ -814,6 +845,7 @@ export type BuyerCreateWithoutStylesInput = {
   company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
   contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateWithoutStylesInput = {
@@ -830,6 +862,7 @@ export type BuyerUncheckedCreateWithoutStylesInput = {
   updatedAt?: Date | string
   contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerCreateOrConnectWithoutStylesInput = {
@@ -862,6 +895,7 @@ export type BuyerUpdateWithoutStylesInput = {
   company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
   contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateWithoutStylesInput = {
@@ -878,6 +912,91 @@ export type BuyerUncheckedUpdateWithoutStylesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
+}
+
+export type BuyerCreateWithoutOrdersInput = {
+  id?: string
+  code: string
+  name: string
+  country?: string | null
+  address?: string | null
+  currency?: string
+  paymentTerms?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
+  contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
+  styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
+}
+
+export type BuyerUncheckedCreateWithoutOrdersInput = {
+  id?: string
+  companyId: string
+  code: string
+  name: string
+  country?: string | null
+  address?: string | null
+  currency?: string
+  paymentTerms?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
+}
+
+export type BuyerCreateOrConnectWithoutOrdersInput = {
+  where: Prisma.BuyerWhereUniqueInput
+  create: Prisma.XOR<Prisma.BuyerCreateWithoutOrdersInput, Prisma.BuyerUncheckedCreateWithoutOrdersInput>
+}
+
+export type BuyerUpsertWithoutOrdersInput = {
+  update: Prisma.XOR<Prisma.BuyerUpdateWithoutOrdersInput, Prisma.BuyerUncheckedUpdateWithoutOrdersInput>
+  create: Prisma.XOR<Prisma.BuyerCreateWithoutOrdersInput, Prisma.BuyerUncheckedCreateWithoutOrdersInput>
+  where?: Prisma.BuyerWhereInput
+}
+
+export type BuyerUpdateToOneWithWhereWithoutOrdersInput = {
+  where?: Prisma.BuyerWhereInput
+  data: Prisma.XOR<Prisma.BuyerUpdateWithoutOrdersInput, Prisma.BuyerUncheckedUpdateWithoutOrdersInput>
+}
+
+export type BuyerUpdateWithoutOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
+  contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
+}
+
+export type BuyerUncheckedUpdateWithoutOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerCreateManyCompanyInput = {
@@ -907,6 +1026,7 @@ export type BuyerUpdateWithoutCompanyInput = {
   contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateWithoutCompanyInput = {
@@ -923,6 +1043,7 @@ export type BuyerUncheckedUpdateWithoutCompanyInput = {
   contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateManyWithoutCompanyInput = {
@@ -947,12 +1068,14 @@ export type BuyerCountOutputType = {
   contacts: number
   enquiries: number
   styles: number
+  orders: number
 }
 
 export type BuyerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   contacts?: boolean | BuyerCountOutputTypeCountContactsArgs
   enquiries?: boolean | BuyerCountOutputTypeCountEnquiriesArgs
   styles?: boolean | BuyerCountOutputTypeCountStylesArgs
+  orders?: boolean | BuyerCountOutputTypeCountOrdersArgs
 }
 
 /**
@@ -986,6 +1109,13 @@ export type BuyerCountOutputTypeCountStylesArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.StyleWhereInput
 }
 
+/**
+ * BuyerCountOutputType without action
+ */
+export type BuyerCountOutputTypeCountOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderWhereInput
+}
+
 
 export type BuyerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1003,6 +1133,7 @@ export type BuyerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   contacts?: boolean | Prisma.Buyer$contactsArgs<ExtArgs>
   enquiries?: boolean | Prisma.Buyer$enquiriesArgs<ExtArgs>
   styles?: boolean | Prisma.Buyer$stylesArgs<ExtArgs>
+  orders?: boolean | Prisma.Buyer$ordersArgs<ExtArgs>
   _count?: boolean | Prisma.BuyerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["buyer"]>
 
@@ -1056,6 +1187,7 @@ export type BuyerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   contacts?: boolean | Prisma.Buyer$contactsArgs<ExtArgs>
   enquiries?: boolean | Prisma.Buyer$enquiriesArgs<ExtArgs>
   styles?: boolean | Prisma.Buyer$stylesArgs<ExtArgs>
+  orders?: boolean | Prisma.Buyer$ordersArgs<ExtArgs>
   _count?: boolean | Prisma.BuyerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BuyerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1072,6 +1204,7 @@ export type $BuyerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     contacts: Prisma.$BuyerContactPayload<ExtArgs>[]
     enquiries: Prisma.$EnquiryPayload<ExtArgs>[]
     styles: Prisma.$StylePayload<ExtArgs>[]
+    orders: Prisma.$OrderPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1483,6 +1616,7 @@ export interface Prisma__BuyerClient<T, Null = never, ExtArgs extends runtime.Ty
   contacts<T extends Prisma.Buyer$contactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Buyer$contactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BuyerContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   enquiries<T extends Prisma.Buyer$enquiriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Buyer$enquiriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EnquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   styles<T extends Prisma.Buyer$stylesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Buyer$stylesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  orders<T extends Prisma.Buyer$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Buyer$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1993,6 +2127,30 @@ export type Buyer$stylesArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.StyleScalarFieldEnum | Prisma.StyleScalarFieldEnum[]
+}
+
+/**
+ * Buyer.orders
+ */
+export type Buyer$ordersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Order
+   */
+  select?: Prisma.OrderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Order
+   */
+  omit?: Prisma.OrderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrderInclude<ExtArgs> | null
+  where?: Prisma.OrderWhereInput
+  orderBy?: Prisma.OrderOrderByWithRelationInput | Prisma.OrderOrderByWithRelationInput[]
+  cursor?: Prisma.OrderWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
 }
 
 /**

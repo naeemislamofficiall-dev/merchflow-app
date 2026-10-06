@@ -41,6 +41,8 @@ model Company {
   mrpRuns        MrpRun[]
   enquiries      Enquiry[]
   styles         Style[]
+  seasons        Season[]
+  orders         Order[]
 }
 
 model Factory {
@@ -86,22 +88,23 @@ model RolePermission {
 }
 
 model User {
-  id           String       @id @default(cuid())
-  email        String       @unique
-  name         String
-  passwordHash String
-  roleId       String
-  role         Role         @relation(fields: [roleId], references: [id])
-  scope        Scope        @default(FACTORY)
-  companyId    String?
-  company      Company?     @relation(fields: [companyId], references: [id])
-  factoryId    String?
-  factory      Factory?     @relation(fields: [factoryId], references: [id])
-  status       ActiveStatus @default(ACTIVE)
-  lastLoginAt  DateTime?
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
-  auditLogs    AuditLog[]
+  id              String          @id @default(cuid())
+  email           String          @unique
+  name            String
+  passwordHash    String
+  roleId          String
+  role            Role            @relation(fields: [roleId], references: [id])
+  scope           Scope           @default(FACTORY)
+  companyId       String?
+  company         Company?        @relation(fields: [companyId], references: [id])
+  factoryId       String?
+  factory         Factory?        @relation(fields: [factoryId], references: [id])
+  status          ActiveStatus    @default(ACTIVE)
+  lastLoginAt     DateTime?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  auditLogs       AuditLog[]
+  assignedSamples SampleRequest[]
 }
 
 model AuditLog {
@@ -164,9 +167,10 @@ model Department {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  factory Factory @relation(fields: [factoryId], references: [id])
-  floor   Floor?  @relation(fields: [floorId], references: [id])
-  lines   Line[]
+  factory        Factory         @relation(fields: [factoryId], references: [id])
+  floor          Floor?          @relation(fields: [floorId], references: [id])
+  lines          Line[]
+  sampleRequests SampleRequest[]
 
   @@unique([factoryId, code])
 }
@@ -253,6 +257,7 @@ model Buyer {
   contacts  BuyerContact[]
   enquiries Enquiry[]
   styles    Style[]
+  orders    Order[]
 
   @@unique([companyId, code])
   @@index([companyId])
@@ -322,6 +327,7 @@ model Style {
   buyerId     String
   name        String
   season      String?
+  seasonId    String?
   category    String?
   description String?
   status      StyleStatus @default(DRAFT)
@@ -331,6 +337,7 @@ model Style {
 
   company        Company         @relation(fields: [companyId], references: [id])
   buyer          Buyer           @relation(fields: [buyerId], references: [id])
+  seasonRef      Season?         @relation(fields: [seasonId], references: [id])
   sampleRequests SampleRequest[]
   tnaPlans       TnaPlan[]
   costSheets     CostSheet[]
@@ -338,6 +345,9 @@ model Style {
   colors         StyleColor[]
   sizes          StyleSize[]
   enquiryItems   EnquiryItem[]
+  revisions      StyleRevision[]
+  techPacks      TechPack[]
+  orderLines     OrderLine[]
 
   @@unique([companyId, styleNo])
   @@index([buyerId])
@@ -392,16 +402,24 @@ enum SampleType {
   PROTO
   FIT
   SIZE_SET
-  PP
   SALESMAN
+  SMS
+  PP
+  TOP
+  SHIPMENT
+  PHOTO
+  WASH_TEST
 }
 
 enum SampleStatus {
   REQUESTED
-  IN_PROGRESS
+  IN_DEVELOPMENT
+  INTERNAL_QC
   SENT
+  BUYER_REVIEW
   APPROVED
   REJECTED
+  REVISION
   CANCELLED
 }
 
@@ -444,25 +462,41 @@ enum BomItemType {
 // ---------- সেকশন ১০: Sample ----------
 
 model SampleRequest {
-  id            String       @id @default(cuid())
-  companyId     String
-  sampleNo      String
-  styleId       String
-  sampleType    SampleType
-  quantity      Int          @default(1)
-  requestedDate DateTime     @default(now())
-  dueDate       DateTime?
-  status        SampleStatus @default(REQUESTED)
-  notes         String?
-  createdById   String?
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
+  id                   String       @id @default(cuid())
+  companyId            String
+  sampleNo             String
+  styleId              String
+  orderId              String?
+  sampleType           SampleType
+  quantity             Int          @default(1)
+  requestedDate        DateTime     @default(now())
+  dueDate              DateTime?
+  assignedDepartmentId String?
+  assignedToId         String?
+  cost                 Decimal?     @db.Decimal(14, 4)
+  plannedCompletion    DateTime?
+  actualCompletion     DateTime?
+  sentDate             DateTime?
+  courier              String?
+  trackingNo           String?
+  buyerResponse        String?
+  revisionCount        Int          @default(0)
+  status               SampleStatus @default(REQUESTED)
+  notes                String?
+  createdById          String?
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
 
-  company Company @relation(fields: [companyId], references: [id])
-  style   Style   @relation(fields: [styleId], references: [id])
+  company            Company          @relation(fields: [companyId], references: [id])
+  style              Style            @relation(fields: [styleId], references: [id])
+  order              Order?           @relation(fields: [orderId], references: [id])
+  assignedDepartment Department?      @relation(fields: [assignedDepartmentId], references: [id])
+  assignedTo         User?            @relation(fields: [assignedToId], references: [id])
+  approvals          SampleApproval[]
 
   @@unique([companyId, sampleNo])
   @@index([styleId])
+  @@index([orderId])
   @@index([status])
 }
 
@@ -498,6 +532,7 @@ model TnaPlan {
   id         String   @id @default(cuid())
   companyId  String
   styleId    String
+  orderId    String?
   templateId String?
   shipDate   DateTime
   createdAt  DateTime @default(now())
@@ -505,10 +540,12 @@ model TnaPlan {
 
   company  Company      @relation(fields: [companyId], references: [id])
   style    Style        @relation(fields: [styleId], references: [id])
+  order    Order?       @relation(fields: [orderId], references: [id])
   template TnaTemplate? @relation(fields: [templateId], references: [id])
   tasks    TnaTask[]
 
   @@index([styleId])
+  @@index([orderId])
 }
 
 model TnaTask {
@@ -607,27 +644,172 @@ model MrpRun {
   id        String   @id @default(cuid())
   companyId String
   bomId     String
+  orderId   String?
   orderQty  Int
   runDate   DateTime @default(now())
   createdAt DateTime @default(now())
 
   company Company   @relation(fields: [companyId], references: [id])
   bom     Bom       @relation(fields: [bomId], references: [id])
+  order   Order?    @relation(fields: [orderId], references: [id])
   lines   MrpLine[]
 
   @@index([bomId])
+  @@index([orderId])
 }
 
 model MrpLine {
-  id        String  @id @default(cuid())
-  mrpRunId  String
-  bomItemId String
-  grossQty  Decimal @db.Decimal(14, 4)
-  stockQty  Decimal @default(0) @db.Decimal(14, 4)
-  netQty    Decimal @db.Decimal(14, 4)
+  id          String  @id @default(cuid())
+  mrpRunId    String
+  bomItemId   String
+  grossQty    Decimal @db.Decimal(14, 4)
+  stockQty    Decimal @default(0) @db.Decimal(14, 4)
+  incomingQty Decimal @default(0) @db.Decimal(14, 4)
+  reservedQty Decimal @default(0) @db.Decimal(14, 4)
+  netQty      Decimal @db.Decimal(14, 4)
 
   mrpRun  MrpRun  @relation(fields: [mrpRunId], references: [id], onDelete: Cascade)
   bomItem BomItem @relation(fields: [bomItemId], references: [id])
 
   @@index([mrpRunId])
+}
+
+// ---------- সেকশন ৫৮: Order-এর ধাপ ----------
+
+enum OrderStatus {
+  DRAFT
+  CONFIRMED
+  IN_PRODUCTION
+  PARTIALLY_SHIPPED
+  FULLY_SHIPPED
+  CLOSED
+  CANCELLED
+}
+
+enum SampleDecision {
+  APPROVED
+  REJECTED
+}
+
+// ---------- Season ----------
+
+model Season {
+  id        String   @id @default(cuid())
+  companyId String
+  code      String
+  name      String
+  createdAt DateTime @default(now())
+
+  company Company @relation(fields: [companyId], references: [id])
+  styles  Style[]
+  orders  Order[]
+
+  @@unique([companyId, code])
+}
+
+// ---------- Order (সেকশন ৩.১, ৫৬, ৫৭) ----------
+
+model Order {
+  id          String      @id @default(cuid())
+  companyId   String
+  orderNo     String
+  buyerId     String
+  buyerPoNo   String?
+  seasonId    String?
+  currency    String      @default("USD")
+  orderDate   DateTime    @default(now())
+  shipDate    DateTime?
+  status      OrderStatus @default(DRAFT)
+  notes       String?
+  createdById String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  company        Company          @relation(fields: [companyId], references: [id])
+  buyer          Buyer            @relation(fields: [buyerId], references: [id])
+  season         Season?          @relation(fields: [seasonId], references: [id])
+  lines          OrderLine[]
+  amendments     OrderAmendment[]
+  sampleRequests SampleRequest[]
+  tnaPlans       TnaPlan[]
+  mrpRuns        MrpRun[]
+
+  @@unique([companyId, orderNo])
+  @@index([buyerId])
+  @@index([status])
+}
+
+model OrderLine {
+  id        String    @id @default(cuid())
+  orderId   String
+  styleId   String
+  quantity  Int
+  unitPrice Decimal   @default(0) @db.Decimal(14, 4)
+  shipDate  DateTime?
+  createdAt DateTime  @default(now())
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  style Style @relation(fields: [styleId], references: [id])
+
+  @@index([orderId])
+  @@index([styleId])
+}
+
+// অর্ডারের প্রতিটা পরিবর্তনের আগের মান এখানে জমা থাকে (সেকশন ৫৯, নিয়ম ১৫)
+model OrderAmendment {
+  id             String   @id @default(cuid())
+  orderId        String
+  amendmentNo    Int
+  reason         String
+  previousValues Json
+  createdById    String?
+  createdAt      DateTime @default(now())
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@unique([orderId, amendmentNo])
+}
+
+// ---------- Style revision ও Tech Pack (সেকশন ৮) ----------
+
+model StyleRevision {
+  id          String   @id @default(cuid())
+  styleId     String
+  revisionNo  Int
+  changeNote  String?
+  createdById String?
+  createdAt   DateTime @default(now())
+
+  style Style @relation(fields: [styleId], references: [id], onDelete: Cascade)
+
+  @@unique([styleId, revisionNo])
+}
+
+model TechPack {
+  id        String   @id @default(cuid())
+  styleId   String
+  title     String
+  version   String   @default("v1")
+  fileUrl   String?
+  notes     String?
+  createdAt DateTime @default(now())
+
+  style Style @relation(fields: [styleId], references: [id], onDelete: Cascade)
+
+  @@index([styleId])
+}
+
+// ---------- Sample-এর বায়ার সিদ্ধান্ত (সেকশন ১০) ----------
+
+model SampleApproval {
+  id        String         @id @default(cuid())
+  sampleId  String
+  round     Int
+  decision  SampleDecision
+  comments  String?
+  decidedAt DateTime       @default(now())
+
+  sample SampleRequest @relation(fields: [sampleId], references: [id], onDelete: Cascade)
+
+  @@unique([sampleId, round])
 }

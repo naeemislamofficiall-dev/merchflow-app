@@ -28,11 +28,14 @@ export function assertTransition(map: TransitionMap, from: string, to: string) {
 }
 
 export const sampleTransitions: TransitionMap = {
-  REQUESTED: ["IN_PROGRESS", "CANCELLED"],
-  IN_PROGRESS: ["SENT", "CANCELLED"],
-  SENT: ["APPROVED", "REJECTED"],
+  REQUESTED: ["IN_DEVELOPMENT", "CANCELLED"],
+  IN_DEVELOPMENT: ["INTERNAL_QC", "CANCELLED"],
+  INTERNAL_QC: ["SENT", "IN_DEVELOPMENT"], // QC-তে আটকালে আবার বানানো যাবে
+  SENT: ["BUYER_REVIEW"],
+  BUYER_REVIEW: ["APPROVED", "REJECTED"],
   APPROVED: [],
-  REJECTED: ["REQUESTED"], // নতুন করে আবার চাওয়া যাবে
+  REJECTED: ["REVISION"],
+  REVISION: ["SENT"], // সংশোধনের পর আবার পাঠানো (Resent)
   CANCELLED: [],
 };
 
@@ -47,4 +50,14 @@ export const bomTransitions: TransitionMap = {
   DRAFT: ["APPROVED"],
   APPROVED: ["ARCHIVED"],
   ARCHIVED: [],
+};
+
+export const orderTransitions: TransitionMap = {
+  DRAFT: ["CONFIRMED"],
+  CONFIRMED: ["IN_PRODUCTION", "CANCELLED"],
+  IN_PRODUCTION: ["PARTIALLY_SHIPPED", "FULLY_SHIPPED"],
+  PARTIALLY_SHIPPED: ["FULLY_SHIPPED"],
+  FULLY_SHIPPED: ["CLOSED"],
+  CLOSED: [],
+  CANCELLED: [],
 };

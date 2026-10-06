@@ -34,9 +34,14 @@ export function grossRequirement(line: BomLine, orderQty: number): number {
   return round(orderQty * line.consumption * (1 + line.wastagePct / 100), 4);
 }
 
-// স্টক বাদ দিয়ে আসলে কত কিনতে হবে (ঋণাত্মক হবে না)
-export function netRequirement(gross: number, stock: number): number {
-  return round(Math.max(gross - stock, 0), 4);
+// নেট = মোট দরকার − স্টক − আসন্ন সরবরাহ + সংরক্ষিত স্টক (ঋণাত্মক হবে না)
+export function netRequirement(
+  gross: number,
+  stock: number,
+  incoming = 0,
+  reserved = 0
+): number {
+  return round(Math.max(gross - stock - incoming + reserved, 0), 4);
 }
 
 // ---------- T&A (সেকশন ১১) ----------
