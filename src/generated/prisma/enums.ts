@@ -26,3 +26,98 @@ export const Scope = {
 } as const
 
 export type Scope = (typeof Scope)[keyof typeof Scope]
+
+
+export const EnquiryStatus = {
+  DRAFT: 'DRAFT',
+  SUBMITTED: 'SUBMITTED',
+  QUOTED: 'QUOTED',
+  CONFIRMED: 'CONFIRMED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type EnquiryStatus = (typeof EnquiryStatus)[keyof typeof EnquiryStatus]
+
+
+export const StyleStatus = {
+  DRAFT: 'DRAFT',
+  DEVELOPMENT: 'DEVELOPMENT',
+  APPROVED: 'APPROVED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type StyleStatus = (typeof StyleStatus)[keyof typeof StyleStatus]
+
+
+export const SampleType = {
+  PROTO: 'PROTO',
+  FIT: 'FIT',
+  SIZE_SET: 'SIZE_SET',
+  PP: 'PP',
+  SALESMAN: 'SALESMAN'
+} as const
+
+export type SampleType = (typeof SampleType)[keyof typeof SampleType]
+
+
+export const SampleStatus = {
+  REQUESTED: 'REQUESTED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  SENT: 'SENT',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type SampleStatus = (typeof SampleStatus)[keyof typeof SampleStatus]
+
+
+export const TnaTaskStatus = {
+  PENDING: 'PENDING',
+  IN_PROGRESS: 'IN_PROGRESS',
+  DONE: 'DONE',
+  DELAYED: 'DELAYED'
+} as const
+
+export type TnaTaskStatus = (typeof TnaTaskStatus)[keyof typeof TnaTaskStatus]
+
+
+export const CostSheetStatus = {
+  DRAFT: 'DRAFT',
+  SUBMITTED: 'SUBMITTED',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type CostSheetStatus = (typeof CostSheetStatus)[keyof typeof CostSheetStatus]
+
+
+export const BomStatus = {
+  DRAFT: 'DRAFT',
+  APPROVED: 'APPROVED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type BomStatus = (typeof BomStatus)[keyof typeof BomStatus]
+
+
+export const CostCategory = {
+  FABRIC: 'FABRIC',
+  TRIM: 'TRIM',
+  CM: 'CM',
+  WASH: 'WASH',
+  PRINT_EMB: 'PRINT_EMB',
+  OVERHEAD: 'OVERHEAD',
+  OTHER: 'OTHER'
+} as const
+
+export type CostCategory = (typeof CostCategory)[keyof typeof CostCategory]
+
+
+export const BomItemType = {
+  FABRIC: 'FABRIC',
+  TRIM: 'TRIM',
+  PACKING: 'PACKING'
+} as const
+
+export type BomItemType = (typeof BomItemType)[keyof typeof BomItemType]

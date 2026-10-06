@@ -52,3 +52,128 @@ export type User = Prisma.UserModel
  * 
  */
 export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model Building
+ * 
+ */
+export type Building = Prisma.BuildingModel
+/**
+ * Model Floor
+ * 
+ */
+export type Floor = Prisma.FloorModel
+/**
+ * Model Department
+ * 
+ */
+export type Department = Prisma.DepartmentModel
+/**
+ * Model Line
+ * 
+ */
+export type Line = Prisma.LineModel
+/**
+ * Model Warehouse
+ * 
+ */
+export type Warehouse = Prisma.WarehouseModel
+/**
+ * Model Bin
+ * 
+ */
+export type Bin = Prisma.BinModel
+/**
+ * Model Buyer
+ * 
+ */
+export type Buyer = Prisma.BuyerModel
+/**
+ * Model BuyerContact
+ * 
+ */
+export type BuyerContact = Prisma.BuyerContactModel
+/**
+ * Model Enquiry
+ * 
+ */
+export type Enquiry = Prisma.EnquiryModel
+/**
+ * Model EnquiryItem
+ * 
+ */
+export type EnquiryItem = Prisma.EnquiryItemModel
+/**
+ * Model Style
+ * 
+ */
+export type Style = Prisma.StyleModel
+/**
+ * Model StyleColor
+ * 
+ */
+export type StyleColor = Prisma.StyleColorModel
+/**
+ * Model StyleSize
+ * 
+ */
+export type StyleSize = Prisma.StyleSizeModel
+/**
+ * Model StyleMatrixQty
+ * 
+ */
+export type StyleMatrixQty = Prisma.StyleMatrixQtyModel
+/**
+ * Model SampleRequest
+ * 
+ */
+export type SampleRequest = Prisma.SampleRequestModel
+/**
+ * Model TnaTemplate
+ * 
+ */
+export type TnaTemplate = Prisma.TnaTemplateModel
+/**
+ * Model TnaTemplateTask
+ * 
+ */
+export type TnaTemplateTask = Prisma.TnaTemplateTaskModel
+/**
+ * Model TnaPlan
+ * 
+ */
+export type TnaPlan = Prisma.TnaPlanModel
+/**
+ * Model TnaTask
+ * 
+ */
+export type TnaTask = Prisma.TnaTaskModel
+/**
+ * Model CostSheet
+ * 
+ */
+export type CostSheet = Prisma.CostSheetModel
+/**
+ * Model CostItem
+ * 
+ */
+export type CostItem = Prisma.CostItemModel
+/**
+ * Model Bom
+ * 
+ */
+export type Bom = Prisma.BomModel
+/**
+ * Model BomItem
+ * 
+ */
+export type BomItem = Prisma.BomItemModel
+/**
+ * Model MrpRun
+ * 
+ */
+export type MrpRun = Prisma.MrpRunModel
+/**
+ * Model MrpLine
+ * 
+ */
+export type MrpLine = Prisma.MrpLineModel

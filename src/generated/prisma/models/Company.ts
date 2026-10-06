@@ -216,6 +216,15 @@ export type CompanyWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   factories?: Prisma.FactoryListRelationFilter
   users?: Prisma.UserListRelationFilter
+  buyers?: Prisma.BuyerListRelationFilter
+  sampleRequests?: Prisma.SampleRequestListRelationFilter
+  tnaTemplates?: Prisma.TnaTemplateListRelationFilter
+  tnaPlans?: Prisma.TnaPlanListRelationFilter
+  costSheets?: Prisma.CostSheetListRelationFilter
+  boms?: Prisma.BomListRelationFilter
+  mrpRuns?: Prisma.MrpRunListRelationFilter
+  enquiries?: Prisma.EnquiryListRelationFilter
+  styles?: Prisma.StyleListRelationFilter
 }
 
 export type CompanyOrderByWithRelationInput = {
@@ -230,6 +239,15 @@ export type CompanyOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   factories?: Prisma.FactoryOrderByRelationAggregateInput
   users?: Prisma.UserOrderByRelationAggregateInput
+  buyers?: Prisma.BuyerOrderByRelationAggregateInput
+  sampleRequests?: Prisma.SampleRequestOrderByRelationAggregateInput
+  tnaTemplates?: Prisma.TnaTemplateOrderByRelationAggregateInput
+  tnaPlans?: Prisma.TnaPlanOrderByRelationAggregateInput
+  costSheets?: Prisma.CostSheetOrderByRelationAggregateInput
+  boms?: Prisma.BomOrderByRelationAggregateInput
+  mrpRuns?: Prisma.MrpRunOrderByRelationAggregateInput
+  enquiries?: Prisma.EnquiryOrderByRelationAggregateInput
+  styles?: Prisma.StyleOrderByRelationAggregateInput
 }
 
 export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -247,6 +265,15 @@ export type CompanyWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   factories?: Prisma.FactoryListRelationFilter
   users?: Prisma.UserListRelationFilter
+  buyers?: Prisma.BuyerListRelationFilter
+  sampleRequests?: Prisma.SampleRequestListRelationFilter
+  tnaTemplates?: Prisma.TnaTemplateListRelationFilter
+  tnaPlans?: Prisma.TnaPlanListRelationFilter
+  costSheets?: Prisma.CostSheetListRelationFilter
+  boms?: Prisma.BomListRelationFilter
+  mrpRuns?: Prisma.MrpRunListRelationFilter
+  enquiries?: Prisma.EnquiryListRelationFilter
+  styles?: Prisma.StyleListRelationFilter
 }, "id" | "code">
 
 export type CompanyOrderByWithAggregationInput = {
@@ -291,6 +318,15 @@ export type CompanyCreateInput = {
   updatedAt?: Date | string
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateInput = {
@@ -305,6 +341,15 @@ export type CompanyUncheckedCreateInput = {
   updatedAt?: Date | string
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUpdateInput = {
@@ -319,6 +364,15 @@ export type CompanyUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateInput = {
@@ -333,6 +387,15 @@ export type CompanyUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateManyInput = {
@@ -463,6 +526,132 @@ export type CompanyUpdateOneWithoutUsersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutUsersInput, Prisma.CompanyUpdateWithoutUsersInput>, Prisma.CompanyUncheckedUpdateWithoutUsersInput>
 }
 
+export type CompanyCreateNestedOneWithoutBuyersInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutBuyersInput, Prisma.CompanyUncheckedCreateWithoutBuyersInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutBuyersInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutBuyersNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutBuyersInput, Prisma.CompanyUncheckedCreateWithoutBuyersInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutBuyersInput
+  upsert?: Prisma.CompanyUpsertWithoutBuyersInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutBuyersInput, Prisma.CompanyUpdateWithoutBuyersInput>, Prisma.CompanyUncheckedUpdateWithoutBuyersInput>
+}
+
+export type CompanyCreateNestedOneWithoutEnquiriesInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutEnquiriesInput, Prisma.CompanyUncheckedCreateWithoutEnquiriesInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutEnquiriesInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutEnquiriesNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutEnquiriesInput, Prisma.CompanyUncheckedCreateWithoutEnquiriesInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutEnquiriesInput
+  upsert?: Prisma.CompanyUpsertWithoutEnquiriesInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutEnquiriesInput, Prisma.CompanyUpdateWithoutEnquiriesInput>, Prisma.CompanyUncheckedUpdateWithoutEnquiriesInput>
+}
+
+export type CompanyCreateNestedOneWithoutStylesInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutStylesInput, Prisma.CompanyUncheckedCreateWithoutStylesInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutStylesInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutStylesNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutStylesInput, Prisma.CompanyUncheckedCreateWithoutStylesInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutStylesInput
+  upsert?: Prisma.CompanyUpsertWithoutStylesInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutStylesInput, Prisma.CompanyUpdateWithoutStylesInput>, Prisma.CompanyUncheckedUpdateWithoutStylesInput>
+}
+
+export type CompanyCreateNestedOneWithoutSampleRequestsInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutSampleRequestsInput, Prisma.CompanyUncheckedCreateWithoutSampleRequestsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutSampleRequestsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutSampleRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutSampleRequestsInput, Prisma.CompanyUncheckedCreateWithoutSampleRequestsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutSampleRequestsInput
+  upsert?: Prisma.CompanyUpsertWithoutSampleRequestsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutSampleRequestsInput, Prisma.CompanyUpdateWithoutSampleRequestsInput>, Prisma.CompanyUncheckedUpdateWithoutSampleRequestsInput>
+}
+
+export type CompanyCreateNestedOneWithoutTnaTemplatesInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutTnaTemplatesInput, Prisma.CompanyUncheckedCreateWithoutTnaTemplatesInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutTnaTemplatesInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutTnaTemplatesNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutTnaTemplatesInput, Prisma.CompanyUncheckedCreateWithoutTnaTemplatesInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutTnaTemplatesInput
+  upsert?: Prisma.CompanyUpsertWithoutTnaTemplatesInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutTnaTemplatesInput, Prisma.CompanyUpdateWithoutTnaTemplatesInput>, Prisma.CompanyUncheckedUpdateWithoutTnaTemplatesInput>
+}
+
+export type CompanyCreateNestedOneWithoutTnaPlansInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutTnaPlansInput, Prisma.CompanyUncheckedCreateWithoutTnaPlansInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutTnaPlansInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutTnaPlansNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutTnaPlansInput, Prisma.CompanyUncheckedCreateWithoutTnaPlansInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutTnaPlansInput
+  upsert?: Prisma.CompanyUpsertWithoutTnaPlansInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutTnaPlansInput, Prisma.CompanyUpdateWithoutTnaPlansInput>, Prisma.CompanyUncheckedUpdateWithoutTnaPlansInput>
+}
+
+export type CompanyCreateNestedOneWithoutCostSheetsInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutCostSheetsInput, Prisma.CompanyUncheckedCreateWithoutCostSheetsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutCostSheetsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutCostSheetsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutCostSheetsInput, Prisma.CompanyUncheckedCreateWithoutCostSheetsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutCostSheetsInput
+  upsert?: Prisma.CompanyUpsertWithoutCostSheetsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutCostSheetsInput, Prisma.CompanyUpdateWithoutCostSheetsInput>, Prisma.CompanyUncheckedUpdateWithoutCostSheetsInput>
+}
+
+export type CompanyCreateNestedOneWithoutBomsInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutBomsInput, Prisma.CompanyUncheckedCreateWithoutBomsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutBomsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutBomsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutBomsInput, Prisma.CompanyUncheckedCreateWithoutBomsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutBomsInput
+  upsert?: Prisma.CompanyUpsertWithoutBomsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutBomsInput, Prisma.CompanyUpdateWithoutBomsInput>, Prisma.CompanyUncheckedUpdateWithoutBomsInput>
+}
+
+export type CompanyCreateNestedOneWithoutMrpRunsInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutMrpRunsInput, Prisma.CompanyUncheckedCreateWithoutMrpRunsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutMrpRunsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutMrpRunsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutMrpRunsInput, Prisma.CompanyUncheckedCreateWithoutMrpRunsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutMrpRunsInput
+  upsert?: Prisma.CompanyUpsertWithoutMrpRunsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutMrpRunsInput, Prisma.CompanyUpdateWithoutMrpRunsInput>, Prisma.CompanyUncheckedUpdateWithoutMrpRunsInput>
+}
+
 export type CompanyCreateWithoutFactoriesInput = {
   id?: string
   code: string
@@ -474,6 +663,15 @@ export type CompanyCreateWithoutFactoriesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutFactoriesInput = {
@@ -487,6 +685,15 @@ export type CompanyUncheckedCreateWithoutFactoriesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutFactoriesInput = {
@@ -516,6 +723,15 @@ export type CompanyUpdateWithoutFactoriesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutFactoriesInput = {
@@ -529,6 +745,15 @@ export type CompanyUncheckedUpdateWithoutFactoriesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateWithoutUsersInput = {
@@ -542,6 +767,15 @@ export type CompanyCreateWithoutUsersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutUsersInput = {
@@ -555,6 +789,15 @@ export type CompanyUncheckedCreateWithoutUsersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutUsersInput = {
@@ -584,6 +827,15 @@ export type CompanyUpdateWithoutUsersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutUsersInput = {
@@ -597,6 +849,951 @@ export type CompanyUncheckedUpdateWithoutUsersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutBuyersInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutBuyersInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutBuyersInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutBuyersInput, Prisma.CompanyUncheckedCreateWithoutBuyersInput>
+}
+
+export type CompanyUpsertWithoutBuyersInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutBuyersInput, Prisma.CompanyUncheckedUpdateWithoutBuyersInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutBuyersInput, Prisma.CompanyUncheckedCreateWithoutBuyersInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutBuyersInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutBuyersInput, Prisma.CompanyUncheckedUpdateWithoutBuyersInput>
+}
+
+export type CompanyUpdateWithoutBuyersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutBuyersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutEnquiriesInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutEnquiriesInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutEnquiriesInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutEnquiriesInput, Prisma.CompanyUncheckedCreateWithoutEnquiriesInput>
+}
+
+export type CompanyUpsertWithoutEnquiriesInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutEnquiriesInput, Prisma.CompanyUncheckedUpdateWithoutEnquiriesInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutEnquiriesInput, Prisma.CompanyUncheckedCreateWithoutEnquiriesInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutEnquiriesInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutEnquiriesInput, Prisma.CompanyUncheckedUpdateWithoutEnquiriesInput>
+}
+
+export type CompanyUpdateWithoutEnquiriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutEnquiriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutStylesInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutStylesInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutStylesInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutStylesInput, Prisma.CompanyUncheckedCreateWithoutStylesInput>
+}
+
+export type CompanyUpsertWithoutStylesInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutStylesInput, Prisma.CompanyUncheckedUpdateWithoutStylesInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutStylesInput, Prisma.CompanyUncheckedCreateWithoutStylesInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutStylesInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutStylesInput, Prisma.CompanyUncheckedUpdateWithoutStylesInput>
+}
+
+export type CompanyUpdateWithoutStylesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutStylesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutSampleRequestsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutSampleRequestsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutSampleRequestsInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutSampleRequestsInput, Prisma.CompanyUncheckedCreateWithoutSampleRequestsInput>
+}
+
+export type CompanyUpsertWithoutSampleRequestsInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutSampleRequestsInput, Prisma.CompanyUncheckedUpdateWithoutSampleRequestsInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutSampleRequestsInput, Prisma.CompanyUncheckedCreateWithoutSampleRequestsInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutSampleRequestsInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutSampleRequestsInput, Prisma.CompanyUncheckedUpdateWithoutSampleRequestsInput>
+}
+
+export type CompanyUpdateWithoutSampleRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutSampleRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutTnaTemplatesInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutTnaTemplatesInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutTnaTemplatesInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutTnaTemplatesInput, Prisma.CompanyUncheckedCreateWithoutTnaTemplatesInput>
+}
+
+export type CompanyUpsertWithoutTnaTemplatesInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutTnaTemplatesInput, Prisma.CompanyUncheckedUpdateWithoutTnaTemplatesInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutTnaTemplatesInput, Prisma.CompanyUncheckedCreateWithoutTnaTemplatesInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutTnaTemplatesInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutTnaTemplatesInput, Prisma.CompanyUncheckedUpdateWithoutTnaTemplatesInput>
+}
+
+export type CompanyUpdateWithoutTnaTemplatesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutTnaTemplatesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutTnaPlansInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutTnaPlansInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutTnaPlansInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutTnaPlansInput, Prisma.CompanyUncheckedCreateWithoutTnaPlansInput>
+}
+
+export type CompanyUpsertWithoutTnaPlansInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutTnaPlansInput, Prisma.CompanyUncheckedUpdateWithoutTnaPlansInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutTnaPlansInput, Prisma.CompanyUncheckedCreateWithoutTnaPlansInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutTnaPlansInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutTnaPlansInput, Prisma.CompanyUncheckedUpdateWithoutTnaPlansInput>
+}
+
+export type CompanyUpdateWithoutTnaPlansInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutTnaPlansInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutCostSheetsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutCostSheetsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutCostSheetsInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutCostSheetsInput, Prisma.CompanyUncheckedCreateWithoutCostSheetsInput>
+}
+
+export type CompanyUpsertWithoutCostSheetsInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutCostSheetsInput, Prisma.CompanyUncheckedUpdateWithoutCostSheetsInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutCostSheetsInput, Prisma.CompanyUncheckedCreateWithoutCostSheetsInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutCostSheetsInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutCostSheetsInput, Prisma.CompanyUncheckedUpdateWithoutCostSheetsInput>
+}
+
+export type CompanyUpdateWithoutCostSheetsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutCostSheetsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutBomsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutBomsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutBomsInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutBomsInput, Prisma.CompanyUncheckedCreateWithoutBomsInput>
+}
+
+export type CompanyUpsertWithoutBomsInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutBomsInput, Prisma.CompanyUncheckedUpdateWithoutBomsInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutBomsInput, Prisma.CompanyUncheckedCreateWithoutBomsInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutBomsInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutBomsInput, Prisma.CompanyUncheckedUpdateWithoutBomsInput>
+}
+
+export type CompanyUpdateWithoutBomsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutBomsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutMrpRunsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutMrpRunsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutMrpRunsInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutMrpRunsInput, Prisma.CompanyUncheckedCreateWithoutMrpRunsInput>
+}
+
+export type CompanyUpsertWithoutMrpRunsInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutMrpRunsInput, Prisma.CompanyUncheckedUpdateWithoutMrpRunsInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutMrpRunsInput, Prisma.CompanyUncheckedCreateWithoutMrpRunsInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutMrpRunsInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutMrpRunsInput, Prisma.CompanyUncheckedUpdateWithoutMrpRunsInput>
+}
+
+export type CompanyUpdateWithoutMrpRunsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutMrpRunsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 
@@ -607,11 +1804,29 @@ export type CompanyUncheckedUpdateWithoutUsersInput = {
 export type CompanyCountOutputType = {
   factories: number
   users: number
+  buyers: number
+  sampleRequests: number
+  tnaTemplates: number
+  tnaPlans: number
+  costSheets: number
+  boms: number
+  mrpRuns: number
+  enquiries: number
+  styles: number
 }
 
 export type CompanyCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   factories?: boolean | CompanyCountOutputTypeCountFactoriesArgs
   users?: boolean | CompanyCountOutputTypeCountUsersArgs
+  buyers?: boolean | CompanyCountOutputTypeCountBuyersArgs
+  sampleRequests?: boolean | CompanyCountOutputTypeCountSampleRequestsArgs
+  tnaTemplates?: boolean | CompanyCountOutputTypeCountTnaTemplatesArgs
+  tnaPlans?: boolean | CompanyCountOutputTypeCountTnaPlansArgs
+  costSheets?: boolean | CompanyCountOutputTypeCountCostSheetsArgs
+  boms?: boolean | CompanyCountOutputTypeCountBomsArgs
+  mrpRuns?: boolean | CompanyCountOutputTypeCountMrpRunsArgs
+  enquiries?: boolean | CompanyCountOutputTypeCountEnquiriesArgs
+  styles?: boolean | CompanyCountOutputTypeCountStylesArgs
 }
 
 /**
@@ -638,6 +1853,69 @@ export type CompanyCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.UserWhereInput
 }
 
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountBuyersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BuyerWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountSampleRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SampleRequestWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountTnaTemplatesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TnaTemplateWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountTnaPlansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TnaPlanWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountCostSheetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CostSheetWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountBomsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BomWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountMrpRunsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MrpRunWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountEnquiriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EnquiryWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountStylesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StyleWhereInput
+}
+
 
 export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -651,6 +1929,15 @@ export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   updatedAt?: boolean
   factories?: boolean | Prisma.Company$factoriesArgs<ExtArgs>
   users?: boolean | Prisma.Company$usersArgs<ExtArgs>
+  buyers?: boolean | Prisma.Company$buyersArgs<ExtArgs>
+  sampleRequests?: boolean | Prisma.Company$sampleRequestsArgs<ExtArgs>
+  tnaTemplates?: boolean | Prisma.Company$tnaTemplatesArgs<ExtArgs>
+  tnaPlans?: boolean | Prisma.Company$tnaPlansArgs<ExtArgs>
+  costSheets?: boolean | Prisma.Company$costSheetsArgs<ExtArgs>
+  boms?: boolean | Prisma.Company$bomsArgs<ExtArgs>
+  mrpRuns?: boolean | Prisma.Company$mrpRunsArgs<ExtArgs>
+  enquiries?: boolean | Prisma.Company$enquiriesArgs<ExtArgs>
+  styles?: boolean | Prisma.Company$stylesArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["company"]>
 
@@ -694,6 +1981,15 @@ export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type CompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   factories?: boolean | Prisma.Company$factoriesArgs<ExtArgs>
   users?: boolean | Prisma.Company$usersArgs<ExtArgs>
+  buyers?: boolean | Prisma.Company$buyersArgs<ExtArgs>
+  sampleRequests?: boolean | Prisma.Company$sampleRequestsArgs<ExtArgs>
+  tnaTemplates?: boolean | Prisma.Company$tnaTemplatesArgs<ExtArgs>
+  tnaPlans?: boolean | Prisma.Company$tnaPlansArgs<ExtArgs>
+  costSheets?: boolean | Prisma.Company$costSheetsArgs<ExtArgs>
+  boms?: boolean | Prisma.Company$bomsArgs<ExtArgs>
+  mrpRuns?: boolean | Prisma.Company$mrpRunsArgs<ExtArgs>
+  enquiries?: boolean | Prisma.Company$enquiriesArgs<ExtArgs>
+  styles?: boolean | Prisma.Company$stylesArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CompanyIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -704,6 +2000,15 @@ export type $CompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     factories: Prisma.$FactoryPayload<ExtArgs>[]
     users: Prisma.$UserPayload<ExtArgs>[]
+    buyers: Prisma.$BuyerPayload<ExtArgs>[]
+    sampleRequests: Prisma.$SampleRequestPayload<ExtArgs>[]
+    tnaTemplates: Prisma.$TnaTemplatePayload<ExtArgs>[]
+    tnaPlans: Prisma.$TnaPlanPayload<ExtArgs>[]
+    costSheets: Prisma.$CostSheetPayload<ExtArgs>[]
+    boms: Prisma.$BomPayload<ExtArgs>[]
+    mrpRuns: Prisma.$MrpRunPayload<ExtArgs>[]
+    enquiries: Prisma.$EnquiryPayload<ExtArgs>[]
+    styles: Prisma.$StylePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1111,6 +2416,15 @@ export interface Prisma__CompanyClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   factories<T extends Prisma.Company$factoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$factoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FactoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   users<T extends Prisma.Company$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  buyers<T extends Prisma.Company$buyersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$buyersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BuyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sampleRequests<T extends Prisma.Company$sampleRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$sampleRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SampleRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tnaTemplates<T extends Prisma.Company$tnaTemplatesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$tnaTemplatesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tnaPlans<T extends Prisma.Company$tnaPlansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$tnaPlansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaPlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  costSheets<T extends Prisma.Company$costSheetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$costSheetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CostSheetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  boms<T extends Prisma.Company$bomsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$bomsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BomPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  mrpRuns<T extends Prisma.Company$mrpRunsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$mrpRunsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MrpRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  enquiries<T extends Prisma.Company$enquiriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$enquiriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EnquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  styles<T extends Prisma.Company$stylesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$stylesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1587,6 +2901,222 @@ export type Company$usersArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * Company.buyers
+ */
+export type Company$buyersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Buyer
+   */
+  select?: Prisma.BuyerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Buyer
+   */
+  omit?: Prisma.BuyerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BuyerInclude<ExtArgs> | null
+  where?: Prisma.BuyerWhereInput
+  orderBy?: Prisma.BuyerOrderByWithRelationInput | Prisma.BuyerOrderByWithRelationInput[]
+  cursor?: Prisma.BuyerWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BuyerScalarFieldEnum | Prisma.BuyerScalarFieldEnum[]
+}
+
+/**
+ * Company.sampleRequests
+ */
+export type Company$sampleRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SampleRequest
+   */
+  select?: Prisma.SampleRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SampleRequest
+   */
+  omit?: Prisma.SampleRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SampleRequestInclude<ExtArgs> | null
+  where?: Prisma.SampleRequestWhereInput
+  orderBy?: Prisma.SampleRequestOrderByWithRelationInput | Prisma.SampleRequestOrderByWithRelationInput[]
+  cursor?: Prisma.SampleRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SampleRequestScalarFieldEnum | Prisma.SampleRequestScalarFieldEnum[]
+}
+
+/**
+ * Company.tnaTemplates
+ */
+export type Company$tnaTemplatesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TnaTemplate
+   */
+  select?: Prisma.TnaTemplateSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TnaTemplate
+   */
+  omit?: Prisma.TnaTemplateOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TnaTemplateInclude<ExtArgs> | null
+  where?: Prisma.TnaTemplateWhereInput
+  orderBy?: Prisma.TnaTemplateOrderByWithRelationInput | Prisma.TnaTemplateOrderByWithRelationInput[]
+  cursor?: Prisma.TnaTemplateWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TnaTemplateScalarFieldEnum | Prisma.TnaTemplateScalarFieldEnum[]
+}
+
+/**
+ * Company.tnaPlans
+ */
+export type Company$tnaPlansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TnaPlan
+   */
+  select?: Prisma.TnaPlanSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TnaPlan
+   */
+  omit?: Prisma.TnaPlanOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TnaPlanInclude<ExtArgs> | null
+  where?: Prisma.TnaPlanWhereInput
+  orderBy?: Prisma.TnaPlanOrderByWithRelationInput | Prisma.TnaPlanOrderByWithRelationInput[]
+  cursor?: Prisma.TnaPlanWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TnaPlanScalarFieldEnum | Prisma.TnaPlanScalarFieldEnum[]
+}
+
+/**
+ * Company.costSheets
+ */
+export type Company$costSheetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CostSheet
+   */
+  select?: Prisma.CostSheetSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CostSheet
+   */
+  omit?: Prisma.CostSheetOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CostSheetInclude<ExtArgs> | null
+  where?: Prisma.CostSheetWhereInput
+  orderBy?: Prisma.CostSheetOrderByWithRelationInput | Prisma.CostSheetOrderByWithRelationInput[]
+  cursor?: Prisma.CostSheetWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CostSheetScalarFieldEnum | Prisma.CostSheetScalarFieldEnum[]
+}
+
+/**
+ * Company.boms
+ */
+export type Company$bomsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Bom
+   */
+  select?: Prisma.BomSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Bom
+   */
+  omit?: Prisma.BomOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BomInclude<ExtArgs> | null
+  where?: Prisma.BomWhereInput
+  orderBy?: Prisma.BomOrderByWithRelationInput | Prisma.BomOrderByWithRelationInput[]
+  cursor?: Prisma.BomWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BomScalarFieldEnum | Prisma.BomScalarFieldEnum[]
+}
+
+/**
+ * Company.mrpRuns
+ */
+export type Company$mrpRunsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MrpRun
+   */
+  select?: Prisma.MrpRunSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MrpRun
+   */
+  omit?: Prisma.MrpRunOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MrpRunInclude<ExtArgs> | null
+  where?: Prisma.MrpRunWhereInput
+  orderBy?: Prisma.MrpRunOrderByWithRelationInput | Prisma.MrpRunOrderByWithRelationInput[]
+  cursor?: Prisma.MrpRunWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MrpRunScalarFieldEnum | Prisma.MrpRunScalarFieldEnum[]
+}
+
+/**
+ * Company.enquiries
+ */
+export type Company$enquiriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Enquiry
+   */
+  select?: Prisma.EnquirySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Enquiry
+   */
+  omit?: Prisma.EnquiryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnquiryInclude<ExtArgs> | null
+  where?: Prisma.EnquiryWhereInput
+  orderBy?: Prisma.EnquiryOrderByWithRelationInput | Prisma.EnquiryOrderByWithRelationInput[]
+  cursor?: Prisma.EnquiryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EnquiryScalarFieldEnum | Prisma.EnquiryScalarFieldEnum[]
+}
+
+/**
+ * Company.styles
+ */
+export type Company$stylesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Style
+   */
+  select?: Prisma.StyleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Style
+   */
+  omit?: Prisma.StyleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StyleInclude<ExtArgs> | null
+  where?: Prisma.StyleWhereInput
+  orderBy?: Prisma.StyleOrderByWithRelationInput | Prisma.StyleOrderByWithRelationInput[]
+  cursor?: Prisma.StyleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StyleScalarFieldEnum | Prisma.StyleScalarFieldEnum[]
 }
 
 /**
