@@ -206,6 +206,7 @@ export type DepartmentWhereInput = {
   isActive?: Prisma.BoolFilter<"Department"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Department"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Department"> | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
   factory?: Prisma.XOR<Prisma.FactoryScalarRelationFilter, Prisma.FactoryWhereInput>
   floor?: Prisma.XOR<Prisma.FloorNullableScalarRelationFilter, Prisma.FloorWhereInput> | null
   lines?: Prisma.LineListRelationFilter
@@ -221,6 +222,7 @@ export type DepartmentOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  purchaseRequisitions?: Prisma.PurchaseRequisitionOrderByRelationAggregateInput
   factory?: Prisma.FactoryOrderByWithRelationInput
   floor?: Prisma.FloorOrderByWithRelationInput
   lines?: Prisma.LineOrderByRelationAggregateInput
@@ -240,6 +242,7 @@ export type DepartmentWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Department"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Department"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Department"> | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
   factory?: Prisma.XOR<Prisma.FactoryScalarRelationFilter, Prisma.FactoryWhereInput>
   floor?: Prisma.XOR<Prisma.FloorNullableScalarRelationFilter, Prisma.FloorWhereInput> | null
   lines?: Prisma.LineListRelationFilter
@@ -281,6 +284,7 @@ export type DepartmentCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
@@ -296,6 +300,7 @@ export type DepartmentUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
 }
@@ -307,6 +312,7 @@ export type DepartmentUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
@@ -322,6 +328,7 @@ export type DepartmentUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
 }
@@ -526,6 +533,22 @@ export type DepartmentUpdateOneWithoutSampleRequestsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.DepartmentUpdateToOneWithWhereWithoutSampleRequestsInput, Prisma.DepartmentUpdateWithoutSampleRequestsInput>, Prisma.DepartmentUncheckedUpdateWithoutSampleRequestsInput>
 }
 
+export type DepartmentCreateNestedOneWithoutPurchaseRequisitionsInput = {
+  create?: Prisma.XOR<Prisma.DepartmentCreateWithoutPurchaseRequisitionsInput, Prisma.DepartmentUncheckedCreateWithoutPurchaseRequisitionsInput>
+  connectOrCreate?: Prisma.DepartmentCreateOrConnectWithoutPurchaseRequisitionsInput
+  connect?: Prisma.DepartmentWhereUniqueInput
+}
+
+export type DepartmentUpdateOneWithoutPurchaseRequisitionsNestedInput = {
+  create?: Prisma.XOR<Prisma.DepartmentCreateWithoutPurchaseRequisitionsInput, Prisma.DepartmentUncheckedCreateWithoutPurchaseRequisitionsInput>
+  connectOrCreate?: Prisma.DepartmentCreateOrConnectWithoutPurchaseRequisitionsInput
+  upsert?: Prisma.DepartmentUpsertWithoutPurchaseRequisitionsInput
+  disconnect?: Prisma.DepartmentWhereInput | boolean
+  delete?: Prisma.DepartmentWhereInput | boolean
+  connect?: Prisma.DepartmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DepartmentUpdateToOneWithWhereWithoutPurchaseRequisitionsInput, Prisma.DepartmentUpdateWithoutPurchaseRequisitionsInput>, Prisma.DepartmentUncheckedUpdateWithoutPurchaseRequisitionsInput>
+}
+
 export type DepartmentCreateWithoutFactoryInput = {
   id?: string
   code: string
@@ -533,6 +556,7 @@ export type DepartmentCreateWithoutFactoryInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
@@ -546,6 +570,7 @@ export type DepartmentUncheckedCreateWithoutFactoryInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
 }
@@ -597,6 +622,7 @@ export type DepartmentCreateWithoutFloorInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
@@ -610,6 +636,7 @@ export type DepartmentUncheckedCreateWithoutFloorInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
 }
@@ -647,6 +674,7 @@ export type DepartmentCreateWithoutLinesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
@@ -661,6 +689,7 @@ export type DepartmentUncheckedCreateWithoutLinesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
 }
 
@@ -687,6 +716,7 @@ export type DepartmentUpdateWithoutLinesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
@@ -701,6 +731,7 @@ export type DepartmentUncheckedUpdateWithoutLinesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
@@ -711,6 +742,7 @@ export type DepartmentCreateWithoutSampleRequestsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
@@ -725,6 +757,7 @@ export type DepartmentUncheckedCreateWithoutSampleRequestsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
 }
 
@@ -751,6 +784,7 @@ export type DepartmentUpdateWithoutSampleRequestsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
@@ -765,7 +799,76 @@ export type DepartmentUncheckedUpdateWithoutSampleRequestsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
+}
+
+export type DepartmentCreateWithoutPurchaseRequisitionsInput = {
+  id?: string
+  code: string
+  name: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
+  floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
+  lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
+}
+
+export type DepartmentUncheckedCreateWithoutPurchaseRequisitionsInput = {
+  id?: string
+  factoryId: string
+  floorId?: string | null
+  code: string
+  name: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
+}
+
+export type DepartmentCreateOrConnectWithoutPurchaseRequisitionsInput = {
+  where: Prisma.DepartmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.DepartmentCreateWithoutPurchaseRequisitionsInput, Prisma.DepartmentUncheckedCreateWithoutPurchaseRequisitionsInput>
+}
+
+export type DepartmentUpsertWithoutPurchaseRequisitionsInput = {
+  update: Prisma.XOR<Prisma.DepartmentUpdateWithoutPurchaseRequisitionsInput, Prisma.DepartmentUncheckedUpdateWithoutPurchaseRequisitionsInput>
+  create: Prisma.XOR<Prisma.DepartmentCreateWithoutPurchaseRequisitionsInput, Prisma.DepartmentUncheckedCreateWithoutPurchaseRequisitionsInput>
+  where?: Prisma.DepartmentWhereInput
+}
+
+export type DepartmentUpdateToOneWithWhereWithoutPurchaseRequisitionsInput = {
+  where?: Prisma.DepartmentWhereInput
+  data: Prisma.XOR<Prisma.DepartmentUpdateWithoutPurchaseRequisitionsInput, Prisma.DepartmentUncheckedUpdateWithoutPurchaseRequisitionsInput>
+}
+
+export type DepartmentUpdateWithoutPurchaseRequisitionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
+  floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
+  lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
+}
+
+export type DepartmentUncheckedUpdateWithoutPurchaseRequisitionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  factoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  floorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
 export type DepartmentCreateManyFactoryInput = {
@@ -785,6 +888,7 @@ export type DepartmentUpdateWithoutFactoryInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
@@ -798,6 +902,7 @@ export type DepartmentUncheckedUpdateWithoutFactoryInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
 }
@@ -829,6 +934,7 @@ export type DepartmentUpdateWithoutFloorInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
@@ -842,6 +948,7 @@ export type DepartmentUncheckedUpdateWithoutFloorInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
 }
@@ -862,11 +969,13 @@ export type DepartmentUncheckedUpdateManyWithoutFloorInput = {
  */
 
 export type DepartmentCountOutputType = {
+  purchaseRequisitions: number
   lines: number
   sampleRequests: number
 }
 
 export type DepartmentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  purchaseRequisitions?: boolean | DepartmentCountOutputTypeCountPurchaseRequisitionsArgs
   lines?: boolean | DepartmentCountOutputTypeCountLinesArgs
   sampleRequests?: boolean | DepartmentCountOutputTypeCountSampleRequestsArgs
 }
@@ -879,6 +988,13 @@ export type DepartmentCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.E
    * Select specific fields to fetch from the DepartmentCountOutputType
    */
   select?: Prisma.DepartmentCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * DepartmentCountOutputType without action
+ */
+export type DepartmentCountOutputTypeCountPurchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PurchaseRequisitionWhereInput
 }
 
 /**
@@ -905,6 +1021,7 @@ export type DepartmentSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  purchaseRequisitions?: boolean | Prisma.Department$purchaseRequisitionsArgs<ExtArgs>
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
   floor?: boolean | Prisma.Department$floorArgs<ExtArgs>
   lines?: boolean | Prisma.Department$linesArgs<ExtArgs>
@@ -951,6 +1068,7 @@ export type DepartmentSelectScalar = {
 
 export type DepartmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "factoryId" | "floorId" | "code" | "name" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["department"]>
 export type DepartmentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  purchaseRequisitions?: boolean | Prisma.Department$purchaseRequisitionsArgs<ExtArgs>
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
   floor?: boolean | Prisma.Department$floorArgs<ExtArgs>
   lines?: boolean | Prisma.Department$linesArgs<ExtArgs>
@@ -969,6 +1087,7 @@ export type DepartmentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.E
 export type $DepartmentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Department"
   objects: {
+    purchaseRequisitions: Prisma.$PurchaseRequisitionPayload<ExtArgs>[]
     factory: Prisma.$FactoryPayload<ExtArgs>
     floor: Prisma.$FloorPayload<ExtArgs> | null
     lines: Prisma.$LinePayload<ExtArgs>[]
@@ -1377,6 +1496,7 @@ readonly fields: DepartmentFieldRefs;
  */
 export interface Prisma__DepartmentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  purchaseRequisitions<T extends Prisma.Department$purchaseRequisitionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$purchaseRequisitionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   factory<T extends Prisma.FactoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FactoryDefaultArgs<ExtArgs>>): Prisma.Prisma__FactoryClient<runtime.Types.Result.GetResult<Prisma.$FactoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   floor<T extends Prisma.Department$floorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$floorArgs<ExtArgs>>): Prisma.Prisma__FloorClient<runtime.Types.Result.GetResult<Prisma.$FloorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   lines<T extends Prisma.Department$linesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$linesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -1816,6 +1936,30 @@ export type DepartmentDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Limit how many Departments to delete.
    */
   limit?: number
+}
+
+/**
+ * Department.purchaseRequisitions
+ */
+export type Department$purchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PurchaseRequisition
+   */
+  select?: Prisma.PurchaseRequisitionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PurchaseRequisition
+   */
+  omit?: Prisma.PurchaseRequisitionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PurchaseRequisitionInclude<ExtArgs> | null
+  where?: Prisma.PurchaseRequisitionWhereInput
+  orderBy?: Prisma.PurchaseRequisitionOrderByWithRelationInput | Prisma.PurchaseRequisitionOrderByWithRelationInput[]
+  cursor?: Prisma.PurchaseRequisitionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PurchaseRequisitionScalarFieldEnum | Prisma.PurchaseRequisitionScalarFieldEnum[]
 }
 
 /**

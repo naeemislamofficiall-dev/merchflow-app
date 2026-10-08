@@ -21,44 +21,54 @@ enum Scope {
 }
 
 model Company {
-  id             String          @id @default(cuid())
-  code           String          @unique
-  legalName      String
-  tradeName      String?
-  currency       String          @default("BDT")
-  timeZone       String          @default("Asia/Dhaka")
-  status         ActiveStatus    @default(ACTIVE)
-  factories      Factory[]
-  users          User[]
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  buyers         Buyer[]
-  sampleRequests SampleRequest[]
-  tnaTemplates   TnaTemplate[]
-  tnaPlans       TnaPlan[]
-  costSheets     CostSheet[]
-  boms           Bom[]
-  mrpRuns        MrpRun[]
-  enquiries      Enquiry[]
-  styles         Style[]
-  seasons        Season[]
-  orders         Order[]
+  id                   String                @id @default(cuid())
+  code                 String                @unique
+  legalName            String
+  tradeName            String?
+  currency             String                @default("BDT")
+  timeZone             String                @default("Asia/Dhaka")
+  status               ActiveStatus          @default(ACTIVE)
+  factories            Factory[]
+  users                User[]
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  buyers               Buyer[]
+  sampleRequests       SampleRequest[]
+  tnaTemplates         TnaTemplate[]
+  tnaPlans             TnaPlan[]
+  costSheets           CostSheet[]
+  boms                 Bom[]
+  mrpRuns              MrpRun[]
+  enquiries            Enquiry[]
+  styles               Style[]
+  seasons              Season[]
+  orders               Order[]
+  materialCategories   MaterialCategory[]
+  materials            Material[]
+  suppliers            Supplier[]
+  supplierQuotations   SupplierQuotation[]
+  purchaseRequisitions PurchaseRequisition[]
+  purchaseOrders       PurchaseOrder[]
+  groupId              String?
+  group                Group?                @relation(fields: [groupId], references: [id])
+  rfqs                 Rfq[]
 }
 
 model Factory {
-  id          String       @id @default(cuid())
+  id          String              @id @default(cuid())
   companyId   String
-  company     Company      @relation(fields: [companyId], references: [id])
+  company     Company             @relation(fields: [companyId], references: [id])
   code        String
   name        String
   address     String?
-  status      ActiveStatus @default(ACTIVE)
+  status      ActiveStatus        @default(ACTIVE)
   users       User[]
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
   buildings   Building[]
   departments Department[]
   warehouses  Warehouse[]
+  userAccess  UserFactoryAccess[]
 
   @@unique([companyId, code])
 }
@@ -88,23 +98,25 @@ model RolePermission {
 }
 
 model User {
-  id              String          @id @default(cuid())
-  email           String          @unique
+  id              String              @id @default(cuid())
+  email           String              @unique
   name            String
   passwordHash    String
   roleId          String
-  role            Role            @relation(fields: [roleId], references: [id])
-  scope           Scope           @default(FACTORY)
+  role            Role                @relation(fields: [roleId], references: [id])
+  scope           Scope               @default(FACTORY)
   companyId       String?
-  company         Company?        @relation(fields: [companyId], references: [id])
+  company         Company?            @relation(fields: [companyId], references: [id])
   factoryId       String?
-  factory         Factory?        @relation(fields: [factoryId], references: [id])
-  status          ActiveStatus    @default(ACTIVE)
+  factory         Factory?            @relation(fields: [factoryId], references: [id])
+  status          ActiveStatus        @default(ACTIVE)
   lastLoginAt     DateTime?
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
   auditLogs       AuditLog[]
   assignedSamples SampleRequest[]
+  locale          String              @default("en")
+  extraFactories  UserFactoryAccess[]
 }
 
 model AuditLog {
@@ -158,19 +170,19 @@ model Floor {
 }
 
 model Department {
-  id        String   @id @default(cuid())
-  factoryId String
-  floorId   String?
-  code      String
-  name      String
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  factory        Factory         @relation(fields: [factoryId], references: [id])
-  floor          Floor?          @relation(fields: [floorId], references: [id])
-  lines          Line[]
-  sampleRequests SampleRequest[]
+  id                   String                @id @default(cuid())
+  factoryId            String
+  floorId              String?
+  code                 String
+  name                 String
+  isActive             Boolean               @default(true)
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  purchaseRequisitions PurchaseRequisition[]
+  factory              Factory               @relation(fields: [factoryId], references: [id])
+  floor                Floor?                @relation(fields: [floorId], references: [id])
+  lines                Line[]
+  sampleRequests       SampleRequest[]
 
   @@unique([factoryId, code])
 }
@@ -335,19 +347,20 @@ model Style {
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 
-  company        Company         @relation(fields: [companyId], references: [id])
-  buyer          Buyer           @relation(fields: [buyerId], references: [id])
-  seasonRef      Season?         @relation(fields: [seasonId], references: [id])
-  sampleRequests SampleRequest[]
-  tnaPlans       TnaPlan[]
-  costSheets     CostSheet[]
-  boms           Bom[]
-  colors         StyleColor[]
-  sizes          StyleSize[]
-  enquiryItems   EnquiryItem[]
-  revisions      StyleRevision[]
-  techPacks      TechPack[]
-  orderLines     OrderLine[]
+  company              Company               @relation(fields: [companyId], references: [id])
+  buyer                Buyer                 @relation(fields: [buyerId], references: [id])
+  seasonRef            Season?               @relation(fields: [seasonId], references: [id])
+  sampleRequests       SampleRequest[]
+  tnaPlans             TnaPlan[]
+  costSheets           CostSheet[]
+  boms                 Bom[]
+  colors               StyleColor[]
+  sizes                StyleSize[]
+  enquiryItems         EnquiryItem[]
+  revisions            StyleRevision[]
+  techPacks            TechPack[]
+  orderLines           OrderLine[]
+  purchaseRequisitions PurchaseRequisition[]
 
   @@unique([companyId, styleNo])
   @@index([buyerId])
@@ -567,21 +580,24 @@ model TnaTask {
 // ---------- সেকশন ১২: Costing ----------
 
 model CostSheet {
-  id          String          @id @default(cuid())
-  companyId   String
-  styleId     String
-  version     Int             @default(1)
-  currency    String          @default("USD")
-  marginPct   Decimal         @default(0) @db.Decimal(6, 2)
-  totalCost   Decimal         @default(0) @db.Decimal(14, 4)
-  quotedPrice Decimal         @default(0) @db.Decimal(14, 4)
-  status      CostSheetStatus @default(DRAFT)
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
-
-  company Company    @relation(fields: [companyId], references: [id])
-  style   Style      @relation(fields: [styleId], references: [id])
-  items   CostItem[]
+  id              String          @id @default(cuid())
+  companyId       String
+  styleId         String
+  version         Int             @default(1)
+  currency        String          @default("USD")
+  marginPct       Decimal         @default(0) @db.Decimal(6, 2)
+  totalCost       Decimal         @default(0) @db.Decimal(14, 4)
+  quotedPrice     Decimal         @default(0) @db.Decimal(14, 4)
+  status          CostSheetStatus @default(DRAFT)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  baseCurrency    String?
+  exchangeRate    Decimal?        @db.Decimal(18, 8)
+  rateDate        DateTime?       @db.Date
+  baseQuotedPrice Decimal?        @db.Decimal(18, 4)
+  company         Company         @relation(fields: [companyId], references: [id])
+  style           Style           @relation(fields: [styleId], references: [id])
+  items           CostItem[]
 
   @@unique([styleId, version])
   @@index([status])
@@ -641,18 +657,18 @@ model BomItem {
 // ---------- সেকশন ১৪: MRP (Material Requirement Planning) ----------
 
 model MrpRun {
-  id        String   @id @default(cuid())
-  companyId String
-  bomId     String
-  orderId   String?
-  orderQty  Int
-  runDate   DateTime @default(now())
-  createdAt DateTime @default(now())
-
-  company Company   @relation(fields: [companyId], references: [id])
-  bom     Bom       @relation(fields: [bomId], references: [id])
-  order   Order?    @relation(fields: [orderId], references: [id])
-  lines   MrpLine[]
+  id                   String                @id @default(cuid())
+  companyId            String
+  bomId                String
+  orderId              String?
+  orderQty             Int
+  runDate              DateTime              @default(now())
+  createdAt            DateTime              @default(now())
+  purchaseRequisitions PurchaseRequisition[]
+  company              Company               @relation(fields: [companyId], references: [id])
+  bom                  Bom                   @relation(fields: [bomId], references: [id])
+  order                Order?                @relation(fields: [orderId], references: [id])
+  lines                MrpLine[]
 
   @@index([bomId])
   @@index([orderId])
@@ -710,29 +726,34 @@ model Season {
 // ---------- Order (সেকশন ৩.১, ৫৬, ৫৭) ----------
 
 model Order {
-  id          String      @id @default(cuid())
-  companyId   String
-  orderNo     String
-  buyerId     String
-  buyerPoNo   String?
-  seasonId    String?
-  currency    String      @default("USD")
-  orderDate   DateTime    @default(now())
-  shipDate    DateTime?
-  status      OrderStatus @default(DRAFT)
-  notes       String?
-  createdById String?
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
+  id           String      @id @default(cuid())
+  companyId    String
+  orderNo      String
+  buyerId      String
+  buyerPoNo    String?
+  seasonId     String?
+  currency     String      @default("USD")
+  orderDate    DateTime    @default(now())
+  shipDate     DateTime?
+  status       OrderStatus @default(DRAFT)
+  notes        String?
+  createdById  String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  baseCurrency String?
+  exchangeRate Decimal?    @db.Decimal(18, 8)
+  rateDate     DateTime?   @db.Date
 
-  company        Company          @relation(fields: [companyId], references: [id])
-  buyer          Buyer            @relation(fields: [buyerId], references: [id])
-  season         Season?          @relation(fields: [seasonId], references: [id])
-  lines          OrderLine[]
-  amendments     OrderAmendment[]
-  sampleRequests SampleRequest[]
-  tnaPlans       TnaPlan[]
-  mrpRuns        MrpRun[]
+  company              Company               @relation(fields: [companyId], references: [id])
+  buyer                Buyer                 @relation(fields: [buyerId], references: [id])
+  season               Season?               @relation(fields: [seasonId], references: [id])
+  lines                OrderLine[]
+  amendments           OrderAmendment[]
+  sampleRequests       SampleRequest[]
+  tnaPlans             TnaPlan[]
+  mrpRuns              MrpRun[]
+  purchaseRequisitions PurchaseRequisition[]
+  purchaseOrderLines   PurchaseOrderLine[]
 
   @@unique([companyId, orderNo])
   @@index([buyerId])
@@ -812,4 +833,460 @@ model SampleApproval {
   sample SampleRequest @relation(fields: [sampleId], references: [id], onDelete: Cascade)
 
   @@unique([sampleId, round])
+}
+
+// ---------- সেকশন ৫৮: Supply Chain-এর enum ----------
+
+enum SupplierCategory {
+  FABRIC
+  YARN
+  TRIMS
+  ACCESSORIES
+  PACKAGING
+  WASHING
+  PRINTING
+  EMBROIDERY
+  TRANSPORT
+}
+
+enum QuotationStatus {
+  RFQ_SENT
+  RECEIVED
+  RECOMMENDED
+  APPROVED
+  REJECTED
+}
+
+enum PrSource {
+  MRP
+  DEPARTMENT
+  REORDER_POINT
+  MANUAL
+  PRODUCTION_PLAN
+}
+
+enum PrPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum PrStatus {
+  DRAFT
+  SUBMITTED
+  APPROVED
+  PO_CREATED
+  CLOSED
+  REJECTED
+  CANCELLED
+}
+
+enum PoStatus {
+  DRAFT
+  SUBMITTED
+  APPROVED
+  SENT
+  ACKNOWLEDGED
+  PARTIAL_RECEIPT
+  COMPLETE
+  CLOSED
+  REJECTED
+  REVISION
+  CANCELLED
+}
+
+// ---------- Material ----------
+
+model MaterialCategory {
+  id        String   @id @default(cuid())
+  companyId String
+  code      String
+  name      String
+  createdAt DateTime @default(now())
+
+  company   Company    @relation(fields: [companyId], references: [id])
+  materials Material[]
+
+  @@unique([companyId, code])
+}
+
+model Material {
+  id           String       @id @default(cuid())
+  companyId    String
+  categoryId   String
+  code         String
+  name         String
+  unit         String       @default("PCS")
+  description  String?
+  reorderPoint Decimal?     @db.Decimal(14, 4)
+  status       ActiveStatus @default(ACTIVE)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  company    Company                   @relation(fields: [companyId], references: [id])
+  category   MaterialCategory          @relation(fields: [categoryId], references: [id])
+  quotations SupplierQuotation[]
+  prLines    PurchaseRequisitionLine[]
+  poLines    PurchaseOrderLine[]
+  rfqInvites RfqSupplier[]
+  rfqLines   RfqLine[]
+
+  @@unique([companyId, code])
+  @@index([categoryId])
+}
+
+// ---------- সেকশন ১৫: Supplier ----------
+
+model Supplier {
+  id              String           @id @default(cuid())
+  companyId       String
+  code            String
+  name            String
+  category        SupplierCategory
+  country         String?
+  address         String?
+  currency        String           @default("USD")
+  leadTimeDays    Int?
+  paymentTerms    String?
+  bankName        String?
+  bankBranch      String?
+  bankAccountName String?
+  bankAccountNo   String?
+  status          ActiveStatus     @default(ACTIVE)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  company          Company             @relation(fields: [companyId], references: [id])
+  contacts         SupplierContact[]
+  quotations       SupplierQuotation[]
+  purchaseOrders   PurchaseOrder[]
+  proformaInvoices SupplierPi[]
+  rfqInvites       RfqSupplier[]
+
+  @@unique([companyId, code])
+  @@index([category])
+}
+
+model SupplierContact {
+  id          String   @id @default(cuid())
+  supplierId  String
+  name        String
+  designation String?
+  email       String?
+  phone       String?
+  isPrimary   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@index([supplierId])
+}
+
+// ---------- সেকশন ১৬: Supplier Quotation ----------
+// প্রতিটা সংশোধন নতুন সারি (revisionNo বাড়ে), তাই ইতিহাস থেকে যায়
+
+model SupplierQuotation {
+  id            String          @id @default(cuid())
+  companyId     String
+  quotationNo   String
+  revisionNo    Int             @default(1)
+  rfqNo         String?
+  supplierId    String
+  materialId    String
+  unitPrice     Decimal         @db.Decimal(14, 4)
+  currency      String          @default("USD")
+  leadTimeDays  Int?
+  qualityRating Int?
+  paymentTerms  String?
+  validUntil    DateTime?
+  score         Decimal?        @db.Decimal(6, 2)
+  status        QuotationStatus @default(RFQ_SENT)
+  notes         String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  rfqId         String?
+  baseCurrency  String?
+  exchangeRate  Decimal?        @db.Decimal(18, 8)
+  rateDate      DateTime?       @db.Date
+  baseUnitPrice Decimal?        @db.Decimal(18, 4)
+
+  company  Company  @relation(fields: [companyId], references: [id])
+  supplier Supplier @relation(fields: [supplierId], references: [id])
+  material Material @relation(fields: [materialId], references: [id])
+  rfq      Rfq?     @relation(fields: [rfqId], references: [id])
+
+  @@unique([companyId, quotationNo, revisionNo])
+  @@index([rfqNo])
+  @@index([supplierId])
+  @@index([materialId])
+  @@index([rfqId])
+}
+
+// ---------- সেকশন ১৭: Purchase Requisition ----------
+
+model PurchaseRequisition {
+  id           String     @id @default(cuid())
+  companyId    String
+  prNo         String
+  source       PrSource   @default(MANUAL)
+  departmentId String?
+  orderId      String?
+  styleId      String?
+  mrpRunId     String?
+  reason       String?
+  priority     PrPriority @default(NORMAL)
+  requiredDate DateTime?
+  status       PrStatus   @default(DRAFT)
+  createdById  String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  company    Company                   @relation(fields: [companyId], references: [id])
+  department Department?               @relation(fields: [departmentId], references: [id])
+  order      Order?                    @relation(fields: [orderId], references: [id])
+  style      Style?                    @relation(fields: [styleId], references: [id])
+  mrpRun     MrpRun?                   @relation(fields: [mrpRunId], references: [id])
+  lines      PurchaseRequisitionLine[]
+  rfqs       Rfq[]
+
+  @@unique([companyId, prNo])
+  @@index([status])
+  @@index([orderId])
+}
+
+model PurchaseRequisitionLine {
+  id           String    @id @default(cuid())
+  prId         String
+  materialId   String
+  quantity     Decimal   @db.Decimal(14, 4)
+  unit         String    @default("PCS")
+  requiredDate DateTime?
+  remarks      String?
+
+  pr       PurchaseRequisition @relation(fields: [prId], references: [id], onDelete: Cascade)
+  material Material            @relation(fields: [materialId], references: [id])
+  poLines  PurchaseOrderLine[]
+
+  @@index([prId])
+}
+
+// ---------- সেকশন ১৮: Purchase Order ----------
+
+model PurchaseOrder {
+  id              String    @id @default(cuid())
+  companyId       String
+  poNo            String
+  supplierId      String
+  currency        String    @default("USD")
+  paymentTerms    String?
+  incoterms       String?
+  destination     String?
+  deliveryDate    DateTime?
+  status          PoStatus  @default(DRAFT)
+  rejectionReason String?
+  approvedAt      DateTime?
+  sentAt          DateTime?
+  createdById     String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  baseCurrency    String?
+  exchangeRate    Decimal?  @db.Decimal(18, 8)
+  rateDate        DateTime? @db.Date
+  baseTotal       Decimal?  @db.Decimal(18, 2)
+
+  company          Company             @relation(fields: [companyId], references: [id])
+  supplier         Supplier            @relation(fields: [supplierId], references: [id])
+  lines            PurchaseOrderLine[]
+  followUps        PoFollowUp[]
+  proformaInvoices SupplierPi[]
+
+  @@unique([companyId, poNo])
+  @@index([supplierId])
+  @@index([status])
+}
+
+model PurchaseOrderLine {
+  id           String    @id @default(cuid())
+  poId         String
+  materialId   String
+  prLineId     String?
+  orderId      String?
+  quantity     Decimal   @db.Decimal(14, 4)
+  receivedQty  Decimal   @default(0) @db.Decimal(14, 4)
+  unit         String    @default("PCS")
+  rate         Decimal   @db.Decimal(14, 4)
+  taxPct       Decimal   @default(0) @db.Decimal(6, 2)
+  deliveryDate DateTime?
+
+  po       PurchaseOrder            @relation(fields: [poId], references: [id], onDelete: Cascade)
+  material Material                 @relation(fields: [materialId], references: [id])
+  prLine   PurchaseRequisitionLine? @relation(fields: [prLineId], references: [id])
+  order    Order?                   @relation(fields: [orderId], references: [id])
+
+  @@index([poId])
+  @@index([orderId])
+}
+
+model SupplierPi {
+  id           String         @id @default(cuid())
+  supplierId   String
+  poId         String?
+  piNo         String
+  piDate       DateTime       @default(now())
+  amount       Decimal        @db.Decimal(14, 2)
+  currency     String         @default("USD")
+  fileUrl      String?
+  createdAt    DateTime       @default(now())
+  baseCurrency String?
+  exchangeRate Decimal?       @db.Decimal(18, 8)
+  rateDate     DateTime?      @db.Date
+  baseAmount   Decimal?       @db.Decimal(18, 2)
+  supplier     Supplier       @relation(fields: [supplierId], references: [id])
+  po           PurchaseOrder? @relation(fields: [poId], references: [id])
+
+  @@unique([supplierId, piNo])
+}
+
+// ---------- সেকশন ১৯: Supplier Follow-up ----------
+
+model PoFollowUp {
+  id                   String    @id @default(cuid())
+  poId                 String
+  supplierPromisedDate DateTime
+  latestPromisedDate   DateTime
+  actualReceiptDate    DateTime?
+  delayDays            Int       @default(0)
+  remarks              String?
+  isEscalated          Boolean   @default(false)
+  escalationNote       String?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  po       PurchaseOrder       @relation(fields: [poId], references: [id], onDelete: Cascade)
+  contacts PoFollowUpContact[]
+
+  @@index([poId])
+}
+
+model PoFollowUpContact {
+  id            String   @id @default(cuid())
+  followUpId    String
+  contactedAt   DateTime @default(now())
+  method        String
+  contactPerson String?
+  notes         String?
+  createdById   String?
+
+  followUp PoFollowUp @relation(fields: [followUpId], references: [id], onDelete: Cascade)
+
+  @@index([followUpId])
+}
+
+// ---------- সেকশন ৬০: Group ও বাড়তি factory-র অনুমতি ----------
+
+model Group {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  name      String
+  currency  String   @default("USD")
+  createdAt DateTime @default(now())
+
+  companies Company[]
+}
+
+// একজন user একাধিক factory দেখতে পারবে (সেকশন ৬০: Multiple factories)
+model UserFactoryAccess {
+  userId    String
+  factoryId String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  factory Factory @relation(fields: [factoryId], references: [id], onDelete: Cascade)
+
+  @@id([userId, factoryId])
+  @@index([factoryId])
+}
+
+// ---------- সেকশন ৬১: Currency ও Exchange Rate ----------
+
+model Currency {
+  code     String  @id
+  name     String
+  symbol   String
+  decimals Int     @default(2)
+  isActive Boolean @default(true)
+}
+
+model ExchangeRate {
+  id          String   @id @default(cuid())
+  fromCode    String
+  toCode      String
+  rate        Decimal  @db.Decimal(18, 8)
+  rateDate    DateTime @db.Date
+  source      String   @default("MANUAL")
+  createdById String?
+  createdAt   DateTime @default(now())
+
+  @@unique([fromCode, toCode, rateDate])
+  @@index([fromCode, toCode, rateDate])
+}
+
+// ---------- সেকশন ১৬: RFQ (Requirement → RFQ → Quotation) ----------
+
+enum RfqStatus {
+  DRAFT
+  SENT
+  CLOSED
+  CANCELLED
+}
+
+model Rfq {
+  id          String    @id @default(cuid())
+  companyId   String
+  rfqNo       String
+  prId        String?
+  status      RfqStatus @default(DRAFT)
+  dueDate     DateTime?
+  notes       String?
+  createdById String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  company    Company              @relation(fields: [companyId], references: [id])
+  pr         PurchaseRequisition? @relation(fields: [prId], references: [id])
+  lines      RfqLine[]
+  suppliers  RfqSupplier[]
+  quotations SupplierQuotation[]
+
+  @@unique([companyId, rfqNo])
+  @@index([status])
+}
+
+model RfqLine {
+  id           String    @id @default(cuid())
+  rfqId        String
+  materialId   String
+  quantity     Decimal   @db.Decimal(14, 4)
+  unit         String    @default("PCS")
+  requiredDate DateTime?
+
+  rfq      Rfq      @relation(fields: [rfqId], references: [id], onDelete: Cascade)
+  material Material @relation(fields: [materialId], references: [id])
+
+  @@index([rfqId])
+}
+
+model RfqSupplier {
+  id         String    @id @default(cuid())
+  rfqId      String
+  supplierId String
+  sentAt     DateTime?
+
+  rfq        Rfq       @relation(fields: [rfqId], references: [id], onDelete: Cascade)
+  supplier   Supplier  @relation(fields: [supplierId], references: [id])
+  material   Material? @relation(fields: [materialId], references: [id])
+  materialId String?
+
+  @@unique([rfqId, supplierId])
 }

@@ -236,3 +236,98 @@ export type TechPack = Prisma.TechPackModel
  * 
  */
 export type SampleApproval = Prisma.SampleApprovalModel
+/**
+ * Model MaterialCategory
+ * 
+ */
+export type MaterialCategory = Prisma.MaterialCategoryModel
+/**
+ * Model Material
+ * 
+ */
+export type Material = Prisma.MaterialModel
+/**
+ * Model Supplier
+ * 
+ */
+export type Supplier = Prisma.SupplierModel
+/**
+ * Model SupplierContact
+ * 
+ */
+export type SupplierContact = Prisma.SupplierContactModel
+/**
+ * Model SupplierQuotation
+ * 
+ */
+export type SupplierQuotation = Prisma.SupplierQuotationModel
+/**
+ * Model PurchaseRequisition
+ * 
+ */
+export type PurchaseRequisition = Prisma.PurchaseRequisitionModel
+/**
+ * Model PurchaseRequisitionLine
+ * 
+ */
+export type PurchaseRequisitionLine = Prisma.PurchaseRequisitionLineModel
+/**
+ * Model PurchaseOrder
+ * 
+ */
+export type PurchaseOrder = Prisma.PurchaseOrderModel
+/**
+ * Model PurchaseOrderLine
+ * 
+ */
+export type PurchaseOrderLine = Prisma.PurchaseOrderLineModel
+/**
+ * Model SupplierPi
+ * 
+ */
+export type SupplierPi = Prisma.SupplierPiModel
+/**
+ * Model PoFollowUp
+ * 
+ */
+export type PoFollowUp = Prisma.PoFollowUpModel
+/**
+ * Model PoFollowUpContact
+ * 
+ */
+export type PoFollowUpContact = Prisma.PoFollowUpContactModel
+/**
+ * Model Group
+ * 
+ */
+export type Group = Prisma.GroupModel
+/**
+ * Model UserFactoryAccess
+ * 
+ */
+export type UserFactoryAccess = Prisma.UserFactoryAccessModel
+/**
+ * Model Currency
+ * 
+ */
+export type Currency = Prisma.CurrencyModel
+/**
+ * Model ExchangeRate
+ * 
+ */
+export type ExchangeRate = Prisma.ExchangeRateModel
+/**
+ * Model Rfq
+ * 
+ */
+export type Rfq = Prisma.RfqModel
+/**
+ * Model RfqLine
+ * 
+ */
+export type RfqLine = Prisma.RfqLineModel
+/**
+ * Model RfqSupplier
+ * 
+ */
+export type RfqSupplier = Prisma.RfqSupplierModel

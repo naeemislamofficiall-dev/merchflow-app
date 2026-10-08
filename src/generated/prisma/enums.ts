@@ -150,3 +150,90 @@ export const SampleDecision = {
 } as const
 
 export type SampleDecision = (typeof SampleDecision)[keyof typeof SampleDecision]
+
+
+export const SupplierCategory = {
+  FABRIC: 'FABRIC',
+  YARN: 'YARN',
+  TRIMS: 'TRIMS',
+  ACCESSORIES: 'ACCESSORIES',
+  PACKAGING: 'PACKAGING',
+  WASHING: 'WASHING',
+  PRINTING: 'PRINTING',
+  EMBROIDERY: 'EMBROIDERY',
+  TRANSPORT: 'TRANSPORT'
+} as const
+
+export type SupplierCategory = (typeof SupplierCategory)[keyof typeof SupplierCategory]
+
+
+export const QuotationStatus = {
+  RFQ_SENT: 'RFQ_SENT',
+  RECEIVED: 'RECEIVED',
+  RECOMMENDED: 'RECOMMENDED',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type QuotationStatus = (typeof QuotationStatus)[keyof typeof QuotationStatus]
+
+
+export const PrSource = {
+  MRP: 'MRP',
+  DEPARTMENT: 'DEPARTMENT',
+  REORDER_POINT: 'REORDER_POINT',
+  MANUAL: 'MANUAL',
+  PRODUCTION_PLAN: 'PRODUCTION_PLAN'
+} as const
+
+export type PrSource = (typeof PrSource)[keyof typeof PrSource]
+
+
+export const PrPriority = {
+  LOW: 'LOW',
+  NORMAL: 'NORMAL',
+  HIGH: 'HIGH',
+  URGENT: 'URGENT'
+} as const
+
+export type PrPriority = (typeof PrPriority)[keyof typeof PrPriority]
+
+
+export const PrStatus = {
+  DRAFT: 'DRAFT',
+  SUBMITTED: 'SUBMITTED',
+  APPROVED: 'APPROVED',
+  PO_CREATED: 'PO_CREATED',
+  CLOSED: 'CLOSED',
+  REJECTED: 'REJECTED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type PrStatus = (typeof PrStatus)[keyof typeof PrStatus]
+
+
+export const PoStatus = {
+  DRAFT: 'DRAFT',
+  SUBMITTED: 'SUBMITTED',
+  APPROVED: 'APPROVED',
+  SENT: 'SENT',
+  ACKNOWLEDGED: 'ACKNOWLEDGED',
+  PARTIAL_RECEIPT: 'PARTIAL_RECEIPT',
+  COMPLETE: 'COMPLETE',
+  CLOSED: 'CLOSED',
+  REJECTED: 'REJECTED',
+  REVISION: 'REVISION',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type PoStatus = (typeof PoStatus)[keyof typeof PoStatus]
+
+
+export const RfqStatus = {
+  DRAFT: 'DRAFT',
+  SENT: 'SENT',
+  CLOSED: 'CLOSED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type RfqStatus = (typeof RfqStatus)[keyof typeof RfqStatus]

@@ -211,6 +211,7 @@ export type FactoryWhereInput = {
   buildings?: Prisma.BuildingListRelationFilter
   departments?: Prisma.DepartmentListRelationFilter
   warehouses?: Prisma.WarehouseListRelationFilter
+  userAccess?: Prisma.UserFactoryAccessListRelationFilter
 }
 
 export type FactoryOrderByWithRelationInput = {
@@ -227,6 +228,7 @@ export type FactoryOrderByWithRelationInput = {
   buildings?: Prisma.BuildingOrderByRelationAggregateInput
   departments?: Prisma.DepartmentOrderByRelationAggregateInput
   warehouses?: Prisma.WarehouseOrderByRelationAggregateInput
+  userAccess?: Prisma.UserFactoryAccessOrderByRelationAggregateInput
 }
 
 export type FactoryWhereUniqueInput = Prisma.AtLeast<{
@@ -247,6 +249,7 @@ export type FactoryWhereUniqueInput = Prisma.AtLeast<{
   buildings?: Prisma.BuildingListRelationFilter
   departments?: Prisma.DepartmentListRelationFilter
   warehouses?: Prisma.WarehouseListRelationFilter
+  userAccess?: Prisma.UserFactoryAccessListRelationFilter
 }, "id" | "companyId_code">
 
 export type FactoryOrderByWithAggregationInput = {
@@ -290,6 +293,7 @@ export type FactoryCreateInput = {
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
   warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateInput = {
@@ -305,6 +309,7 @@ export type FactoryUncheckedCreateInput = {
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
   warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUpdateInput = {
@@ -320,6 +325,7 @@ export type FactoryUpdateInput = {
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
   warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateInput = {
@@ -335,6 +341,7 @@ export type FactoryUncheckedUpdateInput = {
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
   warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateManyInput = {
@@ -527,6 +534,20 @@ export type FactoryUpdateOneRequiredWithoutWarehousesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.FactoryUpdateToOneWithWhereWithoutWarehousesInput, Prisma.FactoryUpdateWithoutWarehousesInput>, Prisma.FactoryUncheckedUpdateWithoutWarehousesInput>
 }
 
+export type FactoryCreateNestedOneWithoutUserAccessInput = {
+  create?: Prisma.XOR<Prisma.FactoryCreateWithoutUserAccessInput, Prisma.FactoryUncheckedCreateWithoutUserAccessInput>
+  connectOrCreate?: Prisma.FactoryCreateOrConnectWithoutUserAccessInput
+  connect?: Prisma.FactoryWhereUniqueInput
+}
+
+export type FactoryUpdateOneRequiredWithoutUserAccessNestedInput = {
+  create?: Prisma.XOR<Prisma.FactoryCreateWithoutUserAccessInput, Prisma.FactoryUncheckedCreateWithoutUserAccessInput>
+  connectOrCreate?: Prisma.FactoryCreateOrConnectWithoutUserAccessInput
+  upsert?: Prisma.FactoryUpsertWithoutUserAccessInput
+  connect?: Prisma.FactoryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FactoryUpdateToOneWithWhereWithoutUserAccessInput, Prisma.FactoryUpdateWithoutUserAccessInput>, Prisma.FactoryUncheckedUpdateWithoutUserAccessInput>
+}
+
 export type FactoryCreateWithoutCompanyInput = {
   id?: string
   code: string
@@ -539,6 +560,7 @@ export type FactoryCreateWithoutCompanyInput = {
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
   warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutCompanyInput = {
@@ -553,6 +575,7 @@ export type FactoryUncheckedCreateWithoutCompanyInput = {
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
   warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutCompanyInput = {
@@ -607,6 +630,7 @@ export type FactoryCreateWithoutUsersInput = {
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
   warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutUsersInput = {
@@ -621,6 +645,7 @@ export type FactoryUncheckedCreateWithoutUsersInput = {
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
   warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutUsersInput = {
@@ -651,6 +676,7 @@ export type FactoryUpdateWithoutUsersInput = {
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
   warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutUsersInput = {
@@ -665,6 +691,7 @@ export type FactoryUncheckedUpdateWithoutUsersInput = {
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
   warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateWithoutBuildingsInput = {
@@ -679,6 +706,7 @@ export type FactoryCreateWithoutBuildingsInput = {
   users?: Prisma.UserCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
   warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutBuildingsInput = {
@@ -693,6 +721,7 @@ export type FactoryUncheckedCreateWithoutBuildingsInput = {
   users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
   warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutBuildingsInput = {
@@ -723,6 +752,7 @@ export type FactoryUpdateWithoutBuildingsInput = {
   users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
   warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutBuildingsInput = {
@@ -737,6 +767,7 @@ export type FactoryUncheckedUpdateWithoutBuildingsInput = {
   users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
   warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateWithoutDepartmentsInput = {
@@ -751,6 +782,7 @@ export type FactoryCreateWithoutDepartmentsInput = {
   users?: Prisma.UserCreateNestedManyWithoutFactoryInput
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
   warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutDepartmentsInput = {
@@ -765,6 +797,7 @@ export type FactoryUncheckedCreateWithoutDepartmentsInput = {
   users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
   warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutDepartmentsInput = {
@@ -795,6 +828,7 @@ export type FactoryUpdateWithoutDepartmentsInput = {
   users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
   warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutDepartmentsInput = {
@@ -809,6 +843,7 @@ export type FactoryUncheckedUpdateWithoutDepartmentsInput = {
   users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
   warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateWithoutWarehousesInput = {
@@ -823,6 +858,7 @@ export type FactoryCreateWithoutWarehousesInput = {
   users?: Prisma.UserCreateNestedManyWithoutFactoryInput
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutWarehousesInput = {
@@ -837,6 +873,7 @@ export type FactoryUncheckedCreateWithoutWarehousesInput = {
   users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutWarehousesInput = {
@@ -867,6 +904,7 @@ export type FactoryUpdateWithoutWarehousesInput = {
   users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutWarehousesInput = {
@@ -881,6 +919,83 @@ export type FactoryUncheckedUpdateWithoutWarehousesInput = {
   users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
+}
+
+export type FactoryCreateWithoutUserAccessInput = {
+  id?: string
+  code: string
+  name: string
+  address?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
+  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
+}
+
+export type FactoryUncheckedCreateWithoutUserAccessInput = {
+  id?: string
+  companyId: string
+  code: string
+  name: string
+  address?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
+}
+
+export type FactoryCreateOrConnectWithoutUserAccessInput = {
+  where: Prisma.FactoryWhereUniqueInput
+  create: Prisma.XOR<Prisma.FactoryCreateWithoutUserAccessInput, Prisma.FactoryUncheckedCreateWithoutUserAccessInput>
+}
+
+export type FactoryUpsertWithoutUserAccessInput = {
+  update: Prisma.XOR<Prisma.FactoryUpdateWithoutUserAccessInput, Prisma.FactoryUncheckedUpdateWithoutUserAccessInput>
+  create: Prisma.XOR<Prisma.FactoryCreateWithoutUserAccessInput, Prisma.FactoryUncheckedCreateWithoutUserAccessInput>
+  where?: Prisma.FactoryWhereInput
+}
+
+export type FactoryUpdateToOneWithWhereWithoutUserAccessInput = {
+  where?: Prisma.FactoryWhereInput
+  data: Prisma.XOR<Prisma.FactoryUpdateWithoutUserAccessInput, Prisma.FactoryUncheckedUpdateWithoutUserAccessInput>
+}
+
+export type FactoryUpdateWithoutUserAccessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
+  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
+}
+
+export type FactoryUncheckedUpdateWithoutUserAccessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateManyCompanyInput = {
@@ -905,6 +1020,7 @@ export type FactoryUpdateWithoutCompanyInput = {
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
   warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutCompanyInput = {
@@ -919,6 +1035,7 @@ export type FactoryUncheckedUpdateWithoutCompanyInput = {
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
   warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateManyWithoutCompanyInput = {
@@ -941,6 +1058,7 @@ export type FactoryCountOutputType = {
   buildings: number
   departments: number
   warehouses: number
+  userAccess: number
 }
 
 export type FactoryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -948,6 +1066,7 @@ export type FactoryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   buildings?: boolean | FactoryCountOutputTypeCountBuildingsArgs
   departments?: boolean | FactoryCountOutputTypeCountDepartmentsArgs
   warehouses?: boolean | FactoryCountOutputTypeCountWarehousesArgs
+  userAccess?: boolean | FactoryCountOutputTypeCountUserAccessArgs
 }
 
 /**
@@ -988,6 +1107,13 @@ export type FactoryCountOutputTypeCountWarehousesArgs<ExtArgs extends runtime.Ty
   where?: Prisma.WarehouseWhereInput
 }
 
+/**
+ * FactoryCountOutputType without action
+ */
+export type FactoryCountOutputTypeCountUserAccessArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserFactoryAccessWhereInput
+}
+
 
 export type FactorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1003,6 +1129,7 @@ export type FactorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   buildings?: boolean | Prisma.Factory$buildingsArgs<ExtArgs>
   departments?: boolean | Prisma.Factory$departmentsArgs<ExtArgs>
   warehouses?: boolean | Prisma.Factory$warehousesArgs<ExtArgs>
+  userAccess?: boolean | Prisma.Factory$userAccessArgs<ExtArgs>
   _count?: boolean | Prisma.FactoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["factory"]>
 
@@ -1048,6 +1175,7 @@ export type FactoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   buildings?: boolean | Prisma.Factory$buildingsArgs<ExtArgs>
   departments?: boolean | Prisma.Factory$departmentsArgs<ExtArgs>
   warehouses?: boolean | Prisma.Factory$warehousesArgs<ExtArgs>
+  userAccess?: boolean | Prisma.Factory$userAccessArgs<ExtArgs>
   _count?: boolean | Prisma.FactoryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type FactoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1065,6 +1193,7 @@ export type $FactoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     buildings: Prisma.$BuildingPayload<ExtArgs>[]
     departments: Prisma.$DepartmentPayload<ExtArgs>[]
     warehouses: Prisma.$WarehousePayload<ExtArgs>[]
+    userAccess: Prisma.$UserFactoryAccessPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1474,6 +1603,7 @@ export interface Prisma__FactoryClient<T, Null = never, ExtArgs extends runtime.
   buildings<T extends Prisma.Factory$buildingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$buildingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BuildingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   departments<T extends Prisma.Factory$departmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   warehouses<T extends Prisma.Factory$warehousesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$warehousesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userAccess<T extends Prisma.Factory$userAccessArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$userAccessArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserFactoryAccessPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2005,6 +2135,30 @@ export type Factory$warehousesArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.WarehouseScalarFieldEnum | Prisma.WarehouseScalarFieldEnum[]
+}
+
+/**
+ * Factory.userAccess
+ */
+export type Factory$userAccessArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserFactoryAccess
+   */
+  select?: Prisma.UserFactoryAccessSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserFactoryAccess
+   */
+  omit?: Prisma.UserFactoryAccessOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserFactoryAccessInclude<ExtArgs> | null
+  where?: Prisma.UserFactoryAccessWhereInput
+  orderBy?: Prisma.UserFactoryAccessOrderByWithRelationInput | Prisma.UserFactoryAccessOrderByWithRelationInput[]
+  cursor?: Prisma.UserFactoryAccessWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserFactoryAccessScalarFieldEnum | Prisma.UserFactoryAccessScalarFieldEnum[]
 }
 
 /**

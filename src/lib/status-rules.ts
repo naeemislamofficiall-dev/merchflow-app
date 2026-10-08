@@ -61,3 +61,34 @@ export const orderTransitions: TransitionMap = {
   CLOSED: [],
   CANCELLED: [],
 };
+
+export const prTransitions: TransitionMap = {
+  DRAFT: ["SUBMITTED", "CANCELLED"],
+  SUBMITTED: ["APPROVED", "REJECTED"],
+  APPROVED: ["PO_CREATED", "CANCELLED"],
+  PO_CREATED: ["CLOSED"],
+  CLOSED: [],
+  REJECTED: ["DRAFT"],
+  CANCELLED: [],
+};
+
+export const poTransitions: TransitionMap = {
+  DRAFT: ["SUBMITTED", "CANCELLED"],
+  SUBMITTED: ["APPROVED", "REJECTED"],
+  APPROVED: ["SENT", "CANCELLED"],
+  SENT: ["ACKNOWLEDGED", "CANCELLED"],
+  ACKNOWLEDGED: ["PARTIAL_RECEIPT", "COMPLETE", "CANCELLED"],
+  PARTIAL_RECEIPT: ["COMPLETE"],
+  COMPLETE: ["CLOSED"],
+  CLOSED: [],
+  REJECTED: ["REVISION"],
+  REVISION: ["SUBMITTED"], // সংশোধনের পর আবার জমা (Resubmit)
+  CANCELLED: [],
+};
+
+export const rfqTransitions: TransitionMap = {
+  DRAFT: ["SENT", "CANCELLED"],
+  SENT: ["CLOSED", "CANCELLED"],
+  CLOSED: [],
+  CANCELLED: [],
+};

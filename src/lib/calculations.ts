@@ -61,3 +61,86 @@ function round(value: number, digits: number): number {
   const f = 10 ** digits;
   return Math.round(value * f) / f;
 }
+
+// ---------- PO (সেকশন ১৮) ----------
+
+type PoLine = { quantity: number; rate: number; taxPct: number };
+
+export function poTotals(lines: PoLine[]) {
+  const subtotal = round(lines.reduce((s, l) => s + l.quantity * l.rate, 0), 2);
+  const tax = round(
+    lines.reduce((s, l) => s + l.quantity * l.rate * (l.taxPct / 100), 0),
+    2
+  );
+  return { subtotal, tax, grandTotal: round(subtotal + tax, 2) };
+}
+
+// ---------- Supplier Follow-up (সেকশন ১৯) ----------
+
+// প্রতিশ্রুত তারিখ পেরিয়ে গেলে কত দিন দেরি (আগে হলে ০)
+export function delayDays(promised: Date, actualOrToday: Date = new Date()): number {
+  const ms = actualOrToday.getTime() - promised.getTime();
+  return Math.max(0, Math.floor(ms / 86_400_000));
+}
+
+export function delayAlertMessage(
+  supplierName: string,
+  materialLabel: string,
+  days: number,
+  orderNo: string
+): string {
+  return `${supplierName} is ${days} days late on ${materialLabel} delivery for Order #${orderNo}.`;
+}
+
+// ---------- Quotation তুলনা (সেকশন ১৬) ----------
+
+type QuoteInput = {
+  id: string;
+  unitPrice: number;
+  leadTimeDays: number;
+  qualityRating: number; // ০ থেকে ১০০
+};
+
+// দাম ৫০%, লিড টাইম ২৫%, গুণমান ২৫% (বদলাতে চাইলে weights পাস করুন)
+export function scoreQuotations(
+  quotes: QuoteInput[],
+  weights = { price: 0.5, lead: 0.25, quality: 0.25 }
+) {
+  const minPrice = Math.min(...quotes.map((q) => q.unitPrice));
+  const minLead = Math.min(...quotes.map((q) => q.leadTimeDays));
+  return quotes
+    .map((q) => {
+      const priceScore = (minPrice / q.unitPrice) * 100;
+      const leadScore = (minLead / q.leadTimeDays) * 100;
+      const score =
+        priceScore * weights.price +
+        leadScore * weights.lead +
+        q.qualityRating * weights.quality;
+      return { id: q.id, score: round(score, 2) };
+    })
+    .sort((a, b) => b.score - a.score);
+}
+
+// ---------- Supplier Scorecard (সেকশন ১৫) ----------
+
+type ScorecardStats = {
+  deliveriesTotal: number;
+  deliveriesOnTime: number;
+  receivedQty: number;
+  acceptedQty: number;
+  posTotal: number;
+  posCompleted: number;
+};
+
+function pct(part: number, whole: number): number {
+  return whole === 0 ? 0 : round((part / whole) * 100, 2);
+}
+
+export function supplierScorecard(s: ScorecardStats) {
+  return {
+    onTimeDeliveryPct: pct(s.deliveriesOnTime, s.deliveriesTotal),
+    qualityAcceptancePct: pct(s.acceptedQty, s.receivedQty),
+    rejectionPct: pct(s.receivedQty - s.acceptedQty, s.receivedQty),
+    poCompletionPct: pct(s.posCompleted, s.posTotal),
+  };
+}

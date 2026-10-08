@@ -37,6 +37,7 @@ export type UserMinAggregateOutputType = {
   lastLoginAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  locale: string | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -52,6 +53,7 @@ export type UserMaxAggregateOutputType = {
   lastLoginAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  locale: string | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -67,6 +69,7 @@ export type UserCountAggregateOutputType = {
   lastLoginAt: number
   createdAt: number
   updatedAt: number
+  locale: number
   _all: number
 }
 
@@ -84,6 +87,7 @@ export type UserMinAggregateInputType = {
   lastLoginAt?: true
   createdAt?: true
   updatedAt?: true
+  locale?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -99,6 +103,7 @@ export type UserMaxAggregateInputType = {
   lastLoginAt?: true
   createdAt?: true
   updatedAt?: true
+  locale?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -114,6 +119,7 @@ export type UserCountAggregateInputType = {
   lastLoginAt?: true
   createdAt?: true
   updatedAt?: true
+  locale?: true
   _all?: true
 }
 
@@ -202,6 +208,7 @@ export type UserGroupByOutputType = {
   lastLoginAt: Date | null
   createdAt: Date
   updatedAt: Date
+  locale: string
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -238,11 +245,13 @@ export type UserWhereInput = {
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  locale?: Prisma.StringFilter<"User"> | string
   role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
   company?: Prisma.XOR<Prisma.CompanyNullableScalarRelationFilter, Prisma.CompanyWhereInput> | null
   factory?: Prisma.XOR<Prisma.FactoryNullableScalarRelationFilter, Prisma.FactoryWhereInput> | null
   auditLogs?: Prisma.AuditLogListRelationFilter
   assignedSamples?: Prisma.SampleRequestListRelationFilter
+  extraFactories?: Prisma.UserFactoryAccessListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -258,11 +267,13 @@ export type UserOrderByWithRelationInput = {
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
   role?: Prisma.RoleOrderByWithRelationInput
   company?: Prisma.CompanyOrderByWithRelationInput
   factory?: Prisma.FactoryOrderByWithRelationInput
   auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
   assignedSamples?: Prisma.SampleRequestOrderByRelationAggregateInput
+  extraFactories?: Prisma.UserFactoryAccessOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -281,11 +292,13 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  locale?: Prisma.StringFilter<"User"> | string
   role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
   company?: Prisma.XOR<Prisma.CompanyNullableScalarRelationFilter, Prisma.CompanyWhereInput> | null
   factory?: Prisma.XOR<Prisma.FactoryNullableScalarRelationFilter, Prisma.FactoryWhereInput> | null
   auditLogs?: Prisma.AuditLogListRelationFilter
   assignedSamples?: Prisma.SampleRequestListRelationFilter
+  extraFactories?: Prisma.UserFactoryAccessListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -301,6 +314,7 @@ export type UserOrderByWithAggregationInput = {
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -322,6 +336,7 @@ export type UserScalarWhereWithAggregatesInput = {
   lastLoginAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  locale?: Prisma.StringWithAggregatesFilter<"User"> | string
 }
 
 export type UserCreateInput = {
@@ -334,11 +349,13 @@ export type UserCreateInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -354,8 +371,10 @@ export type UserUncheckedCreateInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -368,11 +387,13 @@ export type UserUpdateInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -388,8 +409,10 @@ export type UserUncheckedUpdateInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -405,6 +428,7 @@ export type UserCreateManyInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
 }
 
 export type UserUpdateManyMutationInput = {
@@ -417,6 +441,7 @@ export type UserUpdateManyMutationInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -432,6 +457,7 @@ export type UserUncheckedUpdateManyInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserListRelationFilter = {
@@ -457,6 +483,7 @@ export type UserCountOrderByAggregateInput = {
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -472,6 +499,7 @@ export type UserMaxOrderByAggregateInput = {
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -487,11 +515,17 @@ export type UserMinOrderByAggregateInput = {
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
 }
 
 export type UserNullableScalarRelationFilter = {
   is?: Prisma.UserWhereInput | null
   isNot?: Prisma.UserWhereInput | null
+}
+
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
 }
 
 export type UserCreateNestedManyWithoutCompanyInput = {
@@ -660,6 +694,20 @@ export type UserUpdateOneWithoutAssignedSamplesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAssignedSamplesInput, Prisma.UserUpdateWithoutAssignedSamplesInput>, Prisma.UserUncheckedUpdateWithoutAssignedSamplesInput>
 }
 
+export type UserCreateNestedOneWithoutExtraFactoriesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutExtraFactoriesInput, Prisma.UserUncheckedCreateWithoutExtraFactoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutExtraFactoriesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutExtraFactoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutExtraFactoriesInput, Prisma.UserUncheckedCreateWithoutExtraFactoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutExtraFactoriesInput
+  upsert?: Prisma.UserUpsertWithoutExtraFactoriesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutExtraFactoriesInput, Prisma.UserUpdateWithoutExtraFactoriesInput>, Prisma.UserUncheckedUpdateWithoutExtraFactoriesInput>
+}
+
 export type UserCreateWithoutCompanyInput = {
   id?: string
   email: string
@@ -670,10 +718,12 @@ export type UserCreateWithoutCompanyInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCompanyInput = {
@@ -688,8 +738,10 @@ export type UserUncheckedCreateWithoutCompanyInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCompanyInput = {
@@ -734,6 +786,7 @@ export type UserScalarWhereInput = {
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  locale?: Prisma.StringFilter<"User"> | string
 }
 
 export type UserCreateWithoutFactoryInput = {
@@ -746,10 +799,12 @@ export type UserCreateWithoutFactoryInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFactoryInput = {
@@ -764,8 +819,10 @@ export type UserUncheckedCreateWithoutFactoryInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFactoryInput = {
@@ -804,10 +861,12 @@ export type UserCreateWithoutRoleInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRoleInput = {
@@ -822,8 +881,10 @@ export type UserUncheckedCreateWithoutRoleInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRoleInput = {
@@ -862,10 +923,12 @@ export type UserCreateWithoutAuditLogsInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAuditLogsInput = {
@@ -881,7 +944,9 @@ export type UserUncheckedCreateWithoutAuditLogsInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAuditLogsInput = {
@@ -910,10 +975,12 @@ export type UserUpdateWithoutAuditLogsInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAuditLogsInput = {
@@ -929,7 +996,9 @@ export type UserUncheckedUpdateWithoutAuditLogsInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAssignedSamplesInput = {
@@ -942,10 +1011,12 @@ export type UserCreateWithoutAssignedSamplesInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAssignedSamplesInput = {
@@ -961,7 +1032,9 @@ export type UserUncheckedCreateWithoutAssignedSamplesInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAssignedSamplesInput = {
@@ -990,10 +1063,12 @@ export type UserUpdateWithoutAssignedSamplesInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAssignedSamplesInput = {
@@ -1009,7 +1084,97 @@ export type UserUncheckedUpdateWithoutAssignedSamplesInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutExtraFactoriesInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  scope?: $Enums.Scope
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
+  factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+}
+
+export type UserUncheckedCreateWithoutExtraFactoriesInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  roleId: string
+  scope?: $Enums.Scope
+  companyId?: string | null
+  factoryId?: string | null
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+}
+
+export type UserCreateOrConnectWithoutExtraFactoriesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutExtraFactoriesInput, Prisma.UserUncheckedCreateWithoutExtraFactoriesInput>
+}
+
+export type UserUpsertWithoutExtraFactoriesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutExtraFactoriesInput, Prisma.UserUncheckedUpdateWithoutExtraFactoriesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutExtraFactoriesInput, Prisma.UserUncheckedCreateWithoutExtraFactoriesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutExtraFactoriesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutExtraFactoriesInput, Prisma.UserUncheckedUpdateWithoutExtraFactoriesInput>
+}
+
+export type UserUpdateWithoutExtraFactoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
+  factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+}
+
+export type UserUncheckedUpdateWithoutExtraFactoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
 }
 
 export type UserCreateManyCompanyInput = {
@@ -1024,6 +1189,7 @@ export type UserCreateManyCompanyInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
 }
 
 export type UserUpdateWithoutCompanyInput = {
@@ -1036,10 +1202,12 @@ export type UserUpdateWithoutCompanyInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCompanyInput = {
@@ -1054,8 +1222,10 @@ export type UserUncheckedUpdateWithoutCompanyInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutCompanyInput = {
@@ -1070,6 +1240,7 @@ export type UserUncheckedUpdateManyWithoutCompanyInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserCreateManyFactoryInput = {
@@ -1084,6 +1255,7 @@ export type UserCreateManyFactoryInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
 }
 
 export type UserUpdateWithoutFactoryInput = {
@@ -1096,10 +1268,12 @@ export type UserUpdateWithoutFactoryInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFactoryInput = {
@@ -1114,8 +1288,10 @@ export type UserUncheckedUpdateWithoutFactoryInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutFactoryInput = {
@@ -1130,6 +1306,7 @@ export type UserUncheckedUpdateManyWithoutFactoryInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserCreateManyRoleInput = {
@@ -1144,6 +1321,7 @@ export type UserCreateManyRoleInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  locale?: string
 }
 
 export type UserUpdateWithoutRoleInput = {
@@ -1156,10 +1334,12 @@ export type UserUpdateWithoutRoleInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRoleInput = {
@@ -1174,8 +1354,10 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -1190,6 +1372,7 @@ export type UserUncheckedUpdateManyWithoutRoleInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -1200,11 +1383,13 @@ export type UserUncheckedUpdateManyWithoutRoleInput = {
 export type UserCountOutputType = {
   auditLogs: number
   assignedSamples: number
+  extraFactories: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
   assignedSamples?: boolean | UserCountOutputTypeCountAssignedSamplesArgs
+  extraFactories?: boolean | UserCountOutputTypeCountExtraFactoriesArgs
 }
 
 /**
@@ -1231,6 +1416,13 @@ export type UserCountOutputTypeCountAssignedSamplesArgs<ExtArgs extends runtime.
   where?: Prisma.SampleRequestWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountExtraFactoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserFactoryAccessWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1245,11 +1437,13 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  locale?: boolean
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   company?: boolean | Prisma.User$companyArgs<ExtArgs>
   factory?: boolean | Prisma.User$factoryArgs<ExtArgs>
   auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
   assignedSamples?: boolean | Prisma.User$assignedSamplesArgs<ExtArgs>
+  extraFactories?: boolean | Prisma.User$extraFactoriesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1266,6 +1460,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  locale?: boolean
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   company?: boolean | Prisma.User$companyArgs<ExtArgs>
   factory?: boolean | Prisma.User$factoryArgs<ExtArgs>
@@ -1284,6 +1479,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  locale?: boolean
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   company?: boolean | Prisma.User$companyArgs<ExtArgs>
   factory?: boolean | Prisma.User$factoryArgs<ExtArgs>
@@ -1302,15 +1498,17 @@ export type UserSelectScalar = {
   lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  locale?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "passwordHash" | "roleId" | "scope" | "companyId" | "factoryId" | "status" | "lastLoginAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "passwordHash" | "roleId" | "scope" | "companyId" | "factoryId" | "status" | "lastLoginAt" | "createdAt" | "updatedAt" | "locale", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   company?: boolean | Prisma.User$companyArgs<ExtArgs>
   factory?: boolean | Prisma.User$factoryArgs<ExtArgs>
   auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
   assignedSamples?: boolean | Prisma.User$assignedSamplesArgs<ExtArgs>
+  extraFactories?: boolean | Prisma.User$extraFactoriesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1332,6 +1530,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     factory: Prisma.$FactoryPayload<ExtArgs> | null
     auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
     assignedSamples: Prisma.$SampleRequestPayload<ExtArgs>[]
+    extraFactories: Prisma.$UserFactoryAccessPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1346,6 +1545,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     lastLoginAt: Date | null
     createdAt: Date
     updatedAt: Date
+    locale: string
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1745,6 +1945,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   factory<T extends Prisma.User$factoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$factoryArgs<ExtArgs>>): Prisma.Prisma__FactoryClient<runtime.Types.Result.GetResult<Prisma.$FactoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   auditLogs<T extends Prisma.User$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   assignedSamples<T extends Prisma.User$assignedSamplesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$assignedSamplesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SampleRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  extraFactories<T extends Prisma.User$extraFactoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$extraFactoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserFactoryAccessPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1786,6 +1987,7 @@ export interface UserFieldRefs {
   readonly lastLoginAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly locale: Prisma.FieldRef<"User", 'String'>
 }
     
 
@@ -2270,6 +2472,30 @@ export type User$assignedSamplesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.SampleRequestScalarFieldEnum | Prisma.SampleRequestScalarFieldEnum[]
+}
+
+/**
+ * User.extraFactories
+ */
+export type User$extraFactoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserFactoryAccess
+   */
+  select?: Prisma.UserFactoryAccessSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserFactoryAccess
+   */
+  omit?: Prisma.UserFactoryAccessOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserFactoryAccessInclude<ExtArgs> | null
+  where?: Prisma.UserFactoryAccessWhereInput
+  orderBy?: Prisma.UserFactoryAccessOrderByWithRelationInput | Prisma.UserFactoryAccessOrderByWithRelationInput[]
+  cursor?: Prisma.UserFactoryAccessWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserFactoryAccessScalarFieldEnum | Prisma.UserFactoryAccessScalarFieldEnum[]
 }
 
 /**
