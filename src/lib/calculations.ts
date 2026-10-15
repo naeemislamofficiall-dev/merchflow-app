@@ -12,14 +12,25 @@ export function costItemAmount(line: CostLine): number {
   return round(withWastage * line.unitPrice, 4);
 }
 
-// মোট খরচ আর মার্জিন সহ কোট করা দাম
+// মার্জিন % = লাভ ÷ বিক্রয়মূল্য × ১০০ (স্পেক, সেকশন ১২)
+// উদাহরণ: খরচ ১০০, মার্জিন ২০% হলে দাম = ১০০ ÷ ০.৮ = ১২৫
 export function costSheetTotals(lines: CostLine[], marginPct: number) {
+  if (marginPct < 0 || marginPct >= 100) {
+    throw new Error("Margin must be 0 or more and less than 100");
+  }
   const totalCost = round(
     lines.reduce((sum, l) => sum + costItemAmount(l), 0),
     4
   );
-  const quotedPrice = round(totalCost * (1 + marginPct / 100), 4);
-  return { totalCost, quotedPrice };
+  const quotedPrice = round(totalCost / (1 - marginPct / 100), 4);
+  const profit = round(quotedPrice - totalCost, 4);
+  return { totalCost, quotedPrice, profit };
+}
+
+// দাম জানা থাকলে মার্জিন % বের করে
+export function marginFromPrice(totalCost: number, price: number): number {
+  if (price <= 0) return 0;
+  return round(((price - totalCost) / price) * 100, 2);
 }
 
 // ---------- BOM ও MRP (সেকশন ১৩, ১৪) ----------
@@ -143,4 +154,21 @@ export function supplierScorecard(s: ScorecardStats) {
     rejectionPct: pct(s.receivedQty - s.acceptedQty, s.receivedQty),
     poCompletionPct: pct(s.posCompleted, s.posTotal),
   };
+}
+
+// ---------- Color/Size Matrix (সেকশন ৯) ----------
+
+type MatrixCell = { colorId: string; sizeId: string; quantity: number };
+
+// রং ধরে যোগফল, সাইজ ধরে যোগফল আর মোট
+export function matrixTotals(cells: MatrixCell[]) {
+  const byColor: Record<string, number> = {};
+  const bySize: Record<string, number> = {};
+  let total = 0;
+  for (const c of cells) {
+    byColor[c.colorId] = (byColor[c.colorId] ?? 0) + c.quantity;
+    bySize[c.sizeId] = (bySize[c.sizeId] ?? 0) + c.quantity;
+    total += c.quantity;
+  }
+  return { byColor, bySize, total };
 }

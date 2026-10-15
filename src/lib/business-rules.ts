@@ -156,3 +156,36 @@ export async function assertRfqReadyToSend(rfqId: string) {
   if (lines === 0) throw new BusinessRuleError("Add at least one RFQ line first");
   if (suppliers === 0) throw new BusinessRuleError("Add at least one supplier first");
 }
+
+// Approved Style চুপচাপ বদলানো যাবে না, নতুন revision বানাতে হবে (সেকশন ৮)
+export async function assertStyleEditable(styleId: string) {
+  const style = await prisma.style.findUnique({ where: { id: styleId } });
+  if (!style) throw new BusinessRuleError("Style not found");
+  if (style.status === "APPROVED") {
+    throw new BusinessRuleError("Approved style cannot be edited. Create a new revision");
+  }
+  return style;
+}
+
+// অর্ডার লাইনের রং-সাইজ ম্যাট্রিক্স ঠিক আছে কিনা (সেকশন ৯)
+export async function assertMatrixMatchesLine(orderLineId: string) {
+  const line = await prisma.orderLine.findUnique({
+    where: { id: orderLineId },
+    include: { matrix: { include: { color: true, size: true } } },
+  });
+  if (!line) throw new BusinessRuleError("Order line not found");
+
+  for (const cell of line.matrix) {
+    if (cell.color.styleId !== line.styleId || cell.size.styleId !== line.styleId) {
+      throw new BusinessRuleError("Color and size must belong to the line's style");
+    }
+  }
+
+  const total = line.matrix.reduce((sum, c) => sum + c.quantity, 0);
+  if (line.matrix.length > 0 && total !== line.quantity) {
+    throw new BusinessRuleError(
+      `Matrix total (${total}) must equal line quantity (${line.quantity})`
+    );
+  }
+  return line;
+}

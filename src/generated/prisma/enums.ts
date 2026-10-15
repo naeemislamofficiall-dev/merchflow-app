@@ -30,13 +30,30 @@ export type Scope = (typeof Scope)[keyof typeof Scope]
 
 export const EnquiryStatus = {
   DRAFT: 'DRAFT',
-  SUBMITTED: 'SUBMITTED',
+  COSTING: 'COSTING',
+  NEGOTIATION: 'NEGOTIATION',
   QUOTED: 'QUOTED',
-  CONFIRMED: 'CONFIRMED',
+  APPROVED: 'APPROVED',
+  CONVERTED: 'CONVERTED',
   CANCELLED: 'CANCELLED'
 } as const
 
 export type EnquiryStatus = (typeof EnquiryStatus)[keyof typeof EnquiryStatus]
+
+
+export const StyleDocType = {
+  TECH_PACK: 'TECH_PACK',
+  MEASUREMENT_SHEET: 'MEASUREMENT_SHEET',
+  ARTWORK: 'ARTWORK',
+  CONSTRUCTION_SHEET: 'CONSTRUCTION_SHEET',
+  BUYER_COMMENTS: 'BUYER_COMMENTS',
+  REFERENCE_IMAGE: 'REFERENCE_IMAGE',
+  CAD_FILE: 'CAD_FILE',
+  APPROVED_SAMPLE_PHOTO: 'APPROVED_SAMPLE_PHOTO',
+  TEST_REPORT: 'TEST_REPORT'
+} as const
+
+export type StyleDocType = (typeof StyleDocType)[keyof typeof StyleDocType]
 
 
 export const StyleStatus = {
@@ -81,10 +98,12 @@ export type SampleStatus = (typeof SampleStatus)[keyof typeof SampleStatus]
 
 
 export const TnaTaskStatus = {
-  PENDING: 'PENDING',
-  IN_PROGRESS: 'IN_PROGRESS',
-  DONE: 'DONE',
-  DELAYED: 'DELAYED'
+  NOT_STARTED: 'NOT_STARTED',
+  ON_TRACK: 'ON_TRACK',
+  AT_RISK: 'AT_RISK',
+  DELAYED: 'DELAYED',
+  COMPLETED: 'COMPLETED',
+  WAIVED: 'WAIVED'
 } as const
 
 export type TnaTaskStatus = (typeof TnaTaskStatus)[keyof typeof TnaTaskStatus]
@@ -111,11 +130,17 @@ export type BomStatus = (typeof BomStatus)[keyof typeof BomStatus]
 
 export const CostCategory = {
   FABRIC: 'FABRIC',
+  YARN: 'YARN',
   TRIM: 'TRIM',
   CM: 'CM',
   WASH: 'WASH',
   PRINT_EMB: 'PRINT_EMB',
+  PACKING: 'PACKING',
+  TESTING: 'TESTING',
   OVERHEAD: 'OVERHEAD',
+  COMMERCIAL: 'COMMERCIAL',
+  COMMISSION: 'COMMISSION',
+  FREIGHT: 'FREIGHT',
   OTHER: 'OTHER'
 } as const
 
@@ -124,6 +149,7 @@ export type CostCategory = (typeof CostCategory)[keyof typeof CostCategory]
 
 export const BomItemType = {
   FABRIC: 'FABRIC',
+  YARN: 'YARN',
   TRIM: 'TRIM',
   PACKING: 'PACKING'
 } as const
@@ -237,3 +263,344 @@ export const RfqStatus = {
 } as const
 
 export type RfqStatus = (typeof RfqStatus)[keyof typeof RfqStatus]
+
+
+export const DocumentAccess = {
+  COMPANY: 'COMPANY',
+  FACTORY: 'FACTORY',
+  PRIVATE: 'PRIVATE'
+} as const
+
+export type DocumentAccess = (typeof DocumentAccess)[keyof typeof DocumentAccess]
+
+
+export const ApprovalStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type ApprovalStatus = (typeof ApprovalStatus)[keyof typeof ApprovalStatus]
+
+
+export const ApprovalDecision = {
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type ApprovalDecision = (typeof ApprovalDecision)[keyof typeof ApprovalDecision]
+
+
+export const NotificationChannel = {
+  IN_APP: 'IN_APP',
+  EMAIL: 'EMAIL',
+  WHATSAPP: 'WHATSAPP',
+  SMS: 'SMS'
+} as const
+
+export type NotificationChannel = (typeof NotificationChannel)[keyof typeof NotificationChannel]
+
+
+export const NotificationType = {
+  GENERAL: 'GENERAL',
+  APPROVAL_PENDING: 'APPROVAL_PENDING',
+  TNA_OVERDUE: 'TNA_OVERDUE',
+  SUPPLIER_LATE: 'SUPPLIER_LATE',
+  MATERIAL_SHORTAGE: 'MATERIAL_SHORTAGE',
+  PRODUCTION_BELOW_TARGET: 'PRODUCTION_BELOW_TARGET',
+  QC_FAILURE: 'QC_FAILURE',
+  CERTIFICATE_EXPIRY: 'CERTIFICATE_EXPIRY',
+  SHIPMENT_RISK: 'SHIPMENT_RISK'
+} as const
+
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
+
+
+export const CostSheetType = {
+  PRE: 'PRE',
+  POST: 'POST'
+} as const
+
+export type CostSheetType = (typeof CostSheetType)[keyof typeof CostSheetType]
+
+
+export const GrnStatus = {
+  DRAFT: 'DRAFT',
+  POSTED: 'POSTED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type GrnStatus = (typeof GrnStatus)[keyof typeof GrnStatus]
+
+
+export const StockTxnType = {
+  GRN: 'GRN',
+  ISSUE: 'ISSUE',
+  RETURN: 'RETURN',
+  TRANSFER_IN: 'TRANSFER_IN',
+  TRANSFER_OUT: 'TRANSFER_OUT',
+  ADJUSTMENT: 'ADJUSTMENT',
+  STOCK_COUNT: 'STOCK_COUNT',
+  DAMAGE: 'DAMAGE',
+  SCRAP: 'SCRAP'
+} as const
+
+export type StockTxnType = (typeof StockTxnType)[keyof typeof StockTxnType]
+
+
+export const ReservationStatus = {
+  ACTIVE: 'ACTIVE',
+  RELEASED: 'RELEASED',
+  CONSUMED: 'CONSUMED'
+} as const
+
+export type ReservationStatus = (typeof ReservationStatus)[keyof typeof ReservationStatus]
+
+
+export const IssueTarget = {
+  PRODUCTION_ORDER: 'PRODUCTION_ORDER',
+  CUTTING_ORDER: 'CUTTING_ORDER',
+  SAMPLE: 'SAMPLE',
+  DEPARTMENT: 'DEPARTMENT',
+  SUBCONTRACT: 'SUBCONTRACT'
+} as const
+
+export type IssueTarget = (typeof IssueTarget)[keyof typeof IssueTarget]
+
+
+export const AdjustmentReason = {
+  COUNT_CORRECTION: 'COUNT_CORRECTION',
+  DAMAGE: 'DAMAGE',
+  SCRAP: 'SCRAP',
+  LOSS: 'LOSS',
+  FOUND: 'FOUND',
+  SUPPLIER_RETURN: 'SUPPLIER_RETURN',
+  OTHER: 'OTHER'
+} as const
+
+export type AdjustmentReason = (typeof AdjustmentReason)[keyof typeof AdjustmentReason]
+
+
+export const InspectionResult = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  CONDITIONAL: 'CONDITIONAL',
+  REJECTED: 'REJECTED'
+} as const
+
+export type InspectionResult = (typeof InspectionResult)[keyof typeof InspectionResult]
+
+
+export const ProductionStatus = {
+  PLANNED: 'PLANNED',
+  RELEASED: 'RELEASED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  PAUSED: 'PAUSED',
+  COMPLETED: 'COMPLETED',
+  CLOSED: 'CLOSED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type ProductionStatus = (typeof ProductionStatus)[keyof typeof ProductionStatus]
+
+
+export const ProcessType = {
+  CUTTING: 'CUTTING',
+  PRINTING: 'PRINTING',
+  EMBROIDERY: 'EMBROIDERY',
+  SEWING: 'SEWING',
+  WASHING: 'WASHING',
+  FINISHING: 'FINISHING',
+  PACKING: 'PACKING'
+} as const
+
+export type ProcessType = (typeof ProcessType)[keyof typeof ProcessType]
+
+
+export const CutPlanStatus = {
+  PLANNED: 'PLANNED',
+  FABRIC_RESERVED: 'FABRIC_RESERVED',
+  CUTTING: 'CUTTING',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type CutPlanStatus = (typeof CutPlanStatus)[keyof typeof CutPlanStatus]
+
+
+export const LayStatus = {
+  PLANNED: 'PLANNED',
+  CUT: 'CUT'
+} as const
+
+export type LayStatus = (typeof LayStatus)[keyof typeof LayStatus]
+
+
+export const SubcontractStatus = {
+  SENT: 'SENT',
+  VENDOR_RECEIVED: 'VENDOR_RECEIVED',
+  IN_PROCESS: 'IN_PROCESS',
+  RETURNED: 'RETURNED',
+  QC_DONE: 'QC_DONE',
+  CLOSED: 'CLOSED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type SubcontractStatus = (typeof SubcontractStatus)[keyof typeof SubcontractStatus]
+
+
+export const InspectionStage = {
+  INCOMING: 'INCOMING',
+  FABRIC: 'FABRIC',
+  CUTTING: 'CUTTING',
+  INLINE: 'INLINE',
+  ENDLINE: 'ENDLINE',
+  FINISHING: 'FINISHING',
+  FINAL: 'FINAL',
+  PRESHIPMENT: 'PRESHIPMENT'
+} as const
+
+export type InspectionStage = (typeof InspectionStage)[keyof typeof InspectionStage]
+
+
+export const DefectSeverity = {
+  MINOR: 'MINOR',
+  MAJOR: 'MAJOR',
+  CRITICAL: 'CRITICAL'
+} as const
+
+export type DefectSeverity = (typeof DefectSeverity)[keyof typeof DefectSeverity]
+
+
+export const AqlResult = {
+  PASS: 'PASS',
+  FAIL: 'FAIL',
+  HOLD: 'HOLD'
+} as const
+
+export type AqlResult = (typeof AqlResult)[keyof typeof AqlResult]
+
+
+export const CapaStatus = {
+  OPEN: 'OPEN',
+  ROOT_CAUSE: 'ROOT_CAUSE',
+  ACTION: 'ACTION',
+  VERIFICATION: 'VERIFICATION',
+  CLOSED: 'CLOSED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type CapaStatus = (typeof CapaStatus)[keyof typeof CapaStatus]
+
+
+export const PackType = {
+  SOLID: 'SOLID',
+  ASSORTMENT: 'ASSORTMENT',
+  RATIO: 'RATIO',
+  PREPACK: 'PREPACK'
+} as const
+
+export type PackType = (typeof PackType)[keyof typeof PackType]
+
+
+export const CartonStatus = {
+  OPEN: 'OPEN',
+  CLOSED: 'CLOSED',
+  SHIPPED: 'SHIPPED'
+} as const
+
+export type CartonStatus = (typeof CartonStatus)[keyof typeof CartonStatus]
+
+
+export const ShipmentStatus = {
+  DRAFT: 'DRAFT',
+  PLANNED: 'PLANNED',
+  DOCUMENTS_READY: 'DOCUMENTS_READY',
+  BOOKED: 'BOOKED',
+  SHIPPED: 'SHIPPED',
+  DELIVERED: 'DELIVERED',
+  CLOSED: 'CLOSED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type ShipmentStatus = (typeof ShipmentStatus)[keyof typeof ShipmentStatus]
+
+
+export const ShipMode = {
+  SEA: 'SEA',
+  AIR: 'AIR',
+  ROAD: 'ROAD',
+  COURIER: 'COURIER'
+} as const
+
+export type ShipMode = (typeof ShipMode)[keyof typeof ShipMode]
+
+
+export const ExportDocStatus = {
+  DRAFT: 'DRAFT',
+  READY: 'READY',
+  SUBMITTED: 'SUBMITTED',
+  HANDED_OVER: 'HANDED_OVER'
+} as const
+
+export type ExportDocStatus = (typeof ExportDocStatus)[keyof typeof ExportDocStatus]
+
+
+export const InvoiceStatus = {
+  DRAFT: 'DRAFT',
+  POSTED: 'POSTED',
+  PARTIALLY_PAID: 'PARTIALLY_PAID',
+  PAID: 'PAID',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type InvoiceStatus = (typeof InvoiceStatus)[keyof typeof InvoiceStatus]
+
+
+export const MatchStatus = {
+  UNMATCHED: 'UNMATCHED',
+  MATCHED: 'MATCHED',
+  MISMATCH: 'MISMATCH'
+} as const
+
+export type MatchStatus = (typeof MatchStatus)[keyof typeof MatchStatus]
+
+
+export const PaymentDirection = {
+  OUT: 'OUT',
+  IN: 'IN'
+} as const
+
+export type PaymentDirection = (typeof PaymentDirection)[keyof typeof PaymentDirection]
+
+
+export const PaymentMethod = {
+  CASH: 'CASH',
+  BANK: 'BANK',
+  CHEQUE: 'CHEQUE',
+  LC: 'LC',
+  MOBILE: 'MOBILE'
+} as const
+
+export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const ExpenseCategory = {
+  FACTORY: 'FACTORY',
+  PRODUCTION: 'PRODUCTION',
+  FREIGHT: 'FREIGHT',
+  SAMPLE: 'SAMPLE',
+  OTHER: 'OTHER'
+} as const
+
+export type ExpenseCategory = (typeof ExpenseCategory)[keyof typeof ExpenseCategory]
+
+
+export const ExpenseStatus = {
+  DRAFT: 'DRAFT',
+  APPROVED: 'APPROVED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type ExpenseStatus = (typeof ExpenseStatus)[keyof typeof ExpenseStatus]

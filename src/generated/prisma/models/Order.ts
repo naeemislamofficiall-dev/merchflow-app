@@ -312,6 +312,7 @@ export type OrderWhereInput = {
   baseCurrency?: Prisma.StringNullableFilter<"Order"> | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"Order"> | Date | string | null
+  sourceEnquiry?: Prisma.XOR<Prisma.EnquiryNullableScalarRelationFilter, Prisma.EnquiryWhereInput> | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   buyer?: Prisma.XOR<Prisma.BuyerScalarRelationFilter, Prisma.BuyerWhereInput>
   season?: Prisma.XOR<Prisma.SeasonNullableScalarRelationFilter, Prisma.SeasonWhereInput> | null
@@ -320,6 +321,8 @@ export type OrderWhereInput = {
   sampleRequests?: Prisma.SampleRequestListRelationFilter
   tnaPlans?: Prisma.TnaPlanListRelationFilter
   mrpRuns?: Prisma.MrpRunListRelationFilter
+  costSheets?: Prisma.CostSheetListRelationFilter
+  productionOrders?: Prisma.ProductionOrderListRelationFilter
   purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
   purchaseOrderLines?: Prisma.PurchaseOrderLineListRelationFilter
 }
@@ -342,6 +345,7 @@ export type OrderOrderByWithRelationInput = {
   baseCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
   exchangeRate?: Prisma.SortOrderInput | Prisma.SortOrder
   rateDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  sourceEnquiry?: Prisma.EnquiryOrderByWithRelationInput
   company?: Prisma.CompanyOrderByWithRelationInput
   buyer?: Prisma.BuyerOrderByWithRelationInput
   season?: Prisma.SeasonOrderByWithRelationInput
@@ -350,6 +354,8 @@ export type OrderOrderByWithRelationInput = {
   sampleRequests?: Prisma.SampleRequestOrderByRelationAggregateInput
   tnaPlans?: Prisma.TnaPlanOrderByRelationAggregateInput
   mrpRuns?: Prisma.MrpRunOrderByRelationAggregateInput
+  costSheets?: Prisma.CostSheetOrderByRelationAggregateInput
+  productionOrders?: Prisma.ProductionOrderOrderByRelationAggregateInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionOrderByRelationAggregateInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineOrderByRelationAggregateInput
 }
@@ -376,6 +382,7 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   baseCurrency?: Prisma.StringNullableFilter<"Order"> | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"Order"> | Date | string | null
+  sourceEnquiry?: Prisma.XOR<Prisma.EnquiryNullableScalarRelationFilter, Prisma.EnquiryWhereInput> | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   buyer?: Prisma.XOR<Prisma.BuyerScalarRelationFilter, Prisma.BuyerWhereInput>
   season?: Prisma.XOR<Prisma.SeasonNullableScalarRelationFilter, Prisma.SeasonWhereInput> | null
@@ -384,6 +391,8 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   sampleRequests?: Prisma.SampleRequestListRelationFilter
   tnaPlans?: Prisma.TnaPlanListRelationFilter
   mrpRuns?: Prisma.MrpRunListRelationFilter
+  costSheets?: Prisma.CostSheetListRelationFilter
+  productionOrders?: Prisma.ProductionOrderListRelationFilter
   purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
   purchaseOrderLines?: Prisma.PurchaseOrderLineListRelationFilter
 }, "id" | "companyId_orderNo">
@@ -451,6 +460,7 @@ export type OrderCreateInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
   company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
   buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
   season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
@@ -459,6 +469,8 @@ export type OrderCreateInput = {
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
 }
@@ -481,11 +493,14 @@ export type OrderUncheckedCreateInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
   amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
 }
@@ -505,6 +520,7 @@ export type OrderUpdateInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
   season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
@@ -513,6 +529,8 @@ export type OrderUpdateInput = {
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
 }
@@ -535,11 +553,14 @@ export type OrderUncheckedUpdateInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
   amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
@@ -778,6 +799,22 @@ export type OrderUncheckedUpdateManyWithoutBuyerNestedInput = {
   deleteMany?: Prisma.OrderScalarWhereInput | Prisma.OrderScalarWhereInput[]
 }
 
+export type OrderCreateNestedOneWithoutSourceEnquiryInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutSourceEnquiryInput, Prisma.OrderUncheckedCreateWithoutSourceEnquiryInput>
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutSourceEnquiryInput
+  connect?: Prisma.OrderWhereUniqueInput
+}
+
+export type OrderUpdateOneWithoutSourceEnquiryNestedInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutSourceEnquiryInput, Prisma.OrderUncheckedCreateWithoutSourceEnquiryInput>
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutSourceEnquiryInput
+  upsert?: Prisma.OrderUpsertWithoutSourceEnquiryInput
+  disconnect?: Prisma.OrderWhereInput | boolean
+  delete?: Prisma.OrderWhereInput | boolean
+  connect?: Prisma.OrderWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrderUpdateToOneWithWhereWithoutSourceEnquiryInput, Prisma.OrderUpdateWithoutSourceEnquiryInput>, Prisma.OrderUncheckedUpdateWithoutSourceEnquiryInput>
+}
+
 export type OrderCreateNestedOneWithoutSampleRequestsInput = {
   create?: Prisma.XOR<Prisma.OrderCreateWithoutSampleRequestsInput, Prisma.OrderUncheckedCreateWithoutSampleRequestsInput>
   connectOrCreate?: Prisma.OrderCreateOrConnectWithoutSampleRequestsInput
@@ -808,6 +845,22 @@ export type OrderUpdateOneWithoutTnaPlansNestedInput = {
   delete?: Prisma.OrderWhereInput | boolean
   connect?: Prisma.OrderWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrderUpdateToOneWithWhereWithoutTnaPlansInput, Prisma.OrderUpdateWithoutTnaPlansInput>, Prisma.OrderUncheckedUpdateWithoutTnaPlansInput>
+}
+
+export type OrderCreateNestedOneWithoutCostSheetsInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutCostSheetsInput, Prisma.OrderUncheckedCreateWithoutCostSheetsInput>
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutCostSheetsInput
+  connect?: Prisma.OrderWhereUniqueInput
+}
+
+export type OrderUpdateOneWithoutCostSheetsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutCostSheetsInput, Prisma.OrderUncheckedCreateWithoutCostSheetsInput>
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutCostSheetsInput
+  upsert?: Prisma.OrderUpsertWithoutCostSheetsInput
+  disconnect?: Prisma.OrderWhereInput | boolean
+  delete?: Prisma.OrderWhereInput | boolean
+  connect?: Prisma.OrderWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrderUpdateToOneWithWhereWithoutCostSheetsInput, Prisma.OrderUpdateWithoutCostSheetsInput>, Prisma.OrderUncheckedUpdateWithoutCostSheetsInput>
 }
 
 export type OrderCreateNestedOneWithoutMrpRunsInput = {
@@ -932,6 +985,20 @@ export type OrderUpdateOneWithoutPurchaseOrderLinesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrderUpdateToOneWithWhereWithoutPurchaseOrderLinesInput, Prisma.OrderUpdateWithoutPurchaseOrderLinesInput>, Prisma.OrderUncheckedUpdateWithoutPurchaseOrderLinesInput>
 }
 
+export type OrderCreateNestedOneWithoutProductionOrdersInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutProductionOrdersInput, Prisma.OrderUncheckedCreateWithoutProductionOrdersInput>
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutProductionOrdersInput
+  connect?: Prisma.OrderWhereUniqueInput
+}
+
+export type OrderUpdateOneRequiredWithoutProductionOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutProductionOrdersInput, Prisma.OrderUncheckedCreateWithoutProductionOrdersInput>
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutProductionOrdersInput
+  upsert?: Prisma.OrderUpsertWithoutProductionOrdersInput
+  connect?: Prisma.OrderWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrderUpdateToOneWithWhereWithoutProductionOrdersInput, Prisma.OrderUpdateWithoutProductionOrdersInput>, Prisma.OrderUncheckedUpdateWithoutProductionOrdersInput>
+}
+
 export type OrderCreateWithoutCompanyInput = {
   id?: string
   orderNo: string
@@ -947,6 +1014,7 @@ export type OrderCreateWithoutCompanyInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
   buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
   season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
   lines?: Prisma.OrderLineCreateNestedManyWithoutOrderInput
@@ -954,6 +1022,8 @@ export type OrderCreateWithoutCompanyInput = {
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
 }
@@ -975,11 +1045,14 @@ export type OrderUncheckedCreateWithoutCompanyInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
   amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
 }
@@ -1048,6 +1121,7 @@ export type OrderCreateWithoutBuyerInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
   company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
   season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
   lines?: Prisma.OrderLineCreateNestedManyWithoutOrderInput
@@ -1055,6 +1129,8 @@ export type OrderCreateWithoutBuyerInput = {
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
 }
@@ -1076,11 +1152,14 @@ export type OrderUncheckedCreateWithoutBuyerInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
   amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
 }
@@ -1111,7 +1190,7 @@ export type OrderUpdateManyWithWhereWithoutBuyerInput = {
   data: Prisma.XOR<Prisma.OrderUpdateManyMutationInput, Prisma.OrderUncheckedUpdateManyWithoutBuyerInput>
 }
 
-export type OrderCreateWithoutSampleRequestsInput = {
+export type OrderCreateWithoutSourceEnquiryInput = {
   id?: string
   orderNo: string
   buyerPoNo?: string | null
@@ -1131,8 +1210,143 @@ export type OrderCreateWithoutSampleRequestsInput = {
   season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
   lines?: Prisma.OrderLineCreateNestedManyWithoutOrderInput
   amendments?: Prisma.OrderAmendmentCreateNestedManyWithoutOrderInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
+}
+
+export type OrderUncheckedCreateWithoutSourceEnquiryInput = {
+  id?: string
+  companyId: string
+  orderNo: string
+  buyerId: string
+  buyerPoNo?: string | null
+  seasonId?: string | null
+  currency?: string
+  orderDate?: Date | string
+  shipDate?: Date | string | null
+  status?: $Enums.OrderStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  baseCurrency?: string | null
+  exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Date | string | null
+  lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
+  amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
+}
+
+export type OrderCreateOrConnectWithoutSourceEnquiryInput = {
+  where: Prisma.OrderWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrderCreateWithoutSourceEnquiryInput, Prisma.OrderUncheckedCreateWithoutSourceEnquiryInput>
+}
+
+export type OrderUpsertWithoutSourceEnquiryInput = {
+  update: Prisma.XOR<Prisma.OrderUpdateWithoutSourceEnquiryInput, Prisma.OrderUncheckedUpdateWithoutSourceEnquiryInput>
+  create: Prisma.XOR<Prisma.OrderCreateWithoutSourceEnquiryInput, Prisma.OrderUncheckedCreateWithoutSourceEnquiryInput>
+  where?: Prisma.OrderWhereInput
+}
+
+export type OrderUpdateToOneWithWhereWithoutSourceEnquiryInput = {
+  where?: Prisma.OrderWhereInput
+  data: Prisma.XOR<Prisma.OrderUpdateWithoutSourceEnquiryInput, Prisma.OrderUncheckedUpdateWithoutSourceEnquiryInput>
+}
+
+export type OrderUpdateWithoutSourceEnquiryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  orderNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerPoNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  orderDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
+  season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
+  lines?: Prisma.OrderLineUpdateManyWithoutOrderNestedInput
+  amendments?: Prisma.OrderAmendmentUpdateManyWithoutOrderNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
+}
+
+export type OrderUncheckedUpdateWithoutSourceEnquiryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerPoNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  orderDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
+  amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
+}
+
+export type OrderCreateWithoutSampleRequestsInput = {
+  id?: string
+  orderNo: string
+  buyerPoNo?: string | null
+  currency?: string
+  orderDate?: Date | string
+  shipDate?: Date | string | null
+  status?: $Enums.OrderStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  baseCurrency?: string | null
+  exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
+  company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
+  season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
+  lines?: Prisma.OrderLineCreateNestedManyWithoutOrderInput
+  amendments?: Prisma.OrderAmendmentCreateNestedManyWithoutOrderInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
 }
@@ -1155,10 +1369,13 @@ export type OrderUncheckedCreateWithoutSampleRequestsInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
   amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
 }
@@ -1194,6 +1411,7 @@ export type OrderUpdateWithoutSampleRequestsInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
   season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
@@ -1201,6 +1419,8 @@ export type OrderUpdateWithoutSampleRequestsInput = {
   amendments?: Prisma.OrderAmendmentUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
 }
@@ -1223,10 +1443,13 @@ export type OrderUncheckedUpdateWithoutSampleRequestsInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
   amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
@@ -1246,6 +1469,7 @@ export type OrderCreateWithoutTnaPlansInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
   company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
   buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
   season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
@@ -1253,6 +1477,8 @@ export type OrderCreateWithoutTnaPlansInput = {
   amendments?: Prisma.OrderAmendmentCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
 }
@@ -1275,10 +1501,13 @@ export type OrderUncheckedCreateWithoutTnaPlansInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
   amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
 }
@@ -1314,6 +1543,7 @@ export type OrderUpdateWithoutTnaPlansInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
   season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
@@ -1321,6 +1551,8 @@ export type OrderUpdateWithoutTnaPlansInput = {
   amendments?: Prisma.OrderAmendmentUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
 }
@@ -1343,10 +1575,145 @@ export type OrderUncheckedUpdateWithoutTnaPlansInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
   amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
+}
+
+export type OrderCreateWithoutCostSheetsInput = {
+  id?: string
+  orderNo: string
+  buyerPoNo?: string | null
+  currency?: string
+  orderDate?: Date | string
+  shipDate?: Date | string | null
+  status?: $Enums.OrderStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  baseCurrency?: string | null
+  exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
+  company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
+  season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
+  lines?: Prisma.OrderLineCreateNestedManyWithoutOrderInput
+  amendments?: Prisma.OrderAmendmentCreateNestedManyWithoutOrderInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
+}
+
+export type OrderUncheckedCreateWithoutCostSheetsInput = {
+  id?: string
+  companyId: string
+  orderNo: string
+  buyerId: string
+  buyerPoNo?: string | null
+  seasonId?: string | null
+  currency?: string
+  orderDate?: Date | string
+  shipDate?: Date | string | null
+  status?: $Enums.OrderStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  baseCurrency?: string | null
+  exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
+  lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
+  amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
+}
+
+export type OrderCreateOrConnectWithoutCostSheetsInput = {
+  where: Prisma.OrderWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrderCreateWithoutCostSheetsInput, Prisma.OrderUncheckedCreateWithoutCostSheetsInput>
+}
+
+export type OrderUpsertWithoutCostSheetsInput = {
+  update: Prisma.XOR<Prisma.OrderUpdateWithoutCostSheetsInput, Prisma.OrderUncheckedUpdateWithoutCostSheetsInput>
+  create: Prisma.XOR<Prisma.OrderCreateWithoutCostSheetsInput, Prisma.OrderUncheckedCreateWithoutCostSheetsInput>
+  where?: Prisma.OrderWhereInput
+}
+
+export type OrderUpdateToOneWithWhereWithoutCostSheetsInput = {
+  where?: Prisma.OrderWhereInput
+  data: Prisma.XOR<Prisma.OrderUpdateWithoutCostSheetsInput, Prisma.OrderUncheckedUpdateWithoutCostSheetsInput>
+}
+
+export type OrderUpdateWithoutCostSheetsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  orderNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerPoNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  orderDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
+  season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
+  lines?: Prisma.OrderLineUpdateManyWithoutOrderNestedInput
+  amendments?: Prisma.OrderAmendmentUpdateManyWithoutOrderNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
+}
+
+export type OrderUncheckedUpdateWithoutCostSheetsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerPoNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  orderDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
+  lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
+  amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
@@ -1366,6 +1733,7 @@ export type OrderCreateWithoutMrpRunsInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
   company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
   buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
   season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
@@ -1373,6 +1741,8 @@ export type OrderCreateWithoutMrpRunsInput = {
   amendments?: Prisma.OrderAmendmentCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
 }
@@ -1395,10 +1765,13 @@ export type OrderUncheckedCreateWithoutMrpRunsInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
   amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
 }
@@ -1434,6 +1807,7 @@ export type OrderUpdateWithoutMrpRunsInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
   season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
@@ -1441,6 +1815,8 @@ export type OrderUpdateWithoutMrpRunsInput = {
   amendments?: Prisma.OrderAmendmentUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
 }
@@ -1463,10 +1839,13 @@ export type OrderUncheckedUpdateWithoutMrpRunsInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
   amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
@@ -1486,6 +1865,7 @@ export type OrderCreateWithoutSeasonInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
   company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
   buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
   lines?: Prisma.OrderLineCreateNestedManyWithoutOrderInput
@@ -1493,6 +1873,8 @@ export type OrderCreateWithoutSeasonInput = {
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
 }
@@ -1514,11 +1896,14 @@ export type OrderUncheckedCreateWithoutSeasonInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
   amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
 }
@@ -1564,6 +1949,7 @@ export type OrderCreateWithoutLinesInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
   company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
   buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
   season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
@@ -1571,6 +1957,8 @@ export type OrderCreateWithoutLinesInput = {
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
 }
@@ -1593,10 +1981,13 @@ export type OrderUncheckedCreateWithoutLinesInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
 }
@@ -1632,6 +2023,7 @@ export type OrderUpdateWithoutLinesInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
   season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
@@ -1639,6 +2031,8 @@ export type OrderUpdateWithoutLinesInput = {
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
 }
@@ -1661,10 +2055,13 @@ export type OrderUncheckedUpdateWithoutLinesInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
@@ -1684,6 +2081,7 @@ export type OrderCreateWithoutAmendmentsInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
   company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
   buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
   season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
@@ -1691,6 +2089,8 @@ export type OrderCreateWithoutAmendmentsInput = {
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
 }
@@ -1713,10 +2113,13 @@ export type OrderUncheckedCreateWithoutAmendmentsInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
 }
@@ -1752,6 +2155,7 @@ export type OrderUpdateWithoutAmendmentsInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
   season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
@@ -1759,6 +2163,8 @@ export type OrderUpdateWithoutAmendmentsInput = {
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
 }
@@ -1781,10 +2187,13 @@ export type OrderUncheckedUpdateWithoutAmendmentsInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
@@ -1804,6 +2213,7 @@ export type OrderCreateWithoutPurchaseRequisitionsInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
   company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
   buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
   season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
@@ -1812,6 +2222,8 @@ export type OrderCreateWithoutPurchaseRequisitionsInput = {
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
 }
 
@@ -1833,11 +2245,14 @@ export type OrderUncheckedCreateWithoutPurchaseRequisitionsInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
   amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
 }
 
@@ -1872,6 +2287,7 @@ export type OrderUpdateWithoutPurchaseRequisitionsInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
   season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
@@ -1880,6 +2296,8 @@ export type OrderUpdateWithoutPurchaseRequisitionsInput = {
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
 }
 
@@ -1901,11 +2319,14 @@ export type OrderUncheckedUpdateWithoutPurchaseRequisitionsInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
   amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
 
@@ -1924,6 +2345,7 @@ export type OrderCreateWithoutPurchaseOrderLinesInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
   company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
   buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
   season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
@@ -1932,6 +2354,8 @@ export type OrderCreateWithoutPurchaseOrderLinesInput = {
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
 }
 
@@ -1953,11 +2377,14 @@ export type OrderUncheckedCreateWithoutPurchaseOrderLinesInput = {
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
   lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
   amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
   mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutOrderInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
 }
 
@@ -1992,6 +2419,7 @@ export type OrderUpdateWithoutPurchaseOrderLinesInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
   season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
@@ -2000,6 +2428,8 @@ export type OrderUpdateWithoutPurchaseOrderLinesInput = {
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
 }
 
@@ -2021,12 +2451,147 @@ export type OrderUncheckedUpdateWithoutPurchaseOrderLinesInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
   amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
+}
+
+export type OrderCreateWithoutProductionOrdersInput = {
+  id?: string
+  orderNo: string
+  buyerPoNo?: string | null
+  currency?: string
+  orderDate?: Date | string
+  shipDate?: Date | string | null
+  status?: $Enums.OrderStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  baseCurrency?: string | null
+  exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryCreateNestedOneWithoutConvertedOrderInput
+  company: Prisma.CompanyCreateNestedOneWithoutOrdersInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutOrdersInput
+  season?: Prisma.SeasonCreateNestedOneWithoutOrdersInput
+  lines?: Prisma.OrderLineCreateNestedManyWithoutOrderInput
+  amendments?: Prisma.OrderAmendmentCreateNestedManyWithoutOrderInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutOrderInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutOrderInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutOrderInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutOrderInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutOrderInput
+}
+
+export type OrderUncheckedCreateWithoutProductionOrdersInput = {
+  id?: string
+  companyId: string
+  orderNo: string
+  buyerId: string
+  buyerPoNo?: string | null
+  seasonId?: string | null
+  currency?: string
+  orderDate?: Date | string
+  shipDate?: Date | string | null
+  status?: $Enums.OrderStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  baseCurrency?: string | null
+  exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput
+  lines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutOrderInput
+  amendments?: Prisma.OrderAmendmentUncheckedCreateNestedManyWithoutOrderInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutOrderInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutOrderInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutOrderInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutOrderInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutOrderInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutOrderInput
+}
+
+export type OrderCreateOrConnectWithoutProductionOrdersInput = {
+  where: Prisma.OrderWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrderCreateWithoutProductionOrdersInput, Prisma.OrderUncheckedCreateWithoutProductionOrdersInput>
+}
+
+export type OrderUpsertWithoutProductionOrdersInput = {
+  update: Prisma.XOR<Prisma.OrderUpdateWithoutProductionOrdersInput, Prisma.OrderUncheckedUpdateWithoutProductionOrdersInput>
+  create: Prisma.XOR<Prisma.OrderCreateWithoutProductionOrdersInput, Prisma.OrderUncheckedCreateWithoutProductionOrdersInput>
+  where?: Prisma.OrderWhereInput
+}
+
+export type OrderUpdateToOneWithWhereWithoutProductionOrdersInput = {
+  where?: Prisma.OrderWhereInput
+  data: Prisma.XOR<Prisma.OrderUpdateWithoutProductionOrdersInput, Prisma.OrderUncheckedUpdateWithoutProductionOrdersInput>
+}
+
+export type OrderUpdateWithoutProductionOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  orderNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerPoNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  orderDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
+  season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
+  lines?: Prisma.OrderLineUpdateManyWithoutOrderNestedInput
+  amendments?: Prisma.OrderAmendmentUpdateManyWithoutOrderNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
+}
+
+export type OrderUncheckedUpdateWithoutProductionOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  orderNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerPoNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  orderDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
+  lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
+  amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
+  purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
 
 export type OrderCreateManyCompanyInput = {
@@ -2063,6 +2628,7 @@ export type OrderUpdateWithoutCompanyInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
   season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
   lines?: Prisma.OrderLineUpdateManyWithoutOrderNestedInput
@@ -2070,6 +2636,8 @@ export type OrderUpdateWithoutCompanyInput = {
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
 }
@@ -2091,11 +2659,14 @@ export type OrderUncheckedUpdateWithoutCompanyInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
   amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
@@ -2153,6 +2724,7 @@ export type OrderUpdateWithoutBuyerInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
   season?: Prisma.SeasonUpdateOneWithoutOrdersNestedInput
   lines?: Prisma.OrderLineUpdateManyWithoutOrderNestedInput
@@ -2160,6 +2732,8 @@ export type OrderUpdateWithoutBuyerInput = {
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
 }
@@ -2181,11 +2755,14 @@ export type OrderUncheckedUpdateWithoutBuyerInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
   amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
@@ -2243,6 +2820,7 @@ export type OrderUpdateWithoutSeasonInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUpdateOneWithoutConvertedOrderNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutOrdersNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutOrdersNestedInput
   lines?: Prisma.OrderLineUpdateManyWithoutOrderNestedInput
@@ -2250,6 +2828,8 @@ export type OrderUpdateWithoutSeasonInput = {
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUpdateManyWithoutOrderNestedInput
 }
@@ -2271,11 +2851,14 @@ export type OrderUncheckedUpdateWithoutSeasonInput = {
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sourceEnquiry?: Prisma.EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput
   lines?: Prisma.OrderLineUncheckedUpdateManyWithoutOrderNestedInput
   amendments?: Prisma.OrderAmendmentUncheckedUpdateManyWithoutOrderNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutOrderNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutOrderNestedInput
   mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutOrderNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutOrderNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutOrderNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutOrderNestedInput
   purchaseOrderLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderNestedInput
 }
@@ -2310,6 +2893,8 @@ export type OrderCountOutputType = {
   sampleRequests: number
   tnaPlans: number
   mrpRuns: number
+  costSheets: number
+  productionOrders: number
   purchaseRequisitions: number
   purchaseOrderLines: number
 }
@@ -2320,6 +2905,8 @@ export type OrderCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   sampleRequests?: boolean | OrderCountOutputTypeCountSampleRequestsArgs
   tnaPlans?: boolean | OrderCountOutputTypeCountTnaPlansArgs
   mrpRuns?: boolean | OrderCountOutputTypeCountMrpRunsArgs
+  costSheets?: boolean | OrderCountOutputTypeCountCostSheetsArgs
+  productionOrders?: boolean | OrderCountOutputTypeCountProductionOrdersArgs
   purchaseRequisitions?: boolean | OrderCountOutputTypeCountPurchaseRequisitionsArgs
   purchaseOrderLines?: boolean | OrderCountOutputTypeCountPurchaseOrderLinesArgs
 }
@@ -2372,6 +2959,20 @@ export type OrderCountOutputTypeCountMrpRunsArgs<ExtArgs extends runtime.Types.E
 /**
  * OrderCountOutputType without action
  */
+export type OrderCountOutputTypeCountCostSheetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CostSheetWhereInput
+}
+
+/**
+ * OrderCountOutputType without action
+ */
+export type OrderCountOutputTypeCountProductionOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductionOrderWhereInput
+}
+
+/**
+ * OrderCountOutputType without action
+ */
 export type OrderCountOutputTypeCountPurchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PurchaseRequisitionWhereInput
 }
@@ -2402,6 +3003,7 @@ export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   baseCurrency?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
+  sourceEnquiry?: boolean | Prisma.Order$sourceEnquiryArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
   season?: boolean | Prisma.Order$seasonArgs<ExtArgs>
@@ -2410,6 +3012,8 @@ export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   sampleRequests?: boolean | Prisma.Order$sampleRequestsArgs<ExtArgs>
   tnaPlans?: boolean | Prisma.Order$tnaPlansArgs<ExtArgs>
   mrpRuns?: boolean | Prisma.Order$mrpRunsArgs<ExtArgs>
+  costSheets?: boolean | Prisma.Order$costSheetsArgs<ExtArgs>
+  productionOrders?: boolean | Prisma.Order$productionOrdersArgs<ExtArgs>
   purchaseRequisitions?: boolean | Prisma.Order$purchaseRequisitionsArgs<ExtArgs>
   purchaseOrderLines?: boolean | Prisma.Order$purchaseOrderLinesArgs<ExtArgs>
   _count?: boolean | Prisma.OrderCountOutputTypeDefaultArgs<ExtArgs>
@@ -2483,6 +3087,7 @@ export type OrderSelectScalar = {
 
 export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "orderNo" | "buyerId" | "buyerPoNo" | "seasonId" | "currency" | "orderDate" | "shipDate" | "status" | "notes" | "createdById" | "createdAt" | "updatedAt" | "baseCurrency" | "exchangeRate" | "rateDate", ExtArgs["result"]["order"]>
 export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  sourceEnquiry?: boolean | Prisma.Order$sourceEnquiryArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
   season?: boolean | Prisma.Order$seasonArgs<ExtArgs>
@@ -2491,6 +3096,8 @@ export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   sampleRequests?: boolean | Prisma.Order$sampleRequestsArgs<ExtArgs>
   tnaPlans?: boolean | Prisma.Order$tnaPlansArgs<ExtArgs>
   mrpRuns?: boolean | Prisma.Order$mrpRunsArgs<ExtArgs>
+  costSheets?: boolean | Prisma.Order$costSheetsArgs<ExtArgs>
+  productionOrders?: boolean | Prisma.Order$productionOrdersArgs<ExtArgs>
   purchaseRequisitions?: boolean | Prisma.Order$purchaseRequisitionsArgs<ExtArgs>
   purchaseOrderLines?: boolean | Prisma.Order$purchaseOrderLinesArgs<ExtArgs>
   _count?: boolean | Prisma.OrderCountOutputTypeDefaultArgs<ExtArgs>
@@ -2509,6 +3116,7 @@ export type OrderIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Order"
   objects: {
+    sourceEnquiry: Prisma.$EnquiryPayload<ExtArgs> | null
     company: Prisma.$CompanyPayload<ExtArgs>
     buyer: Prisma.$BuyerPayload<ExtArgs>
     season: Prisma.$SeasonPayload<ExtArgs> | null
@@ -2517,6 +3125,8 @@ export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     sampleRequests: Prisma.$SampleRequestPayload<ExtArgs>[]
     tnaPlans: Prisma.$TnaPlanPayload<ExtArgs>[]
     mrpRuns: Prisma.$MrpRunPayload<ExtArgs>[]
+    costSheets: Prisma.$CostSheetPayload<ExtArgs>[]
+    productionOrders: Prisma.$ProductionOrderPayload<ExtArgs>[]
     purchaseRequisitions: Prisma.$PurchaseRequisitionPayload<ExtArgs>[]
     purchaseOrderLines: Prisma.$PurchaseOrderLinePayload<ExtArgs>[]
   }
@@ -2932,6 +3542,7 @@ readonly fields: OrderFieldRefs;
  */
 export interface Prisma__OrderClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  sourceEnquiry<T extends Prisma.Order$sourceEnquiryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$sourceEnquiryArgs<ExtArgs>>): Prisma.Prisma__EnquiryClient<runtime.Types.Result.GetResult<Prisma.$EnquiryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   buyer<T extends Prisma.BuyerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BuyerDefaultArgs<ExtArgs>>): Prisma.Prisma__BuyerClient<runtime.Types.Result.GetResult<Prisma.$BuyerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   season<T extends Prisma.Order$seasonArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$seasonArgs<ExtArgs>>): Prisma.Prisma__SeasonClient<runtime.Types.Result.GetResult<Prisma.$SeasonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -2940,6 +3551,8 @@ export interface Prisma__OrderClient<T, Null = never, ExtArgs extends runtime.Ty
   sampleRequests<T extends Prisma.Order$sampleRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$sampleRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SampleRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tnaPlans<T extends Prisma.Order$tnaPlansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$tnaPlansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaPlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   mrpRuns<T extends Prisma.Order$mrpRunsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$mrpRunsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MrpRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  costSheets<T extends Prisma.Order$costSheetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$costSheetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CostSheetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  productionOrders<T extends Prisma.Order$productionOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$productionOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductionOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   purchaseRequisitions<T extends Prisma.Order$purchaseRequisitionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$purchaseRequisitionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   purchaseOrderLines<T extends Prisma.Order$purchaseOrderLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$purchaseOrderLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -3389,6 +4002,25 @@ export type OrderDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+ * Order.sourceEnquiry
+ */
+export type Order$sourceEnquiryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Enquiry
+   */
+  select?: Prisma.EnquirySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Enquiry
+   */
+  omit?: Prisma.EnquiryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnquiryInclude<ExtArgs> | null
+  where?: Prisma.EnquiryWhereInput
+}
+
+/**
  * Order.season
  */
 export type Order$seasonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3525,6 +4157,54 @@ export type Order$mrpRunsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.MrpRunScalarFieldEnum | Prisma.MrpRunScalarFieldEnum[]
+}
+
+/**
+ * Order.costSheets
+ */
+export type Order$costSheetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CostSheet
+   */
+  select?: Prisma.CostSheetSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CostSheet
+   */
+  omit?: Prisma.CostSheetOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CostSheetInclude<ExtArgs> | null
+  where?: Prisma.CostSheetWhereInput
+  orderBy?: Prisma.CostSheetOrderByWithRelationInput | Prisma.CostSheetOrderByWithRelationInput[]
+  cursor?: Prisma.CostSheetWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CostSheetScalarFieldEnum | Prisma.CostSheetScalarFieldEnum[]
+}
+
+/**
+ * Order.productionOrders
+ */
+export type Order$productionOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProductionOrder
+   */
+  select?: Prisma.ProductionOrderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProductionOrder
+   */
+  omit?: Prisma.ProductionOrderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductionOrderInclude<ExtArgs> | null
+  where?: Prisma.ProductionOrderWhereInput
+  orderBy?: Prisma.ProductionOrderOrderByWithRelationInput | Prisma.ProductionOrderOrderByWithRelationInput[]
+  cursor?: Prisma.ProductionOrderWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProductionOrderScalarFieldEnum | Prisma.ProductionOrderScalarFieldEnum[]
 }
 
 /**

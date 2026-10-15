@@ -27,11 +27,13 @@ export type AggregateBomItem = {
 }
 
 export type BomItemAvgAggregateOutputType = {
+  rate: runtime.Decimal | null
   consumption: runtime.Decimal | null
   wastagePct: runtime.Decimal | null
 }
 
 export type BomItemSumAggregateOutputType = {
+  rate: runtime.Decimal | null
   consumption: runtime.Decimal | null
   wastagePct: runtime.Decimal | null
 }
@@ -41,6 +43,12 @@ export type BomItemMinAggregateOutputType = {
   bomId: string | null
   itemType: $Enums.BomItemType | null
   itemName: string | null
+  subCategory: string | null
+  materialId: string | null
+  supplierId: string | null
+  rate: runtime.Decimal | null
+  currency: string | null
+  effectiveDate: Date | null
   unit: string | null
   consumption: runtime.Decimal | null
   wastagePct: runtime.Decimal | null
@@ -51,6 +59,12 @@ export type BomItemMaxAggregateOutputType = {
   bomId: string | null
   itemType: $Enums.BomItemType | null
   itemName: string | null
+  subCategory: string | null
+  materialId: string | null
+  supplierId: string | null
+  rate: runtime.Decimal | null
+  currency: string | null
+  effectiveDate: Date | null
   unit: string | null
   consumption: runtime.Decimal | null
   wastagePct: runtime.Decimal | null
@@ -61,6 +75,12 @@ export type BomItemCountAggregateOutputType = {
   bomId: number
   itemType: number
   itemName: number
+  subCategory: number
+  materialId: number
+  supplierId: number
+  rate: number
+  currency: number
+  effectiveDate: number
   unit: number
   consumption: number
   wastagePct: number
@@ -69,11 +89,13 @@ export type BomItemCountAggregateOutputType = {
 
 
 export type BomItemAvgAggregateInputType = {
+  rate?: true
   consumption?: true
   wastagePct?: true
 }
 
 export type BomItemSumAggregateInputType = {
+  rate?: true
   consumption?: true
   wastagePct?: true
 }
@@ -83,6 +105,12 @@ export type BomItemMinAggregateInputType = {
   bomId?: true
   itemType?: true
   itemName?: true
+  subCategory?: true
+  materialId?: true
+  supplierId?: true
+  rate?: true
+  currency?: true
+  effectiveDate?: true
   unit?: true
   consumption?: true
   wastagePct?: true
@@ -93,6 +121,12 @@ export type BomItemMaxAggregateInputType = {
   bomId?: true
   itemType?: true
   itemName?: true
+  subCategory?: true
+  materialId?: true
+  supplierId?: true
+  rate?: true
+  currency?: true
+  effectiveDate?: true
   unit?: true
   consumption?: true
   wastagePct?: true
@@ -103,6 +137,12 @@ export type BomItemCountAggregateInputType = {
   bomId?: true
   itemType?: true
   itemName?: true
+  subCategory?: true
+  materialId?: true
+  supplierId?: true
+  rate?: true
+  currency?: true
+  effectiveDate?: true
   unit?: true
   consumption?: true
   wastagePct?: true
@@ -200,6 +240,12 @@ export type BomItemGroupByOutputType = {
   bomId: string
   itemType: $Enums.BomItemType
   itemName: string
+  subCategory: string | null
+  materialId: string | null
+  supplierId: string | null
+  rate: runtime.Decimal | null
+  currency: string | null
+  effectiveDate: Date | null
   unit: string
   consumption: runtime.Decimal
   wastagePct: runtime.Decimal
@@ -233,9 +279,17 @@ export type BomItemWhereInput = {
   bomId?: Prisma.StringFilter<"BomItem"> | string
   itemType?: Prisma.EnumBomItemTypeFilter<"BomItem"> | $Enums.BomItemType
   itemName?: Prisma.StringFilter<"BomItem"> | string
+  subCategory?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  materialId?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  supplierId?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  rate?: Prisma.DecimalNullableFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  effectiveDate?: Prisma.DateTimeNullableFilter<"BomItem"> | Date | string | null
   unit?: Prisma.StringFilter<"BomItem"> | string
   consumption?: Prisma.DecimalFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  material?: Prisma.XOR<Prisma.MaterialNullableScalarRelationFilter, Prisma.MaterialWhereInput> | null
+  supplier?: Prisma.XOR<Prisma.SupplierNullableScalarRelationFilter, Prisma.SupplierWhereInput> | null
   bom?: Prisma.XOR<Prisma.BomScalarRelationFilter, Prisma.BomWhereInput>
   mrpLines?: Prisma.MrpLineListRelationFilter
 }
@@ -245,9 +299,17 @@ export type BomItemOrderByWithRelationInput = {
   bomId?: Prisma.SortOrder
   itemType?: Prisma.SortOrder
   itemName?: Prisma.SortOrder
+  subCategory?: Prisma.SortOrderInput | Prisma.SortOrder
+  materialId?: Prisma.SortOrderInput | Prisma.SortOrder
+  supplierId?: Prisma.SortOrderInput | Prisma.SortOrder
+  rate?: Prisma.SortOrderInput | Prisma.SortOrder
+  currency?: Prisma.SortOrderInput | Prisma.SortOrder
+  effectiveDate?: Prisma.SortOrderInput | Prisma.SortOrder
   unit?: Prisma.SortOrder
   consumption?: Prisma.SortOrder
   wastagePct?: Prisma.SortOrder
+  material?: Prisma.MaterialOrderByWithRelationInput
+  supplier?: Prisma.SupplierOrderByWithRelationInput
   bom?: Prisma.BomOrderByWithRelationInput
   mrpLines?: Prisma.MrpLineOrderByRelationAggregateInput
 }
@@ -260,9 +322,17 @@ export type BomItemWhereUniqueInput = Prisma.AtLeast<{
   bomId?: Prisma.StringFilter<"BomItem"> | string
   itemType?: Prisma.EnumBomItemTypeFilter<"BomItem"> | $Enums.BomItemType
   itemName?: Prisma.StringFilter<"BomItem"> | string
+  subCategory?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  materialId?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  supplierId?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  rate?: Prisma.DecimalNullableFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  effectiveDate?: Prisma.DateTimeNullableFilter<"BomItem"> | Date | string | null
   unit?: Prisma.StringFilter<"BomItem"> | string
   consumption?: Prisma.DecimalFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  material?: Prisma.XOR<Prisma.MaterialNullableScalarRelationFilter, Prisma.MaterialWhereInput> | null
+  supplier?: Prisma.XOR<Prisma.SupplierNullableScalarRelationFilter, Prisma.SupplierWhereInput> | null
   bom?: Prisma.XOR<Prisma.BomScalarRelationFilter, Prisma.BomWhereInput>
   mrpLines?: Prisma.MrpLineListRelationFilter
 }, "id">
@@ -272,6 +342,12 @@ export type BomItemOrderByWithAggregationInput = {
   bomId?: Prisma.SortOrder
   itemType?: Prisma.SortOrder
   itemName?: Prisma.SortOrder
+  subCategory?: Prisma.SortOrderInput | Prisma.SortOrder
+  materialId?: Prisma.SortOrderInput | Prisma.SortOrder
+  supplierId?: Prisma.SortOrderInput | Prisma.SortOrder
+  rate?: Prisma.SortOrderInput | Prisma.SortOrder
+  currency?: Prisma.SortOrderInput | Prisma.SortOrder
+  effectiveDate?: Prisma.SortOrderInput | Prisma.SortOrder
   unit?: Prisma.SortOrder
   consumption?: Prisma.SortOrder
   wastagePct?: Prisma.SortOrder
@@ -290,6 +366,12 @@ export type BomItemScalarWhereWithAggregatesInput = {
   bomId?: Prisma.StringWithAggregatesFilter<"BomItem"> | string
   itemType?: Prisma.EnumBomItemTypeWithAggregatesFilter<"BomItem"> | $Enums.BomItemType
   itemName?: Prisma.StringWithAggregatesFilter<"BomItem"> | string
+  subCategory?: Prisma.StringNullableWithAggregatesFilter<"BomItem"> | string | null
+  materialId?: Prisma.StringNullableWithAggregatesFilter<"BomItem"> | string | null
+  supplierId?: Prisma.StringNullableWithAggregatesFilter<"BomItem"> | string | null
+  rate?: Prisma.DecimalNullableWithAggregatesFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.StringNullableWithAggregatesFilter<"BomItem"> | string | null
+  effectiveDate?: Prisma.DateTimeNullableWithAggregatesFilter<"BomItem"> | Date | string | null
   unit?: Prisma.StringWithAggregatesFilter<"BomItem"> | string
   consumption?: Prisma.DecimalWithAggregatesFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalWithAggregatesFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -299,9 +381,15 @@ export type BomItemCreateInput = {
   id?: string
   itemType: $Enums.BomItemType
   itemName: string
+  subCategory?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
   unit?: string
   consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  material?: Prisma.MaterialCreateNestedOneWithoutBomItemsInput
+  supplier?: Prisma.SupplierCreateNestedOneWithoutBomItemsInput
   bom: Prisma.BomCreateNestedOneWithoutItemsInput
   mrpLines?: Prisma.MrpLineCreateNestedManyWithoutBomItemInput
 }
@@ -311,6 +399,12 @@ export type BomItemUncheckedCreateInput = {
   bomId: string
   itemType: $Enums.BomItemType
   itemName: string
+  subCategory?: string | null
+  materialId?: string | null
+  supplierId?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
   unit?: string
   consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -321,9 +415,15 @@ export type BomItemUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  material?: Prisma.MaterialUpdateOneWithoutBomItemsNestedInput
+  supplier?: Prisma.SupplierUpdateOneWithoutBomItemsNestedInput
   bom?: Prisma.BomUpdateOneRequiredWithoutItemsNestedInput
   mrpLines?: Prisma.MrpLineUpdateManyWithoutBomItemNestedInput
 }
@@ -333,6 +433,12 @@ export type BomItemUncheckedUpdateInput = {
   bomId?: Prisma.StringFieldUpdateOperationsInput | string
   itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  supplierId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -344,6 +450,12 @@ export type BomItemCreateManyInput = {
   bomId: string
   itemType: $Enums.BomItemType
   itemName: string
+  subCategory?: string | null
+  materialId?: string | null
+  supplierId?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
   unit?: string
   consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -353,6 +465,10 @@ export type BomItemUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -363,6 +479,12 @@ export type BomItemUncheckedUpdateManyInput = {
   bomId?: Prisma.StringFieldUpdateOperationsInput | string
   itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  supplierId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -383,12 +505,19 @@ export type BomItemCountOrderByAggregateInput = {
   bomId?: Prisma.SortOrder
   itemType?: Prisma.SortOrder
   itemName?: Prisma.SortOrder
+  subCategory?: Prisma.SortOrder
+  materialId?: Prisma.SortOrder
+  supplierId?: Prisma.SortOrder
+  rate?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  effectiveDate?: Prisma.SortOrder
   unit?: Prisma.SortOrder
   consumption?: Prisma.SortOrder
   wastagePct?: Prisma.SortOrder
 }
 
 export type BomItemAvgOrderByAggregateInput = {
+  rate?: Prisma.SortOrder
   consumption?: Prisma.SortOrder
   wastagePct?: Prisma.SortOrder
 }
@@ -398,6 +527,12 @@ export type BomItemMaxOrderByAggregateInput = {
   bomId?: Prisma.SortOrder
   itemType?: Prisma.SortOrder
   itemName?: Prisma.SortOrder
+  subCategory?: Prisma.SortOrder
+  materialId?: Prisma.SortOrder
+  supplierId?: Prisma.SortOrder
+  rate?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  effectiveDate?: Prisma.SortOrder
   unit?: Prisma.SortOrder
   consumption?: Prisma.SortOrder
   wastagePct?: Prisma.SortOrder
@@ -408,12 +543,19 @@ export type BomItemMinOrderByAggregateInput = {
   bomId?: Prisma.SortOrder
   itemType?: Prisma.SortOrder
   itemName?: Prisma.SortOrder
+  subCategory?: Prisma.SortOrder
+  materialId?: Prisma.SortOrder
+  supplierId?: Prisma.SortOrder
+  rate?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  effectiveDate?: Prisma.SortOrder
   unit?: Prisma.SortOrder
   consumption?: Prisma.SortOrder
   wastagePct?: Prisma.SortOrder
 }
 
 export type BomItemSumOrderByAggregateInput = {
+  rate?: Prisma.SortOrder
   consumption?: Prisma.SortOrder
   wastagePct?: Prisma.SortOrder
 }
@@ -483,13 +625,103 @@ export type BomItemUpdateOneRequiredWithoutMrpLinesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BomItemUpdateToOneWithWhereWithoutMrpLinesInput, Prisma.BomItemUpdateWithoutMrpLinesInput>, Prisma.BomItemUncheckedUpdateWithoutMrpLinesInput>
 }
 
+export type BomItemCreateNestedManyWithoutMaterialInput = {
+  create?: Prisma.XOR<Prisma.BomItemCreateWithoutMaterialInput, Prisma.BomItemUncheckedCreateWithoutMaterialInput> | Prisma.BomItemCreateWithoutMaterialInput[] | Prisma.BomItemUncheckedCreateWithoutMaterialInput[]
+  connectOrCreate?: Prisma.BomItemCreateOrConnectWithoutMaterialInput | Prisma.BomItemCreateOrConnectWithoutMaterialInput[]
+  createMany?: Prisma.BomItemCreateManyMaterialInputEnvelope
+  connect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+}
+
+export type BomItemUncheckedCreateNestedManyWithoutMaterialInput = {
+  create?: Prisma.XOR<Prisma.BomItemCreateWithoutMaterialInput, Prisma.BomItemUncheckedCreateWithoutMaterialInput> | Prisma.BomItemCreateWithoutMaterialInput[] | Prisma.BomItemUncheckedCreateWithoutMaterialInput[]
+  connectOrCreate?: Prisma.BomItemCreateOrConnectWithoutMaterialInput | Prisma.BomItemCreateOrConnectWithoutMaterialInput[]
+  createMany?: Prisma.BomItemCreateManyMaterialInputEnvelope
+  connect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+}
+
+export type BomItemUpdateManyWithoutMaterialNestedInput = {
+  create?: Prisma.XOR<Prisma.BomItemCreateWithoutMaterialInput, Prisma.BomItemUncheckedCreateWithoutMaterialInput> | Prisma.BomItemCreateWithoutMaterialInput[] | Prisma.BomItemUncheckedCreateWithoutMaterialInput[]
+  connectOrCreate?: Prisma.BomItemCreateOrConnectWithoutMaterialInput | Prisma.BomItemCreateOrConnectWithoutMaterialInput[]
+  upsert?: Prisma.BomItemUpsertWithWhereUniqueWithoutMaterialInput | Prisma.BomItemUpsertWithWhereUniqueWithoutMaterialInput[]
+  createMany?: Prisma.BomItemCreateManyMaterialInputEnvelope
+  set?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  disconnect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  delete?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  connect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  update?: Prisma.BomItemUpdateWithWhereUniqueWithoutMaterialInput | Prisma.BomItemUpdateWithWhereUniqueWithoutMaterialInput[]
+  updateMany?: Prisma.BomItemUpdateManyWithWhereWithoutMaterialInput | Prisma.BomItemUpdateManyWithWhereWithoutMaterialInput[]
+  deleteMany?: Prisma.BomItemScalarWhereInput | Prisma.BomItemScalarWhereInput[]
+}
+
+export type BomItemUncheckedUpdateManyWithoutMaterialNestedInput = {
+  create?: Prisma.XOR<Prisma.BomItemCreateWithoutMaterialInput, Prisma.BomItemUncheckedCreateWithoutMaterialInput> | Prisma.BomItemCreateWithoutMaterialInput[] | Prisma.BomItemUncheckedCreateWithoutMaterialInput[]
+  connectOrCreate?: Prisma.BomItemCreateOrConnectWithoutMaterialInput | Prisma.BomItemCreateOrConnectWithoutMaterialInput[]
+  upsert?: Prisma.BomItemUpsertWithWhereUniqueWithoutMaterialInput | Prisma.BomItemUpsertWithWhereUniqueWithoutMaterialInput[]
+  createMany?: Prisma.BomItemCreateManyMaterialInputEnvelope
+  set?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  disconnect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  delete?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  connect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  update?: Prisma.BomItemUpdateWithWhereUniqueWithoutMaterialInput | Prisma.BomItemUpdateWithWhereUniqueWithoutMaterialInput[]
+  updateMany?: Prisma.BomItemUpdateManyWithWhereWithoutMaterialInput | Prisma.BomItemUpdateManyWithWhereWithoutMaterialInput[]
+  deleteMany?: Prisma.BomItemScalarWhereInput | Prisma.BomItemScalarWhereInput[]
+}
+
+export type BomItemCreateNestedManyWithoutSupplierInput = {
+  create?: Prisma.XOR<Prisma.BomItemCreateWithoutSupplierInput, Prisma.BomItemUncheckedCreateWithoutSupplierInput> | Prisma.BomItemCreateWithoutSupplierInput[] | Prisma.BomItemUncheckedCreateWithoutSupplierInput[]
+  connectOrCreate?: Prisma.BomItemCreateOrConnectWithoutSupplierInput | Prisma.BomItemCreateOrConnectWithoutSupplierInput[]
+  createMany?: Prisma.BomItemCreateManySupplierInputEnvelope
+  connect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+}
+
+export type BomItemUncheckedCreateNestedManyWithoutSupplierInput = {
+  create?: Prisma.XOR<Prisma.BomItemCreateWithoutSupplierInput, Prisma.BomItemUncheckedCreateWithoutSupplierInput> | Prisma.BomItemCreateWithoutSupplierInput[] | Prisma.BomItemUncheckedCreateWithoutSupplierInput[]
+  connectOrCreate?: Prisma.BomItemCreateOrConnectWithoutSupplierInput | Prisma.BomItemCreateOrConnectWithoutSupplierInput[]
+  createMany?: Prisma.BomItemCreateManySupplierInputEnvelope
+  connect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+}
+
+export type BomItemUpdateManyWithoutSupplierNestedInput = {
+  create?: Prisma.XOR<Prisma.BomItemCreateWithoutSupplierInput, Prisma.BomItemUncheckedCreateWithoutSupplierInput> | Prisma.BomItemCreateWithoutSupplierInput[] | Prisma.BomItemUncheckedCreateWithoutSupplierInput[]
+  connectOrCreate?: Prisma.BomItemCreateOrConnectWithoutSupplierInput | Prisma.BomItemCreateOrConnectWithoutSupplierInput[]
+  upsert?: Prisma.BomItemUpsertWithWhereUniqueWithoutSupplierInput | Prisma.BomItemUpsertWithWhereUniqueWithoutSupplierInput[]
+  createMany?: Prisma.BomItemCreateManySupplierInputEnvelope
+  set?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  disconnect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  delete?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  connect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  update?: Prisma.BomItemUpdateWithWhereUniqueWithoutSupplierInput | Prisma.BomItemUpdateWithWhereUniqueWithoutSupplierInput[]
+  updateMany?: Prisma.BomItemUpdateManyWithWhereWithoutSupplierInput | Prisma.BomItemUpdateManyWithWhereWithoutSupplierInput[]
+  deleteMany?: Prisma.BomItemScalarWhereInput | Prisma.BomItemScalarWhereInput[]
+}
+
+export type BomItemUncheckedUpdateManyWithoutSupplierNestedInput = {
+  create?: Prisma.XOR<Prisma.BomItemCreateWithoutSupplierInput, Prisma.BomItemUncheckedCreateWithoutSupplierInput> | Prisma.BomItemCreateWithoutSupplierInput[] | Prisma.BomItemUncheckedCreateWithoutSupplierInput[]
+  connectOrCreate?: Prisma.BomItemCreateOrConnectWithoutSupplierInput | Prisma.BomItemCreateOrConnectWithoutSupplierInput[]
+  upsert?: Prisma.BomItemUpsertWithWhereUniqueWithoutSupplierInput | Prisma.BomItemUpsertWithWhereUniqueWithoutSupplierInput[]
+  createMany?: Prisma.BomItemCreateManySupplierInputEnvelope
+  set?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  disconnect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  delete?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  connect?: Prisma.BomItemWhereUniqueInput | Prisma.BomItemWhereUniqueInput[]
+  update?: Prisma.BomItemUpdateWithWhereUniqueWithoutSupplierInput | Prisma.BomItemUpdateWithWhereUniqueWithoutSupplierInput[]
+  updateMany?: Prisma.BomItemUpdateManyWithWhereWithoutSupplierInput | Prisma.BomItemUpdateManyWithWhereWithoutSupplierInput[]
+  deleteMany?: Prisma.BomItemScalarWhereInput | Prisma.BomItemScalarWhereInput[]
+}
+
 export type BomItemCreateWithoutBomInput = {
   id?: string
   itemType: $Enums.BomItemType
   itemName: string
+  subCategory?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
   unit?: string
   consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  material?: Prisma.MaterialCreateNestedOneWithoutBomItemsInput
+  supplier?: Prisma.SupplierCreateNestedOneWithoutBomItemsInput
   mrpLines?: Prisma.MrpLineCreateNestedManyWithoutBomItemInput
 }
 
@@ -497,6 +729,12 @@ export type BomItemUncheckedCreateWithoutBomInput = {
   id?: string
   itemType: $Enums.BomItemType
   itemName: string
+  subCategory?: string | null
+  materialId?: string | null
+  supplierId?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
   unit?: string
   consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -537,6 +775,12 @@ export type BomItemScalarWhereInput = {
   bomId?: Prisma.StringFilter<"BomItem"> | string
   itemType?: Prisma.EnumBomItemTypeFilter<"BomItem"> | $Enums.BomItemType
   itemName?: Prisma.StringFilter<"BomItem"> | string
+  subCategory?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  materialId?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  supplierId?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  rate?: Prisma.DecimalNullableFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.StringNullableFilter<"BomItem"> | string | null
+  effectiveDate?: Prisma.DateTimeNullableFilter<"BomItem"> | Date | string | null
   unit?: Prisma.StringFilter<"BomItem"> | string
   consumption?: Prisma.DecimalFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFilter<"BomItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -546,9 +790,15 @@ export type BomItemCreateWithoutMrpLinesInput = {
   id?: string
   itemType: $Enums.BomItemType
   itemName: string
+  subCategory?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
   unit?: string
   consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  material?: Prisma.MaterialCreateNestedOneWithoutBomItemsInput
+  supplier?: Prisma.SupplierCreateNestedOneWithoutBomItemsInput
   bom: Prisma.BomCreateNestedOneWithoutItemsInput
 }
 
@@ -557,6 +807,12 @@ export type BomItemUncheckedCreateWithoutMrpLinesInput = {
   bomId: string
   itemType: $Enums.BomItemType
   itemName: string
+  subCategory?: string | null
+  materialId?: string | null
+  supplierId?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
   unit?: string
   consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -582,9 +838,15 @@ export type BomItemUpdateWithoutMrpLinesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  material?: Prisma.MaterialUpdateOneWithoutBomItemsNestedInput
+  supplier?: Prisma.SupplierUpdateOneWithoutBomItemsNestedInput
   bom?: Prisma.BomUpdateOneRequiredWithoutItemsNestedInput
 }
 
@@ -593,15 +855,143 @@ export type BomItemUncheckedUpdateWithoutMrpLinesInput = {
   bomId?: Prisma.StringFieldUpdateOperationsInput | string
   itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  supplierId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type BomItemCreateWithoutMaterialInput = {
+  id?: string
+  itemType: $Enums.BomItemType
+  itemName: string
+  subCategory?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
+  unit?: string
+  consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  supplier?: Prisma.SupplierCreateNestedOneWithoutBomItemsInput
+  bom: Prisma.BomCreateNestedOneWithoutItemsInput
+  mrpLines?: Prisma.MrpLineCreateNestedManyWithoutBomItemInput
+}
+
+export type BomItemUncheckedCreateWithoutMaterialInput = {
+  id?: string
+  bomId: string
+  itemType: $Enums.BomItemType
+  itemName: string
+  subCategory?: string | null
+  supplierId?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
+  unit?: string
+  consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  mrpLines?: Prisma.MrpLineUncheckedCreateNestedManyWithoutBomItemInput
+}
+
+export type BomItemCreateOrConnectWithoutMaterialInput = {
+  where: Prisma.BomItemWhereUniqueInput
+  create: Prisma.XOR<Prisma.BomItemCreateWithoutMaterialInput, Prisma.BomItemUncheckedCreateWithoutMaterialInput>
+}
+
+export type BomItemCreateManyMaterialInputEnvelope = {
+  data: Prisma.BomItemCreateManyMaterialInput | Prisma.BomItemCreateManyMaterialInput[]
+  skipDuplicates?: boolean
+}
+
+export type BomItemUpsertWithWhereUniqueWithoutMaterialInput = {
+  where: Prisma.BomItemWhereUniqueInput
+  update: Prisma.XOR<Prisma.BomItemUpdateWithoutMaterialInput, Prisma.BomItemUncheckedUpdateWithoutMaterialInput>
+  create: Prisma.XOR<Prisma.BomItemCreateWithoutMaterialInput, Prisma.BomItemUncheckedCreateWithoutMaterialInput>
+}
+
+export type BomItemUpdateWithWhereUniqueWithoutMaterialInput = {
+  where: Prisma.BomItemWhereUniqueInput
+  data: Prisma.XOR<Prisma.BomItemUpdateWithoutMaterialInput, Prisma.BomItemUncheckedUpdateWithoutMaterialInput>
+}
+
+export type BomItemUpdateManyWithWhereWithoutMaterialInput = {
+  where: Prisma.BomItemScalarWhereInput
+  data: Prisma.XOR<Prisma.BomItemUpdateManyMutationInput, Prisma.BomItemUncheckedUpdateManyWithoutMaterialInput>
+}
+
+export type BomItemCreateWithoutSupplierInput = {
+  id?: string
+  itemType: $Enums.BomItemType
+  itemName: string
+  subCategory?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
+  unit?: string
+  consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  material?: Prisma.MaterialCreateNestedOneWithoutBomItemsInput
+  bom: Prisma.BomCreateNestedOneWithoutItemsInput
+  mrpLines?: Prisma.MrpLineCreateNestedManyWithoutBomItemInput
+}
+
+export type BomItemUncheckedCreateWithoutSupplierInput = {
+  id?: string
+  bomId: string
+  itemType: $Enums.BomItemType
+  itemName: string
+  subCategory?: string | null
+  materialId?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
+  unit?: string
+  consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  mrpLines?: Prisma.MrpLineUncheckedCreateNestedManyWithoutBomItemInput
+}
+
+export type BomItemCreateOrConnectWithoutSupplierInput = {
+  where: Prisma.BomItemWhereUniqueInput
+  create: Prisma.XOR<Prisma.BomItemCreateWithoutSupplierInput, Prisma.BomItemUncheckedCreateWithoutSupplierInput>
+}
+
+export type BomItemCreateManySupplierInputEnvelope = {
+  data: Prisma.BomItemCreateManySupplierInput | Prisma.BomItemCreateManySupplierInput[]
+  skipDuplicates?: boolean
+}
+
+export type BomItemUpsertWithWhereUniqueWithoutSupplierInput = {
+  where: Prisma.BomItemWhereUniqueInput
+  update: Prisma.XOR<Prisma.BomItemUpdateWithoutSupplierInput, Prisma.BomItemUncheckedUpdateWithoutSupplierInput>
+  create: Prisma.XOR<Prisma.BomItemCreateWithoutSupplierInput, Prisma.BomItemUncheckedCreateWithoutSupplierInput>
+}
+
+export type BomItemUpdateWithWhereUniqueWithoutSupplierInput = {
+  where: Prisma.BomItemWhereUniqueInput
+  data: Prisma.XOR<Prisma.BomItemUpdateWithoutSupplierInput, Prisma.BomItemUncheckedUpdateWithoutSupplierInput>
+}
+
+export type BomItemUpdateManyWithWhereWithoutSupplierInput = {
+  where: Prisma.BomItemScalarWhereInput
+  data: Prisma.XOR<Prisma.BomItemUpdateManyMutationInput, Prisma.BomItemUncheckedUpdateManyWithoutSupplierInput>
 }
 
 export type BomItemCreateManyBomInput = {
   id?: string
   itemType: $Enums.BomItemType
   itemName: string
+  subCategory?: string | null
+  materialId?: string | null
+  supplierId?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
   unit?: string
   consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -611,9 +1001,15 @@ export type BomItemUpdateWithoutBomInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  material?: Prisma.MaterialUpdateOneWithoutBomItemsNestedInput
+  supplier?: Prisma.SupplierUpdateOneWithoutBomItemsNestedInput
   mrpLines?: Prisma.MrpLineUpdateManyWithoutBomItemNestedInput
 }
 
@@ -621,6 +1017,12 @@ export type BomItemUncheckedUpdateWithoutBomInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  supplierId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -631,6 +1033,136 @@ export type BomItemUncheckedUpdateManyWithoutBomInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  supplierId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type BomItemCreateManyMaterialInput = {
+  id?: string
+  bomId: string
+  itemType: $Enums.BomItemType
+  itemName: string
+  subCategory?: string | null
+  supplierId?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
+  unit?: string
+  consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type BomItemUpdateWithoutMaterialInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
+  itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  supplier?: Prisma.SupplierUpdateOneWithoutBomItemsNestedInput
+  bom?: Prisma.BomUpdateOneRequiredWithoutItemsNestedInput
+  mrpLines?: Prisma.MrpLineUpdateManyWithoutBomItemNestedInput
+}
+
+export type BomItemUncheckedUpdateWithoutMaterialInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bomId?: Prisma.StringFieldUpdateOperationsInput | string
+  itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
+  itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  supplierId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  mrpLines?: Prisma.MrpLineUncheckedUpdateManyWithoutBomItemNestedInput
+}
+
+export type BomItemUncheckedUpdateManyWithoutMaterialInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bomId?: Prisma.StringFieldUpdateOperationsInput | string
+  itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
+  itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  supplierId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type BomItemCreateManySupplierInput = {
+  id?: string
+  bomId: string
+  itemType: $Enums.BomItemType
+  itemName: string
+  subCategory?: string | null
+  materialId?: string | null
+  rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: string | null
+  effectiveDate?: Date | string | null
+  unit?: string
+  consumption?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type BomItemUpdateWithoutSupplierInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
+  itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  material?: Prisma.MaterialUpdateOneWithoutBomItemsNestedInput
+  bom?: Prisma.BomUpdateOneRequiredWithoutItemsNestedInput
+  mrpLines?: Prisma.MrpLineUpdateManyWithoutBomItemNestedInput
+}
+
+export type BomItemUncheckedUpdateWithoutSupplierInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bomId?: Prisma.StringFieldUpdateOperationsInput | string
+  itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
+  itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  mrpLines?: Prisma.MrpLineUncheckedUpdateManyWithoutBomItemNestedInput
+}
+
+export type BomItemUncheckedUpdateManyWithoutSupplierInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bomId?: Prisma.StringFieldUpdateOperationsInput | string
+  itemType?: Prisma.EnumBomItemTypeFieldUpdateOperationsInput | $Enums.BomItemType
+  itemName?: Prisma.StringFieldUpdateOperationsInput | string
+  subCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  effectiveDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   consumption?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   wastagePct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -672,9 +1204,17 @@ export type BomItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   bomId?: boolean
   itemType?: boolean
   itemName?: boolean
+  subCategory?: boolean
+  materialId?: boolean
+  supplierId?: boolean
+  rate?: boolean
+  currency?: boolean
+  effectiveDate?: boolean
   unit?: boolean
   consumption?: boolean
   wastagePct?: boolean
+  material?: boolean | Prisma.BomItem$materialArgs<ExtArgs>
+  supplier?: boolean | Prisma.BomItem$supplierArgs<ExtArgs>
   bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
   mrpLines?: boolean | Prisma.BomItem$mrpLinesArgs<ExtArgs>
   _count?: boolean | Prisma.BomItemCountOutputTypeDefaultArgs<ExtArgs>
@@ -685,9 +1225,17 @@ export type BomItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   bomId?: boolean
   itemType?: boolean
   itemName?: boolean
+  subCategory?: boolean
+  materialId?: boolean
+  supplierId?: boolean
+  rate?: boolean
+  currency?: boolean
+  effectiveDate?: boolean
   unit?: boolean
   consumption?: boolean
   wastagePct?: boolean
+  material?: boolean | Prisma.BomItem$materialArgs<ExtArgs>
+  supplier?: boolean | Prisma.BomItem$supplierArgs<ExtArgs>
   bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bomItem"]>
 
@@ -696,9 +1244,17 @@ export type BomItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   bomId?: boolean
   itemType?: boolean
   itemName?: boolean
+  subCategory?: boolean
+  materialId?: boolean
+  supplierId?: boolean
+  rate?: boolean
+  currency?: boolean
+  effectiveDate?: boolean
   unit?: boolean
   consumption?: boolean
   wastagePct?: boolean
+  material?: boolean | Prisma.BomItem$materialArgs<ExtArgs>
+  supplier?: boolean | Prisma.BomItem$supplierArgs<ExtArgs>
   bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bomItem"]>
 
@@ -707,27 +1263,41 @@ export type BomItemSelectScalar = {
   bomId?: boolean
   itemType?: boolean
   itemName?: boolean
+  subCategory?: boolean
+  materialId?: boolean
+  supplierId?: boolean
+  rate?: boolean
+  currency?: boolean
+  effectiveDate?: boolean
   unit?: boolean
   consumption?: boolean
   wastagePct?: boolean
 }
 
-export type BomItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bomId" | "itemType" | "itemName" | "unit" | "consumption" | "wastagePct", ExtArgs["result"]["bomItem"]>
+export type BomItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bomId" | "itemType" | "itemName" | "subCategory" | "materialId" | "supplierId" | "rate" | "currency" | "effectiveDate" | "unit" | "consumption" | "wastagePct", ExtArgs["result"]["bomItem"]>
 export type BomItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  material?: boolean | Prisma.BomItem$materialArgs<ExtArgs>
+  supplier?: boolean | Prisma.BomItem$supplierArgs<ExtArgs>
   bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
   mrpLines?: boolean | Prisma.BomItem$mrpLinesArgs<ExtArgs>
   _count?: boolean | Prisma.BomItemCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BomItemIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  material?: boolean | Prisma.BomItem$materialArgs<ExtArgs>
+  supplier?: boolean | Prisma.BomItem$supplierArgs<ExtArgs>
   bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
 }
 export type BomItemIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  material?: boolean | Prisma.BomItem$materialArgs<ExtArgs>
+  supplier?: boolean | Prisma.BomItem$supplierArgs<ExtArgs>
   bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
 }
 
 export type $BomItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "BomItem"
   objects: {
+    material: Prisma.$MaterialPayload<ExtArgs> | null
+    supplier: Prisma.$SupplierPayload<ExtArgs> | null
     bom: Prisma.$BomPayload<ExtArgs>
     mrpLines: Prisma.$MrpLinePayload<ExtArgs>[]
   }
@@ -736,6 +1306,12 @@ export type $BomItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     bomId: string
     itemType: $Enums.BomItemType
     itemName: string
+    subCategory: string | null
+    materialId: string | null
+    supplierId: string | null
+    rate: runtime.Decimal | null
+    currency: string | null
+    effectiveDate: Date | null
     unit: string
     consumption: runtime.Decimal
     wastagePct: runtime.Decimal
@@ -1133,6 +1709,8 @@ readonly fields: BomItemFieldRefs;
  */
 export interface Prisma__BomItemClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  material<T extends Prisma.BomItem$materialArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BomItem$materialArgs<ExtArgs>>): Prisma.Prisma__MaterialClient<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  supplier<T extends Prisma.BomItem$supplierArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BomItem$supplierArgs<ExtArgs>>): Prisma.Prisma__SupplierClient<runtime.Types.Result.GetResult<Prisma.$SupplierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   bom<T extends Prisma.BomDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BomDefaultArgs<ExtArgs>>): Prisma.Prisma__BomClient<runtime.Types.Result.GetResult<Prisma.$BomPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   mrpLines<T extends Prisma.BomItem$mrpLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BomItem$mrpLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MrpLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1168,6 +1746,12 @@ export interface BomItemFieldRefs {
   readonly bomId: Prisma.FieldRef<"BomItem", 'String'>
   readonly itemType: Prisma.FieldRef<"BomItem", 'BomItemType'>
   readonly itemName: Prisma.FieldRef<"BomItem", 'String'>
+  readonly subCategory: Prisma.FieldRef<"BomItem", 'String'>
+  readonly materialId: Prisma.FieldRef<"BomItem", 'String'>
+  readonly supplierId: Prisma.FieldRef<"BomItem", 'String'>
+  readonly rate: Prisma.FieldRef<"BomItem", 'Decimal'>
+  readonly currency: Prisma.FieldRef<"BomItem", 'String'>
+  readonly effectiveDate: Prisma.FieldRef<"BomItem", 'DateTime'>
   readonly unit: Prisma.FieldRef<"BomItem", 'String'>
   readonly consumption: Prisma.FieldRef<"BomItem", 'Decimal'>
   readonly wastagePct: Prisma.FieldRef<"BomItem", 'Decimal'>
@@ -1569,6 +2153,44 @@ export type BomItemDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many BomItems to delete.
    */
   limit?: number
+}
+
+/**
+ * BomItem.material
+ */
+export type BomItem$materialArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Material
+   */
+  select?: Prisma.MaterialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Material
+   */
+  omit?: Prisma.MaterialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MaterialInclude<ExtArgs> | null
+  where?: Prisma.MaterialWhereInput
+}
+
+/**
+ * BomItem.supplier
+ */
+export type BomItem$supplierArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Supplier
+   */
+  select?: Prisma.SupplierSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Supplier
+   */
+  omit?: Prisma.SupplierOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupplierInclude<ExtArgs> | null
+  where?: Prisma.SupplierWhereInput
 }
 
 /**

@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
+import { assertFactoryInScope } from "@/lib/scope";
+import { BusinessRuleError } from "@/lib/business-rules";
 import { BaseService } from "./base.service";
 
 const buildingSchema = z.object({
@@ -30,7 +32,8 @@ const lineSchema = z.object({
 
 class OrganizationService extends BaseService {
   async listBuildings(factoryId: string) {
-    await this.guard("organization.view");
+    const user = await this.guard("organization.view");
+    assertFactoryInScope(await this.scopeOf(user), factoryId);
     return prisma.building.findMany({
       where: { factoryId },
       include: { floors: true },
@@ -41,6 +44,7 @@ class OrganizationService extends BaseService {
   async createBuilding(input: unknown) {
     const user = await this.guard("organization.create");
     const data = buildingSchema.parse(input);
+    assertFactoryInScope(await this.scopeOf(user), data.factoryId);
     const row = await prisma.building.create({ data });
     await this.audit({ user, action: "CREATE", entity: "Building", entityId: row.id, after: row });
     return row;
@@ -49,6 +53,9 @@ class OrganizationService extends BaseService {
   async createFloor(input: unknown) {
     const user = await this.guard("organization.create");
     const data = floorSchema.parse(input);
+    const building = await prisma.building.findUnique({ where: { id: data.buildingId } });
+    if (!building) throw new BusinessRuleError("Building not found");
+    assertFactoryInScope(await this.scopeOf(user), building.factoryId);
     const row = await prisma.floor.create({ data });
     await this.audit({ user, action: "CREATE", entity: "Floor", entityId: row.id, after: row });
     return row;
@@ -57,6 +64,16 @@ class OrganizationService extends BaseService {
   async createDepartment(input: unknown) {
     const user = await this.guard("organization.create");
     const data = departmentSchema.parse(input);
+    assertFactoryInScope(await this.scopeOf(user), data.factoryId);
+    if (data.floorId) {
+      const floor = await prisma.floor.findUnique({
+        where: { id: data.floorId },
+        include: { building: true },
+      });
+      if (!floor || floor.building.factoryId !== data.factoryId) {
+        throw new BusinessRuleError("Floor does not belong to this factory");
+      }
+    }
     const row = await prisma.department.create({ data });
     await this.audit({ user, action: "CREATE", entity: "Department", entityId: row.id, after: row });
     return row;
@@ -65,6 +82,18 @@ class OrganizationService extends BaseService {
   async createLine(input: unknown) {
     const user = await this.guard("organization.create");
     const data = lineSchema.parse(input);
+    const floor = await prisma.floor.findUnique({
+      where: { id: data.floorId },
+      include: { building: true },
+    });
+    if (!floor) throw new BusinessRuleError("Floor not found");
+    assertFactoryInScope(await this.scopeOf(user), floor.building.factoryId);
+    if (data.departmentId) {
+      const dept = await prisma.department.findUnique({ where: { id: data.departmentId } });
+      if (!dept || dept.factoryId !== floor.building.factoryId) {
+        throw new BusinessRuleError("Department does not belong to this factory");
+      }
+    }
     const row = await prisma.line.create({ data });
     await this.audit({ user, action: "CREATE", entity: "Line", entityId: row.id, after: row });
     return row;

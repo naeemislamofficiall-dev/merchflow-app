@@ -250,7 +250,14 @@ export type UserWhereInput = {
   company?: Prisma.XOR<Prisma.CompanyNullableScalarRelationFilter, Prisma.CompanyWhereInput> | null
   factory?: Prisma.XOR<Prisma.FactoryNullableScalarRelationFilter, Prisma.FactoryWhereInput> | null
   auditLogs?: Prisma.AuditLogListRelationFilter
+  ownedStyles?: Prisma.StyleListRelationFilter
   assignedSamples?: Prisma.SampleRequestListRelationFilter
+  uploadedAttachments?: Prisma.AttachmentListRelationFilter
+  approvalRequests?: Prisma.ApprovalRequestListRelationFilter
+  approvalActions?: Prisma.ApprovalActionListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
+  notificationPreferences?: Prisma.NotificationPreferenceListRelationFilter
+  ownedTnaTasks?: Prisma.TnaTaskListRelationFilter
   extraFactories?: Prisma.UserFactoryAccessListRelationFilter
 }
 
@@ -272,7 +279,14 @@ export type UserOrderByWithRelationInput = {
   company?: Prisma.CompanyOrderByWithRelationInput
   factory?: Prisma.FactoryOrderByWithRelationInput
   auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  ownedStyles?: Prisma.StyleOrderByRelationAggregateInput
   assignedSamples?: Prisma.SampleRequestOrderByRelationAggregateInput
+  uploadedAttachments?: Prisma.AttachmentOrderByRelationAggregateInput
+  approvalRequests?: Prisma.ApprovalRequestOrderByRelationAggregateInput
+  approvalActions?: Prisma.ApprovalActionOrderByRelationAggregateInput
+  notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  notificationPreferences?: Prisma.NotificationPreferenceOrderByRelationAggregateInput
+  ownedTnaTasks?: Prisma.TnaTaskOrderByRelationAggregateInput
   extraFactories?: Prisma.UserFactoryAccessOrderByRelationAggregateInput
 }
 
@@ -297,7 +311,14 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   company?: Prisma.XOR<Prisma.CompanyNullableScalarRelationFilter, Prisma.CompanyWhereInput> | null
   factory?: Prisma.XOR<Prisma.FactoryNullableScalarRelationFilter, Prisma.FactoryWhereInput> | null
   auditLogs?: Prisma.AuditLogListRelationFilter
+  ownedStyles?: Prisma.StyleListRelationFilter
   assignedSamples?: Prisma.SampleRequestListRelationFilter
+  uploadedAttachments?: Prisma.AttachmentListRelationFilter
+  approvalRequests?: Prisma.ApprovalRequestListRelationFilter
+  approvalActions?: Prisma.ApprovalActionListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
+  notificationPreferences?: Prisma.NotificationPreferenceListRelationFilter
+  ownedTnaTasks?: Prisma.TnaTaskListRelationFilter
   extraFactories?: Prisma.UserFactoryAccessListRelationFilter
 }, "id" | "email">
 
@@ -354,7 +375,14 @@ export type UserCreateInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
@@ -373,7 +401,14 @@ export type UserUncheckedCreateInput = {
   updatedAt?: Date | string
   locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -392,7 +427,14 @@ export type UserUpdateInput = {
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
@@ -411,7 +453,14 @@ export type UserUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -678,6 +727,22 @@ export type UserUpdateOneWithoutAuditLogsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.UserUpdateWithoutAuditLogsInput>, Prisma.UserUncheckedUpdateWithoutAuditLogsInput>
 }
 
+export type UserCreateNestedOneWithoutOwnedStylesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOwnedStylesInput, Prisma.UserUncheckedCreateWithoutOwnedStylesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOwnedStylesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutOwnedStylesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOwnedStylesInput, Prisma.UserUncheckedCreateWithoutOwnedStylesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOwnedStylesInput
+  upsert?: Prisma.UserUpsertWithoutOwnedStylesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOwnedStylesInput, Prisma.UserUpdateWithoutOwnedStylesInput>, Prisma.UserUncheckedUpdateWithoutOwnedStylesInput>
+}
+
 export type UserCreateNestedOneWithoutAssignedSamplesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutAssignedSamplesInput, Prisma.UserUncheckedCreateWithoutAssignedSamplesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutAssignedSamplesInput
@@ -694,6 +759,22 @@ export type UserUpdateOneWithoutAssignedSamplesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAssignedSamplesInput, Prisma.UserUpdateWithoutAssignedSamplesInput>, Prisma.UserUncheckedUpdateWithoutAssignedSamplesInput>
 }
 
+export type UserCreateNestedOneWithoutOwnedTnaTasksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOwnedTnaTasksInput, Prisma.UserUncheckedCreateWithoutOwnedTnaTasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOwnedTnaTasksInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutOwnedTnaTasksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOwnedTnaTasksInput, Prisma.UserUncheckedCreateWithoutOwnedTnaTasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOwnedTnaTasksInput
+  upsert?: Prisma.UserUpsertWithoutOwnedTnaTasksInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOwnedTnaTasksInput, Prisma.UserUpdateWithoutOwnedTnaTasksInput>, Prisma.UserUncheckedUpdateWithoutOwnedTnaTasksInput>
+}
+
 export type UserCreateNestedOneWithoutExtraFactoriesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutExtraFactoriesInput, Prisma.UserUncheckedCreateWithoutExtraFactoriesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutExtraFactoriesInput
@@ -706,6 +787,78 @@ export type UserUpdateOneRequiredWithoutExtraFactoriesNestedInput = {
   upsert?: Prisma.UserUpsertWithoutExtraFactoriesInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutExtraFactoriesInput, Prisma.UserUpdateWithoutExtraFactoriesInput>, Prisma.UserUncheckedUpdateWithoutExtraFactoriesInput>
+}
+
+export type UserCreateNestedOneWithoutUploadedAttachmentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUploadedAttachmentsInput, Prisma.UserUncheckedCreateWithoutUploadedAttachmentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUploadedAttachmentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutUploadedAttachmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUploadedAttachmentsInput, Prisma.UserUncheckedCreateWithoutUploadedAttachmentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUploadedAttachmentsInput
+  upsert?: Prisma.UserUpsertWithoutUploadedAttachmentsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUploadedAttachmentsInput, Prisma.UserUpdateWithoutUploadedAttachmentsInput>, Prisma.UserUncheckedUpdateWithoutUploadedAttachmentsInput>
+}
+
+export type UserCreateNestedOneWithoutApprovalRequestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutApprovalRequestsInput, Prisma.UserUncheckedCreateWithoutApprovalRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutApprovalRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutApprovalRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutApprovalRequestsInput, Prisma.UserUncheckedCreateWithoutApprovalRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutApprovalRequestsInput
+  upsert?: Prisma.UserUpsertWithoutApprovalRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutApprovalRequestsInput, Prisma.UserUpdateWithoutApprovalRequestsInput>, Prisma.UserUncheckedUpdateWithoutApprovalRequestsInput>
+}
+
+export type UserCreateNestedOneWithoutApprovalActionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutApprovalActionsInput, Prisma.UserUncheckedCreateWithoutApprovalActionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutApprovalActionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutApprovalActionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutApprovalActionsInput, Prisma.UserUncheckedCreateWithoutApprovalActionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutApprovalActionsInput
+  upsert?: Prisma.UserUpsertWithoutApprovalActionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutApprovalActionsInput, Prisma.UserUpdateWithoutApprovalActionsInput>, Prisma.UserUncheckedUpdateWithoutApprovalActionsInput>
+}
+
+export type UserCreateNestedOneWithoutNotificationsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
+  upsert?: Prisma.UserUpsertWithoutNotificationsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type UserCreateNestedOneWithoutNotificationPreferencesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationPreferencesInput, Prisma.UserUncheckedCreateWithoutNotificationPreferencesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationPreferencesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutNotificationPreferencesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationPreferencesInput, Prisma.UserUncheckedCreateWithoutNotificationPreferencesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationPreferencesInput
+  upsert?: Prisma.UserUpsertWithoutNotificationPreferencesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationPreferencesInput, Prisma.UserUpdateWithoutNotificationPreferencesInput>, Prisma.UserUncheckedUpdateWithoutNotificationPreferencesInput>
 }
 
 export type UserCreateWithoutCompanyInput = {
@@ -722,7 +875,14 @@ export type UserCreateWithoutCompanyInput = {
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
@@ -740,7 +900,14 @@ export type UserUncheckedCreateWithoutCompanyInput = {
   updatedAt?: Date | string
   locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -803,7 +970,14 @@ export type UserCreateWithoutFactoryInput = {
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
@@ -821,7 +995,14 @@ export type UserUncheckedCreateWithoutFactoryInput = {
   updatedAt?: Date | string
   locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -865,7 +1046,14 @@ export type UserCreateWithoutRoleInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
@@ -883,7 +1071,14 @@ export type UserUncheckedCreateWithoutRoleInput = {
   updatedAt?: Date | string
   locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -927,7 +1122,14 @@ export type UserCreateWithoutAuditLogsInput = {
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
@@ -945,7 +1147,14 @@ export type UserUncheckedCreateWithoutAuditLogsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   locale?: string
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -979,7 +1188,14 @@ export type UserUpdateWithoutAuditLogsInput = {
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
@@ -997,7 +1213,130 @@ export type UserUncheckedUpdateWithoutAuditLogsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   locale?: Prisma.StringFieldUpdateOperationsInput | string
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutOwnedStylesInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  scope?: $Enums.Scope
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
+  factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutOwnedStylesInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  roleId: string
+  scope?: $Enums.Scope
+  companyId?: string | null
+  factoryId?: string | null
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutOwnedStylesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutOwnedStylesInput, Prisma.UserUncheckedCreateWithoutOwnedStylesInput>
+}
+
+export type UserUpsertWithoutOwnedStylesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutOwnedStylesInput, Prisma.UserUncheckedUpdateWithoutOwnedStylesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutOwnedStylesInput, Prisma.UserUncheckedCreateWithoutOwnedStylesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutOwnedStylesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutOwnedStylesInput, Prisma.UserUncheckedUpdateWithoutOwnedStylesInput>
+}
+
+export type UserUpdateWithoutOwnedStylesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
+  factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutOwnedStylesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1016,6 +1355,13 @@ export type UserCreateWithoutAssignedSamplesInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
 }
 
@@ -1034,6 +1380,13 @@ export type UserUncheckedCreateWithoutAssignedSamplesInput = {
   updatedAt?: Date | string
   locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -1068,6 +1421,13 @@ export type UserUpdateWithoutAssignedSamplesInput = {
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
@@ -1086,6 +1446,129 @@ export type UserUncheckedUpdateWithoutAssignedSamplesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutOwnedTnaTasksInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  scope?: $Enums.Scope
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
+  factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutOwnedTnaTasksInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  roleId: string
+  scope?: $Enums.Scope
+  companyId?: string | null
+  factoryId?: string | null
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutOwnedTnaTasksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutOwnedTnaTasksInput, Prisma.UserUncheckedCreateWithoutOwnedTnaTasksInput>
+}
+
+export type UserUpsertWithoutOwnedTnaTasksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutOwnedTnaTasksInput, Prisma.UserUncheckedUpdateWithoutOwnedTnaTasksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutOwnedTnaTasksInput, Prisma.UserUncheckedCreateWithoutOwnedTnaTasksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutOwnedTnaTasksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutOwnedTnaTasksInput, Prisma.UserUncheckedUpdateWithoutOwnedTnaTasksInput>
+}
+
+export type UserUpdateWithoutOwnedTnaTasksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
+  factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutOwnedTnaTasksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1104,7 +1587,14 @@ export type UserCreateWithoutExtraFactoriesInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
   factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
 }
 
 export type UserUncheckedCreateWithoutExtraFactoriesInput = {
@@ -1122,7 +1612,14 @@ export type UserUncheckedCreateWithoutExtraFactoriesInput = {
   updatedAt?: Date | string
   locale?: string
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
   assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
 }
 
 export type UserCreateOrConnectWithoutExtraFactoriesInput = {
@@ -1156,7 +1653,14 @@ export type UserUpdateWithoutExtraFactoriesInput = {
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutExtraFactoriesInput = {
@@ -1174,7 +1678,594 @@ export type UserUncheckedUpdateWithoutExtraFactoriesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
+}
+
+export type UserCreateWithoutUploadedAttachmentsInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  scope?: $Enums.Scope
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
+  factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutUploadedAttachmentsInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  roleId: string
+  scope?: $Enums.Scope
+  companyId?: string | null
+  factoryId?: string | null
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutUploadedAttachmentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUploadedAttachmentsInput, Prisma.UserUncheckedCreateWithoutUploadedAttachmentsInput>
+}
+
+export type UserUpsertWithoutUploadedAttachmentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutUploadedAttachmentsInput, Prisma.UserUncheckedUpdateWithoutUploadedAttachmentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutUploadedAttachmentsInput, Prisma.UserUncheckedCreateWithoutUploadedAttachmentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutUploadedAttachmentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutUploadedAttachmentsInput, Prisma.UserUncheckedUpdateWithoutUploadedAttachmentsInput>
+}
+
+export type UserUpdateWithoutUploadedAttachmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
+  factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutUploadedAttachmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutApprovalRequestsInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  scope?: $Enums.Scope
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
+  factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutApprovalRequestsInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  roleId: string
+  scope?: $Enums.Scope
+  companyId?: string | null
+  factoryId?: string | null
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutApprovalRequestsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutApprovalRequestsInput, Prisma.UserUncheckedCreateWithoutApprovalRequestsInput>
+}
+
+export type UserUpsertWithoutApprovalRequestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutApprovalRequestsInput, Prisma.UserUncheckedUpdateWithoutApprovalRequestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutApprovalRequestsInput, Prisma.UserUncheckedCreateWithoutApprovalRequestsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutApprovalRequestsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutApprovalRequestsInput, Prisma.UserUncheckedUpdateWithoutApprovalRequestsInput>
+}
+
+export type UserUpdateWithoutApprovalRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
+  factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutApprovalRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutApprovalActionsInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  scope?: $Enums.Scope
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
+  factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutApprovalActionsInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  roleId: string
+  scope?: $Enums.Scope
+  companyId?: string | null
+  factoryId?: string | null
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutApprovalActionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutApprovalActionsInput, Prisma.UserUncheckedCreateWithoutApprovalActionsInput>
+}
+
+export type UserUpsertWithoutApprovalActionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutApprovalActionsInput, Prisma.UserUncheckedUpdateWithoutApprovalActionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutApprovalActionsInput, Prisma.UserUncheckedCreateWithoutApprovalActionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutApprovalActionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutApprovalActionsInput, Prisma.UserUncheckedUpdateWithoutApprovalActionsInput>
+}
+
+export type UserUpdateWithoutApprovalActionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
+  factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutApprovalActionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutNotificationsInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  scope?: $Enums.Scope
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
+  factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutNotificationsInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  roleId: string
+  scope?: $Enums.Scope
+  companyId?: string | null
+  factoryId?: string | null
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutNotificationsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+}
+
+export type UserUpsertWithoutNotificationsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNotificationsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type UserUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
+  factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutNotificationPreferencesInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  scope?: $Enums.Scope
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  company?: Prisma.CompanyCreateNestedOneWithoutUsersInput
+  factory?: Prisma.FactoryCreateNestedOneWithoutUsersInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutRecipientInput
+  ownedTnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
+  id?: string
+  email: string
+  name: string
+  passwordHash: string
+  roleId: string
+  scope?: $Enums.Scope
+  companyId?: string | null
+  factoryId?: string | null
+  status?: $Enums.ActiveStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  locale?: string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  ownedStyles?: Prisma.StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput
+  assignedSamples?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedToInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutRequestedByInput
+  approvalActions?: Prisma.ApprovalActionUncheckedCreateNestedManyWithoutApproverInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutRecipientInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutOwnerInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutNotificationPreferencesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationPreferencesInput, Prisma.UserUncheckedCreateWithoutNotificationPreferencesInput>
+}
+
+export type UserUpsertWithoutNotificationPreferencesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationPreferencesInput, Prisma.UserUncheckedUpdateWithoutNotificationPreferencesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationPreferencesInput, Prisma.UserUncheckedCreateWithoutNotificationPreferencesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNotificationPreferencesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationPreferencesInput, Prisma.UserUncheckedUpdateWithoutNotificationPreferencesInput>
+}
+
+export type UserUpdateWithoutNotificationPreferencesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
+  factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  scope?: Prisma.EnumScopeFieldUpdateOperationsInput | $Enums.Scope
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
+  assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
+  extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyCompanyInput = {
@@ -1206,7 +2297,14 @@ export type UserUpdateWithoutCompanyInput = {
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
@@ -1224,7 +2322,14 @@ export type UserUncheckedUpdateWithoutCompanyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1272,7 +2377,14 @@ export type UserUpdateWithoutFactoryInput = {
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
@@ -1290,7 +2402,14 @@ export type UserUncheckedUpdateWithoutFactoryInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1338,7 +2457,14 @@ export type UserUpdateWithoutRoleInput = {
   company?: Prisma.CompanyUpdateOneWithoutUsersNestedInput
   factory?: Prisma.FactoryUpdateOneWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUpdateManyWithoutUserNestedInput
 }
 
@@ -1356,7 +2482,14 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  ownedStyles?: Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput
   assignedSamples?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedToNestedInput
+  uploadedAttachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutRequestedByNestedInput
+  approvalActions?: Prisma.ApprovalActionUncheckedUpdateManyWithoutApproverNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutRecipientNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  ownedTnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput
   extraFactories?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1382,13 +2515,27 @@ export type UserUncheckedUpdateManyWithoutRoleInput = {
 
 export type UserCountOutputType = {
   auditLogs: number
+  ownedStyles: number
   assignedSamples: number
+  uploadedAttachments: number
+  approvalRequests: number
+  approvalActions: number
+  notifications: number
+  notificationPreferences: number
+  ownedTnaTasks: number
   extraFactories: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
+  ownedStyles?: boolean | UserCountOutputTypeCountOwnedStylesArgs
   assignedSamples?: boolean | UserCountOutputTypeCountAssignedSamplesArgs
+  uploadedAttachments?: boolean | UserCountOutputTypeCountUploadedAttachmentsArgs
+  approvalRequests?: boolean | UserCountOutputTypeCountApprovalRequestsArgs
+  approvalActions?: boolean | UserCountOutputTypeCountApprovalActionsArgs
+  notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
+  notificationPreferences?: boolean | UserCountOutputTypeCountNotificationPreferencesArgs
+  ownedTnaTasks?: boolean | UserCountOutputTypeCountOwnedTnaTasksArgs
   extraFactories?: boolean | UserCountOutputTypeCountExtraFactoriesArgs
 }
 
@@ -1412,8 +2559,57 @@ export type UserCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountOwnedStylesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StyleWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountAssignedSamplesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SampleRequestWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountUploadedAttachmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AttachmentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountApprovalRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ApprovalRequestWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountApprovalActionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ApprovalActionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountNotificationPreferencesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationPreferenceWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountOwnedTnaTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TnaTaskWhereInput
 }
 
 /**
@@ -1442,7 +2638,14 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   company?: boolean | Prisma.User$companyArgs<ExtArgs>
   factory?: boolean | Prisma.User$factoryArgs<ExtArgs>
   auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
+  ownedStyles?: boolean | Prisma.User$ownedStylesArgs<ExtArgs>
   assignedSamples?: boolean | Prisma.User$assignedSamplesArgs<ExtArgs>
+  uploadedAttachments?: boolean | Prisma.User$uploadedAttachmentsArgs<ExtArgs>
+  approvalRequests?: boolean | Prisma.User$approvalRequestsArgs<ExtArgs>
+  approvalActions?: boolean | Prisma.User$approvalActionsArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  notificationPreferences?: boolean | Prisma.User$notificationPreferencesArgs<ExtArgs>
+  ownedTnaTasks?: boolean | Prisma.User$ownedTnaTasksArgs<ExtArgs>
   extraFactories?: boolean | Prisma.User$extraFactoriesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1507,7 +2710,14 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   company?: boolean | Prisma.User$companyArgs<ExtArgs>
   factory?: boolean | Prisma.User$factoryArgs<ExtArgs>
   auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
+  ownedStyles?: boolean | Prisma.User$ownedStylesArgs<ExtArgs>
   assignedSamples?: boolean | Prisma.User$assignedSamplesArgs<ExtArgs>
+  uploadedAttachments?: boolean | Prisma.User$uploadedAttachmentsArgs<ExtArgs>
+  approvalRequests?: boolean | Prisma.User$approvalRequestsArgs<ExtArgs>
+  approvalActions?: boolean | Prisma.User$approvalActionsArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  notificationPreferences?: boolean | Prisma.User$notificationPreferencesArgs<ExtArgs>
+  ownedTnaTasks?: boolean | Prisma.User$ownedTnaTasksArgs<ExtArgs>
   extraFactories?: boolean | Prisma.User$extraFactoriesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1529,7 +2739,14 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     company: Prisma.$CompanyPayload<ExtArgs> | null
     factory: Prisma.$FactoryPayload<ExtArgs> | null
     auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    ownedStyles: Prisma.$StylePayload<ExtArgs>[]
     assignedSamples: Prisma.$SampleRequestPayload<ExtArgs>[]
+    uploadedAttachments: Prisma.$AttachmentPayload<ExtArgs>[]
+    approvalRequests: Prisma.$ApprovalRequestPayload<ExtArgs>[]
+    approvalActions: Prisma.$ApprovalActionPayload<ExtArgs>[]
+    notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    notificationPreferences: Prisma.$NotificationPreferencePayload<ExtArgs>[]
+    ownedTnaTasks: Prisma.$TnaTaskPayload<ExtArgs>[]
     extraFactories: Prisma.$UserFactoryAccessPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1944,7 +3161,14 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   company<T extends Prisma.User$companyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$companyArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   factory<T extends Prisma.User$factoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$factoryArgs<ExtArgs>>): Prisma.Prisma__FactoryClient<runtime.Types.Result.GetResult<Prisma.$FactoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   auditLogs<T extends Prisma.User$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ownedStyles<T extends Prisma.User$ownedStylesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ownedStylesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   assignedSamples<T extends Prisma.User$assignedSamplesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$assignedSamplesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SampleRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  uploadedAttachments<T extends Prisma.User$uploadedAttachmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$uploadedAttachmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AttachmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  approvalRequests<T extends Prisma.User$approvalRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$approvalRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApprovalRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  approvalActions<T extends Prisma.User$approvalActionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$approvalActionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApprovalActionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notificationPreferences<T extends Prisma.User$notificationPreferencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationPreferencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPreferencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ownedTnaTasks<T extends Prisma.User$ownedTnaTasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ownedTnaTasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaTaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   extraFactories<T extends Prisma.User$extraFactoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$extraFactoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserFactoryAccessPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2451,6 +3675,30 @@ export type User$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.ownedStyles
+ */
+export type User$ownedStylesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Style
+   */
+  select?: Prisma.StyleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Style
+   */
+  omit?: Prisma.StyleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StyleInclude<ExtArgs> | null
+  where?: Prisma.StyleWhereInput
+  orderBy?: Prisma.StyleOrderByWithRelationInput | Prisma.StyleOrderByWithRelationInput[]
+  cursor?: Prisma.StyleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StyleScalarFieldEnum | Prisma.StyleScalarFieldEnum[]
+}
+
+/**
  * User.assignedSamples
  */
 export type User$assignedSamplesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2472,6 +3720,150 @@ export type User$assignedSamplesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.SampleRequestScalarFieldEnum | Prisma.SampleRequestScalarFieldEnum[]
+}
+
+/**
+ * User.uploadedAttachments
+ */
+export type User$uploadedAttachmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Attachment
+   */
+  select?: Prisma.AttachmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Attachment
+   */
+  omit?: Prisma.AttachmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttachmentInclude<ExtArgs> | null
+  where?: Prisma.AttachmentWhereInput
+  orderBy?: Prisma.AttachmentOrderByWithRelationInput | Prisma.AttachmentOrderByWithRelationInput[]
+  cursor?: Prisma.AttachmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AttachmentScalarFieldEnum | Prisma.AttachmentScalarFieldEnum[]
+}
+
+/**
+ * User.approvalRequests
+ */
+export type User$approvalRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ApprovalRequest
+   */
+  select?: Prisma.ApprovalRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ApprovalRequest
+   */
+  omit?: Prisma.ApprovalRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ApprovalRequestInclude<ExtArgs> | null
+  where?: Prisma.ApprovalRequestWhereInput
+  orderBy?: Prisma.ApprovalRequestOrderByWithRelationInput | Prisma.ApprovalRequestOrderByWithRelationInput[]
+  cursor?: Prisma.ApprovalRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApprovalRequestScalarFieldEnum | Prisma.ApprovalRequestScalarFieldEnum[]
+}
+
+/**
+ * User.approvalActions
+ */
+export type User$approvalActionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ApprovalAction
+   */
+  select?: Prisma.ApprovalActionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ApprovalAction
+   */
+  omit?: Prisma.ApprovalActionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ApprovalActionInclude<ExtArgs> | null
+  where?: Prisma.ApprovalActionWhereInput
+  orderBy?: Prisma.ApprovalActionOrderByWithRelationInput | Prisma.ApprovalActionOrderByWithRelationInput[]
+  cursor?: Prisma.ApprovalActionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApprovalActionScalarFieldEnum | Prisma.ApprovalActionScalarFieldEnum[]
+}
+
+/**
+ * User.notifications
+ */
+export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * User.notificationPreferences
+ */
+export type User$notificationPreferencesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the NotificationPreference
+   */
+  select?: Prisma.NotificationPreferenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the NotificationPreference
+   */
+  omit?: Prisma.NotificationPreferenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationPreferenceInclude<ExtArgs> | null
+  where?: Prisma.NotificationPreferenceWhereInput
+  orderBy?: Prisma.NotificationPreferenceOrderByWithRelationInput | Prisma.NotificationPreferenceOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationPreferenceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationPreferenceScalarFieldEnum | Prisma.NotificationPreferenceScalarFieldEnum[]
+}
+
+/**
+ * User.ownedTnaTasks
+ */
+export type User$ownedTnaTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TnaTask
+   */
+  select?: Prisma.TnaTaskSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TnaTask
+   */
+  omit?: Prisma.TnaTaskOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TnaTaskInclude<ExtArgs> | null
+  where?: Prisma.TnaTaskWhereInput
+  orderBy?: Prisma.TnaTaskOrderByWithRelationInput | Prisma.TnaTaskOrderByWithRelationInput[]
+  cursor?: Prisma.TnaTaskWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TnaTaskScalarFieldEnum | Prisma.TnaTaskScalarFieldEnum[]
 }
 
 /**

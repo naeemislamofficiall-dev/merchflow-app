@@ -1,3 +1,4 @@
+import "dotenv/config";
 import bcrypt from "bcryptjs";
 import { prisma } from "../src/lib/prisma";
 
@@ -38,13 +39,14 @@ async function main() {
    const passwordHash = await bcrypt.hash("Admin@12345", 10);
   await prisma.user.upsert({
     where: { email: "admin@merchflow.local" },
-    update: {},
+    update: { scope: "COMPANY" },
     create: {
       email: "admin@merchflow.local",
       name: "Admin",
       passwordHash,
       companyId: company.id,
       roleId: role.id,
+      scope: "COMPANY",
       status: "ACTIVE",
     },
   });

@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -29,15 +32,26 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-100">
-      <form onSubmit={onSubmit} className="w-full max-w-sm space-y-4 rounded-lg bg-white p-6 shadow">
-        <h1 className="text-xl font-semibold">Merchflow Login</h1>
-        <input name="email" type="email" placeholder="Email" required className="w-full rounded border px-3 py-2" />
-        <input name="password" type="password" placeholder="Password" required className="w-full rounded border px-3 py-2" />
-        {error && <p className="text-sm text-red-600">{error}</p>}
-        <button disabled={loading} className="w-full rounded bg-blue-700 py-2 text-white disabled:opacity-60">
+    <main className="flex min-h-screen items-center justify-center bg-denim-800 px-4">
+      <form onSubmit={onSubmit} className="w-full max-w-sm space-y-4 rounded-xl bg-card p-6 shadow-xl">
+        <div>
+          <h1 className="font-heading text-2xl font-bold tracking-wide text-denim-800">
+            MERCH<span className="text-gold-500">FLOW</span>
+          </h1>
+          <p className="text-sm text-muted-foreground">Sign in to continue</p>
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" name="email" type="email" required autoComplete="email" />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="password">Password</Label>
+          <Input id="password" name="password" type="password" required autoComplete="current-password" />
+        </div>
+        {error && <p className="text-sm text-destructive">{error}</p>}
+        <Button disabled={loading} className="w-full">
           {loading ? "Please wait..." : "Login"}
-        </button>
+        </Button>
       </form>
     </main>
   );

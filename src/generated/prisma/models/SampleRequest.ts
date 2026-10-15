@@ -57,6 +57,8 @@ export type SampleRequestMinAggregateOutputType = {
   courier: string | null
   trackingNo: string | null
   buyerResponse: string | null
+  materialRequirement: string | null
+  comments: string | null
   revisionCount: number | null
   status: $Enums.SampleStatus | null
   notes: string | null
@@ -84,6 +86,8 @@ export type SampleRequestMaxAggregateOutputType = {
   courier: string | null
   trackingNo: string | null
   buyerResponse: string | null
+  materialRequirement: string | null
+  comments: string | null
   revisionCount: number | null
   status: $Enums.SampleStatus | null
   notes: string | null
@@ -111,6 +115,8 @@ export type SampleRequestCountAggregateOutputType = {
   courier: number
   trackingNo: number
   buyerResponse: number
+  materialRequirement: number
+  comments: number
   revisionCount: number
   status: number
   notes: number
@@ -152,6 +158,8 @@ export type SampleRequestMinAggregateInputType = {
   courier?: true
   trackingNo?: true
   buyerResponse?: true
+  materialRequirement?: true
+  comments?: true
   revisionCount?: true
   status?: true
   notes?: true
@@ -179,6 +187,8 @@ export type SampleRequestMaxAggregateInputType = {
   courier?: true
   trackingNo?: true
   buyerResponse?: true
+  materialRequirement?: true
+  comments?: true
   revisionCount?: true
   status?: true
   notes?: true
@@ -206,6 +216,8 @@ export type SampleRequestCountAggregateInputType = {
   courier?: true
   trackingNo?: true
   buyerResponse?: true
+  materialRequirement?: true
+  comments?: true
   revisionCount?: true
   status?: true
   notes?: true
@@ -320,6 +332,8 @@ export type SampleRequestGroupByOutputType = {
   courier: string | null
   trackingNo: string | null
   buyerResponse: string | null
+  materialRequirement: string | null
+  comments: string | null
   revisionCount: number
   status: $Enums.SampleStatus
   notes: string | null
@@ -370,6 +384,8 @@ export type SampleRequestWhereInput = {
   courier?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   trackingNo?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   buyerResponse?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  materialRequirement?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  comments?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   revisionCount?: Prisma.IntFilter<"SampleRequest"> | number
   status?: Prisma.EnumSampleStatusFilter<"SampleRequest"> | $Enums.SampleStatus
   notes?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
@@ -403,6 +419,8 @@ export type SampleRequestOrderByWithRelationInput = {
   courier?: Prisma.SortOrderInput | Prisma.SortOrder
   trackingNo?: Prisma.SortOrderInput | Prisma.SortOrder
   buyerResponse?: Prisma.SortOrderInput | Prisma.SortOrder
+  materialRequirement?: Prisma.SortOrderInput | Prisma.SortOrder
+  comments?: Prisma.SortOrderInput | Prisma.SortOrder
   revisionCount?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -440,6 +458,8 @@ export type SampleRequestWhereUniqueInput = Prisma.AtLeast<{
   courier?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   trackingNo?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   buyerResponse?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  materialRequirement?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  comments?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   revisionCount?: Prisma.IntFilter<"SampleRequest"> | number
   status?: Prisma.EnumSampleStatusFilter<"SampleRequest"> | $Enums.SampleStatus
   notes?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
@@ -473,6 +493,8 @@ export type SampleRequestOrderByWithAggregationInput = {
   courier?: Prisma.SortOrderInput | Prisma.SortOrder
   trackingNo?: Prisma.SortOrderInput | Prisma.SortOrder
   buyerResponse?: Prisma.SortOrderInput | Prisma.SortOrder
+  materialRequirement?: Prisma.SortOrderInput | Prisma.SortOrder
+  comments?: Prisma.SortOrderInput | Prisma.SortOrder
   revisionCount?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -508,6 +530,8 @@ export type SampleRequestScalarWhereWithAggregatesInput = {
   courier?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
   trackingNo?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
   buyerResponse?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
+  materialRequirement?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
+  comments?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
   revisionCount?: Prisma.IntWithAggregatesFilter<"SampleRequest"> | number
   status?: Prisma.EnumSampleStatusWithAggregatesFilter<"SampleRequest"> | $Enums.SampleStatus
   notes?: Prisma.StringNullableWithAggregatesFilter<"SampleRequest"> | string | null
@@ -530,6 +554,8 @@ export type SampleRequestCreateInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -563,6 +589,8 @@ export type SampleRequestUncheckedCreateInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -586,6 +614,8 @@ export type SampleRequestUpdateInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -619,6 +649,8 @@ export type SampleRequestUncheckedUpdateInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -647,6 +679,8 @@ export type SampleRequestCreateManyInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -669,6 +703,8 @@ export type SampleRequestUpdateManyMutationInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -696,6 +732,8 @@ export type SampleRequestUncheckedUpdateManyInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -738,6 +776,8 @@ export type SampleRequestCountOrderByAggregateInput = {
   courier?: Prisma.SortOrder
   trackingNo?: Prisma.SortOrder
   buyerResponse?: Prisma.SortOrder
+  materialRequirement?: Prisma.SortOrder
+  comments?: Prisma.SortOrder
   revisionCount?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
@@ -771,6 +811,8 @@ export type SampleRequestMaxOrderByAggregateInput = {
   courier?: Prisma.SortOrder
   trackingNo?: Prisma.SortOrder
   buyerResponse?: Prisma.SortOrder
+  materialRequirement?: Prisma.SortOrder
+  comments?: Prisma.SortOrder
   revisionCount?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
@@ -798,6 +840,8 @@ export type SampleRequestMinOrderByAggregateInput = {
   courier?: Prisma.SortOrder
   trackingNo?: Prisma.SortOrder
   buyerResponse?: Prisma.SortOrder
+  materialRequirement?: Prisma.SortOrder
+  comments?: Prisma.SortOrder
   revisionCount?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
@@ -1063,6 +1107,8 @@ export type SampleRequestCreateWithoutCompanyInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1094,6 +1140,8 @@ export type SampleRequestUncheckedCreateWithoutCompanyInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1151,6 +1199,8 @@ export type SampleRequestScalarWhereInput = {
   courier?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   trackingNo?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   buyerResponse?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  materialRequirement?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
+  comments?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
   revisionCount?: Prisma.IntFilter<"SampleRequest"> | number
   status?: Prisma.EnumSampleStatusFilter<"SampleRequest"> | $Enums.SampleStatus
   notes?: Prisma.StringNullableFilter<"SampleRequest"> | string | null
@@ -1173,6 +1223,8 @@ export type SampleRequestCreateWithoutAssignedToInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1204,6 +1256,8 @@ export type SampleRequestUncheckedCreateWithoutAssignedToInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1253,6 +1307,8 @@ export type SampleRequestCreateWithoutAssignedDepartmentInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1284,6 +1340,8 @@ export type SampleRequestUncheckedCreateWithoutAssignedDepartmentInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1333,6 +1391,8 @@ export type SampleRequestCreateWithoutStyleInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1364,6 +1424,8 @@ export type SampleRequestUncheckedCreateWithoutStyleInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1413,6 +1475,8 @@ export type SampleRequestCreateWithoutOrderInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1444,6 +1508,8 @@ export type SampleRequestUncheckedCreateWithoutOrderInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1493,6 +1559,8 @@ export type SampleRequestCreateWithoutApprovalsInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1525,6 +1593,8 @@ export type SampleRequestUncheckedCreateWithoutApprovalsInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1563,6 +1633,8 @@ export type SampleRequestUpdateWithoutApprovalsInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1595,6 +1667,8 @@ export type SampleRequestUncheckedUpdateWithoutApprovalsInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1621,6 +1695,8 @@ export type SampleRequestCreateManyCompanyInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1643,6 +1719,8 @@ export type SampleRequestUpdateWithoutCompanyInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1674,6 +1752,8 @@ export type SampleRequestUncheckedUpdateWithoutCompanyInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1701,6 +1781,8 @@ export type SampleRequestUncheckedUpdateManyWithoutCompanyInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1727,6 +1809,8 @@ export type SampleRequestCreateManyAssignedToInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1749,6 +1833,8 @@ export type SampleRequestUpdateWithoutAssignedToInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1780,6 +1866,8 @@ export type SampleRequestUncheckedUpdateWithoutAssignedToInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1807,6 +1895,8 @@ export type SampleRequestUncheckedUpdateManyWithoutAssignedToInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1833,6 +1923,8 @@ export type SampleRequestCreateManyAssignedDepartmentInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1855,6 +1947,8 @@ export type SampleRequestUpdateWithoutAssignedDepartmentInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1886,6 +1980,8 @@ export type SampleRequestUncheckedUpdateWithoutAssignedDepartmentInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1913,6 +2009,8 @@ export type SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1939,6 +2037,8 @@ export type SampleRequestCreateManyStyleInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -1961,6 +2061,8 @@ export type SampleRequestUpdateWithoutStyleInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1992,6 +2094,8 @@ export type SampleRequestUncheckedUpdateWithoutStyleInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2019,6 +2123,8 @@ export type SampleRequestUncheckedUpdateManyWithoutStyleInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2045,6 +2151,8 @@ export type SampleRequestCreateManyOrderInput = {
   courier?: string | null
   trackingNo?: string | null
   buyerResponse?: string | null
+  materialRequirement?: string | null
+  comments?: string | null
   revisionCount?: number
   status?: $Enums.SampleStatus
   notes?: string | null
@@ -2067,6 +2175,8 @@ export type SampleRequestUpdateWithoutOrderInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2098,6 +2208,8 @@ export type SampleRequestUncheckedUpdateWithoutOrderInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2125,6 +2237,8 @@ export type SampleRequestUncheckedUpdateManyWithoutOrderInput = {
   courier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trackingNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyerResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  materialRequirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   revisionCount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumSampleStatusFieldUpdateOperationsInput | $Enums.SampleStatus
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2183,6 +2297,8 @@ export type SampleRequestSelect<ExtArgs extends runtime.Types.Extensions.Interna
   courier?: boolean
   trackingNo?: boolean
   buyerResponse?: boolean
+  materialRequirement?: boolean
+  comments?: boolean
   revisionCount?: boolean
   status?: boolean
   notes?: boolean
@@ -2217,6 +2333,8 @@ export type SampleRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   courier?: boolean
   trackingNo?: boolean
   buyerResponse?: boolean
+  materialRequirement?: boolean
+  comments?: boolean
   revisionCount?: boolean
   status?: boolean
   notes?: boolean
@@ -2249,6 +2367,8 @@ export type SampleRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   courier?: boolean
   trackingNo?: boolean
   buyerResponse?: boolean
+  materialRequirement?: boolean
+  comments?: boolean
   revisionCount?: boolean
   status?: boolean
   notes?: boolean
@@ -2281,6 +2401,8 @@ export type SampleRequestSelectScalar = {
   courier?: boolean
   trackingNo?: boolean
   buyerResponse?: boolean
+  materialRequirement?: boolean
+  comments?: boolean
   revisionCount?: boolean
   status?: boolean
   notes?: boolean
@@ -2289,7 +2411,7 @@ export type SampleRequestSelectScalar = {
   updatedAt?: boolean
 }
 
-export type SampleRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "sampleNo" | "styleId" | "orderId" | "sampleType" | "quantity" | "requestedDate" | "dueDate" | "assignedDepartmentId" | "assignedToId" | "cost" | "plannedCompletion" | "actualCompletion" | "sentDate" | "courier" | "trackingNo" | "buyerResponse" | "revisionCount" | "status" | "notes" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["sampleRequest"]>
+export type SampleRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "sampleNo" | "styleId" | "orderId" | "sampleType" | "quantity" | "requestedDate" | "dueDate" | "assignedDepartmentId" | "assignedToId" | "cost" | "plannedCompletion" | "actualCompletion" | "sentDate" | "courier" | "trackingNo" | "buyerResponse" | "materialRequirement" | "comments" | "revisionCount" | "status" | "notes" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["sampleRequest"]>
 export type SampleRequestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
@@ -2343,6 +2465,8 @@ export type $SampleRequestPayload<ExtArgs extends runtime.Types.Extensions.Inter
     courier: string | null
     trackingNo: string | null
     buyerResponse: string | null
+    materialRequirement: string | null
+    comments: string | null
     revisionCount: number
     status: $Enums.SampleStatus
     notes: string | null
@@ -2796,6 +2920,8 @@ export interface SampleRequestFieldRefs {
   readonly courier: Prisma.FieldRef<"SampleRequest", 'String'>
   readonly trackingNo: Prisma.FieldRef<"SampleRequest", 'String'>
   readonly buyerResponse: Prisma.FieldRef<"SampleRequest", 'String'>
+  readonly materialRequirement: Prisma.FieldRef<"SampleRequest", 'String'>
+  readonly comments: Prisma.FieldRef<"SampleRequest", 'String'>
   readonly revisionCount: Prisma.FieldRef<"SampleRequest", 'Int'>
   readonly status: Prisma.FieldRef<"SampleRequest", 'SampleStatus'>
   readonly notes: Prisma.FieldRef<"SampleRequest", 'String'>

@@ -199,6 +199,9 @@ export type BinWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Bin"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Bin"> | Date | string
   warehouse?: Prisma.XOR<Prisma.WarehouseScalarRelationFilter, Prisma.WarehouseWhereInput>
+  grnLines?: Prisma.GrnLineListRelationFilter
+  fabricRolls?: Prisma.FabricRollListRelationFilter
+  stockTransactions?: Prisma.StockTransactionListRelationFilter
 }
 
 export type BinOrderByWithRelationInput = {
@@ -210,6 +213,9 @@ export type BinOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   warehouse?: Prisma.WarehouseOrderByWithRelationInput
+  grnLines?: Prisma.GrnLineOrderByRelationAggregateInput
+  fabricRolls?: Prisma.FabricRollOrderByRelationAggregateInput
+  stockTransactions?: Prisma.StockTransactionOrderByRelationAggregateInput
 }
 
 export type BinWhereUniqueInput = Prisma.AtLeast<{
@@ -225,6 +231,9 @@ export type BinWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Bin"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Bin"> | Date | string
   warehouse?: Prisma.XOR<Prisma.WarehouseScalarRelationFilter, Prisma.WarehouseWhereInput>
+  grnLines?: Prisma.GrnLineListRelationFilter
+  fabricRolls?: Prisma.FabricRollListRelationFilter
+  stockTransactions?: Prisma.StockTransactionListRelationFilter
 }, "id" | "warehouseId_code">
 
 export type BinOrderByWithAggregationInput = {
@@ -261,6 +270,9 @@ export type BinCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   warehouse: Prisma.WarehouseCreateNestedOneWithoutBinsInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutBinInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutBinInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutBinInput
 }
 
 export type BinUncheckedCreateInput = {
@@ -271,6 +283,9 @@ export type BinUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutBinInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutBinInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutBinInput
 }
 
 export type BinUpdateInput = {
@@ -281,6 +296,9 @@ export type BinUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   warehouse?: Prisma.WarehouseUpdateOneRequiredWithoutBinsNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutBinNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutBinNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutBinNestedInput
 }
 
 export type BinUncheckedUpdateInput = {
@@ -291,6 +309,9 @@ export type BinUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutBinNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutBinNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutBinNestedInput
 }
 
 export type BinCreateManyInput = {
@@ -367,6 +388,11 @@ export type BinMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
+export type BinNullableScalarRelationFilter = {
+  is?: Prisma.BinWhereInput | null
+  isNot?: Prisma.BinWhereInput | null
+}
+
 export type BinCreateNestedManyWithoutWarehouseInput = {
   create?: Prisma.XOR<Prisma.BinCreateWithoutWarehouseInput, Prisma.BinUncheckedCreateWithoutWarehouseInput> | Prisma.BinCreateWithoutWarehouseInput[] | Prisma.BinUncheckedCreateWithoutWarehouseInput[]
   connectOrCreate?: Prisma.BinCreateOrConnectWithoutWarehouseInput | Prisma.BinCreateOrConnectWithoutWarehouseInput[]
@@ -409,6 +435,54 @@ export type BinUncheckedUpdateManyWithoutWarehouseNestedInput = {
   deleteMany?: Prisma.BinScalarWhereInput | Prisma.BinScalarWhereInput[]
 }
 
+export type BinCreateNestedOneWithoutGrnLinesInput = {
+  create?: Prisma.XOR<Prisma.BinCreateWithoutGrnLinesInput, Prisma.BinUncheckedCreateWithoutGrnLinesInput>
+  connectOrCreate?: Prisma.BinCreateOrConnectWithoutGrnLinesInput
+  connect?: Prisma.BinWhereUniqueInput
+}
+
+export type BinUpdateOneWithoutGrnLinesNestedInput = {
+  create?: Prisma.XOR<Prisma.BinCreateWithoutGrnLinesInput, Prisma.BinUncheckedCreateWithoutGrnLinesInput>
+  connectOrCreate?: Prisma.BinCreateOrConnectWithoutGrnLinesInput
+  upsert?: Prisma.BinUpsertWithoutGrnLinesInput
+  disconnect?: Prisma.BinWhereInput | boolean
+  delete?: Prisma.BinWhereInput | boolean
+  connect?: Prisma.BinWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BinUpdateToOneWithWhereWithoutGrnLinesInput, Prisma.BinUpdateWithoutGrnLinesInput>, Prisma.BinUncheckedUpdateWithoutGrnLinesInput>
+}
+
+export type BinCreateNestedOneWithoutFabricRollsInput = {
+  create?: Prisma.XOR<Prisma.BinCreateWithoutFabricRollsInput, Prisma.BinUncheckedCreateWithoutFabricRollsInput>
+  connectOrCreate?: Prisma.BinCreateOrConnectWithoutFabricRollsInput
+  connect?: Prisma.BinWhereUniqueInput
+}
+
+export type BinUpdateOneWithoutFabricRollsNestedInput = {
+  create?: Prisma.XOR<Prisma.BinCreateWithoutFabricRollsInput, Prisma.BinUncheckedCreateWithoutFabricRollsInput>
+  connectOrCreate?: Prisma.BinCreateOrConnectWithoutFabricRollsInput
+  upsert?: Prisma.BinUpsertWithoutFabricRollsInput
+  disconnect?: Prisma.BinWhereInput | boolean
+  delete?: Prisma.BinWhereInput | boolean
+  connect?: Prisma.BinWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BinUpdateToOneWithWhereWithoutFabricRollsInput, Prisma.BinUpdateWithoutFabricRollsInput>, Prisma.BinUncheckedUpdateWithoutFabricRollsInput>
+}
+
+export type BinCreateNestedOneWithoutStockTransactionsInput = {
+  create?: Prisma.XOR<Prisma.BinCreateWithoutStockTransactionsInput, Prisma.BinUncheckedCreateWithoutStockTransactionsInput>
+  connectOrCreate?: Prisma.BinCreateOrConnectWithoutStockTransactionsInput
+  connect?: Prisma.BinWhereUniqueInput
+}
+
+export type BinUpdateOneWithoutStockTransactionsNestedInput = {
+  create?: Prisma.XOR<Prisma.BinCreateWithoutStockTransactionsInput, Prisma.BinUncheckedCreateWithoutStockTransactionsInput>
+  connectOrCreate?: Prisma.BinCreateOrConnectWithoutStockTransactionsInput
+  upsert?: Prisma.BinUpsertWithoutStockTransactionsInput
+  disconnect?: Prisma.BinWhereInput | boolean
+  delete?: Prisma.BinWhereInput | boolean
+  connect?: Prisma.BinWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BinUpdateToOneWithWhereWithoutStockTransactionsInput, Prisma.BinUpdateWithoutStockTransactionsInput>, Prisma.BinUncheckedUpdateWithoutStockTransactionsInput>
+}
+
 export type BinCreateWithoutWarehouseInput = {
   id?: string
   code: string
@@ -416,6 +490,9 @@ export type BinCreateWithoutWarehouseInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutBinInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutBinInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutBinInput
 }
 
 export type BinUncheckedCreateWithoutWarehouseInput = {
@@ -425,6 +502,9 @@ export type BinUncheckedCreateWithoutWarehouseInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutBinInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutBinInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutBinInput
 }
 
 export type BinCreateOrConnectWithoutWarehouseInput = {
@@ -466,6 +546,198 @@ export type BinScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Bin"> | Date | string
 }
 
+export type BinCreateWithoutGrnLinesInput = {
+  id?: string
+  code: string
+  description?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  warehouse: Prisma.WarehouseCreateNestedOneWithoutBinsInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutBinInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutBinInput
+}
+
+export type BinUncheckedCreateWithoutGrnLinesInput = {
+  id?: string
+  warehouseId: string
+  code: string
+  description?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutBinInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutBinInput
+}
+
+export type BinCreateOrConnectWithoutGrnLinesInput = {
+  where: Prisma.BinWhereUniqueInput
+  create: Prisma.XOR<Prisma.BinCreateWithoutGrnLinesInput, Prisma.BinUncheckedCreateWithoutGrnLinesInput>
+}
+
+export type BinUpsertWithoutGrnLinesInput = {
+  update: Prisma.XOR<Prisma.BinUpdateWithoutGrnLinesInput, Prisma.BinUncheckedUpdateWithoutGrnLinesInput>
+  create: Prisma.XOR<Prisma.BinCreateWithoutGrnLinesInput, Prisma.BinUncheckedCreateWithoutGrnLinesInput>
+  where?: Prisma.BinWhereInput
+}
+
+export type BinUpdateToOneWithWhereWithoutGrnLinesInput = {
+  where?: Prisma.BinWhereInput
+  data: Prisma.XOR<Prisma.BinUpdateWithoutGrnLinesInput, Prisma.BinUncheckedUpdateWithoutGrnLinesInput>
+}
+
+export type BinUpdateWithoutGrnLinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  warehouse?: Prisma.WarehouseUpdateOneRequiredWithoutBinsNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutBinNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutBinNestedInput
+}
+
+export type BinUncheckedUpdateWithoutGrnLinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  warehouseId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutBinNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutBinNestedInput
+}
+
+export type BinCreateWithoutFabricRollsInput = {
+  id?: string
+  code: string
+  description?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  warehouse: Prisma.WarehouseCreateNestedOneWithoutBinsInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutBinInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutBinInput
+}
+
+export type BinUncheckedCreateWithoutFabricRollsInput = {
+  id?: string
+  warehouseId: string
+  code: string
+  description?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutBinInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutBinInput
+}
+
+export type BinCreateOrConnectWithoutFabricRollsInput = {
+  where: Prisma.BinWhereUniqueInput
+  create: Prisma.XOR<Prisma.BinCreateWithoutFabricRollsInput, Prisma.BinUncheckedCreateWithoutFabricRollsInput>
+}
+
+export type BinUpsertWithoutFabricRollsInput = {
+  update: Prisma.XOR<Prisma.BinUpdateWithoutFabricRollsInput, Prisma.BinUncheckedUpdateWithoutFabricRollsInput>
+  create: Prisma.XOR<Prisma.BinCreateWithoutFabricRollsInput, Prisma.BinUncheckedCreateWithoutFabricRollsInput>
+  where?: Prisma.BinWhereInput
+}
+
+export type BinUpdateToOneWithWhereWithoutFabricRollsInput = {
+  where?: Prisma.BinWhereInput
+  data: Prisma.XOR<Prisma.BinUpdateWithoutFabricRollsInput, Prisma.BinUncheckedUpdateWithoutFabricRollsInput>
+}
+
+export type BinUpdateWithoutFabricRollsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  warehouse?: Prisma.WarehouseUpdateOneRequiredWithoutBinsNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutBinNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutBinNestedInput
+}
+
+export type BinUncheckedUpdateWithoutFabricRollsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  warehouseId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutBinNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutBinNestedInput
+}
+
+export type BinCreateWithoutStockTransactionsInput = {
+  id?: string
+  code: string
+  description?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  warehouse: Prisma.WarehouseCreateNestedOneWithoutBinsInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutBinInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutBinInput
+}
+
+export type BinUncheckedCreateWithoutStockTransactionsInput = {
+  id?: string
+  warehouseId: string
+  code: string
+  description?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutBinInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutBinInput
+}
+
+export type BinCreateOrConnectWithoutStockTransactionsInput = {
+  where: Prisma.BinWhereUniqueInput
+  create: Prisma.XOR<Prisma.BinCreateWithoutStockTransactionsInput, Prisma.BinUncheckedCreateWithoutStockTransactionsInput>
+}
+
+export type BinUpsertWithoutStockTransactionsInput = {
+  update: Prisma.XOR<Prisma.BinUpdateWithoutStockTransactionsInput, Prisma.BinUncheckedUpdateWithoutStockTransactionsInput>
+  create: Prisma.XOR<Prisma.BinCreateWithoutStockTransactionsInput, Prisma.BinUncheckedCreateWithoutStockTransactionsInput>
+  where?: Prisma.BinWhereInput
+}
+
+export type BinUpdateToOneWithWhereWithoutStockTransactionsInput = {
+  where?: Prisma.BinWhereInput
+  data: Prisma.XOR<Prisma.BinUpdateWithoutStockTransactionsInput, Prisma.BinUncheckedUpdateWithoutStockTransactionsInput>
+}
+
+export type BinUpdateWithoutStockTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  warehouse?: Prisma.WarehouseUpdateOneRequiredWithoutBinsNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutBinNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutBinNestedInput
+}
+
+export type BinUncheckedUpdateWithoutStockTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  warehouseId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutBinNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutBinNestedInput
+}
+
 export type BinCreateManyWarehouseInput = {
   id?: string
   code: string
@@ -482,6 +754,9 @@ export type BinUpdateWithoutWarehouseInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  grnLines?: Prisma.GrnLineUpdateManyWithoutBinNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutBinNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutBinNestedInput
 }
 
 export type BinUncheckedUpdateWithoutWarehouseInput = {
@@ -491,6 +766,9 @@ export type BinUncheckedUpdateWithoutWarehouseInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutBinNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutBinNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutBinNestedInput
 }
 
 export type BinUncheckedUpdateManyWithoutWarehouseInput = {
@@ -503,6 +781,53 @@ export type BinUncheckedUpdateManyWithoutWarehouseInput = {
 }
 
 
+/**
+ * Count Type BinCountOutputType
+ */
+
+export type BinCountOutputType = {
+  grnLines: number
+  fabricRolls: number
+  stockTransactions: number
+}
+
+export type BinCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  grnLines?: boolean | BinCountOutputTypeCountGrnLinesArgs
+  fabricRolls?: boolean | BinCountOutputTypeCountFabricRollsArgs
+  stockTransactions?: boolean | BinCountOutputTypeCountStockTransactionsArgs
+}
+
+/**
+ * BinCountOutputType without action
+ */
+export type BinCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BinCountOutputType
+   */
+  select?: Prisma.BinCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * BinCountOutputType without action
+ */
+export type BinCountOutputTypeCountGrnLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GrnLineWhereInput
+}
+
+/**
+ * BinCountOutputType without action
+ */
+export type BinCountOutputTypeCountFabricRollsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FabricRollWhereInput
+}
+
+/**
+ * BinCountOutputType without action
+ */
+export type BinCountOutputTypeCountStockTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StockTransactionWhereInput
+}
+
 
 export type BinSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -513,6 +838,10 @@ export type BinSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   createdAt?: boolean
   updatedAt?: boolean
   warehouse?: boolean | Prisma.WarehouseDefaultArgs<ExtArgs>
+  grnLines?: boolean | Prisma.Bin$grnLinesArgs<ExtArgs>
+  fabricRolls?: boolean | Prisma.Bin$fabricRollsArgs<ExtArgs>
+  stockTransactions?: boolean | Prisma.Bin$stockTransactionsArgs<ExtArgs>
+  _count?: boolean | Prisma.BinCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bin"]>
 
 export type BinSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -550,6 +879,10 @@ export type BinSelectScalar = {
 export type BinOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "warehouseId" | "code" | "description" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["bin"]>
 export type BinInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   warehouse?: boolean | Prisma.WarehouseDefaultArgs<ExtArgs>
+  grnLines?: boolean | Prisma.Bin$grnLinesArgs<ExtArgs>
+  fabricRolls?: boolean | Prisma.Bin$fabricRollsArgs<ExtArgs>
+  stockTransactions?: boolean | Prisma.Bin$stockTransactionsArgs<ExtArgs>
+  _count?: boolean | Prisma.BinCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BinIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   warehouse?: boolean | Prisma.WarehouseDefaultArgs<ExtArgs>
@@ -562,6 +895,9 @@ export type $BinPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   name: "Bin"
   objects: {
     warehouse: Prisma.$WarehousePayload<ExtArgs>
+    grnLines: Prisma.$GrnLinePayload<ExtArgs>[]
+    fabricRolls: Prisma.$FabricRollPayload<ExtArgs>[]
+    stockTransactions: Prisma.$StockTransactionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -966,6 +1302,9 @@ readonly fields: BinFieldRefs;
 export interface Prisma__BinClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   warehouse<T extends Prisma.WarehouseDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WarehouseDefaultArgs<ExtArgs>>): Prisma.Prisma__WarehouseClient<runtime.Types.Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  grnLines<T extends Prisma.Bin$grnLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bin$grnLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GrnLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  fabricRolls<T extends Prisma.Bin$fabricRollsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bin$fabricRollsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FabricRollPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  stockTransactions<T extends Prisma.Bin$stockTransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bin$stockTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1400,6 +1739,78 @@ export type BinDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Limit how many Bins to delete.
    */
   limit?: number
+}
+
+/**
+ * Bin.grnLines
+ */
+export type Bin$grnLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GrnLine
+   */
+  select?: Prisma.GrnLineSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GrnLine
+   */
+  omit?: Prisma.GrnLineOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GrnLineInclude<ExtArgs> | null
+  where?: Prisma.GrnLineWhereInput
+  orderBy?: Prisma.GrnLineOrderByWithRelationInput | Prisma.GrnLineOrderByWithRelationInput[]
+  cursor?: Prisma.GrnLineWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GrnLineScalarFieldEnum | Prisma.GrnLineScalarFieldEnum[]
+}
+
+/**
+ * Bin.fabricRolls
+ */
+export type Bin$fabricRollsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FabricRoll
+   */
+  select?: Prisma.FabricRollSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FabricRoll
+   */
+  omit?: Prisma.FabricRollOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FabricRollInclude<ExtArgs> | null
+  where?: Prisma.FabricRollWhereInput
+  orderBy?: Prisma.FabricRollOrderByWithRelationInput | Prisma.FabricRollOrderByWithRelationInput[]
+  cursor?: Prisma.FabricRollWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FabricRollScalarFieldEnum | Prisma.FabricRollScalarFieldEnum[]
+}
+
+/**
+ * Bin.stockTransactions
+ */
+export type Bin$stockTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StockTransaction
+   */
+  select?: Prisma.StockTransactionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StockTransaction
+   */
+  omit?: Prisma.StockTransactionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StockTransactionInclude<ExtArgs> | null
+  where?: Prisma.StockTransactionWhereInput
+  orderBy?: Prisma.StockTransactionOrderByWithRelationInput | Prisma.StockTransactionOrderByWithRelationInput[]
+  cursor?: Prisma.StockTransactionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StockTransactionScalarFieldEnum | Prisma.StockTransactionScalarFieldEnum[]
 }
 
 /**

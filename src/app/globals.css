@@ -37,3 +37,48 @@ h2,
 h3 {
   font-family: var(--font-heading);
 }
+
+/* shadcn-ধাঁচের নামকরা রঙ: সব UI কম্পোনেন্ট এগুলো ব্যবহার করে */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --background: #f6f7f9;
+  --foreground: #1b2430;
+  --card: #ffffff;
+  --card-foreground: #1b2430;
+  --primary: #1e3a5f;
+  --primary-foreground: #ffffff;
+  --secondary: #eef3f9;
+  --secondary-foreground: #1e3a5f;
+  --muted: #eef1f5;
+  --muted-foreground: #5b6776;
+  --accent: #f7edc8;
+  --accent-foreground: #6b5410;
+  --destructive: #c0392b;
+  --border: #dfe4ea;
+  --input: #cbd3dc;
+  --ring: #3a6396;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+}

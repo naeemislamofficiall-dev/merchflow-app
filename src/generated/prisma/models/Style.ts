@@ -20,8 +20,18 @@ export type StyleModel = runtime.Types.Result.DefaultSelection<Prisma.$StylePayl
 
 export type AggregateStyle = {
   _count: StyleCountAggregateOutputType | null
+  _avg: StyleAvgAggregateOutputType | null
+  _sum: StyleSumAggregateOutputType | null
   _min: StyleMinAggregateOutputType | null
   _max: StyleMaxAggregateOutputType | null
+}
+
+export type StyleAvgAggregateOutputType = {
+  gsm: number | null
+}
+
+export type StyleSumAggregateOutputType = {
+  gsm: number | null
 }
 
 export type StyleMinAggregateOutputType = {
@@ -36,6 +46,16 @@ export type StyleMinAggregateOutputType = {
   description: string | null
   status: $Enums.StyleStatus | null
   createdById: string | null
+  garmentType: string | null
+  gender: string | null
+  fabricType: string | null
+  composition: string | null
+  gsm: number | null
+  construction: string | null
+  washType: string | null
+  print: string | null
+  embroidery: string | null
+  developmentOwnerId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -52,6 +72,16 @@ export type StyleMaxAggregateOutputType = {
   description: string | null
   status: $Enums.StyleStatus | null
   createdById: string | null
+  garmentType: string | null
+  gender: string | null
+  fabricType: string | null
+  composition: string | null
+  gsm: number | null
+  construction: string | null
+  washType: string | null
+  print: string | null
+  embroidery: string | null
+  developmentOwnerId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -68,11 +98,29 @@ export type StyleCountAggregateOutputType = {
   description: number
   status: number
   createdById: number
+  garmentType: number
+  gender: number
+  fabricType: number
+  composition: number
+  gsm: number
+  construction: number
+  washType: number
+  print: number
+  embroidery: number
+  developmentOwnerId: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
+
+export type StyleAvgAggregateInputType = {
+  gsm?: true
+}
+
+export type StyleSumAggregateInputType = {
+  gsm?: true
+}
 
 export type StyleMinAggregateInputType = {
   id?: true
@@ -86,6 +134,16 @@ export type StyleMinAggregateInputType = {
   description?: true
   status?: true
   createdById?: true
+  garmentType?: true
+  gender?: true
+  fabricType?: true
+  composition?: true
+  gsm?: true
+  construction?: true
+  washType?: true
+  print?: true
+  embroidery?: true
+  developmentOwnerId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -102,6 +160,16 @@ export type StyleMaxAggregateInputType = {
   description?: true
   status?: true
   createdById?: true
+  garmentType?: true
+  gender?: true
+  fabricType?: true
+  composition?: true
+  gsm?: true
+  construction?: true
+  washType?: true
+  print?: true
+  embroidery?: true
+  developmentOwnerId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -118,6 +186,16 @@ export type StyleCountAggregateInputType = {
   description?: true
   status?: true
   createdById?: true
+  garmentType?: true
+  gender?: true
+  fabricType?: true
+  composition?: true
+  gsm?: true
+  construction?: true
+  washType?: true
+  print?: true
+  embroidery?: true
+  developmentOwnerId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -161,6 +239,18 @@ export type StyleAggregateArgs<ExtArgs extends runtime.Types.Extensions.Internal
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: StyleAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: StyleSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: StyleMinAggregateInputType
@@ -191,6 +281,8 @@ export type StyleGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   _count?: StyleCountAggregateInputType | true
+  _avg?: StyleAvgAggregateInputType
+  _sum?: StyleSumAggregateInputType
   _min?: StyleMinAggregateInputType
   _max?: StyleMaxAggregateInputType
 }
@@ -207,9 +299,21 @@ export type StyleGroupByOutputType = {
   description: string | null
   status: $Enums.StyleStatus
   createdById: string | null
+  garmentType: string | null
+  gender: string | null
+  fabricType: string | null
+  composition: string | null
+  gsm: number | null
+  construction: string | null
+  washType: string | null
+  print: string | null
+  embroidery: string | null
+  developmentOwnerId: string | null
   createdAt: Date
   updatedAt: Date
   _count: StyleCountAggregateOutputType | null
+  _avg: StyleAvgAggregateOutputType | null
+  _sum: StyleSumAggregateOutputType | null
   _min: StyleMinAggregateOutputType | null
   _max: StyleMaxAggregateOutputType | null
 }
@@ -244,8 +348,19 @@ export type StyleWhereInput = {
   description?: Prisma.StringNullableFilter<"Style"> | string | null
   status?: Prisma.EnumStyleStatusFilter<"Style"> | $Enums.StyleStatus
   createdById?: Prisma.StringNullableFilter<"Style"> | string | null
+  garmentType?: Prisma.StringNullableFilter<"Style"> | string | null
+  gender?: Prisma.StringNullableFilter<"Style"> | string | null
+  fabricType?: Prisma.StringNullableFilter<"Style"> | string | null
+  composition?: Prisma.StringNullableFilter<"Style"> | string | null
+  gsm?: Prisma.IntNullableFilter<"Style"> | number | null
+  construction?: Prisma.StringNullableFilter<"Style"> | string | null
+  washType?: Prisma.StringNullableFilter<"Style"> | string | null
+  print?: Prisma.StringNullableFilter<"Style"> | string | null
+  embroidery?: Prisma.StringNullableFilter<"Style"> | string | null
+  developmentOwnerId?: Prisma.StringNullableFilter<"Style"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Style"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Style"> | Date | string
+  developmentOwner?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   buyer?: Prisma.XOR<Prisma.BuyerScalarRelationFilter, Prisma.BuyerWhereInput>
   seasonRef?: Prisma.XOR<Prisma.SeasonNullableScalarRelationFilter, Prisma.SeasonWhereInput> | null
@@ -253,6 +368,7 @@ export type StyleWhereInput = {
   tnaPlans?: Prisma.TnaPlanListRelationFilter
   costSheets?: Prisma.CostSheetListRelationFilter
   boms?: Prisma.BomListRelationFilter
+  poLines?: Prisma.PurchaseOrderLineListRelationFilter
   colors?: Prisma.StyleColorListRelationFilter
   sizes?: Prisma.StyleSizeListRelationFilter
   enquiryItems?: Prisma.EnquiryItemListRelationFilter
@@ -260,6 +376,8 @@ export type StyleWhereInput = {
   techPacks?: Prisma.TechPackListRelationFilter
   orderLines?: Prisma.OrderLineListRelationFilter
   purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
+  productionOrders?: Prisma.ProductionOrderListRelationFilter
+  operations?: Prisma.ProductionOperationListRelationFilter
 }
 
 export type StyleOrderByWithRelationInput = {
@@ -274,8 +392,19 @@ export type StyleOrderByWithRelationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
+  garmentType?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder
+  fabricType?: Prisma.SortOrderInput | Prisma.SortOrder
+  composition?: Prisma.SortOrderInput | Prisma.SortOrder
+  gsm?: Prisma.SortOrderInput | Prisma.SortOrder
+  construction?: Prisma.SortOrderInput | Prisma.SortOrder
+  washType?: Prisma.SortOrderInput | Prisma.SortOrder
+  print?: Prisma.SortOrderInput | Prisma.SortOrder
+  embroidery?: Prisma.SortOrderInput | Prisma.SortOrder
+  developmentOwnerId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  developmentOwner?: Prisma.UserOrderByWithRelationInput
   company?: Prisma.CompanyOrderByWithRelationInput
   buyer?: Prisma.BuyerOrderByWithRelationInput
   seasonRef?: Prisma.SeasonOrderByWithRelationInput
@@ -283,6 +412,7 @@ export type StyleOrderByWithRelationInput = {
   tnaPlans?: Prisma.TnaPlanOrderByRelationAggregateInput
   costSheets?: Prisma.CostSheetOrderByRelationAggregateInput
   boms?: Prisma.BomOrderByRelationAggregateInput
+  poLines?: Prisma.PurchaseOrderLineOrderByRelationAggregateInput
   colors?: Prisma.StyleColorOrderByRelationAggregateInput
   sizes?: Prisma.StyleSizeOrderByRelationAggregateInput
   enquiryItems?: Prisma.EnquiryItemOrderByRelationAggregateInput
@@ -290,6 +420,8 @@ export type StyleOrderByWithRelationInput = {
   techPacks?: Prisma.TechPackOrderByRelationAggregateInput
   orderLines?: Prisma.OrderLineOrderByRelationAggregateInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionOrderByRelationAggregateInput
+  productionOrders?: Prisma.ProductionOrderOrderByRelationAggregateInput
+  operations?: Prisma.ProductionOperationOrderByRelationAggregateInput
 }
 
 export type StyleWhereUniqueInput = Prisma.AtLeast<{
@@ -308,8 +440,19 @@ export type StyleWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"Style"> | string | null
   status?: Prisma.EnumStyleStatusFilter<"Style"> | $Enums.StyleStatus
   createdById?: Prisma.StringNullableFilter<"Style"> | string | null
+  garmentType?: Prisma.StringNullableFilter<"Style"> | string | null
+  gender?: Prisma.StringNullableFilter<"Style"> | string | null
+  fabricType?: Prisma.StringNullableFilter<"Style"> | string | null
+  composition?: Prisma.StringNullableFilter<"Style"> | string | null
+  gsm?: Prisma.IntNullableFilter<"Style"> | number | null
+  construction?: Prisma.StringNullableFilter<"Style"> | string | null
+  washType?: Prisma.StringNullableFilter<"Style"> | string | null
+  print?: Prisma.StringNullableFilter<"Style"> | string | null
+  embroidery?: Prisma.StringNullableFilter<"Style"> | string | null
+  developmentOwnerId?: Prisma.StringNullableFilter<"Style"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Style"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Style"> | Date | string
+  developmentOwner?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   buyer?: Prisma.XOR<Prisma.BuyerScalarRelationFilter, Prisma.BuyerWhereInput>
   seasonRef?: Prisma.XOR<Prisma.SeasonNullableScalarRelationFilter, Prisma.SeasonWhereInput> | null
@@ -317,6 +460,7 @@ export type StyleWhereUniqueInput = Prisma.AtLeast<{
   tnaPlans?: Prisma.TnaPlanListRelationFilter
   costSheets?: Prisma.CostSheetListRelationFilter
   boms?: Prisma.BomListRelationFilter
+  poLines?: Prisma.PurchaseOrderLineListRelationFilter
   colors?: Prisma.StyleColorListRelationFilter
   sizes?: Prisma.StyleSizeListRelationFilter
   enquiryItems?: Prisma.EnquiryItemListRelationFilter
@@ -324,6 +468,8 @@ export type StyleWhereUniqueInput = Prisma.AtLeast<{
   techPacks?: Prisma.TechPackListRelationFilter
   orderLines?: Prisma.OrderLineListRelationFilter
   purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
+  productionOrders?: Prisma.ProductionOrderListRelationFilter
+  operations?: Prisma.ProductionOperationListRelationFilter
 }, "id" | "companyId_styleNo">
 
 export type StyleOrderByWithAggregationInput = {
@@ -338,11 +484,23 @@ export type StyleOrderByWithAggregationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
+  garmentType?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder
+  fabricType?: Prisma.SortOrderInput | Prisma.SortOrder
+  composition?: Prisma.SortOrderInput | Prisma.SortOrder
+  gsm?: Prisma.SortOrderInput | Prisma.SortOrder
+  construction?: Prisma.SortOrderInput | Prisma.SortOrder
+  washType?: Prisma.SortOrderInput | Prisma.SortOrder
+  print?: Prisma.SortOrderInput | Prisma.SortOrder
+  embroidery?: Prisma.SortOrderInput | Prisma.SortOrder
+  developmentOwnerId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.StyleCountOrderByAggregateInput
+  _avg?: Prisma.StyleAvgOrderByAggregateInput
   _max?: Prisma.StyleMaxOrderByAggregateInput
   _min?: Prisma.StyleMinOrderByAggregateInput
+  _sum?: Prisma.StyleSumOrderByAggregateInput
 }
 
 export type StyleScalarWhereWithAggregatesInput = {
@@ -360,6 +518,16 @@ export type StyleScalarWhereWithAggregatesInput = {
   description?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
   status?: Prisma.EnumStyleStatusWithAggregatesFilter<"Style"> | $Enums.StyleStatus
   createdById?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  garmentType?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  gender?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  fabricType?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  composition?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  gsm?: Prisma.IntNullableWithAggregatesFilter<"Style"> | number | null
+  construction?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  washType?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  print?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  embroidery?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  developmentOwnerId?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Style"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Style"> | Date | string
 }
@@ -373,8 +541,18 @@ export type StyleCreateInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
@@ -382,6 +560,7 @@ export type StyleCreateInput = {
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
@@ -389,6 +568,8 @@ export type StyleCreateInput = {
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateInput = {
@@ -403,12 +584,23 @@ export type StyleUncheckedCreateInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
@@ -416,6 +608,8 @@ export type StyleUncheckedCreateInput = {
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUpdateInput = {
@@ -427,8 +621,18 @@ export type StyleUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
@@ -436,6 +640,7 @@ export type StyleUpdateInput = {
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
@@ -443,6 +648,8 @@ export type StyleUpdateInput = {
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateInput = {
@@ -457,12 +664,23 @@ export type StyleUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
@@ -470,6 +688,8 @@ export type StyleUncheckedUpdateInput = {
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateManyInput = {
@@ -484,6 +704,16 @@ export type StyleCreateManyInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -497,6 +727,15 @@ export type StyleUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -513,6 +752,16 @@ export type StyleUncheckedUpdateManyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -549,8 +798,22 @@ export type StyleCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+  garmentType?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  fabricType?: Prisma.SortOrder
+  composition?: Prisma.SortOrder
+  gsm?: Prisma.SortOrder
+  construction?: Prisma.SortOrder
+  washType?: Prisma.SortOrder
+  print?: Prisma.SortOrder
+  embroidery?: Prisma.SortOrder
+  developmentOwnerId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type StyleAvgOrderByAggregateInput = {
+  gsm?: Prisma.SortOrder
 }
 
 export type StyleMaxOrderByAggregateInput = {
@@ -565,6 +828,16 @@ export type StyleMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+  garmentType?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  fabricType?: Prisma.SortOrder
+  composition?: Prisma.SortOrder
+  gsm?: Prisma.SortOrder
+  construction?: Prisma.SortOrder
+  washType?: Prisma.SortOrder
+  print?: Prisma.SortOrder
+  embroidery?: Prisma.SortOrder
+  developmentOwnerId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -581,8 +854,22 @@ export type StyleMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+  garmentType?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  fabricType?: Prisma.SortOrder
+  composition?: Prisma.SortOrder
+  gsm?: Prisma.SortOrder
+  construction?: Prisma.SortOrder
+  washType?: Prisma.SortOrder
+  print?: Prisma.SortOrder
+  embroidery?: Prisma.SortOrder
+  developmentOwnerId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type StyleSumOrderByAggregateInput = {
+  gsm?: Prisma.SortOrder
 }
 
 export type StyleScalarRelationFilter = {
@@ -629,6 +916,48 @@ export type StyleUncheckedUpdateManyWithoutCompanyNestedInput = {
   connect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
   update?: Prisma.StyleUpdateWithWhereUniqueWithoutCompanyInput | Prisma.StyleUpdateWithWhereUniqueWithoutCompanyInput[]
   updateMany?: Prisma.StyleUpdateManyWithWhereWithoutCompanyInput | Prisma.StyleUpdateManyWithWhereWithoutCompanyInput[]
+  deleteMany?: Prisma.StyleScalarWhereInput | Prisma.StyleScalarWhereInput[]
+}
+
+export type StyleCreateNestedManyWithoutDevelopmentOwnerInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutDevelopmentOwnerInput, Prisma.StyleUncheckedCreateWithoutDevelopmentOwnerInput> | Prisma.StyleCreateWithoutDevelopmentOwnerInput[] | Prisma.StyleUncheckedCreateWithoutDevelopmentOwnerInput[]
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutDevelopmentOwnerInput | Prisma.StyleCreateOrConnectWithoutDevelopmentOwnerInput[]
+  createMany?: Prisma.StyleCreateManyDevelopmentOwnerInputEnvelope
+  connect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+}
+
+export type StyleUncheckedCreateNestedManyWithoutDevelopmentOwnerInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutDevelopmentOwnerInput, Prisma.StyleUncheckedCreateWithoutDevelopmentOwnerInput> | Prisma.StyleCreateWithoutDevelopmentOwnerInput[] | Prisma.StyleUncheckedCreateWithoutDevelopmentOwnerInput[]
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutDevelopmentOwnerInput | Prisma.StyleCreateOrConnectWithoutDevelopmentOwnerInput[]
+  createMany?: Prisma.StyleCreateManyDevelopmentOwnerInputEnvelope
+  connect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+}
+
+export type StyleUpdateManyWithoutDevelopmentOwnerNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutDevelopmentOwnerInput, Prisma.StyleUncheckedCreateWithoutDevelopmentOwnerInput> | Prisma.StyleCreateWithoutDevelopmentOwnerInput[] | Prisma.StyleUncheckedCreateWithoutDevelopmentOwnerInput[]
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutDevelopmentOwnerInput | Prisma.StyleCreateOrConnectWithoutDevelopmentOwnerInput[]
+  upsert?: Prisma.StyleUpsertWithWhereUniqueWithoutDevelopmentOwnerInput | Prisma.StyleUpsertWithWhereUniqueWithoutDevelopmentOwnerInput[]
+  createMany?: Prisma.StyleCreateManyDevelopmentOwnerInputEnvelope
+  set?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  disconnect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  delete?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  connect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  update?: Prisma.StyleUpdateWithWhereUniqueWithoutDevelopmentOwnerInput | Prisma.StyleUpdateWithWhereUniqueWithoutDevelopmentOwnerInput[]
+  updateMany?: Prisma.StyleUpdateManyWithWhereWithoutDevelopmentOwnerInput | Prisma.StyleUpdateManyWithWhereWithoutDevelopmentOwnerInput[]
+  deleteMany?: Prisma.StyleScalarWhereInput | Prisma.StyleScalarWhereInput[]
+}
+
+export type StyleUncheckedUpdateManyWithoutDevelopmentOwnerNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutDevelopmentOwnerInput, Prisma.StyleUncheckedCreateWithoutDevelopmentOwnerInput> | Prisma.StyleCreateWithoutDevelopmentOwnerInput[] | Prisma.StyleUncheckedCreateWithoutDevelopmentOwnerInput[]
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutDevelopmentOwnerInput | Prisma.StyleCreateOrConnectWithoutDevelopmentOwnerInput[]
+  upsert?: Prisma.StyleUpsertWithWhereUniqueWithoutDevelopmentOwnerInput | Prisma.StyleUpsertWithWhereUniqueWithoutDevelopmentOwnerInput[]
+  createMany?: Prisma.StyleCreateManyDevelopmentOwnerInputEnvelope
+  set?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  disconnect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  delete?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  connect?: Prisma.StyleWhereUniqueInput | Prisma.StyleWhereUniqueInput[]
+  update?: Prisma.StyleUpdateWithWhereUniqueWithoutDevelopmentOwnerInput | Prisma.StyleUpdateWithWhereUniqueWithoutDevelopmentOwnerInput[]
+  updateMany?: Prisma.StyleUpdateManyWithWhereWithoutDevelopmentOwnerInput | Prisma.StyleUpdateManyWithWhereWithoutDevelopmentOwnerInput[]
   deleteMany?: Prisma.StyleScalarWhereInput | Prisma.StyleScalarWhereInput[]
 }
 
@@ -878,6 +1207,50 @@ export type StyleUpdateOneWithoutPurchaseRequisitionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.StyleUpdateToOneWithWhereWithoutPurchaseRequisitionsInput, Prisma.StyleUpdateWithoutPurchaseRequisitionsInput>, Prisma.StyleUncheckedUpdateWithoutPurchaseRequisitionsInput>
 }
 
+export type StyleCreateNestedOneWithoutPoLinesInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutPoLinesInput, Prisma.StyleUncheckedCreateWithoutPoLinesInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutPoLinesInput
+  connect?: Prisma.StyleWhereUniqueInput
+}
+
+export type StyleUpdateOneWithoutPoLinesNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutPoLinesInput, Prisma.StyleUncheckedCreateWithoutPoLinesInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutPoLinesInput
+  upsert?: Prisma.StyleUpsertWithoutPoLinesInput
+  disconnect?: Prisma.StyleWhereInput | boolean
+  delete?: Prisma.StyleWhereInput | boolean
+  connect?: Prisma.StyleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StyleUpdateToOneWithWhereWithoutPoLinesInput, Prisma.StyleUpdateWithoutPoLinesInput>, Prisma.StyleUncheckedUpdateWithoutPoLinesInput>
+}
+
+export type StyleCreateNestedOneWithoutOperationsInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutOperationsInput, Prisma.StyleUncheckedCreateWithoutOperationsInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutOperationsInput
+  connect?: Prisma.StyleWhereUniqueInput
+}
+
+export type StyleUpdateOneRequiredWithoutOperationsNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutOperationsInput, Prisma.StyleUncheckedCreateWithoutOperationsInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutOperationsInput
+  upsert?: Prisma.StyleUpsertWithoutOperationsInput
+  connect?: Prisma.StyleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StyleUpdateToOneWithWhereWithoutOperationsInput, Prisma.StyleUpdateWithoutOperationsInput>, Prisma.StyleUncheckedUpdateWithoutOperationsInput>
+}
+
+export type StyleCreateNestedOneWithoutProductionOrdersInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutProductionOrdersInput, Prisma.StyleUncheckedCreateWithoutProductionOrdersInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutProductionOrdersInput
+  connect?: Prisma.StyleWhereUniqueInput
+}
+
+export type StyleUpdateOneRequiredWithoutProductionOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleCreateWithoutProductionOrdersInput, Prisma.StyleUncheckedCreateWithoutProductionOrdersInput>
+  connectOrCreate?: Prisma.StyleCreateOrConnectWithoutProductionOrdersInput
+  upsert?: Prisma.StyleUpsertWithoutProductionOrdersInput
+  connect?: Prisma.StyleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StyleUpdateToOneWithWhereWithoutProductionOrdersInput, Prisma.StyleUpdateWithoutProductionOrdersInput>, Prisma.StyleUncheckedUpdateWithoutProductionOrdersInput>
+}
+
 export type StyleCreateWithoutCompanyInput = {
   id?: string
   styleNo: string
@@ -887,14 +1260,25 @@ export type StyleCreateWithoutCompanyInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
@@ -902,6 +1286,8 @@ export type StyleCreateWithoutCompanyInput = {
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutCompanyInput = {
@@ -915,12 +1301,23 @@ export type StyleUncheckedCreateWithoutCompanyInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
@@ -928,6 +1325,8 @@ export type StyleUncheckedCreateWithoutCompanyInput = {
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutCompanyInput = {
@@ -971,8 +1370,122 @@ export type StyleScalarWhereInput = {
   description?: Prisma.StringNullableFilter<"Style"> | string | null
   status?: Prisma.EnumStyleStatusFilter<"Style"> | $Enums.StyleStatus
   createdById?: Prisma.StringNullableFilter<"Style"> | string | null
+  garmentType?: Prisma.StringNullableFilter<"Style"> | string | null
+  gender?: Prisma.StringNullableFilter<"Style"> | string | null
+  fabricType?: Prisma.StringNullableFilter<"Style"> | string | null
+  composition?: Prisma.StringNullableFilter<"Style"> | string | null
+  gsm?: Prisma.IntNullableFilter<"Style"> | number | null
+  construction?: Prisma.StringNullableFilter<"Style"> | string | null
+  washType?: Prisma.StringNullableFilter<"Style"> | string | null
+  print?: Prisma.StringNullableFilter<"Style"> | string | null
+  embroidery?: Prisma.StringNullableFilter<"Style"> | string | null
+  developmentOwnerId?: Prisma.StringNullableFilter<"Style"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Style"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Style"> | Date | string
+}
+
+export type StyleCreateWithoutDevelopmentOwnerInput = {
+  id?: string
+  styleNo: string
+  name: string
+  season?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutStylesInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
+}
+
+export type StyleUncheckedCreateWithoutDevelopmentOwnerInput = {
+  id?: string
+  companyId: string
+  styleNo: string
+  buyerId: string
+  name: string
+  season?: string | null
+  seasonId?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
+}
+
+export type StyleCreateOrConnectWithoutDevelopmentOwnerInput = {
+  where: Prisma.StyleWhereUniqueInput
+  create: Prisma.XOR<Prisma.StyleCreateWithoutDevelopmentOwnerInput, Prisma.StyleUncheckedCreateWithoutDevelopmentOwnerInput>
+}
+
+export type StyleCreateManyDevelopmentOwnerInputEnvelope = {
+  data: Prisma.StyleCreateManyDevelopmentOwnerInput | Prisma.StyleCreateManyDevelopmentOwnerInput[]
+  skipDuplicates?: boolean
+}
+
+export type StyleUpsertWithWhereUniqueWithoutDevelopmentOwnerInput = {
+  where: Prisma.StyleWhereUniqueInput
+  update: Prisma.XOR<Prisma.StyleUpdateWithoutDevelopmentOwnerInput, Prisma.StyleUncheckedUpdateWithoutDevelopmentOwnerInput>
+  create: Prisma.XOR<Prisma.StyleCreateWithoutDevelopmentOwnerInput, Prisma.StyleUncheckedCreateWithoutDevelopmentOwnerInput>
+}
+
+export type StyleUpdateWithWhereUniqueWithoutDevelopmentOwnerInput = {
+  where: Prisma.StyleWhereUniqueInput
+  data: Prisma.XOR<Prisma.StyleUpdateWithoutDevelopmentOwnerInput, Prisma.StyleUncheckedUpdateWithoutDevelopmentOwnerInput>
+}
+
+export type StyleUpdateManyWithWhereWithoutDevelopmentOwnerInput = {
+  where: Prisma.StyleScalarWhereInput
+  data: Prisma.XOR<Prisma.StyleUpdateManyMutationInput, Prisma.StyleUncheckedUpdateManyWithoutDevelopmentOwnerInput>
 }
 
 export type StyleCreateWithoutBuyerInput = {
@@ -984,14 +1497,25 @@ export type StyleCreateWithoutBuyerInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
@@ -999,6 +1523,8 @@ export type StyleCreateWithoutBuyerInput = {
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutBuyerInput = {
@@ -1012,12 +1538,23 @@ export type StyleUncheckedCreateWithoutBuyerInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
@@ -1025,6 +1562,8 @@ export type StyleUncheckedCreateWithoutBuyerInput = {
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutBuyerInput = {
@@ -1062,8 +1601,18 @@ export type StyleCreateWithoutEnquiryItemsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
@@ -1071,12 +1620,15 @@ export type StyleCreateWithoutEnquiryItemsInput = {
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutEnquiryItemsInput = {
@@ -1091,18 +1643,31 @@ export type StyleUncheckedCreateWithoutEnquiryItemsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutEnquiryItemsInput = {
@@ -1130,8 +1695,18 @@ export type StyleUpdateWithoutEnquiryItemsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
@@ -1139,12 +1714,15 @@ export type StyleUpdateWithoutEnquiryItemsInput = {
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutEnquiryItemsInput = {
@@ -1159,18 +1737,31 @@ export type StyleUncheckedUpdateWithoutEnquiryItemsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutColorsInput = {
@@ -1182,8 +1773,18 @@ export type StyleCreateWithoutColorsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
@@ -1191,12 +1792,15 @@ export type StyleCreateWithoutColorsInput = {
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutColorsInput = {
@@ -1211,18 +1815,31 @@ export type StyleUncheckedCreateWithoutColorsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutColorsInput = {
@@ -1250,8 +1867,18 @@ export type StyleUpdateWithoutColorsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
@@ -1259,12 +1886,15 @@ export type StyleUpdateWithoutColorsInput = {
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutColorsInput = {
@@ -1279,18 +1909,31 @@ export type StyleUncheckedUpdateWithoutColorsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutSizesInput = {
@@ -1302,8 +1945,18 @@ export type StyleCreateWithoutSizesInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
@@ -1311,12 +1964,15 @@ export type StyleCreateWithoutSizesInput = {
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutSizesInput = {
@@ -1331,18 +1987,31 @@ export type StyleUncheckedCreateWithoutSizesInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutSizesInput = {
@@ -1370,8 +2039,18 @@ export type StyleUpdateWithoutSizesInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
@@ -1379,12 +2058,15 @@ export type StyleUpdateWithoutSizesInput = {
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutSizesInput = {
@@ -1399,18 +2081,31 @@ export type StyleUncheckedUpdateWithoutSizesInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutSampleRequestsInput = {
@@ -1422,14 +2117,25 @@ export type StyleCreateWithoutSampleRequestsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
@@ -1437,6 +2143,8 @@ export type StyleCreateWithoutSampleRequestsInput = {
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutSampleRequestsInput = {
@@ -1451,11 +2159,22 @@ export type StyleUncheckedCreateWithoutSampleRequestsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
@@ -1463,6 +2182,8 @@ export type StyleUncheckedCreateWithoutSampleRequestsInput = {
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutSampleRequestsInput = {
@@ -1490,14 +2211,25 @@ export type StyleUpdateWithoutSampleRequestsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
@@ -1505,6 +2237,8 @@ export type StyleUpdateWithoutSampleRequestsInput = {
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutSampleRequestsInput = {
@@ -1519,11 +2253,22 @@ export type StyleUncheckedUpdateWithoutSampleRequestsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
@@ -1531,6 +2276,8 @@ export type StyleUncheckedUpdateWithoutSampleRequestsInput = {
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutTnaPlansInput = {
@@ -1542,14 +2289,25 @@ export type StyleCreateWithoutTnaPlansInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
@@ -1557,6 +2315,8 @@ export type StyleCreateWithoutTnaPlansInput = {
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutTnaPlansInput = {
@@ -1571,11 +2331,22 @@ export type StyleUncheckedCreateWithoutTnaPlansInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
@@ -1583,6 +2354,8 @@ export type StyleUncheckedCreateWithoutTnaPlansInput = {
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutTnaPlansInput = {
@@ -1610,14 +2383,25 @@ export type StyleUpdateWithoutTnaPlansInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
@@ -1625,6 +2409,8 @@ export type StyleUpdateWithoutTnaPlansInput = {
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutTnaPlansInput = {
@@ -1639,11 +2425,22 @@ export type StyleUncheckedUpdateWithoutTnaPlansInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
@@ -1651,6 +2448,8 @@ export type StyleUncheckedUpdateWithoutTnaPlansInput = {
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutCostSheetsInput = {
@@ -1662,14 +2461,25 @@ export type StyleCreateWithoutCostSheetsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
@@ -1677,6 +2487,8 @@ export type StyleCreateWithoutCostSheetsInput = {
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutCostSheetsInput = {
@@ -1691,11 +2503,22 @@ export type StyleUncheckedCreateWithoutCostSheetsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
@@ -1703,6 +2526,8 @@ export type StyleUncheckedCreateWithoutCostSheetsInput = {
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutCostSheetsInput = {
@@ -1730,14 +2555,25 @@ export type StyleUpdateWithoutCostSheetsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
@@ -1745,6 +2581,8 @@ export type StyleUpdateWithoutCostSheetsInput = {
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutCostSheetsInput = {
@@ -1759,11 +2597,22 @@ export type StyleUncheckedUpdateWithoutCostSheetsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
@@ -1771,6 +2620,8 @@ export type StyleUncheckedUpdateWithoutCostSheetsInput = {
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutBomsInput = {
@@ -1782,14 +2633,25 @@ export type StyleCreateWithoutBomsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
@@ -1797,6 +2659,8 @@ export type StyleCreateWithoutBomsInput = {
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutBomsInput = {
@@ -1811,11 +2675,22 @@ export type StyleUncheckedCreateWithoutBomsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
@@ -1823,6 +2698,8 @@ export type StyleUncheckedCreateWithoutBomsInput = {
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutBomsInput = {
@@ -1850,14 +2727,25 @@ export type StyleUpdateWithoutBomsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
@@ -1865,6 +2753,8 @@ export type StyleUpdateWithoutBomsInput = {
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutBomsInput = {
@@ -1879,11 +2769,22 @@ export type StyleUncheckedUpdateWithoutBomsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
@@ -1891,6 +2792,8 @@ export type StyleUncheckedUpdateWithoutBomsInput = {
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutSeasonRefInput = {
@@ -1902,14 +2805,25 @@ export type StyleCreateWithoutSeasonRefInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
@@ -1917,6 +2831,8 @@ export type StyleCreateWithoutSeasonRefInput = {
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutSeasonRefInput = {
@@ -1930,12 +2846,23 @@ export type StyleUncheckedCreateWithoutSeasonRefInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
@@ -1943,6 +2870,8 @@ export type StyleUncheckedCreateWithoutSeasonRefInput = {
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutSeasonRefInput = {
@@ -1980,8 +2909,18 @@ export type StyleCreateWithoutOrderLinesInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
@@ -1989,12 +2928,15 @@ export type StyleCreateWithoutOrderLinesInput = {
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutOrderLinesInput = {
@@ -2009,18 +2951,31 @@ export type StyleUncheckedCreateWithoutOrderLinesInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutOrderLinesInput = {
@@ -2048,8 +3003,18 @@ export type StyleUpdateWithoutOrderLinesInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
@@ -2057,12 +3022,15 @@ export type StyleUpdateWithoutOrderLinesInput = {
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutOrderLinesInput = {
@@ -2077,18 +3045,31 @@ export type StyleUncheckedUpdateWithoutOrderLinesInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutRevisionsInput = {
@@ -2100,8 +3081,18 @@ export type StyleCreateWithoutRevisionsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
@@ -2109,12 +3100,15 @@ export type StyleCreateWithoutRevisionsInput = {
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutRevisionsInput = {
@@ -2129,18 +3123,31 @@ export type StyleUncheckedCreateWithoutRevisionsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutRevisionsInput = {
@@ -2168,8 +3175,18 @@ export type StyleUpdateWithoutRevisionsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
@@ -2177,12 +3194,15 @@ export type StyleUpdateWithoutRevisionsInput = {
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutRevisionsInput = {
@@ -2197,18 +3217,31 @@ export type StyleUncheckedUpdateWithoutRevisionsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutTechPacksInput = {
@@ -2220,8 +3253,18 @@ export type StyleCreateWithoutTechPacksInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
@@ -2229,12 +3272,15 @@ export type StyleCreateWithoutTechPacksInput = {
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutTechPacksInput = {
@@ -2249,18 +3295,31 @@ export type StyleUncheckedCreateWithoutTechPacksInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutTechPacksInput = {
@@ -2288,8 +3347,18 @@ export type StyleUpdateWithoutTechPacksInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
@@ -2297,12 +3366,15 @@ export type StyleUpdateWithoutTechPacksInput = {
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutTechPacksInput = {
@@ -2317,18 +3389,31 @@ export type StyleUncheckedUpdateWithoutTechPacksInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleCreateWithoutPurchaseRequisitionsInput = {
@@ -2340,8 +3425,18 @@ export type StyleCreateWithoutPurchaseRequisitionsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
   company: Prisma.CompanyCreateNestedOneWithoutStylesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
   seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
@@ -2349,12 +3444,15 @@ export type StyleCreateWithoutPurchaseRequisitionsInput = {
   tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
 }
 
 export type StyleUncheckedCreateWithoutPurchaseRequisitionsInput = {
@@ -2369,18 +3467,31 @@ export type StyleUncheckedCreateWithoutPurchaseRequisitionsInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
   tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
   boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
   colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
   sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
   enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
   revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
   techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
   orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
 export type StyleCreateOrConnectWithoutPurchaseRequisitionsInput = {
@@ -2408,8 +3519,18 @@ export type StyleUpdateWithoutPurchaseRequisitionsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
@@ -2417,12 +3538,15 @@ export type StyleUpdateWithoutPurchaseRequisitionsInput = {
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutPurchaseRequisitionsInput = {
@@ -2437,22 +3561,75 @@ export type StyleUncheckedUpdateWithoutPurchaseRequisitionsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
   revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
-export type StyleCreateManyCompanyInput = {
+export type StyleCreateWithoutPoLinesInput = {
   id?: string
+  styleNo: string
+  name: string
+  season?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
+  company: Prisma.CompanyCreateNestedOneWithoutStylesInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
+}
+
+export type StyleUncheckedCreateWithoutPoLinesInput = {
+  id?: string
+  companyId: string
   styleNo: string
   buyerId: string
   name: string
@@ -2462,11 +3639,50 @@ export type StyleCreateManyCompanyInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
 }
 
-export type StyleUpdateWithoutCompanyInput = {
+export type StyleCreateOrConnectWithoutPoLinesInput = {
+  where: Prisma.StyleWhereUniqueInput
+  create: Prisma.XOR<Prisma.StyleCreateWithoutPoLinesInput, Prisma.StyleUncheckedCreateWithoutPoLinesInput>
+}
+
+export type StyleUpsertWithoutPoLinesInput = {
+  update: Prisma.XOR<Prisma.StyleUpdateWithoutPoLinesInput, Prisma.StyleUncheckedUpdateWithoutPoLinesInput>
+  create: Prisma.XOR<Prisma.StyleCreateWithoutPoLinesInput, Prisma.StyleUncheckedCreateWithoutPoLinesInput>
+  where?: Prisma.StyleWhereInput
+}
+
+export type StyleUpdateToOneWithWhereWithoutPoLinesInput = {
+  where?: Prisma.StyleWhereInput
+  data: Prisma.XOR<Prisma.StyleUpdateWithoutPoLinesInput, Prisma.StyleUncheckedUpdateWithoutPoLinesInput>
+}
+
+export type StyleUpdateWithoutPoLinesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   styleNo?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2475,8 +3691,19 @@ export type StyleUpdateWithoutCompanyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
@@ -2490,10 +3717,13 @@ export type StyleUpdateWithoutCompanyInput = {
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
-export type StyleUncheckedUpdateWithoutCompanyInput = {
+export type StyleUncheckedUpdateWithoutPoLinesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
   styleNo?: Prisma.StringFieldUpdateOperationsInput | string
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2503,6 +3733,16 @@ export type StyleUncheckedUpdateWithoutCompanyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
@@ -2516,6 +3756,455 @@ export type StyleUncheckedUpdateWithoutCompanyInput = {
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleCreateWithoutOperationsInput = {
+  id?: string
+  styleNo: string
+  name: string
+  season?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
+  company: Prisma.CompanyCreateNestedOneWithoutStylesInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutStyleInput
+}
+
+export type StyleUncheckedCreateWithoutOperationsInput = {
+  id?: string
+  companyId: string
+  styleNo: string
+  buyerId: string
+  name: string
+  season?: string | null
+  seasonId?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutStyleInput
+}
+
+export type StyleCreateOrConnectWithoutOperationsInput = {
+  where: Prisma.StyleWhereUniqueInput
+  create: Prisma.XOR<Prisma.StyleCreateWithoutOperationsInput, Prisma.StyleUncheckedCreateWithoutOperationsInput>
+}
+
+export type StyleUpsertWithoutOperationsInput = {
+  update: Prisma.XOR<Prisma.StyleUpdateWithoutOperationsInput, Prisma.StyleUncheckedUpdateWithoutOperationsInput>
+  create: Prisma.XOR<Prisma.StyleCreateWithoutOperationsInput, Prisma.StyleUncheckedCreateWithoutOperationsInput>
+  where?: Prisma.StyleWhereInput
+}
+
+export type StyleUpdateToOneWithWhereWithoutOperationsInput = {
+  where?: Prisma.StyleWhereInput
+  data: Prisma.XOR<Prisma.StyleUpdateWithoutOperationsInput, Prisma.StyleUncheckedUpdateWithoutOperationsInput>
+}
+
+export type StyleUpdateWithoutOperationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleUncheckedUpdateWithoutOperationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleCreateWithoutProductionOrdersInput = {
+  id?: string
+  styleNo: string
+  name: string
+  season?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  developmentOwner?: Prisma.UserCreateNestedOneWithoutOwnedStylesInput
+  company: Prisma.CompanyCreateNestedOneWithoutStylesInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutStylesInput
+  seasonRef?: Prisma.SeasonCreateNestedOneWithoutStylesInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineCreateNestedManyWithoutStyleInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationCreateNestedManyWithoutStyleInput
+}
+
+export type StyleUncheckedCreateWithoutProductionOrdersInput = {
+  id?: string
+  companyId: string
+  styleNo: string
+  buyerId: string
+  name: string
+  season?: string | null
+  seasonId?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutStyleInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutStyleInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutStyleInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutStyleInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput
+  colors?: Prisma.StyleColorUncheckedCreateNestedManyWithoutStyleInput
+  sizes?: Prisma.StyleSizeUncheckedCreateNestedManyWithoutStyleInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutStyleInput
+  revisions?: Prisma.StyleRevisionUncheckedCreateNestedManyWithoutStyleInput
+  techPacks?: Prisma.TechPackUncheckedCreateNestedManyWithoutStyleInput
+  orderLines?: Prisma.OrderLineUncheckedCreateNestedManyWithoutStyleInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutStyleInput
+  operations?: Prisma.ProductionOperationUncheckedCreateNestedManyWithoutStyleInput
+}
+
+export type StyleCreateOrConnectWithoutProductionOrdersInput = {
+  where: Prisma.StyleWhereUniqueInput
+  create: Prisma.XOR<Prisma.StyleCreateWithoutProductionOrdersInput, Prisma.StyleUncheckedCreateWithoutProductionOrdersInput>
+}
+
+export type StyleUpsertWithoutProductionOrdersInput = {
+  update: Prisma.XOR<Prisma.StyleUpdateWithoutProductionOrdersInput, Prisma.StyleUncheckedUpdateWithoutProductionOrdersInput>
+  create: Prisma.XOR<Prisma.StyleCreateWithoutProductionOrdersInput, Prisma.StyleUncheckedCreateWithoutProductionOrdersInput>
+  where?: Prisma.StyleWhereInput
+}
+
+export type StyleUpdateToOneWithWhereWithoutProductionOrdersInput = {
+  where?: Prisma.StyleWhereInput
+  data: Prisma.XOR<Prisma.StyleUpdateWithoutProductionOrdersInput, Prisma.StyleUncheckedUpdateWithoutProductionOrdersInput>
+}
+
+export type StyleUpdateWithoutProductionOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleUncheckedUpdateWithoutProductionOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleCreateManyCompanyInput = {
+  id?: string
+  styleNo: string
+  buyerId: string
+  name: string
+  season?: string | null
+  seasonId?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type StyleUpdateWithoutCompanyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleUncheckedUpdateWithoutCompanyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateManyWithoutCompanyInput = {
@@ -2529,6 +4218,144 @@ export type StyleUncheckedUpdateManyWithoutCompanyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type StyleCreateManyDevelopmentOwnerInput = {
+  id?: string
+  companyId: string
+  styleNo: string
+  buyerId: string
+  name: string
+  season?: string | null
+  seasonId?: string | null
+  category?: string | null
+  description?: string | null
+  status?: $Enums.StyleStatus
+  createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type StyleUpdateWithoutDevelopmentOwnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
+  seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleUncheckedUpdateWithoutDevelopmentOwnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
+  colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
+  sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
+  enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
+  revisions?: Prisma.StyleRevisionUncheckedUpdateManyWithoutStyleNestedInput
+  techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
+  orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
+}
+
+export type StyleUncheckedUpdateManyWithoutDevelopmentOwnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  styleNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  season?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seasonId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2544,6 +4371,16 @@ export type StyleCreateManyBuyerInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -2557,14 +4394,25 @@ export type StyleUpdateWithoutBuyerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   seasonRef?: Prisma.SeasonUpdateOneWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
@@ -2572,6 +4420,8 @@ export type StyleUpdateWithoutBuyerInput = {
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutBuyerInput = {
@@ -2585,12 +4435,23 @@ export type StyleUncheckedUpdateWithoutBuyerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
@@ -2598,6 +4459,8 @@ export type StyleUncheckedUpdateWithoutBuyerInput = {
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateManyWithoutBuyerInput = {
@@ -2611,6 +4474,16 @@ export type StyleUncheckedUpdateManyWithoutBuyerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2626,6 +4499,16 @@ export type StyleCreateManySeasonRefInput = {
   description?: string | null
   status?: $Enums.StyleStatus
   createdById?: string | null
+  garmentType?: string | null
+  gender?: string | null
+  fabricType?: string | null
+  composition?: string | null
+  gsm?: number | null
+  construction?: string | null
+  washType?: string | null
+  print?: string | null
+  embroidery?: string | null
+  developmentOwnerId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -2639,14 +4522,25 @@ export type StyleUpdateWithoutSeasonRefInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  developmentOwner?: Prisma.UserUpdateOneWithoutOwnedStylesNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutStylesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutStylesNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUpdateManyWithoutStyleNestedInput
@@ -2654,6 +4548,8 @@ export type StyleUpdateWithoutSeasonRefInput = {
   techPacks?: Prisma.TechPackUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateWithoutSeasonRefInput = {
@@ -2667,12 +4563,23 @@ export type StyleUncheckedUpdateWithoutSeasonRefInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutStyleNestedInput
   tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutStyleNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutStyleNestedInput
   boms?: Prisma.BomUncheckedUpdateManyWithoutStyleNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput
   colors?: Prisma.StyleColorUncheckedUpdateManyWithoutStyleNestedInput
   sizes?: Prisma.StyleSizeUncheckedUpdateManyWithoutStyleNestedInput
   enquiryItems?: Prisma.EnquiryItemUncheckedUpdateManyWithoutStyleNestedInput
@@ -2680,6 +4587,8 @@ export type StyleUncheckedUpdateWithoutSeasonRefInput = {
   techPacks?: Prisma.TechPackUncheckedUpdateManyWithoutStyleNestedInput
   orderLines?: Prisma.OrderLineUncheckedUpdateManyWithoutStyleNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutStyleNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutStyleNestedInput
+  operations?: Prisma.ProductionOperationUncheckedUpdateManyWithoutStyleNestedInput
 }
 
 export type StyleUncheckedUpdateManyWithoutSeasonRefInput = {
@@ -2693,6 +4602,16 @@ export type StyleUncheckedUpdateManyWithoutSeasonRefInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStyleStatusFieldUpdateOperationsInput | $Enums.StyleStatus
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  garmentType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fabricType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  composition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gsm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  construction?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  washType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  print?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  embroidery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  developmentOwnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2707,6 +4626,7 @@ export type StyleCountOutputType = {
   tnaPlans: number
   costSheets: number
   boms: number
+  poLines: number
   colors: number
   sizes: number
   enquiryItems: number
@@ -2714,6 +4634,8 @@ export type StyleCountOutputType = {
   techPacks: number
   orderLines: number
   purchaseRequisitions: number
+  productionOrders: number
+  operations: number
 }
 
 export type StyleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2721,6 +4643,7 @@ export type StyleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   tnaPlans?: boolean | StyleCountOutputTypeCountTnaPlansArgs
   costSheets?: boolean | StyleCountOutputTypeCountCostSheetsArgs
   boms?: boolean | StyleCountOutputTypeCountBomsArgs
+  poLines?: boolean | StyleCountOutputTypeCountPoLinesArgs
   colors?: boolean | StyleCountOutputTypeCountColorsArgs
   sizes?: boolean | StyleCountOutputTypeCountSizesArgs
   enquiryItems?: boolean | StyleCountOutputTypeCountEnquiryItemsArgs
@@ -2728,6 +4651,8 @@ export type StyleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   techPacks?: boolean | StyleCountOutputTypeCountTechPacksArgs
   orderLines?: boolean | StyleCountOutputTypeCountOrderLinesArgs
   purchaseRequisitions?: boolean | StyleCountOutputTypeCountPurchaseRequisitionsArgs
+  productionOrders?: boolean | StyleCountOutputTypeCountProductionOrdersArgs
+  operations?: boolean | StyleCountOutputTypeCountOperationsArgs
 }
 
 /**
@@ -2766,6 +4691,13 @@ export type StyleCountOutputTypeCountCostSheetsArgs<ExtArgs extends runtime.Type
  */
 export type StyleCountOutputTypeCountBomsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.BomWhereInput
+}
+
+/**
+ * StyleCountOutputType without action
+ */
+export type StyleCountOutputTypeCountPoLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PurchaseOrderLineWhereInput
 }
 
 /**
@@ -2817,6 +4749,20 @@ export type StyleCountOutputTypeCountPurchaseRequisitionsArgs<ExtArgs extends ru
   where?: Prisma.PurchaseRequisitionWhereInput
 }
 
+/**
+ * StyleCountOutputType without action
+ */
+export type StyleCountOutputTypeCountProductionOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductionOrderWhereInput
+}
+
+/**
+ * StyleCountOutputType without action
+ */
+export type StyleCountOutputTypeCountOperationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductionOperationWhereInput
+}
+
 
 export type StyleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2830,8 +4776,19 @@ export type StyleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   description?: boolean
   status?: boolean
   createdById?: boolean
+  garmentType?: boolean
+  gender?: boolean
+  fabricType?: boolean
+  composition?: boolean
+  gsm?: boolean
+  construction?: boolean
+  washType?: boolean
+  print?: boolean
+  embroidery?: boolean
+  developmentOwnerId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  developmentOwner?: boolean | Prisma.Style$developmentOwnerArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
   seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
@@ -2839,6 +4796,7 @@ export type StyleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   tnaPlans?: boolean | Prisma.Style$tnaPlansArgs<ExtArgs>
   costSheets?: boolean | Prisma.Style$costSheetsArgs<ExtArgs>
   boms?: boolean | Prisma.Style$bomsArgs<ExtArgs>
+  poLines?: boolean | Prisma.Style$poLinesArgs<ExtArgs>
   colors?: boolean | Prisma.Style$colorsArgs<ExtArgs>
   sizes?: boolean | Prisma.Style$sizesArgs<ExtArgs>
   enquiryItems?: boolean | Prisma.Style$enquiryItemsArgs<ExtArgs>
@@ -2846,6 +4804,8 @@ export type StyleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   techPacks?: boolean | Prisma.Style$techPacksArgs<ExtArgs>
   orderLines?: boolean | Prisma.Style$orderLinesArgs<ExtArgs>
   purchaseRequisitions?: boolean | Prisma.Style$purchaseRequisitionsArgs<ExtArgs>
+  productionOrders?: boolean | Prisma.Style$productionOrdersArgs<ExtArgs>
+  operations?: boolean | Prisma.Style$operationsArgs<ExtArgs>
   _count?: boolean | Prisma.StyleCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["style"]>
 
@@ -2861,8 +4821,19 @@ export type StyleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   description?: boolean
   status?: boolean
   createdById?: boolean
+  garmentType?: boolean
+  gender?: boolean
+  fabricType?: boolean
+  composition?: boolean
+  gsm?: boolean
+  construction?: boolean
+  washType?: boolean
+  print?: boolean
+  embroidery?: boolean
+  developmentOwnerId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  developmentOwner?: boolean | Prisma.Style$developmentOwnerArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
   seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
@@ -2880,8 +4851,19 @@ export type StyleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   description?: boolean
   status?: boolean
   createdById?: boolean
+  garmentType?: boolean
+  gender?: boolean
+  fabricType?: boolean
+  composition?: boolean
+  gsm?: boolean
+  construction?: boolean
+  washType?: boolean
+  print?: boolean
+  embroidery?: boolean
+  developmentOwnerId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  developmentOwner?: boolean | Prisma.Style$developmentOwnerArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
   seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
@@ -2899,12 +4881,23 @@ export type StyleSelectScalar = {
   description?: boolean
   status?: boolean
   createdById?: boolean
+  garmentType?: boolean
+  gender?: boolean
+  fabricType?: boolean
+  composition?: boolean
+  gsm?: boolean
+  construction?: boolean
+  washType?: boolean
+  print?: boolean
+  embroidery?: boolean
+  developmentOwnerId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type StyleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "styleNo" | "buyerId" | "name" | "season" | "seasonId" | "category" | "description" | "status" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["style"]>
+export type StyleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "styleNo" | "buyerId" | "name" | "season" | "seasonId" | "category" | "description" | "status" | "createdById" | "garmentType" | "gender" | "fabricType" | "composition" | "gsm" | "construction" | "washType" | "print" | "embroidery" | "developmentOwnerId" | "createdAt" | "updatedAt", ExtArgs["result"]["style"]>
 export type StyleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  developmentOwner?: boolean | Prisma.Style$developmentOwnerArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
   seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
@@ -2912,6 +4905,7 @@ export type StyleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   tnaPlans?: boolean | Prisma.Style$tnaPlansArgs<ExtArgs>
   costSheets?: boolean | Prisma.Style$costSheetsArgs<ExtArgs>
   boms?: boolean | Prisma.Style$bomsArgs<ExtArgs>
+  poLines?: boolean | Prisma.Style$poLinesArgs<ExtArgs>
   colors?: boolean | Prisma.Style$colorsArgs<ExtArgs>
   sizes?: boolean | Prisma.Style$sizesArgs<ExtArgs>
   enquiryItems?: boolean | Prisma.Style$enquiryItemsArgs<ExtArgs>
@@ -2919,14 +4913,18 @@ export type StyleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   techPacks?: boolean | Prisma.Style$techPacksArgs<ExtArgs>
   orderLines?: boolean | Prisma.Style$orderLinesArgs<ExtArgs>
   purchaseRequisitions?: boolean | Prisma.Style$purchaseRequisitionsArgs<ExtArgs>
+  productionOrders?: boolean | Prisma.Style$productionOrdersArgs<ExtArgs>
+  operations?: boolean | Prisma.Style$operationsArgs<ExtArgs>
   _count?: boolean | Prisma.StyleCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StyleIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  developmentOwner?: boolean | Prisma.Style$developmentOwnerArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
   seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
 }
 export type StyleIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  developmentOwner?: boolean | Prisma.Style$developmentOwnerArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
   seasonRef?: boolean | Prisma.Style$seasonRefArgs<ExtArgs>
@@ -2935,6 +4933,7 @@ export type StyleIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type $StylePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Style"
   objects: {
+    developmentOwner: Prisma.$UserPayload<ExtArgs> | null
     company: Prisma.$CompanyPayload<ExtArgs>
     buyer: Prisma.$BuyerPayload<ExtArgs>
     seasonRef: Prisma.$SeasonPayload<ExtArgs> | null
@@ -2942,6 +4941,7 @@ export type $StylePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     tnaPlans: Prisma.$TnaPlanPayload<ExtArgs>[]
     costSheets: Prisma.$CostSheetPayload<ExtArgs>[]
     boms: Prisma.$BomPayload<ExtArgs>[]
+    poLines: Prisma.$PurchaseOrderLinePayload<ExtArgs>[]
     colors: Prisma.$StyleColorPayload<ExtArgs>[]
     sizes: Prisma.$StyleSizePayload<ExtArgs>[]
     enquiryItems: Prisma.$EnquiryItemPayload<ExtArgs>[]
@@ -2949,6 +4949,8 @@ export type $StylePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     techPacks: Prisma.$TechPackPayload<ExtArgs>[]
     orderLines: Prisma.$OrderLinePayload<ExtArgs>[]
     purchaseRequisitions: Prisma.$PurchaseRequisitionPayload<ExtArgs>[]
+    productionOrders: Prisma.$ProductionOrderPayload<ExtArgs>[]
+    operations: Prisma.$ProductionOperationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2962,6 +4964,16 @@ export type $StylePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     description: string | null
     status: $Enums.StyleStatus
     createdById: string | null
+    garmentType: string | null
+    gender: string | null
+    fabricType: string | null
+    composition: string | null
+    gsm: number | null
+    construction: string | null
+    washType: string | null
+    print: string | null
+    embroidery: string | null
+    developmentOwnerId: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["style"]>
@@ -3358,6 +5370,7 @@ readonly fields: StyleFieldRefs;
  */
 export interface Prisma__StyleClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  developmentOwner<T extends Prisma.Style$developmentOwnerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$developmentOwnerArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   buyer<T extends Prisma.BuyerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BuyerDefaultArgs<ExtArgs>>): Prisma.Prisma__BuyerClient<runtime.Types.Result.GetResult<Prisma.$BuyerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   seasonRef<T extends Prisma.Style$seasonRefArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$seasonRefArgs<ExtArgs>>): Prisma.Prisma__SeasonClient<runtime.Types.Result.GetResult<Prisma.$SeasonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -3365,6 +5378,7 @@ export interface Prisma__StyleClient<T, Null = never, ExtArgs extends runtime.Ty
   tnaPlans<T extends Prisma.Style$tnaPlansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$tnaPlansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaPlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   costSheets<T extends Prisma.Style$costSheetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$costSheetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CostSheetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   boms<T extends Prisma.Style$bomsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$bomsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BomPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  poLines<T extends Prisma.Style$poLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$poLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   colors<T extends Prisma.Style$colorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$colorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StyleColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sizes<T extends Prisma.Style$sizesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$sizesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StyleSizePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   enquiryItems<T extends Prisma.Style$enquiryItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$enquiryItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EnquiryItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3372,6 +5386,8 @@ export interface Prisma__StyleClient<T, Null = never, ExtArgs extends runtime.Ty
   techPacks<T extends Prisma.Style$techPacksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$techPacksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TechPackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   orderLines<T extends Prisma.Style$orderLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$orderLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   purchaseRequisitions<T extends Prisma.Style$purchaseRequisitionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$purchaseRequisitionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  productionOrders<T extends Prisma.Style$productionOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$productionOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductionOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  operations<T extends Prisma.Style$operationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Style$operationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductionOperationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3412,6 +5428,16 @@ export interface StyleFieldRefs {
   readonly description: Prisma.FieldRef<"Style", 'String'>
   readonly status: Prisma.FieldRef<"Style", 'StyleStatus'>
   readonly createdById: Prisma.FieldRef<"Style", 'String'>
+  readonly garmentType: Prisma.FieldRef<"Style", 'String'>
+  readonly gender: Prisma.FieldRef<"Style", 'String'>
+  readonly fabricType: Prisma.FieldRef<"Style", 'String'>
+  readonly composition: Prisma.FieldRef<"Style", 'String'>
+  readonly gsm: Prisma.FieldRef<"Style", 'Int'>
+  readonly construction: Prisma.FieldRef<"Style", 'String'>
+  readonly washType: Prisma.FieldRef<"Style", 'String'>
+  readonly print: Prisma.FieldRef<"Style", 'String'>
+  readonly embroidery: Prisma.FieldRef<"Style", 'String'>
+  readonly developmentOwnerId: Prisma.FieldRef<"Style", 'String'>
   readonly createdAt: Prisma.FieldRef<"Style", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Style", 'DateTime'>
 }
@@ -3815,6 +5841,25 @@ export type StyleDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+ * Style.developmentOwner
+ */
+export type Style$developmentOwnerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
  * Style.seasonRef
  */
 export type Style$seasonRefArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3927,6 +5972,30 @@ export type Style$bomsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.BomScalarFieldEnum | Prisma.BomScalarFieldEnum[]
+}
+
+/**
+ * Style.poLines
+ */
+export type Style$poLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PurchaseOrderLine
+   */
+  select?: Prisma.PurchaseOrderLineSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PurchaseOrderLine
+   */
+  omit?: Prisma.PurchaseOrderLineOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PurchaseOrderLineInclude<ExtArgs> | null
+  where?: Prisma.PurchaseOrderLineWhereInput
+  orderBy?: Prisma.PurchaseOrderLineOrderByWithRelationInput | Prisma.PurchaseOrderLineOrderByWithRelationInput[]
+  cursor?: Prisma.PurchaseOrderLineWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PurchaseOrderLineScalarFieldEnum | Prisma.PurchaseOrderLineScalarFieldEnum[]
 }
 
 /**
@@ -4095,6 +6164,54 @@ export type Style$purchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.PurchaseRequisitionScalarFieldEnum | Prisma.PurchaseRequisitionScalarFieldEnum[]
+}
+
+/**
+ * Style.productionOrders
+ */
+export type Style$productionOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProductionOrder
+   */
+  select?: Prisma.ProductionOrderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProductionOrder
+   */
+  omit?: Prisma.ProductionOrderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductionOrderInclude<ExtArgs> | null
+  where?: Prisma.ProductionOrderWhereInput
+  orderBy?: Prisma.ProductionOrderOrderByWithRelationInput | Prisma.ProductionOrderOrderByWithRelationInput[]
+  cursor?: Prisma.ProductionOrderWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProductionOrderScalarFieldEnum | Prisma.ProductionOrderScalarFieldEnum[]
+}
+
+/**
+ * Style.operations
+ */
+export type Style$operationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProductionOperation
+   */
+  select?: Prisma.ProductionOperationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProductionOperation
+   */
+  omit?: Prisma.ProductionOperationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductionOperationInclude<ExtArgs> | null
+  where?: Prisma.ProductionOperationWhereInput
+  orderBy?: Prisma.ProductionOperationOrderByWithRelationInput | Prisma.ProductionOperationOrderByWithRelationInput[]
+  cursor?: Prisma.ProductionOperationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProductionOperationScalarFieldEnum | Prisma.ProductionOperationScalarFieldEnum[]
 }
 
 /**

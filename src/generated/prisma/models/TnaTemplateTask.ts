@@ -29,11 +29,13 @@ export type AggregateTnaTemplateTask = {
 export type TnaTemplateTaskAvgAggregateOutputType = {
   daysBefore: number | null
   sortOrder: number | null
+  dependsOnSortOrder: number | null
 }
 
 export type TnaTemplateTaskSumAggregateOutputType = {
   daysBefore: number | null
   sortOrder: number | null
+  dependsOnSortOrder: number | null
 }
 
 export type TnaTemplateTaskMinAggregateOutputType = {
@@ -42,6 +44,7 @@ export type TnaTemplateTaskMinAggregateOutputType = {
   name: string | null
   daysBefore: number | null
   sortOrder: number | null
+  dependsOnSortOrder: number | null
 }
 
 export type TnaTemplateTaskMaxAggregateOutputType = {
@@ -50,6 +53,7 @@ export type TnaTemplateTaskMaxAggregateOutputType = {
   name: string | null
   daysBefore: number | null
   sortOrder: number | null
+  dependsOnSortOrder: number | null
 }
 
 export type TnaTemplateTaskCountAggregateOutputType = {
@@ -58,6 +62,7 @@ export type TnaTemplateTaskCountAggregateOutputType = {
   name: number
   daysBefore: number
   sortOrder: number
+  dependsOnSortOrder: number
   _all: number
 }
 
@@ -65,11 +70,13 @@ export type TnaTemplateTaskCountAggregateOutputType = {
 export type TnaTemplateTaskAvgAggregateInputType = {
   daysBefore?: true
   sortOrder?: true
+  dependsOnSortOrder?: true
 }
 
 export type TnaTemplateTaskSumAggregateInputType = {
   daysBefore?: true
   sortOrder?: true
+  dependsOnSortOrder?: true
 }
 
 export type TnaTemplateTaskMinAggregateInputType = {
@@ -78,6 +85,7 @@ export type TnaTemplateTaskMinAggregateInputType = {
   name?: true
   daysBefore?: true
   sortOrder?: true
+  dependsOnSortOrder?: true
 }
 
 export type TnaTemplateTaskMaxAggregateInputType = {
@@ -86,6 +94,7 @@ export type TnaTemplateTaskMaxAggregateInputType = {
   name?: true
   daysBefore?: true
   sortOrder?: true
+  dependsOnSortOrder?: true
 }
 
 export type TnaTemplateTaskCountAggregateInputType = {
@@ -94,6 +103,7 @@ export type TnaTemplateTaskCountAggregateInputType = {
   name?: true
   daysBefore?: true
   sortOrder?: true
+  dependsOnSortOrder?: true
   _all?: true
 }
 
@@ -189,6 +199,7 @@ export type TnaTemplateTaskGroupByOutputType = {
   name: string
   daysBefore: number
   sortOrder: number
+  dependsOnSortOrder: number | null
   _count: TnaTemplateTaskCountAggregateOutputType | null
   _avg: TnaTemplateTaskAvgAggregateOutputType | null
   _sum: TnaTemplateTaskSumAggregateOutputType | null
@@ -220,6 +231,7 @@ export type TnaTemplateTaskWhereInput = {
   name?: Prisma.StringFilter<"TnaTemplateTask"> | string
   daysBefore?: Prisma.IntFilter<"TnaTemplateTask"> | number
   sortOrder?: Prisma.IntFilter<"TnaTemplateTask"> | number
+  dependsOnSortOrder?: Prisma.IntNullableFilter<"TnaTemplateTask"> | number | null
   template?: Prisma.XOR<Prisma.TnaTemplateScalarRelationFilter, Prisma.TnaTemplateWhereInput>
 }
 
@@ -229,6 +241,7 @@ export type TnaTemplateTaskOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   daysBefore?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  dependsOnSortOrder?: Prisma.SortOrderInput | Prisma.SortOrder
   template?: Prisma.TnaTemplateOrderByWithRelationInput
 }
 
@@ -241,6 +254,7 @@ export type TnaTemplateTaskWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"TnaTemplateTask"> | string
   daysBefore?: Prisma.IntFilter<"TnaTemplateTask"> | number
   sortOrder?: Prisma.IntFilter<"TnaTemplateTask"> | number
+  dependsOnSortOrder?: Prisma.IntNullableFilter<"TnaTemplateTask"> | number | null
   template?: Prisma.XOR<Prisma.TnaTemplateScalarRelationFilter, Prisma.TnaTemplateWhereInput>
 }, "id">
 
@@ -250,6 +264,7 @@ export type TnaTemplateTaskOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   daysBefore?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  dependsOnSortOrder?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.TnaTemplateTaskCountOrderByAggregateInput
   _avg?: Prisma.TnaTemplateTaskAvgOrderByAggregateInput
   _max?: Prisma.TnaTemplateTaskMaxOrderByAggregateInput
@@ -266,6 +281,7 @@ export type TnaTemplateTaskScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"TnaTemplateTask"> | string
   daysBefore?: Prisma.IntWithAggregatesFilter<"TnaTemplateTask"> | number
   sortOrder?: Prisma.IntWithAggregatesFilter<"TnaTemplateTask"> | number
+  dependsOnSortOrder?: Prisma.IntNullableWithAggregatesFilter<"TnaTemplateTask"> | number | null
 }
 
 export type TnaTemplateTaskCreateInput = {
@@ -273,6 +289,7 @@ export type TnaTemplateTaskCreateInput = {
   name: string
   daysBefore: number
   sortOrder?: number
+  dependsOnSortOrder?: number | null
   template: Prisma.TnaTemplateCreateNestedOneWithoutTasksInput
 }
 
@@ -282,6 +299,7 @@ export type TnaTemplateTaskUncheckedCreateInput = {
   name: string
   daysBefore: number
   sortOrder?: number
+  dependsOnSortOrder?: number | null
 }
 
 export type TnaTemplateTaskUpdateInput = {
@@ -289,6 +307,7 @@ export type TnaTemplateTaskUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   daysBefore?: Prisma.IntFieldUpdateOperationsInput | number
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  dependsOnSortOrder?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   template?: Prisma.TnaTemplateUpdateOneRequiredWithoutTasksNestedInput
 }
 
@@ -298,6 +317,7 @@ export type TnaTemplateTaskUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   daysBefore?: Prisma.IntFieldUpdateOperationsInput | number
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  dependsOnSortOrder?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type TnaTemplateTaskCreateManyInput = {
@@ -306,6 +326,7 @@ export type TnaTemplateTaskCreateManyInput = {
   name: string
   daysBefore: number
   sortOrder?: number
+  dependsOnSortOrder?: number | null
 }
 
 export type TnaTemplateTaskUpdateManyMutationInput = {
@@ -313,6 +334,7 @@ export type TnaTemplateTaskUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   daysBefore?: Prisma.IntFieldUpdateOperationsInput | number
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  dependsOnSortOrder?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type TnaTemplateTaskUncheckedUpdateManyInput = {
@@ -321,6 +343,7 @@ export type TnaTemplateTaskUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   daysBefore?: Prisma.IntFieldUpdateOperationsInput | number
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  dependsOnSortOrder?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type TnaTemplateTaskListRelationFilter = {
@@ -339,11 +362,13 @@ export type TnaTemplateTaskCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   daysBefore?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  dependsOnSortOrder?: Prisma.SortOrder
 }
 
 export type TnaTemplateTaskAvgOrderByAggregateInput = {
   daysBefore?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  dependsOnSortOrder?: Prisma.SortOrder
 }
 
 export type TnaTemplateTaskMaxOrderByAggregateInput = {
@@ -352,6 +377,7 @@ export type TnaTemplateTaskMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   daysBefore?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  dependsOnSortOrder?: Prisma.SortOrder
 }
 
 export type TnaTemplateTaskMinOrderByAggregateInput = {
@@ -360,11 +386,13 @@ export type TnaTemplateTaskMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   daysBefore?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  dependsOnSortOrder?: Prisma.SortOrder
 }
 
 export type TnaTemplateTaskSumOrderByAggregateInput = {
   daysBefore?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  dependsOnSortOrder?: Prisma.SortOrder
 }
 
 export type TnaTemplateTaskCreateNestedManyWithoutTemplateInput = {
@@ -414,6 +442,7 @@ export type TnaTemplateTaskCreateWithoutTemplateInput = {
   name: string
   daysBefore: number
   sortOrder?: number
+  dependsOnSortOrder?: number | null
 }
 
 export type TnaTemplateTaskUncheckedCreateWithoutTemplateInput = {
@@ -421,6 +450,7 @@ export type TnaTemplateTaskUncheckedCreateWithoutTemplateInput = {
   name: string
   daysBefore: number
   sortOrder?: number
+  dependsOnSortOrder?: number | null
 }
 
 export type TnaTemplateTaskCreateOrConnectWithoutTemplateInput = {
@@ -458,6 +488,7 @@ export type TnaTemplateTaskScalarWhereInput = {
   name?: Prisma.StringFilter<"TnaTemplateTask"> | string
   daysBefore?: Prisma.IntFilter<"TnaTemplateTask"> | number
   sortOrder?: Prisma.IntFilter<"TnaTemplateTask"> | number
+  dependsOnSortOrder?: Prisma.IntNullableFilter<"TnaTemplateTask"> | number | null
 }
 
 export type TnaTemplateTaskCreateManyTemplateInput = {
@@ -465,6 +496,7 @@ export type TnaTemplateTaskCreateManyTemplateInput = {
   name: string
   daysBefore: number
   sortOrder?: number
+  dependsOnSortOrder?: number | null
 }
 
 export type TnaTemplateTaskUpdateWithoutTemplateInput = {
@@ -472,6 +504,7 @@ export type TnaTemplateTaskUpdateWithoutTemplateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   daysBefore?: Prisma.IntFieldUpdateOperationsInput | number
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  dependsOnSortOrder?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type TnaTemplateTaskUncheckedUpdateWithoutTemplateInput = {
@@ -479,6 +512,7 @@ export type TnaTemplateTaskUncheckedUpdateWithoutTemplateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   daysBefore?: Prisma.IntFieldUpdateOperationsInput | number
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  dependsOnSortOrder?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type TnaTemplateTaskUncheckedUpdateManyWithoutTemplateInput = {
@@ -486,6 +520,7 @@ export type TnaTemplateTaskUncheckedUpdateManyWithoutTemplateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   daysBefore?: Prisma.IntFieldUpdateOperationsInput | number
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  dependsOnSortOrder?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -496,6 +531,7 @@ export type TnaTemplateTaskSelect<ExtArgs extends runtime.Types.Extensions.Inter
   name?: boolean
   daysBefore?: boolean
   sortOrder?: boolean
+  dependsOnSortOrder?: boolean
   template?: boolean | Prisma.TnaTemplateDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tnaTemplateTask"]>
 
@@ -505,6 +541,7 @@ export type TnaTemplateTaskSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   name?: boolean
   daysBefore?: boolean
   sortOrder?: boolean
+  dependsOnSortOrder?: boolean
   template?: boolean | Prisma.TnaTemplateDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tnaTemplateTask"]>
 
@@ -514,6 +551,7 @@ export type TnaTemplateTaskSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   name?: boolean
   daysBefore?: boolean
   sortOrder?: boolean
+  dependsOnSortOrder?: boolean
   template?: boolean | Prisma.TnaTemplateDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tnaTemplateTask"]>
 
@@ -523,9 +561,10 @@ export type TnaTemplateTaskSelectScalar = {
   name?: boolean
   daysBefore?: boolean
   sortOrder?: boolean
+  dependsOnSortOrder?: boolean
 }
 
-export type TnaTemplateTaskOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "templateId" | "name" | "daysBefore" | "sortOrder", ExtArgs["result"]["tnaTemplateTask"]>
+export type TnaTemplateTaskOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "templateId" | "name" | "daysBefore" | "sortOrder" | "dependsOnSortOrder", ExtArgs["result"]["tnaTemplateTask"]>
 export type TnaTemplateTaskInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   template?: boolean | Prisma.TnaTemplateDefaultArgs<ExtArgs>
 }
@@ -547,6 +586,7 @@ export type $TnaTemplateTaskPayload<ExtArgs extends runtime.Types.Extensions.Int
     name: string
     daysBefore: number
     sortOrder: number
+    dependsOnSortOrder: number | null
   }, ExtArgs["result"]["tnaTemplateTask"]>
   composites: {}
 }
@@ -976,6 +1016,7 @@ export interface TnaTemplateTaskFieldRefs {
   readonly name: Prisma.FieldRef<"TnaTemplateTask", 'String'>
   readonly daysBefore: Prisma.FieldRef<"TnaTemplateTask", 'Int'>
   readonly sortOrder: Prisma.FieldRef<"TnaTemplateTask", 'Int'>
+  readonly dependsOnSortOrder: Prisma.FieldRef<"TnaTemplateTask", 'Int'>
 }
     
 

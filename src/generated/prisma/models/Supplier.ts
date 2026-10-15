@@ -318,6 +318,8 @@ export type SupplierWhereInput = {
   purchaseOrders?: Prisma.PurchaseOrderListRelationFilter
   proformaInvoices?: Prisma.SupplierPiListRelationFilter
   rfqInvites?: Prisma.RfqSupplierListRelationFilter
+  bomItems?: Prisma.BomItemListRelationFilter
+  subcontractOrders?: Prisma.SubcontractOrderListRelationFilter
 }
 
 export type SupplierOrderByWithRelationInput = {
@@ -344,6 +346,8 @@ export type SupplierOrderByWithRelationInput = {
   purchaseOrders?: Prisma.PurchaseOrderOrderByRelationAggregateInput
   proformaInvoices?: Prisma.SupplierPiOrderByRelationAggregateInput
   rfqInvites?: Prisma.RfqSupplierOrderByRelationAggregateInput
+  bomItems?: Prisma.BomItemOrderByRelationAggregateInput
+  subcontractOrders?: Prisma.SubcontractOrderOrderByRelationAggregateInput
 }
 
 export type SupplierWhereUniqueInput = Prisma.AtLeast<{
@@ -374,6 +378,8 @@ export type SupplierWhereUniqueInput = Prisma.AtLeast<{
   purchaseOrders?: Prisma.PurchaseOrderListRelationFilter
   proformaInvoices?: Prisma.SupplierPiListRelationFilter
   rfqInvites?: Prisma.RfqSupplierListRelationFilter
+  bomItems?: Prisma.BomItemListRelationFilter
+  subcontractOrders?: Prisma.SubcontractOrderListRelationFilter
 }, "id" | "companyId_code">
 
 export type SupplierOrderByWithAggregationInput = {
@@ -447,6 +453,8 @@ export type SupplierCreateInput = {
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierUncheckedCreateInput = {
@@ -472,6 +480,8 @@ export type SupplierUncheckedCreateInput = {
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierUpdateInput = {
@@ -497,6 +507,8 @@ export type SupplierUpdateInput = {
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierUncheckedUpdateInput = {
@@ -522,6 +534,8 @@ export type SupplierUncheckedUpdateInput = {
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierCreateManyInput = {
@@ -591,6 +605,11 @@ export type SupplierListRelationFilter = {
 
 export type SupplierOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type SupplierNullableScalarRelationFilter = {
+  is?: Prisma.SupplierWhereInput | null
+  isNot?: Prisma.SupplierWhereInput | null
 }
 
 export type SupplierCompanyIdCodeCompoundUniqueInput = {
@@ -713,16 +732,24 @@ export type SupplierUncheckedUpdateManyWithoutCompanyNestedInput = {
   deleteMany?: Prisma.SupplierScalarWhereInput | Prisma.SupplierScalarWhereInput[]
 }
 
-export type EnumSupplierCategoryFieldUpdateOperationsInput = {
-  set?: $Enums.SupplierCategory
+export type SupplierCreateNestedOneWithoutBomItemsInput = {
+  create?: Prisma.XOR<Prisma.SupplierCreateWithoutBomItemsInput, Prisma.SupplierUncheckedCreateWithoutBomItemsInput>
+  connectOrCreate?: Prisma.SupplierCreateOrConnectWithoutBomItemsInput
+  connect?: Prisma.SupplierWhereUniqueInput
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type SupplierUpdateOneWithoutBomItemsNestedInput = {
+  create?: Prisma.XOR<Prisma.SupplierCreateWithoutBomItemsInput, Prisma.SupplierUncheckedCreateWithoutBomItemsInput>
+  connectOrCreate?: Prisma.SupplierCreateOrConnectWithoutBomItemsInput
+  upsert?: Prisma.SupplierUpsertWithoutBomItemsInput
+  disconnect?: Prisma.SupplierWhereInput | boolean
+  delete?: Prisma.SupplierWhereInput | boolean
+  connect?: Prisma.SupplierWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SupplierUpdateToOneWithWhereWithoutBomItemsInput, Prisma.SupplierUpdateWithoutBomItemsInput>, Prisma.SupplierUncheckedUpdateWithoutBomItemsInput>
+}
+
+export type EnumSupplierCategoryFieldUpdateOperationsInput = {
+  set?: $Enums.SupplierCategory
 }
 
 export type SupplierCreateNestedOneWithoutContactsInput = {
@@ -795,6 +822,20 @@ export type SupplierUpdateOneRequiredWithoutRfqInvitesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SupplierUpdateToOneWithWhereWithoutRfqInvitesInput, Prisma.SupplierUpdateWithoutRfqInvitesInput>, Prisma.SupplierUncheckedUpdateWithoutRfqInvitesInput>
 }
 
+export type SupplierCreateNestedOneWithoutSubcontractOrdersInput = {
+  create?: Prisma.XOR<Prisma.SupplierCreateWithoutSubcontractOrdersInput, Prisma.SupplierUncheckedCreateWithoutSubcontractOrdersInput>
+  connectOrCreate?: Prisma.SupplierCreateOrConnectWithoutSubcontractOrdersInput
+  connect?: Prisma.SupplierWhereUniqueInput
+}
+
+export type SupplierUpdateOneRequiredWithoutSubcontractOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.SupplierCreateWithoutSubcontractOrdersInput, Prisma.SupplierUncheckedCreateWithoutSubcontractOrdersInput>
+  connectOrCreate?: Prisma.SupplierCreateOrConnectWithoutSubcontractOrdersInput
+  upsert?: Prisma.SupplierUpsertWithoutSubcontractOrdersInput
+  connect?: Prisma.SupplierWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SupplierUpdateToOneWithWhereWithoutSubcontractOrdersInput, Prisma.SupplierUpdateWithoutSubcontractOrdersInput>, Prisma.SupplierUncheckedUpdateWithoutSubcontractOrdersInput>
+}
+
 export type SupplierCreateWithoutCompanyInput = {
   id?: string
   code: string
@@ -817,6 +858,8 @@ export type SupplierCreateWithoutCompanyInput = {
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierUncheckedCreateWithoutCompanyInput = {
@@ -841,6 +884,8 @@ export type SupplierUncheckedCreateWithoutCompanyInput = {
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierCreateOrConnectWithoutCompanyInput = {
@@ -892,6 +937,126 @@ export type SupplierScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Supplier"> | Date | string
 }
 
+export type SupplierCreateWithoutBomItemsInput = {
+  id?: string
+  code: string
+  name: string
+  category: $Enums.SupplierCategory
+  country?: string | null
+  address?: string | null
+  currency?: string
+  leadTimeDays?: number | null
+  paymentTerms?: string | null
+  bankName?: string | null
+  bankBranch?: string | null
+  bankAccountName?: string | null
+  bankAccountNo?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
+  contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
+}
+
+export type SupplierUncheckedCreateWithoutBomItemsInput = {
+  id?: string
+  companyId: string
+  code: string
+  name: string
+  category: $Enums.SupplierCategory
+  country?: string | null
+  address?: string | null
+  currency?: string
+  leadTimeDays?: number | null
+  paymentTerms?: string | null
+  bankName?: string | null
+  bankBranch?: string | null
+  bankAccountName?: string | null
+  bankAccountNo?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
+}
+
+export type SupplierCreateOrConnectWithoutBomItemsInput = {
+  where: Prisma.SupplierWhereUniqueInput
+  create: Prisma.XOR<Prisma.SupplierCreateWithoutBomItemsInput, Prisma.SupplierUncheckedCreateWithoutBomItemsInput>
+}
+
+export type SupplierUpsertWithoutBomItemsInput = {
+  update: Prisma.XOR<Prisma.SupplierUpdateWithoutBomItemsInput, Prisma.SupplierUncheckedUpdateWithoutBomItemsInput>
+  create: Prisma.XOR<Prisma.SupplierCreateWithoutBomItemsInput, Prisma.SupplierUncheckedCreateWithoutBomItemsInput>
+  where?: Prisma.SupplierWhereInput
+}
+
+export type SupplierUpdateToOneWithWhereWithoutBomItemsInput = {
+  where?: Prisma.SupplierWhereInput
+  data: Prisma.XOR<Prisma.SupplierUpdateWithoutBomItemsInput, Prisma.SupplierUncheckedUpdateWithoutBomItemsInput>
+}
+
+export type SupplierUpdateWithoutBomItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumSupplierCategoryFieldUpdateOperationsInput | $Enums.SupplierCategory
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  leadTimeDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
+  contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
+}
+
+export type SupplierUncheckedUpdateWithoutBomItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumSupplierCategoryFieldUpdateOperationsInput | $Enums.SupplierCategory
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  leadTimeDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+}
+
 export type SupplierCreateWithoutContactsInput = {
   id?: string
   code: string
@@ -914,6 +1079,8 @@ export type SupplierCreateWithoutContactsInput = {
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierUncheckedCreateWithoutContactsInput = {
@@ -938,6 +1105,8 @@ export type SupplierUncheckedCreateWithoutContactsInput = {
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierCreateOrConnectWithoutContactsInput = {
@@ -978,6 +1147,8 @@ export type SupplierUpdateWithoutContactsInput = {
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutContactsInput = {
@@ -1002,6 +1173,8 @@ export type SupplierUncheckedUpdateWithoutContactsInput = {
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierCreateWithoutQuotationsInput = {
@@ -1026,6 +1199,8 @@ export type SupplierCreateWithoutQuotationsInput = {
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierUncheckedCreateWithoutQuotationsInput = {
@@ -1050,6 +1225,8 @@ export type SupplierUncheckedCreateWithoutQuotationsInput = {
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierCreateOrConnectWithoutQuotationsInput = {
@@ -1090,6 +1267,8 @@ export type SupplierUpdateWithoutQuotationsInput = {
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutQuotationsInput = {
@@ -1114,6 +1293,8 @@ export type SupplierUncheckedUpdateWithoutQuotationsInput = {
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierCreateWithoutPurchaseOrdersInput = {
@@ -1138,6 +1319,8 @@ export type SupplierCreateWithoutPurchaseOrdersInput = {
   quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierUncheckedCreateWithoutPurchaseOrdersInput = {
@@ -1162,6 +1345,8 @@ export type SupplierUncheckedCreateWithoutPurchaseOrdersInput = {
   quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierCreateOrConnectWithoutPurchaseOrdersInput = {
@@ -1202,6 +1387,8 @@ export type SupplierUpdateWithoutPurchaseOrdersInput = {
   quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutPurchaseOrdersInput = {
@@ -1226,6 +1413,8 @@ export type SupplierUncheckedUpdateWithoutPurchaseOrdersInput = {
   quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierCreateWithoutProformaInvoicesInput = {
@@ -1250,6 +1439,8 @@ export type SupplierCreateWithoutProformaInvoicesInput = {
   quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierUncheckedCreateWithoutProformaInvoicesInput = {
@@ -1274,6 +1465,8 @@ export type SupplierUncheckedCreateWithoutProformaInvoicesInput = {
   quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierCreateOrConnectWithoutProformaInvoicesInput = {
@@ -1314,6 +1507,8 @@ export type SupplierUpdateWithoutProformaInvoicesInput = {
   quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutProformaInvoicesInput = {
@@ -1338,6 +1533,8 @@ export type SupplierUncheckedUpdateWithoutProformaInvoicesInput = {
   quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierCreateWithoutRfqInvitesInput = {
@@ -1362,6 +1559,8 @@ export type SupplierCreateWithoutRfqInvitesInput = {
   quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierUncheckedCreateWithoutRfqInvitesInput = {
@@ -1386,6 +1585,8 @@ export type SupplierUncheckedCreateWithoutRfqInvitesInput = {
   quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierCreateOrConnectWithoutRfqInvitesInput = {
@@ -1426,6 +1627,8 @@ export type SupplierUpdateWithoutRfqInvitesInput = {
   quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutRfqInvitesInput = {
@@ -1450,6 +1653,128 @@ export type SupplierUncheckedUpdateWithoutRfqInvitesInput = {
   quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+}
+
+export type SupplierCreateWithoutSubcontractOrdersInput = {
+  id?: string
+  code: string
+  name: string
+  category: $Enums.SupplierCategory
+  country?: string | null
+  address?: string | null
+  currency?: string
+  leadTimeDays?: number | null
+  paymentTerms?: string | null
+  bankName?: string | null
+  bankBranch?: string | null
+  bankAccountName?: string | null
+  bankAccountNo?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
+  contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+}
+
+export type SupplierUncheckedCreateWithoutSubcontractOrdersInput = {
+  id?: string
+  companyId: string
+  code: string
+  name: string
+  category: $Enums.SupplierCategory
+  country?: string | null
+  address?: string | null
+  currency?: string
+  leadTimeDays?: number | null
+  paymentTerms?: string | null
+  bankName?: string | null
+  bankBranch?: string | null
+  bankAccountName?: string | null
+  bankAccountNo?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+}
+
+export type SupplierCreateOrConnectWithoutSubcontractOrdersInput = {
+  where: Prisma.SupplierWhereUniqueInput
+  create: Prisma.XOR<Prisma.SupplierCreateWithoutSubcontractOrdersInput, Prisma.SupplierUncheckedCreateWithoutSubcontractOrdersInput>
+}
+
+export type SupplierUpsertWithoutSubcontractOrdersInput = {
+  update: Prisma.XOR<Prisma.SupplierUpdateWithoutSubcontractOrdersInput, Prisma.SupplierUncheckedUpdateWithoutSubcontractOrdersInput>
+  create: Prisma.XOR<Prisma.SupplierCreateWithoutSubcontractOrdersInput, Prisma.SupplierUncheckedCreateWithoutSubcontractOrdersInput>
+  where?: Prisma.SupplierWhereInput
+}
+
+export type SupplierUpdateToOneWithWhereWithoutSubcontractOrdersInput = {
+  where?: Prisma.SupplierWhereInput
+  data: Prisma.XOR<Prisma.SupplierUpdateWithoutSubcontractOrdersInput, Prisma.SupplierUncheckedUpdateWithoutSubcontractOrdersInput>
+}
+
+export type SupplierUpdateWithoutSubcontractOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumSupplierCategoryFieldUpdateOperationsInput | $Enums.SupplierCategory
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  leadTimeDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
+  contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+}
+
+export type SupplierUncheckedUpdateWithoutSubcontractOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumSupplierCategoryFieldUpdateOperationsInput | $Enums.SupplierCategory
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  leadTimeDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateManyCompanyInput = {
@@ -1493,6 +1818,8 @@ export type SupplierUpdateWithoutCompanyInput = {
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutCompanyInput = {
@@ -1517,6 +1844,8 @@ export type SupplierUncheckedUpdateWithoutCompanyInput = {
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierUncheckedUpdateManyWithoutCompanyInput = {
@@ -1549,6 +1878,8 @@ export type SupplierCountOutputType = {
   purchaseOrders: number
   proformaInvoices: number
   rfqInvites: number
+  bomItems: number
+  subcontractOrders: number
 }
 
 export type SupplierCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1557,6 +1888,8 @@ export type SupplierCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensio
   purchaseOrders?: boolean | SupplierCountOutputTypeCountPurchaseOrdersArgs
   proformaInvoices?: boolean | SupplierCountOutputTypeCountProformaInvoicesArgs
   rfqInvites?: boolean | SupplierCountOutputTypeCountRfqInvitesArgs
+  bomItems?: boolean | SupplierCountOutputTypeCountBomItemsArgs
+  subcontractOrders?: boolean | SupplierCountOutputTypeCountSubcontractOrdersArgs
 }
 
 /**
@@ -1604,6 +1937,20 @@ export type SupplierCountOutputTypeCountRfqInvitesArgs<ExtArgs extends runtime.T
   where?: Prisma.RfqSupplierWhereInput
 }
 
+/**
+ * SupplierCountOutputType without action
+ */
+export type SupplierCountOutputTypeCountBomItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BomItemWhereInput
+}
+
+/**
+ * SupplierCountOutputType without action
+ */
+export type SupplierCountOutputTypeCountSubcontractOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SubcontractOrderWhereInput
+}
+
 
 export type SupplierSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1629,6 +1976,8 @@ export type SupplierSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   purchaseOrders?: boolean | Prisma.Supplier$purchaseOrdersArgs<ExtArgs>
   proformaInvoices?: boolean | Prisma.Supplier$proformaInvoicesArgs<ExtArgs>
   rfqInvites?: boolean | Prisma.Supplier$rfqInvitesArgs<ExtArgs>
+  bomItems?: boolean | Prisma.Supplier$bomItemsArgs<ExtArgs>
+  subcontractOrders?: boolean | Prisma.Supplier$subcontractOrdersArgs<ExtArgs>
   _count?: boolean | Prisma.SupplierCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["supplier"]>
 
@@ -1702,6 +2051,8 @@ export type SupplierInclude<ExtArgs extends runtime.Types.Extensions.InternalArg
   purchaseOrders?: boolean | Prisma.Supplier$purchaseOrdersArgs<ExtArgs>
   proformaInvoices?: boolean | Prisma.Supplier$proformaInvoicesArgs<ExtArgs>
   rfqInvites?: boolean | Prisma.Supplier$rfqInvitesArgs<ExtArgs>
+  bomItems?: boolean | Prisma.Supplier$bomItemsArgs<ExtArgs>
+  subcontractOrders?: boolean | Prisma.Supplier$subcontractOrdersArgs<ExtArgs>
   _count?: boolean | Prisma.SupplierCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SupplierIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1720,6 +2071,8 @@ export type $SupplierPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     purchaseOrders: Prisma.$PurchaseOrderPayload<ExtArgs>[]
     proformaInvoices: Prisma.$SupplierPiPayload<ExtArgs>[]
     rfqInvites: Prisma.$RfqSupplierPayload<ExtArgs>[]
+    bomItems: Prisma.$BomItemPayload<ExtArgs>[]
+    subcontractOrders: Prisma.$SubcontractOrderPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2139,6 +2492,8 @@ export interface Prisma__SupplierClient<T, Null = never, ExtArgs extends runtime
   purchaseOrders<T extends Prisma.Supplier$purchaseOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$purchaseOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   proformaInvoices<T extends Prisma.Supplier$proformaInvoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$proformaInvoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierPiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   rfqInvites<T extends Prisma.Supplier$rfqInvitesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$rfqInvitesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RfqSupplierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  bomItems<T extends Prisma.Supplier$bomItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$bomItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BomItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  subcontractOrders<T extends Prisma.Supplier$subcontractOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$subcontractOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubcontractOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2703,6 +3058,54 @@ export type Supplier$rfqInvitesArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.RfqSupplierScalarFieldEnum | Prisma.RfqSupplierScalarFieldEnum[]
+}
+
+/**
+ * Supplier.bomItems
+ */
+export type Supplier$bomItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BomItem
+   */
+  select?: Prisma.BomItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BomItem
+   */
+  omit?: Prisma.BomItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BomItemInclude<ExtArgs> | null
+  where?: Prisma.BomItemWhereInput
+  orderBy?: Prisma.BomItemOrderByWithRelationInput | Prisma.BomItemOrderByWithRelationInput[]
+  cursor?: Prisma.BomItemWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BomItemScalarFieldEnum | Prisma.BomItemScalarFieldEnum[]
+}
+
+/**
+ * Supplier.subcontractOrders
+ */
+export type Supplier$subcontractOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SubcontractOrder
+   */
+  select?: Prisma.SubcontractOrderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SubcontractOrder
+   */
+  omit?: Prisma.SubcontractOrderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SubcontractOrderInclude<ExtArgs> | null
+  where?: Prisma.SubcontractOrderWhereInput
+  orderBy?: Prisma.SubcontractOrderOrderByWithRelationInput | Prisma.SubcontractOrderOrderByWithRelationInput[]
+  cursor?: Prisma.SubcontractOrderWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SubcontractOrderScalarFieldEnum | Prisma.SubcontractOrderScalarFieldEnum[]
 }
 
 /**

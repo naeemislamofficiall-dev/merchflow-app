@@ -36,6 +36,10 @@ export type BuyerMinAggregateOutputType = {
   status: $Enums.ActiveStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  region: string | null
+  shipmentTerms: string | null
+  category: string | null
+  complianceNotes: string | null
 }
 
 export type BuyerMaxAggregateOutputType = {
@@ -50,6 +54,10 @@ export type BuyerMaxAggregateOutputType = {
   status: $Enums.ActiveStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  region: string | null
+  shipmentTerms: string | null
+  category: string | null
+  complianceNotes: string | null
 }
 
 export type BuyerCountAggregateOutputType = {
@@ -64,6 +72,10 @@ export type BuyerCountAggregateOutputType = {
   status: number
   createdAt: number
   updatedAt: number
+  region: number
+  shipmentTerms: number
+  category: number
+  complianceNotes: number
   _all: number
 }
 
@@ -80,6 +92,10 @@ export type BuyerMinAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  region?: true
+  shipmentTerms?: true
+  category?: true
+  complianceNotes?: true
 }
 
 export type BuyerMaxAggregateInputType = {
@@ -94,6 +110,10 @@ export type BuyerMaxAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  region?: true
+  shipmentTerms?: true
+  category?: true
+  complianceNotes?: true
 }
 
 export type BuyerCountAggregateInputType = {
@@ -108,6 +128,10 @@ export type BuyerCountAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  region?: true
+  shipmentTerms?: true
+  category?: true
+  complianceNotes?: true
   _all?: true
 }
 
@@ -195,6 +219,10 @@ export type BuyerGroupByOutputType = {
   status: $Enums.ActiveStatus
   createdAt: Date
   updatedAt: Date
+  region: string | null
+  shipmentTerms: string | null
+  category: string | null
+  complianceNotes: string | null
   _count: BuyerCountAggregateOutputType | null
   _min: BuyerMinAggregateOutputType | null
   _max: BuyerMaxAggregateOutputType | null
@@ -230,11 +258,17 @@ export type BuyerWhereInput = {
   status?: Prisma.EnumActiveStatusFilter<"Buyer"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Buyer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Buyer"> | Date | string
+  region?: Prisma.StringNullableFilter<"Buyer"> | string | null
+  shipmentTerms?: Prisma.StringNullableFilter<"Buyer"> | string | null
+  category?: Prisma.StringNullableFilter<"Buyer"> | string | null
+  complianceNotes?: Prisma.StringNullableFilter<"Buyer"> | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   contacts?: Prisma.BuyerContactListRelationFilter
   enquiries?: Prisma.EnquiryListRelationFilter
   styles?: Prisma.StyleListRelationFilter
   orders?: Prisma.OrderListRelationFilter
+  config?: Prisma.XOR<Prisma.BuyerConfigNullableScalarRelationFilter, Prisma.BuyerConfigWhereInput> | null
+  preferredFactories?: Prisma.BuyerPreferredFactoryListRelationFilter
 }
 
 export type BuyerOrderByWithRelationInput = {
@@ -249,11 +283,17 @@ export type BuyerOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  shipmentTerms?: Prisma.SortOrderInput | Prisma.SortOrder
+  category?: Prisma.SortOrderInput | Prisma.SortOrder
+  complianceNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   company?: Prisma.CompanyOrderByWithRelationInput
   contacts?: Prisma.BuyerContactOrderByRelationAggregateInput
   enquiries?: Prisma.EnquiryOrderByRelationAggregateInput
   styles?: Prisma.StyleOrderByRelationAggregateInput
   orders?: Prisma.OrderOrderByRelationAggregateInput
+  config?: Prisma.BuyerConfigOrderByWithRelationInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryOrderByRelationAggregateInput
 }
 
 export type BuyerWhereUniqueInput = Prisma.AtLeast<{
@@ -272,11 +312,17 @@ export type BuyerWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumActiveStatusFilter<"Buyer"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Buyer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Buyer"> | Date | string
+  region?: Prisma.StringNullableFilter<"Buyer"> | string | null
+  shipmentTerms?: Prisma.StringNullableFilter<"Buyer"> | string | null
+  category?: Prisma.StringNullableFilter<"Buyer"> | string | null
+  complianceNotes?: Prisma.StringNullableFilter<"Buyer"> | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   contacts?: Prisma.BuyerContactListRelationFilter
   enquiries?: Prisma.EnquiryListRelationFilter
   styles?: Prisma.StyleListRelationFilter
   orders?: Prisma.OrderListRelationFilter
+  config?: Prisma.XOR<Prisma.BuyerConfigNullableScalarRelationFilter, Prisma.BuyerConfigWhereInput> | null
+  preferredFactories?: Prisma.BuyerPreferredFactoryListRelationFilter
 }, "id" | "companyId_code">
 
 export type BuyerOrderByWithAggregationInput = {
@@ -291,6 +337,10 @@ export type BuyerOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  shipmentTerms?: Prisma.SortOrderInput | Prisma.SortOrder
+  category?: Prisma.SortOrderInput | Prisma.SortOrder
+  complianceNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.BuyerCountOrderByAggregateInput
   _max?: Prisma.BuyerMaxOrderByAggregateInput
   _min?: Prisma.BuyerMinOrderByAggregateInput
@@ -311,6 +361,10 @@ export type BuyerScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumActiveStatusWithAggregatesFilter<"Buyer"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Buyer"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Buyer"> | Date | string
+  region?: Prisma.StringNullableWithAggregatesFilter<"Buyer"> | string | null
+  shipmentTerms?: Prisma.StringNullableWithAggregatesFilter<"Buyer"> | string | null
+  category?: Prisma.StringNullableWithAggregatesFilter<"Buyer"> | string | null
+  complianceNotes?: Prisma.StringNullableWithAggregatesFilter<"Buyer"> | string | null
 }
 
 export type BuyerCreateInput = {
@@ -324,11 +378,17 @@ export type BuyerCreateInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
   contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
   orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateInput = {
@@ -343,10 +403,16 @@ export type BuyerUncheckedCreateInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigUncheckedCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUpdateInput = {
@@ -360,11 +426,17 @@ export type BuyerUpdateInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
   contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
   orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateInput = {
@@ -379,10 +451,16 @@ export type BuyerUncheckedUpdateInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUncheckedUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerCreateManyInput = {
@@ -397,6 +475,10 @@ export type BuyerCreateManyInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
 }
 
 export type BuyerUpdateManyMutationInput = {
@@ -410,6 +492,10 @@ export type BuyerUpdateManyMutationInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type BuyerUncheckedUpdateManyInput = {
@@ -424,6 +510,10 @@ export type BuyerUncheckedUpdateManyInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type BuyerListRelationFilter = {
@@ -453,6 +543,10 @@ export type BuyerCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  shipmentTerms?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  complianceNotes?: Prisma.SortOrder
 }
 
 export type BuyerMaxOrderByAggregateInput = {
@@ -467,6 +561,10 @@ export type BuyerMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  shipmentTerms?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  complianceNotes?: Prisma.SortOrder
 }
 
 export type BuyerMinOrderByAggregateInput = {
@@ -481,6 +579,10 @@ export type BuyerMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  shipmentTerms?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  complianceNotes?: Prisma.SortOrder
 }
 
 export type BuyerScalarRelationFilter = {
@@ -586,6 +688,34 @@ export type BuyerUpdateOneRequiredWithoutOrdersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BuyerUpdateToOneWithWhereWithoutOrdersInput, Prisma.BuyerUpdateWithoutOrdersInput>, Prisma.BuyerUncheckedUpdateWithoutOrdersInput>
 }
 
+export type BuyerCreateNestedOneWithoutConfigInput = {
+  create?: Prisma.XOR<Prisma.BuyerCreateWithoutConfigInput, Prisma.BuyerUncheckedCreateWithoutConfigInput>
+  connectOrCreate?: Prisma.BuyerCreateOrConnectWithoutConfigInput
+  connect?: Prisma.BuyerWhereUniqueInput
+}
+
+export type BuyerUpdateOneRequiredWithoutConfigNestedInput = {
+  create?: Prisma.XOR<Prisma.BuyerCreateWithoutConfigInput, Prisma.BuyerUncheckedCreateWithoutConfigInput>
+  connectOrCreate?: Prisma.BuyerCreateOrConnectWithoutConfigInput
+  upsert?: Prisma.BuyerUpsertWithoutConfigInput
+  connect?: Prisma.BuyerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BuyerUpdateToOneWithWhereWithoutConfigInput, Prisma.BuyerUpdateWithoutConfigInput>, Prisma.BuyerUncheckedUpdateWithoutConfigInput>
+}
+
+export type BuyerCreateNestedOneWithoutPreferredFactoriesInput = {
+  create?: Prisma.XOR<Prisma.BuyerCreateWithoutPreferredFactoriesInput, Prisma.BuyerUncheckedCreateWithoutPreferredFactoriesInput>
+  connectOrCreate?: Prisma.BuyerCreateOrConnectWithoutPreferredFactoriesInput
+  connect?: Prisma.BuyerWhereUniqueInput
+}
+
+export type BuyerUpdateOneRequiredWithoutPreferredFactoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.BuyerCreateWithoutPreferredFactoriesInput, Prisma.BuyerUncheckedCreateWithoutPreferredFactoriesInput>
+  connectOrCreate?: Prisma.BuyerCreateOrConnectWithoutPreferredFactoriesInput
+  upsert?: Prisma.BuyerUpsertWithoutPreferredFactoriesInput
+  connect?: Prisma.BuyerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BuyerUpdateToOneWithWhereWithoutPreferredFactoriesInput, Prisma.BuyerUpdateWithoutPreferredFactoriesInput>, Prisma.BuyerUncheckedUpdateWithoutPreferredFactoriesInput>
+}
+
 export type BuyerCreateWithoutCompanyInput = {
   id?: string
   code: string
@@ -597,10 +727,16 @@ export type BuyerCreateWithoutCompanyInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
   orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateWithoutCompanyInput = {
@@ -614,10 +750,16 @@ export type BuyerUncheckedCreateWithoutCompanyInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigUncheckedCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerCreateOrConnectWithoutCompanyInput = {
@@ -661,6 +803,10 @@ export type BuyerScalarWhereInput = {
   status?: Prisma.EnumActiveStatusFilter<"Buyer"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Buyer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Buyer"> | Date | string
+  region?: Prisma.StringNullableFilter<"Buyer"> | string | null
+  shipmentTerms?: Prisma.StringNullableFilter<"Buyer"> | string | null
+  category?: Prisma.StringNullableFilter<"Buyer"> | string | null
+  complianceNotes?: Prisma.StringNullableFilter<"Buyer"> | string | null
 }
 
 export type BuyerCreateWithoutContactsInput = {
@@ -674,10 +820,16 @@ export type BuyerCreateWithoutContactsInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
   enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
   orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateWithoutContactsInput = {
@@ -692,9 +844,15 @@ export type BuyerUncheckedCreateWithoutContactsInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigUncheckedCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerCreateOrConnectWithoutContactsInput = {
@@ -724,10 +882,16 @@ export type BuyerUpdateWithoutContactsInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
   enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
   orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateWithoutContactsInput = {
@@ -742,9 +906,15 @@ export type BuyerUncheckedUpdateWithoutContactsInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUncheckedUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerCreateWithoutEnquiriesInput = {
@@ -758,10 +928,16 @@ export type BuyerCreateWithoutEnquiriesInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
   contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
   orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateWithoutEnquiriesInput = {
@@ -776,9 +952,15 @@ export type BuyerUncheckedCreateWithoutEnquiriesInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigUncheckedCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerCreateOrConnectWithoutEnquiriesInput = {
@@ -808,10 +990,16 @@ export type BuyerUpdateWithoutEnquiriesInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
   contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
   orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateWithoutEnquiriesInput = {
@@ -826,9 +1014,15 @@ export type BuyerUncheckedUpdateWithoutEnquiriesInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUncheckedUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerCreateWithoutStylesInput = {
@@ -842,10 +1036,16 @@ export type BuyerCreateWithoutStylesInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
   contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
   orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateWithoutStylesInput = {
@@ -860,9 +1060,15 @@ export type BuyerUncheckedCreateWithoutStylesInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigUncheckedCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerCreateOrConnectWithoutStylesInput = {
@@ -892,10 +1098,16 @@ export type BuyerUpdateWithoutStylesInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
   contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
   orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateWithoutStylesInput = {
@@ -910,9 +1122,15 @@ export type BuyerUncheckedUpdateWithoutStylesInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUncheckedUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerCreateWithoutOrdersInput = {
@@ -926,10 +1144,16 @@ export type BuyerCreateWithoutOrdersInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
   contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerUncheckedCreateWithoutOrdersInput = {
@@ -944,9 +1168,15 @@ export type BuyerUncheckedCreateWithoutOrdersInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
   contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
   enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
   styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigUncheckedCreateNestedOneWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutBuyerInput
 }
 
 export type BuyerCreateOrConnectWithoutOrdersInput = {
@@ -976,10 +1206,16 @@ export type BuyerUpdateWithoutOrdersInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
   contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateWithoutOrdersInput = {
@@ -994,9 +1230,231 @@ export type BuyerUncheckedUpdateWithoutOrdersInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUncheckedUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutBuyerNestedInput
+}
+
+export type BuyerCreateWithoutConfigInput = {
+  id?: string
+  code: string
+  name: string
+  country?: string | null
+  address?: string | null
+  currency?: string
+  paymentTerms?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
+  company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
+  contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
+  styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutBuyerInput
+}
+
+export type BuyerUncheckedCreateWithoutConfigInput = {
+  id?: string
+  companyId: string
+  code: string
+  name: string
+  country?: string | null
+  address?: string | null
+  currency?: string
+  paymentTerms?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
+  contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutBuyerInput
+}
+
+export type BuyerCreateOrConnectWithoutConfigInput = {
+  where: Prisma.BuyerWhereUniqueInput
+  create: Prisma.XOR<Prisma.BuyerCreateWithoutConfigInput, Prisma.BuyerUncheckedCreateWithoutConfigInput>
+}
+
+export type BuyerUpsertWithoutConfigInput = {
+  update: Prisma.XOR<Prisma.BuyerUpdateWithoutConfigInput, Prisma.BuyerUncheckedUpdateWithoutConfigInput>
+  create: Prisma.XOR<Prisma.BuyerCreateWithoutConfigInput, Prisma.BuyerUncheckedCreateWithoutConfigInput>
+  where?: Prisma.BuyerWhereInput
+}
+
+export type BuyerUpdateToOneWithWhereWithoutConfigInput = {
+  where?: Prisma.BuyerWhereInput
+  data: Prisma.XOR<Prisma.BuyerUpdateWithoutConfigInput, Prisma.BuyerUncheckedUpdateWithoutConfigInput>
+}
+
+export type BuyerUpdateWithoutConfigInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
+  contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUpdateManyWithoutBuyerNestedInput
+}
+
+export type BuyerUncheckedUpdateWithoutConfigInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutBuyerNestedInput
+}
+
+export type BuyerCreateWithoutPreferredFactoriesInput = {
+  id?: string
+  code: string
+  name: string
+  country?: string | null
+  address?: string | null
+  currency?: string
+  paymentTerms?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
+  company: Prisma.CompanyCreateNestedOneWithoutBuyersInput
+  contacts?: Prisma.BuyerContactCreateNestedManyWithoutBuyerInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutBuyerInput
+  styles?: Prisma.StyleCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigCreateNestedOneWithoutBuyerInput
+}
+
+export type BuyerUncheckedCreateWithoutPreferredFactoriesInput = {
+  id?: string
+  companyId: string
+  code: string
+  name: string
+  country?: string | null
+  address?: string | null
+  currency?: string
+  paymentTerms?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
+  contacts?: Prisma.BuyerContactUncheckedCreateNestedManyWithoutBuyerInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutBuyerInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutBuyerInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
+  config?: Prisma.BuyerConfigUncheckedCreateNestedOneWithoutBuyerInput
+}
+
+export type BuyerCreateOrConnectWithoutPreferredFactoriesInput = {
+  where: Prisma.BuyerWhereUniqueInput
+  create: Prisma.XOR<Prisma.BuyerCreateWithoutPreferredFactoriesInput, Prisma.BuyerUncheckedCreateWithoutPreferredFactoriesInput>
+}
+
+export type BuyerUpsertWithoutPreferredFactoriesInput = {
+  update: Prisma.XOR<Prisma.BuyerUpdateWithoutPreferredFactoriesInput, Prisma.BuyerUncheckedUpdateWithoutPreferredFactoriesInput>
+  create: Prisma.XOR<Prisma.BuyerCreateWithoutPreferredFactoriesInput, Prisma.BuyerUncheckedCreateWithoutPreferredFactoriesInput>
+  where?: Prisma.BuyerWhereInput
+}
+
+export type BuyerUpdateToOneWithWhereWithoutPreferredFactoriesInput = {
+  where?: Prisma.BuyerWhereInput
+  data: Prisma.XOR<Prisma.BuyerUpdateWithoutPreferredFactoriesInput, Prisma.BuyerUncheckedUpdateWithoutPreferredFactoriesInput>
+}
+
+export type BuyerUpdateWithoutPreferredFactoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.CompanyUpdateOneRequiredWithoutBuyersNestedInput
+  contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUpdateOneWithoutBuyerNestedInput
+}
+
+export type BuyerUncheckedUpdateWithoutPreferredFactoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUncheckedUpdateOneWithoutBuyerNestedInput
 }
 
 export type BuyerCreateManyCompanyInput = {
@@ -1010,6 +1468,10 @@ export type BuyerCreateManyCompanyInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  region?: string | null
+  shipmentTerms?: string | null
+  category?: string | null
+  complianceNotes?: string | null
 }
 
 export type BuyerUpdateWithoutCompanyInput = {
@@ -1023,10 +1485,16 @@ export type BuyerUpdateWithoutCompanyInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contacts?: Prisma.BuyerContactUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUpdateManyWithoutBuyerNestedInput
   orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateWithoutCompanyInput = {
@@ -1040,10 +1508,16 @@ export type BuyerUncheckedUpdateWithoutCompanyInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contacts?: Prisma.BuyerContactUncheckedUpdateManyWithoutBuyerNestedInput
   enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutBuyerNestedInput
   styles?: Prisma.StyleUncheckedUpdateManyWithoutBuyerNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
+  config?: Prisma.BuyerConfigUncheckedUpdateOneWithoutBuyerNestedInput
+  preferredFactories?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutBuyerNestedInput
 }
 
 export type BuyerUncheckedUpdateManyWithoutCompanyInput = {
@@ -1057,6 +1531,10 @@ export type BuyerUncheckedUpdateManyWithoutCompanyInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shipmentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complianceNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1069,6 +1547,7 @@ export type BuyerCountOutputType = {
   enquiries: number
   styles: number
   orders: number
+  preferredFactories: number
 }
 
 export type BuyerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1076,6 +1555,7 @@ export type BuyerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   enquiries?: boolean | BuyerCountOutputTypeCountEnquiriesArgs
   styles?: boolean | BuyerCountOutputTypeCountStylesArgs
   orders?: boolean | BuyerCountOutputTypeCountOrdersArgs
+  preferredFactories?: boolean | BuyerCountOutputTypeCountPreferredFactoriesArgs
 }
 
 /**
@@ -1116,6 +1596,13 @@ export type BuyerCountOutputTypeCountOrdersArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.OrderWhereInput
 }
 
+/**
+ * BuyerCountOutputType without action
+ */
+export type BuyerCountOutputTypeCountPreferredFactoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BuyerPreferredFactoryWhereInput
+}
+
 
 export type BuyerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1129,11 +1616,17 @@ export type BuyerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  region?: boolean
+  shipmentTerms?: boolean
+  category?: boolean
+  complianceNotes?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   contacts?: boolean | Prisma.Buyer$contactsArgs<ExtArgs>
   enquiries?: boolean | Prisma.Buyer$enquiriesArgs<ExtArgs>
   styles?: boolean | Prisma.Buyer$stylesArgs<ExtArgs>
   orders?: boolean | Prisma.Buyer$ordersArgs<ExtArgs>
+  config?: boolean | Prisma.Buyer$configArgs<ExtArgs>
+  preferredFactories?: boolean | Prisma.Buyer$preferredFactoriesArgs<ExtArgs>
   _count?: boolean | Prisma.BuyerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["buyer"]>
 
@@ -1149,6 +1642,10 @@ export type BuyerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  region?: boolean
+  shipmentTerms?: boolean
+  category?: boolean
+  complianceNotes?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["buyer"]>
 
@@ -1164,6 +1661,10 @@ export type BuyerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  region?: boolean
+  shipmentTerms?: boolean
+  category?: boolean
+  complianceNotes?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["buyer"]>
 
@@ -1179,15 +1680,21 @@ export type BuyerSelectScalar = {
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  region?: boolean
+  shipmentTerms?: boolean
+  category?: boolean
+  complianceNotes?: boolean
 }
 
-export type BuyerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "code" | "name" | "country" | "address" | "currency" | "paymentTerms" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["buyer"]>
+export type BuyerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "code" | "name" | "country" | "address" | "currency" | "paymentTerms" | "status" | "createdAt" | "updatedAt" | "region" | "shipmentTerms" | "category" | "complianceNotes", ExtArgs["result"]["buyer"]>
 export type BuyerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   contacts?: boolean | Prisma.Buyer$contactsArgs<ExtArgs>
   enquiries?: boolean | Prisma.Buyer$enquiriesArgs<ExtArgs>
   styles?: boolean | Prisma.Buyer$stylesArgs<ExtArgs>
   orders?: boolean | Prisma.Buyer$ordersArgs<ExtArgs>
+  config?: boolean | Prisma.Buyer$configArgs<ExtArgs>
+  preferredFactories?: boolean | Prisma.Buyer$preferredFactoriesArgs<ExtArgs>
   _count?: boolean | Prisma.BuyerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BuyerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1205,6 +1712,8 @@ export type $BuyerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     enquiries: Prisma.$EnquiryPayload<ExtArgs>[]
     styles: Prisma.$StylePayload<ExtArgs>[]
     orders: Prisma.$OrderPayload<ExtArgs>[]
+    config: Prisma.$BuyerConfigPayload<ExtArgs> | null
+    preferredFactories: Prisma.$BuyerPreferredFactoryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1218,6 +1727,10 @@ export type $BuyerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     status: $Enums.ActiveStatus
     createdAt: Date
     updatedAt: Date
+    region: string | null
+    shipmentTerms: string | null
+    category: string | null
+    complianceNotes: string | null
   }, ExtArgs["result"]["buyer"]>
   composites: {}
 }
@@ -1617,6 +2130,8 @@ export interface Prisma__BuyerClient<T, Null = never, ExtArgs extends runtime.Ty
   enquiries<T extends Prisma.Buyer$enquiriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Buyer$enquiriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EnquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   styles<T extends Prisma.Buyer$stylesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Buyer$stylesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   orders<T extends Prisma.Buyer$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Buyer$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  config<T extends Prisma.Buyer$configArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Buyer$configArgs<ExtArgs>>): Prisma.Prisma__BuyerConfigClient<runtime.Types.Result.GetResult<Prisma.$BuyerConfigPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  preferredFactories<T extends Prisma.Buyer$preferredFactoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Buyer$preferredFactoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BuyerPreferredFactoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1657,6 +2172,10 @@ export interface BuyerFieldRefs {
   readonly status: Prisma.FieldRef<"Buyer", 'ActiveStatus'>
   readonly createdAt: Prisma.FieldRef<"Buyer", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Buyer", 'DateTime'>
+  readonly region: Prisma.FieldRef<"Buyer", 'String'>
+  readonly shipmentTerms: Prisma.FieldRef<"Buyer", 'String'>
+  readonly category: Prisma.FieldRef<"Buyer", 'String'>
+  readonly complianceNotes: Prisma.FieldRef<"Buyer", 'String'>
 }
     
 
@@ -2151,6 +2670,49 @@ export type Buyer$ordersArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
+}
+
+/**
+ * Buyer.config
+ */
+export type Buyer$configArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BuyerConfig
+   */
+  select?: Prisma.BuyerConfigSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BuyerConfig
+   */
+  omit?: Prisma.BuyerConfigOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BuyerConfigInclude<ExtArgs> | null
+  where?: Prisma.BuyerConfigWhereInput
+}
+
+/**
+ * Buyer.preferredFactories
+ */
+export type Buyer$preferredFactoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BuyerPreferredFactory
+   */
+  select?: Prisma.BuyerPreferredFactorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BuyerPreferredFactory
+   */
+  omit?: Prisma.BuyerPreferredFactoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BuyerPreferredFactoryInclude<ExtArgs> | null
+  where?: Prisma.BuyerPreferredFactoryWhereInput
+  orderBy?: Prisma.BuyerPreferredFactoryOrderByWithRelationInput | Prisma.BuyerPreferredFactoryOrderByWithRelationInput[]
+  cursor?: Prisma.BuyerPreferredFactoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BuyerPreferredFactoryScalarFieldEnum | Prisma.BuyerPreferredFactoryScalarFieldEnum[]
 }
 
 /**

@@ -20,8 +20,18 @@ export type CompanyModel = runtime.Types.Result.DefaultSelection<Prisma.$Company
 
 export type AggregateCompany = {
   _count: CompanyCountAggregateOutputType | null
+  _avg: CompanyAvgAggregateOutputType | null
+  _sum: CompanySumAggregateOutputType | null
   _min: CompanyMinAggregateOutputType | null
   _max: CompanyMaxAggregateOutputType | null
+}
+
+export type CompanyAvgAggregateOutputType = {
+  fiscalYearStartMonth: number | null
+}
+
+export type CompanySumAggregateOutputType = {
+  fiscalYearStartMonth: number | null
 }
 
 export type CompanyMinAggregateOutputType = {
@@ -29,12 +39,17 @@ export type CompanyMinAggregateOutputType = {
   code: string | null
   legalName: string | null
   tradeName: string | null
+  registrationNo: string | null
+  taxId: string | null
+  address: string | null
+  fiscalYearStartMonth: number | null
   currency: string | null
   timeZone: string | null
   status: $Enums.ActiveStatus | null
   createdAt: Date | null
   updatedAt: Date | null
   groupId: string | null
+  allowNegativeStock: boolean | null
 }
 
 export type CompanyMaxAggregateOutputType = {
@@ -42,12 +57,17 @@ export type CompanyMaxAggregateOutputType = {
   code: string | null
   legalName: string | null
   tradeName: string | null
+  registrationNo: string | null
+  taxId: string | null
+  address: string | null
+  fiscalYearStartMonth: number | null
   currency: string | null
   timeZone: string | null
   status: $Enums.ActiveStatus | null
   createdAt: Date | null
   updatedAt: Date | null
   groupId: string | null
+  allowNegativeStock: boolean | null
 }
 
 export type CompanyCountAggregateOutputType = {
@@ -55,27 +75,45 @@ export type CompanyCountAggregateOutputType = {
   code: number
   legalName: number
   tradeName: number
+  registrationNo: number
+  taxId: number
+  address: number
+  fiscalYearStartMonth: number
   currency: number
   timeZone: number
   status: number
   createdAt: number
   updatedAt: number
   groupId: number
+  allowNegativeStock: number
   _all: number
 }
 
+
+export type CompanyAvgAggregateInputType = {
+  fiscalYearStartMonth?: true
+}
+
+export type CompanySumAggregateInputType = {
+  fiscalYearStartMonth?: true
+}
 
 export type CompanyMinAggregateInputType = {
   id?: true
   code?: true
   legalName?: true
   tradeName?: true
+  registrationNo?: true
+  taxId?: true
+  address?: true
+  fiscalYearStartMonth?: true
   currency?: true
   timeZone?: true
   status?: true
   createdAt?: true
   updatedAt?: true
   groupId?: true
+  allowNegativeStock?: true
 }
 
 export type CompanyMaxAggregateInputType = {
@@ -83,12 +121,17 @@ export type CompanyMaxAggregateInputType = {
   code?: true
   legalName?: true
   tradeName?: true
+  registrationNo?: true
+  taxId?: true
+  address?: true
+  fiscalYearStartMonth?: true
   currency?: true
   timeZone?: true
   status?: true
   createdAt?: true
   updatedAt?: true
   groupId?: true
+  allowNegativeStock?: true
 }
 
 export type CompanyCountAggregateInputType = {
@@ -96,12 +139,17 @@ export type CompanyCountAggregateInputType = {
   code?: true
   legalName?: true
   tradeName?: true
+  registrationNo?: true
+  taxId?: true
+  address?: true
+  fiscalYearStartMonth?: true
   currency?: true
   timeZone?: true
   status?: true
   createdAt?: true
   updatedAt?: true
   groupId?: true
+  allowNegativeStock?: true
   _all?: true
 }
 
@@ -143,6 +191,18 @@ export type CompanyAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: CompanyAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: CompanySumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: CompanyMinAggregateInputType
@@ -173,6 +233,8 @@ export type CompanyGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: CompanyCountAggregateInputType | true
+  _avg?: CompanyAvgAggregateInputType
+  _sum?: CompanySumAggregateInputType
   _min?: CompanyMinAggregateInputType
   _max?: CompanyMaxAggregateInputType
 }
@@ -182,13 +244,20 @@ export type CompanyGroupByOutputType = {
   code: string
   legalName: string
   tradeName: string | null
+  registrationNo: string | null
+  taxId: string | null
+  address: string | null
+  fiscalYearStartMonth: number | null
   currency: string
   timeZone: string
   status: $Enums.ActiveStatus
   createdAt: Date
   updatedAt: Date
   groupId: string | null
+  allowNegativeStock: boolean
   _count: CompanyCountAggregateOutputType | null
+  _avg: CompanyAvgAggregateOutputType | null
+  _sum: CompanySumAggregateOutputType | null
   _min: CompanyMinAggregateOutputType | null
   _max: CompanyMaxAggregateOutputType | null
 }
@@ -216,12 +285,17 @@ export type CompanyWhereInput = {
   code?: Prisma.StringFilter<"Company"> | string
   legalName?: Prisma.StringFilter<"Company"> | string
   tradeName?: Prisma.StringNullableFilter<"Company"> | string | null
+  registrationNo?: Prisma.StringNullableFilter<"Company"> | string | null
+  taxId?: Prisma.StringNullableFilter<"Company"> | string | null
+  address?: Prisma.StringNullableFilter<"Company"> | string | null
+  fiscalYearStartMonth?: Prisma.IntNullableFilter<"Company"> | number | null
   currency?: Prisma.StringFilter<"Company"> | string
   timeZone?: Prisma.StringFilter<"Company"> | string
   status?: Prisma.EnumActiveStatusFilter<"Company"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   groupId?: Prisma.StringNullableFilter<"Company"> | string | null
+  allowNegativeStock?: Prisma.BoolFilter<"Company"> | boolean
   factories?: Prisma.FactoryListRelationFilter
   users?: Prisma.UserListRelationFilter
   buyers?: Prisma.BuyerListRelationFilter
@@ -241,6 +315,10 @@ export type CompanyWhereInput = {
   supplierQuotations?: Prisma.SupplierQuotationListRelationFilter
   purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
   purchaseOrders?: Prisma.PurchaseOrderListRelationFilter
+  attachments?: Prisma.AttachmentListRelationFilter
+  workflows?: Prisma.WorkflowListRelationFilter
+  approvalRequests?: Prisma.ApprovalRequestListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
   group?: Prisma.XOR<Prisma.GroupNullableScalarRelationFilter, Prisma.GroupWhereInput> | null
   rfqs?: Prisma.RfqListRelationFilter
 }
@@ -250,12 +328,17 @@ export type CompanyOrderByWithRelationInput = {
   code?: Prisma.SortOrder
   legalName?: Prisma.SortOrder
   tradeName?: Prisma.SortOrderInput | Prisma.SortOrder
+  registrationNo?: Prisma.SortOrderInput | Prisma.SortOrder
+  taxId?: Prisma.SortOrderInput | Prisma.SortOrder
+  address?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiscalYearStartMonth?: Prisma.SortOrderInput | Prisma.SortOrder
   currency?: Prisma.SortOrder
   timeZone?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   groupId?: Prisma.SortOrderInput | Prisma.SortOrder
+  allowNegativeStock?: Prisma.SortOrder
   factories?: Prisma.FactoryOrderByRelationAggregateInput
   users?: Prisma.UserOrderByRelationAggregateInput
   buyers?: Prisma.BuyerOrderByRelationAggregateInput
@@ -275,6 +358,10 @@ export type CompanyOrderByWithRelationInput = {
   supplierQuotations?: Prisma.SupplierQuotationOrderByRelationAggregateInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionOrderByRelationAggregateInput
   purchaseOrders?: Prisma.PurchaseOrderOrderByRelationAggregateInput
+  attachments?: Prisma.AttachmentOrderByRelationAggregateInput
+  workflows?: Prisma.WorkflowOrderByRelationAggregateInput
+  approvalRequests?: Prisma.ApprovalRequestOrderByRelationAggregateInput
+  notifications?: Prisma.NotificationOrderByRelationAggregateInput
   group?: Prisma.GroupOrderByWithRelationInput
   rfqs?: Prisma.RfqOrderByRelationAggregateInput
 }
@@ -287,12 +374,17 @@ export type CompanyWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CompanyWhereInput | Prisma.CompanyWhereInput[]
   legalName?: Prisma.StringFilter<"Company"> | string
   tradeName?: Prisma.StringNullableFilter<"Company"> | string | null
+  registrationNo?: Prisma.StringNullableFilter<"Company"> | string | null
+  taxId?: Prisma.StringNullableFilter<"Company"> | string | null
+  address?: Prisma.StringNullableFilter<"Company"> | string | null
+  fiscalYearStartMonth?: Prisma.IntNullableFilter<"Company"> | number | null
   currency?: Prisma.StringFilter<"Company"> | string
   timeZone?: Prisma.StringFilter<"Company"> | string
   status?: Prisma.EnumActiveStatusFilter<"Company"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   groupId?: Prisma.StringNullableFilter<"Company"> | string | null
+  allowNegativeStock?: Prisma.BoolFilter<"Company"> | boolean
   factories?: Prisma.FactoryListRelationFilter
   users?: Prisma.UserListRelationFilter
   buyers?: Prisma.BuyerListRelationFilter
@@ -312,6 +404,10 @@ export type CompanyWhereUniqueInput = Prisma.AtLeast<{
   supplierQuotations?: Prisma.SupplierQuotationListRelationFilter
   purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
   purchaseOrders?: Prisma.PurchaseOrderListRelationFilter
+  attachments?: Prisma.AttachmentListRelationFilter
+  workflows?: Prisma.WorkflowListRelationFilter
+  approvalRequests?: Prisma.ApprovalRequestListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
   group?: Prisma.XOR<Prisma.GroupNullableScalarRelationFilter, Prisma.GroupWhereInput> | null
   rfqs?: Prisma.RfqListRelationFilter
 }, "id" | "code">
@@ -321,15 +417,22 @@ export type CompanyOrderByWithAggregationInput = {
   code?: Prisma.SortOrder
   legalName?: Prisma.SortOrder
   tradeName?: Prisma.SortOrderInput | Prisma.SortOrder
+  registrationNo?: Prisma.SortOrderInput | Prisma.SortOrder
+  taxId?: Prisma.SortOrderInput | Prisma.SortOrder
+  address?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiscalYearStartMonth?: Prisma.SortOrderInput | Prisma.SortOrder
   currency?: Prisma.SortOrder
   timeZone?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   groupId?: Prisma.SortOrderInput | Prisma.SortOrder
+  allowNegativeStock?: Prisma.SortOrder
   _count?: Prisma.CompanyCountOrderByAggregateInput
+  _avg?: Prisma.CompanyAvgOrderByAggregateInput
   _max?: Prisma.CompanyMaxOrderByAggregateInput
   _min?: Prisma.CompanyMinOrderByAggregateInput
+  _sum?: Prisma.CompanySumOrderByAggregateInput
 }
 
 export type CompanyScalarWhereWithAggregatesInput = {
@@ -340,12 +443,17 @@ export type CompanyScalarWhereWithAggregatesInput = {
   code?: Prisma.StringWithAggregatesFilter<"Company"> | string
   legalName?: Prisma.StringWithAggregatesFilter<"Company"> | string
   tradeName?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
+  registrationNo?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
+  taxId?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
+  address?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
+  fiscalYearStartMonth?: Prisma.IntNullableWithAggregatesFilter<"Company"> | number | null
   currency?: Prisma.StringWithAggregatesFilter<"Company"> | string
   timeZone?: Prisma.StringWithAggregatesFilter<"Company"> | string
   status?: Prisma.EnumActiveStatusWithAggregatesFilter<"Company"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Company"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Company"> | Date | string
   groupId?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
+  allowNegativeStock?: Prisma.BoolWithAggregatesFilter<"Company"> | boolean
 }
 
 export type CompanyCreateInput = {
@@ -353,11 +461,16 @@ export type CompanyCreateInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -377,6 +490,10 @@ export type CompanyCreateInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -386,12 +503,17 @@ export type CompanyUncheckedCreateInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -411,6 +533,10 @@ export type CompanyUncheckedCreateInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -419,11 +545,16 @@ export type CompanyUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -443,6 +574,10 @@ export type CompanyUpdateInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -452,12 +587,17 @@ export type CompanyUncheckedUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -477,6 +617,10 @@ export type CompanyUncheckedUpdateInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -485,12 +629,17 @@ export type CompanyCreateManyInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
 }
 
 export type CompanyUpdateManyMutationInput = {
@@ -498,11 +647,16 @@ export type CompanyUpdateManyMutationInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CompanyUncheckedUpdateManyInput = {
@@ -510,12 +664,17 @@ export type CompanyUncheckedUpdateManyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CompanyCountOrderByAggregateInput = {
@@ -523,12 +682,21 @@ export type CompanyCountOrderByAggregateInput = {
   code?: Prisma.SortOrder
   legalName?: Prisma.SortOrder
   tradeName?: Prisma.SortOrder
+  registrationNo?: Prisma.SortOrder
+  taxId?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  fiscalYearStartMonth?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   timeZone?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   groupId?: Prisma.SortOrder
+  allowNegativeStock?: Prisma.SortOrder
+}
+
+export type CompanyAvgOrderByAggregateInput = {
+  fiscalYearStartMonth?: Prisma.SortOrder
 }
 
 export type CompanyMaxOrderByAggregateInput = {
@@ -536,12 +704,17 @@ export type CompanyMaxOrderByAggregateInput = {
   code?: Prisma.SortOrder
   legalName?: Prisma.SortOrder
   tradeName?: Prisma.SortOrder
+  registrationNo?: Prisma.SortOrder
+  taxId?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  fiscalYearStartMonth?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   timeZone?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   groupId?: Prisma.SortOrder
+  allowNegativeStock?: Prisma.SortOrder
 }
 
 export type CompanyMinOrderByAggregateInput = {
@@ -549,12 +722,21 @@ export type CompanyMinOrderByAggregateInput = {
   code?: Prisma.SortOrder
   legalName?: Prisma.SortOrder
   tradeName?: Prisma.SortOrder
+  registrationNo?: Prisma.SortOrder
+  taxId?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  fiscalYearStartMonth?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   timeZone?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   groupId?: Prisma.SortOrder
+  allowNegativeStock?: Prisma.SortOrder
+}
+
+export type CompanySumOrderByAggregateInput = {
+  fiscalYearStartMonth?: Prisma.SortOrder
 }
 
 export type CompanyScalarRelationFilter = {
@@ -585,12 +767,24 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type EnumActiveStatusFieldUpdateOperationsInput = {
   set?: $Enums.ActiveStatus
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type CompanyCreateNestedOneWithoutFactoriesInput = {
@@ -917,16 +1111,77 @@ export type CompanyUpdateOneRequiredWithoutRfqsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutRfqsInput, Prisma.CompanyUpdateWithoutRfqsInput>, Prisma.CompanyUncheckedUpdateWithoutRfqsInput>
 }
 
+export type CompanyCreateNestedOneWithoutAttachmentsInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutAttachmentsInput, Prisma.CompanyUncheckedCreateWithoutAttachmentsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutAttachmentsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutAttachmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutAttachmentsInput, Prisma.CompanyUncheckedCreateWithoutAttachmentsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutAttachmentsInput
+  upsert?: Prisma.CompanyUpsertWithoutAttachmentsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutAttachmentsInput, Prisma.CompanyUpdateWithoutAttachmentsInput>, Prisma.CompanyUncheckedUpdateWithoutAttachmentsInput>
+}
+
+export type CompanyCreateNestedOneWithoutWorkflowsInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutWorkflowsInput, Prisma.CompanyUncheckedCreateWithoutWorkflowsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutWorkflowsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutWorkflowsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutWorkflowsInput, Prisma.CompanyUncheckedCreateWithoutWorkflowsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutWorkflowsInput
+  upsert?: Prisma.CompanyUpsertWithoutWorkflowsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutWorkflowsInput, Prisma.CompanyUpdateWithoutWorkflowsInput>, Prisma.CompanyUncheckedUpdateWithoutWorkflowsInput>
+}
+
+export type CompanyCreateNestedOneWithoutApprovalRequestsInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutApprovalRequestsInput, Prisma.CompanyUncheckedCreateWithoutApprovalRequestsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutApprovalRequestsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutApprovalRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutApprovalRequestsInput, Prisma.CompanyUncheckedCreateWithoutApprovalRequestsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutApprovalRequestsInput
+  upsert?: Prisma.CompanyUpsertWithoutApprovalRequestsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutApprovalRequestsInput, Prisma.CompanyUpdateWithoutApprovalRequestsInput>, Prisma.CompanyUncheckedUpdateWithoutApprovalRequestsInput>
+}
+
+export type CompanyCreateNestedOneWithoutNotificationsInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutNotificationsInput, Prisma.CompanyUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutNotificationsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutNotificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutNotificationsInput, Prisma.CompanyUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutNotificationsInput
+  upsert?: Prisma.CompanyUpsertWithoutNotificationsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutNotificationsInput, Prisma.CompanyUpdateWithoutNotificationsInput>, Prisma.CompanyUncheckedUpdateWithoutNotificationsInput>
+}
+
 export type CompanyCreateWithoutFactoriesInput = {
   id?: string
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
@@ -945,6 +1200,10 @@ export type CompanyCreateWithoutFactoriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -954,12 +1213,17 @@ export type CompanyUncheckedCreateWithoutFactoriesInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
@@ -978,6 +1242,10 @@ export type CompanyUncheckedCreateWithoutFactoriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -1002,11 +1270,16 @@ export type CompanyUpdateWithoutFactoriesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
@@ -1025,6 +1298,10 @@ export type CompanyUpdateWithoutFactoriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -1034,12 +1311,17 @@ export type CompanyUncheckedUpdateWithoutFactoriesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
@@ -1058,6 +1340,10 @@ export type CompanyUncheckedUpdateWithoutFactoriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -1066,11 +1352,16 @@ export type CompanyCreateWithoutUsersInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
@@ -1089,6 +1380,10 @@ export type CompanyCreateWithoutUsersInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -1098,12 +1393,17 @@ export type CompanyUncheckedCreateWithoutUsersInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
@@ -1122,6 +1422,10 @@ export type CompanyUncheckedCreateWithoutUsersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -1146,11 +1450,16 @@ export type CompanyUpdateWithoutUsersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
@@ -1169,6 +1478,10 @@ export type CompanyUpdateWithoutUsersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -1178,12 +1491,17 @@ export type CompanyUncheckedUpdateWithoutUsersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
@@ -1202,6 +1520,10 @@ export type CompanyUncheckedUpdateWithoutUsersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -1210,11 +1532,16 @@ export type CompanyCreateWithoutBuyersInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
@@ -1233,6 +1560,10 @@ export type CompanyCreateWithoutBuyersInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -1242,12 +1573,17 @@ export type CompanyUncheckedCreateWithoutBuyersInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
@@ -1266,6 +1602,10 @@ export type CompanyUncheckedCreateWithoutBuyersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -1290,11 +1630,16 @@ export type CompanyUpdateWithoutBuyersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
@@ -1313,6 +1658,10 @@ export type CompanyUpdateWithoutBuyersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -1322,12 +1671,17 @@ export type CompanyUncheckedUpdateWithoutBuyersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
@@ -1346,6 +1700,10 @@ export type CompanyUncheckedUpdateWithoutBuyersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -1354,11 +1712,16 @@ export type CompanyCreateWithoutEnquiriesInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -1377,6 +1740,10 @@ export type CompanyCreateWithoutEnquiriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -1386,12 +1753,17 @@ export type CompanyUncheckedCreateWithoutEnquiriesInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -1410,6 +1782,10 @@ export type CompanyUncheckedCreateWithoutEnquiriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -1434,11 +1810,16 @@ export type CompanyUpdateWithoutEnquiriesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -1457,6 +1838,10 @@ export type CompanyUpdateWithoutEnquiriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -1466,12 +1851,17 @@ export type CompanyUncheckedUpdateWithoutEnquiriesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -1490,6 +1880,10 @@ export type CompanyUncheckedUpdateWithoutEnquiriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -1498,11 +1892,16 @@ export type CompanyCreateWithoutStylesInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -1521,6 +1920,10 @@ export type CompanyCreateWithoutStylesInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -1530,12 +1933,17 @@ export type CompanyUncheckedCreateWithoutStylesInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -1554,6 +1962,10 @@ export type CompanyUncheckedCreateWithoutStylesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -1578,11 +1990,16 @@ export type CompanyUpdateWithoutStylesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -1601,6 +2018,10 @@ export type CompanyUpdateWithoutStylesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -1610,12 +2031,17 @@ export type CompanyUncheckedUpdateWithoutStylesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -1634,6 +2060,10 @@ export type CompanyUncheckedUpdateWithoutStylesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -1642,11 +2072,16 @@ export type CompanyCreateWithoutSampleRequestsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -1665,6 +2100,10 @@ export type CompanyCreateWithoutSampleRequestsInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -1674,12 +2113,17 @@ export type CompanyUncheckedCreateWithoutSampleRequestsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -1698,6 +2142,10 @@ export type CompanyUncheckedCreateWithoutSampleRequestsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -1722,11 +2170,16 @@ export type CompanyUpdateWithoutSampleRequestsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -1745,6 +2198,10 @@ export type CompanyUpdateWithoutSampleRequestsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -1754,12 +2211,17 @@ export type CompanyUncheckedUpdateWithoutSampleRequestsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -1778,6 +2240,10 @@ export type CompanyUncheckedUpdateWithoutSampleRequestsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -1786,11 +2252,16 @@ export type CompanyCreateWithoutTnaTemplatesInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -1809,6 +2280,10 @@ export type CompanyCreateWithoutTnaTemplatesInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -1818,12 +2293,17 @@ export type CompanyUncheckedCreateWithoutTnaTemplatesInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -1842,6 +2322,10 @@ export type CompanyUncheckedCreateWithoutTnaTemplatesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -1866,11 +2350,16 @@ export type CompanyUpdateWithoutTnaTemplatesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -1889,6 +2378,10 @@ export type CompanyUpdateWithoutTnaTemplatesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -1898,12 +2391,17 @@ export type CompanyUncheckedUpdateWithoutTnaTemplatesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -1922,6 +2420,10 @@ export type CompanyUncheckedUpdateWithoutTnaTemplatesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -1930,11 +2432,16 @@ export type CompanyCreateWithoutTnaPlansInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -1953,6 +2460,10 @@ export type CompanyCreateWithoutTnaPlansInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -1962,12 +2473,17 @@ export type CompanyUncheckedCreateWithoutTnaPlansInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -1986,6 +2502,10 @@ export type CompanyUncheckedCreateWithoutTnaPlansInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -2010,11 +2530,16 @@ export type CompanyUpdateWithoutTnaPlansInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -2033,6 +2558,10 @@ export type CompanyUpdateWithoutTnaPlansInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -2042,12 +2571,17 @@ export type CompanyUncheckedUpdateWithoutTnaPlansInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -2066,6 +2600,10 @@ export type CompanyUncheckedUpdateWithoutTnaPlansInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -2074,11 +2612,16 @@ export type CompanyCreateWithoutCostSheetsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -2097,6 +2640,10 @@ export type CompanyCreateWithoutCostSheetsInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -2106,12 +2653,17 @@ export type CompanyUncheckedCreateWithoutCostSheetsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -2130,6 +2682,10 @@ export type CompanyUncheckedCreateWithoutCostSheetsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -2154,11 +2710,16 @@ export type CompanyUpdateWithoutCostSheetsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -2177,6 +2738,10 @@ export type CompanyUpdateWithoutCostSheetsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -2186,12 +2751,17 @@ export type CompanyUncheckedUpdateWithoutCostSheetsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -2210,6 +2780,10 @@ export type CompanyUncheckedUpdateWithoutCostSheetsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -2218,11 +2792,16 @@ export type CompanyCreateWithoutBomsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -2241,6 +2820,10 @@ export type CompanyCreateWithoutBomsInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -2250,12 +2833,17 @@ export type CompanyUncheckedCreateWithoutBomsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -2274,6 +2862,10 @@ export type CompanyUncheckedCreateWithoutBomsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -2298,11 +2890,16 @@ export type CompanyUpdateWithoutBomsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -2321,6 +2918,10 @@ export type CompanyUpdateWithoutBomsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -2330,12 +2931,17 @@ export type CompanyUncheckedUpdateWithoutBomsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -2354,6 +2960,10 @@ export type CompanyUncheckedUpdateWithoutBomsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -2362,11 +2972,16 @@ export type CompanyCreateWithoutMrpRunsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -2385,6 +3000,10 @@ export type CompanyCreateWithoutMrpRunsInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -2394,12 +3013,17 @@ export type CompanyUncheckedCreateWithoutMrpRunsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -2418,6 +3042,10 @@ export type CompanyUncheckedCreateWithoutMrpRunsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -2442,11 +3070,16 @@ export type CompanyUpdateWithoutMrpRunsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -2465,6 +3098,10 @@ export type CompanyUpdateWithoutMrpRunsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -2474,12 +3111,17 @@ export type CompanyUncheckedUpdateWithoutMrpRunsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -2498,6 +3140,10 @@ export type CompanyUncheckedUpdateWithoutMrpRunsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -2506,11 +3152,16 @@ export type CompanyCreateWithoutSeasonsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -2529,6 +3180,10 @@ export type CompanyCreateWithoutSeasonsInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -2538,12 +3193,17 @@ export type CompanyUncheckedCreateWithoutSeasonsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -2562,6 +3222,10 @@ export type CompanyUncheckedCreateWithoutSeasonsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -2586,11 +3250,16 @@ export type CompanyUpdateWithoutSeasonsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -2609,6 +3278,10 @@ export type CompanyUpdateWithoutSeasonsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -2618,12 +3291,17 @@ export type CompanyUncheckedUpdateWithoutSeasonsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -2642,6 +3320,10 @@ export type CompanyUncheckedUpdateWithoutSeasonsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -2650,11 +3332,16 @@ export type CompanyCreateWithoutOrdersInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -2673,6 +3360,10 @@ export type CompanyCreateWithoutOrdersInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -2682,12 +3373,17 @@ export type CompanyUncheckedCreateWithoutOrdersInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -2706,6 +3402,10 @@ export type CompanyUncheckedCreateWithoutOrdersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -2730,11 +3430,16 @@ export type CompanyUpdateWithoutOrdersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -2753,6 +3458,10 @@ export type CompanyUpdateWithoutOrdersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -2762,12 +3471,17 @@ export type CompanyUncheckedUpdateWithoutOrdersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -2786,6 +3500,10 @@ export type CompanyUncheckedUpdateWithoutOrdersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -2794,11 +3512,16 @@ export type CompanyCreateWithoutMaterialCategoriesInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -2817,6 +3540,10 @@ export type CompanyCreateWithoutMaterialCategoriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -2826,12 +3553,17 @@ export type CompanyUncheckedCreateWithoutMaterialCategoriesInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -2850,6 +3582,10 @@ export type CompanyUncheckedCreateWithoutMaterialCategoriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -2874,11 +3610,16 @@ export type CompanyUpdateWithoutMaterialCategoriesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -2897,6 +3638,10 @@ export type CompanyUpdateWithoutMaterialCategoriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -2906,12 +3651,17 @@ export type CompanyUncheckedUpdateWithoutMaterialCategoriesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -2930,6 +3680,10 @@ export type CompanyUncheckedUpdateWithoutMaterialCategoriesInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -2938,11 +3692,16 @@ export type CompanyCreateWithoutMaterialsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -2961,6 +3720,10 @@ export type CompanyCreateWithoutMaterialsInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -2970,12 +3733,17 @@ export type CompanyUncheckedCreateWithoutMaterialsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -2994,6 +3762,10 @@ export type CompanyUncheckedCreateWithoutMaterialsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -3018,11 +3790,16 @@ export type CompanyUpdateWithoutMaterialsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -3041,6 +3818,10 @@ export type CompanyUpdateWithoutMaterialsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -3050,12 +3831,17 @@ export type CompanyUncheckedUpdateWithoutMaterialsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -3074,6 +3860,10 @@ export type CompanyUncheckedUpdateWithoutMaterialsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -3082,11 +3872,16 @@ export type CompanyCreateWithoutSuppliersInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -3105,6 +3900,10 @@ export type CompanyCreateWithoutSuppliersInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -3114,12 +3913,17 @@ export type CompanyUncheckedCreateWithoutSuppliersInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -3138,6 +3942,10 @@ export type CompanyUncheckedCreateWithoutSuppliersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -3162,11 +3970,16 @@ export type CompanyUpdateWithoutSuppliersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -3185,6 +3998,10 @@ export type CompanyUpdateWithoutSuppliersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -3194,12 +4011,17 @@ export type CompanyUncheckedUpdateWithoutSuppliersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -3218,6 +4040,10 @@ export type CompanyUncheckedUpdateWithoutSuppliersInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -3226,11 +4052,16 @@ export type CompanyCreateWithoutSupplierQuotationsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -3249,6 +4080,10 @@ export type CompanyCreateWithoutSupplierQuotationsInput = {
   suppliers?: Prisma.SupplierCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -3258,12 +4093,17 @@ export type CompanyUncheckedCreateWithoutSupplierQuotationsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -3282,6 +4122,10 @@ export type CompanyUncheckedCreateWithoutSupplierQuotationsInput = {
   suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -3306,11 +4150,16 @@ export type CompanyUpdateWithoutSupplierQuotationsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -3329,6 +4178,10 @@ export type CompanyUpdateWithoutSupplierQuotationsInput = {
   suppliers?: Prisma.SupplierUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -3338,12 +4191,17 @@ export type CompanyUncheckedUpdateWithoutSupplierQuotationsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -3362,6 +4220,10 @@ export type CompanyUncheckedUpdateWithoutSupplierQuotationsInput = {
   suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -3370,11 +4232,16 @@ export type CompanyCreateWithoutPurchaseRequisitionsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -3393,6 +4260,10 @@ export type CompanyCreateWithoutPurchaseRequisitionsInput = {
   suppliers?: Prisma.SupplierCreateNestedManyWithoutCompanyInput
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -3402,12 +4273,17 @@ export type CompanyUncheckedCreateWithoutPurchaseRequisitionsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -3426,6 +4302,10 @@ export type CompanyUncheckedCreateWithoutPurchaseRequisitionsInput = {
   suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutCompanyInput
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -3450,11 +4330,16 @@ export type CompanyUpdateWithoutPurchaseRequisitionsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -3473,6 +4358,10 @@ export type CompanyUpdateWithoutPurchaseRequisitionsInput = {
   suppliers?: Prisma.SupplierUpdateManyWithoutCompanyNestedInput
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -3482,12 +4371,17 @@ export type CompanyUncheckedUpdateWithoutPurchaseRequisitionsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -3506,6 +4400,10 @@ export type CompanyUncheckedUpdateWithoutPurchaseRequisitionsInput = {
   suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutCompanyNestedInput
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -3514,11 +4412,16 @@ export type CompanyCreateWithoutPurchaseOrdersInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -3537,6 +4440,10 @@ export type CompanyCreateWithoutPurchaseOrdersInput = {
   suppliers?: Prisma.SupplierCreateNestedManyWithoutCompanyInput
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
@@ -3546,12 +4453,17 @@ export type CompanyUncheckedCreateWithoutPurchaseOrdersInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -3570,6 +4482,10 @@ export type CompanyUncheckedCreateWithoutPurchaseOrdersInput = {
   suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutCompanyInput
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -3594,11 +4510,16 @@ export type CompanyUpdateWithoutPurchaseOrdersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -3617,6 +4538,10 @@ export type CompanyUpdateWithoutPurchaseOrdersInput = {
   suppliers?: Prisma.SupplierUpdateManyWithoutCompanyNestedInput
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
@@ -3626,12 +4551,17 @@ export type CompanyUncheckedUpdateWithoutPurchaseOrdersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -3650,6 +4580,10 @@ export type CompanyUncheckedUpdateWithoutPurchaseOrdersInput = {
   suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutCompanyNestedInput
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -3658,11 +4592,16 @@ export type CompanyCreateWithoutGroupInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -3682,6 +4621,10 @@ export type CompanyCreateWithoutGroupInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
 
@@ -3690,11 +4633,16 @@ export type CompanyUncheckedCreateWithoutGroupInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -3714,6 +4662,10 @@ export type CompanyUncheckedCreateWithoutGroupInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
   rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -3751,12 +4703,17 @@ export type CompanyScalarWhereInput = {
   code?: Prisma.StringFilter<"Company"> | string
   legalName?: Prisma.StringFilter<"Company"> | string
   tradeName?: Prisma.StringNullableFilter<"Company"> | string | null
+  registrationNo?: Prisma.StringNullableFilter<"Company"> | string | null
+  taxId?: Prisma.StringNullableFilter<"Company"> | string | null
+  address?: Prisma.StringNullableFilter<"Company"> | string | null
+  fiscalYearStartMonth?: Prisma.IntNullableFilter<"Company"> | number | null
   currency?: Prisma.StringFilter<"Company"> | string
   timeZone?: Prisma.StringFilter<"Company"> | string
   status?: Prisma.EnumActiveStatusFilter<"Company"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   groupId?: Prisma.StringNullableFilter<"Company"> | string | null
+  allowNegativeStock?: Prisma.BoolFilter<"Company"> | boolean
 }
 
 export type CompanyCreateWithoutRfqsInput = {
@@ -3764,11 +4721,16 @@ export type CompanyCreateWithoutRfqsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
@@ -3788,6 +4750,10 @@ export type CompanyCreateWithoutRfqsInput = {
   supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
   group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
 }
 
@@ -3796,12 +4762,17 @@ export type CompanyUncheckedCreateWithoutRfqsInput = {
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   groupId?: string | null
+  allowNegativeStock?: boolean
   factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
   buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
@@ -3821,6 +4792,10 @@ export type CompanyUncheckedCreateWithoutRfqsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutRfqsInput = {
@@ -3844,11 +4819,16 @@ export type CompanyUpdateWithoutRfqsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -3868,6 +4848,10 @@ export type CompanyUpdateWithoutRfqsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
   group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
 }
 
@@ -3876,12 +4860,17 @@ export type CompanyUncheckedUpdateWithoutRfqsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -3901,30 +4890,125 @@ export type CompanyUncheckedUpdateWithoutRfqsInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
-export type CompanyCreateManyGroupInput = {
+export type CompanyCreateWithoutAttachmentsInput = {
   id?: string
   code: string
   legalName: string
   tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
   currency?: string
   timeZone?: string
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowNegativeStock?: boolean
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+  seasons?: Prisma.SeasonCreateNestedManyWithoutCompanyInput
+  orders?: Prisma.OrderCreateNestedManyWithoutCompanyInput
+  materialCategories?: Prisma.MaterialCategoryCreateNestedManyWithoutCompanyInput
+  materials?: Prisma.MaterialCreateNestedManyWithoutCompanyInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutCompanyInput
+  supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
+  group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
+  rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
 }
 
-export type CompanyUpdateWithoutGroupInput = {
+export type CompanyUncheckedCreateWithoutAttachmentsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  groupId?: string | null
+  allowNegativeStock?: boolean
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+  seasons?: Prisma.SeasonUncheckedCreateNestedManyWithoutCompanyInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutCompanyInput
+  materialCategories?: Prisma.MaterialCategoryUncheckedCreateNestedManyWithoutCompanyInput
+  materials?: Prisma.MaterialUncheckedCreateNestedManyWithoutCompanyInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutCompanyInput
+  supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
+  rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutAttachmentsInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutAttachmentsInput, Prisma.CompanyUncheckedCreateWithoutAttachmentsInput>
+}
+
+export type CompanyUpsertWithoutAttachmentsInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutAttachmentsInput, Prisma.CompanyUncheckedUpdateWithoutAttachmentsInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutAttachmentsInput, Prisma.CompanyUncheckedCreateWithoutAttachmentsInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutAttachmentsInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutAttachmentsInput, Prisma.CompanyUncheckedUpdateWithoutAttachmentsInput>
+}
+
+export type CompanyUpdateWithoutAttachmentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
@@ -3944,19 +5028,29 @@ export type CompanyUpdateWithoutGroupInput = {
   supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
+  group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
 }
 
-export type CompanyUncheckedUpdateWithoutGroupInput = {
+export type CompanyUncheckedUpdateWithoutAttachmentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
   buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -3976,6 +5070,648 @@ export type CompanyUncheckedUpdateWithoutGroupInput = {
   supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
+  rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutWorkflowsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  allowNegativeStock?: boolean
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+  seasons?: Prisma.SeasonCreateNestedManyWithoutCompanyInput
+  orders?: Prisma.OrderCreateNestedManyWithoutCompanyInput
+  materialCategories?: Prisma.MaterialCategoryCreateNestedManyWithoutCompanyInput
+  materials?: Prisma.MaterialCreateNestedManyWithoutCompanyInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutCompanyInput
+  supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
+  group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
+  rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutWorkflowsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  groupId?: string | null
+  allowNegativeStock?: boolean
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+  seasons?: Prisma.SeasonUncheckedCreateNestedManyWithoutCompanyInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutCompanyInput
+  materialCategories?: Prisma.MaterialCategoryUncheckedCreateNestedManyWithoutCompanyInput
+  materials?: Prisma.MaterialUncheckedCreateNestedManyWithoutCompanyInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutCompanyInput
+  supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
+  rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutWorkflowsInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutWorkflowsInput, Prisma.CompanyUncheckedCreateWithoutWorkflowsInput>
+}
+
+export type CompanyUpsertWithoutWorkflowsInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutWorkflowsInput, Prisma.CompanyUncheckedUpdateWithoutWorkflowsInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutWorkflowsInput, Prisma.CompanyUncheckedCreateWithoutWorkflowsInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutWorkflowsInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutWorkflowsInput, Prisma.CompanyUncheckedUpdateWithoutWorkflowsInput>
+}
+
+export type CompanyUpdateWithoutWorkflowsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+  seasons?: Prisma.SeasonUpdateManyWithoutCompanyNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutCompanyNestedInput
+  materialCategories?: Prisma.MaterialCategoryUpdateManyWithoutCompanyNestedInput
+  materials?: Prisma.MaterialUpdateManyWithoutCompanyNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutCompanyNestedInput
+  supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
+  group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
+  rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutWorkflowsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+  seasons?: Prisma.SeasonUncheckedUpdateManyWithoutCompanyNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutCompanyNestedInput
+  materialCategories?: Prisma.MaterialCategoryUncheckedUpdateManyWithoutCompanyNestedInput
+  materials?: Prisma.MaterialUncheckedUpdateManyWithoutCompanyNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutCompanyNestedInput
+  supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
+  rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutApprovalRequestsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  allowNegativeStock?: boolean
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+  seasons?: Prisma.SeasonCreateNestedManyWithoutCompanyInput
+  orders?: Prisma.OrderCreateNestedManyWithoutCompanyInput
+  materialCategories?: Prisma.MaterialCategoryCreateNestedManyWithoutCompanyInput
+  materials?: Prisma.MaterialCreateNestedManyWithoutCompanyInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutCompanyInput
+  supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutCompanyInput
+  group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
+  rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutApprovalRequestsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  groupId?: string | null
+  allowNegativeStock?: boolean
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+  seasons?: Prisma.SeasonUncheckedCreateNestedManyWithoutCompanyInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutCompanyInput
+  materialCategories?: Prisma.MaterialCategoryUncheckedCreateNestedManyWithoutCompanyInput
+  materials?: Prisma.MaterialUncheckedCreateNestedManyWithoutCompanyInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutCompanyInput
+  supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutCompanyInput
+  rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutApprovalRequestsInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutApprovalRequestsInput, Prisma.CompanyUncheckedCreateWithoutApprovalRequestsInput>
+}
+
+export type CompanyUpsertWithoutApprovalRequestsInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutApprovalRequestsInput, Prisma.CompanyUncheckedUpdateWithoutApprovalRequestsInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutApprovalRequestsInput, Prisma.CompanyUncheckedCreateWithoutApprovalRequestsInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutApprovalRequestsInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutApprovalRequestsInput, Prisma.CompanyUncheckedUpdateWithoutApprovalRequestsInput>
+}
+
+export type CompanyUpdateWithoutApprovalRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+  seasons?: Prisma.SeasonUpdateManyWithoutCompanyNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutCompanyNestedInput
+  materialCategories?: Prisma.MaterialCategoryUpdateManyWithoutCompanyNestedInput
+  materials?: Prisma.MaterialUpdateManyWithoutCompanyNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutCompanyNestedInput
+  supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
+  group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
+  rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutApprovalRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+  seasons?: Prisma.SeasonUncheckedUpdateManyWithoutCompanyNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutCompanyNestedInput
+  materialCategories?: Prisma.MaterialCategoryUncheckedUpdateManyWithoutCompanyNestedInput
+  materials?: Prisma.MaterialUncheckedUpdateManyWithoutCompanyNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutCompanyNestedInput
+  supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
+  rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutNotificationsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  allowNegativeStock?: boolean
+  factories?: Prisma.FactoryCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleCreateNestedManyWithoutCompanyInput
+  seasons?: Prisma.SeasonCreateNestedManyWithoutCompanyInput
+  orders?: Prisma.OrderCreateNestedManyWithoutCompanyInput
+  materialCategories?: Prisma.MaterialCategoryCreateNestedManyWithoutCompanyInput
+  materials?: Prisma.MaterialCreateNestedManyWithoutCompanyInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutCompanyInput
+  supplierQuotations?: Prisma.SupplierQuotationCreateNestedManyWithoutCompanyInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutCompanyInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutCompanyInput
+  group?: Prisma.GroupCreateNestedOneWithoutCompaniesInput
+  rfqs?: Prisma.RfqCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutNotificationsInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  groupId?: string | null
+  allowNegativeStock?: boolean
+  factories?: Prisma.FactoryUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  buyers?: Prisma.BuyerUncheckedCreateNestedManyWithoutCompanyInput
+  sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutCompanyInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedCreateNestedManyWithoutCompanyInput
+  tnaPlans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutCompanyInput
+  costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutCompanyInput
+  boms?: Prisma.BomUncheckedCreateNestedManyWithoutCompanyInput
+  mrpRuns?: Prisma.MrpRunUncheckedCreateNestedManyWithoutCompanyInput
+  enquiries?: Prisma.EnquiryUncheckedCreateNestedManyWithoutCompanyInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutCompanyInput
+  seasons?: Prisma.SeasonUncheckedCreateNestedManyWithoutCompanyInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutCompanyInput
+  materialCategories?: Prisma.MaterialCategoryUncheckedCreateNestedManyWithoutCompanyInput
+  materials?: Prisma.MaterialUncheckedCreateNestedManyWithoutCompanyInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutCompanyInput
+  supplierQuotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutCompanyInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutCompanyInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutCompanyInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutCompanyInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutCompanyInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutCompanyInput
+  rfqs?: Prisma.RfqUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutNotificationsInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutNotificationsInput, Prisma.CompanyUncheckedCreateWithoutNotificationsInput>
+}
+
+export type CompanyUpsertWithoutNotificationsInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutNotificationsInput, Prisma.CompanyUncheckedUpdateWithoutNotificationsInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutNotificationsInput, Prisma.CompanyUncheckedCreateWithoutNotificationsInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutNotificationsInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutNotificationsInput, Prisma.CompanyUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type CompanyUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+  seasons?: Prisma.SeasonUpdateManyWithoutCompanyNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutCompanyNestedInput
+  materialCategories?: Prisma.MaterialCategoryUpdateManyWithoutCompanyNestedInput
+  materials?: Prisma.MaterialUpdateManyWithoutCompanyNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutCompanyNestedInput
+  supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  group?: Prisma.GroupUpdateOneWithoutCompaniesNestedInput
+  rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+  seasons?: Prisma.SeasonUncheckedUpdateManyWithoutCompanyNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutCompanyNestedInput
+  materialCategories?: Prisma.MaterialCategoryUncheckedUpdateManyWithoutCompanyNestedInput
+  materials?: Prisma.MaterialUncheckedUpdateManyWithoutCompanyNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutCompanyNestedInput
+  supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateManyGroupInput = {
+  id?: string
+  code: string
+  legalName: string
+  tradeName?: string | null
+  registrationNo?: string | null
+  taxId?: string | null
+  address?: string | null
+  fiscalYearStartMonth?: number | null
+  currency?: string
+  timeZone?: string
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  allowNegativeStock?: boolean
+}
+
+export type CompanyUpdateWithoutGroupInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  factories?: Prisma.FactoryUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutCompanyNestedInput
+  seasons?: Prisma.SeasonUpdateManyWithoutCompanyNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutCompanyNestedInput
+  materialCategories?: Prisma.MaterialCategoryUpdateManyWithoutCompanyNestedInput
+  materials?: Prisma.MaterialUpdateManyWithoutCompanyNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutCompanyNestedInput
+  supplierQuotations?: Prisma.SupplierQuotationUpdateManyWithoutCompanyNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutCompanyNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutCompanyNestedInput
+  rfqs?: Prisma.RfqUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutGroupInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timeZone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  factories?: Prisma.FactoryUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  buyers?: Prisma.BuyerUncheckedUpdateManyWithoutCompanyNestedInput
+  sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaTemplates?: Prisma.TnaTemplateUncheckedUpdateManyWithoutCompanyNestedInput
+  tnaPlans?: Prisma.TnaPlanUncheckedUpdateManyWithoutCompanyNestedInput
+  costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutCompanyNestedInput
+  boms?: Prisma.BomUncheckedUpdateManyWithoutCompanyNestedInput
+  mrpRuns?: Prisma.MrpRunUncheckedUpdateManyWithoutCompanyNestedInput
+  enquiries?: Prisma.EnquiryUncheckedUpdateManyWithoutCompanyNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutCompanyNestedInput
+  seasons?: Prisma.SeasonUncheckedUpdateManyWithoutCompanyNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutCompanyNestedInput
+  materialCategories?: Prisma.MaterialCategoryUncheckedUpdateManyWithoutCompanyNestedInput
+  materials?: Prisma.MaterialUncheckedUpdateManyWithoutCompanyNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutCompanyNestedInput
+  supplierQuotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutCompanyNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutCompanyNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutCompanyNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutCompanyNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutCompanyNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutCompanyNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutCompanyNestedInput
   rfqs?: Prisma.RfqUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -3984,11 +5720,16 @@ export type CompanyUncheckedUpdateManyWithoutGroupInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.StringFieldUpdateOperationsInput | string
   tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalYearStartMonth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   timeZone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowNegativeStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -4016,6 +5757,10 @@ export type CompanyCountOutputType = {
   supplierQuotations: number
   purchaseRequisitions: number
   purchaseOrders: number
+  attachments: number
+  workflows: number
+  approvalRequests: number
+  notifications: number
   rfqs: number
 }
 
@@ -4039,6 +5784,10 @@ export type CompanyCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   supplierQuotations?: boolean | CompanyCountOutputTypeCountSupplierQuotationsArgs
   purchaseRequisitions?: boolean | CompanyCountOutputTypeCountPurchaseRequisitionsArgs
   purchaseOrders?: boolean | CompanyCountOutputTypeCountPurchaseOrdersArgs
+  attachments?: boolean | CompanyCountOutputTypeCountAttachmentsArgs
+  workflows?: boolean | CompanyCountOutputTypeCountWorkflowsArgs
+  approvalRequests?: boolean | CompanyCountOutputTypeCountApprovalRequestsArgs
+  notifications?: boolean | CompanyCountOutputTypeCountNotificationsArgs
   rfqs?: boolean | CompanyCountOutputTypeCountRfqsArgs
 }
 
@@ -4188,6 +5937,34 @@ export type CompanyCountOutputTypeCountPurchaseOrdersArgs<ExtArgs extends runtim
 /**
  * CompanyCountOutputType without action
  */
+export type CompanyCountOutputTypeCountAttachmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AttachmentWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountWorkflowsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WorkflowWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountApprovalRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ApprovalRequestWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
+/**
+ * CompanyCountOutputType without action
+ */
 export type CompanyCountOutputTypeCountRfqsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.RfqWhereInput
 }
@@ -4198,12 +5975,17 @@ export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   code?: boolean
   legalName?: boolean
   tradeName?: boolean
+  registrationNo?: boolean
+  taxId?: boolean
+  address?: boolean
+  fiscalYearStartMonth?: boolean
   currency?: boolean
   timeZone?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   groupId?: boolean
+  allowNegativeStock?: boolean
   factories?: boolean | Prisma.Company$factoriesArgs<ExtArgs>
   users?: boolean | Prisma.Company$usersArgs<ExtArgs>
   buyers?: boolean | Prisma.Company$buyersArgs<ExtArgs>
@@ -4223,6 +6005,10 @@ export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   supplierQuotations?: boolean | Prisma.Company$supplierQuotationsArgs<ExtArgs>
   purchaseRequisitions?: boolean | Prisma.Company$purchaseRequisitionsArgs<ExtArgs>
   purchaseOrders?: boolean | Prisma.Company$purchaseOrdersArgs<ExtArgs>
+  attachments?: boolean | Prisma.Company$attachmentsArgs<ExtArgs>
+  workflows?: boolean | Prisma.Company$workflowsArgs<ExtArgs>
+  approvalRequests?: boolean | Prisma.Company$approvalRequestsArgs<ExtArgs>
+  notifications?: boolean | Prisma.Company$notificationsArgs<ExtArgs>
   group?: boolean | Prisma.Company$groupArgs<ExtArgs>
   rfqs?: boolean | Prisma.Company$rfqsArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -4233,12 +6019,17 @@ export type CompanySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   code?: boolean
   legalName?: boolean
   tradeName?: boolean
+  registrationNo?: boolean
+  taxId?: boolean
+  address?: boolean
+  fiscalYearStartMonth?: boolean
   currency?: boolean
   timeZone?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   groupId?: boolean
+  allowNegativeStock?: boolean
   group?: boolean | Prisma.Company$groupArgs<ExtArgs>
 }, ExtArgs["result"]["company"]>
 
@@ -4247,12 +6038,17 @@ export type CompanySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   code?: boolean
   legalName?: boolean
   tradeName?: boolean
+  registrationNo?: boolean
+  taxId?: boolean
+  address?: boolean
+  fiscalYearStartMonth?: boolean
   currency?: boolean
   timeZone?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   groupId?: boolean
+  allowNegativeStock?: boolean
   group?: boolean | Prisma.Company$groupArgs<ExtArgs>
 }, ExtArgs["result"]["company"]>
 
@@ -4261,15 +6057,20 @@ export type CompanySelectScalar = {
   code?: boolean
   legalName?: boolean
   tradeName?: boolean
+  registrationNo?: boolean
+  taxId?: boolean
+  address?: boolean
+  fiscalYearStartMonth?: boolean
   currency?: boolean
   timeZone?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   groupId?: boolean
+  allowNegativeStock?: boolean
 }
 
-export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "legalName" | "tradeName" | "currency" | "timeZone" | "status" | "createdAt" | "updatedAt" | "groupId", ExtArgs["result"]["company"]>
+export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "legalName" | "tradeName" | "registrationNo" | "taxId" | "address" | "fiscalYearStartMonth" | "currency" | "timeZone" | "status" | "createdAt" | "updatedAt" | "groupId" | "allowNegativeStock", ExtArgs["result"]["company"]>
 export type CompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   factories?: boolean | Prisma.Company$factoriesArgs<ExtArgs>
   users?: boolean | Prisma.Company$usersArgs<ExtArgs>
@@ -4290,6 +6091,10 @@ export type CompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   supplierQuotations?: boolean | Prisma.Company$supplierQuotationsArgs<ExtArgs>
   purchaseRequisitions?: boolean | Prisma.Company$purchaseRequisitionsArgs<ExtArgs>
   purchaseOrders?: boolean | Prisma.Company$purchaseOrdersArgs<ExtArgs>
+  attachments?: boolean | Prisma.Company$attachmentsArgs<ExtArgs>
+  workflows?: boolean | Prisma.Company$workflowsArgs<ExtArgs>
+  approvalRequests?: boolean | Prisma.Company$approvalRequestsArgs<ExtArgs>
+  notifications?: boolean | Prisma.Company$notificationsArgs<ExtArgs>
   group?: boolean | Prisma.Company$groupArgs<ExtArgs>
   rfqs?: boolean | Prisma.Company$rfqsArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -4323,6 +6128,10 @@ export type $CompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     supplierQuotations: Prisma.$SupplierQuotationPayload<ExtArgs>[]
     purchaseRequisitions: Prisma.$PurchaseRequisitionPayload<ExtArgs>[]
     purchaseOrders: Prisma.$PurchaseOrderPayload<ExtArgs>[]
+    attachments: Prisma.$AttachmentPayload<ExtArgs>[]
+    workflows: Prisma.$WorkflowPayload<ExtArgs>[]
+    approvalRequests: Prisma.$ApprovalRequestPayload<ExtArgs>[]
+    notifications: Prisma.$NotificationPayload<ExtArgs>[]
     group: Prisma.$GroupPayload<ExtArgs> | null
     rfqs: Prisma.$RfqPayload<ExtArgs>[]
   }
@@ -4331,12 +6140,17 @@ export type $CompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     code: string
     legalName: string
     tradeName: string | null
+    registrationNo: string | null
+    taxId: string | null
+    address: string | null
+    fiscalYearStartMonth: number | null
     currency: string
     timeZone: string
     status: $Enums.ActiveStatus
     createdAt: Date
     updatedAt: Date
     groupId: string | null
+    allowNegativeStock: boolean
   }, ExtArgs["result"]["company"]>
   composites: {}
 }
@@ -4750,6 +6564,10 @@ export interface Prisma__CompanyClient<T, Null = never, ExtArgs extends runtime.
   supplierQuotations<T extends Prisma.Company$supplierQuotationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$supplierQuotationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierQuotationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   purchaseRequisitions<T extends Prisma.Company$purchaseRequisitionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$purchaseRequisitionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   purchaseOrders<T extends Prisma.Company$purchaseOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$purchaseOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  attachments<T extends Prisma.Company$attachmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$attachmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AttachmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  workflows<T extends Prisma.Company$workflowsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$workflowsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WorkflowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  approvalRequests<T extends Prisma.Company$approvalRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$approvalRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApprovalRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notifications<T extends Prisma.Company$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   group<T extends Prisma.Company$groupArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$groupArgs<ExtArgs>>): Prisma.Prisma__GroupClient<runtime.Types.Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   rfqs<T extends Prisma.Company$rfqsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$rfqsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RfqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -4785,12 +6603,17 @@ export interface CompanyFieldRefs {
   readonly code: Prisma.FieldRef<"Company", 'String'>
   readonly legalName: Prisma.FieldRef<"Company", 'String'>
   readonly tradeName: Prisma.FieldRef<"Company", 'String'>
+  readonly registrationNo: Prisma.FieldRef<"Company", 'String'>
+  readonly taxId: Prisma.FieldRef<"Company", 'String'>
+  readonly address: Prisma.FieldRef<"Company", 'String'>
+  readonly fiscalYearStartMonth: Prisma.FieldRef<"Company", 'Int'>
   readonly currency: Prisma.FieldRef<"Company", 'String'>
   readonly timeZone: Prisma.FieldRef<"Company", 'String'>
   readonly status: Prisma.FieldRef<"Company", 'ActiveStatus'>
   readonly createdAt: Prisma.FieldRef<"Company", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Company", 'DateTime'>
   readonly groupId: Prisma.FieldRef<"Company", 'String'>
+  readonly allowNegativeStock: Prisma.FieldRef<"Company", 'Boolean'>
 }
     
 
@@ -5645,6 +7468,102 @@ export type Company$purchaseOrdersArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.PurchaseOrderScalarFieldEnum | Prisma.PurchaseOrderScalarFieldEnum[]
+}
+
+/**
+ * Company.attachments
+ */
+export type Company$attachmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Attachment
+   */
+  select?: Prisma.AttachmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Attachment
+   */
+  omit?: Prisma.AttachmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttachmentInclude<ExtArgs> | null
+  where?: Prisma.AttachmentWhereInput
+  orderBy?: Prisma.AttachmentOrderByWithRelationInput | Prisma.AttachmentOrderByWithRelationInput[]
+  cursor?: Prisma.AttachmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AttachmentScalarFieldEnum | Prisma.AttachmentScalarFieldEnum[]
+}
+
+/**
+ * Company.workflows
+ */
+export type Company$workflowsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Workflow
+   */
+  select?: Prisma.WorkflowSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Workflow
+   */
+  omit?: Prisma.WorkflowOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkflowInclude<ExtArgs> | null
+  where?: Prisma.WorkflowWhereInput
+  orderBy?: Prisma.WorkflowOrderByWithRelationInput | Prisma.WorkflowOrderByWithRelationInput[]
+  cursor?: Prisma.WorkflowWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WorkflowScalarFieldEnum | Prisma.WorkflowScalarFieldEnum[]
+}
+
+/**
+ * Company.approvalRequests
+ */
+export type Company$approvalRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ApprovalRequest
+   */
+  select?: Prisma.ApprovalRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ApprovalRequest
+   */
+  omit?: Prisma.ApprovalRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ApprovalRequestInclude<ExtArgs> | null
+  where?: Prisma.ApprovalRequestWhereInput
+  orderBy?: Prisma.ApprovalRequestOrderByWithRelationInput | Prisma.ApprovalRequestOrderByWithRelationInput[]
+  cursor?: Prisma.ApprovalRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApprovalRequestScalarFieldEnum | Prisma.ApprovalRequestScalarFieldEnum[]
+}
+
+/**
+ * Company.notifications
+ */
+export type Company$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
 }
 
 /**

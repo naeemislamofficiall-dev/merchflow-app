@@ -35,6 +35,11 @@ export type EnquiryMinAggregateOutputType = {
   createdById: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  currency: string | null
+  requiredShipDate: Date | null
+  fabric: string | null
+  productType: string | null
+  convertedOrderId: string | null
 }
 
 export type EnquiryMaxAggregateOutputType = {
@@ -48,6 +53,11 @@ export type EnquiryMaxAggregateOutputType = {
   createdById: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  currency: string | null
+  requiredShipDate: Date | null
+  fabric: string | null
+  productType: string | null
+  convertedOrderId: string | null
 }
 
 export type EnquiryCountAggregateOutputType = {
@@ -61,6 +71,11 @@ export type EnquiryCountAggregateOutputType = {
   createdById: number
   createdAt: number
   updatedAt: number
+  currency: number
+  requiredShipDate: number
+  fabric: number
+  productType: number
+  convertedOrderId: number
   _all: number
 }
 
@@ -76,6 +91,11 @@ export type EnquiryMinAggregateInputType = {
   createdById?: true
   createdAt?: true
   updatedAt?: true
+  currency?: true
+  requiredShipDate?: true
+  fabric?: true
+  productType?: true
+  convertedOrderId?: true
 }
 
 export type EnquiryMaxAggregateInputType = {
@@ -89,6 +109,11 @@ export type EnquiryMaxAggregateInputType = {
   createdById?: true
   createdAt?: true
   updatedAt?: true
+  currency?: true
+  requiredShipDate?: true
+  fabric?: true
+  productType?: true
+  convertedOrderId?: true
 }
 
 export type EnquiryCountAggregateInputType = {
@@ -102,6 +127,11 @@ export type EnquiryCountAggregateInputType = {
   createdById?: true
   createdAt?: true
   updatedAt?: true
+  currency?: true
+  requiredShipDate?: true
+  fabric?: true
+  productType?: true
+  convertedOrderId?: true
   _all?: true
 }
 
@@ -188,6 +218,11 @@ export type EnquiryGroupByOutputType = {
   createdById: string | null
   createdAt: Date
   updatedAt: Date
+  currency: string
+  requiredShipDate: Date | null
+  fabric: string | null
+  productType: string | null
+  convertedOrderId: string | null
   _count: EnquiryCountAggregateOutputType | null
   _min: EnquiryMinAggregateOutputType | null
   _max: EnquiryMaxAggregateOutputType | null
@@ -222,9 +257,16 @@ export type EnquiryWhereInput = {
   createdById?: Prisma.StringNullableFilter<"Enquiry"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Enquiry"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Enquiry"> | Date | string
+  currency?: Prisma.StringFilter<"Enquiry"> | string
+  requiredShipDate?: Prisma.DateTimeNullableFilter<"Enquiry"> | Date | string | null
+  fabric?: Prisma.StringNullableFilter<"Enquiry"> | string | null
+  productType?: Prisma.StringNullableFilter<"Enquiry"> | string | null
+  convertedOrderId?: Prisma.StringNullableFilter<"Enquiry"> | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   buyer?: Prisma.XOR<Prisma.BuyerScalarRelationFilter, Prisma.BuyerWhereInput>
   items?: Prisma.EnquiryItemListRelationFilter
+  convertedOrder?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  negotiations?: Prisma.EnquiryNegotiationListRelationFilter
 }
 
 export type EnquiryOrderByWithRelationInput = {
@@ -238,13 +280,21 @@ export type EnquiryOrderByWithRelationInput = {
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  requiredShipDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  fabric?: Prisma.SortOrderInput | Prisma.SortOrder
+  productType?: Prisma.SortOrderInput | Prisma.SortOrder
+  convertedOrderId?: Prisma.SortOrderInput | Prisma.SortOrder
   company?: Prisma.CompanyOrderByWithRelationInput
   buyer?: Prisma.BuyerOrderByWithRelationInput
   items?: Prisma.EnquiryItemOrderByRelationAggregateInput
+  convertedOrder?: Prisma.OrderOrderByWithRelationInput
+  negotiations?: Prisma.EnquiryNegotiationOrderByRelationAggregateInput
 }
 
 export type EnquiryWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  convertedOrderId?: string
   companyId_enquiryNo?: Prisma.EnquiryCompanyIdEnquiryNoCompoundUniqueInput
   AND?: Prisma.EnquiryWhereInput | Prisma.EnquiryWhereInput[]
   OR?: Prisma.EnquiryWhereInput[]
@@ -258,10 +308,16 @@ export type EnquiryWhereUniqueInput = Prisma.AtLeast<{
   createdById?: Prisma.StringNullableFilter<"Enquiry"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Enquiry"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Enquiry"> | Date | string
+  currency?: Prisma.StringFilter<"Enquiry"> | string
+  requiredShipDate?: Prisma.DateTimeNullableFilter<"Enquiry"> | Date | string | null
+  fabric?: Prisma.StringNullableFilter<"Enquiry"> | string | null
+  productType?: Prisma.StringNullableFilter<"Enquiry"> | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   buyer?: Prisma.XOR<Prisma.BuyerScalarRelationFilter, Prisma.BuyerWhereInput>
   items?: Prisma.EnquiryItemListRelationFilter
-}, "id" | "companyId_enquiryNo">
+  convertedOrder?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  negotiations?: Prisma.EnquiryNegotiationListRelationFilter
+}, "id" | "convertedOrderId" | "companyId_enquiryNo">
 
 export type EnquiryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -274,6 +330,11 @@ export type EnquiryOrderByWithAggregationInput = {
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  requiredShipDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  fabric?: Prisma.SortOrderInput | Prisma.SortOrder
+  productType?: Prisma.SortOrderInput | Prisma.SortOrder
+  convertedOrderId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.EnquiryCountOrderByAggregateInput
   _max?: Prisma.EnquiryMaxOrderByAggregateInput
   _min?: Prisma.EnquiryMinOrderByAggregateInput
@@ -293,6 +354,11 @@ export type EnquiryScalarWhereWithAggregatesInput = {
   createdById?: Prisma.StringNullableWithAggregatesFilter<"Enquiry"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Enquiry"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Enquiry"> | Date | string
+  currency?: Prisma.StringWithAggregatesFilter<"Enquiry"> | string
+  requiredShipDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Enquiry"> | Date | string | null
+  fabric?: Prisma.StringNullableWithAggregatesFilter<"Enquiry"> | string | null
+  productType?: Prisma.StringNullableWithAggregatesFilter<"Enquiry"> | string | null
+  convertedOrderId?: Prisma.StringNullableWithAggregatesFilter<"Enquiry"> | string | null
 }
 
 export type EnquiryCreateInput = {
@@ -304,9 +370,15 @@ export type EnquiryCreateInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
   company: Prisma.CompanyCreateNestedOneWithoutEnquiriesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutEnquiriesInput
   items?: Prisma.EnquiryItemCreateNestedManyWithoutEnquiryInput
+  convertedOrder?: Prisma.OrderCreateNestedOneWithoutSourceEnquiryInput
+  negotiations?: Prisma.EnquiryNegotiationCreateNestedManyWithoutEnquiryInput
 }
 
 export type EnquiryUncheckedCreateInput = {
@@ -320,7 +392,13 @@ export type EnquiryUncheckedCreateInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  convertedOrderId?: string | null
   items?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutEnquiryInput
+  negotiations?: Prisma.EnquiryNegotiationUncheckedCreateNestedManyWithoutEnquiryInput
 }
 
 export type EnquiryUpdateInput = {
@@ -332,9 +410,15 @@ export type EnquiryUpdateInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutEnquiriesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutEnquiriesNestedInput
   items?: Prisma.EnquiryItemUpdateManyWithoutEnquiryNestedInput
+  convertedOrder?: Prisma.OrderUpdateOneWithoutSourceEnquiryNestedInput
+  negotiations?: Prisma.EnquiryNegotiationUpdateManyWithoutEnquiryNestedInput
 }
 
 export type EnquiryUncheckedUpdateInput = {
@@ -348,7 +432,13 @@ export type EnquiryUncheckedUpdateInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  convertedOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   items?: Prisma.EnquiryItemUncheckedUpdateManyWithoutEnquiryNestedInput
+  negotiations?: Prisma.EnquiryNegotiationUncheckedUpdateManyWithoutEnquiryNestedInput
 }
 
 export type EnquiryCreateManyInput = {
@@ -362,6 +452,11 @@ export type EnquiryCreateManyInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  convertedOrderId?: string | null
 }
 
 export type EnquiryUpdateManyMutationInput = {
@@ -373,6 +468,10 @@ export type EnquiryUpdateManyMutationInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type EnquiryUncheckedUpdateManyInput = {
@@ -386,6 +485,11 @@ export type EnquiryUncheckedUpdateManyInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  convertedOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type EnquiryListRelationFilter = {
@@ -414,6 +518,11 @@ export type EnquiryCountOrderByAggregateInput = {
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  requiredShipDate?: Prisma.SortOrder
+  fabric?: Prisma.SortOrder
+  productType?: Prisma.SortOrder
+  convertedOrderId?: Prisma.SortOrder
 }
 
 export type EnquiryMaxOrderByAggregateInput = {
@@ -427,6 +536,11 @@ export type EnquiryMaxOrderByAggregateInput = {
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  requiredShipDate?: Prisma.SortOrder
+  fabric?: Prisma.SortOrder
+  productType?: Prisma.SortOrder
+  convertedOrderId?: Prisma.SortOrder
 }
 
 export type EnquiryMinOrderByAggregateInput = {
@@ -440,11 +554,21 @@ export type EnquiryMinOrderByAggregateInput = {
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  requiredShipDate?: Prisma.SortOrder
+  fabric?: Prisma.SortOrder
+  productType?: Prisma.SortOrder
+  convertedOrderId?: Prisma.SortOrder
 }
 
 export type EnquiryScalarRelationFilter = {
   is?: Prisma.EnquiryWhereInput
   isNot?: Prisma.EnquiryWhereInput
+}
+
+export type EnquiryNullableScalarRelationFilter = {
+  is?: Prisma.EnquiryWhereInput | null
+  isNot?: Prisma.EnquiryWhereInput | null
 }
 
 export type EnquiryCreateNestedManyWithoutCompanyInput = {
@@ -549,6 +673,52 @@ export type EnquiryUpdateOneRequiredWithoutItemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.EnquiryUpdateToOneWithWhereWithoutItemsInput, Prisma.EnquiryUpdateWithoutItemsInput>, Prisma.EnquiryUncheckedUpdateWithoutItemsInput>
 }
 
+export type EnquiryCreateNestedOneWithoutConvertedOrderInput = {
+  create?: Prisma.XOR<Prisma.EnquiryCreateWithoutConvertedOrderInput, Prisma.EnquiryUncheckedCreateWithoutConvertedOrderInput>
+  connectOrCreate?: Prisma.EnquiryCreateOrConnectWithoutConvertedOrderInput
+  connect?: Prisma.EnquiryWhereUniqueInput
+}
+
+export type EnquiryUncheckedCreateNestedOneWithoutConvertedOrderInput = {
+  create?: Prisma.XOR<Prisma.EnquiryCreateWithoutConvertedOrderInput, Prisma.EnquiryUncheckedCreateWithoutConvertedOrderInput>
+  connectOrCreate?: Prisma.EnquiryCreateOrConnectWithoutConvertedOrderInput
+  connect?: Prisma.EnquiryWhereUniqueInput
+}
+
+export type EnquiryUpdateOneWithoutConvertedOrderNestedInput = {
+  create?: Prisma.XOR<Prisma.EnquiryCreateWithoutConvertedOrderInput, Prisma.EnquiryUncheckedCreateWithoutConvertedOrderInput>
+  connectOrCreate?: Prisma.EnquiryCreateOrConnectWithoutConvertedOrderInput
+  upsert?: Prisma.EnquiryUpsertWithoutConvertedOrderInput
+  disconnect?: Prisma.EnquiryWhereInput | boolean
+  delete?: Prisma.EnquiryWhereInput | boolean
+  connect?: Prisma.EnquiryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnquiryUpdateToOneWithWhereWithoutConvertedOrderInput, Prisma.EnquiryUpdateWithoutConvertedOrderInput>, Prisma.EnquiryUncheckedUpdateWithoutConvertedOrderInput>
+}
+
+export type EnquiryUncheckedUpdateOneWithoutConvertedOrderNestedInput = {
+  create?: Prisma.XOR<Prisma.EnquiryCreateWithoutConvertedOrderInput, Prisma.EnquiryUncheckedCreateWithoutConvertedOrderInput>
+  connectOrCreate?: Prisma.EnquiryCreateOrConnectWithoutConvertedOrderInput
+  upsert?: Prisma.EnquiryUpsertWithoutConvertedOrderInput
+  disconnect?: Prisma.EnquiryWhereInput | boolean
+  delete?: Prisma.EnquiryWhereInput | boolean
+  connect?: Prisma.EnquiryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnquiryUpdateToOneWithWhereWithoutConvertedOrderInput, Prisma.EnquiryUpdateWithoutConvertedOrderInput>, Prisma.EnquiryUncheckedUpdateWithoutConvertedOrderInput>
+}
+
+export type EnquiryCreateNestedOneWithoutNegotiationsInput = {
+  create?: Prisma.XOR<Prisma.EnquiryCreateWithoutNegotiationsInput, Prisma.EnquiryUncheckedCreateWithoutNegotiationsInput>
+  connectOrCreate?: Prisma.EnquiryCreateOrConnectWithoutNegotiationsInput
+  connect?: Prisma.EnquiryWhereUniqueInput
+}
+
+export type EnquiryUpdateOneRequiredWithoutNegotiationsNestedInput = {
+  create?: Prisma.XOR<Prisma.EnquiryCreateWithoutNegotiationsInput, Prisma.EnquiryUncheckedCreateWithoutNegotiationsInput>
+  connectOrCreate?: Prisma.EnquiryCreateOrConnectWithoutNegotiationsInput
+  upsert?: Prisma.EnquiryUpsertWithoutNegotiationsInput
+  connect?: Prisma.EnquiryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnquiryUpdateToOneWithWhereWithoutNegotiationsInput, Prisma.EnquiryUpdateWithoutNegotiationsInput>, Prisma.EnquiryUncheckedUpdateWithoutNegotiationsInput>
+}
+
 export type EnquiryCreateWithoutCompanyInput = {
   id?: string
   enquiryNo: string
@@ -558,8 +728,14 @@ export type EnquiryCreateWithoutCompanyInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
   buyer: Prisma.BuyerCreateNestedOneWithoutEnquiriesInput
   items?: Prisma.EnquiryItemCreateNestedManyWithoutEnquiryInput
+  convertedOrder?: Prisma.OrderCreateNestedOneWithoutSourceEnquiryInput
+  negotiations?: Prisma.EnquiryNegotiationCreateNestedManyWithoutEnquiryInput
 }
 
 export type EnquiryUncheckedCreateWithoutCompanyInput = {
@@ -572,7 +748,13 @@ export type EnquiryUncheckedCreateWithoutCompanyInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  convertedOrderId?: string | null
   items?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutEnquiryInput
+  negotiations?: Prisma.EnquiryNegotiationUncheckedCreateNestedManyWithoutEnquiryInput
 }
 
 export type EnquiryCreateOrConnectWithoutCompanyInput = {
@@ -615,6 +797,11 @@ export type EnquiryScalarWhereInput = {
   createdById?: Prisma.StringNullableFilter<"Enquiry"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Enquiry"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Enquiry"> | Date | string
+  currency?: Prisma.StringFilter<"Enquiry"> | string
+  requiredShipDate?: Prisma.DateTimeNullableFilter<"Enquiry"> | Date | string | null
+  fabric?: Prisma.StringNullableFilter<"Enquiry"> | string | null
+  productType?: Prisma.StringNullableFilter<"Enquiry"> | string | null
+  convertedOrderId?: Prisma.StringNullableFilter<"Enquiry"> | string | null
 }
 
 export type EnquiryCreateWithoutBuyerInput = {
@@ -626,8 +813,14 @@ export type EnquiryCreateWithoutBuyerInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
   company: Prisma.CompanyCreateNestedOneWithoutEnquiriesInput
   items?: Prisma.EnquiryItemCreateNestedManyWithoutEnquiryInput
+  convertedOrder?: Prisma.OrderCreateNestedOneWithoutSourceEnquiryInput
+  negotiations?: Prisma.EnquiryNegotiationCreateNestedManyWithoutEnquiryInput
 }
 
 export type EnquiryUncheckedCreateWithoutBuyerInput = {
@@ -640,7 +833,13 @@ export type EnquiryUncheckedCreateWithoutBuyerInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  convertedOrderId?: string | null
   items?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutEnquiryInput
+  negotiations?: Prisma.EnquiryNegotiationUncheckedCreateNestedManyWithoutEnquiryInput
 }
 
 export type EnquiryCreateOrConnectWithoutBuyerInput = {
@@ -678,8 +877,14 @@ export type EnquiryCreateWithoutItemsInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
   company: Prisma.CompanyCreateNestedOneWithoutEnquiriesInput
   buyer: Prisma.BuyerCreateNestedOneWithoutEnquiriesInput
+  convertedOrder?: Prisma.OrderCreateNestedOneWithoutSourceEnquiryInput
+  negotiations?: Prisma.EnquiryNegotiationCreateNestedManyWithoutEnquiryInput
 }
 
 export type EnquiryUncheckedCreateWithoutItemsInput = {
@@ -693,6 +898,12 @@ export type EnquiryUncheckedCreateWithoutItemsInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  convertedOrderId?: string | null
+  negotiations?: Prisma.EnquiryNegotiationUncheckedCreateNestedManyWithoutEnquiryInput
 }
 
 export type EnquiryCreateOrConnectWithoutItemsInput = {
@@ -720,8 +931,14 @@ export type EnquiryUpdateWithoutItemsInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutEnquiriesNestedInput
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutEnquiriesNestedInput
+  convertedOrder?: Prisma.OrderUpdateOneWithoutSourceEnquiryNestedInput
+  negotiations?: Prisma.EnquiryNegotiationUpdateManyWithoutEnquiryNestedInput
 }
 
 export type EnquiryUncheckedUpdateWithoutItemsInput = {
@@ -735,6 +952,196 @@ export type EnquiryUncheckedUpdateWithoutItemsInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  convertedOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  negotiations?: Prisma.EnquiryNegotiationUncheckedUpdateManyWithoutEnquiryNestedInput
+}
+
+export type EnquiryCreateWithoutConvertedOrderInput = {
+  id?: string
+  enquiryNo: string
+  receivedDate?: Date | string
+  status?: $Enums.EnquiryStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  company: Prisma.CompanyCreateNestedOneWithoutEnquiriesInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutEnquiriesInput
+  items?: Prisma.EnquiryItemCreateNestedManyWithoutEnquiryInput
+  negotiations?: Prisma.EnquiryNegotiationCreateNestedManyWithoutEnquiryInput
+}
+
+export type EnquiryUncheckedCreateWithoutConvertedOrderInput = {
+  id?: string
+  companyId: string
+  enquiryNo: string
+  buyerId: string
+  receivedDate?: Date | string
+  status?: $Enums.EnquiryStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  items?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutEnquiryInput
+  negotiations?: Prisma.EnquiryNegotiationUncheckedCreateNestedManyWithoutEnquiryInput
+}
+
+export type EnquiryCreateOrConnectWithoutConvertedOrderInput = {
+  where: Prisma.EnquiryWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnquiryCreateWithoutConvertedOrderInput, Prisma.EnquiryUncheckedCreateWithoutConvertedOrderInput>
+}
+
+export type EnquiryUpsertWithoutConvertedOrderInput = {
+  update: Prisma.XOR<Prisma.EnquiryUpdateWithoutConvertedOrderInput, Prisma.EnquiryUncheckedUpdateWithoutConvertedOrderInput>
+  create: Prisma.XOR<Prisma.EnquiryCreateWithoutConvertedOrderInput, Prisma.EnquiryUncheckedCreateWithoutConvertedOrderInput>
+  where?: Prisma.EnquiryWhereInput
+}
+
+export type EnquiryUpdateToOneWithWhereWithoutConvertedOrderInput = {
+  where?: Prisma.EnquiryWhereInput
+  data: Prisma.XOR<Prisma.EnquiryUpdateWithoutConvertedOrderInput, Prisma.EnquiryUncheckedUpdateWithoutConvertedOrderInput>
+}
+
+export type EnquiryUpdateWithoutConvertedOrderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  enquiryNo?: Prisma.StringFieldUpdateOperationsInput | string
+  receivedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumEnquiryStatusFieldUpdateOperationsInput | $Enums.EnquiryStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.CompanyUpdateOneRequiredWithoutEnquiriesNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutEnquiriesNestedInput
+  items?: Prisma.EnquiryItemUpdateManyWithoutEnquiryNestedInput
+  negotiations?: Prisma.EnquiryNegotiationUpdateManyWithoutEnquiryNestedInput
+}
+
+export type EnquiryUncheckedUpdateWithoutConvertedOrderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  enquiryNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  receivedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumEnquiryStatusFieldUpdateOperationsInput | $Enums.EnquiryStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  items?: Prisma.EnquiryItemUncheckedUpdateManyWithoutEnquiryNestedInput
+  negotiations?: Prisma.EnquiryNegotiationUncheckedUpdateManyWithoutEnquiryNestedInput
+}
+
+export type EnquiryCreateWithoutNegotiationsInput = {
+  id?: string
+  enquiryNo: string
+  receivedDate?: Date | string
+  status?: $Enums.EnquiryStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  company: Prisma.CompanyCreateNestedOneWithoutEnquiriesInput
+  buyer: Prisma.BuyerCreateNestedOneWithoutEnquiriesInput
+  items?: Prisma.EnquiryItemCreateNestedManyWithoutEnquiryInput
+  convertedOrder?: Prisma.OrderCreateNestedOneWithoutSourceEnquiryInput
+}
+
+export type EnquiryUncheckedCreateWithoutNegotiationsInput = {
+  id?: string
+  companyId: string
+  enquiryNo: string
+  buyerId: string
+  receivedDate?: Date | string
+  status?: $Enums.EnquiryStatus
+  notes?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  convertedOrderId?: string | null
+  items?: Prisma.EnquiryItemUncheckedCreateNestedManyWithoutEnquiryInput
+}
+
+export type EnquiryCreateOrConnectWithoutNegotiationsInput = {
+  where: Prisma.EnquiryWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnquiryCreateWithoutNegotiationsInput, Prisma.EnquiryUncheckedCreateWithoutNegotiationsInput>
+}
+
+export type EnquiryUpsertWithoutNegotiationsInput = {
+  update: Prisma.XOR<Prisma.EnquiryUpdateWithoutNegotiationsInput, Prisma.EnquiryUncheckedUpdateWithoutNegotiationsInput>
+  create: Prisma.XOR<Prisma.EnquiryCreateWithoutNegotiationsInput, Prisma.EnquiryUncheckedCreateWithoutNegotiationsInput>
+  where?: Prisma.EnquiryWhereInput
+}
+
+export type EnquiryUpdateToOneWithWhereWithoutNegotiationsInput = {
+  where?: Prisma.EnquiryWhereInput
+  data: Prisma.XOR<Prisma.EnquiryUpdateWithoutNegotiationsInput, Prisma.EnquiryUncheckedUpdateWithoutNegotiationsInput>
+}
+
+export type EnquiryUpdateWithoutNegotiationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  enquiryNo?: Prisma.StringFieldUpdateOperationsInput | string
+  receivedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumEnquiryStatusFieldUpdateOperationsInput | $Enums.EnquiryStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.CompanyUpdateOneRequiredWithoutEnquiriesNestedInput
+  buyer?: Prisma.BuyerUpdateOneRequiredWithoutEnquiriesNestedInput
+  items?: Prisma.EnquiryItemUpdateManyWithoutEnquiryNestedInput
+  convertedOrder?: Prisma.OrderUpdateOneWithoutSourceEnquiryNestedInput
+}
+
+export type EnquiryUncheckedUpdateWithoutNegotiationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  enquiryNo?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  receivedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumEnquiryStatusFieldUpdateOperationsInput | $Enums.EnquiryStatus
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  convertedOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  items?: Prisma.EnquiryItemUncheckedUpdateManyWithoutEnquiryNestedInput
 }
 
 export type EnquiryCreateManyCompanyInput = {
@@ -747,6 +1154,11 @@ export type EnquiryCreateManyCompanyInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  convertedOrderId?: string | null
 }
 
 export type EnquiryUpdateWithoutCompanyInput = {
@@ -758,8 +1170,14 @@ export type EnquiryUpdateWithoutCompanyInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buyer?: Prisma.BuyerUpdateOneRequiredWithoutEnquiriesNestedInput
   items?: Prisma.EnquiryItemUpdateManyWithoutEnquiryNestedInput
+  convertedOrder?: Prisma.OrderUpdateOneWithoutSourceEnquiryNestedInput
+  negotiations?: Prisma.EnquiryNegotiationUpdateManyWithoutEnquiryNestedInput
 }
 
 export type EnquiryUncheckedUpdateWithoutCompanyInput = {
@@ -772,7 +1190,13 @@ export type EnquiryUncheckedUpdateWithoutCompanyInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  convertedOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   items?: Prisma.EnquiryItemUncheckedUpdateManyWithoutEnquiryNestedInput
+  negotiations?: Prisma.EnquiryNegotiationUncheckedUpdateManyWithoutEnquiryNestedInput
 }
 
 export type EnquiryUncheckedUpdateManyWithoutCompanyInput = {
@@ -785,6 +1209,11 @@ export type EnquiryUncheckedUpdateManyWithoutCompanyInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  convertedOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type EnquiryCreateManyBuyerInput = {
@@ -797,6 +1226,11 @@ export type EnquiryCreateManyBuyerInput = {
   createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  currency?: string
+  requiredShipDate?: Date | string | null
+  fabric?: string | null
+  productType?: string | null
+  convertedOrderId?: string | null
 }
 
 export type EnquiryUpdateWithoutBuyerInput = {
@@ -808,8 +1242,14 @@ export type EnquiryUpdateWithoutBuyerInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutEnquiriesNestedInput
   items?: Prisma.EnquiryItemUpdateManyWithoutEnquiryNestedInput
+  convertedOrder?: Prisma.OrderUpdateOneWithoutSourceEnquiryNestedInput
+  negotiations?: Prisma.EnquiryNegotiationUpdateManyWithoutEnquiryNestedInput
 }
 
 export type EnquiryUncheckedUpdateWithoutBuyerInput = {
@@ -822,7 +1262,13 @@ export type EnquiryUncheckedUpdateWithoutBuyerInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  convertedOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   items?: Prisma.EnquiryItemUncheckedUpdateManyWithoutEnquiryNestedInput
+  negotiations?: Prisma.EnquiryNegotiationUncheckedUpdateManyWithoutEnquiryNestedInput
 }
 
 export type EnquiryUncheckedUpdateManyWithoutBuyerInput = {
@@ -835,6 +1281,11 @@ export type EnquiryUncheckedUpdateManyWithoutBuyerInput = {
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  requiredShipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fabric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  convertedOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -844,10 +1295,12 @@ export type EnquiryUncheckedUpdateManyWithoutBuyerInput = {
 
 export type EnquiryCountOutputType = {
   items: number
+  negotiations: number
 }
 
 export type EnquiryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   items?: boolean | EnquiryCountOutputTypeCountItemsArgs
+  negotiations?: boolean | EnquiryCountOutputTypeCountNegotiationsArgs
 }
 
 /**
@@ -867,6 +1320,13 @@ export type EnquiryCountOutputTypeCountItemsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.EnquiryItemWhereInput
 }
 
+/**
+ * EnquiryCountOutputType without action
+ */
+export type EnquiryCountOutputTypeCountNegotiationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EnquiryNegotiationWhereInput
+}
+
 
 export type EnquirySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -879,9 +1339,16 @@ export type EnquirySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  currency?: boolean
+  requiredShipDate?: boolean
+  fabric?: boolean
+  productType?: boolean
+  convertedOrderId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
   items?: boolean | Prisma.Enquiry$itemsArgs<ExtArgs>
+  convertedOrder?: boolean | Prisma.Enquiry$convertedOrderArgs<ExtArgs>
+  negotiations?: boolean | Prisma.Enquiry$negotiationsArgs<ExtArgs>
   _count?: boolean | Prisma.EnquiryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["enquiry"]>
 
@@ -896,8 +1363,14 @@ export type EnquirySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  currency?: boolean
+  requiredShipDate?: boolean
+  fabric?: boolean
+  productType?: boolean
+  convertedOrderId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
+  convertedOrder?: boolean | Prisma.Enquiry$convertedOrderArgs<ExtArgs>
 }, ExtArgs["result"]["enquiry"]>
 
 export type EnquirySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -911,8 +1384,14 @@ export type EnquirySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  currency?: boolean
+  requiredShipDate?: boolean
+  fabric?: boolean
+  productType?: boolean
+  convertedOrderId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
+  convertedOrder?: boolean | Prisma.Enquiry$convertedOrderArgs<ExtArgs>
 }, ExtArgs["result"]["enquiry"]>
 
 export type EnquirySelectScalar = {
@@ -926,22 +1405,31 @@ export type EnquirySelectScalar = {
   createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  currency?: boolean
+  requiredShipDate?: boolean
+  fabric?: boolean
+  productType?: boolean
+  convertedOrderId?: boolean
 }
 
-export type EnquiryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "enquiryNo" | "buyerId" | "receivedDate" | "status" | "notes" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["enquiry"]>
+export type EnquiryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "enquiryNo" | "buyerId" | "receivedDate" | "status" | "notes" | "createdById" | "createdAt" | "updatedAt" | "currency" | "requiredShipDate" | "fabric" | "productType" | "convertedOrderId", ExtArgs["result"]["enquiry"]>
 export type EnquiryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
   items?: boolean | Prisma.Enquiry$itemsArgs<ExtArgs>
+  convertedOrder?: boolean | Prisma.Enquiry$convertedOrderArgs<ExtArgs>
+  negotiations?: boolean | Prisma.Enquiry$negotiationsArgs<ExtArgs>
   _count?: boolean | Prisma.EnquiryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type EnquiryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
+  convertedOrder?: boolean | Prisma.Enquiry$convertedOrderArgs<ExtArgs>
 }
 export type EnquiryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   buyer?: boolean | Prisma.BuyerDefaultArgs<ExtArgs>
+  convertedOrder?: boolean | Prisma.Enquiry$convertedOrderArgs<ExtArgs>
 }
 
 export type $EnquiryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -950,6 +1438,8 @@ export type $EnquiryPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     company: Prisma.$CompanyPayload<ExtArgs>
     buyer: Prisma.$BuyerPayload<ExtArgs>
     items: Prisma.$EnquiryItemPayload<ExtArgs>[]
+    convertedOrder: Prisma.$OrderPayload<ExtArgs> | null
+    negotiations: Prisma.$EnquiryNegotiationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -962,6 +1452,11 @@ export type $EnquiryPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     createdById: string | null
     createdAt: Date
     updatedAt: Date
+    currency: string
+    requiredShipDate: Date | null
+    fabric: string | null
+    productType: string | null
+    convertedOrderId: string | null
   }, ExtArgs["result"]["enquiry"]>
   composites: {}
 }
@@ -1359,6 +1854,8 @@ export interface Prisma__EnquiryClient<T, Null = never, ExtArgs extends runtime.
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   buyer<T extends Prisma.BuyerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BuyerDefaultArgs<ExtArgs>>): Prisma.Prisma__BuyerClient<runtime.Types.Result.GetResult<Prisma.$BuyerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   items<T extends Prisma.Enquiry$itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Enquiry$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EnquiryItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  convertedOrder<T extends Prisma.Enquiry$convertedOrderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Enquiry$convertedOrderArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  negotiations<T extends Prisma.Enquiry$negotiationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Enquiry$negotiationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EnquiryNegotiationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1398,6 +1895,11 @@ export interface EnquiryFieldRefs {
   readonly createdById: Prisma.FieldRef<"Enquiry", 'String'>
   readonly createdAt: Prisma.FieldRef<"Enquiry", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Enquiry", 'DateTime'>
+  readonly currency: Prisma.FieldRef<"Enquiry", 'String'>
+  readonly requiredShipDate: Prisma.FieldRef<"Enquiry", 'DateTime'>
+  readonly fabric: Prisma.FieldRef<"Enquiry", 'String'>
+  readonly productType: Prisma.FieldRef<"Enquiry", 'String'>
+  readonly convertedOrderId: Prisma.FieldRef<"Enquiry", 'String'>
 }
     
 
@@ -1820,6 +2322,49 @@ export type Enquiry$itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.EnquiryItemScalarFieldEnum | Prisma.EnquiryItemScalarFieldEnum[]
+}
+
+/**
+ * Enquiry.convertedOrder
+ */
+export type Enquiry$convertedOrderArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Order
+   */
+  select?: Prisma.OrderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Order
+   */
+  omit?: Prisma.OrderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrderInclude<ExtArgs> | null
+  where?: Prisma.OrderWhereInput
+}
+
+/**
+ * Enquiry.negotiations
+ */
+export type Enquiry$negotiationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EnquiryNegotiation
+   */
+  select?: Prisma.EnquiryNegotiationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EnquiryNegotiation
+   */
+  omit?: Prisma.EnquiryNegotiationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnquiryNegotiationInclude<ExtArgs> | null
+  where?: Prisma.EnquiryNegotiationWhereInput
+  orderBy?: Prisma.EnquiryNegotiationOrderByWithRelationInput | Prisma.EnquiryNegotiationOrderByWithRelationInput[]
+  cursor?: Prisma.EnquiryNegotiationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EnquiryNegotiationScalarFieldEnum | Prisma.EnquiryNegotiationScalarFieldEnum[]
 }
 
 /**

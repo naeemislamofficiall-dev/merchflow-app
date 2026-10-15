@@ -27,10 +27,12 @@ export type AggregateTnaTask = {
 }
 
 export type TnaTaskAvgAggregateOutputType = {
+  delayDays: number | null
   sortOrder: number | null
 }
 
 export type TnaTaskSumAggregateOutputType = {
+  delayDays: number | null
   sortOrder: number | null
 }
 
@@ -39,8 +41,16 @@ export type TnaTaskMinAggregateOutputType = {
   planId: string | null
   name: string | null
   plannedDate: Date | null
+  revisedDate: Date | null
   actualDate: Date | null
   status: $Enums.TnaTaskStatus | null
+  ownerId: string | null
+  departmentId: string | null
+  delayDays: number | null
+  delayReason: string | null
+  dependsOnId: string | null
+  approvedById: string | null
+  approvedAt: Date | null
   sortOrder: number | null
   updatedAt: Date | null
 }
@@ -50,8 +60,16 @@ export type TnaTaskMaxAggregateOutputType = {
   planId: string | null
   name: string | null
   plannedDate: Date | null
+  revisedDate: Date | null
   actualDate: Date | null
   status: $Enums.TnaTaskStatus | null
+  ownerId: string | null
+  departmentId: string | null
+  delayDays: number | null
+  delayReason: string | null
+  dependsOnId: string | null
+  approvedById: string | null
+  approvedAt: Date | null
   sortOrder: number | null
   updatedAt: Date | null
 }
@@ -61,8 +79,16 @@ export type TnaTaskCountAggregateOutputType = {
   planId: number
   name: number
   plannedDate: number
+  revisedDate: number
   actualDate: number
   status: number
+  ownerId: number
+  departmentId: number
+  delayDays: number
+  delayReason: number
+  dependsOnId: number
+  approvedById: number
+  approvedAt: number
   sortOrder: number
   updatedAt: number
   _all: number
@@ -70,10 +96,12 @@ export type TnaTaskCountAggregateOutputType = {
 
 
 export type TnaTaskAvgAggregateInputType = {
+  delayDays?: true
   sortOrder?: true
 }
 
 export type TnaTaskSumAggregateInputType = {
+  delayDays?: true
   sortOrder?: true
 }
 
@@ -82,8 +110,16 @@ export type TnaTaskMinAggregateInputType = {
   planId?: true
   name?: true
   plannedDate?: true
+  revisedDate?: true
   actualDate?: true
   status?: true
+  ownerId?: true
+  departmentId?: true
+  delayDays?: true
+  delayReason?: true
+  dependsOnId?: true
+  approvedById?: true
+  approvedAt?: true
   sortOrder?: true
   updatedAt?: true
 }
@@ -93,8 +129,16 @@ export type TnaTaskMaxAggregateInputType = {
   planId?: true
   name?: true
   plannedDate?: true
+  revisedDate?: true
   actualDate?: true
   status?: true
+  ownerId?: true
+  departmentId?: true
+  delayDays?: true
+  delayReason?: true
+  dependsOnId?: true
+  approvedById?: true
+  approvedAt?: true
   sortOrder?: true
   updatedAt?: true
 }
@@ -104,8 +148,16 @@ export type TnaTaskCountAggregateInputType = {
   planId?: true
   name?: true
   plannedDate?: true
+  revisedDate?: true
   actualDate?: true
   status?: true
+  ownerId?: true
+  departmentId?: true
+  delayDays?: true
+  delayReason?: true
+  dependsOnId?: true
+  approvedById?: true
+  approvedAt?: true
   sortOrder?: true
   updatedAt?: true
   _all?: true
@@ -202,8 +254,16 @@ export type TnaTaskGroupByOutputType = {
   planId: string
   name: string
   plannedDate: Date
+  revisedDate: Date | null
   actualDate: Date | null
   status: $Enums.TnaTaskStatus
+  ownerId: string | null
+  departmentId: string | null
+  delayDays: number
+  delayReason: string | null
+  dependsOnId: string | null
+  approvedById: string | null
+  approvedAt: Date | null
   sortOrder: number
   updatedAt: Date
   _count: TnaTaskCountAggregateOutputType | null
@@ -236,11 +296,23 @@ export type TnaTaskWhereInput = {
   planId?: Prisma.StringFilter<"TnaTask"> | string
   name?: Prisma.StringFilter<"TnaTask"> | string
   plannedDate?: Prisma.DateTimeFilter<"TnaTask"> | Date | string
+  revisedDate?: Prisma.DateTimeNullableFilter<"TnaTask"> | Date | string | null
   actualDate?: Prisma.DateTimeNullableFilter<"TnaTask"> | Date | string | null
   status?: Prisma.EnumTnaTaskStatusFilter<"TnaTask"> | $Enums.TnaTaskStatus
+  ownerId?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  departmentId?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  delayDays?: Prisma.IntFilter<"TnaTask"> | number
+  delayReason?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  dependsOnId?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  approvedById?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  approvedAt?: Prisma.DateTimeNullableFilter<"TnaTask"> | Date | string | null
   sortOrder?: Prisma.IntFilter<"TnaTask"> | number
   updatedAt?: Prisma.DateTimeFilter<"TnaTask"> | Date | string
   plan?: Prisma.XOR<Prisma.TnaPlanScalarRelationFilter, Prisma.TnaPlanWhereInput>
+  owner?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
+  dependsOn?: Prisma.XOR<Prisma.TnaTaskNullableScalarRelationFilter, Prisma.TnaTaskWhereInput> | null
+  dependents?: Prisma.TnaTaskListRelationFilter
 }
 
 export type TnaTaskOrderByWithRelationInput = {
@@ -248,11 +320,23 @@ export type TnaTaskOrderByWithRelationInput = {
   planId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   plannedDate?: Prisma.SortOrder
+  revisedDate?: Prisma.SortOrderInput | Prisma.SortOrder
   actualDate?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
+  ownerId?: Prisma.SortOrderInput | Prisma.SortOrder
+  departmentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  delayDays?: Prisma.SortOrder
+  delayReason?: Prisma.SortOrderInput | Prisma.SortOrder
+  dependsOnId?: Prisma.SortOrderInput | Prisma.SortOrder
+  approvedById?: Prisma.SortOrderInput | Prisma.SortOrder
+  approvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   plan?: Prisma.TnaPlanOrderByWithRelationInput
+  owner?: Prisma.UserOrderByWithRelationInput
+  department?: Prisma.DepartmentOrderByWithRelationInput
+  dependsOn?: Prisma.TnaTaskOrderByWithRelationInput
+  dependents?: Prisma.TnaTaskOrderByRelationAggregateInput
 }
 
 export type TnaTaskWhereUniqueInput = Prisma.AtLeast<{
@@ -263,11 +347,23 @@ export type TnaTaskWhereUniqueInput = Prisma.AtLeast<{
   planId?: Prisma.StringFilter<"TnaTask"> | string
   name?: Prisma.StringFilter<"TnaTask"> | string
   plannedDate?: Prisma.DateTimeFilter<"TnaTask"> | Date | string
+  revisedDate?: Prisma.DateTimeNullableFilter<"TnaTask"> | Date | string | null
   actualDate?: Prisma.DateTimeNullableFilter<"TnaTask"> | Date | string | null
   status?: Prisma.EnumTnaTaskStatusFilter<"TnaTask"> | $Enums.TnaTaskStatus
+  ownerId?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  departmentId?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  delayDays?: Prisma.IntFilter<"TnaTask"> | number
+  delayReason?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  dependsOnId?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  approvedById?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  approvedAt?: Prisma.DateTimeNullableFilter<"TnaTask"> | Date | string | null
   sortOrder?: Prisma.IntFilter<"TnaTask"> | number
   updatedAt?: Prisma.DateTimeFilter<"TnaTask"> | Date | string
   plan?: Prisma.XOR<Prisma.TnaPlanScalarRelationFilter, Prisma.TnaPlanWhereInput>
+  owner?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
+  dependsOn?: Prisma.XOR<Prisma.TnaTaskNullableScalarRelationFilter, Prisma.TnaTaskWhereInput> | null
+  dependents?: Prisma.TnaTaskListRelationFilter
 }, "id">
 
 export type TnaTaskOrderByWithAggregationInput = {
@@ -275,8 +371,16 @@ export type TnaTaskOrderByWithAggregationInput = {
   planId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   plannedDate?: Prisma.SortOrder
+  revisedDate?: Prisma.SortOrderInput | Prisma.SortOrder
   actualDate?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
+  ownerId?: Prisma.SortOrderInput | Prisma.SortOrder
+  departmentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  delayDays?: Prisma.SortOrder
+  delayReason?: Prisma.SortOrderInput | Prisma.SortOrder
+  dependsOnId?: Prisma.SortOrderInput | Prisma.SortOrder
+  approvedById?: Prisma.SortOrderInput | Prisma.SortOrder
+  approvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.TnaTaskCountOrderByAggregateInput
@@ -294,8 +398,16 @@ export type TnaTaskScalarWhereWithAggregatesInput = {
   planId?: Prisma.StringWithAggregatesFilter<"TnaTask"> | string
   name?: Prisma.StringWithAggregatesFilter<"TnaTask"> | string
   plannedDate?: Prisma.DateTimeWithAggregatesFilter<"TnaTask"> | Date | string
+  revisedDate?: Prisma.DateTimeNullableWithAggregatesFilter<"TnaTask"> | Date | string | null
   actualDate?: Prisma.DateTimeNullableWithAggregatesFilter<"TnaTask"> | Date | string | null
   status?: Prisma.EnumTnaTaskStatusWithAggregatesFilter<"TnaTask"> | $Enums.TnaTaskStatus
+  ownerId?: Prisma.StringNullableWithAggregatesFilter<"TnaTask"> | string | null
+  departmentId?: Prisma.StringNullableWithAggregatesFilter<"TnaTask"> | string | null
+  delayDays?: Prisma.IntWithAggregatesFilter<"TnaTask"> | number
+  delayReason?: Prisma.StringNullableWithAggregatesFilter<"TnaTask"> | string | null
+  dependsOnId?: Prisma.StringNullableWithAggregatesFilter<"TnaTask"> | string | null
+  approvedById?: Prisma.StringNullableWithAggregatesFilter<"TnaTask"> | string | null
+  approvedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"TnaTask"> | Date | string | null
   sortOrder?: Prisma.IntWithAggregatesFilter<"TnaTask"> | number
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TnaTask"> | Date | string
 }
@@ -304,11 +416,20 @@ export type TnaTaskCreateInput = {
   id?: string
   name: string
   plannedDate: Date | string
+  revisedDate?: Date | string | null
   actualDate?: Date | string | null
   status?: $Enums.TnaTaskStatus
+  delayDays?: number
+  delayReason?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
   sortOrder?: number
   updatedAt?: Date | string
   plan: Prisma.TnaPlanCreateNestedOneWithoutTasksInput
+  owner?: Prisma.UserCreateNestedOneWithoutOwnedTnaTasksInput
+  department?: Prisma.DepartmentCreateNestedOneWithoutTnaTasksInput
+  dependsOn?: Prisma.TnaTaskCreateNestedOneWithoutDependentsInput
+  dependents?: Prisma.TnaTaskCreateNestedManyWithoutDependsOnInput
 }
 
 export type TnaTaskUncheckedCreateInput = {
@@ -316,21 +437,39 @@ export type TnaTaskUncheckedCreateInput = {
   planId: string
   name: string
   plannedDate: Date | string
+  revisedDate?: Date | string | null
   actualDate?: Date | string | null
   status?: $Enums.TnaTaskStatus
+  ownerId?: string | null
+  departmentId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  dependsOnId?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
   sortOrder?: number
   updatedAt?: Date | string
+  dependents?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutDependsOnInput
 }
 
 export type TnaTaskUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   plan?: Prisma.TnaPlanUpdateOneRequiredWithoutTasksNestedInput
+  owner?: Prisma.UserUpdateOneWithoutOwnedTnaTasksNestedInput
+  department?: Prisma.DepartmentUpdateOneWithoutTnaTasksNestedInput
+  dependsOn?: Prisma.TnaTaskUpdateOneWithoutDependentsNestedInput
+  dependents?: Prisma.TnaTaskUpdateManyWithoutDependsOnNestedInput
 }
 
 export type TnaTaskUncheckedUpdateInput = {
@@ -338,10 +477,19 @@ export type TnaTaskUncheckedUpdateInput = {
   planId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dependsOnId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dependents?: Prisma.TnaTaskUncheckedUpdateManyWithoutDependsOnNestedInput
 }
 
 export type TnaTaskCreateManyInput = {
@@ -349,8 +497,16 @@ export type TnaTaskCreateManyInput = {
   planId: string
   name: string
   plannedDate: Date | string
+  revisedDate?: Date | string | null
   actualDate?: Date | string | null
   status?: $Enums.TnaTaskStatus
+  ownerId?: string | null
+  departmentId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  dependsOnId?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
   sortOrder?: number
   updatedAt?: Date | string
 }
@@ -359,8 +515,13 @@ export type TnaTaskUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -370,8 +531,16 @@ export type TnaTaskUncheckedUpdateManyInput = {
   planId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dependsOnId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -386,18 +555,32 @@ export type TnaTaskOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type TnaTaskNullableScalarRelationFilter = {
+  is?: Prisma.TnaTaskWhereInput | null
+  isNot?: Prisma.TnaTaskWhereInput | null
+}
+
 export type TnaTaskCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   planId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   plannedDate?: Prisma.SortOrder
+  revisedDate?: Prisma.SortOrder
   actualDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  ownerId?: Prisma.SortOrder
+  departmentId?: Prisma.SortOrder
+  delayDays?: Prisma.SortOrder
+  delayReason?: Prisma.SortOrder
+  dependsOnId?: Prisma.SortOrder
+  approvedById?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type TnaTaskAvgOrderByAggregateInput = {
+  delayDays?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
 }
 
@@ -406,8 +589,16 @@ export type TnaTaskMaxOrderByAggregateInput = {
   planId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   plannedDate?: Prisma.SortOrder
+  revisedDate?: Prisma.SortOrder
   actualDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  ownerId?: Prisma.SortOrder
+  departmentId?: Prisma.SortOrder
+  delayDays?: Prisma.SortOrder
+  delayReason?: Prisma.SortOrder
+  dependsOnId?: Prisma.SortOrder
+  approvedById?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -417,14 +608,107 @@ export type TnaTaskMinOrderByAggregateInput = {
   planId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   plannedDate?: Prisma.SortOrder
+  revisedDate?: Prisma.SortOrder
   actualDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  ownerId?: Prisma.SortOrder
+  departmentId?: Prisma.SortOrder
+  delayDays?: Prisma.SortOrder
+  delayReason?: Prisma.SortOrder
+  dependsOnId?: Prisma.SortOrder
+  approvedById?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type TnaTaskSumOrderByAggregateInput = {
+  delayDays?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+}
+
+export type TnaTaskCreateNestedManyWithoutOwnerInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutOwnerInput, Prisma.TnaTaskUncheckedCreateWithoutOwnerInput> | Prisma.TnaTaskCreateWithoutOwnerInput[] | Prisma.TnaTaskUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutOwnerInput | Prisma.TnaTaskCreateOrConnectWithoutOwnerInput[]
+  createMany?: Prisma.TnaTaskCreateManyOwnerInputEnvelope
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+}
+
+export type TnaTaskUncheckedCreateNestedManyWithoutOwnerInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutOwnerInput, Prisma.TnaTaskUncheckedCreateWithoutOwnerInput> | Prisma.TnaTaskCreateWithoutOwnerInput[] | Prisma.TnaTaskUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutOwnerInput | Prisma.TnaTaskCreateOrConnectWithoutOwnerInput[]
+  createMany?: Prisma.TnaTaskCreateManyOwnerInputEnvelope
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+}
+
+export type TnaTaskUpdateManyWithoutOwnerNestedInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutOwnerInput, Prisma.TnaTaskUncheckedCreateWithoutOwnerInput> | Prisma.TnaTaskCreateWithoutOwnerInput[] | Prisma.TnaTaskUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutOwnerInput | Prisma.TnaTaskCreateOrConnectWithoutOwnerInput[]
+  upsert?: Prisma.TnaTaskUpsertWithWhereUniqueWithoutOwnerInput | Prisma.TnaTaskUpsertWithWhereUniqueWithoutOwnerInput[]
+  createMany?: Prisma.TnaTaskCreateManyOwnerInputEnvelope
+  set?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  disconnect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  delete?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  update?: Prisma.TnaTaskUpdateWithWhereUniqueWithoutOwnerInput | Prisma.TnaTaskUpdateWithWhereUniqueWithoutOwnerInput[]
+  updateMany?: Prisma.TnaTaskUpdateManyWithWhereWithoutOwnerInput | Prisma.TnaTaskUpdateManyWithWhereWithoutOwnerInput[]
+  deleteMany?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
+}
+
+export type TnaTaskUncheckedUpdateManyWithoutOwnerNestedInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutOwnerInput, Prisma.TnaTaskUncheckedCreateWithoutOwnerInput> | Prisma.TnaTaskCreateWithoutOwnerInput[] | Prisma.TnaTaskUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutOwnerInput | Prisma.TnaTaskCreateOrConnectWithoutOwnerInput[]
+  upsert?: Prisma.TnaTaskUpsertWithWhereUniqueWithoutOwnerInput | Prisma.TnaTaskUpsertWithWhereUniqueWithoutOwnerInput[]
+  createMany?: Prisma.TnaTaskCreateManyOwnerInputEnvelope
+  set?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  disconnect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  delete?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  update?: Prisma.TnaTaskUpdateWithWhereUniqueWithoutOwnerInput | Prisma.TnaTaskUpdateWithWhereUniqueWithoutOwnerInput[]
+  updateMany?: Prisma.TnaTaskUpdateManyWithWhereWithoutOwnerInput | Prisma.TnaTaskUpdateManyWithWhereWithoutOwnerInput[]
+  deleteMany?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
+}
+
+export type TnaTaskCreateNestedManyWithoutDepartmentInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutDepartmentInput, Prisma.TnaTaskUncheckedCreateWithoutDepartmentInput> | Prisma.TnaTaskCreateWithoutDepartmentInput[] | Prisma.TnaTaskUncheckedCreateWithoutDepartmentInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutDepartmentInput | Prisma.TnaTaskCreateOrConnectWithoutDepartmentInput[]
+  createMany?: Prisma.TnaTaskCreateManyDepartmentInputEnvelope
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+}
+
+export type TnaTaskUncheckedCreateNestedManyWithoutDepartmentInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutDepartmentInput, Prisma.TnaTaskUncheckedCreateWithoutDepartmentInput> | Prisma.TnaTaskCreateWithoutDepartmentInput[] | Prisma.TnaTaskUncheckedCreateWithoutDepartmentInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutDepartmentInput | Prisma.TnaTaskCreateOrConnectWithoutDepartmentInput[]
+  createMany?: Prisma.TnaTaskCreateManyDepartmentInputEnvelope
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+}
+
+export type TnaTaskUpdateManyWithoutDepartmentNestedInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutDepartmentInput, Prisma.TnaTaskUncheckedCreateWithoutDepartmentInput> | Prisma.TnaTaskCreateWithoutDepartmentInput[] | Prisma.TnaTaskUncheckedCreateWithoutDepartmentInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutDepartmentInput | Prisma.TnaTaskCreateOrConnectWithoutDepartmentInput[]
+  upsert?: Prisma.TnaTaskUpsertWithWhereUniqueWithoutDepartmentInput | Prisma.TnaTaskUpsertWithWhereUniqueWithoutDepartmentInput[]
+  createMany?: Prisma.TnaTaskCreateManyDepartmentInputEnvelope
+  set?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  disconnect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  delete?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  update?: Prisma.TnaTaskUpdateWithWhereUniqueWithoutDepartmentInput | Prisma.TnaTaskUpdateWithWhereUniqueWithoutDepartmentInput[]
+  updateMany?: Prisma.TnaTaskUpdateManyWithWhereWithoutDepartmentInput | Prisma.TnaTaskUpdateManyWithWhereWithoutDepartmentInput[]
+  deleteMany?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
+}
+
+export type TnaTaskUncheckedUpdateManyWithoutDepartmentNestedInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutDepartmentInput, Prisma.TnaTaskUncheckedCreateWithoutDepartmentInput> | Prisma.TnaTaskCreateWithoutDepartmentInput[] | Prisma.TnaTaskUncheckedCreateWithoutDepartmentInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutDepartmentInput | Prisma.TnaTaskCreateOrConnectWithoutDepartmentInput[]
+  upsert?: Prisma.TnaTaskUpsertWithWhereUniqueWithoutDepartmentInput | Prisma.TnaTaskUpsertWithWhereUniqueWithoutDepartmentInput[]
+  createMany?: Prisma.TnaTaskCreateManyDepartmentInputEnvelope
+  set?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  disconnect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  delete?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  update?: Prisma.TnaTaskUpdateWithWhereUniqueWithoutDepartmentInput | Prisma.TnaTaskUpdateWithWhereUniqueWithoutDepartmentInput[]
+  updateMany?: Prisma.TnaTaskUpdateManyWithWhereWithoutDepartmentInput | Prisma.TnaTaskUpdateManyWithWhereWithoutDepartmentInput[]
+  deleteMany?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
 }
 
 export type TnaTaskCreateNestedManyWithoutPlanInput = {
@@ -469,28 +753,254 @@ export type TnaTaskUncheckedUpdateManyWithoutPlanNestedInput = {
   deleteMany?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
 }
 
+export type TnaTaskCreateNestedOneWithoutDependentsInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutDependentsInput, Prisma.TnaTaskUncheckedCreateWithoutDependentsInput>
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutDependentsInput
+  connect?: Prisma.TnaTaskWhereUniqueInput
+}
+
+export type TnaTaskCreateNestedManyWithoutDependsOnInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutDependsOnInput, Prisma.TnaTaskUncheckedCreateWithoutDependsOnInput> | Prisma.TnaTaskCreateWithoutDependsOnInput[] | Prisma.TnaTaskUncheckedCreateWithoutDependsOnInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutDependsOnInput | Prisma.TnaTaskCreateOrConnectWithoutDependsOnInput[]
+  createMany?: Prisma.TnaTaskCreateManyDependsOnInputEnvelope
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+}
+
+export type TnaTaskUncheckedCreateNestedManyWithoutDependsOnInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutDependsOnInput, Prisma.TnaTaskUncheckedCreateWithoutDependsOnInput> | Prisma.TnaTaskCreateWithoutDependsOnInput[] | Prisma.TnaTaskUncheckedCreateWithoutDependsOnInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutDependsOnInput | Prisma.TnaTaskCreateOrConnectWithoutDependsOnInput[]
+  createMany?: Prisma.TnaTaskCreateManyDependsOnInputEnvelope
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+}
+
 export type EnumTnaTaskStatusFieldUpdateOperationsInput = {
   set?: $Enums.TnaTaskStatus
+}
+
+export type TnaTaskUpdateOneWithoutDependentsNestedInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutDependentsInput, Prisma.TnaTaskUncheckedCreateWithoutDependentsInput>
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutDependentsInput
+  upsert?: Prisma.TnaTaskUpsertWithoutDependentsInput
+  disconnect?: Prisma.TnaTaskWhereInput | boolean
+  delete?: Prisma.TnaTaskWhereInput | boolean
+  connect?: Prisma.TnaTaskWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TnaTaskUpdateToOneWithWhereWithoutDependentsInput, Prisma.TnaTaskUpdateWithoutDependentsInput>, Prisma.TnaTaskUncheckedUpdateWithoutDependentsInput>
+}
+
+export type TnaTaskUpdateManyWithoutDependsOnNestedInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutDependsOnInput, Prisma.TnaTaskUncheckedCreateWithoutDependsOnInput> | Prisma.TnaTaskCreateWithoutDependsOnInput[] | Prisma.TnaTaskUncheckedCreateWithoutDependsOnInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutDependsOnInput | Prisma.TnaTaskCreateOrConnectWithoutDependsOnInput[]
+  upsert?: Prisma.TnaTaskUpsertWithWhereUniqueWithoutDependsOnInput | Prisma.TnaTaskUpsertWithWhereUniqueWithoutDependsOnInput[]
+  createMany?: Prisma.TnaTaskCreateManyDependsOnInputEnvelope
+  set?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  disconnect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  delete?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  update?: Prisma.TnaTaskUpdateWithWhereUniqueWithoutDependsOnInput | Prisma.TnaTaskUpdateWithWhereUniqueWithoutDependsOnInput[]
+  updateMany?: Prisma.TnaTaskUpdateManyWithWhereWithoutDependsOnInput | Prisma.TnaTaskUpdateManyWithWhereWithoutDependsOnInput[]
+  deleteMany?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
+}
+
+export type TnaTaskUncheckedUpdateManyWithoutDependsOnNestedInput = {
+  create?: Prisma.XOR<Prisma.TnaTaskCreateWithoutDependsOnInput, Prisma.TnaTaskUncheckedCreateWithoutDependsOnInput> | Prisma.TnaTaskCreateWithoutDependsOnInput[] | Prisma.TnaTaskUncheckedCreateWithoutDependsOnInput[]
+  connectOrCreate?: Prisma.TnaTaskCreateOrConnectWithoutDependsOnInput | Prisma.TnaTaskCreateOrConnectWithoutDependsOnInput[]
+  upsert?: Prisma.TnaTaskUpsertWithWhereUniqueWithoutDependsOnInput | Prisma.TnaTaskUpsertWithWhereUniqueWithoutDependsOnInput[]
+  createMany?: Prisma.TnaTaskCreateManyDependsOnInputEnvelope
+  set?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  disconnect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  delete?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  connect?: Prisma.TnaTaskWhereUniqueInput | Prisma.TnaTaskWhereUniqueInput[]
+  update?: Prisma.TnaTaskUpdateWithWhereUniqueWithoutDependsOnInput | Prisma.TnaTaskUpdateWithWhereUniqueWithoutDependsOnInput[]
+  updateMany?: Prisma.TnaTaskUpdateManyWithWhereWithoutDependsOnInput | Prisma.TnaTaskUpdateManyWithWhereWithoutDependsOnInput[]
+  deleteMany?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
+}
+
+export type TnaTaskCreateWithoutOwnerInput = {
+  id?: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  delayDays?: number
+  delayReason?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+  plan: Prisma.TnaPlanCreateNestedOneWithoutTasksInput
+  department?: Prisma.DepartmentCreateNestedOneWithoutTnaTasksInput
+  dependsOn?: Prisma.TnaTaskCreateNestedOneWithoutDependentsInput
+  dependents?: Prisma.TnaTaskCreateNestedManyWithoutDependsOnInput
+}
+
+export type TnaTaskUncheckedCreateWithoutOwnerInput = {
+  id?: string
+  planId: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  departmentId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  dependsOnId?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+  dependents?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutDependsOnInput
+}
+
+export type TnaTaskCreateOrConnectWithoutOwnerInput = {
+  where: Prisma.TnaTaskWhereUniqueInput
+  create: Prisma.XOR<Prisma.TnaTaskCreateWithoutOwnerInput, Prisma.TnaTaskUncheckedCreateWithoutOwnerInput>
+}
+
+export type TnaTaskCreateManyOwnerInputEnvelope = {
+  data: Prisma.TnaTaskCreateManyOwnerInput | Prisma.TnaTaskCreateManyOwnerInput[]
+  skipDuplicates?: boolean
+}
+
+export type TnaTaskUpsertWithWhereUniqueWithoutOwnerInput = {
+  where: Prisma.TnaTaskWhereUniqueInput
+  update: Prisma.XOR<Prisma.TnaTaskUpdateWithoutOwnerInput, Prisma.TnaTaskUncheckedUpdateWithoutOwnerInput>
+  create: Prisma.XOR<Prisma.TnaTaskCreateWithoutOwnerInput, Prisma.TnaTaskUncheckedCreateWithoutOwnerInput>
+}
+
+export type TnaTaskUpdateWithWhereUniqueWithoutOwnerInput = {
+  where: Prisma.TnaTaskWhereUniqueInput
+  data: Prisma.XOR<Prisma.TnaTaskUpdateWithoutOwnerInput, Prisma.TnaTaskUncheckedUpdateWithoutOwnerInput>
+}
+
+export type TnaTaskUpdateManyWithWhereWithoutOwnerInput = {
+  where: Prisma.TnaTaskScalarWhereInput
+  data: Prisma.XOR<Prisma.TnaTaskUpdateManyMutationInput, Prisma.TnaTaskUncheckedUpdateManyWithoutOwnerInput>
+}
+
+export type TnaTaskScalarWhereInput = {
+  AND?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
+  OR?: Prisma.TnaTaskScalarWhereInput[]
+  NOT?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
+  id?: Prisma.StringFilter<"TnaTask"> | string
+  planId?: Prisma.StringFilter<"TnaTask"> | string
+  name?: Prisma.StringFilter<"TnaTask"> | string
+  plannedDate?: Prisma.DateTimeFilter<"TnaTask"> | Date | string
+  revisedDate?: Prisma.DateTimeNullableFilter<"TnaTask"> | Date | string | null
+  actualDate?: Prisma.DateTimeNullableFilter<"TnaTask"> | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFilter<"TnaTask"> | $Enums.TnaTaskStatus
+  ownerId?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  departmentId?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  delayDays?: Prisma.IntFilter<"TnaTask"> | number
+  delayReason?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  dependsOnId?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  approvedById?: Prisma.StringNullableFilter<"TnaTask"> | string | null
+  approvedAt?: Prisma.DateTimeNullableFilter<"TnaTask"> | Date | string | null
+  sortOrder?: Prisma.IntFilter<"TnaTask"> | number
+  updatedAt?: Prisma.DateTimeFilter<"TnaTask"> | Date | string
+}
+
+export type TnaTaskCreateWithoutDepartmentInput = {
+  id?: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  delayDays?: number
+  delayReason?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+  plan: Prisma.TnaPlanCreateNestedOneWithoutTasksInput
+  owner?: Prisma.UserCreateNestedOneWithoutOwnedTnaTasksInput
+  dependsOn?: Prisma.TnaTaskCreateNestedOneWithoutDependentsInput
+  dependents?: Prisma.TnaTaskCreateNestedManyWithoutDependsOnInput
+}
+
+export type TnaTaskUncheckedCreateWithoutDepartmentInput = {
+  id?: string
+  planId: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  ownerId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  dependsOnId?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+  dependents?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutDependsOnInput
+}
+
+export type TnaTaskCreateOrConnectWithoutDepartmentInput = {
+  where: Prisma.TnaTaskWhereUniqueInput
+  create: Prisma.XOR<Prisma.TnaTaskCreateWithoutDepartmentInput, Prisma.TnaTaskUncheckedCreateWithoutDepartmentInput>
+}
+
+export type TnaTaskCreateManyDepartmentInputEnvelope = {
+  data: Prisma.TnaTaskCreateManyDepartmentInput | Prisma.TnaTaskCreateManyDepartmentInput[]
+  skipDuplicates?: boolean
+}
+
+export type TnaTaskUpsertWithWhereUniqueWithoutDepartmentInput = {
+  where: Prisma.TnaTaskWhereUniqueInput
+  update: Prisma.XOR<Prisma.TnaTaskUpdateWithoutDepartmentInput, Prisma.TnaTaskUncheckedUpdateWithoutDepartmentInput>
+  create: Prisma.XOR<Prisma.TnaTaskCreateWithoutDepartmentInput, Prisma.TnaTaskUncheckedCreateWithoutDepartmentInput>
+}
+
+export type TnaTaskUpdateWithWhereUniqueWithoutDepartmentInput = {
+  where: Prisma.TnaTaskWhereUniqueInput
+  data: Prisma.XOR<Prisma.TnaTaskUpdateWithoutDepartmentInput, Prisma.TnaTaskUncheckedUpdateWithoutDepartmentInput>
+}
+
+export type TnaTaskUpdateManyWithWhereWithoutDepartmentInput = {
+  where: Prisma.TnaTaskScalarWhereInput
+  data: Prisma.XOR<Prisma.TnaTaskUpdateManyMutationInput, Prisma.TnaTaskUncheckedUpdateManyWithoutDepartmentInput>
 }
 
 export type TnaTaskCreateWithoutPlanInput = {
   id?: string
   name: string
   plannedDate: Date | string
+  revisedDate?: Date | string | null
   actualDate?: Date | string | null
   status?: $Enums.TnaTaskStatus
+  delayDays?: number
+  delayReason?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
   sortOrder?: number
   updatedAt?: Date | string
+  owner?: Prisma.UserCreateNestedOneWithoutOwnedTnaTasksInput
+  department?: Prisma.DepartmentCreateNestedOneWithoutTnaTasksInput
+  dependsOn?: Prisma.TnaTaskCreateNestedOneWithoutDependentsInput
+  dependents?: Prisma.TnaTaskCreateNestedManyWithoutDependsOnInput
 }
 
 export type TnaTaskUncheckedCreateWithoutPlanInput = {
   id?: string
   name: string
   plannedDate: Date | string
+  revisedDate?: Date | string | null
   actualDate?: Date | string | null
   status?: $Enums.TnaTaskStatus
+  ownerId?: string | null
+  departmentId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  dependsOnId?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
   sortOrder?: number
   updatedAt?: Date | string
+  dependents?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutDependsOnInput
 }
 
 export type TnaTaskCreateOrConnectWithoutPlanInput = {
@@ -519,26 +1029,324 @@ export type TnaTaskUpdateManyWithWhereWithoutPlanInput = {
   data: Prisma.XOR<Prisma.TnaTaskUpdateManyMutationInput, Prisma.TnaTaskUncheckedUpdateManyWithoutPlanInput>
 }
 
-export type TnaTaskScalarWhereInput = {
-  AND?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
-  OR?: Prisma.TnaTaskScalarWhereInput[]
-  NOT?: Prisma.TnaTaskScalarWhereInput | Prisma.TnaTaskScalarWhereInput[]
-  id?: Prisma.StringFilter<"TnaTask"> | string
-  planId?: Prisma.StringFilter<"TnaTask"> | string
-  name?: Prisma.StringFilter<"TnaTask"> | string
-  plannedDate?: Prisma.DateTimeFilter<"TnaTask"> | Date | string
-  actualDate?: Prisma.DateTimeNullableFilter<"TnaTask"> | Date | string | null
-  status?: Prisma.EnumTnaTaskStatusFilter<"TnaTask"> | $Enums.TnaTaskStatus
-  sortOrder?: Prisma.IntFilter<"TnaTask"> | number
-  updatedAt?: Prisma.DateTimeFilter<"TnaTask"> | Date | string
+export type TnaTaskCreateWithoutDependentsInput = {
+  id?: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  delayDays?: number
+  delayReason?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+  plan: Prisma.TnaPlanCreateNestedOneWithoutTasksInput
+  owner?: Prisma.UserCreateNestedOneWithoutOwnedTnaTasksInput
+  department?: Prisma.DepartmentCreateNestedOneWithoutTnaTasksInput
+  dependsOn?: Prisma.TnaTaskCreateNestedOneWithoutDependentsInput
+}
+
+export type TnaTaskUncheckedCreateWithoutDependentsInput = {
+  id?: string
+  planId: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  ownerId?: string | null
+  departmentId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  dependsOnId?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+}
+
+export type TnaTaskCreateOrConnectWithoutDependentsInput = {
+  where: Prisma.TnaTaskWhereUniqueInput
+  create: Prisma.XOR<Prisma.TnaTaskCreateWithoutDependentsInput, Prisma.TnaTaskUncheckedCreateWithoutDependentsInput>
+}
+
+export type TnaTaskCreateWithoutDependsOnInput = {
+  id?: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  delayDays?: number
+  delayReason?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+  plan: Prisma.TnaPlanCreateNestedOneWithoutTasksInput
+  owner?: Prisma.UserCreateNestedOneWithoutOwnedTnaTasksInput
+  department?: Prisma.DepartmentCreateNestedOneWithoutTnaTasksInput
+  dependents?: Prisma.TnaTaskCreateNestedManyWithoutDependsOnInput
+}
+
+export type TnaTaskUncheckedCreateWithoutDependsOnInput = {
+  id?: string
+  planId: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  ownerId?: string | null
+  departmentId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+  dependents?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutDependsOnInput
+}
+
+export type TnaTaskCreateOrConnectWithoutDependsOnInput = {
+  where: Prisma.TnaTaskWhereUniqueInput
+  create: Prisma.XOR<Prisma.TnaTaskCreateWithoutDependsOnInput, Prisma.TnaTaskUncheckedCreateWithoutDependsOnInput>
+}
+
+export type TnaTaskCreateManyDependsOnInputEnvelope = {
+  data: Prisma.TnaTaskCreateManyDependsOnInput | Prisma.TnaTaskCreateManyDependsOnInput[]
+  skipDuplicates?: boolean
+}
+
+export type TnaTaskUpsertWithoutDependentsInput = {
+  update: Prisma.XOR<Prisma.TnaTaskUpdateWithoutDependentsInput, Prisma.TnaTaskUncheckedUpdateWithoutDependentsInput>
+  create: Prisma.XOR<Prisma.TnaTaskCreateWithoutDependentsInput, Prisma.TnaTaskUncheckedCreateWithoutDependentsInput>
+  where?: Prisma.TnaTaskWhereInput
+}
+
+export type TnaTaskUpdateToOneWithWhereWithoutDependentsInput = {
+  where?: Prisma.TnaTaskWhereInput
+  data: Prisma.XOR<Prisma.TnaTaskUpdateWithoutDependentsInput, Prisma.TnaTaskUncheckedUpdateWithoutDependentsInput>
+}
+
+export type TnaTaskUpdateWithoutDependentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  plan?: Prisma.TnaPlanUpdateOneRequiredWithoutTasksNestedInput
+  owner?: Prisma.UserUpdateOneWithoutOwnedTnaTasksNestedInput
+  department?: Prisma.DepartmentUpdateOneWithoutTnaTasksNestedInput
+  dependsOn?: Prisma.TnaTaskUpdateOneWithoutDependentsNestedInput
+}
+
+export type TnaTaskUncheckedUpdateWithoutDependentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  planId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dependsOnId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TnaTaskUpsertWithWhereUniqueWithoutDependsOnInput = {
+  where: Prisma.TnaTaskWhereUniqueInput
+  update: Prisma.XOR<Prisma.TnaTaskUpdateWithoutDependsOnInput, Prisma.TnaTaskUncheckedUpdateWithoutDependsOnInput>
+  create: Prisma.XOR<Prisma.TnaTaskCreateWithoutDependsOnInput, Prisma.TnaTaskUncheckedCreateWithoutDependsOnInput>
+}
+
+export type TnaTaskUpdateWithWhereUniqueWithoutDependsOnInput = {
+  where: Prisma.TnaTaskWhereUniqueInput
+  data: Prisma.XOR<Prisma.TnaTaskUpdateWithoutDependsOnInput, Prisma.TnaTaskUncheckedUpdateWithoutDependsOnInput>
+}
+
+export type TnaTaskUpdateManyWithWhereWithoutDependsOnInput = {
+  where: Prisma.TnaTaskScalarWhereInput
+  data: Prisma.XOR<Prisma.TnaTaskUpdateManyMutationInput, Prisma.TnaTaskUncheckedUpdateManyWithoutDependsOnInput>
+}
+
+export type TnaTaskCreateManyOwnerInput = {
+  id?: string
+  planId: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  departmentId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  dependsOnId?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+}
+
+export type TnaTaskUpdateWithoutOwnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  plan?: Prisma.TnaPlanUpdateOneRequiredWithoutTasksNestedInput
+  department?: Prisma.DepartmentUpdateOneWithoutTnaTasksNestedInput
+  dependsOn?: Prisma.TnaTaskUpdateOneWithoutDependentsNestedInput
+  dependents?: Prisma.TnaTaskUpdateManyWithoutDependsOnNestedInput
+}
+
+export type TnaTaskUncheckedUpdateWithoutOwnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  planId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dependsOnId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dependents?: Prisma.TnaTaskUncheckedUpdateManyWithoutDependsOnNestedInput
+}
+
+export type TnaTaskUncheckedUpdateManyWithoutOwnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  planId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dependsOnId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TnaTaskCreateManyDepartmentInput = {
+  id?: string
+  planId: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  ownerId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  dependsOnId?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+}
+
+export type TnaTaskUpdateWithoutDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  plan?: Prisma.TnaPlanUpdateOneRequiredWithoutTasksNestedInput
+  owner?: Prisma.UserUpdateOneWithoutOwnedTnaTasksNestedInput
+  dependsOn?: Prisma.TnaTaskUpdateOneWithoutDependentsNestedInput
+  dependents?: Prisma.TnaTaskUpdateManyWithoutDependsOnNestedInput
+}
+
+export type TnaTaskUncheckedUpdateWithoutDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  planId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dependsOnId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dependents?: Prisma.TnaTaskUncheckedUpdateManyWithoutDependsOnNestedInput
+}
+
+export type TnaTaskUncheckedUpdateManyWithoutDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  planId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dependsOnId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TnaTaskCreateManyPlanInput = {
   id?: string
   name: string
   plannedDate: Date | string
+  revisedDate?: Date | string | null
   actualDate?: Date | string | null
   status?: $Enums.TnaTaskStatus
+  ownerId?: string | null
+  departmentId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  dependsOnId?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
   sortOrder?: number
   updatedAt?: Date | string
 }
@@ -547,32 +1355,161 @@ export type TnaTaskUpdateWithoutPlanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneWithoutOwnedTnaTasksNestedInput
+  department?: Prisma.DepartmentUpdateOneWithoutTnaTasksNestedInput
+  dependsOn?: Prisma.TnaTaskUpdateOneWithoutDependentsNestedInput
+  dependents?: Prisma.TnaTaskUpdateManyWithoutDependsOnNestedInput
 }
 
 export type TnaTaskUncheckedUpdateWithoutPlanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dependsOnId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dependents?: Prisma.TnaTaskUncheckedUpdateManyWithoutDependsOnNestedInput
 }
 
 export type TnaTaskUncheckedUpdateManyWithoutPlanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dependsOnId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type TnaTaskCreateManyDependsOnInput = {
+  id?: string
+  planId: string
+  name: string
+  plannedDate: Date | string
+  revisedDate?: Date | string | null
+  actualDate?: Date | string | null
+  status?: $Enums.TnaTaskStatus
+  ownerId?: string | null
+  departmentId?: string | null
+  delayDays?: number
+  delayReason?: string | null
+  approvedById?: string | null
+  approvedAt?: Date | string | null
+  sortOrder?: number
+  updatedAt?: Date | string
+}
+
+export type TnaTaskUpdateWithoutDependsOnInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  plan?: Prisma.TnaPlanUpdateOneRequiredWithoutTasksNestedInput
+  owner?: Prisma.UserUpdateOneWithoutOwnedTnaTasksNestedInput
+  department?: Prisma.DepartmentUpdateOneWithoutTnaTasksNestedInput
+  dependents?: Prisma.TnaTaskUpdateManyWithoutDependsOnNestedInput
+}
+
+export type TnaTaskUncheckedUpdateWithoutDependsOnInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  planId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dependents?: Prisma.TnaTaskUncheckedUpdateManyWithoutDependsOnNestedInput
+}
+
+export type TnaTaskUncheckedUpdateManyWithoutDependsOnInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  planId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  plannedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  actualDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumTnaTaskStatusFieldUpdateOperationsInput | $Enums.TnaTaskStatus
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  delayDays?: Prisma.IntFieldUpdateOperationsInput | number
+  delayReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type TnaTaskCountOutputType
+ */
+
+export type TnaTaskCountOutputType = {
+  dependents: number
+}
+
+export type TnaTaskCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  dependents?: boolean | TnaTaskCountOutputTypeCountDependentsArgs
+}
+
+/**
+ * TnaTaskCountOutputType without action
+ */
+export type TnaTaskCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TnaTaskCountOutputType
+   */
+  select?: Prisma.TnaTaskCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * TnaTaskCountOutputType without action
+ */
+export type TnaTaskCountOutputTypeCountDependentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TnaTaskWhereInput
+}
 
 
 export type TnaTaskSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -580,11 +1517,24 @@ export type TnaTaskSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   planId?: boolean
   name?: boolean
   plannedDate?: boolean
+  revisedDate?: boolean
   actualDate?: boolean
   status?: boolean
+  ownerId?: boolean
+  departmentId?: boolean
+  delayDays?: boolean
+  delayReason?: boolean
+  dependsOnId?: boolean
+  approvedById?: boolean
+  approvedAt?: boolean
   sortOrder?: boolean
   updatedAt?: boolean
   plan?: boolean | Prisma.TnaPlanDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.TnaTask$ownerArgs<ExtArgs>
+  department?: boolean | Prisma.TnaTask$departmentArgs<ExtArgs>
+  dependsOn?: boolean | Prisma.TnaTask$dependsOnArgs<ExtArgs>
+  dependents?: boolean | Prisma.TnaTask$dependentsArgs<ExtArgs>
+  _count?: boolean | Prisma.TnaTaskCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tnaTask"]>
 
 export type TnaTaskSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -592,11 +1542,22 @@ export type TnaTaskSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   planId?: boolean
   name?: boolean
   plannedDate?: boolean
+  revisedDate?: boolean
   actualDate?: boolean
   status?: boolean
+  ownerId?: boolean
+  departmentId?: boolean
+  delayDays?: boolean
+  delayReason?: boolean
+  dependsOnId?: boolean
+  approvedById?: boolean
+  approvedAt?: boolean
   sortOrder?: boolean
   updatedAt?: boolean
   plan?: boolean | Prisma.TnaPlanDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.TnaTask$ownerArgs<ExtArgs>
+  department?: boolean | Prisma.TnaTask$departmentArgs<ExtArgs>
+  dependsOn?: boolean | Prisma.TnaTask$dependsOnArgs<ExtArgs>
 }, ExtArgs["result"]["tnaTask"]>
 
 export type TnaTaskSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -604,11 +1565,22 @@ export type TnaTaskSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   planId?: boolean
   name?: boolean
   plannedDate?: boolean
+  revisedDate?: boolean
   actualDate?: boolean
   status?: boolean
+  ownerId?: boolean
+  departmentId?: boolean
+  delayDays?: boolean
+  delayReason?: boolean
+  dependsOnId?: boolean
+  approvedById?: boolean
+  approvedAt?: boolean
   sortOrder?: boolean
   updatedAt?: boolean
   plan?: boolean | Prisma.TnaPlanDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.TnaTask$ownerArgs<ExtArgs>
+  department?: boolean | Prisma.TnaTask$departmentArgs<ExtArgs>
+  dependsOn?: boolean | Prisma.TnaTask$dependsOnArgs<ExtArgs>
 }, ExtArgs["result"]["tnaTask"]>
 
 export type TnaTaskSelectScalar = {
@@ -616,35 +1588,66 @@ export type TnaTaskSelectScalar = {
   planId?: boolean
   name?: boolean
   plannedDate?: boolean
+  revisedDate?: boolean
   actualDate?: boolean
   status?: boolean
+  ownerId?: boolean
+  departmentId?: boolean
+  delayDays?: boolean
+  delayReason?: boolean
+  dependsOnId?: boolean
+  approvedById?: boolean
+  approvedAt?: boolean
   sortOrder?: boolean
   updatedAt?: boolean
 }
 
-export type TnaTaskOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "planId" | "name" | "plannedDate" | "actualDate" | "status" | "sortOrder" | "updatedAt", ExtArgs["result"]["tnaTask"]>
+export type TnaTaskOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "planId" | "name" | "plannedDate" | "revisedDate" | "actualDate" | "status" | "ownerId" | "departmentId" | "delayDays" | "delayReason" | "dependsOnId" | "approvedById" | "approvedAt" | "sortOrder" | "updatedAt", ExtArgs["result"]["tnaTask"]>
 export type TnaTaskInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   plan?: boolean | Prisma.TnaPlanDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.TnaTask$ownerArgs<ExtArgs>
+  department?: boolean | Prisma.TnaTask$departmentArgs<ExtArgs>
+  dependsOn?: boolean | Prisma.TnaTask$dependsOnArgs<ExtArgs>
+  dependents?: boolean | Prisma.TnaTask$dependentsArgs<ExtArgs>
+  _count?: boolean | Prisma.TnaTaskCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type TnaTaskIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   plan?: boolean | Prisma.TnaPlanDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.TnaTask$ownerArgs<ExtArgs>
+  department?: boolean | Prisma.TnaTask$departmentArgs<ExtArgs>
+  dependsOn?: boolean | Prisma.TnaTask$dependsOnArgs<ExtArgs>
 }
 export type TnaTaskIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   plan?: boolean | Prisma.TnaPlanDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.TnaTask$ownerArgs<ExtArgs>
+  department?: boolean | Prisma.TnaTask$departmentArgs<ExtArgs>
+  dependsOn?: boolean | Prisma.TnaTask$dependsOnArgs<ExtArgs>
 }
 
 export type $TnaTaskPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "TnaTask"
   objects: {
     plan: Prisma.$TnaPlanPayload<ExtArgs>
+    owner: Prisma.$UserPayload<ExtArgs> | null
+    department: Prisma.$DepartmentPayload<ExtArgs> | null
+    dependsOn: Prisma.$TnaTaskPayload<ExtArgs> | null
+    dependents: Prisma.$TnaTaskPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     planId: string
     name: string
     plannedDate: Date
+    revisedDate: Date | null
     actualDate: Date | null
     status: $Enums.TnaTaskStatus
+    ownerId: string | null
+    departmentId: string | null
+    delayDays: number
+    delayReason: string | null
+    dependsOnId: string | null
+    approvedById: string | null
+    approvedAt: Date | null
     sortOrder: number
     updatedAt: Date
   }, ExtArgs["result"]["tnaTask"]>
@@ -1042,6 +2045,10 @@ readonly fields: TnaTaskFieldRefs;
 export interface Prisma__TnaTaskClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   plan<T extends Prisma.TnaPlanDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaPlanDefaultArgs<ExtArgs>>): Prisma.Prisma__TnaPlanClient<runtime.Types.Result.GetResult<Prisma.$TnaPlanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  owner<T extends Prisma.TnaTask$ownerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaTask$ownerArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  department<T extends Prisma.TnaTask$departmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaTask$departmentArgs<ExtArgs>>): Prisma.Prisma__DepartmentClient<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  dependsOn<T extends Prisma.TnaTask$dependsOnArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaTask$dependsOnArgs<ExtArgs>>): Prisma.Prisma__TnaTaskClient<runtime.Types.Result.GetResult<Prisma.$TnaTaskPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  dependents<T extends Prisma.TnaTask$dependentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaTask$dependentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaTaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1075,8 +2082,16 @@ export interface TnaTaskFieldRefs {
   readonly planId: Prisma.FieldRef<"TnaTask", 'String'>
   readonly name: Prisma.FieldRef<"TnaTask", 'String'>
   readonly plannedDate: Prisma.FieldRef<"TnaTask", 'DateTime'>
+  readonly revisedDate: Prisma.FieldRef<"TnaTask", 'DateTime'>
   readonly actualDate: Prisma.FieldRef<"TnaTask", 'DateTime'>
   readonly status: Prisma.FieldRef<"TnaTask", 'TnaTaskStatus'>
+  readonly ownerId: Prisma.FieldRef<"TnaTask", 'String'>
+  readonly departmentId: Prisma.FieldRef<"TnaTask", 'String'>
+  readonly delayDays: Prisma.FieldRef<"TnaTask", 'Int'>
+  readonly delayReason: Prisma.FieldRef<"TnaTask", 'String'>
+  readonly dependsOnId: Prisma.FieldRef<"TnaTask", 'String'>
+  readonly approvedById: Prisma.FieldRef<"TnaTask", 'String'>
+  readonly approvedAt: Prisma.FieldRef<"TnaTask", 'DateTime'>
   readonly sortOrder: Prisma.FieldRef<"TnaTask", 'Int'>
   readonly updatedAt: Prisma.FieldRef<"TnaTask", 'DateTime'>
 }
@@ -1477,6 +2492,87 @@ export type TnaTaskDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many TnaTasks to delete.
    */
   limit?: number
+}
+
+/**
+ * TnaTask.owner
+ */
+export type TnaTask$ownerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * TnaTask.department
+ */
+export type TnaTask$departmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Department
+   */
+  select?: Prisma.DepartmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Department
+   */
+  omit?: Prisma.DepartmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DepartmentInclude<ExtArgs> | null
+  where?: Prisma.DepartmentWhereInput
+}
+
+/**
+ * TnaTask.dependsOn
+ */
+export type TnaTask$dependsOnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TnaTask
+   */
+  select?: Prisma.TnaTaskSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TnaTask
+   */
+  omit?: Prisma.TnaTaskOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TnaTaskInclude<ExtArgs> | null
+  where?: Prisma.TnaTaskWhereInput
+}
+
+/**
+ * TnaTask.dependents
+ */
+export type TnaTask$dependentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TnaTask
+   */
+  select?: Prisma.TnaTaskSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TnaTask
+   */
+  omit?: Prisma.TnaTaskOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TnaTaskInclude<ExtArgs> | null
+  where?: Prisma.TnaTaskWhereInput
+  orderBy?: Prisma.TnaTaskOrderByWithRelationInput | Prisma.TnaTaskOrderByWithRelationInput[]
+  cursor?: Prisma.TnaTaskWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TnaTaskScalarFieldEnum | Prisma.TnaTaskScalarFieldEnum[]
 }
 
 /**

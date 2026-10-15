@@ -32,6 +32,7 @@ export type TechPackMinAggregateOutputType = {
   fileUrl: string | null
   notes: string | null
   createdAt: Date | null
+  docType: $Enums.StyleDocType | null
 }
 
 export type TechPackMaxAggregateOutputType = {
@@ -42,6 +43,7 @@ export type TechPackMaxAggregateOutputType = {
   fileUrl: string | null
   notes: string | null
   createdAt: Date | null
+  docType: $Enums.StyleDocType | null
 }
 
 export type TechPackCountAggregateOutputType = {
@@ -52,6 +54,7 @@ export type TechPackCountAggregateOutputType = {
   fileUrl: number
   notes: number
   createdAt: number
+  docType: number
   _all: number
 }
 
@@ -64,6 +67,7 @@ export type TechPackMinAggregateInputType = {
   fileUrl?: true
   notes?: true
   createdAt?: true
+  docType?: true
 }
 
 export type TechPackMaxAggregateInputType = {
@@ -74,6 +78,7 @@ export type TechPackMaxAggregateInputType = {
   fileUrl?: true
   notes?: true
   createdAt?: true
+  docType?: true
 }
 
 export type TechPackCountAggregateInputType = {
@@ -84,6 +89,7 @@ export type TechPackCountAggregateInputType = {
   fileUrl?: true
   notes?: true
   createdAt?: true
+  docType?: true
   _all?: true
 }
 
@@ -167,6 +173,7 @@ export type TechPackGroupByOutputType = {
   fileUrl: string | null
   notes: string | null
   createdAt: Date
+  docType: $Enums.StyleDocType
   _count: TechPackCountAggregateOutputType | null
   _min: TechPackMinAggregateOutputType | null
   _max: TechPackMaxAggregateOutputType | null
@@ -198,6 +205,7 @@ export type TechPackWhereInput = {
   fileUrl?: Prisma.StringNullableFilter<"TechPack"> | string | null
   notes?: Prisma.StringNullableFilter<"TechPack"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TechPack"> | Date | string
+  docType?: Prisma.EnumStyleDocTypeFilter<"TechPack"> | $Enums.StyleDocType
   style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
 }
 
@@ -209,6 +217,7 @@ export type TechPackOrderByWithRelationInput = {
   fileUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  docType?: Prisma.SortOrder
   style?: Prisma.StyleOrderByWithRelationInput
 }
 
@@ -223,6 +232,7 @@ export type TechPackWhereUniqueInput = Prisma.AtLeast<{
   fileUrl?: Prisma.StringNullableFilter<"TechPack"> | string | null
   notes?: Prisma.StringNullableFilter<"TechPack"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TechPack"> | Date | string
+  docType?: Prisma.EnumStyleDocTypeFilter<"TechPack"> | $Enums.StyleDocType
   style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
 }, "id">
 
@@ -234,6 +244,7 @@ export type TechPackOrderByWithAggregationInput = {
   fileUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  docType?: Prisma.SortOrder
   _count?: Prisma.TechPackCountOrderByAggregateInput
   _max?: Prisma.TechPackMaxOrderByAggregateInput
   _min?: Prisma.TechPackMinOrderByAggregateInput
@@ -250,6 +261,7 @@ export type TechPackScalarWhereWithAggregatesInput = {
   fileUrl?: Prisma.StringNullableWithAggregatesFilter<"TechPack"> | string | null
   notes?: Prisma.StringNullableWithAggregatesFilter<"TechPack"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TechPack"> | Date | string
+  docType?: Prisma.EnumStyleDocTypeWithAggregatesFilter<"TechPack"> | $Enums.StyleDocType
 }
 
 export type TechPackCreateInput = {
@@ -259,6 +271,7 @@ export type TechPackCreateInput = {
   fileUrl?: string | null
   notes?: string | null
   createdAt?: Date | string
+  docType?: $Enums.StyleDocType
   style: Prisma.StyleCreateNestedOneWithoutTechPacksInput
 }
 
@@ -270,6 +283,7 @@ export type TechPackUncheckedCreateInput = {
   fileUrl?: string | null
   notes?: string | null
   createdAt?: Date | string
+  docType?: $Enums.StyleDocType
 }
 
 export type TechPackUpdateInput = {
@@ -279,6 +293,7 @@ export type TechPackUpdateInput = {
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  docType?: Prisma.EnumStyleDocTypeFieldUpdateOperationsInput | $Enums.StyleDocType
   style?: Prisma.StyleUpdateOneRequiredWithoutTechPacksNestedInput
 }
 
@@ -290,6 +305,7 @@ export type TechPackUncheckedUpdateInput = {
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  docType?: Prisma.EnumStyleDocTypeFieldUpdateOperationsInput | $Enums.StyleDocType
 }
 
 export type TechPackCreateManyInput = {
@@ -300,6 +316,7 @@ export type TechPackCreateManyInput = {
   fileUrl?: string | null
   notes?: string | null
   createdAt?: Date | string
+  docType?: $Enums.StyleDocType
 }
 
 export type TechPackUpdateManyMutationInput = {
@@ -309,6 +326,7 @@ export type TechPackUpdateManyMutationInput = {
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  docType?: Prisma.EnumStyleDocTypeFieldUpdateOperationsInput | $Enums.StyleDocType
 }
 
 export type TechPackUncheckedUpdateManyInput = {
@@ -319,6 +337,7 @@ export type TechPackUncheckedUpdateManyInput = {
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  docType?: Prisma.EnumStyleDocTypeFieldUpdateOperationsInput | $Enums.StyleDocType
 }
 
 export type TechPackListRelationFilter = {
@@ -339,6 +358,7 @@ export type TechPackCountOrderByAggregateInput = {
   fileUrl?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  docType?: Prisma.SortOrder
 }
 
 export type TechPackMaxOrderByAggregateInput = {
@@ -349,6 +369,7 @@ export type TechPackMaxOrderByAggregateInput = {
   fileUrl?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  docType?: Prisma.SortOrder
 }
 
 export type TechPackMinOrderByAggregateInput = {
@@ -359,6 +380,7 @@ export type TechPackMinOrderByAggregateInput = {
   fileUrl?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  docType?: Prisma.SortOrder
 }
 
 export type TechPackCreateNestedManyWithoutStyleInput = {
@@ -403,6 +425,10 @@ export type TechPackUncheckedUpdateManyWithoutStyleNestedInput = {
   deleteMany?: Prisma.TechPackScalarWhereInput | Prisma.TechPackScalarWhereInput[]
 }
 
+export type EnumStyleDocTypeFieldUpdateOperationsInput = {
+  set?: $Enums.StyleDocType
+}
+
 export type TechPackCreateWithoutStyleInput = {
   id?: string
   title: string
@@ -410,6 +436,7 @@ export type TechPackCreateWithoutStyleInput = {
   fileUrl?: string | null
   notes?: string | null
   createdAt?: Date | string
+  docType?: $Enums.StyleDocType
 }
 
 export type TechPackUncheckedCreateWithoutStyleInput = {
@@ -419,6 +446,7 @@ export type TechPackUncheckedCreateWithoutStyleInput = {
   fileUrl?: string | null
   notes?: string | null
   createdAt?: Date | string
+  docType?: $Enums.StyleDocType
 }
 
 export type TechPackCreateOrConnectWithoutStyleInput = {
@@ -458,6 +486,7 @@ export type TechPackScalarWhereInput = {
   fileUrl?: Prisma.StringNullableFilter<"TechPack"> | string | null
   notes?: Prisma.StringNullableFilter<"TechPack"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TechPack"> | Date | string
+  docType?: Prisma.EnumStyleDocTypeFilter<"TechPack"> | $Enums.StyleDocType
 }
 
 export type TechPackCreateManyStyleInput = {
@@ -467,6 +496,7 @@ export type TechPackCreateManyStyleInput = {
   fileUrl?: string | null
   notes?: string | null
   createdAt?: Date | string
+  docType?: $Enums.StyleDocType
 }
 
 export type TechPackUpdateWithoutStyleInput = {
@@ -476,6 +506,7 @@ export type TechPackUpdateWithoutStyleInput = {
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  docType?: Prisma.EnumStyleDocTypeFieldUpdateOperationsInput | $Enums.StyleDocType
 }
 
 export type TechPackUncheckedUpdateWithoutStyleInput = {
@@ -485,6 +516,7 @@ export type TechPackUncheckedUpdateWithoutStyleInput = {
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  docType?: Prisma.EnumStyleDocTypeFieldUpdateOperationsInput | $Enums.StyleDocType
 }
 
 export type TechPackUncheckedUpdateManyWithoutStyleInput = {
@@ -494,6 +526,7 @@ export type TechPackUncheckedUpdateManyWithoutStyleInput = {
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  docType?: Prisma.EnumStyleDocTypeFieldUpdateOperationsInput | $Enums.StyleDocType
 }
 
 
@@ -506,6 +539,7 @@ export type TechPackSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   fileUrl?: boolean
   notes?: boolean
   createdAt?: boolean
+  docType?: boolean
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["techPack"]>
 
@@ -517,6 +551,7 @@ export type TechPackSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   fileUrl?: boolean
   notes?: boolean
   createdAt?: boolean
+  docType?: boolean
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["techPack"]>
 
@@ -528,6 +563,7 @@ export type TechPackSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   fileUrl?: boolean
   notes?: boolean
   createdAt?: boolean
+  docType?: boolean
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["techPack"]>
 
@@ -539,9 +575,10 @@ export type TechPackSelectScalar = {
   fileUrl?: boolean
   notes?: boolean
   createdAt?: boolean
+  docType?: boolean
 }
 
-export type TechPackOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "styleId" | "title" | "version" | "fileUrl" | "notes" | "createdAt", ExtArgs["result"]["techPack"]>
+export type TechPackOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "styleId" | "title" | "version" | "fileUrl" | "notes" | "createdAt" | "docType", ExtArgs["result"]["techPack"]>
 export type TechPackInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }
@@ -565,6 +602,7 @@ export type $TechPackPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     fileUrl: string | null
     notes: string | null
     createdAt: Date
+    docType: $Enums.StyleDocType
   }, ExtArgs["result"]["techPack"]>
   composites: {}
 }
@@ -996,6 +1034,7 @@ export interface TechPackFieldRefs {
   readonly fileUrl: Prisma.FieldRef<"TechPack", 'String'>
   readonly notes: Prisma.FieldRef<"TechPack", 'String'>
   readonly createdAt: Prisma.FieldRef<"TechPack", 'DateTime'>
+  readonly docType: Prisma.FieldRef<"TechPack", 'StyleDocType'>
 }
     
 

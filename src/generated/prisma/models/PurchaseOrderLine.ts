@@ -52,6 +52,7 @@ export type PurchaseOrderLineMinAggregateOutputType = {
   rate: runtime.Decimal | null
   taxPct: runtime.Decimal | null
   deliveryDate: Date | null
+  styleId: string | null
 }
 
 export type PurchaseOrderLineMaxAggregateOutputType = {
@@ -66,6 +67,7 @@ export type PurchaseOrderLineMaxAggregateOutputType = {
   rate: runtime.Decimal | null
   taxPct: runtime.Decimal | null
   deliveryDate: Date | null
+  styleId: string | null
 }
 
 export type PurchaseOrderLineCountAggregateOutputType = {
@@ -80,6 +82,7 @@ export type PurchaseOrderLineCountAggregateOutputType = {
   rate: number
   taxPct: number
   deliveryDate: number
+  styleId: number
   _all: number
 }
 
@@ -110,6 +113,7 @@ export type PurchaseOrderLineMinAggregateInputType = {
   rate?: true
   taxPct?: true
   deliveryDate?: true
+  styleId?: true
 }
 
 export type PurchaseOrderLineMaxAggregateInputType = {
@@ -124,6 +128,7 @@ export type PurchaseOrderLineMaxAggregateInputType = {
   rate?: true
   taxPct?: true
   deliveryDate?: true
+  styleId?: true
 }
 
 export type PurchaseOrderLineCountAggregateInputType = {
@@ -138,6 +143,7 @@ export type PurchaseOrderLineCountAggregateInputType = {
   rate?: true
   taxPct?: true
   deliveryDate?: true
+  styleId?: true
   _all?: true
 }
 
@@ -239,6 +245,7 @@ export type PurchaseOrderLineGroupByOutputType = {
   rate: runtime.Decimal
   taxPct: runtime.Decimal
   deliveryDate: Date | null
+  styleId: string | null
   _count: PurchaseOrderLineCountAggregateOutputType | null
   _avg: PurchaseOrderLineAvgAggregateOutputType | null
   _sum: PurchaseOrderLineSumAggregateOutputType | null
@@ -276,10 +283,13 @@ export type PurchaseOrderLineWhereInput = {
   rate?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.DateTimeNullableFilter<"PurchaseOrderLine"> | Date | string | null
+  styleId?: Prisma.StringNullableFilter<"PurchaseOrderLine"> | string | null
   po?: Prisma.XOR<Prisma.PurchaseOrderScalarRelationFilter, Prisma.PurchaseOrderWhereInput>
   material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
   prLine?: Prisma.XOR<Prisma.PurchaseRequisitionLineNullableScalarRelationFilter, Prisma.PurchaseRequisitionLineWhereInput> | null
   order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  style?: Prisma.XOR<Prisma.StyleNullableScalarRelationFilter, Prisma.StyleWhereInput> | null
+  grnLines?: Prisma.GrnLineListRelationFilter
 }
 
 export type PurchaseOrderLineOrderByWithRelationInput = {
@@ -294,10 +304,13 @@ export type PurchaseOrderLineOrderByWithRelationInput = {
   rate?: Prisma.SortOrder
   taxPct?: Prisma.SortOrder
   deliveryDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  styleId?: Prisma.SortOrderInput | Prisma.SortOrder
   po?: Prisma.PurchaseOrderOrderByWithRelationInput
   material?: Prisma.MaterialOrderByWithRelationInput
   prLine?: Prisma.PurchaseRequisitionLineOrderByWithRelationInput
   order?: Prisma.OrderOrderByWithRelationInput
+  style?: Prisma.StyleOrderByWithRelationInput
+  grnLines?: Prisma.GrnLineOrderByRelationAggregateInput
 }
 
 export type PurchaseOrderLineWhereUniqueInput = Prisma.AtLeast<{
@@ -315,10 +328,13 @@ export type PurchaseOrderLineWhereUniqueInput = Prisma.AtLeast<{
   rate?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.DateTimeNullableFilter<"PurchaseOrderLine"> | Date | string | null
+  styleId?: Prisma.StringNullableFilter<"PurchaseOrderLine"> | string | null
   po?: Prisma.XOR<Prisma.PurchaseOrderScalarRelationFilter, Prisma.PurchaseOrderWhereInput>
   material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
   prLine?: Prisma.XOR<Prisma.PurchaseRequisitionLineNullableScalarRelationFilter, Prisma.PurchaseRequisitionLineWhereInput> | null
   order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  style?: Prisma.XOR<Prisma.StyleNullableScalarRelationFilter, Prisma.StyleWhereInput> | null
+  grnLines?: Prisma.GrnLineListRelationFilter
 }, "id">
 
 export type PurchaseOrderLineOrderByWithAggregationInput = {
@@ -333,6 +349,7 @@ export type PurchaseOrderLineOrderByWithAggregationInput = {
   rate?: Prisma.SortOrder
   taxPct?: Prisma.SortOrder
   deliveryDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  styleId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.PurchaseOrderLineCountOrderByAggregateInput
   _avg?: Prisma.PurchaseOrderLineAvgOrderByAggregateInput
   _max?: Prisma.PurchaseOrderLineMaxOrderByAggregateInput
@@ -355,6 +372,7 @@ export type PurchaseOrderLineScalarWhereWithAggregatesInput = {
   rate?: Prisma.DecimalWithAggregatesFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalWithAggregatesFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.DateTimeNullableWithAggregatesFilter<"PurchaseOrderLine"> | Date | string | null
+  styleId?: Prisma.StringNullableWithAggregatesFilter<"PurchaseOrderLine"> | string | null
 }
 
 export type PurchaseOrderLineCreateInput = {
@@ -369,6 +387,8 @@ export type PurchaseOrderLineCreateInput = {
   material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
   prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineUncheckedCreateInput = {
@@ -383,6 +403,8 @@ export type PurchaseOrderLineUncheckedCreateInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  styleId?: string | null
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineUpdateInput = {
@@ -397,6 +419,8 @@ export type PurchaseOrderLineUpdateInput = {
   material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
   prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateInput = {
@@ -411,6 +435,8 @@ export type PurchaseOrderLineUncheckedUpdateInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineCreateManyInput = {
@@ -425,6 +451,7 @@ export type PurchaseOrderLineCreateManyInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  styleId?: string | null
 }
 
 export type PurchaseOrderLineUpdateManyMutationInput = {
@@ -449,6 +476,7 @@ export type PurchaseOrderLineUncheckedUpdateManyInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PurchaseOrderLineListRelationFilter = {
@@ -473,6 +501,7 @@ export type PurchaseOrderLineCountOrderByAggregateInput = {
   rate?: Prisma.SortOrder
   taxPct?: Prisma.SortOrder
   deliveryDate?: Prisma.SortOrder
+  styleId?: Prisma.SortOrder
 }
 
 export type PurchaseOrderLineAvgOrderByAggregateInput = {
@@ -494,6 +523,7 @@ export type PurchaseOrderLineMaxOrderByAggregateInput = {
   rate?: Prisma.SortOrder
   taxPct?: Prisma.SortOrder
   deliveryDate?: Prisma.SortOrder
+  styleId?: Prisma.SortOrder
 }
 
 export type PurchaseOrderLineMinOrderByAggregateInput = {
@@ -508,6 +538,7 @@ export type PurchaseOrderLineMinOrderByAggregateInput = {
   rate?: Prisma.SortOrder
   taxPct?: Prisma.SortOrder
   deliveryDate?: Prisma.SortOrder
+  styleId?: Prisma.SortOrder
 }
 
 export type PurchaseOrderLineSumOrderByAggregateInput = {
@@ -515,6 +546,53 @@ export type PurchaseOrderLineSumOrderByAggregateInput = {
   receivedQty?: Prisma.SortOrder
   rate?: Prisma.SortOrder
   taxPct?: Prisma.SortOrder
+}
+
+export type PurchaseOrderLineScalarRelationFilter = {
+  is?: Prisma.PurchaseOrderLineWhereInput
+  isNot?: Prisma.PurchaseOrderLineWhereInput
+}
+
+export type PurchaseOrderLineCreateNestedManyWithoutStyleInput = {
+  create?: Prisma.XOR<Prisma.PurchaseOrderLineCreateWithoutStyleInput, Prisma.PurchaseOrderLineUncheckedCreateWithoutStyleInput> | Prisma.PurchaseOrderLineCreateWithoutStyleInput[] | Prisma.PurchaseOrderLineUncheckedCreateWithoutStyleInput[]
+  connectOrCreate?: Prisma.PurchaseOrderLineCreateOrConnectWithoutStyleInput | Prisma.PurchaseOrderLineCreateOrConnectWithoutStyleInput[]
+  createMany?: Prisma.PurchaseOrderLineCreateManyStyleInputEnvelope
+  connect?: Prisma.PurchaseOrderLineWhereUniqueInput | Prisma.PurchaseOrderLineWhereUniqueInput[]
+}
+
+export type PurchaseOrderLineUncheckedCreateNestedManyWithoutStyleInput = {
+  create?: Prisma.XOR<Prisma.PurchaseOrderLineCreateWithoutStyleInput, Prisma.PurchaseOrderLineUncheckedCreateWithoutStyleInput> | Prisma.PurchaseOrderLineCreateWithoutStyleInput[] | Prisma.PurchaseOrderLineUncheckedCreateWithoutStyleInput[]
+  connectOrCreate?: Prisma.PurchaseOrderLineCreateOrConnectWithoutStyleInput | Prisma.PurchaseOrderLineCreateOrConnectWithoutStyleInput[]
+  createMany?: Prisma.PurchaseOrderLineCreateManyStyleInputEnvelope
+  connect?: Prisma.PurchaseOrderLineWhereUniqueInput | Prisma.PurchaseOrderLineWhereUniqueInput[]
+}
+
+export type PurchaseOrderLineUpdateManyWithoutStyleNestedInput = {
+  create?: Prisma.XOR<Prisma.PurchaseOrderLineCreateWithoutStyleInput, Prisma.PurchaseOrderLineUncheckedCreateWithoutStyleInput> | Prisma.PurchaseOrderLineCreateWithoutStyleInput[] | Prisma.PurchaseOrderLineUncheckedCreateWithoutStyleInput[]
+  connectOrCreate?: Prisma.PurchaseOrderLineCreateOrConnectWithoutStyleInput | Prisma.PurchaseOrderLineCreateOrConnectWithoutStyleInput[]
+  upsert?: Prisma.PurchaseOrderLineUpsertWithWhereUniqueWithoutStyleInput | Prisma.PurchaseOrderLineUpsertWithWhereUniqueWithoutStyleInput[]
+  createMany?: Prisma.PurchaseOrderLineCreateManyStyleInputEnvelope
+  set?: Prisma.PurchaseOrderLineWhereUniqueInput | Prisma.PurchaseOrderLineWhereUniqueInput[]
+  disconnect?: Prisma.PurchaseOrderLineWhereUniqueInput | Prisma.PurchaseOrderLineWhereUniqueInput[]
+  delete?: Prisma.PurchaseOrderLineWhereUniqueInput | Prisma.PurchaseOrderLineWhereUniqueInput[]
+  connect?: Prisma.PurchaseOrderLineWhereUniqueInput | Prisma.PurchaseOrderLineWhereUniqueInput[]
+  update?: Prisma.PurchaseOrderLineUpdateWithWhereUniqueWithoutStyleInput | Prisma.PurchaseOrderLineUpdateWithWhereUniqueWithoutStyleInput[]
+  updateMany?: Prisma.PurchaseOrderLineUpdateManyWithWhereWithoutStyleInput | Prisma.PurchaseOrderLineUpdateManyWithWhereWithoutStyleInput[]
+  deleteMany?: Prisma.PurchaseOrderLineScalarWhereInput | Prisma.PurchaseOrderLineScalarWhereInput[]
+}
+
+export type PurchaseOrderLineUncheckedUpdateManyWithoutStyleNestedInput = {
+  create?: Prisma.XOR<Prisma.PurchaseOrderLineCreateWithoutStyleInput, Prisma.PurchaseOrderLineUncheckedCreateWithoutStyleInput> | Prisma.PurchaseOrderLineCreateWithoutStyleInput[] | Prisma.PurchaseOrderLineUncheckedCreateWithoutStyleInput[]
+  connectOrCreate?: Prisma.PurchaseOrderLineCreateOrConnectWithoutStyleInput | Prisma.PurchaseOrderLineCreateOrConnectWithoutStyleInput[]
+  upsert?: Prisma.PurchaseOrderLineUpsertWithWhereUniqueWithoutStyleInput | Prisma.PurchaseOrderLineUpsertWithWhereUniqueWithoutStyleInput[]
+  createMany?: Prisma.PurchaseOrderLineCreateManyStyleInputEnvelope
+  set?: Prisma.PurchaseOrderLineWhereUniqueInput | Prisma.PurchaseOrderLineWhereUniqueInput[]
+  disconnect?: Prisma.PurchaseOrderLineWhereUniqueInput | Prisma.PurchaseOrderLineWhereUniqueInput[]
+  delete?: Prisma.PurchaseOrderLineWhereUniqueInput | Prisma.PurchaseOrderLineWhereUniqueInput[]
+  connect?: Prisma.PurchaseOrderLineWhereUniqueInput | Prisma.PurchaseOrderLineWhereUniqueInput[]
+  update?: Prisma.PurchaseOrderLineUpdateWithWhereUniqueWithoutStyleInput | Prisma.PurchaseOrderLineUpdateWithWhereUniqueWithoutStyleInput[]
+  updateMany?: Prisma.PurchaseOrderLineUpdateManyWithWhereWithoutStyleInput | Prisma.PurchaseOrderLineUpdateManyWithWhereWithoutStyleInput[]
+  deleteMany?: Prisma.PurchaseOrderLineScalarWhereInput | Prisma.PurchaseOrderLineScalarWhereInput[]
 }
 
 export type PurchaseOrderLineCreateNestedManyWithoutOrderInput = {
@@ -685,6 +763,94 @@ export type PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput = {
   deleteMany?: Prisma.PurchaseOrderLineScalarWhereInput | Prisma.PurchaseOrderLineScalarWhereInput[]
 }
 
+export type PurchaseOrderLineCreateNestedOneWithoutGrnLinesInput = {
+  create?: Prisma.XOR<Prisma.PurchaseOrderLineCreateWithoutGrnLinesInput, Prisma.PurchaseOrderLineUncheckedCreateWithoutGrnLinesInput>
+  connectOrCreate?: Prisma.PurchaseOrderLineCreateOrConnectWithoutGrnLinesInput
+  connect?: Prisma.PurchaseOrderLineWhereUniqueInput
+}
+
+export type PurchaseOrderLineUpdateOneRequiredWithoutGrnLinesNestedInput = {
+  create?: Prisma.XOR<Prisma.PurchaseOrderLineCreateWithoutGrnLinesInput, Prisma.PurchaseOrderLineUncheckedCreateWithoutGrnLinesInput>
+  connectOrCreate?: Prisma.PurchaseOrderLineCreateOrConnectWithoutGrnLinesInput
+  upsert?: Prisma.PurchaseOrderLineUpsertWithoutGrnLinesInput
+  connect?: Prisma.PurchaseOrderLineWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PurchaseOrderLineUpdateToOneWithWhereWithoutGrnLinesInput, Prisma.PurchaseOrderLineUpdateWithoutGrnLinesInput>, Prisma.PurchaseOrderLineUncheckedUpdateWithoutGrnLinesInput>
+}
+
+export type PurchaseOrderLineCreateWithoutStyleInput = {
+  id?: string
+  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: string
+  rate: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Date | string | null
+  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
+  material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
+  prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
+  order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
+}
+
+export type PurchaseOrderLineUncheckedCreateWithoutStyleInput = {
+  id?: string
+  poId: string
+  materialId: string
+  prLineId?: string | null
+  orderId?: string | null
+  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: string
+  rate: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Date | string | null
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutPoLineInput
+}
+
+export type PurchaseOrderLineCreateOrConnectWithoutStyleInput = {
+  where: Prisma.PurchaseOrderLineWhereUniqueInput
+  create: Prisma.XOR<Prisma.PurchaseOrderLineCreateWithoutStyleInput, Prisma.PurchaseOrderLineUncheckedCreateWithoutStyleInput>
+}
+
+export type PurchaseOrderLineCreateManyStyleInputEnvelope = {
+  data: Prisma.PurchaseOrderLineCreateManyStyleInput | Prisma.PurchaseOrderLineCreateManyStyleInput[]
+  skipDuplicates?: boolean
+}
+
+export type PurchaseOrderLineUpsertWithWhereUniqueWithoutStyleInput = {
+  where: Prisma.PurchaseOrderLineWhereUniqueInput
+  update: Prisma.XOR<Prisma.PurchaseOrderLineUpdateWithoutStyleInput, Prisma.PurchaseOrderLineUncheckedUpdateWithoutStyleInput>
+  create: Prisma.XOR<Prisma.PurchaseOrderLineCreateWithoutStyleInput, Prisma.PurchaseOrderLineUncheckedCreateWithoutStyleInput>
+}
+
+export type PurchaseOrderLineUpdateWithWhereUniqueWithoutStyleInput = {
+  where: Prisma.PurchaseOrderLineWhereUniqueInput
+  data: Prisma.XOR<Prisma.PurchaseOrderLineUpdateWithoutStyleInput, Prisma.PurchaseOrderLineUncheckedUpdateWithoutStyleInput>
+}
+
+export type PurchaseOrderLineUpdateManyWithWhereWithoutStyleInput = {
+  where: Prisma.PurchaseOrderLineScalarWhereInput
+  data: Prisma.XOR<Prisma.PurchaseOrderLineUpdateManyMutationInput, Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutStyleInput>
+}
+
+export type PurchaseOrderLineScalarWhereInput = {
+  AND?: Prisma.PurchaseOrderLineScalarWhereInput | Prisma.PurchaseOrderLineScalarWhereInput[]
+  OR?: Prisma.PurchaseOrderLineScalarWhereInput[]
+  NOT?: Prisma.PurchaseOrderLineScalarWhereInput | Prisma.PurchaseOrderLineScalarWhereInput[]
+  id?: Prisma.StringFilter<"PurchaseOrderLine"> | string
+  poId?: Prisma.StringFilter<"PurchaseOrderLine"> | string
+  materialId?: Prisma.StringFilter<"PurchaseOrderLine"> | string
+  prLineId?: Prisma.StringNullableFilter<"PurchaseOrderLine"> | string | null
+  orderId?: Prisma.StringNullableFilter<"PurchaseOrderLine"> | string | null
+  quantity?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.StringFilter<"PurchaseOrderLine"> | string
+  rate?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Prisma.DateTimeNullableFilter<"PurchaseOrderLine"> | Date | string | null
+  styleId?: Prisma.StringNullableFilter<"PurchaseOrderLine"> | string | null
+}
+
 export type PurchaseOrderLineCreateWithoutOrderInput = {
   id?: string
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -696,6 +862,8 @@ export type PurchaseOrderLineCreateWithoutOrderInput = {
   po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
   material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
   prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
+  style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineUncheckedCreateWithoutOrderInput = {
@@ -709,6 +877,8 @@ export type PurchaseOrderLineUncheckedCreateWithoutOrderInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  styleId?: string | null
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineCreateOrConnectWithoutOrderInput = {
@@ -737,23 +907,6 @@ export type PurchaseOrderLineUpdateManyWithWhereWithoutOrderInput = {
   data: Prisma.XOR<Prisma.PurchaseOrderLineUpdateManyMutationInput, Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutOrderInput>
 }
 
-export type PurchaseOrderLineScalarWhereInput = {
-  AND?: Prisma.PurchaseOrderLineScalarWhereInput | Prisma.PurchaseOrderLineScalarWhereInput[]
-  OR?: Prisma.PurchaseOrderLineScalarWhereInput[]
-  NOT?: Prisma.PurchaseOrderLineScalarWhereInput | Prisma.PurchaseOrderLineScalarWhereInput[]
-  id?: Prisma.StringFilter<"PurchaseOrderLine"> | string
-  poId?: Prisma.StringFilter<"PurchaseOrderLine"> | string
-  materialId?: Prisma.StringFilter<"PurchaseOrderLine"> | string
-  prLineId?: Prisma.StringNullableFilter<"PurchaseOrderLine"> | string | null
-  orderId?: Prisma.StringNullableFilter<"PurchaseOrderLine"> | string | null
-  quantity?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  receivedQty?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  unit?: Prisma.StringFilter<"PurchaseOrderLine"> | string
-  rate?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  taxPct?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  deliveryDate?: Prisma.DateTimeNullableFilter<"PurchaseOrderLine"> | Date | string | null
-}
-
 export type PurchaseOrderLineCreateWithoutMaterialInput = {
   id?: string
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -765,6 +918,8 @@ export type PurchaseOrderLineCreateWithoutMaterialInput = {
   po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
   prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineUncheckedCreateWithoutMaterialInput = {
@@ -778,6 +933,8 @@ export type PurchaseOrderLineUncheckedCreateWithoutMaterialInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  styleId?: string | null
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineCreateOrConnectWithoutMaterialInput = {
@@ -817,6 +974,8 @@ export type PurchaseOrderLineCreateWithoutPrLineInput = {
   po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
   material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineUncheckedCreateWithoutPrLineInput = {
@@ -830,6 +989,8 @@ export type PurchaseOrderLineUncheckedCreateWithoutPrLineInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  styleId?: string | null
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineCreateOrConnectWithoutPrLineInput = {
@@ -869,6 +1030,8 @@ export type PurchaseOrderLineCreateWithoutPoInput = {
   material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
   prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineUncheckedCreateWithoutPoInput = {
@@ -882,6 +1045,8 @@ export type PurchaseOrderLineUncheckedCreateWithoutPoInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  styleId?: string | null
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineCreateOrConnectWithoutPoInput = {
@@ -910,6 +1075,140 @@ export type PurchaseOrderLineUpdateManyWithWhereWithoutPoInput = {
   data: Prisma.XOR<Prisma.PurchaseOrderLineUpdateManyMutationInput, Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoInput>
 }
 
+export type PurchaseOrderLineCreateWithoutGrnLinesInput = {
+  id?: string
+  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: string
+  rate: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Date | string | null
+  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
+  material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
+  prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
+  order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
+}
+
+export type PurchaseOrderLineUncheckedCreateWithoutGrnLinesInput = {
+  id?: string
+  poId: string
+  materialId: string
+  prLineId?: string | null
+  orderId?: string | null
+  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: string
+  rate: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Date | string | null
+  styleId?: string | null
+}
+
+export type PurchaseOrderLineCreateOrConnectWithoutGrnLinesInput = {
+  where: Prisma.PurchaseOrderLineWhereUniqueInput
+  create: Prisma.XOR<Prisma.PurchaseOrderLineCreateWithoutGrnLinesInput, Prisma.PurchaseOrderLineUncheckedCreateWithoutGrnLinesInput>
+}
+
+export type PurchaseOrderLineUpsertWithoutGrnLinesInput = {
+  update: Prisma.XOR<Prisma.PurchaseOrderLineUpdateWithoutGrnLinesInput, Prisma.PurchaseOrderLineUncheckedUpdateWithoutGrnLinesInput>
+  create: Prisma.XOR<Prisma.PurchaseOrderLineCreateWithoutGrnLinesInput, Prisma.PurchaseOrderLineUncheckedCreateWithoutGrnLinesInput>
+  where?: Prisma.PurchaseOrderLineWhereInput
+}
+
+export type PurchaseOrderLineUpdateToOneWithWhereWithoutGrnLinesInput = {
+  where?: Prisma.PurchaseOrderLineWhereInput
+  data: Prisma.XOR<Prisma.PurchaseOrderLineUpdateWithoutGrnLinesInput, Prisma.PurchaseOrderLineUncheckedUpdateWithoutGrnLinesInput>
+}
+
+export type PurchaseOrderLineUpdateWithoutGrnLinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
+  material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
+  prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
+  order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
+}
+
+export type PurchaseOrderLineUncheckedUpdateWithoutGrnLinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  poId?: Prisma.StringFieldUpdateOperationsInput | string
+  materialId?: Prisma.StringFieldUpdateOperationsInput | string
+  prLineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type PurchaseOrderLineCreateManyStyleInput = {
+  id?: string
+  poId: string
+  materialId: string
+  prLineId?: string | null
+  orderId?: string | null
+  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: string
+  rate: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Date | string | null
+}
+
+export type PurchaseOrderLineUpdateWithoutStyleInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
+  material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
+  prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
+  order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
+}
+
+export type PurchaseOrderLineUncheckedUpdateWithoutStyleInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  poId?: Prisma.StringFieldUpdateOperationsInput | string
+  materialId?: Prisma.StringFieldUpdateOperationsInput | string
+  prLineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutPoLineNestedInput
+}
+
+export type PurchaseOrderLineUncheckedUpdateManyWithoutStyleInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  poId?: Prisma.StringFieldUpdateOperationsInput | string
+  materialId?: Prisma.StringFieldUpdateOperationsInput | string
+  prLineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  receivedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
 export type PurchaseOrderLineCreateManyOrderInput = {
   id?: string
   poId: string
@@ -921,6 +1220,7 @@ export type PurchaseOrderLineCreateManyOrderInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  styleId?: string | null
 }
 
 export type PurchaseOrderLineUpdateWithoutOrderInput = {
@@ -934,6 +1234,8 @@ export type PurchaseOrderLineUpdateWithoutOrderInput = {
   po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
   prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
+  style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateWithoutOrderInput = {
@@ -947,6 +1249,8 @@ export type PurchaseOrderLineUncheckedUpdateWithoutOrderInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateManyWithoutOrderInput = {
@@ -960,6 +1264,7 @@ export type PurchaseOrderLineUncheckedUpdateManyWithoutOrderInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PurchaseOrderLineCreateManyMaterialInput = {
@@ -973,6 +1278,7 @@ export type PurchaseOrderLineCreateManyMaterialInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  styleId?: string | null
 }
 
 export type PurchaseOrderLineUpdateWithoutMaterialInput = {
@@ -986,6 +1292,8 @@ export type PurchaseOrderLineUpdateWithoutMaterialInput = {
   po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
   prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateWithoutMaterialInput = {
@@ -999,6 +1307,8 @@ export type PurchaseOrderLineUncheckedUpdateWithoutMaterialInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateManyWithoutMaterialInput = {
@@ -1012,6 +1322,7 @@ export type PurchaseOrderLineUncheckedUpdateManyWithoutMaterialInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PurchaseOrderLineCreateManyPrLineInput = {
@@ -1025,6 +1336,7 @@ export type PurchaseOrderLineCreateManyPrLineInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  styleId?: string | null
 }
 
 export type PurchaseOrderLineUpdateWithoutPrLineInput = {
@@ -1038,6 +1350,8 @@ export type PurchaseOrderLineUpdateWithoutPrLineInput = {
   po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateWithoutPrLineInput = {
@@ -1051,6 +1365,8 @@ export type PurchaseOrderLineUncheckedUpdateWithoutPrLineInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateManyWithoutPrLineInput = {
@@ -1064,6 +1380,7 @@ export type PurchaseOrderLineUncheckedUpdateManyWithoutPrLineInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PurchaseOrderLineCreateManyPoInput = {
@@ -1077,6 +1394,7 @@ export type PurchaseOrderLineCreateManyPoInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  styleId?: string | null
 }
 
 export type PurchaseOrderLineUpdateWithoutPoInput = {
@@ -1090,6 +1408,8 @@ export type PurchaseOrderLineUpdateWithoutPoInput = {
   material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
   prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateWithoutPoInput = {
@@ -1103,6 +1423,8 @@ export type PurchaseOrderLineUncheckedUpdateWithoutPoInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateManyWithoutPoInput = {
@@ -1116,8 +1438,38 @@ export type PurchaseOrderLineUncheckedUpdateManyWithoutPoInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  styleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
+
+/**
+ * Count Type PurchaseOrderLineCountOutputType
+ */
+
+export type PurchaseOrderLineCountOutputType = {
+  grnLines: number
+}
+
+export type PurchaseOrderLineCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  grnLines?: boolean | PurchaseOrderLineCountOutputTypeCountGrnLinesArgs
+}
+
+/**
+ * PurchaseOrderLineCountOutputType without action
+ */
+export type PurchaseOrderLineCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PurchaseOrderLineCountOutputType
+   */
+  select?: Prisma.PurchaseOrderLineCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PurchaseOrderLineCountOutputType without action
+ */
+export type PurchaseOrderLineCountOutputTypeCountGrnLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GrnLineWhereInput
+}
 
 
 export type PurchaseOrderLineSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1132,10 +1484,14 @@ export type PurchaseOrderLineSelect<ExtArgs extends runtime.Types.Extensions.Int
   rate?: boolean
   taxPct?: boolean
   deliveryDate?: boolean
+  styleId?: boolean
   po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
+  grnLines?: boolean | Prisma.PurchaseOrderLine$grnLinesArgs<ExtArgs>
+  _count?: boolean | Prisma.PurchaseOrderLineCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseOrderLine"]>
 
 export type PurchaseOrderLineSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1150,10 +1506,12 @@ export type PurchaseOrderLineSelectCreateManyAndReturn<ExtArgs extends runtime.T
   rate?: boolean
   taxPct?: boolean
   deliveryDate?: boolean
+  styleId?: boolean
   po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseOrderLine"]>
 
 export type PurchaseOrderLineSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1168,10 +1526,12 @@ export type PurchaseOrderLineSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   rate?: boolean
   taxPct?: boolean
   deliveryDate?: boolean
+  styleId?: boolean
   po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseOrderLine"]>
 
 export type PurchaseOrderLineSelectScalar = {
@@ -1186,26 +1546,32 @@ export type PurchaseOrderLineSelectScalar = {
   rate?: boolean
   taxPct?: boolean
   deliveryDate?: boolean
+  styleId?: boolean
 }
 
-export type PurchaseOrderLineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "poId" | "materialId" | "prLineId" | "orderId" | "quantity" | "receivedQty" | "unit" | "rate" | "taxPct" | "deliveryDate", ExtArgs["result"]["purchaseOrderLine"]>
+export type PurchaseOrderLineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "poId" | "materialId" | "prLineId" | "orderId" | "quantity" | "receivedQty" | "unit" | "rate" | "taxPct" | "deliveryDate" | "styleId", ExtArgs["result"]["purchaseOrderLine"]>
 export type PurchaseOrderLineInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
+  grnLines?: boolean | Prisma.PurchaseOrderLine$grnLinesArgs<ExtArgs>
+  _count?: boolean | Prisma.PurchaseOrderLineCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PurchaseOrderLineIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
 }
 export type PurchaseOrderLineIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
 }
 
 export type $PurchaseOrderLinePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1215,6 +1581,8 @@ export type $PurchaseOrderLinePayload<ExtArgs extends runtime.Types.Extensions.I
     material: Prisma.$MaterialPayload<ExtArgs>
     prLine: Prisma.$PurchaseRequisitionLinePayload<ExtArgs> | null
     order: Prisma.$OrderPayload<ExtArgs> | null
+    style: Prisma.$StylePayload<ExtArgs> | null
+    grnLines: Prisma.$GrnLinePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1228,6 +1596,7 @@ export type $PurchaseOrderLinePayload<ExtArgs extends runtime.Types.Extensions.I
     rate: runtime.Decimal
     taxPct: runtime.Decimal
     deliveryDate: Date | null
+    styleId: string | null
   }, ExtArgs["result"]["purchaseOrderLine"]>
   composites: {}
 }
@@ -1626,6 +1995,8 @@ export interface Prisma__PurchaseOrderLineClient<T, Null = never, ExtArgs extend
   material<T extends Prisma.MaterialDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialDefaultArgs<ExtArgs>>): Prisma.Prisma__MaterialClient<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   prLine<T extends Prisma.PurchaseOrderLine$prLineArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>>): Prisma.Prisma__PurchaseRequisitionLineClient<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionLinePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   order<T extends Prisma.PurchaseOrderLine$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$orderArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  style<T extends Prisma.PurchaseOrderLine$styleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$styleArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  grnLines<T extends Prisma.PurchaseOrderLine$grnLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$grnLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GrnLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1666,6 +2037,7 @@ export interface PurchaseOrderLineFieldRefs {
   readonly rate: Prisma.FieldRef<"PurchaseOrderLine", 'Decimal'>
   readonly taxPct: Prisma.FieldRef<"PurchaseOrderLine", 'Decimal'>
   readonly deliveryDate: Prisma.FieldRef<"PurchaseOrderLine", 'DateTime'>
+  readonly styleId: Prisma.FieldRef<"PurchaseOrderLine", 'String'>
 }
     
 
@@ -2102,6 +2474,49 @@ export type PurchaseOrderLine$orderArgs<ExtArgs extends runtime.Types.Extensions
    */
   include?: Prisma.OrderInclude<ExtArgs> | null
   where?: Prisma.OrderWhereInput
+}
+
+/**
+ * PurchaseOrderLine.style
+ */
+export type PurchaseOrderLine$styleArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Style
+   */
+  select?: Prisma.StyleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Style
+   */
+  omit?: Prisma.StyleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StyleInclude<ExtArgs> | null
+  where?: Prisma.StyleWhereInput
+}
+
+/**
+ * PurchaseOrderLine.grnLines
+ */
+export type PurchaseOrderLine$grnLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GrnLine
+   */
+  select?: Prisma.GrnLineSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GrnLine
+   */
+  omit?: Prisma.GrnLineOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GrnLineInclude<ExtArgs> | null
+  where?: Prisma.GrnLineWhereInput
+  orderBy?: Prisma.GrnLineOrderByWithRelationInput | Prisma.GrnLineOrderByWithRelationInput[]
+  cursor?: Prisma.GrnLineWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GrnLineScalarFieldEnum | Prisma.GrnLineScalarFieldEnum[]
 }
 
 /**

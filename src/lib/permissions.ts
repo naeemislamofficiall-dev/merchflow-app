@@ -1,4 +1,5 @@
 import { auth } from "@/lib/auth";
+import { getActiveContext } from "@/services/context.service";
 
 export type SessionUser = {
   id: string;
@@ -14,11 +15,13 @@ export class AuthError extends Error {
   }
 }
 
-// লগইন করা ইউজার না থাকলে ৪০১ এরর দেয়
 export async function requireUser(): Promise<SessionUser> {
   const session = await auth();
   if (!session?.user) throw new AuthError("Login required", 401);
-  return session.user as unknown as SessionUser;
+  const base = session.user as unknown as SessionUser;
+  // "কোন কোম্পানিতে কাজ করছি" ড্রপডাউনের পছন্দ (cookie) সব সার্ভিসে এখান থেকে প্রয়োগ হয়
+  const ctx = await getActiveContext(base.id);
+  return { ...base, companyId: ctx.companyId ?? base.companyId };
 }
 
 export function can(user: SessionUser, code: string): boolean {

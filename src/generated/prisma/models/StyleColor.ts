@@ -226,6 +226,7 @@ export type StyleColorWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"StyleColor"> | Date | string
   style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
   matrix?: Prisma.StyleMatrixQtyListRelationFilter
+  orderQtys?: Prisma.OrderLineQtyListRelationFilter
 }
 
 export type StyleColorOrderByWithRelationInput = {
@@ -237,6 +238,7 @@ export type StyleColorOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   style?: Prisma.StyleOrderByWithRelationInput
   matrix?: Prisma.StyleMatrixQtyOrderByRelationAggregateInput
+  orderQtys?: Prisma.OrderLineQtyOrderByRelationAggregateInput
 }
 
 export type StyleColorWhereUniqueInput = Prisma.AtLeast<{
@@ -252,6 +254,7 @@ export type StyleColorWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"StyleColor"> | Date | string
   style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
   matrix?: Prisma.StyleMatrixQtyListRelationFilter
+  orderQtys?: Prisma.OrderLineQtyListRelationFilter
 }, "id" | "styleId_code">
 
 export type StyleColorOrderByWithAggregationInput = {
@@ -288,6 +291,7 @@ export type StyleColorCreateInput = {
   createdAt?: Date | string
   style: Prisma.StyleCreateNestedOneWithoutColorsInput
   matrix?: Prisma.StyleMatrixQtyCreateNestedManyWithoutColorInput
+  orderQtys?: Prisma.OrderLineQtyCreateNestedManyWithoutColorInput
 }
 
 export type StyleColorUncheckedCreateInput = {
@@ -298,6 +302,7 @@ export type StyleColorUncheckedCreateInput = {
   sortOrder?: number
   createdAt?: Date | string
   matrix?: Prisma.StyleMatrixQtyUncheckedCreateNestedManyWithoutColorInput
+  orderQtys?: Prisma.OrderLineQtyUncheckedCreateNestedManyWithoutColorInput
 }
 
 export type StyleColorUpdateInput = {
@@ -308,6 +313,7 @@ export type StyleColorUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   style?: Prisma.StyleUpdateOneRequiredWithoutColorsNestedInput
   matrix?: Prisma.StyleMatrixQtyUpdateManyWithoutColorNestedInput
+  orderQtys?: Prisma.OrderLineQtyUpdateManyWithoutColorNestedInput
 }
 
 export type StyleColorUncheckedUpdateInput = {
@@ -318,6 +324,7 @@ export type StyleColorUncheckedUpdateInput = {
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   matrix?: Prisma.StyleMatrixQtyUncheckedUpdateManyWithoutColorNestedInput
+  orderQtys?: Prisma.OrderLineQtyUncheckedUpdateManyWithoutColorNestedInput
 }
 
 export type StyleColorCreateManyInput = {
@@ -457,6 +464,20 @@ export type StyleColorUpdateOneRequiredWithoutMatrixNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.StyleColorUpdateToOneWithWhereWithoutMatrixInput, Prisma.StyleColorUpdateWithoutMatrixInput>, Prisma.StyleColorUncheckedUpdateWithoutMatrixInput>
 }
 
+export type StyleColorCreateNestedOneWithoutOrderQtysInput = {
+  create?: Prisma.XOR<Prisma.StyleColorCreateWithoutOrderQtysInput, Prisma.StyleColorUncheckedCreateWithoutOrderQtysInput>
+  connectOrCreate?: Prisma.StyleColorCreateOrConnectWithoutOrderQtysInput
+  connect?: Prisma.StyleColorWhereUniqueInput
+}
+
+export type StyleColorUpdateOneRequiredWithoutOrderQtysNestedInput = {
+  create?: Prisma.XOR<Prisma.StyleColorCreateWithoutOrderQtysInput, Prisma.StyleColorUncheckedCreateWithoutOrderQtysInput>
+  connectOrCreate?: Prisma.StyleColorCreateOrConnectWithoutOrderQtysInput
+  upsert?: Prisma.StyleColorUpsertWithoutOrderQtysInput
+  connect?: Prisma.StyleColorWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StyleColorUpdateToOneWithWhereWithoutOrderQtysInput, Prisma.StyleColorUpdateWithoutOrderQtysInput>, Prisma.StyleColorUncheckedUpdateWithoutOrderQtysInput>
+}
+
 export type StyleColorCreateWithoutStyleInput = {
   id?: string
   code: string
@@ -464,6 +485,7 @@ export type StyleColorCreateWithoutStyleInput = {
   sortOrder?: number
   createdAt?: Date | string
   matrix?: Prisma.StyleMatrixQtyCreateNestedManyWithoutColorInput
+  orderQtys?: Prisma.OrderLineQtyCreateNestedManyWithoutColorInput
 }
 
 export type StyleColorUncheckedCreateWithoutStyleInput = {
@@ -473,6 +495,7 @@ export type StyleColorUncheckedCreateWithoutStyleInput = {
   sortOrder?: number
   createdAt?: Date | string
   matrix?: Prisma.StyleMatrixQtyUncheckedCreateNestedManyWithoutColorInput
+  orderQtys?: Prisma.OrderLineQtyUncheckedCreateNestedManyWithoutColorInput
 }
 
 export type StyleColorCreateOrConnectWithoutStyleInput = {
@@ -520,6 +543,7 @@ export type StyleColorCreateWithoutMatrixInput = {
   sortOrder?: number
   createdAt?: Date | string
   style: Prisma.StyleCreateNestedOneWithoutColorsInput
+  orderQtys?: Prisma.OrderLineQtyCreateNestedManyWithoutColorInput
 }
 
 export type StyleColorUncheckedCreateWithoutMatrixInput = {
@@ -529,6 +553,7 @@ export type StyleColorUncheckedCreateWithoutMatrixInput = {
   name: string
   sortOrder?: number
   createdAt?: Date | string
+  orderQtys?: Prisma.OrderLineQtyUncheckedCreateNestedManyWithoutColorInput
 }
 
 export type StyleColorCreateOrConnectWithoutMatrixInput = {
@@ -554,6 +579,7 @@ export type StyleColorUpdateWithoutMatrixInput = {
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   style?: Prisma.StyleUpdateOneRequiredWithoutColorsNestedInput
+  orderQtys?: Prisma.OrderLineQtyUpdateManyWithoutColorNestedInput
 }
 
 export type StyleColorUncheckedUpdateWithoutMatrixInput = {
@@ -563,6 +589,63 @@ export type StyleColorUncheckedUpdateWithoutMatrixInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderQtys?: Prisma.OrderLineQtyUncheckedUpdateManyWithoutColorNestedInput
+}
+
+export type StyleColorCreateWithoutOrderQtysInput = {
+  id?: string
+  code: string
+  name: string
+  sortOrder?: number
+  createdAt?: Date | string
+  style: Prisma.StyleCreateNestedOneWithoutColorsInput
+  matrix?: Prisma.StyleMatrixQtyCreateNestedManyWithoutColorInput
+}
+
+export type StyleColorUncheckedCreateWithoutOrderQtysInput = {
+  id?: string
+  styleId: string
+  code: string
+  name: string
+  sortOrder?: number
+  createdAt?: Date | string
+  matrix?: Prisma.StyleMatrixQtyUncheckedCreateNestedManyWithoutColorInput
+}
+
+export type StyleColorCreateOrConnectWithoutOrderQtysInput = {
+  where: Prisma.StyleColorWhereUniqueInput
+  create: Prisma.XOR<Prisma.StyleColorCreateWithoutOrderQtysInput, Prisma.StyleColorUncheckedCreateWithoutOrderQtysInput>
+}
+
+export type StyleColorUpsertWithoutOrderQtysInput = {
+  update: Prisma.XOR<Prisma.StyleColorUpdateWithoutOrderQtysInput, Prisma.StyleColorUncheckedUpdateWithoutOrderQtysInput>
+  create: Prisma.XOR<Prisma.StyleColorCreateWithoutOrderQtysInput, Prisma.StyleColorUncheckedCreateWithoutOrderQtysInput>
+  where?: Prisma.StyleColorWhereInput
+}
+
+export type StyleColorUpdateToOneWithWhereWithoutOrderQtysInput = {
+  where?: Prisma.StyleColorWhereInput
+  data: Prisma.XOR<Prisma.StyleColorUpdateWithoutOrderQtysInput, Prisma.StyleColorUncheckedUpdateWithoutOrderQtysInput>
+}
+
+export type StyleColorUpdateWithoutOrderQtysInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  style?: Prisma.StyleUpdateOneRequiredWithoutColorsNestedInput
+  matrix?: Prisma.StyleMatrixQtyUpdateManyWithoutColorNestedInput
+}
+
+export type StyleColorUncheckedUpdateWithoutOrderQtysInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  styleId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matrix?: Prisma.StyleMatrixQtyUncheckedUpdateManyWithoutColorNestedInput
 }
 
 export type StyleColorCreateManyStyleInput = {
@@ -580,6 +663,7 @@ export type StyleColorUpdateWithoutStyleInput = {
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   matrix?: Prisma.StyleMatrixQtyUpdateManyWithoutColorNestedInput
+  orderQtys?: Prisma.OrderLineQtyUpdateManyWithoutColorNestedInput
 }
 
 export type StyleColorUncheckedUpdateWithoutStyleInput = {
@@ -589,6 +673,7 @@ export type StyleColorUncheckedUpdateWithoutStyleInput = {
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   matrix?: Prisma.StyleMatrixQtyUncheckedUpdateManyWithoutColorNestedInput
+  orderQtys?: Prisma.OrderLineQtyUncheckedUpdateManyWithoutColorNestedInput
 }
 
 export type StyleColorUncheckedUpdateManyWithoutStyleInput = {
@@ -606,10 +691,12 @@ export type StyleColorUncheckedUpdateManyWithoutStyleInput = {
 
 export type StyleColorCountOutputType = {
   matrix: number
+  orderQtys: number
 }
 
 export type StyleColorCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   matrix?: boolean | StyleColorCountOutputTypeCountMatrixArgs
+  orderQtys?: boolean | StyleColorCountOutputTypeCountOrderQtysArgs
 }
 
 /**
@@ -629,6 +716,13 @@ export type StyleColorCountOutputTypeCountMatrixArgs<ExtArgs extends runtime.Typ
   where?: Prisma.StyleMatrixQtyWhereInput
 }
 
+/**
+ * StyleColorCountOutputType without action
+ */
+export type StyleColorCountOutputTypeCountOrderQtysArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderLineQtyWhereInput
+}
+
 
 export type StyleColorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -639,6 +733,7 @@ export type StyleColorSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   createdAt?: boolean
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   matrix?: boolean | Prisma.StyleColor$matrixArgs<ExtArgs>
+  orderQtys?: boolean | Prisma.StyleColor$orderQtysArgs<ExtArgs>
   _count?: boolean | Prisma.StyleColorCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["styleColor"]>
 
@@ -675,6 +770,7 @@ export type StyleColorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type StyleColorInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   matrix?: boolean | Prisma.StyleColor$matrixArgs<ExtArgs>
+  orderQtys?: boolean | Prisma.StyleColor$orderQtysArgs<ExtArgs>
   _count?: boolean | Prisma.StyleColorCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StyleColorIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -689,6 +785,7 @@ export type $StyleColorPayload<ExtArgs extends runtime.Types.Extensions.Internal
   objects: {
     style: Prisma.$StylePayload<ExtArgs>
     matrix: Prisma.$StyleMatrixQtyPayload<ExtArgs>[]
+    orderQtys: Prisma.$OrderLineQtyPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1093,6 +1190,7 @@ export interface Prisma__StyleColorClient<T, Null = never, ExtArgs extends runti
   readonly [Symbol.toStringTag]: "PrismaPromise"
   style<T extends Prisma.StyleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleDefaultArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   matrix<T extends Prisma.StyleColor$matrixArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleColor$matrixArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StyleMatrixQtyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  orderQtys<T extends Prisma.StyleColor$orderQtysArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleColor$orderQtysArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderLineQtyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1550,6 +1648,30 @@ export type StyleColor$matrixArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.StyleMatrixQtyScalarFieldEnum | Prisma.StyleMatrixQtyScalarFieldEnum[]
+}
+
+/**
+ * StyleColor.orderQtys
+ */
+export type StyleColor$orderQtysArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OrderLineQty
+   */
+  select?: Prisma.OrderLineQtySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OrderLineQty
+   */
+  omit?: Prisma.OrderLineQtyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrderLineQtyInclude<ExtArgs> | null
+  where?: Prisma.OrderLineQtyWhereInput
+  orderBy?: Prisma.OrderLineQtyOrderByWithRelationInput | Prisma.OrderLineQtyOrderByWithRelationInput[]
+  cursor?: Prisma.OrderLineQtyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OrderLineQtyScalarFieldEnum | Prisma.OrderLineQtyScalarFieldEnum[]
 }
 
 /**

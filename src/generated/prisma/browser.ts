@@ -307,3 +307,268 @@ export type RfqLine = Prisma.RfqLineModel
  * 
  */
 export type RfqSupplier = Prisma.RfqSupplierModel
+/**
+ * Model BuyerConfig
+ * 
+ */
+export type BuyerConfig = Prisma.BuyerConfigModel
+/**
+ * Model BuyerPreferredFactory
+ * 
+ */
+export type BuyerPreferredFactory = Prisma.BuyerPreferredFactoryModel
+/**
+ * Model EnquiryNegotiation
+ * 
+ */
+export type EnquiryNegotiation = Prisma.EnquiryNegotiationModel
+/**
+ * Model OrderLineQty
+ * 
+ */
+export type OrderLineQty = Prisma.OrderLineQtyModel
+/**
+ * Model Attachment
+ * 
+ */
+export type Attachment = Prisma.AttachmentModel
+/**
+ * Model Workflow
+ * 
+ */
+export type Workflow = Prisma.WorkflowModel
+/**
+ * Model WorkflowStep
+ * 
+ */
+export type WorkflowStep = Prisma.WorkflowStepModel
+/**
+ * Model ApprovalRequest
+ * 
+ */
+export type ApprovalRequest = Prisma.ApprovalRequestModel
+/**
+ * Model ApprovalAction
+ * 
+ */
+export type ApprovalAction = Prisma.ApprovalActionModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel
+/**
+ * Model NotificationPreference
+ * 
+ */
+export type NotificationPreference = Prisma.NotificationPreferenceModel
+/**
+ * Model Grn
+ * 
+ */
+export type Grn = Prisma.GrnModel
+/**
+ * Model GrnLine
+ * 
+ */
+export type GrnLine = Prisma.GrnLineModel
+/**
+ * Model InventoryLot
+ * 
+ */
+export type InventoryLot = Prisma.InventoryLotModel
+/**
+ * Model FabricRoll
+ * 
+ */
+export type FabricRoll = Prisma.FabricRollModel
+/**
+ * Model FabricInspection
+ * 
+ */
+export type FabricInspection = Prisma.FabricInspectionModel
+/**
+ * Model StockTransaction
+ * 
+ */
+export type StockTransaction = Prisma.StockTransactionModel
+/**
+ * Model StockReservation
+ * 
+ */
+export type StockReservation = Prisma.StockReservationModel
+/**
+ * Model MaterialIssue
+ * 
+ */
+export type MaterialIssue = Prisma.MaterialIssueModel
+/**
+ * Model MaterialIssueLine
+ * 
+ */
+export type MaterialIssueLine = Prisma.MaterialIssueLineModel
+/**
+ * Model MaterialReturn
+ * 
+ */
+export type MaterialReturn = Prisma.MaterialReturnModel
+/**
+ * Model MaterialReturnLine
+ * 
+ */
+export type MaterialReturnLine = Prisma.MaterialReturnLineModel
+/**
+ * Model StockAdjustment
+ * 
+ */
+export type StockAdjustment = Prisma.StockAdjustmentModel
+/**
+ * Model ProductionRoute
+ * 
+ */
+export type ProductionRoute = Prisma.ProductionRouteModel
+/**
+ * Model ProductionRouteStep
+ * 
+ */
+export type ProductionRouteStep = Prisma.ProductionRouteStepModel
+/**
+ * Model ProductionOperation
+ * 
+ */
+export type ProductionOperation = Prisma.ProductionOperationModel
+/**
+ * Model ProductionOrder
+ * 
+ */
+export type ProductionOrder = Prisma.ProductionOrderModel
+/**
+ * Model CutPlan
+ * 
+ */
+export type CutPlan = Prisma.CutPlanModel
+/**
+ * Model Lay
+ * 
+ */
+export type Lay = Prisma.LayModel
+/**
+ * Model Bundle
+ * 
+ */
+export type Bundle = Prisma.BundleModel
+/**
+ * Model SewingLog
+ * 
+ */
+export type SewingLog = Prisma.SewingLogModel
+/**
+ * Model SubcontractOrder
+ * 
+ */
+export type SubcontractOrder = Prisma.SubcontractOrderModel
+/**
+ * Model SubcontractReceipt
+ * 
+ */
+export type SubcontractReceipt = Prisma.SubcontractReceiptModel
+/**
+ * Model FinishingLog
+ * 
+ */
+export type FinishingLog = Prisma.FinishingLogModel
+/**
+ * Model Defect
+ * 
+ */
+export type Defect = Prisma.DefectModel
+/**
+ * Model Inspection
+ * 
+ */
+export type Inspection = Prisma.InspectionModel
+/**
+ * Model DefectOccurrence
+ * 
+ */
+export type DefectOccurrence = Prisma.DefectOccurrenceModel
+/**
+ * Model AqlInspection
+ * 
+ */
+export type AqlInspection = Prisma.AqlInspectionModel
+/**
+ * Model Capa
+ * 
+ */
+export type Capa = Prisma.CapaModel
+/**
+ * Model PackingPlan
+ * 
+ */
+export type PackingPlan = Prisma.PackingPlanModel
+/**
+ * Model Carton
+ * 
+ */
+export type Carton = Prisma.CartonModel
+/**
+ * Model CartonLine
+ * 
+ */
+export type CartonLine = Prisma.CartonLineModel
+/**
+ * Model Forwarder
+ * 
+ */
+export type Forwarder = Prisma.ForwarderModel
+/**
+ * Model Shipment
+ * 
+ */
+export type Shipment = Prisma.ShipmentModel
+/**
+ * Model ShipmentLine
+ * 
+ */
+export type ShipmentLine = Prisma.ShipmentLineModel
+/**
+ * Model Container
+ * 
+ */
+export type Container = Prisma.ContainerModel
+/**
+ * Model ExportDocument
+ * 
+ */
+export type ExportDocument = Prisma.ExportDocumentModel
+/**
+ * Model SupplierInvoice
+ * 
+ */
+export type SupplierInvoice = Prisma.SupplierInvoiceModel
+/**
+ * Model BuyerInvoice
+ * 
+ */
+export type BuyerInvoice = Prisma.BuyerInvoiceModel
+/**
+ * Model BuyerInvoiceLine
+ * 
+ */
+export type BuyerInvoiceLine = Prisma.BuyerInvoiceLineModel
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = Prisma.PaymentModel
+/**
+ * Model Expense
+ * 
+ */
+export type Expense = Prisma.ExpenseModel
+/**
+ * Model CostAllocation
+ * 
+ */
+export type CostAllocation = Prisma.CostAllocationModel

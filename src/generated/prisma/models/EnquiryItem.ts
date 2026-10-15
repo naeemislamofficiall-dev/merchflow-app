@@ -477,22 +477,6 @@ export type EnquiryItemUncheckedUpdateManyWithoutEnquiryNestedInput = {
   deleteMany?: Prisma.EnquiryItemScalarWhereInput | Prisma.EnquiryItemScalarWhereInput[]
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type NullableDecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
 export type EnquiryItemCreateNestedManyWithoutStyleInput = {
   create?: Prisma.XOR<Prisma.EnquiryItemCreateWithoutStyleInput, Prisma.EnquiryItemUncheckedCreateWithoutStyleInput> | Prisma.EnquiryItemCreateWithoutStyleInput[] | Prisma.EnquiryItemUncheckedCreateWithoutStyleInput[]
   connectOrCreate?: Prisma.EnquiryItemCreateOrConnectWithoutStyleInput | Prisma.EnquiryItemCreateOrConnectWithoutStyleInput[]

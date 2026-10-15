@@ -1,139 +1,126 @@
 import { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
+import { BusinessRuleError } from "@/lib/business-rules";
+import { writeAudit } from "@/lib/audit";
+import type { SessionUser } from "@/lib/permissions";
 
-type DecimalInput = string | number | Prisma.Decimal;
-const D = (v: DecimalInput) => new Prisma.Decimal(v);
+// মুদ্রা ও এক্সচেঞ্জ রেট (স্পেক সেকশন ১২ ও ৬১)
+// রেটের মানে: ১ একক fromCode = rate একক toCode (যেমন USD→BDT = 120)
 
-export type MoneySnapshot = {
-  amount: Prisma.Decimal;
-  currency: string;
-  baseCurrency: string;
-  exchangeRate: Prisma.Decimal;
-  rateDate: Date;
-  baseAmount: Prisma.Decimal;
-};
+type Num = number | string | Prisma.Decimal;
 
-// সময়ের অংশ বাদ দিয়ে শুধু তারিখ রাখে (রেট-এর তারিখ @db.Date)
+// তারিখ থেকে সময় বাদ দিয়ে শুধু দিন রাখে (ExchangeRate.rateDate হলো @db.Date)
 export function toDateOnly(d: Date): Date {
   return new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
 }
 
-// Company-র base currency (Company.currency)
-export async function getBaseCurrency(companyId: string): Promise<string> {
-  const c = await prisma.company.findUnique({
-    where: { id: companyId },
-    select: { currency: true },
-  });
-  if (!c) throw new Error("Company not found");
-  return c.currency;
-}
-
-// ওই তারিখের বা তার আগের সবচেয়ে নতুন রেট। সরাসরি না পেলে উল্টো রেট থেকে বের করে
-export async function getRate(from: string, to: string, date: Date = new Date()) {
-  const f = from.toUpperCase();
-  const t = to.toUpperCase();
+// নির্দিষ্ট দিনে (বা তার আগের সবচেয়ে কাছের দিনে) from→to রেট।
+// সরাসরি রেট না থাকলে উল্টো রেট (to→from) থেকে 1 ÷ রেট হিসাব করে।
+export async function getRate(fromCode: string, toCode: string, date: Date = new Date()) {
+  const from = fromCode.trim().toUpperCase();
+  const to = toCode.trim().toUpperCase();
   const day = toDateOnly(date);
 
-  if (f === t) return { rate: D(1), rateDate: day };
+  if (from === to) return { rate: new Prisma.Decimal(1), rateDate: day };
 
-  const direct = await prisma.exchangeRate.findFirst({
-    where: { fromCode: f, toCode: t, rateDate: { lte: day } },
-    orderBy: { rateDate: "desc" },
-  });
-  if (direct) return { rate: D(direct.rate.toString()), rateDate: direct.rateDate };
+  const [direct, inverse] = await Promise.all([
+    prisma.exchangeRate.findFirst({
+      where: { fromCode: from, toCode: to, rateDate: { lte: day } },
+      orderBy: { rateDate: "desc" },
+    }),
+    prisma.exchangeRate.findFirst({
+      where: { fromCode: to, toCode: from, rateDate: { lte: day } },
+      orderBy: { rateDate: "desc" },
+    }),
+  ]);
 
-  const inverse = await prisma.exchangeRate.findFirst({
-    where: { fromCode: t, toCode: f, rateDate: { lte: day } },
-    orderBy: { rateDate: "desc" },
-  });
+  // দুটো থাকলে যেটার তারিখ নতুন সেটা, সমান হলে সরাসরিটা
+  if (direct && (!inverse || direct.rateDate >= inverse.rateDate)) {
+    return { rate: new Prisma.Decimal(direct.rate), rateDate: direct.rateDate };
+  }
   if (inverse) {
-    return { rate: D(1).div(D(inverse.rate.toString())), rateDate: inverse.rateDate };
+    return { rate: new Prisma.Decimal(1).div(inverse.rate), rateDate: inverse.rateDate };
   }
-
-  throw new Error(`NO_EXCHANGE_RATE: ${f}->${t} on/before ${day.toISOString().slice(0, 10)}`);
+  throw new BusinessRuleError(
+    `NO_EXCHANGE_RATE: No exchange rate found for ${from} to ${to} on or before ${day.toISOString().slice(0, 10)}. Add one first.`
+  );
 }
 
-/**
- * লেনদেন সেভ করার সময় একবার ডাকো, ফলাফল row-তে রেখে দাও।
- * পুরনো লেনদেন কখনো আজকের রেট দিয়ে আবার হিসাব করা যাবে না (সেকশন ৬১)।
- *
- * ব্যবহার (PO-র উদাহরণ):
- *   const s = await snapshotMoney({ amount: total, currency: po.currency, companyId });
- *   data: { baseCurrency: s.baseCurrency, exchangeRate: s.exchangeRate,
- *           rateDate: s.rateDate, baseTotal: s.baseAmount }
- */
-export async function snapshotMoney(input: {
-  amount: DecimalInput;
-  currency: string;
-  companyId: string;
-  date?: Date;
-}): Promise<MoneySnapshot> {
-  const baseCurrency = await getBaseCurrency(input.companyId);
-  const { rate, rateDate } = await getRate(input.currency, baseCurrency, input.date);
-
-  const cur = await prisma.currency.findUnique({ where: { code: baseCurrency } });
-  const decimals = cur?.decimals ?? 2;
-
-  const amount = D(input.amount);
-  return {
-    amount,
-    currency: input.currency.toUpperCase(),
-    baseCurrency,
-    exchangeRate: rate,
-    rateDate,
-    baseAmount: amount.mul(rate).toDecimalPlaces(decimals),
-  };
-}
-
-// রেট সেভ (একই জোড়া ও তারিখে থাকলে আপডেট) আর Audit-এ লেখা
-export async function saveRate(input: {
-  fromCode: string;
-  toCode: string;
-  rate: number | string;
-  rateDate: Date;
-  userId?: string;
-}) {
-  const fromCode = input.fromCode.toUpperCase();
-  const toCode = input.toCode.toUpperCase();
-
-  if (!/^[A-Z]{3}$/.test(fromCode) || !/^[A-Z]{3}$/.test(toCode)) {
-    throw new Error("Currency code must be 3 letters");
+// রেট জমা (একই from/to/তারিখে থাকলে আপডেট)। user দিলে audit লেখা হয়।
+export async function saveRate(
+  input: { fromCode: string; toCode: string; rate: Num; rateDate: Date; source?: string },
+  user?: SessionUser
+) {
+  const fromCode = input.fromCode.trim().toUpperCase();
+  const toCode = input.toCode.trim().toUpperCase();
+  if (fromCode === toCode) {
+    throw new BusinessRuleError("From and To currency must be different");
   }
-  if (fromCode === toCode) throw new Error("From and To currency must differ");
-  const rate = D(input.rate);
-  if (!rate.gt(0)) throw new Error("Rate must be greater than zero");
+
+  let rate: Prisma.Decimal;
+  try {
+    rate = new Prisma.Decimal(input.rate);
+  } catch {
+    throw new BusinessRuleError("Rate must be a number");
+  }
+  if (!rate.isFinite() || rate.lte(0)) {
+    throw new BusinessRuleError("Rate must be greater than zero");
+  }
 
   const rateDate = toDateOnly(input.rateDate);
-  const key = { fromCode_toCode_rateDate: { fromCode, toCode, rateDate } };
-  const existing = await prisma.exchangeRate.findUnique({ where: key });
+  const where = { fromCode_toCode_rateDate: { fromCode, toCode, rateDate } };
+  const before = await prisma.exchangeRate.findUnique({ where });
 
   const row = await prisma.exchangeRate.upsert({
-    where: key,
-    update: { rate, createdById: input.userId ?? null },
-    create: { fromCode, toCode, rate, rateDate, createdById: input.userId ?? null },
-  });
-
-  await prisma.auditLog.create({
-    data: {
-      actorId: input.userId ?? null,
-      action: "EXCHANGE_RATE_SAVED",
-      entity: "ExchangeRate",
-      entityId: row.id,
-      before: existing ? { rate: existing.rate.toString() } : undefined,
-      after: { fromCode, toCode, rate: rate.toString(), rateDate: rateDate.toISOString() },
+    where,
+    update: { rate, source: input.source ?? "MANUAL", createdById: user?.id },
+    create: {
+      fromCode,
+      toCode,
+      rate,
+      rateDate,
+      source: input.source ?? "MANUAL",
+      createdById: user?.id,
     },
   });
 
+  if (user) {
+    await writeAudit({
+      user,
+      action: before ? "UPDATE" : "CREATE",
+      entity: "ExchangeRate",
+      entityId: row.id,
+      before,
+      after: row,
+    });
+  }
   return row;
 }
 
-export async function listRates(take = 50) {
-  return prisma.exchangeRate.findMany({
-    orderBy: [{ rateDate: "desc" }, { fromCode: "asc" }],
-    take,
+// কোম্পানির বেস মুদ্রা (Company.currency, ডিফল্ট BDT)
+export async function getBaseCurrency(companyId: string): Promise<string> {
+  const company = await prisma.company.findUnique({
+    where: { id: companyId },
+    select: { currency: true },
   });
+  if (!company) throw new BusinessRuleError("Company not found");
+  return company.currency;
 }
 
-export async function listCurrencies() {
-  return prisma.currency.findMany({ where: { isActive: true }, orderBy: { code: "asc" } });
+// যেকোনো মুদ্রার টাকার অঙ্ক বেস মুদ্রায় রূপান্তর করে ওই মুহূর্তের রেটসহ ফেরত দেয়।
+// Order, Costing, PO, Quotation এটা দিয়ে নিজের baseCurrency/exchangeRate/rateDate/base...Amount বসায়।
+export async function snapshotMoney(input: {
+  amount: Num;
+  currency: string;
+  companyId: string;
+  date?: Date;
+}) {
+  const baseCurrency = await getBaseCurrency(input.companyId);
+  const { rate, rateDate } = await getRate(input.currency, baseCurrency, input.date ?? new Date());
+  return {
+    baseCurrency,
+    exchangeRate: rate,
+    rateDate,
+    baseAmount: new Prisma.Decimal(input.amount).mul(rate).toDecimalPlaces(4),
+  };
 }

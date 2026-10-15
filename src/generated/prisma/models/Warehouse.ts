@@ -208,6 +208,11 @@ export type WarehouseWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Warehouse"> | Date | string
   factory?: Prisma.XOR<Prisma.FactoryScalarRelationFilter, Prisma.FactoryWhereInput>
   bins?: Prisma.BinListRelationFilter
+  grns?: Prisma.GrnListRelationFilter
+  fabricRolls?: Prisma.FabricRollListRelationFilter
+  stockTransactions?: Prisma.StockTransactionListRelationFilter
+  materialIssues?: Prisma.MaterialIssueListRelationFilter
+  stockAdjustments?: Prisma.StockAdjustmentListRelationFilter
 }
 
 export type WarehouseOrderByWithRelationInput = {
@@ -221,6 +226,11 @@ export type WarehouseOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   factory?: Prisma.FactoryOrderByWithRelationInput
   bins?: Prisma.BinOrderByRelationAggregateInput
+  grns?: Prisma.GrnOrderByRelationAggregateInput
+  fabricRolls?: Prisma.FabricRollOrderByRelationAggregateInput
+  stockTransactions?: Prisma.StockTransactionOrderByRelationAggregateInput
+  materialIssues?: Prisma.MaterialIssueOrderByRelationAggregateInput
+  stockAdjustments?: Prisma.StockAdjustmentOrderByRelationAggregateInput
 }
 
 export type WarehouseWhereUniqueInput = Prisma.AtLeast<{
@@ -238,6 +248,11 @@ export type WarehouseWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Warehouse"> | Date | string
   factory?: Prisma.XOR<Prisma.FactoryScalarRelationFilter, Prisma.FactoryWhereInput>
   bins?: Prisma.BinListRelationFilter
+  grns?: Prisma.GrnListRelationFilter
+  fabricRolls?: Prisma.FabricRollListRelationFilter
+  stockTransactions?: Prisma.StockTransactionListRelationFilter
+  materialIssues?: Prisma.MaterialIssueListRelationFilter
+  stockAdjustments?: Prisma.StockAdjustmentListRelationFilter
 }, "id" | "factoryId_code">
 
 export type WarehouseOrderByWithAggregationInput = {
@@ -278,6 +293,11 @@ export type WarehouseCreateInput = {
   updatedAt?: Date | string
   factory: Prisma.FactoryCreateNestedOneWithoutWarehousesInput
   bins?: Prisma.BinCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutWarehouseInput
 }
 
 export type WarehouseUncheckedCreateInput = {
@@ -290,6 +310,11 @@ export type WarehouseUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   bins?: Prisma.BinUncheckedCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueUncheckedCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutWarehouseInput
 }
 
 export type WarehouseUpdateInput = {
@@ -302,6 +327,11 @@ export type WarehouseUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   factory?: Prisma.FactoryUpdateOneRequiredWithoutWarehousesNestedInput
   bins?: Prisma.BinUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutWarehouseNestedInput
 }
 
 export type WarehouseUncheckedUpdateInput = {
@@ -314,6 +344,11 @@ export type WarehouseUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bins?: Prisma.BinUncheckedUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUncheckedUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutWarehouseNestedInput
 }
 
 export type WarehouseCreateManyInput = {
@@ -457,6 +492,76 @@ export type WarehouseUpdateOneRequiredWithoutBinsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WarehouseUpdateToOneWithWhereWithoutBinsInput, Prisma.WarehouseUpdateWithoutBinsInput>, Prisma.WarehouseUncheckedUpdateWithoutBinsInput>
 }
 
+export type WarehouseCreateNestedOneWithoutGrnsInput = {
+  create?: Prisma.XOR<Prisma.WarehouseCreateWithoutGrnsInput, Prisma.WarehouseUncheckedCreateWithoutGrnsInput>
+  connectOrCreate?: Prisma.WarehouseCreateOrConnectWithoutGrnsInput
+  connect?: Prisma.WarehouseWhereUniqueInput
+}
+
+export type WarehouseUpdateOneRequiredWithoutGrnsNestedInput = {
+  create?: Prisma.XOR<Prisma.WarehouseCreateWithoutGrnsInput, Prisma.WarehouseUncheckedCreateWithoutGrnsInput>
+  connectOrCreate?: Prisma.WarehouseCreateOrConnectWithoutGrnsInput
+  upsert?: Prisma.WarehouseUpsertWithoutGrnsInput
+  connect?: Prisma.WarehouseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WarehouseUpdateToOneWithWhereWithoutGrnsInput, Prisma.WarehouseUpdateWithoutGrnsInput>, Prisma.WarehouseUncheckedUpdateWithoutGrnsInput>
+}
+
+export type WarehouseCreateNestedOneWithoutFabricRollsInput = {
+  create?: Prisma.XOR<Prisma.WarehouseCreateWithoutFabricRollsInput, Prisma.WarehouseUncheckedCreateWithoutFabricRollsInput>
+  connectOrCreate?: Prisma.WarehouseCreateOrConnectWithoutFabricRollsInput
+  connect?: Prisma.WarehouseWhereUniqueInput
+}
+
+export type WarehouseUpdateOneRequiredWithoutFabricRollsNestedInput = {
+  create?: Prisma.XOR<Prisma.WarehouseCreateWithoutFabricRollsInput, Prisma.WarehouseUncheckedCreateWithoutFabricRollsInput>
+  connectOrCreate?: Prisma.WarehouseCreateOrConnectWithoutFabricRollsInput
+  upsert?: Prisma.WarehouseUpsertWithoutFabricRollsInput
+  connect?: Prisma.WarehouseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WarehouseUpdateToOneWithWhereWithoutFabricRollsInput, Prisma.WarehouseUpdateWithoutFabricRollsInput>, Prisma.WarehouseUncheckedUpdateWithoutFabricRollsInput>
+}
+
+export type WarehouseCreateNestedOneWithoutStockTransactionsInput = {
+  create?: Prisma.XOR<Prisma.WarehouseCreateWithoutStockTransactionsInput, Prisma.WarehouseUncheckedCreateWithoutStockTransactionsInput>
+  connectOrCreate?: Prisma.WarehouseCreateOrConnectWithoutStockTransactionsInput
+  connect?: Prisma.WarehouseWhereUniqueInput
+}
+
+export type WarehouseUpdateOneRequiredWithoutStockTransactionsNestedInput = {
+  create?: Prisma.XOR<Prisma.WarehouseCreateWithoutStockTransactionsInput, Prisma.WarehouseUncheckedCreateWithoutStockTransactionsInput>
+  connectOrCreate?: Prisma.WarehouseCreateOrConnectWithoutStockTransactionsInput
+  upsert?: Prisma.WarehouseUpsertWithoutStockTransactionsInput
+  connect?: Prisma.WarehouseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WarehouseUpdateToOneWithWhereWithoutStockTransactionsInput, Prisma.WarehouseUpdateWithoutStockTransactionsInput>, Prisma.WarehouseUncheckedUpdateWithoutStockTransactionsInput>
+}
+
+export type WarehouseCreateNestedOneWithoutMaterialIssuesInput = {
+  create?: Prisma.XOR<Prisma.WarehouseCreateWithoutMaterialIssuesInput, Prisma.WarehouseUncheckedCreateWithoutMaterialIssuesInput>
+  connectOrCreate?: Prisma.WarehouseCreateOrConnectWithoutMaterialIssuesInput
+  connect?: Prisma.WarehouseWhereUniqueInput
+}
+
+export type WarehouseUpdateOneRequiredWithoutMaterialIssuesNestedInput = {
+  create?: Prisma.XOR<Prisma.WarehouseCreateWithoutMaterialIssuesInput, Prisma.WarehouseUncheckedCreateWithoutMaterialIssuesInput>
+  connectOrCreate?: Prisma.WarehouseCreateOrConnectWithoutMaterialIssuesInput
+  upsert?: Prisma.WarehouseUpsertWithoutMaterialIssuesInput
+  connect?: Prisma.WarehouseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WarehouseUpdateToOneWithWhereWithoutMaterialIssuesInput, Prisma.WarehouseUpdateWithoutMaterialIssuesInput>, Prisma.WarehouseUncheckedUpdateWithoutMaterialIssuesInput>
+}
+
+export type WarehouseCreateNestedOneWithoutStockAdjustmentsInput = {
+  create?: Prisma.XOR<Prisma.WarehouseCreateWithoutStockAdjustmentsInput, Prisma.WarehouseUncheckedCreateWithoutStockAdjustmentsInput>
+  connectOrCreate?: Prisma.WarehouseCreateOrConnectWithoutStockAdjustmentsInput
+  connect?: Prisma.WarehouseWhereUniqueInput
+}
+
+export type WarehouseUpdateOneRequiredWithoutStockAdjustmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.WarehouseCreateWithoutStockAdjustmentsInput, Prisma.WarehouseUncheckedCreateWithoutStockAdjustmentsInput>
+  connectOrCreate?: Prisma.WarehouseCreateOrConnectWithoutStockAdjustmentsInput
+  upsert?: Prisma.WarehouseUpsertWithoutStockAdjustmentsInput
+  connect?: Prisma.WarehouseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WarehouseUpdateToOneWithWhereWithoutStockAdjustmentsInput, Prisma.WarehouseUpdateWithoutStockAdjustmentsInput>, Prisma.WarehouseUncheckedUpdateWithoutStockAdjustmentsInput>
+}
+
 export type WarehouseCreateWithoutFactoryInput = {
   id?: string
   code: string
@@ -466,6 +571,11 @@ export type WarehouseCreateWithoutFactoryInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   bins?: Prisma.BinCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutWarehouseInput
 }
 
 export type WarehouseUncheckedCreateWithoutFactoryInput = {
@@ -477,6 +587,11 @@ export type WarehouseUncheckedCreateWithoutFactoryInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   bins?: Prisma.BinUncheckedCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueUncheckedCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutWarehouseInput
 }
 
 export type WarehouseCreateOrConnectWithoutFactoryInput = {
@@ -528,6 +643,11 @@ export type WarehouseCreateWithoutBinsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   factory: Prisma.FactoryCreateNestedOneWithoutWarehousesInput
+  grns?: Prisma.GrnCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutWarehouseInput
 }
 
 export type WarehouseUncheckedCreateWithoutBinsInput = {
@@ -539,6 +659,11 @@ export type WarehouseUncheckedCreateWithoutBinsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueUncheckedCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutWarehouseInput
 }
 
 export type WarehouseCreateOrConnectWithoutBinsInput = {
@@ -566,6 +691,11 @@ export type WarehouseUpdateWithoutBinsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   factory?: Prisma.FactoryUpdateOneRequiredWithoutWarehousesNestedInput
+  grns?: Prisma.GrnUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutWarehouseNestedInput
 }
 
 export type WarehouseUncheckedUpdateWithoutBinsInput = {
@@ -577,6 +707,411 @@ export type WarehouseUncheckedUpdateWithoutBinsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  grns?: Prisma.GrnUncheckedUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutWarehouseNestedInput
+}
+
+export type WarehouseCreateWithoutGrnsInput = {
+  id?: string
+  code: string
+  name: string
+  type?: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factory: Prisma.FactoryCreateNestedOneWithoutWarehousesInput
+  bins?: Prisma.BinCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutWarehouseInput
+}
+
+export type WarehouseUncheckedCreateWithoutGrnsInput = {
+  id?: string
+  factoryId: string
+  code: string
+  name: string
+  type?: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bins?: Prisma.BinUncheckedCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueUncheckedCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutWarehouseInput
+}
+
+export type WarehouseCreateOrConnectWithoutGrnsInput = {
+  where: Prisma.WarehouseWhereUniqueInput
+  create: Prisma.XOR<Prisma.WarehouseCreateWithoutGrnsInput, Prisma.WarehouseUncheckedCreateWithoutGrnsInput>
+}
+
+export type WarehouseUpsertWithoutGrnsInput = {
+  update: Prisma.XOR<Prisma.WarehouseUpdateWithoutGrnsInput, Prisma.WarehouseUncheckedUpdateWithoutGrnsInput>
+  create: Prisma.XOR<Prisma.WarehouseCreateWithoutGrnsInput, Prisma.WarehouseUncheckedCreateWithoutGrnsInput>
+  where?: Prisma.WarehouseWhereInput
+}
+
+export type WarehouseUpdateToOneWithWhereWithoutGrnsInput = {
+  where?: Prisma.WarehouseWhereInput
+  data: Prisma.XOR<Prisma.WarehouseUpdateWithoutGrnsInput, Prisma.WarehouseUncheckedUpdateWithoutGrnsInput>
+}
+
+export type WarehouseUpdateWithoutGrnsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factory?: Prisma.FactoryUpdateOneRequiredWithoutWarehousesNestedInput
+  bins?: Prisma.BinUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutWarehouseNestedInput
+}
+
+export type WarehouseUncheckedUpdateWithoutGrnsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  factoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bins?: Prisma.BinUncheckedUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutWarehouseNestedInput
+}
+
+export type WarehouseCreateWithoutFabricRollsInput = {
+  id?: string
+  code: string
+  name: string
+  type?: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factory: Prisma.FactoryCreateNestedOneWithoutWarehousesInput
+  bins?: Prisma.BinCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutWarehouseInput
+}
+
+export type WarehouseUncheckedCreateWithoutFabricRollsInput = {
+  id?: string
+  factoryId: string
+  code: string
+  name: string
+  type?: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bins?: Prisma.BinUncheckedCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueUncheckedCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutWarehouseInput
+}
+
+export type WarehouseCreateOrConnectWithoutFabricRollsInput = {
+  where: Prisma.WarehouseWhereUniqueInput
+  create: Prisma.XOR<Prisma.WarehouseCreateWithoutFabricRollsInput, Prisma.WarehouseUncheckedCreateWithoutFabricRollsInput>
+}
+
+export type WarehouseUpsertWithoutFabricRollsInput = {
+  update: Prisma.XOR<Prisma.WarehouseUpdateWithoutFabricRollsInput, Prisma.WarehouseUncheckedUpdateWithoutFabricRollsInput>
+  create: Prisma.XOR<Prisma.WarehouseCreateWithoutFabricRollsInput, Prisma.WarehouseUncheckedCreateWithoutFabricRollsInput>
+  where?: Prisma.WarehouseWhereInput
+}
+
+export type WarehouseUpdateToOneWithWhereWithoutFabricRollsInput = {
+  where?: Prisma.WarehouseWhereInput
+  data: Prisma.XOR<Prisma.WarehouseUpdateWithoutFabricRollsInput, Prisma.WarehouseUncheckedUpdateWithoutFabricRollsInput>
+}
+
+export type WarehouseUpdateWithoutFabricRollsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factory?: Prisma.FactoryUpdateOneRequiredWithoutWarehousesNestedInput
+  bins?: Prisma.BinUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutWarehouseNestedInput
+}
+
+export type WarehouseUncheckedUpdateWithoutFabricRollsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  factoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bins?: Prisma.BinUncheckedUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutWarehouseNestedInput
+}
+
+export type WarehouseCreateWithoutStockTransactionsInput = {
+  id?: string
+  code: string
+  name: string
+  type?: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factory: Prisma.FactoryCreateNestedOneWithoutWarehousesInput
+  bins?: Prisma.BinCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutWarehouseInput
+}
+
+export type WarehouseUncheckedCreateWithoutStockTransactionsInput = {
+  id?: string
+  factoryId: string
+  code: string
+  name: string
+  type?: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bins?: Prisma.BinUncheckedCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueUncheckedCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutWarehouseInput
+}
+
+export type WarehouseCreateOrConnectWithoutStockTransactionsInput = {
+  where: Prisma.WarehouseWhereUniqueInput
+  create: Prisma.XOR<Prisma.WarehouseCreateWithoutStockTransactionsInput, Prisma.WarehouseUncheckedCreateWithoutStockTransactionsInput>
+}
+
+export type WarehouseUpsertWithoutStockTransactionsInput = {
+  update: Prisma.XOR<Prisma.WarehouseUpdateWithoutStockTransactionsInput, Prisma.WarehouseUncheckedUpdateWithoutStockTransactionsInput>
+  create: Prisma.XOR<Prisma.WarehouseCreateWithoutStockTransactionsInput, Prisma.WarehouseUncheckedCreateWithoutStockTransactionsInput>
+  where?: Prisma.WarehouseWhereInput
+}
+
+export type WarehouseUpdateToOneWithWhereWithoutStockTransactionsInput = {
+  where?: Prisma.WarehouseWhereInput
+  data: Prisma.XOR<Prisma.WarehouseUpdateWithoutStockTransactionsInput, Prisma.WarehouseUncheckedUpdateWithoutStockTransactionsInput>
+}
+
+export type WarehouseUpdateWithoutStockTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factory?: Prisma.FactoryUpdateOneRequiredWithoutWarehousesNestedInput
+  bins?: Prisma.BinUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutWarehouseNestedInput
+}
+
+export type WarehouseUncheckedUpdateWithoutStockTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  factoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bins?: Prisma.BinUncheckedUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUncheckedUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutWarehouseNestedInput
+}
+
+export type WarehouseCreateWithoutMaterialIssuesInput = {
+  id?: string
+  code: string
+  name: string
+  type?: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factory: Prisma.FactoryCreateNestedOneWithoutWarehousesInput
+  bins?: Prisma.BinCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutWarehouseInput
+}
+
+export type WarehouseUncheckedCreateWithoutMaterialIssuesInput = {
+  id?: string
+  factoryId: string
+  code: string
+  name: string
+  type?: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bins?: Prisma.BinUncheckedCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutWarehouseInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutWarehouseInput
+}
+
+export type WarehouseCreateOrConnectWithoutMaterialIssuesInput = {
+  where: Prisma.WarehouseWhereUniqueInput
+  create: Prisma.XOR<Prisma.WarehouseCreateWithoutMaterialIssuesInput, Prisma.WarehouseUncheckedCreateWithoutMaterialIssuesInput>
+}
+
+export type WarehouseUpsertWithoutMaterialIssuesInput = {
+  update: Prisma.XOR<Prisma.WarehouseUpdateWithoutMaterialIssuesInput, Prisma.WarehouseUncheckedUpdateWithoutMaterialIssuesInput>
+  create: Prisma.XOR<Prisma.WarehouseCreateWithoutMaterialIssuesInput, Prisma.WarehouseUncheckedCreateWithoutMaterialIssuesInput>
+  where?: Prisma.WarehouseWhereInput
+}
+
+export type WarehouseUpdateToOneWithWhereWithoutMaterialIssuesInput = {
+  where?: Prisma.WarehouseWhereInput
+  data: Prisma.XOR<Prisma.WarehouseUpdateWithoutMaterialIssuesInput, Prisma.WarehouseUncheckedUpdateWithoutMaterialIssuesInput>
+}
+
+export type WarehouseUpdateWithoutMaterialIssuesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factory?: Prisma.FactoryUpdateOneRequiredWithoutWarehousesNestedInput
+  bins?: Prisma.BinUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutWarehouseNestedInput
+}
+
+export type WarehouseUncheckedUpdateWithoutMaterialIssuesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  factoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bins?: Prisma.BinUncheckedUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUncheckedUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutWarehouseNestedInput
+}
+
+export type WarehouseCreateWithoutStockAdjustmentsInput = {
+  id?: string
+  code: string
+  name: string
+  type?: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  factory: Prisma.FactoryCreateNestedOneWithoutWarehousesInput
+  bins?: Prisma.BinCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueCreateNestedManyWithoutWarehouseInput
+}
+
+export type WarehouseUncheckedCreateWithoutStockAdjustmentsInput = {
+  id?: string
+  factoryId: string
+  code: string
+  name: string
+  type?: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bins?: Prisma.BinUncheckedCreateNestedManyWithoutWarehouseInput
+  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutWarehouseInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutWarehouseInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutWarehouseInput
+  materialIssues?: Prisma.MaterialIssueUncheckedCreateNestedManyWithoutWarehouseInput
+}
+
+export type WarehouseCreateOrConnectWithoutStockAdjustmentsInput = {
+  where: Prisma.WarehouseWhereUniqueInput
+  create: Prisma.XOR<Prisma.WarehouseCreateWithoutStockAdjustmentsInput, Prisma.WarehouseUncheckedCreateWithoutStockAdjustmentsInput>
+}
+
+export type WarehouseUpsertWithoutStockAdjustmentsInput = {
+  update: Prisma.XOR<Prisma.WarehouseUpdateWithoutStockAdjustmentsInput, Prisma.WarehouseUncheckedUpdateWithoutStockAdjustmentsInput>
+  create: Prisma.XOR<Prisma.WarehouseCreateWithoutStockAdjustmentsInput, Prisma.WarehouseUncheckedCreateWithoutStockAdjustmentsInput>
+  where?: Prisma.WarehouseWhereInput
+}
+
+export type WarehouseUpdateToOneWithWhereWithoutStockAdjustmentsInput = {
+  where?: Prisma.WarehouseWhereInput
+  data: Prisma.XOR<Prisma.WarehouseUpdateWithoutStockAdjustmentsInput, Prisma.WarehouseUncheckedUpdateWithoutStockAdjustmentsInput>
+}
+
+export type WarehouseUpdateWithoutStockAdjustmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  factory?: Prisma.FactoryUpdateOneRequiredWithoutWarehousesNestedInput
+  bins?: Prisma.BinUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUpdateManyWithoutWarehouseNestedInput
+}
+
+export type WarehouseUncheckedUpdateWithoutStockAdjustmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  factoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bins?: Prisma.BinUncheckedUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUncheckedUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUncheckedUpdateManyWithoutWarehouseNestedInput
 }
 
 export type WarehouseCreateManyFactoryInput = {
@@ -598,6 +1133,11 @@ export type WarehouseUpdateWithoutFactoryInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bins?: Prisma.BinUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutWarehouseNestedInput
 }
 
 export type WarehouseUncheckedUpdateWithoutFactoryInput = {
@@ -609,6 +1149,11 @@ export type WarehouseUncheckedUpdateWithoutFactoryInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bins?: Prisma.BinUncheckedUpdateManyWithoutWarehouseNestedInput
+  grns?: Prisma.GrnUncheckedUpdateManyWithoutWarehouseNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutWarehouseNestedInput
+  materialIssues?: Prisma.MaterialIssueUncheckedUpdateManyWithoutWarehouseNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutWarehouseNestedInput
 }
 
 export type WarehouseUncheckedUpdateManyWithoutFactoryInput = {
@@ -628,10 +1173,20 @@ export type WarehouseUncheckedUpdateManyWithoutFactoryInput = {
 
 export type WarehouseCountOutputType = {
   bins: number
+  grns: number
+  fabricRolls: number
+  stockTransactions: number
+  materialIssues: number
+  stockAdjustments: number
 }
 
 export type WarehouseCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bins?: boolean | WarehouseCountOutputTypeCountBinsArgs
+  grns?: boolean | WarehouseCountOutputTypeCountGrnsArgs
+  fabricRolls?: boolean | WarehouseCountOutputTypeCountFabricRollsArgs
+  stockTransactions?: boolean | WarehouseCountOutputTypeCountStockTransactionsArgs
+  materialIssues?: boolean | WarehouseCountOutputTypeCountMaterialIssuesArgs
+  stockAdjustments?: boolean | WarehouseCountOutputTypeCountStockAdjustmentsArgs
 }
 
 /**
@@ -651,6 +1206,41 @@ export type WarehouseCountOutputTypeCountBinsArgs<ExtArgs extends runtime.Types.
   where?: Prisma.BinWhereInput
 }
 
+/**
+ * WarehouseCountOutputType without action
+ */
+export type WarehouseCountOutputTypeCountGrnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GrnWhereInput
+}
+
+/**
+ * WarehouseCountOutputType without action
+ */
+export type WarehouseCountOutputTypeCountFabricRollsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FabricRollWhereInput
+}
+
+/**
+ * WarehouseCountOutputType without action
+ */
+export type WarehouseCountOutputTypeCountStockTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StockTransactionWhereInput
+}
+
+/**
+ * WarehouseCountOutputType without action
+ */
+export type WarehouseCountOutputTypeCountMaterialIssuesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MaterialIssueWhereInput
+}
+
+/**
+ * WarehouseCountOutputType without action
+ */
+export type WarehouseCountOutputTypeCountStockAdjustmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StockAdjustmentWhereInput
+}
+
 
 export type WarehouseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -663,6 +1253,11 @@ export type WarehouseSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   updatedAt?: boolean
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
   bins?: boolean | Prisma.Warehouse$binsArgs<ExtArgs>
+  grns?: boolean | Prisma.Warehouse$grnsArgs<ExtArgs>
+  fabricRolls?: boolean | Prisma.Warehouse$fabricRollsArgs<ExtArgs>
+  stockTransactions?: boolean | Prisma.Warehouse$stockTransactionsArgs<ExtArgs>
+  materialIssues?: boolean | Prisma.Warehouse$materialIssuesArgs<ExtArgs>
+  stockAdjustments?: boolean | Prisma.Warehouse$stockAdjustmentsArgs<ExtArgs>
   _count?: boolean | Prisma.WarehouseCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["warehouse"]>
 
@@ -705,6 +1300,11 @@ export type WarehouseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type WarehouseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
   bins?: boolean | Prisma.Warehouse$binsArgs<ExtArgs>
+  grns?: boolean | Prisma.Warehouse$grnsArgs<ExtArgs>
+  fabricRolls?: boolean | Prisma.Warehouse$fabricRollsArgs<ExtArgs>
+  stockTransactions?: boolean | Prisma.Warehouse$stockTransactionsArgs<ExtArgs>
+  materialIssues?: boolean | Prisma.Warehouse$materialIssuesArgs<ExtArgs>
+  stockAdjustments?: boolean | Prisma.Warehouse$stockAdjustmentsArgs<ExtArgs>
   _count?: boolean | Prisma.WarehouseCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type WarehouseIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -719,6 +1319,11 @@ export type $WarehousePayload<ExtArgs extends runtime.Types.Extensions.InternalA
   objects: {
     factory: Prisma.$FactoryPayload<ExtArgs>
     bins: Prisma.$BinPayload<ExtArgs>[]
+    grns: Prisma.$GrnPayload<ExtArgs>[]
+    fabricRolls: Prisma.$FabricRollPayload<ExtArgs>[]
+    stockTransactions: Prisma.$StockTransactionPayload<ExtArgs>[]
+    materialIssues: Prisma.$MaterialIssuePayload<ExtArgs>[]
+    stockAdjustments: Prisma.$StockAdjustmentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1125,6 +1730,11 @@ export interface Prisma__WarehouseClient<T, Null = never, ExtArgs extends runtim
   readonly [Symbol.toStringTag]: "PrismaPromise"
   factory<T extends Prisma.FactoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FactoryDefaultArgs<ExtArgs>>): Prisma.Prisma__FactoryClient<runtime.Types.Result.GetResult<Prisma.$FactoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   bins<T extends Prisma.Warehouse$binsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Warehouse$binsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BinPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  grns<T extends Prisma.Warehouse$grnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Warehouse$grnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GrnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  fabricRolls<T extends Prisma.Warehouse$fabricRollsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Warehouse$fabricRollsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FabricRollPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  stockTransactions<T extends Prisma.Warehouse$stockTransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Warehouse$stockTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  materialIssues<T extends Prisma.Warehouse$materialIssuesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Warehouse$materialIssuesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaterialIssuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  stockAdjustments<T extends Prisma.Warehouse$stockAdjustmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Warehouse$stockAdjustmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockAdjustmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1584,6 +2194,126 @@ export type Warehouse$binsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.BinScalarFieldEnum | Prisma.BinScalarFieldEnum[]
+}
+
+/**
+ * Warehouse.grns
+ */
+export type Warehouse$grnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Grn
+   */
+  select?: Prisma.GrnSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Grn
+   */
+  omit?: Prisma.GrnOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GrnInclude<ExtArgs> | null
+  where?: Prisma.GrnWhereInput
+  orderBy?: Prisma.GrnOrderByWithRelationInput | Prisma.GrnOrderByWithRelationInput[]
+  cursor?: Prisma.GrnWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GrnScalarFieldEnum | Prisma.GrnScalarFieldEnum[]
+}
+
+/**
+ * Warehouse.fabricRolls
+ */
+export type Warehouse$fabricRollsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FabricRoll
+   */
+  select?: Prisma.FabricRollSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FabricRoll
+   */
+  omit?: Prisma.FabricRollOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FabricRollInclude<ExtArgs> | null
+  where?: Prisma.FabricRollWhereInput
+  orderBy?: Prisma.FabricRollOrderByWithRelationInput | Prisma.FabricRollOrderByWithRelationInput[]
+  cursor?: Prisma.FabricRollWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FabricRollScalarFieldEnum | Prisma.FabricRollScalarFieldEnum[]
+}
+
+/**
+ * Warehouse.stockTransactions
+ */
+export type Warehouse$stockTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StockTransaction
+   */
+  select?: Prisma.StockTransactionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StockTransaction
+   */
+  omit?: Prisma.StockTransactionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StockTransactionInclude<ExtArgs> | null
+  where?: Prisma.StockTransactionWhereInput
+  orderBy?: Prisma.StockTransactionOrderByWithRelationInput | Prisma.StockTransactionOrderByWithRelationInput[]
+  cursor?: Prisma.StockTransactionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StockTransactionScalarFieldEnum | Prisma.StockTransactionScalarFieldEnum[]
+}
+
+/**
+ * Warehouse.materialIssues
+ */
+export type Warehouse$materialIssuesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MaterialIssue
+   */
+  select?: Prisma.MaterialIssueSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MaterialIssue
+   */
+  omit?: Prisma.MaterialIssueOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MaterialIssueInclude<ExtArgs> | null
+  where?: Prisma.MaterialIssueWhereInput
+  orderBy?: Prisma.MaterialIssueOrderByWithRelationInput | Prisma.MaterialIssueOrderByWithRelationInput[]
+  cursor?: Prisma.MaterialIssueWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MaterialIssueScalarFieldEnum | Prisma.MaterialIssueScalarFieldEnum[]
+}
+
+/**
+ * Warehouse.stockAdjustments
+ */
+export type Warehouse$stockAdjustmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StockAdjustment
+   */
+  select?: Prisma.StockAdjustmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StockAdjustment
+   */
+  omit?: Prisma.StockAdjustmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StockAdjustmentInclude<ExtArgs> | null
+  where?: Prisma.StockAdjustmentWhereInput
+  orderBy?: Prisma.StockAdjustmentOrderByWithRelationInput | Prisma.StockAdjustmentOrderByWithRelationInput[]
+  cursor?: Prisma.StockAdjustmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StockAdjustmentScalarFieldEnum | Prisma.StockAdjustmentScalarFieldEnum[]
 }
 
 /**
