@@ -2,6 +2,7 @@
 const MODULES: Record<string, readonly string[]> = {
   organization: ["view", "create"],
   warehouse: ["view", "create"],
+  material: ["view", "create", "edit"],
   buyer: ["view", "create", "edit"],
   enquiry: ["view", "create", "edit", "approve"],
   style: ["view", "create", "edit", "approve"],
@@ -43,6 +44,9 @@ const MODULES: Record<string, readonly string[]> = {
   ar: ["view", "create", "edit", "post", "receive", "cancel"],
   expense: ["view", "create", "approve", "cancel"],
   profitability: ["view"],
+  user: ["view", "create", "edit"],
+  role: ["view", "manage"],
+  audit: ["view"],
 };
 
 export const ALL_PERMISSION_KEYS: string[] = Object.entries(MODULES).flatMap(

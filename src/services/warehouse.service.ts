@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
-import { assertFactoryInScope } from "@/lib/scope";
+import { assertFactoryInScope, factoryWhere } from "@/lib/scope";
 import { BusinessRuleError } from "@/lib/business-rules";
 import { BaseService } from "./base.service";
 
@@ -40,6 +40,27 @@ class WarehouseService extends BaseService {
     const row = await prisma.warehouse.create({ data });
     await this.audit({ user, action: "CREATE", entity: "Warehouse", entityId: row.id, after: row });
     return row;
+  }
+    // স্কোপের ভেতরের সব warehouse (bin সহ)
+  async listAll() {
+    const user = await this.guard("warehouse.view");
+    const scope = await this.scopeOf(user);
+    return prisma.warehouse.findMany({
+      where: { ...factoryWhere(scope), isActive: true },
+      include: { factory: { select: { code: true, name: true } }, bins: true },
+      orderBy: { code: "asc" },
+    });
+  }
+
+  // ফর্মের ড্রপডাউনের জন্য স্কোপের factory
+  async listFactories() {
+    const user = await this.guard("warehouse.view");
+    const scope = await this.scopeOf(user);
+    return prisma.factory.findMany({
+      where: { id: { in: scope.factoryIds } },
+      select: { id: true, code: true, name: true },
+      orderBy: { code: "asc" },
+    });
   }
 
   async createBin(input: unknown) {

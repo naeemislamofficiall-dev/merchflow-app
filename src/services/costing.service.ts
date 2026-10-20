@@ -16,6 +16,7 @@ import {
   listFilter,
 } from "@/lib/service-helpers";
 import type { SessionUser } from "@/lib/permissions";
+import type { CostSheetStatus } from "@/generated/prisma/enums";
 import { snapshotMoney } from "./currency.service";
 import { approvalService } from "./approval.service";
 import { BaseService } from "./base.service";
@@ -90,6 +91,19 @@ class CostingService extends BaseService {
     });
   }
 
+    async list(filter: { styleId?: string; status?: CostSheetStatus } = {}) {
+    const user = await this.guard("costing.view");
+    return prisma.costSheet.findMany({
+      where: {
+        ...(await listFilter(user)),
+        ...(filter.styleId ? { styleId: filter.styleId } : {}),
+        ...(filter.status ? { status: filter.status } : {}),
+      },
+      include: { style: { select: { styleNo: true, name: true } } },
+      orderBy: { createdAt: "desc" },
+    });
+  }
+  
   async listForStyle(styleId: string) {
     const user = await this.guard("costing.view");
     return prisma.costSheet.findMany({

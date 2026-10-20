@@ -4,6 +4,8 @@ import { assertBomApproved, BusinessRuleError } from "@/lib/business-rules";
 import { grossRequirement, netRequirement } from "@/lib/calculations";
 import { nextPrNo } from "@/lib/numbering";
 import { getStockPosition, TX_OPTIONS } from "@/lib/stock";
+import { assertRecordInScope, found, listFilter } from "@/lib/service-helpers";
+import type { SessionUser } from "@/lib/permissions";
 import { BaseService } from "./base.service";
 
 const runSchema = z.object({
@@ -13,6 +15,44 @@ const runSchema = z.object({
 });
 
 class MrpService extends BaseService {
+    private async load(user: SessionUser, id: string) {
+    const run = found(await prisma.mrpRun.findUnique({ where: { id } }), "MRP run");
+    await assertRecordInScope(user, run.companyId);
+    return run;
+  }
+
+  // সব MRP run-এর তালিকা
+  async list() {
+    const user = await this.guard("mrp.view");
+    return prisma.mrpRun.findMany({
+      where: await listFilter(user),
+      include: {
+        bom: { select: { version: true, style: { select: { styleNo: true, name: true } } } },
+        order: { select: { orderNo: true } },
+        purchaseRequisitions: { select: { prNo: true } },
+        _count: { select: { lines: true } },
+      },
+      orderBy: { runDate: "desc" },
+    });
+  }
+
+  // একটা run-এর সব লাইনসহ বিস্তারিত
+  async get(id: string) {
+    const user = await this.guard("mrp.view");
+    await this.load(user, id);
+    return found(
+      await prisma.mrpRun.findUnique({
+        where: { id },
+        include: {
+          bom: { include: { style: true } },
+          order: { select: { orderNo: true } },
+          purchaseRequisitions: { select: { id: true, prNo: true, status: true } },
+          lines: { include: { bomItem: { include: { material: true } } }, orderBy: { id: "asc" } },
+        },
+      }),
+      "MRP run"
+    );
+  }
   // নেট = মোট দরকার − স্টক − আসন্ন সরবরাহ + সংরক্ষিত স্টক (সেকশন ১৪)
   // স্টক = ব্যবহারযোগ্য হাতের মাল, আসন্ন = পাঠানো PO-র বাকি, সংরক্ষিত = অন্য অর্ডারের জন্য রাখা
   async run(input: unknown) {

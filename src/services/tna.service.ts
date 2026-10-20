@@ -156,7 +156,10 @@ class TnaService extends BaseService {
         ...(filter.styleId ? { styleId: filter.styleId } : {}),
         ...(filter.orderId ? { orderId: filter.orderId } : {}),
       },
-      include: { style: { select: { styleNo: true } } },
+      include: {
+        style: { select: { styleNo: true } },
+        tasks: { select: { status: true } },
+      },
       orderBy: { createdAt: "desc" },
     });
   }

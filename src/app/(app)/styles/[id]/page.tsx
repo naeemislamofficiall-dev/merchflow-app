@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BusinessRuleError } from "@/lib/business-rules";
 import { styleTransitions } from "@/lib/status-rules";
@@ -9,6 +10,7 @@ import { StatusBadge } from "@/components/detail/status-badge";
 import { styleService } from "@/services/style.service";
 import { MatrixEditor } from "./matrix-editor";
 import { StatusActions } from "./status-actions";
+import { approveStyleRevisionAction, proposeStyleRevisionAction } from "./revision-actions";
 
 const TABS: DetailTab[] = [
   { key: "overview", label: "Overview" },
@@ -31,10 +33,10 @@ function Row({ label, value }: { label: string; value?: string | number | null }
 
 export default async function StyleDetailPage(props: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ tab?: string }>;
+  searchParams: Promise<{ tab?: string; revisionSaved?: string; revisionApproved?: string }>;
 }) {
   const { id } = await props.params;
-  const { tab = "overview" } = await props.searchParams;
+  const { tab = "overview", revisionSaved, revisionApproved } = await props.searchParams;
 
   const style = await styleService.get(id).catch((e) => {
     if (e instanceof BusinessRuleError) notFound();
@@ -82,6 +84,9 @@ export default async function StyleDetailPage(props: {
             ) : (
               <p className="text-muted-foreground">No sample requested yet.</p>
             )}
+            <Link href={`/samples/new?styleId=${id}`} className="mt-2 block text-denim-700 hover:underline">
+              Request a sample
+            </Link>
           </SidePanelSection>
           <SidePanelSection title="Next action">
             <p className="text-muted-foreground">
@@ -144,7 +149,7 @@ export default async function StyleDetailPage(props: {
             <TableBody>
               {style.techPacks.length === 0 ? (
                 <TableRow className="hover:bg-transparent">
-                  <TableCell colSpan={5} className="h-20 text-center text-muted-foreground">
+                  <TableCell colSpan={6} className="h-20 text-center text-muted-foreground">
                     No documents yet
                   </TableCell>
                 </TableRow>
@@ -173,6 +178,18 @@ export default async function StyleDetailPage(props: {
       )}
 
       {tab === "revisions" && (
+        <div className="space-y-4">
+        {revisionSaved === "1" && <p className="rounded-md border border-emerald-300 bg-emerald-50 p-3 text-sm text-emerald-800">Revision proposal saved for approval.</p>}
+        {revisionApproved === "1" && <p className="rounded-md border border-emerald-300 bg-emerald-50 p-3 text-sm text-emerald-800">Revision approved and applied.</p>}
+        {style.status === "APPROVED" && <Card><CardHeader><CardTitle>Propose a revision</CardTitle></CardHeader><CardContent><form action={proposeStyleRevisionAction} className="grid gap-3 md:grid-cols-2"><input type="hidden" name="styleId" value={id}/>
+          <label className="grid gap-1 text-sm">Reason (required)<input required minLength={3} name="reason" className="rounded-md border bg-background px-3 py-2" placeholder="Buyer approved updated fabric"/></label>
+          <label className="grid gap-1 text-sm">Style name<input name="name" className="rounded-md border bg-background px-3 py-2"/></label>
+          <label className="grid gap-1 text-sm">Fabric type<input name="fabricType" className="rounded-md border bg-background px-3 py-2"/></label>
+          <label className="grid gap-1 text-sm">Composition<input name="composition" className="rounded-md border bg-background px-3 py-2"/></label>
+          <label className="grid gap-1 text-sm">GSM<input type="number" min="1" step="1" name="gsm" className="rounded-md border bg-background px-3 py-2"/></label>
+          <label className="grid gap-1 text-sm">Attachment URL<input type="url" name="attachmentUrl" className="rounded-md border bg-background px-3 py-2"/></label>
+          <label className="grid gap-1 text-sm md:col-span-2">Description<input name="description" className="rounded-md border bg-background px-3 py-2"/></label>
+          <div className="md:col-span-2"><button className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">Submit revision</button></div></form></CardContent></Card>}
         <Card>
           <Table>
             <TableHeader>
@@ -182,12 +199,13 @@ export default async function StyleDetailPage(props: {
                 <TableHead>Changed fields</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Date</TableHead>
+                <TableHead>Action</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {style.revisions.length === 0 ? (
                 <TableRow className="hover:bg-transparent">
-                  <TableCell colSpan={5} className="h-20 text-center text-muted-foreground">
+                  <TableCell colSpan={6} className="h-20 text-center text-muted-foreground">
                     No revisions yet
                   </TableCell>
                 </TableRow>
@@ -203,12 +221,14 @@ export default async function StyleDetailPage(props: {
                       <StatusBadge status={r.approvedAt ? "APPROVED" : "PENDING"} />
                     </TableCell>
                     <TableCell>{day(r.createdAt)}</TableCell>
+                    <TableCell>{!r.approvedAt && r.reason ? <form action={approveStyleRevisionAction}><input type="hidden" name="styleId" value={id}/><input type="hidden" name="revisionId" value={r.id}/><button className="rounded-md border px-2 py-1 text-xs">Approve & apply</button></form> : "—"}</TableCell>
                   </TableRow>
                 ))
               )}
             </TableBody>
           </Table>
         </Card>
+        </div>
       )}
     </DetailPage>
   );

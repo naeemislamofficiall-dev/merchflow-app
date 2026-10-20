@@ -140,6 +140,38 @@ class ProductionOrderService extends BaseService {
     return { ...row!, cutPlanCount: cut._count, cutPlannedOutput: cut._sum.plannedOutput ?? 0 };
   }
 
+    // ফর্মের ড্রপডাউনের জন্য: স্কোপের factory আর সক্রিয় লাইন
+  async formOptions() {
+    const user = await this.guard("production.create");
+    const scope = await this.scopeOf(user);
+    const [factories, lines] = await Promise.all([
+      prisma.factory.findMany({
+        where: { id: { in: scope.factoryIds } },
+        select: { id: true, code: true, name: true },
+        orderBy: { code: "asc" },
+      }),
+      prisma.line.findMany({
+        where: { isActive: true, floor: { building: { factoryId: { in: scope.factoryIds } } } },
+        select: {
+          id: true,
+          code: true,
+          name: true,
+          floor: { select: { building: { select: { factoryId: true } } } },
+        },
+        orderBy: { code: "asc" },
+      }),
+    ]);
+    return {
+      factories,
+      lines: lines.map((l) => ({
+        id: l.id,
+        code: l.code,
+        name: l.name,
+        factoryId: l.floor.building.factoryId,
+      })),
+    };
+  }
+  
   // ---------- তৈরি ও বদল ----------
 
   async create(input: unknown) {

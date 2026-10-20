@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MERCHFLOW ERP
 
-## Getting Started
+Next.js + TypeScript + Prisma ERP application for garment merchandising and factory operations.
 
-First, run the development server:
+## Local setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Install Node.js compatible with the Next.js version in `package.json` and PostgreSQL.
+2. Copy `.env.example` to `.env` and set fresh local credentials:
+   - `DATABASE_URL`: pooled/runtime connection if your database provider requires it.
+   - `DIRECT_URL`: direct database connection for Prisma migrations.
+   - `AUTH_SECRET`: a cryptographically random secret.
+3. Install dependencies and generate the Prisma client:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   npm ci
+   npx prisma generate
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Apply migrations to a **development database only**:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   npx prisma migrate deploy
+   ```
 
-## Learn More
+   If this is a fresh local database and migration history is not present, review the migration history first rather than blindly applying production migrations.
+5. Start the app:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+6. Before deployment, run:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm run lint
+   npx tsc --noEmit
+   npm run build
+   ```
 
-## Deploy on Vercel
+## Important security note
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The original upload included a `.env` file. It has intentionally been excluded from this archive. Use your own fresh credentials and rotate any real secrets that may have been exposed. Never commit `.env` files.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project documentation
+
+- [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md) — implemented changes and remaining scope.
+- [`docs/GOLDEN_DEMO.md`](docs/GOLDEN_DEMO.md) — end-to-end acceptance test plan.
+- [`docs/SECURITY_AND_DEPLOYMENT.md`](docs/SECURITY_AND_DEPLOYMENT.md) — release precautions.
+
+## Scope caveat
+
+This is an implementation update, not a certification that every item in the enterprise master specification is complete. The implementation status document lists areas that still need domain models, workflows, automated tests or external integrations.

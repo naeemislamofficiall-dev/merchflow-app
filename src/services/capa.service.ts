@@ -119,7 +119,15 @@ class CapaService extends BaseService {
     });
     return row;
   }
-
+  // মালিক বাছার ড্রপডাউনের জন্য: এই কোম্পানির সক্রিয় ব্যবহারকারী
+  async users() {
+    const user = await this.guard("capa.view");
+    return prisma.user.findMany({
+      where: { companyId: user.companyId, status: "ACTIVE" },
+      select: { id: true, name: true },
+      orderBy: { name: "asc" },
+    });
+  }
   // QA dashboard: এখনো বন্ধ হয়নি এমন CAPA, দেরি হওয়াগুলো আলাদা
   async pending() {
     const user = await this.guard("capa.view");

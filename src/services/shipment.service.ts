@@ -154,6 +154,75 @@ class ShipmentService extends BaseService {
     return { ...full!, orderIds, qty: cartons.reduce((x, l) => x + l.quantity, 0), status: s.status };
   }
 
+    // নতুন শিপমেন্ট ফর্মের ড্রপডাউন: factory, বায়ার, ফরওয়ার্ডার
+  async formOptions() {
+    const user = await this.guard("shipment.create");
+    const scope = await this.scopeOf(user);
+    const [factories, buyers, forwarders] = await Promise.all([
+      prisma.factory.findMany({
+        where: { id: { in: scope.factoryIds } },
+        select: { id: true, code: true, name: true },
+        orderBy: { code: "asc" },
+      }),
+      prisma.buyer.findMany({
+        where: { companyId: user.companyId, status: "ACTIVE" },
+        select: { id: true, name: true },
+        orderBy: { name: "asc" },
+      }),
+      prisma.forwarder.findMany({
+        where: { companyId: user.companyId, isActive: true },
+        select: { id: true, code: true, name: true },
+        orderBy: { code: "asc" },
+      }),
+    ]);
+    return {
+      factories: factories.map((f) => ({ id: f.id, label: `${f.code} - ${f.name}` })),
+      buyers: buyers.map((b) => ({ id: b.id, label: b.name })),
+      forwarders: forwarders.map((f) => ({ id: f.id, label: `${f.code} - ${f.name}` })),
+    };
+  }
+
+  // এই শিপমেন্টে যে কার্টনগুলো আছে
+  async cartonsOf(id: string) {
+    await this.load(id);
+    const cartons = await prisma.carton.findMany({
+      where: { shipmentLine: { shipmentId: id } },
+      include: { lines: true },
+      orderBy: { cartonNo: "asc" },
+    });
+    return cartons.map((c) => ({
+      id: c.id,
+      cartonNo: c.cartonNo,
+      qty: c.lines.reduce((s, l) => s + l.quantity, 0),
+    }));
+  }
+
+  // যোগ করা যায় এমন কার্টন: বন্ধ করা, একই factory ও বায়ার, অন্য শিপমেন্টে নেই
+  async availableCartons(id: string) {
+    const { s } = await this.load(id);
+    const orders = await prisma.order.findMany({
+      where: { companyId: s.companyId, buyerId: s.buyerId },
+      select: { id: true },
+    });
+    const cartons = await prisma.carton.findMany({
+      where: {
+        companyId: s.companyId,
+        factoryId: s.factoryId,
+        status: "CLOSED",
+        shipmentLine: null,
+        orderId: { in: orders.map((o) => o.id) },
+      },
+      include: { lines: true },
+      orderBy: { cartonNo: "asc" },
+      take: 500,
+    });
+    return cartons.map((c) => ({
+      id: c.id,
+      cartonNo: c.cartonNo,
+      qty: c.lines.reduce((x, l) => x + l.quantity, 0),
+    }));
+  }
+  
   // ---------- Carton বরাদ্দ ----------
   // শুধু CLOSED carton, একই বায়ার ও factory, আর অন্য শিপমেন্টে নেই এমন (এতে packed-এর বেশি পাঠানো সম্ভবই না: নিয়ম ৫)
   async allocate(id: string, cartonIds: string[]) {

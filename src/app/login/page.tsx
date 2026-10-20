@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -47,6 +48,11 @@ export default function LoginPage() {
         <div className="space-y-1.5">
           <Label htmlFor="password">Password</Label>
           <Input id="password" name="password" type="password" required autoComplete="current-password" />
+        </div>
+        <div className="text-right">
+          <Link href="/forgot-password" className="text-xs text-denim-700 hover:underline">
+            Forgot password?
+          </Link>
         </div>
         {error && <p className="text-sm text-destructive">{error}</p>}
         <Button disabled={loading} className="w-full">

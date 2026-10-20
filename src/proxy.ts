@@ -3,9 +3,11 @@ import { auth } from "@/lib/auth";
 
 export const proxy = auth((req) => {
   const isLoggedIn = !!req.auth;
-  const isLoginPage = req.nextUrl.pathname.startsWith("/login");
+  const path = req.nextUrl.pathname;
+  const isLoginPage = path.startsWith("/login");
+  const isPublic = isLoginPage || path.startsWith("/forgot-password") || path.startsWith("/reset-password");
 
-  if (!isLoggedIn && !isLoginPage) {
+  if (!isLoggedIn && !isPublic) {
     return NextResponse.redirect(new URL("/login", req.nextUrl));
   }
   if (isLoggedIn && isLoginPage) {

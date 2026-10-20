@@ -79,7 +79,56 @@ class QualityService extends BaseService {
     await this.audit({ user, action: "UPDATE", entity: "Defect", entityId: id, before, after: row });
     return row;
   }
-
+  // ফর্মের ড্রপডাউনের জন্য: factory, লাইন, চলমান production order, সক্রিয় defect
+  async formOptions() {
+    const user = await this.guard("qc.inspect");
+    const scope = await this.scopeOf(user);
+    const [factories, lines, orders, defects] = await Promise.all([
+      prisma.factory.findMany({
+        where: { id: { in: scope.factoryIds } },
+        select: { id: true, code: true, name: true },
+        orderBy: { code: "asc" },
+      }),
+      prisma.line.findMany({
+        where: { isActive: true, floor: { building: { factoryId: { in: scope.factoryIds } } } },
+        select: {
+          id: true,
+          code: true,
+          name: true,
+          floor: { select: { building: { select: { factoryId: true } } } },
+        },
+        orderBy: { code: "asc" },
+      }),
+      prisma.productionOrder.findMany({
+        where: {
+          companyId: user.companyId,
+          factoryId: { in: scope.factoryIds },
+          status: { in: ["RELEASED", "IN_PROGRESS", "PAUSED", "COMPLETED"] },
+        },
+        select: { id: true, productionNo: true, factoryId: true, style: { select: { styleNo: true } } },
+        orderBy: { productionNo: "asc" },
+      }),
+      prisma.defect.findMany({
+        where: { companyId: user.companyId, isActive: true },
+        select: { id: true, code: true, name: true },
+        orderBy: { code: "asc" },
+      }),
+    ]);
+    return {
+      factories: factories.map((f) => ({ id: f.id, label: `${f.code} - ${f.name}` })),
+      lines: lines.map((l) => ({
+        id: l.id,
+        label: `${l.code} - ${l.name}`,
+        factoryId: l.floor.building.factoryId,
+      })),
+      orders: orders.map((o) => ({
+        id: o.id,
+        label: `${o.productionNo} (${o.style.styleNo})`,
+        factoryId: o.factoryId,
+      })),
+      defects: defects.map((d) => ({ id: d.id, label: `${d.code} - ${d.name}` })),
+    };
+  }
   // ---------- Inspection (Cutting / Inline / End-line / Finishing / Incoming QC) ----------
   async record(input: unknown) {
     const user = await this.guard("qc.inspect");

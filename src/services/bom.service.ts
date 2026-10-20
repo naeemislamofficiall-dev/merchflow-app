@@ -43,6 +43,15 @@ class BomService extends BaseService {
       if (s.companyId !== user.companyId) throw new BusinessRuleError("Supplier not found");
     }
   }
+    // সব BOM-এর তালিকা (BOM পেজের জন্য)
+  async list() {
+    const user = await this.guard("bom.view");
+    return prisma.bom.findMany({
+      where: await listFilter(user),
+      include: { style: { select: { styleNo: true, name: true } }, _count: { select: { items: true } } },
+      orderBy: { createdAt: "desc" },
+    });
+  }
 
   async listForStyle(styleId: string) {
     const user = await this.guard("bom.view");

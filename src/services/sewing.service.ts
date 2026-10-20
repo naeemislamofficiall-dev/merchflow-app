@@ -127,7 +127,40 @@ class SewingService extends BaseService {
     });
     return { ...row, efficiencyPct: hourEfficiency(row.target, row.output) };
   }
-
+  // ফর্মের ড্রপডাউনের জন্য: সক্রিয় লাইন আর চলমান production order
+  async formOptions() {
+    const user = await this.guard("sewing.view");
+    const scope = await this.scopeOf(user);
+    const [lines, orders] = await Promise.all([
+      prisma.line.findMany({
+        where: { isActive: true, floor: { building: { factoryId: { in: scope.factoryIds } } } },
+        select: {
+          id: true,
+          code: true,
+          name: true,
+          floor: { select: { building: { select: { factoryId: true } } } },
+        },
+        orderBy: { code: "asc" },
+      }),
+      prisma.productionOrder.findMany({
+        where: { companyId: user.companyId, status: "IN_PROGRESS", factoryId: { in: scope.factoryIds } },
+        select: { id: true, productionNo: true, factoryId: true, style: { select: { styleNo: true } } },
+        orderBy: { productionNo: "asc" },
+      }),
+    ]);
+    return {
+      lines: lines.map((l) => ({
+        id: l.id,
+        label: `${l.code} - ${l.name}`,
+        factoryId: l.floor.building.factoryId,
+      })),
+      orders: orders.map((o) => ({
+        id: o.id,
+        label: `${o.productionNo} (${o.style.styleNo})`,
+        factoryId: o.factoryId,
+      })),
+    };
+  }
   // ---------- দেখা ----------
 
   // একটা লাইনের একদিনের ঘণ্টাওয়ারি তালিকা (স্পেকের Hour / Target / Actual / Efficiency টেবিল)

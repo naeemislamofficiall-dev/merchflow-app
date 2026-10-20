@@ -18,6 +18,8 @@ const MAP: Record<string, Variant> = {
   // নীল
   CONFIRMED: "info", SENT: "info", ACKNOWLEDGED: "info", RECEIVED: "info", ON_TRACK: "info",
   IN_DEVELOPMENT: "info", DEVELOPMENT: "info", REQUESTED: "info", RECOMMENDED: "info",
+    // Enquiry
+  COSTING: "info", NEGOTIATION: "warning", QUOTED: "info", CONVERTED: "success",
 };
 
 export function StatusBadge({ status }: { status: string }) {

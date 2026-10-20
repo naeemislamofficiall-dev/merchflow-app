@@ -307,7 +307,7 @@ class OrderService extends BaseService {
     if (order.status === "CANCELLED") throw new BusinessRuleError("A cancelled order cannot be amended");
 
     const lineIds = (data.lines ?? []).map((l) => l.lineId);
-    const lines = await prisma.orderLine.findMany({ where: { orderId: order.id, id: { in: lineIds } } });
+    const lines = await prisma.orderLine.findMany({ where: { orderId: order.id, id: { in: lineIds } }, include: { matrix: true } });
     if (lines.length !== lineIds.length) {
       throw new BusinessRuleError("Some lines do not belong to this order");
     }
@@ -331,6 +331,7 @@ class OrderService extends BaseService {
         quantity: line.quantity,
         unitPrice: Number(line.unitPrice),
         shipDate: line.shipDate,
+        matrix: line.matrix.map((cell) => ({ colorId: cell.colorId, sizeId: cell.sizeId, quantity: cell.quantity })),
       });
     }
     if (previousLines.length > 0) previousValues.lines = previousLines;

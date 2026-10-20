@@ -2,6 +2,8 @@
 
 import { Building2, LogOut, Menu } from "lucide-react";
 import { logoutAction, switchCompanyAction } from "@/app/(app)/actions";
+import { SearchBox } from "./search-box";
+import { NotificationBell, type BellItem } from "./notification-bell";
 
 export function Topbar({
   onMenu,
@@ -9,12 +11,16 @@ export function Topbar({
   companies,
   activeCompanyId,
   userEmail,
+  unreadCount,
+  notifications,
 }: {
   onMenu: () => void;
   companyName: string;
   companies: { id: string; name: string }[];
   activeCompanyId: string;
   userEmail: string;
+  unreadCount: number;
+  notifications: BellItem[];
 }) {
   return (
     <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b bg-card px-4">
@@ -44,7 +50,14 @@ export function Topbar({
         )}
       </div>
 
+      <SearchBox />
+
       <div className="ml-auto flex items-center gap-3">
+        <NotificationBell
+          key={`${unreadCount}:${notifications.map((n) => `${n.id}${n.read ? 1 : 0}`).join(",")}`}
+          unreadCount={unreadCount}
+          items={notifications}
+        />
         <span className="hidden text-sm text-muted-foreground sm:inline">{userEmail}</span>
         <form action={logoutAction}>
           <button className="inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-sm hover:bg-muted">

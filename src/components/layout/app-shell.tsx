@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Sidebar } from "./sidebar";
 import { Topbar } from "./topbar";
+import type { BellItem } from "./notification-bell";
 import type { NavGroupData } from "./nav-config";
 
 export function AppShell({
@@ -11,6 +12,8 @@ export function AppShell({
   companies,
   activeCompanyId,
   userEmail,
+  unreadCount,
+  notifications,
   children,
 }: {
   groups: NavGroupData[];
@@ -18,6 +21,8 @@ export function AppShell({
   companies: { id: string; name: string }[];
   activeCompanyId: string;
   userEmail: string;
+  unreadCount: number;
+  notifications: BellItem[];
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
@@ -32,6 +37,8 @@ export function AppShell({
           companies={companies}
           activeCompanyId={activeCompanyId}
           userEmail={userEmail}
+          unreadCount={unreadCount}
+          notifications={notifications}
         />
         <main className="flex-1 p-4 md:p-6">{children}</main>
       </div>
