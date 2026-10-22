@@ -227,6 +227,7 @@ model Line {
   floor            Floor             @relation(fields: [floorId], references: [id])
   department       Department?       @relation(fields: [departmentId], references: [id])
   productionOrders ProductionOrder[]
+  ppcAllocations   PpcAllocation[]
   sewingLogs       SewingLog[]
 
   @@unique([floorId, code])
@@ -2125,6 +2126,7 @@ model ProductionOrder {
   sewingLogs        SewingLog[]
   finishingLogs     FinishingLog[]
   subcontractOrders SubcontractOrder[]
+  ppcAllocations    PpcAllocation[]
 
   @@unique([companyId, productionNo])
   @@index([orderId])
@@ -2879,3 +2881,50 @@ model CostAllocation {
   @@index([orderId])
   @@index([sourceType, sourceId])
 }
+// ===== T2 PPC (start) =====
+
+enum PpcAllocationStatus {
+  PLANNED
+  RELEASED
+  CANCELLED
+}
+
+// PPC (সেকশন ২৫): একটা production order-এর কত পিস কোন লাইনে কোন দিনে বসানো হলো
+model PpcAllocation {
+  id                String              @id @default(cuid())
+  companyId         String
+  factoryId         String
+  productionOrderId String
+  lineId            String
+  date              DateTime            @db.Date
+  plannedQty        Int
+  status            PpcAllocationStatus @default(PLANNED)
+  remarks           String?
+  createdById       String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+
+  productionOrder ProductionOrder @relation(fields: [productionOrderId], references: [id])
+  line            Line            @relation(fields: [lineId], references: [id])
+
+  @@unique([productionOrderId, lineId, date])
+  @@index([factoryId, date])
+  @@index([lineId, date])
+  @@index([productionOrderId])
+}
+
+// Factory-র ছুটির দিন (Factory.workingCalendar শুধু লেখা, হিসাবে ব্যবহার করা যায় না)
+model FactoryHoliday {
+  id          String   @id @default(cuid())
+  companyId   String
+  factoryId   String
+  date        DateTime @db.Date
+  reason      String
+  createdById String?
+  createdAt   DateTime @default(now())
+
+  @@unique([factoryId, date])
+  @@index([companyId, factoryId])
+}
+
+// ===== T2 PPC (end) =====
