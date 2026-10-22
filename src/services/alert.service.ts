@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { complianceService } from "./compliance.service";
 import { delayAlertMessage, delayDays } from "@/lib/calculations";
 import { can } from "@/lib/permissions";
 import { listFilter, startOfDay } from "@/lib/service-helpers";
@@ -26,8 +27,6 @@ const BELOW_TARGET_PCT = 85;
 
 class AlertService extends BaseService {
   // সব alert সরাসরি ডাটা থেকে হিসাব হয়, তাই সবসময় তাজা।
-  // Failed final inspection, Production below target, Certificate expiring
-  // আসবে Quality, Production, Compliance মডিউলের সাথে।
   async list(filter: { severity?: Severity } = {}): Promise<Alert[]> {
     const user = await this.guard("alert.view");
     const where = await listFilter(user);
@@ -159,7 +158,7 @@ class AlertService extends BaseService {
       }
     }
 
-        // Failed final inspection (CRITICAL): অর্ডারের সর্বশেষ Final AQL ফেল, override নেই, অর্ডার এখনো শেষ হয়নি
+    // Failed final inspection (CRITICAL): অর্ডারের সর্বশেষ Final AQL ফেল, override নেই, অর্ডার এখনো শেষ হয়নি
     const finals = await prisma.aqlInspection.findMany({
       where: { ...where, stage: "FINAL" },
       orderBy: { createdAt: "desc" },
@@ -207,7 +206,12 @@ class AlertService extends BaseService {
         });
       }
     }
-    
+
+    // সার্টিফিকেটের মেয়াদ (Compliance)
+    if (can(user, "compliance.view")) {
+      for (const a of await complianceService.expiryAlertRows(user)) alerts.push(a);
+    }
+
     return alerts
       .filter((a) => !filter.severity || a.severity === filter.severity)
       .sort((a, b) => ORDER[a.severity] - ORDER[b.severity] || a.since.getTime() - b.since.getTime());

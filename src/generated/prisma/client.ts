@@ -596,3 +596,103 @@ export type Expense = Prisma.ExpenseModel
  * 
  */
 export type CostAllocation = Prisma.CostAllocationModel
+/**
+ * Model StockTransfer
+ * 
+ */
+export type StockTransfer = Prisma.StockTransferModel
+/**
+ * Model StockTransferLine
+ * 
+ */
+export type StockTransferLine = Prisma.StockTransferLineModel
+/**
+ * Model StockCount
+ * 
+ */
+export type StockCount = Prisma.StockCountModel
+/**
+ * Model StockCountLine
+ * 
+ */
+export type StockCountLine = Prisma.StockCountLineModel
+/**
+ * Model PackingList
+ * 
+ */
+export type PackingList = Prisma.PackingListModel
+/**
+ * Model Budget
+ * 
+ */
+export type Budget = Prisma.BudgetModel
+/**
+ * Model CertificateType
+ * 
+ */
+export type CertificateType = Prisma.CertificateTypeModel
+/**
+ * Model Certificate
+ * 
+ */
+export type Certificate = Prisma.CertificateModel
+/**
+ * Model ComplianceAuditType
+ * 
+ */
+export type ComplianceAuditType = Prisma.ComplianceAuditTypeModel
+/**
+ * Model ComplianceAudit
+ * 
+ */
+export type ComplianceAudit = Prisma.ComplianceAuditModel
+/**
+ * Model Designation
+ * 
+ */
+export type Designation = Prisma.DesignationModel
+/**
+ * Model Shift
+ * 
+ */
+export type Shift = Prisma.ShiftModel
+/**
+ * Model Employee
+ * 
+ */
+export type Employee = Prisma.EmployeeModel
+/**
+ * Model EmployeeSkill
+ * 
+ */
+export type EmployeeSkill = Prisma.EmployeeSkillModel
+/**
+ * Model OperatorAllocation
+ * 
+ */
+export type OperatorAllocation = Prisma.OperatorAllocationModel
+/**
+ * Model AttendanceRecord
+ * 
+ */
+export type AttendanceRecord = Prisma.AttendanceRecordModel
+/**
+ * Model LeaveType
+ * 
+ */
+export type LeaveType = Prisma.LeaveTypeModel
+/**
+ * Model LeaveRequest
+ * 
+ */
+export type LeaveRequest = Prisma.LeaveRequestModel
+/**
+ * Model PayrollRun
+ * 
+ */
+export type PayrollRun = Prisma.PayrollRunModel
+/**
+ * Model PayrollLine
+ * 
+ */
+export type PayrollLine = Prisma.PayrollLineModel
