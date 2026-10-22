@@ -161,7 +161,27 @@ export const ModelName = {
   BuyerInvoiceLine: 'BuyerInvoiceLine',
   Payment: 'Payment',
   Expense: 'Expense',
-  CostAllocation: 'CostAllocation'
+  CostAllocation: 'CostAllocation',
+  StockTransfer: 'StockTransfer',
+  StockTransferLine: 'StockTransferLine',
+  StockCount: 'StockCount',
+  StockCountLine: 'StockCountLine',
+  PackingList: 'PackingList',
+  Budget: 'Budget',
+  CertificateType: 'CertificateType',
+  Certificate: 'Certificate',
+  ComplianceAuditType: 'ComplianceAuditType',
+  ComplianceAudit: 'ComplianceAudit',
+  Designation: 'Designation',
+  Shift: 'Shift',
+  Employee: 'Employee',
+  EmployeeSkill: 'EmployeeSkill',
+  OperatorAllocation: 'OperatorAllocation',
+  AttendanceRecord: 'AttendanceRecord',
+  LeaveType: 'LeaveType',
+  LeaveRequest: 'LeaveRequest',
+  PayrollRun: 'PayrollRun',
+  PayrollLine: 'PayrollLine'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2089,6 +2109,358 @@ export const CostAllocationScalarFieldEnum = {
 } as const
 
 export type CostAllocationScalarFieldEnum = (typeof CostAllocationScalarFieldEnum)[keyof typeof CostAllocationScalarFieldEnum]
+
+
+export const StockTransferScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  transferNo: 'transferNo',
+  fromWarehouseId: 'fromWarehouseId',
+  toWarehouseId: 'toWarehouseId',
+  status: 'status',
+  remarks: 'remarks',
+  createdById: 'createdById',
+  completedById: 'completedById',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StockTransferScalarFieldEnum = (typeof StockTransferScalarFieldEnum)[keyof typeof StockTransferScalarFieldEnum]
+
+
+export const StockTransferLineScalarFieldEnum = {
+  id: 'id',
+  transferId: 'transferId',
+  materialId: 'materialId',
+  lotId: 'lotId',
+  rollId: 'rollId',
+  fromBinId: 'fromBinId',
+  toBinId: 'toBinId',
+  quantity: 'quantity',
+  unit: 'unit'
+} as const
+
+export type StockTransferLineScalarFieldEnum = (typeof StockTransferLineScalarFieldEnum)[keyof typeof StockTransferLineScalarFieldEnum]
+
+
+export const StockCountScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  countNo: 'countNo',
+  warehouseId: 'warehouseId',
+  status: 'status',
+  remarks: 'remarks',
+  createdById: 'createdById',
+  postedById: 'postedById',
+  postedAt: 'postedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StockCountScalarFieldEnum = (typeof StockCountScalarFieldEnum)[keyof typeof StockCountScalarFieldEnum]
+
+
+export const StockCountLineScalarFieldEnum = {
+  id: 'id',
+  countId: 'countId',
+  materialId: 'materialId',
+  lotId: 'lotId',
+  rollId: 'rollId',
+  binId: 'binId',
+  systemQty: 'systemQty',
+  countedQty: 'countedQty',
+  unit: 'unit'
+} as const
+
+export type StockCountLineScalarFieldEnum = (typeof StockCountLineScalarFieldEnum)[keyof typeof StockCountLineScalarFieldEnum]
+
+
+export const PackingListScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  factoryId: 'factoryId',
+  packingListNo: 'packingListNo',
+  shipmentId: 'shipmentId',
+  buyerId: 'buyerId',
+  status: 'status',
+  totalCartons: 'totalCartons',
+  totalPcs: 'totalPcs',
+  totalGrossKg: 'totalGrossKg',
+  totalNetKg: 'totalNetKg',
+  totalCbm: 'totalCbm',
+  data: 'data',
+  remarks: 'remarks',
+  issuedAt: 'issuedAt',
+  issuedById: 'issuedById',
+  cancelReason: 'cancelReason',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PackingListScalarFieldEnum = (typeof PackingListScalarFieldEnum)[keyof typeof PackingListScalarFieldEnum]
+
+
+export const BudgetScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  factoryId: 'factoryId',
+  year: 'year',
+  month: 'month',
+  category: 'category',
+  amountBase: 'amountBase',
+  notes: 'notes',
+  status: 'status',
+  approvedById: 'approvedById',
+  cancelReason: 'cancelReason',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BudgetScalarFieldEnum = (typeof BudgetScalarFieldEnum)[keyof typeof BudgetScalarFieldEnum]
+
+
+export const CertificateTypeScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  code: 'code',
+  name: 'name',
+  validityMonths: 'validityMonths',
+  alertDays: 'alertDays',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CertificateTypeScalarFieldEnum = (typeof CertificateTypeScalarFieldEnum)[keyof typeof CertificateTypeScalarFieldEnum]
+
+
+export const CertificateScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  factoryId: 'factoryId',
+  typeId: 'typeId',
+  certificateNo: 'certificateNo',
+  issuer: 'issuer',
+  issueDate: 'issueDate',
+  expiryDate: 'expiryDate',
+  status: 'status',
+  remarks: 'remarks',
+  revokeReason: 'revokeReason',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CertificateScalarFieldEnum = (typeof CertificateScalarFieldEnum)[keyof typeof CertificateScalarFieldEnum]
+
+
+export const ComplianceAuditTypeScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  code: 'code',
+  name: 'name',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ComplianceAuditTypeScalarFieldEnum = (typeof ComplianceAuditTypeScalarFieldEnum)[keyof typeof ComplianceAuditTypeScalarFieldEnum]
+
+
+export const ComplianceAuditScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  factoryId: 'factoryId',
+  auditNo: 'auditNo',
+  typeId: 'typeId',
+  auditorName: 'auditorName',
+  plannedDate: 'plannedDate',
+  completedDate: 'completedDate',
+  status: 'status',
+  result: 'result',
+  score: 'score',
+  findings: 'findings',
+  nextAuditDate: 'nextAuditDate',
+  cancelReason: 'cancelReason',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ComplianceAuditScalarFieldEnum = (typeof ComplianceAuditScalarFieldEnum)[keyof typeof ComplianceAuditScalarFieldEnum]
+
+
+export const DesignationScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  code: 'code',
+  name: 'name',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DesignationScalarFieldEnum = (typeof DesignationScalarFieldEnum)[keyof typeof DesignationScalarFieldEnum]
+
+
+export const ShiftScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  code: 'code',
+  name: 'name',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  breakMinutes: 'breakMinutes',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ShiftScalarFieldEnum = (typeof ShiftScalarFieldEnum)[keyof typeof ShiftScalarFieldEnum]
+
+
+export const EmployeeScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  factoryId: 'factoryId',
+  employeeNo: 'employeeNo',
+  fullName: 'fullName',
+  departmentId: 'departmentId',
+  designationId: 'designationId',
+  shiftId: 'shiftId',
+  joinDate: 'joinDate',
+  phone: 'phone',
+  basicSalary: 'basicSalary',
+  allowance: 'allowance',
+  overtimeRate: 'overtimeRate',
+  status: 'status',
+  exitDate: 'exitDate',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EmployeeScalarFieldEnum = (typeof EmployeeScalarFieldEnum)[keyof typeof EmployeeScalarFieldEnum]
+
+
+export const EmployeeSkillScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  skill: 'skill',
+  level: 'level',
+  createdAt: 'createdAt'
+} as const
+
+export type EmployeeSkillScalarFieldEnum = (typeof EmployeeSkillScalarFieldEnum)[keyof typeof EmployeeSkillScalarFieldEnum]
+
+
+export const OperatorAllocationScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  employeeId: 'employeeId',
+  lineId: 'lineId',
+  fromDate: 'fromDate',
+  toDate: 'toDate',
+  createdAt: 'createdAt'
+} as const
+
+export type OperatorAllocationScalarFieldEnum = (typeof OperatorAllocationScalarFieldEnum)[keyof typeof OperatorAllocationScalarFieldEnum]
+
+
+export const AttendanceRecordScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  employeeId: 'employeeId',
+  date: 'date',
+  status: 'status',
+  overtimeMinutes: 'overtimeMinutes',
+  remarks: 'remarks',
+  recordedById: 'recordedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AttendanceRecordScalarFieldEnum = (typeof AttendanceRecordScalarFieldEnum)[keyof typeof AttendanceRecordScalarFieldEnum]
+
+
+export const LeaveTypeScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  code: 'code',
+  name: 'name',
+  annualDays: 'annualDays',
+  isPaid: 'isPaid',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeaveTypeScalarFieldEnum = (typeof LeaveTypeScalarFieldEnum)[keyof typeof LeaveTypeScalarFieldEnum]
+
+
+export const LeaveRequestScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  requestNo: 'requestNo',
+  employeeId: 'employeeId',
+  leaveTypeId: 'leaveTypeId',
+  fromDate: 'fromDate',
+  toDate: 'toDate',
+  days: 'days',
+  reason: 'reason',
+  status: 'status',
+  decidedById: 'decidedById',
+  decidedAt: 'decidedAt',
+  decisionNote: 'decisionNote',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeaveRequestScalarFieldEnum = (typeof LeaveRequestScalarFieldEnum)[keyof typeof LeaveRequestScalarFieldEnum]
+
+
+export const PayrollRunScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  factoryId: 'factoryId',
+  year: 'year',
+  month: 'month',
+  status: 'status',
+  employeeCount: 'employeeCount',
+  totalGross: 'totalGross',
+  totalDeduction: 'totalDeduction',
+  totalNet: 'totalNet',
+  approvedById: 'approvedById',
+  paidAt: 'paidAt',
+  cancelReason: 'cancelReason',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PayrollRunScalarFieldEnum = (typeof PayrollRunScalarFieldEnum)[keyof typeof PayrollRunScalarFieldEnum]
+
+
+export const PayrollLineScalarFieldEnum = {
+  id: 'id',
+  runId: 'runId',
+  employeeId: 'employeeId',
+  presentDays: 'presentDays',
+  absentDays: 'absentDays',
+  leaveDays: 'leaveDays',
+  overtimeHours: 'overtimeHours',
+  basic: 'basic',
+  allowance: 'allowance',
+  overtimePay: 'overtimePay',
+  deduction: 'deduction',
+  netPay: 'netPay'
+} as const
+
+export type PayrollLineScalarFieldEnum = (typeof PayrollLineScalarFieldEnum)[keyof typeof PayrollLineScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -279,6 +279,8 @@ export type MaterialWhereInput = {
   stockReservations?: Prisma.StockReservationListRelationFilter
   materialIssueLines?: Prisma.MaterialIssueLineListRelationFilter
   stockAdjustments?: Prisma.StockAdjustmentListRelationFilter
+  stockTransferLines?: Prisma.StockTransferLineListRelationFilter
+  stockCountLines?: Prisma.StockCountLineListRelationFilter
 }
 
 export type MaterialOrderByWithRelationInput = {
@@ -308,6 +310,8 @@ export type MaterialOrderByWithRelationInput = {
   stockReservations?: Prisma.StockReservationOrderByRelationAggregateInput
   materialIssueLines?: Prisma.MaterialIssueLineOrderByRelationAggregateInput
   stockAdjustments?: Prisma.StockAdjustmentOrderByRelationAggregateInput
+  stockTransferLines?: Prisma.StockTransferLineOrderByRelationAggregateInput
+  stockCountLines?: Prisma.StockCountLineOrderByRelationAggregateInput
 }
 
 export type MaterialWhereUniqueInput = Prisma.AtLeast<{
@@ -341,6 +345,8 @@ export type MaterialWhereUniqueInput = Prisma.AtLeast<{
   stockReservations?: Prisma.StockReservationListRelationFilter
   materialIssueLines?: Prisma.MaterialIssueLineListRelationFilter
   stockAdjustments?: Prisma.StockAdjustmentListRelationFilter
+  stockTransferLines?: Prisma.StockTransferLineListRelationFilter
+  stockCountLines?: Prisma.StockCountLineListRelationFilter
 }, "id" | "companyId_code">
 
 export type MaterialOrderByWithAggregationInput = {
@@ -404,6 +410,8 @@ export type MaterialCreateInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateInput = {
@@ -431,6 +439,8 @@ export type MaterialUncheckedCreateInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUpdateInput = {
@@ -458,6 +468,8 @@ export type MaterialUpdateInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateInput = {
@@ -485,6 +497,8 @@ export type MaterialUncheckedUpdateInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateManyInput = {
@@ -872,6 +886,34 @@ export type MaterialUpdateOneRequiredWithoutStockAdjustmentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MaterialUpdateToOneWithWhereWithoutStockAdjustmentsInput, Prisma.MaterialUpdateWithoutStockAdjustmentsInput>, Prisma.MaterialUncheckedUpdateWithoutStockAdjustmentsInput>
 }
 
+export type MaterialCreateNestedOneWithoutStockTransferLinesInput = {
+  create?: Prisma.XOR<Prisma.MaterialCreateWithoutStockTransferLinesInput, Prisma.MaterialUncheckedCreateWithoutStockTransferLinesInput>
+  connectOrCreate?: Prisma.MaterialCreateOrConnectWithoutStockTransferLinesInput
+  connect?: Prisma.MaterialWhereUniqueInput
+}
+
+export type MaterialUpdateOneRequiredWithoutStockTransferLinesNestedInput = {
+  create?: Prisma.XOR<Prisma.MaterialCreateWithoutStockTransferLinesInput, Prisma.MaterialUncheckedCreateWithoutStockTransferLinesInput>
+  connectOrCreate?: Prisma.MaterialCreateOrConnectWithoutStockTransferLinesInput
+  upsert?: Prisma.MaterialUpsertWithoutStockTransferLinesInput
+  connect?: Prisma.MaterialWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MaterialUpdateToOneWithWhereWithoutStockTransferLinesInput, Prisma.MaterialUpdateWithoutStockTransferLinesInput>, Prisma.MaterialUncheckedUpdateWithoutStockTransferLinesInput>
+}
+
+export type MaterialCreateNestedOneWithoutStockCountLinesInput = {
+  create?: Prisma.XOR<Prisma.MaterialCreateWithoutStockCountLinesInput, Prisma.MaterialUncheckedCreateWithoutStockCountLinesInput>
+  connectOrCreate?: Prisma.MaterialCreateOrConnectWithoutStockCountLinesInput
+  connect?: Prisma.MaterialWhereUniqueInput
+}
+
+export type MaterialUpdateOneRequiredWithoutStockCountLinesNestedInput = {
+  create?: Prisma.XOR<Prisma.MaterialCreateWithoutStockCountLinesInput, Prisma.MaterialUncheckedCreateWithoutStockCountLinesInput>
+  connectOrCreate?: Prisma.MaterialCreateOrConnectWithoutStockCountLinesInput
+  upsert?: Prisma.MaterialUpsertWithoutStockCountLinesInput
+  connect?: Prisma.MaterialWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MaterialUpdateToOneWithWhereWithoutStockCountLinesInput, Prisma.MaterialUpdateWithoutStockCountLinesInput>, Prisma.MaterialUncheckedUpdateWithoutStockCountLinesInput>
+}
+
 export type MaterialCreateWithoutCompanyInput = {
   id?: string
   code: string
@@ -896,6 +938,8 @@ export type MaterialCreateWithoutCompanyInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutCompanyInput = {
@@ -922,6 +966,8 @@ export type MaterialUncheckedCreateWithoutCompanyInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutCompanyInput = {
@@ -991,6 +1037,8 @@ export type MaterialCreateWithoutBomItemsInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutBomItemsInput = {
@@ -1017,6 +1065,8 @@ export type MaterialUncheckedCreateWithoutBomItemsInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutBomItemsInput = {
@@ -1059,6 +1109,8 @@ export type MaterialUpdateWithoutBomItemsInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutBomItemsInput = {
@@ -1085,6 +1137,8 @@ export type MaterialUncheckedUpdateWithoutBomItemsInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutCategoryInput = {
@@ -1111,6 +1165,8 @@ export type MaterialCreateWithoutCategoryInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutCategoryInput = {
@@ -1137,6 +1193,8 @@ export type MaterialUncheckedCreateWithoutCategoryInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutCategoryInput = {
@@ -1189,6 +1247,8 @@ export type MaterialCreateWithoutQuotationsInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutQuotationsInput = {
@@ -1215,6 +1275,8 @@ export type MaterialUncheckedCreateWithoutQuotationsInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutQuotationsInput = {
@@ -1257,6 +1319,8 @@ export type MaterialUpdateWithoutQuotationsInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutQuotationsInput = {
@@ -1283,6 +1347,8 @@ export type MaterialUncheckedUpdateWithoutQuotationsInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutPrLinesInput = {
@@ -1309,6 +1375,8 @@ export type MaterialCreateWithoutPrLinesInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutPrLinesInput = {
@@ -1335,6 +1403,8 @@ export type MaterialUncheckedCreateWithoutPrLinesInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutPrLinesInput = {
@@ -1377,6 +1447,8 @@ export type MaterialUpdateWithoutPrLinesInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutPrLinesInput = {
@@ -1403,6 +1475,8 @@ export type MaterialUncheckedUpdateWithoutPrLinesInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutPoLinesInput = {
@@ -1429,6 +1503,8 @@ export type MaterialCreateWithoutPoLinesInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutPoLinesInput = {
@@ -1455,6 +1531,8 @@ export type MaterialUncheckedCreateWithoutPoLinesInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutPoLinesInput = {
@@ -1497,6 +1575,8 @@ export type MaterialUpdateWithoutPoLinesInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutPoLinesInput = {
@@ -1523,6 +1603,8 @@ export type MaterialUncheckedUpdateWithoutPoLinesInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutRfqLinesInput = {
@@ -1549,6 +1631,8 @@ export type MaterialCreateWithoutRfqLinesInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutRfqLinesInput = {
@@ -1575,6 +1659,8 @@ export type MaterialUncheckedCreateWithoutRfqLinesInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutRfqLinesInput = {
@@ -1617,6 +1703,8 @@ export type MaterialUpdateWithoutRfqLinesInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutRfqLinesInput = {
@@ -1643,6 +1731,8 @@ export type MaterialUncheckedUpdateWithoutRfqLinesInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutRfqInvitesInput = {
@@ -1669,6 +1759,8 @@ export type MaterialCreateWithoutRfqInvitesInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutRfqInvitesInput = {
@@ -1695,6 +1787,8 @@ export type MaterialUncheckedCreateWithoutRfqInvitesInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutRfqInvitesInput = {
@@ -1737,6 +1831,8 @@ export type MaterialUpdateWithoutRfqInvitesInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutRfqInvitesInput = {
@@ -1763,6 +1859,8 @@ export type MaterialUncheckedUpdateWithoutRfqInvitesInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutGrnLinesInput = {
@@ -1789,6 +1887,8 @@ export type MaterialCreateWithoutGrnLinesInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutGrnLinesInput = {
@@ -1815,6 +1915,8 @@ export type MaterialUncheckedCreateWithoutGrnLinesInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutGrnLinesInput = {
@@ -1857,6 +1959,8 @@ export type MaterialUpdateWithoutGrnLinesInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutGrnLinesInput = {
@@ -1883,6 +1987,8 @@ export type MaterialUncheckedUpdateWithoutGrnLinesInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutInventoryLotsInput = {
@@ -1909,6 +2015,8 @@ export type MaterialCreateWithoutInventoryLotsInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutInventoryLotsInput = {
@@ -1935,6 +2043,8 @@ export type MaterialUncheckedCreateWithoutInventoryLotsInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutInventoryLotsInput = {
@@ -1977,6 +2087,8 @@ export type MaterialUpdateWithoutInventoryLotsInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutInventoryLotsInput = {
@@ -2003,6 +2115,8 @@ export type MaterialUncheckedUpdateWithoutInventoryLotsInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutFabricRollsInput = {
@@ -2029,6 +2143,8 @@ export type MaterialCreateWithoutFabricRollsInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutFabricRollsInput = {
@@ -2055,6 +2171,8 @@ export type MaterialUncheckedCreateWithoutFabricRollsInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutFabricRollsInput = {
@@ -2097,6 +2215,8 @@ export type MaterialUpdateWithoutFabricRollsInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutFabricRollsInput = {
@@ -2123,6 +2243,8 @@ export type MaterialUncheckedUpdateWithoutFabricRollsInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutStockTransactionsInput = {
@@ -2149,6 +2271,8 @@ export type MaterialCreateWithoutStockTransactionsInput = {
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutStockTransactionsInput = {
@@ -2175,6 +2299,8 @@ export type MaterialUncheckedCreateWithoutStockTransactionsInput = {
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutStockTransactionsInput = {
@@ -2217,6 +2343,8 @@ export type MaterialUpdateWithoutStockTransactionsInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutStockTransactionsInput = {
@@ -2243,6 +2371,8 @@ export type MaterialUncheckedUpdateWithoutStockTransactionsInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutStockReservationsInput = {
@@ -2269,6 +2399,8 @@ export type MaterialCreateWithoutStockReservationsInput = {
   stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutStockReservationsInput = {
@@ -2295,6 +2427,8 @@ export type MaterialUncheckedCreateWithoutStockReservationsInput = {
   stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutStockReservationsInput = {
@@ -2337,6 +2471,8 @@ export type MaterialUpdateWithoutStockReservationsInput = {
   stockTransactions?: Prisma.StockTransactionUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutStockReservationsInput = {
@@ -2363,6 +2499,8 @@ export type MaterialUncheckedUpdateWithoutStockReservationsInput = {
   stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutMaterialIssueLinesInput = {
@@ -2389,6 +2527,8 @@ export type MaterialCreateWithoutMaterialIssueLinesInput = {
   stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutMaterialInput
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutMaterialIssueLinesInput = {
@@ -2415,6 +2555,8 @@ export type MaterialUncheckedCreateWithoutMaterialIssueLinesInput = {
   stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutMaterialInput
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutMaterialIssueLinesInput = {
@@ -2457,6 +2599,8 @@ export type MaterialUpdateWithoutMaterialIssueLinesInput = {
   stockTransactions?: Prisma.StockTransactionUpdateManyWithoutMaterialNestedInput
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutMaterialIssueLinesInput = {
@@ -2483,6 +2627,8 @@ export type MaterialUncheckedUpdateWithoutMaterialIssueLinesInput = {
   stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutMaterialNestedInput
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateWithoutStockAdjustmentsInput = {
@@ -2509,6 +2655,8 @@ export type MaterialCreateWithoutStockAdjustmentsInput = {
   stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutMaterialInput
   stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialUncheckedCreateWithoutStockAdjustmentsInput = {
@@ -2535,6 +2683,8 @@ export type MaterialUncheckedCreateWithoutStockAdjustmentsInput = {
   stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutMaterialInput
   stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
 }
 
 export type MaterialCreateOrConnectWithoutStockAdjustmentsInput = {
@@ -2577,6 +2727,8 @@ export type MaterialUpdateWithoutStockAdjustmentsInput = {
   stockTransactions?: Prisma.StockTransactionUpdateManyWithoutMaterialNestedInput
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutStockAdjustmentsInput = {
@@ -2603,6 +2755,264 @@ export type MaterialUncheckedUpdateWithoutStockAdjustmentsInput = {
   stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutMaterialNestedInput
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
+}
+
+export type MaterialCreateWithoutStockTransferLinesInput = {
+  id?: string
+  code: string
+  name: string
+  unit?: string
+  description?: string | null
+  reorderPoint?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutMaterialsInput
+  category: Prisma.MaterialCategoryCreateNestedOneWithoutMaterialsInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutMaterialInput
+  prLines?: Prisma.PurchaseRequisitionLineCreateNestedManyWithoutMaterialInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutMaterialInput
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutMaterialInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutMaterialInput
+  rfqLines?: Prisma.RfqLineCreateNestedManyWithoutMaterialInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutMaterialInput
+  inventoryLots?: Prisma.InventoryLotCreateNestedManyWithoutMaterialInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutMaterialInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutMaterialInput
+  stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
+  materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
+  stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineCreateNestedManyWithoutMaterialInput
+}
+
+export type MaterialUncheckedCreateWithoutStockTransferLinesInput = {
+  id?: string
+  companyId: string
+  categoryId: string
+  code: string
+  name: string
+  unit?: string
+  description?: string | null
+  reorderPoint?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutMaterialInput
+  prLines?: Prisma.PurchaseRequisitionLineUncheckedCreateNestedManyWithoutMaterialInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutMaterialInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutMaterialInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutMaterialInput
+  rfqLines?: Prisma.RfqLineUncheckedCreateNestedManyWithoutMaterialInput
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutMaterialInput
+  inventoryLots?: Prisma.InventoryLotUncheckedCreateNestedManyWithoutMaterialInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutMaterialInput
+  stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
+  materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockCountLines?: Prisma.StockCountLineUncheckedCreateNestedManyWithoutMaterialInput
+}
+
+export type MaterialCreateOrConnectWithoutStockTransferLinesInput = {
+  where: Prisma.MaterialWhereUniqueInput
+  create: Prisma.XOR<Prisma.MaterialCreateWithoutStockTransferLinesInput, Prisma.MaterialUncheckedCreateWithoutStockTransferLinesInput>
+}
+
+export type MaterialUpsertWithoutStockTransferLinesInput = {
+  update: Prisma.XOR<Prisma.MaterialUpdateWithoutStockTransferLinesInput, Prisma.MaterialUncheckedUpdateWithoutStockTransferLinesInput>
+  create: Prisma.XOR<Prisma.MaterialCreateWithoutStockTransferLinesInput, Prisma.MaterialUncheckedCreateWithoutStockTransferLinesInput>
+  where?: Prisma.MaterialWhereInput
+}
+
+export type MaterialUpdateToOneWithWhereWithoutStockTransferLinesInput = {
+  where?: Prisma.MaterialWhereInput
+  data: Prisma.XOR<Prisma.MaterialUpdateWithoutStockTransferLinesInput, Prisma.MaterialUncheckedUpdateWithoutStockTransferLinesInput>
+}
+
+export type MaterialUpdateWithoutStockTransferLinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reorderPoint?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutMaterialsNestedInput
+  category?: Prisma.MaterialCategoryUpdateOneRequiredWithoutMaterialsNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutMaterialNestedInput
+  prLines?: Prisma.PurchaseRequisitionLineUpdateManyWithoutMaterialNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutMaterialNestedInput
+  bomItems?: Prisma.BomItemUpdateManyWithoutMaterialNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutMaterialNestedInput
+  rfqLines?: Prisma.RfqLineUpdateManyWithoutMaterialNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutMaterialNestedInput
+  inventoryLots?: Prisma.InventoryLotUpdateManyWithoutMaterialNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutMaterialNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutMaterialNestedInput
+  stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
+  materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
+}
+
+export type MaterialUncheckedUpdateWithoutStockTransferLinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reorderPoint?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutMaterialNestedInput
+  prLines?: Prisma.PurchaseRequisitionLineUncheckedUpdateManyWithoutMaterialNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutMaterialNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutMaterialNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutMaterialNestedInput
+  rfqLines?: Prisma.RfqLineUncheckedUpdateManyWithoutMaterialNestedInput
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutMaterialNestedInput
+  inventoryLots?: Prisma.InventoryLotUncheckedUpdateManyWithoutMaterialNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutMaterialNestedInput
+  stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
+  materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
+}
+
+export type MaterialCreateWithoutStockCountLinesInput = {
+  id?: string
+  code: string
+  name: string
+  unit?: string
+  description?: string | null
+  reorderPoint?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutMaterialsInput
+  category: Prisma.MaterialCategoryCreateNestedOneWithoutMaterialsInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutMaterialInput
+  prLines?: Prisma.PurchaseRequisitionLineCreateNestedManyWithoutMaterialInput
+  poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutMaterialInput
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutMaterialInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutMaterialInput
+  rfqLines?: Prisma.RfqLineCreateNestedManyWithoutMaterialInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutMaterialInput
+  inventoryLots?: Prisma.InventoryLotCreateNestedManyWithoutMaterialInput
+  fabricRolls?: Prisma.FabricRollCreateNestedManyWithoutMaterialInput
+  stockTransactions?: Prisma.StockTransactionCreateNestedManyWithoutMaterialInput
+  stockReservations?: Prisma.StockReservationCreateNestedManyWithoutMaterialInput
+  materialIssueLines?: Prisma.MaterialIssueLineCreateNestedManyWithoutMaterialInput
+  stockAdjustments?: Prisma.StockAdjustmentCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineCreateNestedManyWithoutMaterialInput
+}
+
+export type MaterialUncheckedCreateWithoutStockCountLinesInput = {
+  id?: string
+  companyId: string
+  categoryId: string
+  code: string
+  name: string
+  unit?: string
+  description?: string | null
+  reorderPoint?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutMaterialInput
+  prLines?: Prisma.PurchaseRequisitionLineUncheckedCreateNestedManyWithoutMaterialInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutMaterialInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutMaterialInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutMaterialInput
+  rfqLines?: Prisma.RfqLineUncheckedCreateNestedManyWithoutMaterialInput
+  grnLines?: Prisma.GrnLineUncheckedCreateNestedManyWithoutMaterialInput
+  inventoryLots?: Prisma.InventoryLotUncheckedCreateNestedManyWithoutMaterialInput
+  fabricRolls?: Prisma.FabricRollUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransactions?: Prisma.StockTransactionUncheckedCreateNestedManyWithoutMaterialInput
+  stockReservations?: Prisma.StockReservationUncheckedCreateNestedManyWithoutMaterialInput
+  materialIssueLines?: Prisma.MaterialIssueLineUncheckedCreateNestedManyWithoutMaterialInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedCreateNestedManyWithoutMaterialInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedCreateNestedManyWithoutMaterialInput
+}
+
+export type MaterialCreateOrConnectWithoutStockCountLinesInput = {
+  where: Prisma.MaterialWhereUniqueInput
+  create: Prisma.XOR<Prisma.MaterialCreateWithoutStockCountLinesInput, Prisma.MaterialUncheckedCreateWithoutStockCountLinesInput>
+}
+
+export type MaterialUpsertWithoutStockCountLinesInput = {
+  update: Prisma.XOR<Prisma.MaterialUpdateWithoutStockCountLinesInput, Prisma.MaterialUncheckedUpdateWithoutStockCountLinesInput>
+  create: Prisma.XOR<Prisma.MaterialCreateWithoutStockCountLinesInput, Prisma.MaterialUncheckedCreateWithoutStockCountLinesInput>
+  where?: Prisma.MaterialWhereInput
+}
+
+export type MaterialUpdateToOneWithWhereWithoutStockCountLinesInput = {
+  where?: Prisma.MaterialWhereInput
+  data: Prisma.XOR<Prisma.MaterialUpdateWithoutStockCountLinesInput, Prisma.MaterialUncheckedUpdateWithoutStockCountLinesInput>
+}
+
+export type MaterialUpdateWithoutStockCountLinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reorderPoint?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutMaterialsNestedInput
+  category?: Prisma.MaterialCategoryUpdateOneRequiredWithoutMaterialsNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutMaterialNestedInput
+  prLines?: Prisma.PurchaseRequisitionLineUpdateManyWithoutMaterialNestedInput
+  poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutMaterialNestedInput
+  bomItems?: Prisma.BomItemUpdateManyWithoutMaterialNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutMaterialNestedInput
+  rfqLines?: Prisma.RfqLineUpdateManyWithoutMaterialNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutMaterialNestedInput
+  inventoryLots?: Prisma.InventoryLotUpdateManyWithoutMaterialNestedInput
+  fabricRolls?: Prisma.FabricRollUpdateManyWithoutMaterialNestedInput
+  stockTransactions?: Prisma.StockTransactionUpdateManyWithoutMaterialNestedInput
+  stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
+  materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+}
+
+export type MaterialUncheckedUpdateWithoutStockCountLinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reorderPoint?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutMaterialNestedInput
+  prLines?: Prisma.PurchaseRequisitionLineUncheckedUpdateManyWithoutMaterialNestedInput
+  poLines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutMaterialNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutMaterialNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutMaterialNestedInput
+  rfqLines?: Prisma.RfqLineUncheckedUpdateManyWithoutMaterialNestedInput
+  grnLines?: Prisma.GrnLineUncheckedUpdateManyWithoutMaterialNestedInput
+  inventoryLots?: Prisma.InventoryLotUncheckedUpdateManyWithoutMaterialNestedInput
+  fabricRolls?: Prisma.FabricRollUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransactions?: Prisma.StockTransactionUncheckedUpdateManyWithoutMaterialNestedInput
+  stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
+  materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialCreateManyCompanyInput = {
@@ -2642,6 +3052,8 @@ export type MaterialUpdateWithoutCompanyInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutCompanyInput = {
@@ -2668,6 +3080,8 @@ export type MaterialUncheckedUpdateWithoutCompanyInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateManyWithoutCompanyInput = {
@@ -2720,6 +3134,8 @@ export type MaterialUpdateWithoutCategoryInput = {
   stockReservations?: Prisma.StockReservationUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateWithoutCategoryInput = {
@@ -2746,6 +3162,8 @@ export type MaterialUncheckedUpdateWithoutCategoryInput = {
   stockReservations?: Prisma.StockReservationUncheckedUpdateManyWithoutMaterialNestedInput
   materialIssueLines?: Prisma.MaterialIssueLineUncheckedUpdateManyWithoutMaterialNestedInput
   stockAdjustments?: Prisma.StockAdjustmentUncheckedUpdateManyWithoutMaterialNestedInput
+  stockTransferLines?: Prisma.StockTransferLineUncheckedUpdateManyWithoutMaterialNestedInput
+  stockCountLines?: Prisma.StockCountLineUncheckedUpdateManyWithoutMaterialNestedInput
 }
 
 export type MaterialUncheckedUpdateManyWithoutCategoryInput = {
@@ -2780,6 +3198,8 @@ export type MaterialCountOutputType = {
   stockReservations: number
   materialIssueLines: number
   stockAdjustments: number
+  stockTransferLines: number
+  stockCountLines: number
 }
 
 export type MaterialCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2796,6 +3216,8 @@ export type MaterialCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensio
   stockReservations?: boolean | MaterialCountOutputTypeCountStockReservationsArgs
   materialIssueLines?: boolean | MaterialCountOutputTypeCountMaterialIssueLinesArgs
   stockAdjustments?: boolean | MaterialCountOutputTypeCountStockAdjustmentsArgs
+  stockTransferLines?: boolean | MaterialCountOutputTypeCountStockTransferLinesArgs
+  stockCountLines?: boolean | MaterialCountOutputTypeCountStockCountLinesArgs
 }
 
 /**
@@ -2899,6 +3321,20 @@ export type MaterialCountOutputTypeCountStockAdjustmentsArgs<ExtArgs extends run
   where?: Prisma.StockAdjustmentWhereInput
 }
 
+/**
+ * MaterialCountOutputType without action
+ */
+export type MaterialCountOutputTypeCountStockTransferLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StockTransferLineWhereInput
+}
+
+/**
+ * MaterialCountOutputType without action
+ */
+export type MaterialCountOutputTypeCountStockCountLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StockCountLineWhereInput
+}
+
 
 export type MaterialSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2927,6 +3363,8 @@ export type MaterialSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   stockReservations?: boolean | Prisma.Material$stockReservationsArgs<ExtArgs>
   materialIssueLines?: boolean | Prisma.Material$materialIssueLinesArgs<ExtArgs>
   stockAdjustments?: boolean | Prisma.Material$stockAdjustmentsArgs<ExtArgs>
+  stockTransferLines?: boolean | Prisma.Material$stockTransferLinesArgs<ExtArgs>
+  stockCountLines?: boolean | Prisma.Material$stockCountLinesArgs<ExtArgs>
   _count?: boolean | Prisma.MaterialCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["material"]>
 
@@ -2993,6 +3431,8 @@ export type MaterialInclude<ExtArgs extends runtime.Types.Extensions.InternalArg
   stockReservations?: boolean | Prisma.Material$stockReservationsArgs<ExtArgs>
   materialIssueLines?: boolean | Prisma.Material$materialIssueLinesArgs<ExtArgs>
   stockAdjustments?: boolean | Prisma.Material$stockAdjustmentsArgs<ExtArgs>
+  stockTransferLines?: boolean | Prisma.Material$stockTransferLinesArgs<ExtArgs>
+  stockCountLines?: boolean | Prisma.Material$stockCountLinesArgs<ExtArgs>
   _count?: boolean | Prisma.MaterialCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MaterialIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3022,6 +3462,8 @@ export type $MaterialPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     stockReservations: Prisma.$StockReservationPayload<ExtArgs>[]
     materialIssueLines: Prisma.$MaterialIssueLinePayload<ExtArgs>[]
     stockAdjustments: Prisma.$StockAdjustmentPayload<ExtArgs>[]
+    stockTransferLines: Prisma.$StockTransferLinePayload<ExtArgs>[]
+    stockCountLines: Prisma.$StockCountLinePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3444,6 +3886,8 @@ export interface Prisma__MaterialClient<T, Null = never, ExtArgs extends runtime
   stockReservations<T extends Prisma.Material$stockReservationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Material$stockReservationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   materialIssueLines<T extends Prisma.Material$materialIssueLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Material$materialIssueLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaterialIssueLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   stockAdjustments<T extends Prisma.Material$stockAdjustmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Material$stockAdjustmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockAdjustmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  stockTransferLines<T extends Prisma.Material$stockTransferLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Material$stockTransferLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockTransferLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  stockCountLines<T extends Prisma.Material$stockCountLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Material$stockCountLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockCountLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4194,6 +4638,54 @@ export type Material$stockAdjustmentsArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.StockAdjustmentScalarFieldEnum | Prisma.StockAdjustmentScalarFieldEnum[]
+}
+
+/**
+ * Material.stockTransferLines
+ */
+export type Material$stockTransferLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StockTransferLine
+   */
+  select?: Prisma.StockTransferLineSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StockTransferLine
+   */
+  omit?: Prisma.StockTransferLineOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StockTransferLineInclude<ExtArgs> | null
+  where?: Prisma.StockTransferLineWhereInput
+  orderBy?: Prisma.StockTransferLineOrderByWithRelationInput | Prisma.StockTransferLineOrderByWithRelationInput[]
+  cursor?: Prisma.StockTransferLineWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StockTransferLineScalarFieldEnum | Prisma.StockTransferLineScalarFieldEnum[]
+}
+
+/**
+ * Material.stockCountLines
+ */
+export type Material$stockCountLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StockCountLine
+   */
+  select?: Prisma.StockCountLineSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StockCountLine
+   */
+  omit?: Prisma.StockCountLineOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StockCountLineInclude<ExtArgs> | null
+  where?: Prisma.StockCountLineWhereInput
+  orderBy?: Prisma.StockCountLineOrderByWithRelationInput | Prisma.StockCountLineOrderByWithRelationInput[]
+  cursor?: Prisma.StockCountLineWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StockCountLineScalarFieldEnum | Prisma.StockCountLineScalarFieldEnum[]
 }
 
 /**

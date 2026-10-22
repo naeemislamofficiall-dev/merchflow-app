@@ -1,14 +1,33 @@
-export type NavItem = { label: string; href: string; permission?: string; ready: boolean };
+﻿export type NavItem = { label: string; href: string; permission?: string; ready: boolean };
 export type NavGroupData = { label: string; items: NavItem[] };
 
-// নতুন পেজ বানালে শুধু ready: true করে দিন
+// à¦¨à¦¤à§à¦¨ à¦ªà§‡à¦œ à¦¬à¦¾à¦¨à¦¾à¦²à§‡ à¦¶à§à¦§à§ ready: true à¦•à¦°à§‡ à¦¦à¦¿à¦¨
 export const NAV: NavGroupData[] = [
+  {
+    label: "HR",
+    items: [
+      { label: "Employees", href: "/employees", permission: "hr.view", ready: true },
+      { label: "Attendance", href: "/attendance", permission: "attendance.view", ready: true },
+      { label: "Leave", href: "/leave", permission: "leave.view", ready: true },
+      { label: "Payroll", href: "/payroll", permission: "payroll.view", ready: true },
+      { label: "HR settings", href: "/hr/settings", permission: "hr.view", ready: true },
+    ],
+  },
+  {
+    label: "Compliance",
+    items: [
+      { label: "Certificates", href: "/compliance/certificates", permission: "compliance.view", ready: true },
+      { label: "Audits", href: "/compliance/audits", permission: "compliance.view", ready: true },
+      { label: "Compliance settings", href: "/compliance/settings", permission: "compliance.view", ready: true },
+    ],
+  },
   {
     label: "Finance",
     items: [
       { label: "Payables", href: "/finance/payables", permission: "ap.view", ready: true },
       { label: "Receivables", href: "/finance/receivables", permission: "ar.view", ready: true },
       { label: "Expenses", href: "/finance/expenses", permission: "expense.view", ready: true },
+      { label: "Budgets", href: "/finance/budgets", permission: "budget.view", ready: true },
       { label: "Profitability", href: "/finance/profitability", permission: "profitability.view", ready: true },
     ],
   },
@@ -56,6 +75,8 @@ export const NAV: NavGroupData[] = [
       { label: "Warehouses", href: "/warehouses", permission: "warehouse.view", ready: true },
       { label: "Stock", href: "/inventory", permission: "inventory.view", ready: true },
       { label: "Stock adjustments", href: "/inventory/adjustments", permission: "inventory.view", ready: true },
+      { label: "Stock transfers", href: "/stock-transfers", permission: "inventory.view", ready: true },
+      { label: "Stock counts", href: "/stock-counts", permission: "stockcount.view", ready: true },
       { label: "Material returns", href: "/material-returns", permission: "inventory.view", ready: true },
       { label: "Fabric rolls", href: "/fabric-rolls", permission: "inventory.view", ready: true },
       { label: "Goods receipts", href: "/goods-receipts", permission: "grn.view", ready: true },
@@ -88,6 +109,7 @@ export const NAV: NavGroupData[] = [
     label: "Shipping",
     items: [
       { label: "Cartons", href: "/packing/cartons", permission: "packing.view", ready: true },
+      { label: "Packing lists", href: "/packing/packing-lists", permission: "packing.view", ready: true },
       { label: "Shipments", href: "/shipments", permission: "shipment.view", ready: true },
       { label: "Forwarders", href: "/shipments/forwarders", permission: "shipment.view", ready: true },
       { label: "Export documents", href: "/commercial/documents", permission: "commercial.view", ready: true },
