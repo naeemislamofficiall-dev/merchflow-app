@@ -67,7 +67,7 @@ export default async function InspectionsPage(props: { searchParams: Promise<{ s
         <Button type="submit">Filter</Button>
       </form>
 
-      <div className="grid gap-3 md:grid-cols-4">
+      <div className="grid gap-3 md:grid-cols-3 lg:grid-cols-6">
         <Card>
           <CardContent className="p-4">
             <p className="text-xs text-muted-foreground">Inspections</p>
@@ -90,6 +90,21 @@ export default async function InspectionsPage(props: { searchParams: Promise<{ s
           <CardContent className="p-4">
             <p className="text-xs text-muted-foreground">DHU</p>
             <p className="text-2xl font-semibold">{summary.dhu === null ? "-" : `${summary.dhu}%`}</p>
+          </CardContent>
+        </Card>
+                <Card>
+          <CardContent className="p-4">
+            <p className="text-xs text-muted-foreground">Rework %</p>
+            <p className="text-2xl font-semibold">{summary.reworkPct === null ? "-" : `${summary.reworkPct}%`}</p>
+            <p className="text-xs text-muted-foreground">
+              Repaired {summary.repaired} · rejected {summary.rejected}
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <p className="text-xs text-muted-foreground">Open defects</p>
+            <p className="text-2xl font-semibold">{summary.openDefects}</p>
           </CardContent>
         </Card>
       </div>

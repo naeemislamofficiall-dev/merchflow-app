@@ -17,6 +17,74 @@
   --color-gold-500: #c9a227;
   --color-gold-600: #a98617;
 
+  /* সাইডবারের গাঢ় নীল */
+  --color-navy-800: #0d2b61;
+  --color-navy-950: #071a3f;
+
+  /* সাইডবার আইকনের হোভার অ্যানিমেশন */
+  --animate-icon-wiggle: icon-wiggle 0.55s ease-in-out;
+  @keyframes icon-wiggle {
+    0%, 100% { transform: rotate(0) scale(1); }
+    25% { transform: rotate(-12deg) scale(1.2); }
+    50% { transform: rotate(10deg) scale(1.2); }
+    75% { transform: rotate(-6deg) scale(1.1); }
+  }
+
+  /* পেজ লোডারের অ্যানিমেশন */
+  --animate-loader-in: loader-in 0.2s ease-out 0.15s both;
+  @keyframes loader-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  --animate-needle: needle 0.9s ease-in-out infinite;
+  @keyframes needle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(24px); }
+  }
+  --animate-stitch: stitch 0.6s linear infinite;
+  @keyframes stitch {
+    to { stroke-dashoffset: -15; }
+  }
+  --animate-loader-pulse: loader-pulse 1.2s ease-in-out infinite;
+  @keyframes loader-pulse {
+    0%, 100% { opacity: 0.35; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+
+    /* critical KPI icon-er pulse: icon-er edge theke gaadho rong baire halka hoye mishe jay */
+  --animate-soft-pulse: soft-pulse 2.2s ease-out infinite;
+  @keyframes soft-pulse {
+    0% {
+      box-shadow:
+        0 0 0 0 color-mix(in srgb, currentColor 55%, transparent),
+        0 0 0 0 color-mix(in srgb, currentColor 28%, transparent);
+    }
+    65%, 100% {
+      box-shadow:
+        0 0 0 10px color-mix(in srgb, currentColor 0%, transparent),
+        0 0 0 18px color-mix(in srgb, currentColor 0%, transparent);
+    }
+  }
+
+  /* alert badge ekbar pop */
+  --animate-badge-pop: badge-pop 0.5s ease-out 0.7s backwards;
+  @keyframes badge-pop {
+    0% { transform: scale(0.5); }
+    60% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+  }
+
+  /* empty state icon */
+  --animate-float: float 3s ease-in-out infinite;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  /* কার্ডের আকৃতি ও ছায়া: সব পেজে একই look */
+  --radius-card: 1rem;
+  --shadow-card: 0 1px 2px rgba(21, 42, 69, 0.04), 0 4px 16px rgba(21, 42, 69, 0.06);
+
   /* পেজ ও লেখার রঙ */
   --color-paper: #f6f7f9;
   --color-ink: #1b2430;
@@ -81,4 +149,165 @@ h3 {
   * {
     border-color: var(--color-border);
   }
+}
+
+/* ================= Motion ================= */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes grow-x { from { transform: scaleX(0); } }
+@keyframes grow-y { from { transform: scaleY(0); } }
+@keyframes draw-line { from { stroke-dashoffset: 1; } }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes donut-draw { from { stroke-dasharray: 0 var(--c); } }
+
+/* container-er shob child ekta ekta kore fade-up (60ms gap) */
+.stagger > * {
+  /* box-er bhitorer chart/number eta shesh hobar por shuru hobe */
+  --land: calc(var(--stagger-step, 150ms) * var(--n, 0) + 650ms);
+  animation: fly-up 0.75s cubic-bezier(0.22, 1.15, 0.36, 1) backwards;
+  animation-delay: calc(var(--stagger-step, 150ms) * var(--n, 0));
+}
+.stagger > .stagger { animation: none; } /* nested container nijer child-der animate kore */
+.stagger-fast { --stagger-step: 30ms; }
+.stagger > :nth-child(1) { --n: 0; }
+.stagger > :nth-child(2) { --n: 1; }
+.stagger > :nth-child(3) { --n: 2; }
+.stagger > :nth-child(4) { --n: 3; }
+.stagger > :nth-child(5) { --n: 4; }
+.stagger > :nth-child(6) { --n: 5; }
+.stagger > :nth-child(7) { --n: 6; }
+.stagger > :nth-child(8) { --n: 7; }
+.stagger > :nth-child(9) { --n: 8; }
+.stagger > :nth-child(10) { --n: 9; }
+.stagger > :nth-child(11) { --n: 10; }
+.stagger > :nth-child(12) { --n: 11; }
+.stagger > :nth-child(13) { --n: 12; }
+.stagger > :nth-child(14) { --n: 13; }
+
+/* chart: bar baro, line aka, donut draw */
+.grow-x {
+  transform-origin: left;
+  animation: grow-x 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: var(--d, 200ms);
+}
+.grow-y {
+  transform-origin: bottom;
+  animation: grow-y 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: var(--d, 200ms);
+}
+.draw-line {
+  stroke-dasharray: 1;
+  animation: draw-line 1.1s ease-out backwards;
+  animation-delay: 150ms;
+}
+.fade-in {
+  animation: fade-in 0.5s ease-out backwards;
+  animation-delay: var(--d, 0ms);
+}
+.donut-seg,
+.ring-prog {
+  animation: donut-draw 0.8s ease-out backwards;
+  animation-delay: var(--d, 0ms);
+}
+
+/* dashboard table row hover: halka tint + bam-e 2px accent */
+.stagger-fast > tr {
+  transition: background-color 0.15s, box-shadow 0.15s;
+}
+.stagger-fast > tr:hover {
+  background-color: color-mix(in srgb, var(--color-denim-50) 80%, transparent);
+  box-shadow: inset 2px 0 0 #3b82f6;
+}
+
+/* button press */
+button:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+/* user-er OS-e "reduce motion" on thakle shob animation off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Scroll reveal: dashboard-er section viewport-e ashle tabe animate ===== */
+[data-reveal-root] {
+  /* baire theke ashar shomoy horizontal scrollbar na ashe, ar shadow na kate */
+  overflow-x: clip;
+  overflow-clip-margin: 28px;
+}
+[data-reveal-root] > * {
+  animation: fly-up 0.8s cubic-bezier(0.22, 1.15, 0.36, 1) backwards;
+}
+[data-reveal-root] > :first-child {
+  animation-name: fly-down;
+}
+/* jei section nijer child-der stagger kore, tar nijer alada rise lage na */
+[data-reveal-root] > .stagger {
+  animation: none;
+}
+/* dekha na gele (inview nei), section ar tar bhitorer shob animation thame thake */
+[data-reveal-root] > :not([data-inview="true"]),
+[data-reveal-root] > :not([data-inview="true"]) *,
+[data-reveal-root] > :not([data-inview="true"]) *::before,
+[data-reveal-root] > :not([data-inview="true"]) *::after {
+  animation-play-state: paused !important;
+}
+/* JavaScript bondho thakle section gulo lukiye na thake */
+@media (scripting: none) {
+  [data-reveal-root] > *,
+  [data-reveal-root] > * * {
+    animation-play-state: running !important;
+  }
+}
+
+/* ===== Box fly-in: bahir theke ashe ===== */
+@keyframes fly-up {
+  from { opacity: 0; transform: translateY(56px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fly-down {
+  from { opacity: 0; transform: translateY(-48px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fly-left {
+  from { opacity: 0; transform: translateX(-96px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fly-right {
+  from { opacity: 0; transform: translateX(96px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes item-in {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* row-er prothom box bam theke, shesh box dan theke, majher gulo niche theke */
+.stagger-sides > :first-child { animation-name: fly-left; }
+.stagger-sides > :last-child { animation-name: fly-right; }
+
+/* table row: boro ure ashe na, shudhu chhoto rise */
+.stagger-fast > * {
+  animation-name: rise;
+  animation-duration: 0.4s;
+}
+
+/* legend-er ek ek line */
+.item-in {
+  animation: item-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: var(--d, 0ms);
+}
+
+/* box boshe jaoar por tar bhitorer chart / bar / ring shuru */
+[data-reveal-root] :is(.donut-seg, .ring-prog, .grow-x, .grow-y, .draw-line, .fade-in, .item-in) {
+  animation-delay: calc(var(--d, 0ms) + var(--land, 650ms));
 }

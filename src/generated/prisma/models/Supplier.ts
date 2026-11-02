@@ -312,14 +312,15 @@ export type SupplierWhereInput = {
   status?: Prisma.EnumActiveStatusFilter<"Supplier"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Supplier"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Supplier"> | Date | string
+  bomItems?: Prisma.BomItemListRelationFilter
+  portalAccounts?: Prisma.PortalAccountListRelationFilter
+  purchaseOrders?: Prisma.PurchaseOrderListRelationFilter
+  rfqInvites?: Prisma.RfqSupplierListRelationFilter
+  subcontractOrders?: Prisma.SubcontractOrderListRelationFilter
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   contacts?: Prisma.SupplierContactListRelationFilter
-  quotations?: Prisma.SupplierQuotationListRelationFilter
-  purchaseOrders?: Prisma.PurchaseOrderListRelationFilter
   proformaInvoices?: Prisma.SupplierPiListRelationFilter
-  rfqInvites?: Prisma.RfqSupplierListRelationFilter
-  bomItems?: Prisma.BomItemListRelationFilter
-  subcontractOrders?: Prisma.SubcontractOrderListRelationFilter
+  quotations?: Prisma.SupplierQuotationListRelationFilter
 }
 
 export type SupplierOrderByWithRelationInput = {
@@ -340,14 +341,15 @@ export type SupplierOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  bomItems?: Prisma.BomItemOrderByRelationAggregateInput
+  portalAccounts?: Prisma.PortalAccountOrderByRelationAggregateInput
+  purchaseOrders?: Prisma.PurchaseOrderOrderByRelationAggregateInput
+  rfqInvites?: Prisma.RfqSupplierOrderByRelationAggregateInput
+  subcontractOrders?: Prisma.SubcontractOrderOrderByRelationAggregateInput
   company?: Prisma.CompanyOrderByWithRelationInput
   contacts?: Prisma.SupplierContactOrderByRelationAggregateInput
-  quotations?: Prisma.SupplierQuotationOrderByRelationAggregateInput
-  purchaseOrders?: Prisma.PurchaseOrderOrderByRelationAggregateInput
   proformaInvoices?: Prisma.SupplierPiOrderByRelationAggregateInput
-  rfqInvites?: Prisma.RfqSupplierOrderByRelationAggregateInput
-  bomItems?: Prisma.BomItemOrderByRelationAggregateInput
-  subcontractOrders?: Prisma.SubcontractOrderOrderByRelationAggregateInput
+  quotations?: Prisma.SupplierQuotationOrderByRelationAggregateInput
 }
 
 export type SupplierWhereUniqueInput = Prisma.AtLeast<{
@@ -372,14 +374,15 @@ export type SupplierWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumActiveStatusFilter<"Supplier"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Supplier"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Supplier"> | Date | string
+  bomItems?: Prisma.BomItemListRelationFilter
+  portalAccounts?: Prisma.PortalAccountListRelationFilter
+  purchaseOrders?: Prisma.PurchaseOrderListRelationFilter
+  rfqInvites?: Prisma.RfqSupplierListRelationFilter
+  subcontractOrders?: Prisma.SubcontractOrderListRelationFilter
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   contacts?: Prisma.SupplierContactListRelationFilter
-  quotations?: Prisma.SupplierQuotationListRelationFilter
-  purchaseOrders?: Prisma.PurchaseOrderListRelationFilter
   proformaInvoices?: Prisma.SupplierPiListRelationFilter
-  rfqInvites?: Prisma.RfqSupplierListRelationFilter
-  bomItems?: Prisma.BomItemListRelationFilter
-  subcontractOrders?: Prisma.SubcontractOrderListRelationFilter
+  quotations?: Prisma.SupplierQuotationListRelationFilter
 }, "id" | "companyId_code">
 
 export type SupplierOrderByWithAggregationInput = {
@@ -447,14 +450,15 @@ export type SupplierCreateInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
   company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
   contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
-  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
-  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUncheckedCreateInput = {
@@ -475,13 +479,14 @@ export type SupplierUncheckedCreateInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUpdateInput = {
@@ -501,14 +506,15 @@ export type SupplierUpdateInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
   contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
-  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
-  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierUncheckedUpdateInput = {
@@ -529,13 +535,14 @@ export type SupplierUncheckedUpdateInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateManyInput = {
@@ -836,6 +843,22 @@ export type SupplierUpdateOneRequiredWithoutSubcontractOrdersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SupplierUpdateToOneWithWhereWithoutSubcontractOrdersInput, Prisma.SupplierUpdateWithoutSubcontractOrdersInput>, Prisma.SupplierUncheckedUpdateWithoutSubcontractOrdersInput>
 }
 
+export type SupplierCreateNestedOneWithoutPortalAccountsInput = {
+  create?: Prisma.XOR<Prisma.SupplierCreateWithoutPortalAccountsInput, Prisma.SupplierUncheckedCreateWithoutPortalAccountsInput>
+  connectOrCreate?: Prisma.SupplierCreateOrConnectWithoutPortalAccountsInput
+  connect?: Prisma.SupplierWhereUniqueInput
+}
+
+export type SupplierUpdateOneWithoutPortalAccountsNestedInput = {
+  create?: Prisma.XOR<Prisma.SupplierCreateWithoutPortalAccountsInput, Prisma.SupplierUncheckedCreateWithoutPortalAccountsInput>
+  connectOrCreate?: Prisma.SupplierCreateOrConnectWithoutPortalAccountsInput
+  upsert?: Prisma.SupplierUpsertWithoutPortalAccountsInput
+  disconnect?: Prisma.SupplierWhereInput | boolean
+  delete?: Prisma.SupplierWhereInput | boolean
+  connect?: Prisma.SupplierWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SupplierUpdateToOneWithWhereWithoutPortalAccountsInput, Prisma.SupplierUpdateWithoutPortalAccountsInput>, Prisma.SupplierUncheckedUpdateWithoutPortalAccountsInput>
+}
+
 export type SupplierCreateWithoutCompanyInput = {
   id?: string
   code: string
@@ -853,13 +876,14 @@ export type SupplierCreateWithoutCompanyInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
   bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
+  contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUncheckedCreateWithoutCompanyInput = {
@@ -879,13 +903,14 @@ export type SupplierUncheckedCreateWithoutCompanyInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierCreateOrConnectWithoutCompanyInput = {
@@ -954,13 +979,14 @@ export type SupplierCreateWithoutBomItemsInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
-  contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountCreateNestedManyWithoutSupplierInput
   purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
+  company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
+  contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUncheckedCreateWithoutBomItemsInput = {
@@ -981,12 +1007,13 @@ export type SupplierUncheckedCreateWithoutBomItemsInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountUncheckedCreateNestedManyWithoutSupplierInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierCreateOrConnectWithoutBomItemsInput = {
@@ -1022,13 +1049,14 @@ export type SupplierUpdateWithoutBomItemsInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
-  contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUpdateManyWithoutSupplierNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
+  contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutBomItemsInput = {
@@ -1049,12 +1077,13 @@ export type SupplierUncheckedUpdateWithoutBomItemsInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUncheckedUpdateManyWithoutSupplierNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateWithoutContactsInput = {
@@ -1074,13 +1103,14 @@ export type SupplierCreateWithoutContactsInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
-  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
   bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
+  company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
+  proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUncheckedCreateWithoutContactsInput = {
@@ -1101,12 +1131,13 @@ export type SupplierUncheckedCreateWithoutContactsInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierCreateOrConnectWithoutContactsInput = {
@@ -1142,13 +1173,14 @@ export type SupplierUpdateWithoutContactsInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
-  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
   bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
+  proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutContactsInput = {
@@ -1169,12 +1201,13 @@ export type SupplierUncheckedUpdateWithoutContactsInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateWithoutQuotationsInput = {
@@ -1194,13 +1227,14 @@ export type SupplierCreateWithoutQuotationsInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
   company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
   contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
-  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
-  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierUncheckedCreateWithoutQuotationsInput = {
@@ -1221,12 +1255,13 @@ export type SupplierUncheckedCreateWithoutQuotationsInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierCreateOrConnectWithoutQuotationsInput = {
@@ -1262,13 +1297,14 @@ export type SupplierUpdateWithoutQuotationsInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
   contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
-  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
-  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutQuotationsInput = {
@@ -1289,12 +1325,13 @@ export type SupplierUncheckedUpdateWithoutQuotationsInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateWithoutPurchaseOrdersInput = {
@@ -1314,13 +1351,14 @@ export type SupplierCreateWithoutPurchaseOrdersInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
   company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
   contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
-  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
-  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUncheckedCreateWithoutPurchaseOrdersInput = {
@@ -1341,12 +1379,13 @@ export type SupplierUncheckedCreateWithoutPurchaseOrdersInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountUncheckedCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierCreateOrConnectWithoutPurchaseOrdersInput = {
@@ -1382,13 +1421,14 @@ export type SupplierUpdateWithoutPurchaseOrdersInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
   contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
-  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
-  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutPurchaseOrdersInput = {
@@ -1409,12 +1449,13 @@ export type SupplierUncheckedUpdateWithoutPurchaseOrdersInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUncheckedUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateWithoutProformaInvoicesInput = {
@@ -1434,13 +1475,14 @@ export type SupplierCreateWithoutProformaInvoicesInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
   company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
   contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
   quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
-  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
-  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
 }
 
 export type SupplierUncheckedCreateWithoutProformaInvoicesInput = {
@@ -1461,12 +1503,13 @@ export type SupplierUncheckedCreateWithoutProformaInvoicesInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountUncheckedCreateNestedManyWithoutSupplierInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
   rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
-  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierCreateOrConnectWithoutProformaInvoicesInput = {
@@ -1502,13 +1545,14 @@ export type SupplierUpdateWithoutProformaInvoicesInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
   contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
   quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
-  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
-  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutProformaInvoicesInput = {
@@ -1529,12 +1573,13 @@ export type SupplierUncheckedUpdateWithoutProformaInvoicesInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUncheckedUpdateManyWithoutSupplierNestedInput
   purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
   rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
-  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateWithoutRfqInvitesInput = {
@@ -1554,13 +1599,14 @@ export type SupplierCreateWithoutRfqInvitesInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
   company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
   contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
-  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
-  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUncheckedCreateWithoutRfqInvitesInput = {
@@ -1581,12 +1627,13 @@ export type SupplierUncheckedCreateWithoutRfqInvitesInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
   bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierCreateOrConnectWithoutRfqInvitesInput = {
@@ -1622,13 +1669,14 @@ export type SupplierUpdateWithoutRfqInvitesInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
   contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
-  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
-  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutRfqInvitesInput = {
@@ -1649,12 +1697,13 @@ export type SupplierUncheckedUpdateWithoutRfqInvitesInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
   bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateWithoutSubcontractOrdersInput = {
@@ -1674,13 +1723,14 @@ export type SupplierCreateWithoutSubcontractOrdersInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
   company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
   contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
-  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUncheckedCreateWithoutSubcontractOrdersInput = {
@@ -1701,12 +1751,13 @@ export type SupplierUncheckedCreateWithoutSubcontractOrdersInput = {
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
-  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
   bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  portalAccounts?: Prisma.PortalAccountUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierCreateOrConnectWithoutSubcontractOrdersInput = {
@@ -1742,13 +1793,14 @@ export type SupplierUpdateWithoutSubcontractOrdersInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
   contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
-  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutSubcontractOrdersInput = {
@@ -1769,12 +1821,137 @@ export type SupplierUncheckedUpdateWithoutSubcontractOrdersInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
+}
+
+export type SupplierCreateWithoutPortalAccountsInput = {
+  id?: string
+  code: string
+  name: string
+  category: $Enums.SupplierCategory
+  country?: string | null
+  address?: string | null
+  currency?: string
+  leadTimeDays?: number | null
+  paymentTerms?: string | null
+  bankName?: string | null
+  bankBranch?: string | null
+  bankAccountName?: string | null
+  bankAccountNo?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bomItems?: Prisma.BomItemCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderCreateNestedManyWithoutVendorInput
+  company: Prisma.CompanyCreateNestedOneWithoutSuppliersInput
+  contacts?: Prisma.SupplierContactCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationCreateNestedManyWithoutSupplierInput
+}
+
+export type SupplierUncheckedCreateWithoutPortalAccountsInput = {
+  id?: string
+  companyId: string
+  code: string
+  name: string
+  category: $Enums.SupplierCategory
+  country?: string | null
+  address?: string | null
+  currency?: string
+  leadTimeDays?: number | null
+  paymentTerms?: string | null
+  bankName?: string | null
+  bankBranch?: string | null
+  bankAccountName?: string | null
+  bankAccountNo?: string | null
+  status?: $Enums.ActiveStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bomItems?: Prisma.BomItemUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedCreateNestedManyWithoutSupplierInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedCreateNestedManyWithoutSupplierInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedCreateNestedManyWithoutVendorInput
+  contacts?: Prisma.SupplierContactUncheckedCreateNestedManyWithoutSupplierInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutSupplierInput
+  quotations?: Prisma.SupplierQuotationUncheckedCreateNestedManyWithoutSupplierInput
+}
+
+export type SupplierCreateOrConnectWithoutPortalAccountsInput = {
+  where: Prisma.SupplierWhereUniqueInput
+  create: Prisma.XOR<Prisma.SupplierCreateWithoutPortalAccountsInput, Prisma.SupplierUncheckedCreateWithoutPortalAccountsInput>
+}
+
+export type SupplierUpsertWithoutPortalAccountsInput = {
+  update: Prisma.XOR<Prisma.SupplierUpdateWithoutPortalAccountsInput, Prisma.SupplierUncheckedUpdateWithoutPortalAccountsInput>
+  create: Prisma.XOR<Prisma.SupplierCreateWithoutPortalAccountsInput, Prisma.SupplierUncheckedCreateWithoutPortalAccountsInput>
+  where?: Prisma.SupplierWhereInput
+}
+
+export type SupplierUpdateToOneWithWhereWithoutPortalAccountsInput = {
+  where?: Prisma.SupplierWhereInput
+  data: Prisma.XOR<Prisma.SupplierUpdateWithoutPortalAccountsInput, Prisma.SupplierUncheckedUpdateWithoutPortalAccountsInput>
+}
+
+export type SupplierUpdateWithoutPortalAccountsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumSupplierCategoryFieldUpdateOperationsInput | $Enums.SupplierCategory
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  leadTimeDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutSuppliersNestedInput
+  contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
+}
+
+export type SupplierUncheckedUpdateWithoutPortalAccountsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumSupplierCategoryFieldUpdateOperationsInput | $Enums.SupplierCategory
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  leadTimeDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  paymentTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bankAccountNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
+  subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateManyCompanyInput = {
@@ -1813,13 +1990,14 @@ export type SupplierUpdateWithoutCompanyInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
   bomItems?: Prisma.BomItemUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUpdateManyWithoutVendorNestedInput
+  contacts?: Prisma.SupplierContactUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutCompanyInput = {
@@ -1839,13 +2017,14 @@ export type SupplierUncheckedUpdateWithoutCompanyInput = {
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
-  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
-  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
-  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   bomItems?: Prisma.BomItemUncheckedUpdateManyWithoutSupplierNestedInput
+  portalAccounts?: Prisma.PortalAccountUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseOrders?: Prisma.PurchaseOrderUncheckedUpdateManyWithoutSupplierNestedInput
+  rfqInvites?: Prisma.RfqSupplierUncheckedUpdateManyWithoutSupplierNestedInput
   subcontractOrders?: Prisma.SubcontractOrderUncheckedUpdateManyWithoutVendorNestedInput
+  contacts?: Prisma.SupplierContactUncheckedUpdateManyWithoutSupplierNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutSupplierNestedInput
+  quotations?: Prisma.SupplierQuotationUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierUncheckedUpdateManyWithoutCompanyInput = {
@@ -1873,23 +2052,25 @@ export type SupplierUncheckedUpdateManyWithoutCompanyInput = {
  */
 
 export type SupplierCountOutputType = {
-  contacts: number
-  quotations: number
-  purchaseOrders: number
-  proformaInvoices: number
-  rfqInvites: number
   bomItems: number
+  portalAccounts: number
+  purchaseOrders: number
+  rfqInvites: number
   subcontractOrders: number
+  contacts: number
+  proformaInvoices: number
+  quotations: number
 }
 
 export type SupplierCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  contacts?: boolean | SupplierCountOutputTypeCountContactsArgs
-  quotations?: boolean | SupplierCountOutputTypeCountQuotationsArgs
-  purchaseOrders?: boolean | SupplierCountOutputTypeCountPurchaseOrdersArgs
-  proformaInvoices?: boolean | SupplierCountOutputTypeCountProformaInvoicesArgs
-  rfqInvites?: boolean | SupplierCountOutputTypeCountRfqInvitesArgs
   bomItems?: boolean | SupplierCountOutputTypeCountBomItemsArgs
+  portalAccounts?: boolean | SupplierCountOutputTypeCountPortalAccountsArgs
+  purchaseOrders?: boolean | SupplierCountOutputTypeCountPurchaseOrdersArgs
+  rfqInvites?: boolean | SupplierCountOutputTypeCountRfqInvitesArgs
   subcontractOrders?: boolean | SupplierCountOutputTypeCountSubcontractOrdersArgs
+  contacts?: boolean | SupplierCountOutputTypeCountContactsArgs
+  proformaInvoices?: boolean | SupplierCountOutputTypeCountProformaInvoicesArgs
+  quotations?: boolean | SupplierCountOutputTypeCountQuotationsArgs
 }
 
 /**
@@ -1905,15 +2086,15 @@ export type SupplierCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
 /**
  * SupplierCountOutputType without action
  */
-export type SupplierCountOutputTypeCountContactsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SupplierContactWhereInput
+export type SupplierCountOutputTypeCountBomItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BomItemWhereInput
 }
 
 /**
  * SupplierCountOutputType without action
  */
-export type SupplierCountOutputTypeCountQuotationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SupplierQuotationWhereInput
+export type SupplierCountOutputTypeCountPortalAccountsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PortalAccountWhereInput
 }
 
 /**
@@ -1926,13 +2107,6 @@ export type SupplierCountOutputTypeCountPurchaseOrdersArgs<ExtArgs extends runti
 /**
  * SupplierCountOutputType without action
  */
-export type SupplierCountOutputTypeCountProformaInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SupplierPiWhereInput
-}
-
-/**
- * SupplierCountOutputType without action
- */
 export type SupplierCountOutputTypeCountRfqInvitesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.RfqSupplierWhereInput
 }
@@ -1940,15 +2114,29 @@ export type SupplierCountOutputTypeCountRfqInvitesArgs<ExtArgs extends runtime.T
 /**
  * SupplierCountOutputType without action
  */
-export type SupplierCountOutputTypeCountBomItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BomItemWhereInput
+export type SupplierCountOutputTypeCountSubcontractOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SubcontractOrderWhereInput
 }
 
 /**
  * SupplierCountOutputType without action
  */
-export type SupplierCountOutputTypeCountSubcontractOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SubcontractOrderWhereInput
+export type SupplierCountOutputTypeCountContactsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupplierContactWhereInput
+}
+
+/**
+ * SupplierCountOutputType without action
+ */
+export type SupplierCountOutputTypeCountProformaInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupplierPiWhereInput
+}
+
+/**
+ * SupplierCountOutputType without action
+ */
+export type SupplierCountOutputTypeCountQuotationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupplierQuotationWhereInput
 }
 
 
@@ -1970,14 +2158,15 @@ export type SupplierSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  bomItems?: boolean | Prisma.Supplier$bomItemsArgs<ExtArgs>
+  portalAccounts?: boolean | Prisma.Supplier$portalAccountsArgs<ExtArgs>
+  purchaseOrders?: boolean | Prisma.Supplier$purchaseOrdersArgs<ExtArgs>
+  rfqInvites?: boolean | Prisma.Supplier$rfqInvitesArgs<ExtArgs>
+  subcontractOrders?: boolean | Prisma.Supplier$subcontractOrdersArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   contacts?: boolean | Prisma.Supplier$contactsArgs<ExtArgs>
-  quotations?: boolean | Prisma.Supplier$quotationsArgs<ExtArgs>
-  purchaseOrders?: boolean | Prisma.Supplier$purchaseOrdersArgs<ExtArgs>
   proformaInvoices?: boolean | Prisma.Supplier$proformaInvoicesArgs<ExtArgs>
-  rfqInvites?: boolean | Prisma.Supplier$rfqInvitesArgs<ExtArgs>
-  bomItems?: boolean | Prisma.Supplier$bomItemsArgs<ExtArgs>
-  subcontractOrders?: boolean | Prisma.Supplier$subcontractOrdersArgs<ExtArgs>
+  quotations?: boolean | Prisma.Supplier$quotationsArgs<ExtArgs>
   _count?: boolean | Prisma.SupplierCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["supplier"]>
 
@@ -2045,14 +2234,15 @@ export type SupplierSelectScalar = {
 
 export type SupplierOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "code" | "name" | "category" | "country" | "address" | "currency" | "leadTimeDays" | "paymentTerms" | "bankName" | "bankBranch" | "bankAccountName" | "bankAccountNo" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["supplier"]>
 export type SupplierInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  bomItems?: boolean | Prisma.Supplier$bomItemsArgs<ExtArgs>
+  portalAccounts?: boolean | Prisma.Supplier$portalAccountsArgs<ExtArgs>
+  purchaseOrders?: boolean | Prisma.Supplier$purchaseOrdersArgs<ExtArgs>
+  rfqInvites?: boolean | Prisma.Supplier$rfqInvitesArgs<ExtArgs>
+  subcontractOrders?: boolean | Prisma.Supplier$subcontractOrdersArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   contacts?: boolean | Prisma.Supplier$contactsArgs<ExtArgs>
-  quotations?: boolean | Prisma.Supplier$quotationsArgs<ExtArgs>
-  purchaseOrders?: boolean | Prisma.Supplier$purchaseOrdersArgs<ExtArgs>
   proformaInvoices?: boolean | Prisma.Supplier$proformaInvoicesArgs<ExtArgs>
-  rfqInvites?: boolean | Prisma.Supplier$rfqInvitesArgs<ExtArgs>
-  bomItems?: boolean | Prisma.Supplier$bomItemsArgs<ExtArgs>
-  subcontractOrders?: boolean | Prisma.Supplier$subcontractOrdersArgs<ExtArgs>
+  quotations?: boolean | Prisma.Supplier$quotationsArgs<ExtArgs>
   _count?: boolean | Prisma.SupplierCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SupplierIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2065,14 +2255,15 @@ export type SupplierIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $SupplierPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Supplier"
   objects: {
+    bomItems: Prisma.$BomItemPayload<ExtArgs>[]
+    portalAccounts: Prisma.$PortalAccountPayload<ExtArgs>[]
+    purchaseOrders: Prisma.$PurchaseOrderPayload<ExtArgs>[]
+    rfqInvites: Prisma.$RfqSupplierPayload<ExtArgs>[]
+    subcontractOrders: Prisma.$SubcontractOrderPayload<ExtArgs>[]
     company: Prisma.$CompanyPayload<ExtArgs>
     contacts: Prisma.$SupplierContactPayload<ExtArgs>[]
-    quotations: Prisma.$SupplierQuotationPayload<ExtArgs>[]
-    purchaseOrders: Prisma.$PurchaseOrderPayload<ExtArgs>[]
     proformaInvoices: Prisma.$SupplierPiPayload<ExtArgs>[]
-    rfqInvites: Prisma.$RfqSupplierPayload<ExtArgs>[]
-    bomItems: Prisma.$BomItemPayload<ExtArgs>[]
-    subcontractOrders: Prisma.$SubcontractOrderPayload<ExtArgs>[]
+    quotations: Prisma.$SupplierQuotationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2486,14 +2677,15 @@ readonly fields: SupplierFieldRefs;
  */
 export interface Prisma__SupplierClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  bomItems<T extends Prisma.Supplier$bomItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$bomItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BomItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  portalAccounts<T extends Prisma.Supplier$portalAccountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$portalAccountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortalAccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  purchaseOrders<T extends Prisma.Supplier$purchaseOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$purchaseOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rfqInvites<T extends Prisma.Supplier$rfqInvitesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$rfqInvitesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RfqSupplierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  subcontractOrders<T extends Prisma.Supplier$subcontractOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$subcontractOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubcontractOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   contacts<T extends Prisma.Supplier$contactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$contactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  quotations<T extends Prisma.Supplier$quotationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$quotationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierQuotationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  purchaseOrders<T extends Prisma.Supplier$purchaseOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$purchaseOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   proformaInvoices<T extends Prisma.Supplier$proformaInvoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$proformaInvoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierPiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  rfqInvites<T extends Prisma.Supplier$rfqInvitesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$rfqInvitesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RfqSupplierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  bomItems<T extends Prisma.Supplier$bomItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$bomItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BomItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  subcontractOrders<T extends Prisma.Supplier$subcontractOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$subcontractOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubcontractOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  quotations<T extends Prisma.Supplier$quotationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$quotationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierQuotationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2941,51 +3133,51 @@ export type SupplierDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Supplier.contacts
+ * Supplier.bomItems
  */
-export type Supplier$contactsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Supplier$bomItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SupplierContact
+   * Select specific fields to fetch from the BomItem
    */
-  select?: Prisma.SupplierContactSelect<ExtArgs> | null
+  select?: Prisma.BomItemSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SupplierContact
+   * Omit specific fields from the BomItem
    */
-  omit?: Prisma.SupplierContactOmit<ExtArgs> | null
+  omit?: Prisma.BomItemOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SupplierContactInclude<ExtArgs> | null
-  where?: Prisma.SupplierContactWhereInput
-  orderBy?: Prisma.SupplierContactOrderByWithRelationInput | Prisma.SupplierContactOrderByWithRelationInput[]
-  cursor?: Prisma.SupplierContactWhereUniqueInput
+  include?: Prisma.BomItemInclude<ExtArgs> | null
+  where?: Prisma.BomItemWhereInput
+  orderBy?: Prisma.BomItemOrderByWithRelationInput | Prisma.BomItemOrderByWithRelationInput[]
+  cursor?: Prisma.BomItemWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.SupplierContactScalarFieldEnum | Prisma.SupplierContactScalarFieldEnum[]
+  distinct?: Prisma.BomItemScalarFieldEnum | Prisma.BomItemScalarFieldEnum[]
 }
 
 /**
- * Supplier.quotations
+ * Supplier.portalAccounts
  */
-export type Supplier$quotationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Supplier$portalAccountsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SupplierQuotation
+   * Select specific fields to fetch from the PortalAccount
    */
-  select?: Prisma.SupplierQuotationSelect<ExtArgs> | null
+  select?: Prisma.PortalAccountSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SupplierQuotation
+   * Omit specific fields from the PortalAccount
    */
-  omit?: Prisma.SupplierQuotationOmit<ExtArgs> | null
+  omit?: Prisma.PortalAccountOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SupplierQuotationInclude<ExtArgs> | null
-  where?: Prisma.SupplierQuotationWhereInput
-  orderBy?: Prisma.SupplierQuotationOrderByWithRelationInput | Prisma.SupplierQuotationOrderByWithRelationInput[]
-  cursor?: Prisma.SupplierQuotationWhereUniqueInput
+  include?: Prisma.PortalAccountInclude<ExtArgs> | null
+  where?: Prisma.PortalAccountWhereInput
+  orderBy?: Prisma.PortalAccountOrderByWithRelationInput | Prisma.PortalAccountOrderByWithRelationInput[]
+  cursor?: Prisma.PortalAccountWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.SupplierQuotationScalarFieldEnum | Prisma.SupplierQuotationScalarFieldEnum[]
+  distinct?: Prisma.PortalAccountScalarFieldEnum | Prisma.PortalAccountScalarFieldEnum[]
 }
 
 /**
@@ -3013,30 +3205,6 @@ export type Supplier$purchaseOrdersArgs<ExtArgs extends runtime.Types.Extensions
 }
 
 /**
- * Supplier.proformaInvoices
- */
-export type Supplier$proformaInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SupplierPi
-   */
-  select?: Prisma.SupplierPiSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SupplierPi
-   */
-  omit?: Prisma.SupplierPiOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SupplierPiInclude<ExtArgs> | null
-  where?: Prisma.SupplierPiWhereInput
-  orderBy?: Prisma.SupplierPiOrderByWithRelationInput | Prisma.SupplierPiOrderByWithRelationInput[]
-  cursor?: Prisma.SupplierPiWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SupplierPiScalarFieldEnum | Prisma.SupplierPiScalarFieldEnum[]
-}
-
-/**
  * Supplier.rfqInvites
  */
 export type Supplier$rfqInvitesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3061,30 +3229,6 @@ export type Supplier$rfqInvitesArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * Supplier.bomItems
- */
-export type Supplier$bomItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the BomItem
-   */
-  select?: Prisma.BomItemSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the BomItem
-   */
-  omit?: Prisma.BomItemOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.BomItemInclude<ExtArgs> | null
-  where?: Prisma.BomItemWhereInput
-  orderBy?: Prisma.BomItemOrderByWithRelationInput | Prisma.BomItemOrderByWithRelationInput[]
-  cursor?: Prisma.BomItemWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.BomItemScalarFieldEnum | Prisma.BomItemScalarFieldEnum[]
-}
-
-/**
  * Supplier.subcontractOrders
  */
 export type Supplier$subcontractOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3106,6 +3250,78 @@ export type Supplier$subcontractOrdersArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.SubcontractOrderScalarFieldEnum | Prisma.SubcontractOrderScalarFieldEnum[]
+}
+
+/**
+ * Supplier.contacts
+ */
+export type Supplier$contactsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SupplierContact
+   */
+  select?: Prisma.SupplierContactSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SupplierContact
+   */
+  omit?: Prisma.SupplierContactOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupplierContactInclude<ExtArgs> | null
+  where?: Prisma.SupplierContactWhereInput
+  orderBy?: Prisma.SupplierContactOrderByWithRelationInput | Prisma.SupplierContactOrderByWithRelationInput[]
+  cursor?: Prisma.SupplierContactWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupplierContactScalarFieldEnum | Prisma.SupplierContactScalarFieldEnum[]
+}
+
+/**
+ * Supplier.proformaInvoices
+ */
+export type Supplier$proformaInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SupplierPi
+   */
+  select?: Prisma.SupplierPiSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SupplierPi
+   */
+  omit?: Prisma.SupplierPiOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupplierPiInclude<ExtArgs> | null
+  where?: Prisma.SupplierPiWhereInput
+  orderBy?: Prisma.SupplierPiOrderByWithRelationInput | Prisma.SupplierPiOrderByWithRelationInput[]
+  cursor?: Prisma.SupplierPiWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupplierPiScalarFieldEnum | Prisma.SupplierPiScalarFieldEnum[]
+}
+
+/**
+ * Supplier.quotations
+ */
+export type Supplier$quotationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SupplierQuotation
+   */
+  select?: Prisma.SupplierQuotationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SupplierQuotation
+   */
+  omit?: Prisma.SupplierQuotationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupplierQuotationInclude<ExtArgs> | null
+  where?: Prisma.SupplierQuotationWhereInput
+  orderBy?: Prisma.SupplierQuotationOrderByWithRelationInput | Prisma.SupplierQuotationOrderByWithRelationInput[]
+  cursor?: Prisma.SupplierQuotationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupplierQuotationScalarFieldEnum | Prisma.SupplierQuotationScalarFieldEnum[]
 }
 
 /**

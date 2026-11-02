@@ -40,14 +40,14 @@ export type FactoryMinAggregateOutputType = {
   code: string | null
   name: string | null
   address: string | null
-  factoryType: string | null
-  capacity: number | null
-  workingCalendar: string | null
-  complianceStatus: string | null
-  contactInfo: string | null
   status: $Enums.ActiveStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  capacity: number | null
+  complianceStatus: string | null
+  contactInfo: string | null
+  factoryType: string | null
+  workingCalendar: string | null
 }
 
 export type FactoryMaxAggregateOutputType = {
@@ -56,14 +56,14 @@ export type FactoryMaxAggregateOutputType = {
   code: string | null
   name: string | null
   address: string | null
-  factoryType: string | null
-  capacity: number | null
-  workingCalendar: string | null
-  complianceStatus: string | null
-  contactInfo: string | null
   status: $Enums.ActiveStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  capacity: number | null
+  complianceStatus: string | null
+  contactInfo: string | null
+  factoryType: string | null
+  workingCalendar: string | null
 }
 
 export type FactoryCountAggregateOutputType = {
@@ -72,14 +72,14 @@ export type FactoryCountAggregateOutputType = {
   code: number
   name: number
   address: number
-  factoryType: number
-  capacity: number
-  workingCalendar: number
-  complianceStatus: number
-  contactInfo: number
   status: number
   createdAt: number
   updatedAt: number
+  capacity: number
+  complianceStatus: number
+  contactInfo: number
+  factoryType: number
+  workingCalendar: number
   _all: number
 }
 
@@ -98,14 +98,14 @@ export type FactoryMinAggregateInputType = {
   code?: true
   name?: true
   address?: true
-  factoryType?: true
-  capacity?: true
-  workingCalendar?: true
-  complianceStatus?: true
-  contactInfo?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  capacity?: true
+  complianceStatus?: true
+  contactInfo?: true
+  factoryType?: true
+  workingCalendar?: true
 }
 
 export type FactoryMaxAggregateInputType = {
@@ -114,14 +114,14 @@ export type FactoryMaxAggregateInputType = {
   code?: true
   name?: true
   address?: true
-  factoryType?: true
-  capacity?: true
-  workingCalendar?: true
-  complianceStatus?: true
-  contactInfo?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  capacity?: true
+  complianceStatus?: true
+  contactInfo?: true
+  factoryType?: true
+  workingCalendar?: true
 }
 
 export type FactoryCountAggregateInputType = {
@@ -130,14 +130,14 @@ export type FactoryCountAggregateInputType = {
   code?: true
   name?: true
   address?: true
-  factoryType?: true
-  capacity?: true
-  workingCalendar?: true
-  complianceStatus?: true
-  contactInfo?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  capacity?: true
+  complianceStatus?: true
+  contactInfo?: true
+  factoryType?: true
+  workingCalendar?: true
   _all?: true
 }
 
@@ -233,14 +233,14 @@ export type FactoryGroupByOutputType = {
   code: string
   name: string
   address: string | null
-  factoryType: string | null
-  capacity: number | null
-  workingCalendar: string | null
-  complianceStatus: string | null
-  contactInfo: string | null
   status: $Enums.ActiveStatus
   createdAt: Date
   updatedAt: Date
+  capacity: number | null
+  complianceStatus: string | null
+  contactInfo: string | null
+  factoryType: string | null
+  workingCalendar: string | null
   _count: FactoryCountAggregateOutputType | null
   _avg: FactoryAvgAggregateOutputType | null
   _sum: FactorySumAggregateOutputType | null
@@ -272,22 +272,22 @@ export type FactoryWhereInput = {
   code?: Prisma.StringFilter<"Factory"> | string
   name?: Prisma.StringFilter<"Factory"> | string
   address?: Prisma.StringNullableFilter<"Factory"> | string | null
-  factoryType?: Prisma.StringNullableFilter<"Factory"> | string | null
-  capacity?: Prisma.IntNullableFilter<"Factory"> | number | null
-  workingCalendar?: Prisma.StringNullableFilter<"Factory"> | string | null
-  complianceStatus?: Prisma.StringNullableFilter<"Factory"> | string | null
-  contactInfo?: Prisma.StringNullableFilter<"Factory"> | string | null
   status?: Prisma.EnumActiveStatusFilter<"Factory"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Factory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Factory"> | Date | string
-  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
-  users?: Prisma.UserListRelationFilter
+  capacity?: Prisma.IntNullableFilter<"Factory"> | number | null
+  complianceStatus?: Prisma.StringNullableFilter<"Factory"> | string | null
+  contactInfo?: Prisma.StringNullableFilter<"Factory"> | string | null
+  factoryType?: Prisma.StringNullableFilter<"Factory"> | string | null
+  workingCalendar?: Prisma.StringNullableFilter<"Factory"> | string | null
   buildings?: Prisma.BuildingListRelationFilter
-  departments?: Prisma.DepartmentListRelationFilter
-  warehouses?: Prisma.WarehouseListRelationFilter
-  productionOrders?: Prisma.ProductionOrderListRelationFilter
-  userAccess?: Prisma.UserFactoryAccessListRelationFilter
   preferredByBuyers?: Prisma.BuyerPreferredFactoryListRelationFilter
+  departments?: Prisma.DepartmentListRelationFilter
+  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
+  productionOrders?: Prisma.ProductionOrderListRelationFilter
+  users?: Prisma.UserListRelationFilter
+  userAccess?: Prisma.UserFactoryAccessListRelationFilter
+  warehouses?: Prisma.WarehouseListRelationFilter
 }
 
 export type FactoryOrderByWithRelationInput = {
@@ -296,22 +296,22 @@ export type FactoryOrderByWithRelationInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrderInput | Prisma.SortOrder
-  factoryType?: Prisma.SortOrderInput | Prisma.SortOrder
-  capacity?: Prisma.SortOrderInput | Prisma.SortOrder
-  workingCalendar?: Prisma.SortOrderInput | Prisma.SortOrder
-  complianceStatus?: Prisma.SortOrderInput | Prisma.SortOrder
-  contactInfo?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  company?: Prisma.CompanyOrderByWithRelationInput
-  users?: Prisma.UserOrderByRelationAggregateInput
+  capacity?: Prisma.SortOrderInput | Prisma.SortOrder
+  complianceStatus?: Prisma.SortOrderInput | Prisma.SortOrder
+  contactInfo?: Prisma.SortOrderInput | Prisma.SortOrder
+  factoryType?: Prisma.SortOrderInput | Prisma.SortOrder
+  workingCalendar?: Prisma.SortOrderInput | Prisma.SortOrder
   buildings?: Prisma.BuildingOrderByRelationAggregateInput
-  departments?: Prisma.DepartmentOrderByRelationAggregateInput
-  warehouses?: Prisma.WarehouseOrderByRelationAggregateInput
-  productionOrders?: Prisma.ProductionOrderOrderByRelationAggregateInput
-  userAccess?: Prisma.UserFactoryAccessOrderByRelationAggregateInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryOrderByRelationAggregateInput
+  departments?: Prisma.DepartmentOrderByRelationAggregateInput
+  company?: Prisma.CompanyOrderByWithRelationInput
+  productionOrders?: Prisma.ProductionOrderOrderByRelationAggregateInput
+  users?: Prisma.UserOrderByRelationAggregateInput
+  userAccess?: Prisma.UserFactoryAccessOrderByRelationAggregateInput
+  warehouses?: Prisma.WarehouseOrderByRelationAggregateInput
 }
 
 export type FactoryWhereUniqueInput = Prisma.AtLeast<{
@@ -324,22 +324,22 @@ export type FactoryWhereUniqueInput = Prisma.AtLeast<{
   code?: Prisma.StringFilter<"Factory"> | string
   name?: Prisma.StringFilter<"Factory"> | string
   address?: Prisma.StringNullableFilter<"Factory"> | string | null
-  factoryType?: Prisma.StringNullableFilter<"Factory"> | string | null
-  capacity?: Prisma.IntNullableFilter<"Factory"> | number | null
-  workingCalendar?: Prisma.StringNullableFilter<"Factory"> | string | null
-  complianceStatus?: Prisma.StringNullableFilter<"Factory"> | string | null
-  contactInfo?: Prisma.StringNullableFilter<"Factory"> | string | null
   status?: Prisma.EnumActiveStatusFilter<"Factory"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Factory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Factory"> | Date | string
-  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
-  users?: Prisma.UserListRelationFilter
+  capacity?: Prisma.IntNullableFilter<"Factory"> | number | null
+  complianceStatus?: Prisma.StringNullableFilter<"Factory"> | string | null
+  contactInfo?: Prisma.StringNullableFilter<"Factory"> | string | null
+  factoryType?: Prisma.StringNullableFilter<"Factory"> | string | null
+  workingCalendar?: Prisma.StringNullableFilter<"Factory"> | string | null
   buildings?: Prisma.BuildingListRelationFilter
-  departments?: Prisma.DepartmentListRelationFilter
-  warehouses?: Prisma.WarehouseListRelationFilter
-  productionOrders?: Prisma.ProductionOrderListRelationFilter
-  userAccess?: Prisma.UserFactoryAccessListRelationFilter
   preferredByBuyers?: Prisma.BuyerPreferredFactoryListRelationFilter
+  departments?: Prisma.DepartmentListRelationFilter
+  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
+  productionOrders?: Prisma.ProductionOrderListRelationFilter
+  users?: Prisma.UserListRelationFilter
+  userAccess?: Prisma.UserFactoryAccessListRelationFilter
+  warehouses?: Prisma.WarehouseListRelationFilter
 }, "id" | "companyId_code">
 
 export type FactoryOrderByWithAggregationInput = {
@@ -348,14 +348,14 @@ export type FactoryOrderByWithAggregationInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrderInput | Prisma.SortOrder
-  factoryType?: Prisma.SortOrderInput | Prisma.SortOrder
-  capacity?: Prisma.SortOrderInput | Prisma.SortOrder
-  workingCalendar?: Prisma.SortOrderInput | Prisma.SortOrder
-  complianceStatus?: Prisma.SortOrderInput | Prisma.SortOrder
-  contactInfo?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  capacity?: Prisma.SortOrderInput | Prisma.SortOrder
+  complianceStatus?: Prisma.SortOrderInput | Prisma.SortOrder
+  contactInfo?: Prisma.SortOrderInput | Prisma.SortOrder
+  factoryType?: Prisma.SortOrderInput | Prisma.SortOrder
+  workingCalendar?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.FactoryCountOrderByAggregateInput
   _avg?: Prisma.FactoryAvgOrderByAggregateInput
   _max?: Prisma.FactoryMaxOrderByAggregateInput
@@ -372,14 +372,14 @@ export type FactoryScalarWhereWithAggregatesInput = {
   code?: Prisma.StringWithAggregatesFilter<"Factory"> | string
   name?: Prisma.StringWithAggregatesFilter<"Factory"> | string
   address?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
-  factoryType?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
-  capacity?: Prisma.IntNullableWithAggregatesFilter<"Factory"> | number | null
-  workingCalendar?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
-  complianceStatus?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
-  contactInfo?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
   status?: Prisma.EnumActiveStatusWithAggregatesFilter<"Factory"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Factory"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Factory"> | Date | string
+  capacity?: Prisma.IntNullableWithAggregatesFilter<"Factory"> | number | null
+  complianceStatus?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
+  contactInfo?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
+  factoryType?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
+  workingCalendar?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
 }
 
 export type FactoryCreateInput = {
@@ -387,22 +387,22 @@ export type FactoryCreateInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
-  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
-  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
+  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateInput = {
@@ -411,21 +411,21 @@ export type FactoryUncheckedCreateInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
-  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUpdateInput = {
@@ -433,22 +433,22 @@ export type FactoryUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
-  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
-  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateInput = {
@@ -457,21 +457,21 @@ export type FactoryUncheckedUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
-  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateManyInput = {
@@ -480,14 +480,14 @@ export type FactoryCreateManyInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
 }
 
 export type FactoryUpdateManyMutationInput = {
@@ -495,14 +495,14 @@ export type FactoryUpdateManyMutationInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type FactoryUncheckedUpdateManyInput = {
@@ -511,14 +511,14 @@ export type FactoryUncheckedUpdateManyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type FactoryListRelationFilter = {
@@ -542,14 +542,14 @@ export type FactoryCountOrderByAggregateInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
-  factoryType?: Prisma.SortOrder
-  capacity?: Prisma.SortOrder
-  workingCalendar?: Prisma.SortOrder
-  complianceStatus?: Prisma.SortOrder
-  contactInfo?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  capacity?: Prisma.SortOrder
+  complianceStatus?: Prisma.SortOrder
+  contactInfo?: Prisma.SortOrder
+  factoryType?: Prisma.SortOrder
+  workingCalendar?: Prisma.SortOrder
 }
 
 export type FactoryAvgOrderByAggregateInput = {
@@ -562,14 +562,14 @@ export type FactoryMaxOrderByAggregateInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
-  factoryType?: Prisma.SortOrder
-  capacity?: Prisma.SortOrder
-  workingCalendar?: Prisma.SortOrder
-  complianceStatus?: Prisma.SortOrder
-  contactInfo?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  capacity?: Prisma.SortOrder
+  complianceStatus?: Prisma.SortOrder
+  contactInfo?: Prisma.SortOrder
+  factoryType?: Prisma.SortOrder
+  workingCalendar?: Prisma.SortOrder
 }
 
 export type FactoryMinOrderByAggregateInput = {
@@ -578,14 +578,14 @@ export type FactoryMinOrderByAggregateInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
-  factoryType?: Prisma.SortOrder
-  capacity?: Prisma.SortOrder
-  workingCalendar?: Prisma.SortOrder
-  complianceStatus?: Prisma.SortOrder
-  contactInfo?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  capacity?: Prisma.SortOrder
+  complianceStatus?: Prisma.SortOrder
+  contactInfo?: Prisma.SortOrder
+  factoryType?: Prisma.SortOrder
+  workingCalendar?: Prisma.SortOrder
 }
 
 export type FactorySumOrderByAggregateInput = {
@@ -749,21 +749,21 @@ export type FactoryCreateWithoutCompanyInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
-  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutCompanyInput = {
@@ -771,21 +771,21 @@ export type FactoryUncheckedCreateWithoutCompanyInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
-  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutCompanyInput = {
@@ -823,14 +823,14 @@ export type FactoryScalarWhereInput = {
   code?: Prisma.StringFilter<"Factory"> | string
   name?: Prisma.StringFilter<"Factory"> | string
   address?: Prisma.StringNullableFilter<"Factory"> | string | null
-  factoryType?: Prisma.StringNullableFilter<"Factory"> | string | null
-  capacity?: Prisma.IntNullableFilter<"Factory"> | number | null
-  workingCalendar?: Prisma.StringNullableFilter<"Factory"> | string | null
-  complianceStatus?: Prisma.StringNullableFilter<"Factory"> | string | null
-  contactInfo?: Prisma.StringNullableFilter<"Factory"> | string | null
   status?: Prisma.EnumActiveStatusFilter<"Factory"> | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFilter<"Factory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Factory"> | Date | string
+  capacity?: Prisma.IntNullableFilter<"Factory"> | number | null
+  complianceStatus?: Prisma.StringNullableFilter<"Factory"> | string | null
+  contactInfo?: Prisma.StringNullableFilter<"Factory"> | string | null
+  factoryType?: Prisma.StringNullableFilter<"Factory"> | string | null
+  workingCalendar?: Prisma.StringNullableFilter<"Factory"> | string | null
 }
 
 export type FactoryCreateWithoutUsersInput = {
@@ -838,21 +838,21 @@ export type FactoryCreateWithoutUsersInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
+  preferredByBuyers?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
+  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
   productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
   userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
-  preferredByBuyers?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutUsersInput = {
@@ -861,20 +861,20 @@ export type FactoryUncheckedCreateWithoutUsersInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
+  preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
   productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
   userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
-  preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutUsersInput = {
@@ -898,21 +898,21 @@ export type FactoryUpdateWithoutUsersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
+  preferredByBuyers?: Prisma.BuyerPreferredFactoryUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
   productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
   userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
-  preferredByBuyers?: Prisma.BuyerPreferredFactoryUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutUsersInput = {
@@ -921,20 +921,20 @@ export type FactoryUncheckedUpdateWithoutUsersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
+  preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
   productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
   userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
-  preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateWithoutBuildingsInput = {
@@ -942,21 +942,21 @@ export type FactoryCreateWithoutBuildingsInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
-  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
-  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   preferredByBuyers?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
+  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutBuildingsInput = {
@@ -965,20 +965,20 @@ export type FactoryUncheckedCreateWithoutBuildingsInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
-  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutBuildingsInput = {
@@ -1002,21 +1002,21 @@ export type FactoryUpdateWithoutBuildingsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
-  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
-  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutBuildingsInput = {
@@ -1025,20 +1025,20 @@ export type FactoryUncheckedUpdateWithoutBuildingsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
-  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateWithoutDepartmentsInput = {
@@ -1046,21 +1046,21 @@ export type FactoryCreateWithoutDepartmentsInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
-  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
-  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutFactoryInput
+  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutDepartmentsInput = {
@@ -1069,20 +1069,20 @@ export type FactoryUncheckedCreateWithoutDepartmentsInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
-  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutFactoryInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutDepartmentsInput = {
@@ -1106,21 +1106,21 @@ export type FactoryUpdateWithoutDepartmentsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
-  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
-  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUpdateManyWithoutFactoryNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutDepartmentsInput = {
@@ -1129,20 +1129,20 @@ export type FactoryUncheckedUpdateWithoutDepartmentsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
-  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutFactoryNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateWithoutWarehousesInput = {
@@ -1150,21 +1150,21 @@ export type FactoryCreateWithoutWarehousesInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
-  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
-  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
+  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutWarehousesInput = {
@@ -1173,20 +1173,20 @@ export type FactoryUncheckedCreateWithoutWarehousesInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
+  preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
   productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
   userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
-  preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutWarehousesInput = {
@@ -1210,21 +1210,21 @@ export type FactoryUpdateWithoutWarehousesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
-  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
-  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutWarehousesInput = {
@@ -1233,20 +1233,20 @@ export type FactoryUncheckedUpdateWithoutWarehousesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
+  preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
   productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
   userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
-  preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateWithoutUserAccessInput = {
@@ -1254,21 +1254,21 @@ export type FactoryCreateWithoutUserAccessInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
-  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
+  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutUserAccessInput = {
@@ -1277,20 +1277,20 @@ export type FactoryUncheckedCreateWithoutUserAccessInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
-  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutUserAccessInput = {
@@ -1314,21 +1314,21 @@ export type FactoryUpdateWithoutUserAccessInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
-  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutUserAccessInput = {
@@ -1337,20 +1337,20 @@ export type FactoryUncheckedUpdateWithoutUserAccessInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateWithoutPreferredByBuyersInput = {
@@ -1358,21 +1358,21 @@ export type FactoryCreateWithoutPreferredByBuyersInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
-  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
+  company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
   productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserCreateNestedManyWithoutFactoryInput
   userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutPreferredByBuyersInput = {
@@ -1381,20 +1381,20 @@ export type FactoryUncheckedCreateWithoutPreferredByBuyersInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
   productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
   userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutPreferredByBuyersInput = {
@@ -1418,21 +1418,21 @@ export type FactoryUpdateWithoutPreferredByBuyersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
-  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
   productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
   userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutPreferredByBuyersInput = {
@@ -1441,20 +1441,20 @@ export type FactoryUncheckedUpdateWithoutPreferredByBuyersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
   productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
   userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateWithoutProductionOrdersInput = {
@@ -1462,21 +1462,21 @@ export type FactoryCreateWithoutProductionOrdersInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
+  buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
+  preferredByBuyers?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
   company: Prisma.CompanyCreateNestedOneWithoutFactoriesInput
   users?: Prisma.UserCreateNestedManyWithoutFactoryInput
-  buildings?: Prisma.BuildingCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
   userAccess?: Prisma.UserFactoryAccessCreateNestedManyWithoutFactoryInput
-  preferredByBuyers?: Prisma.BuyerPreferredFactoryCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryUncheckedCreateWithoutProductionOrdersInput = {
@@ -1485,20 +1485,20 @@ export type FactoryUncheckedCreateWithoutProductionOrdersInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
   buildings?: Prisma.BuildingUncheckedCreateNestedManyWithoutFactoryInput
-  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
-  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
-  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedCreateNestedManyWithoutFactoryInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFactoryInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutFactoryInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedCreateNestedManyWithoutFactoryInput
+  warehouses?: Prisma.WarehouseUncheckedCreateNestedManyWithoutFactoryInput
 }
 
 export type FactoryCreateOrConnectWithoutProductionOrdersInput = {
@@ -1522,21 +1522,21 @@ export type FactoryUpdateWithoutProductionOrdersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
+  preferredByBuyers?: Prisma.BuyerPreferredFactoryUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutFactoriesNestedInput
   users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
-  buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
   userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
-  preferredByBuyers?: Prisma.BuyerPreferredFactoryUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutProductionOrdersInput = {
@@ -1545,20 +1545,20 @@ export type FactoryUncheckedUpdateWithoutProductionOrdersInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
-  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryCreateManyCompanyInput = {
@@ -1566,14 +1566,14 @@ export type FactoryCreateManyCompanyInput = {
   code: string
   name: string
   address?: string | null
-  factoryType?: string | null
-  capacity?: number | null
-  workingCalendar?: string | null
-  complianceStatus?: string | null
-  contactInfo?: string | null
   status?: $Enums.ActiveStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  capacity?: number | null
+  complianceStatus?: string | null
+  contactInfo?: string | null
+  factoryType?: string | null
+  workingCalendar?: string | null
 }
 
 export type FactoryUpdateWithoutCompanyInput = {
@@ -1581,21 +1581,21 @@ export type FactoryUpdateWithoutCompanyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
-  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutFactoryNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateWithoutCompanyInput = {
@@ -1603,21 +1603,21 @@ export type FactoryUncheckedUpdateWithoutCompanyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildings?: Prisma.BuildingUncheckedUpdateManyWithoutFactoryNestedInput
-  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
-  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
-  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
-  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
   preferredByBuyers?: Prisma.BuyerPreferredFactoryUncheckedUpdateManyWithoutFactoryNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFactoryNestedInput
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutFactoryNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutFactoryNestedInput
+  userAccess?: Prisma.UserFactoryAccessUncheckedUpdateManyWithoutFactoryNestedInput
+  warehouses?: Prisma.WarehouseUncheckedUpdateManyWithoutFactoryNestedInput
 }
 
 export type FactoryUncheckedUpdateManyWithoutCompanyInput = {
@@ -1625,14 +1625,14 @@ export type FactoryUncheckedUpdateManyWithoutCompanyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumActiveStatusFieldUpdateOperationsInput | $Enums.ActiveStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  capacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  complianceStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  factoryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workingCalendar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1641,23 +1641,23 @@ export type FactoryUncheckedUpdateManyWithoutCompanyInput = {
  */
 
 export type FactoryCountOutputType = {
-  users: number
   buildings: number
-  departments: number
-  warehouses: number
-  productionOrders: number
-  userAccess: number
   preferredByBuyers: number
+  departments: number
+  productionOrders: number
+  users: number
+  userAccess: number
+  warehouses: number
 }
 
 export type FactoryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  users?: boolean | FactoryCountOutputTypeCountUsersArgs
   buildings?: boolean | FactoryCountOutputTypeCountBuildingsArgs
-  departments?: boolean | FactoryCountOutputTypeCountDepartmentsArgs
-  warehouses?: boolean | FactoryCountOutputTypeCountWarehousesArgs
-  productionOrders?: boolean | FactoryCountOutputTypeCountProductionOrdersArgs
-  userAccess?: boolean | FactoryCountOutputTypeCountUserAccessArgs
   preferredByBuyers?: boolean | FactoryCountOutputTypeCountPreferredByBuyersArgs
+  departments?: boolean | FactoryCountOutputTypeCountDepartmentsArgs
+  productionOrders?: boolean | FactoryCountOutputTypeCountProductionOrdersArgs
+  users?: boolean | FactoryCountOutputTypeCountUsersArgs
+  userAccess?: boolean | FactoryCountOutputTypeCountUserAccessArgs
+  warehouses?: boolean | FactoryCountOutputTypeCountWarehousesArgs
 }
 
 /**
@@ -1673,15 +1673,15 @@ export type FactoryCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
 /**
  * FactoryCountOutputType without action
  */
-export type FactoryCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.UserWhereInput
+export type FactoryCountOutputTypeCountBuildingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BuildingWhereInput
 }
 
 /**
  * FactoryCountOutputType without action
  */
-export type FactoryCountOutputTypeCountBuildingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BuildingWhereInput
+export type FactoryCountOutputTypeCountPreferredByBuyersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BuyerPreferredFactoryWhereInput
 }
 
 /**
@@ -1694,15 +1694,15 @@ export type FactoryCountOutputTypeCountDepartmentsArgs<ExtArgs extends runtime.T
 /**
  * FactoryCountOutputType without action
  */
-export type FactoryCountOutputTypeCountWarehousesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.WarehouseWhereInput
+export type FactoryCountOutputTypeCountProductionOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductionOrderWhereInput
 }
 
 /**
  * FactoryCountOutputType without action
  */
-export type FactoryCountOutputTypeCountProductionOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ProductionOrderWhereInput
+export type FactoryCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserWhereInput
 }
 
 /**
@@ -1715,8 +1715,8 @@ export type FactoryCountOutputTypeCountUserAccessArgs<ExtArgs extends runtime.Ty
 /**
  * FactoryCountOutputType without action
  */
-export type FactoryCountOutputTypeCountPreferredByBuyersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BuyerPreferredFactoryWhereInput
+export type FactoryCountOutputTypeCountWarehousesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WarehouseWhereInput
 }
 
 
@@ -1726,22 +1726,22 @@ export type FactorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   code?: boolean
   name?: boolean
   address?: boolean
-  factoryType?: boolean
-  capacity?: boolean
-  workingCalendar?: boolean
-  complianceStatus?: boolean
-  contactInfo?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  users?: boolean | Prisma.Factory$usersArgs<ExtArgs>
+  capacity?: boolean
+  complianceStatus?: boolean
+  contactInfo?: boolean
+  factoryType?: boolean
+  workingCalendar?: boolean
   buildings?: boolean | Prisma.Factory$buildingsArgs<ExtArgs>
-  departments?: boolean | Prisma.Factory$departmentsArgs<ExtArgs>
-  warehouses?: boolean | Prisma.Factory$warehousesArgs<ExtArgs>
-  productionOrders?: boolean | Prisma.Factory$productionOrdersArgs<ExtArgs>
-  userAccess?: boolean | Prisma.Factory$userAccessArgs<ExtArgs>
   preferredByBuyers?: boolean | Prisma.Factory$preferredByBuyersArgs<ExtArgs>
+  departments?: boolean | Prisma.Factory$departmentsArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
+  productionOrders?: boolean | Prisma.Factory$productionOrdersArgs<ExtArgs>
+  users?: boolean | Prisma.Factory$usersArgs<ExtArgs>
+  userAccess?: boolean | Prisma.Factory$userAccessArgs<ExtArgs>
+  warehouses?: boolean | Prisma.Factory$warehousesArgs<ExtArgs>
   _count?: boolean | Prisma.FactoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["factory"]>
 
@@ -1751,14 +1751,14 @@ export type FactorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   code?: boolean
   name?: boolean
   address?: boolean
-  factoryType?: boolean
-  capacity?: boolean
-  workingCalendar?: boolean
-  complianceStatus?: boolean
-  contactInfo?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  capacity?: boolean
+  complianceStatus?: boolean
+  contactInfo?: boolean
+  factoryType?: boolean
+  workingCalendar?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["factory"]>
 
@@ -1768,14 +1768,14 @@ export type FactorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   code?: boolean
   name?: boolean
   address?: boolean
-  factoryType?: boolean
-  capacity?: boolean
-  workingCalendar?: boolean
-  complianceStatus?: boolean
-  contactInfo?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  capacity?: boolean
+  complianceStatus?: boolean
+  contactInfo?: boolean
+  factoryType?: boolean
+  workingCalendar?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["factory"]>
 
@@ -1785,26 +1785,26 @@ export type FactorySelectScalar = {
   code?: boolean
   name?: boolean
   address?: boolean
-  factoryType?: boolean
-  capacity?: boolean
-  workingCalendar?: boolean
-  complianceStatus?: boolean
-  contactInfo?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  capacity?: boolean
+  complianceStatus?: boolean
+  contactInfo?: boolean
+  factoryType?: boolean
+  workingCalendar?: boolean
 }
 
-export type FactoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "code" | "name" | "address" | "factoryType" | "capacity" | "workingCalendar" | "complianceStatus" | "contactInfo" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["factory"]>
+export type FactoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "code" | "name" | "address" | "status" | "createdAt" | "updatedAt" | "capacity" | "complianceStatus" | "contactInfo" | "factoryType" | "workingCalendar", ExtArgs["result"]["factory"]>
 export type FactoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  users?: boolean | Prisma.Factory$usersArgs<ExtArgs>
   buildings?: boolean | Prisma.Factory$buildingsArgs<ExtArgs>
-  departments?: boolean | Prisma.Factory$departmentsArgs<ExtArgs>
-  warehouses?: boolean | Prisma.Factory$warehousesArgs<ExtArgs>
-  productionOrders?: boolean | Prisma.Factory$productionOrdersArgs<ExtArgs>
-  userAccess?: boolean | Prisma.Factory$userAccessArgs<ExtArgs>
   preferredByBuyers?: boolean | Prisma.Factory$preferredByBuyersArgs<ExtArgs>
+  departments?: boolean | Prisma.Factory$departmentsArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
+  productionOrders?: boolean | Prisma.Factory$productionOrdersArgs<ExtArgs>
+  users?: boolean | Prisma.Factory$usersArgs<ExtArgs>
+  userAccess?: boolean | Prisma.Factory$userAccessArgs<ExtArgs>
+  warehouses?: boolean | Prisma.Factory$warehousesArgs<ExtArgs>
   _count?: boolean | Prisma.FactoryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type FactoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1817,14 +1817,14 @@ export type FactoryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type $FactoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Factory"
   objects: {
-    company: Prisma.$CompanyPayload<ExtArgs>
-    users: Prisma.$UserPayload<ExtArgs>[]
     buildings: Prisma.$BuildingPayload<ExtArgs>[]
-    departments: Prisma.$DepartmentPayload<ExtArgs>[]
-    warehouses: Prisma.$WarehousePayload<ExtArgs>[]
-    productionOrders: Prisma.$ProductionOrderPayload<ExtArgs>[]
-    userAccess: Prisma.$UserFactoryAccessPayload<ExtArgs>[]
     preferredByBuyers: Prisma.$BuyerPreferredFactoryPayload<ExtArgs>[]
+    departments: Prisma.$DepartmentPayload<ExtArgs>[]
+    company: Prisma.$CompanyPayload<ExtArgs>
+    productionOrders: Prisma.$ProductionOrderPayload<ExtArgs>[]
+    users: Prisma.$UserPayload<ExtArgs>[]
+    userAccess: Prisma.$UserFactoryAccessPayload<ExtArgs>[]
+    warehouses: Prisma.$WarehousePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1832,14 +1832,14 @@ export type $FactoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     code: string
     name: string
     address: string | null
-    factoryType: string | null
-    capacity: number | null
-    workingCalendar: string | null
-    complianceStatus: string | null
-    contactInfo: string | null
     status: $Enums.ActiveStatus
     createdAt: Date
     updatedAt: Date
+    capacity: number | null
+    complianceStatus: string | null
+    contactInfo: string | null
+    factoryType: string | null
+    workingCalendar: string | null
   }, ExtArgs["result"]["factory"]>
   composites: {}
 }
@@ -2234,14 +2234,14 @@ readonly fields: FactoryFieldRefs;
  */
 export interface Prisma__FactoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  users<T extends Prisma.Factory$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   buildings<T extends Prisma.Factory$buildingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$buildingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BuildingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  departments<T extends Prisma.Factory$departmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  warehouses<T extends Prisma.Factory$warehousesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$warehousesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  productionOrders<T extends Prisma.Factory$productionOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$productionOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductionOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  userAccess<T extends Prisma.Factory$userAccessArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$userAccessArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserFactoryAccessPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   preferredByBuyers<T extends Prisma.Factory$preferredByBuyersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$preferredByBuyersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BuyerPreferredFactoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  departments<T extends Prisma.Factory$departmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  productionOrders<T extends Prisma.Factory$productionOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$productionOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductionOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  users<T extends Prisma.Factory$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userAccess<T extends Prisma.Factory$userAccessArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$userAccessArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserFactoryAccessPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  warehouses<T extends Prisma.Factory$warehousesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Factory$warehousesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2276,14 +2276,14 @@ export interface FactoryFieldRefs {
   readonly code: Prisma.FieldRef<"Factory", 'String'>
   readonly name: Prisma.FieldRef<"Factory", 'String'>
   readonly address: Prisma.FieldRef<"Factory", 'String'>
-  readonly factoryType: Prisma.FieldRef<"Factory", 'String'>
-  readonly capacity: Prisma.FieldRef<"Factory", 'Int'>
-  readonly workingCalendar: Prisma.FieldRef<"Factory", 'String'>
-  readonly complianceStatus: Prisma.FieldRef<"Factory", 'String'>
-  readonly contactInfo: Prisma.FieldRef<"Factory", 'String'>
   readonly status: Prisma.FieldRef<"Factory", 'ActiveStatus'>
   readonly createdAt: Prisma.FieldRef<"Factory", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Factory", 'DateTime'>
+  readonly capacity: Prisma.FieldRef<"Factory", 'Int'>
+  readonly complianceStatus: Prisma.FieldRef<"Factory", 'String'>
+  readonly contactInfo: Prisma.FieldRef<"Factory", 'String'>
+  readonly factoryType: Prisma.FieldRef<"Factory", 'String'>
+  readonly workingCalendar: Prisma.FieldRef<"Factory", 'String'>
 }
     
 
@@ -2685,30 +2685,6 @@ export type FactoryDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Factory.users
- */
-export type Factory$usersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the User
-   */
-  select?: Prisma.UserSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the User
-   */
-  omit?: Prisma.UserOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  where?: Prisma.UserWhereInput
-  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[]
-  cursor?: Prisma.UserWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
-}
-
-/**
  * Factory.buildings
  */
 export type Factory$buildingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2730,6 +2706,30 @@ export type Factory$buildingsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.BuildingScalarFieldEnum | Prisma.BuildingScalarFieldEnum[]
+}
+
+/**
+ * Factory.preferredByBuyers
+ */
+export type Factory$preferredByBuyersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BuyerPreferredFactory
+   */
+  select?: Prisma.BuyerPreferredFactorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BuyerPreferredFactory
+   */
+  omit?: Prisma.BuyerPreferredFactoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BuyerPreferredFactoryInclude<ExtArgs> | null
+  where?: Prisma.BuyerPreferredFactoryWhereInput
+  orderBy?: Prisma.BuyerPreferredFactoryOrderByWithRelationInput | Prisma.BuyerPreferredFactoryOrderByWithRelationInput[]
+  cursor?: Prisma.BuyerPreferredFactoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BuyerPreferredFactoryScalarFieldEnum | Prisma.BuyerPreferredFactoryScalarFieldEnum[]
 }
 
 /**
@@ -2757,30 +2757,6 @@ export type Factory$departmentsArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * Factory.warehouses
- */
-export type Factory$warehousesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Warehouse
-   */
-  select?: Prisma.WarehouseSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Warehouse
-   */
-  omit?: Prisma.WarehouseOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.WarehouseInclude<ExtArgs> | null
-  where?: Prisma.WarehouseWhereInput
-  orderBy?: Prisma.WarehouseOrderByWithRelationInput | Prisma.WarehouseOrderByWithRelationInput[]
-  cursor?: Prisma.WarehouseWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.WarehouseScalarFieldEnum | Prisma.WarehouseScalarFieldEnum[]
-}
-
-/**
  * Factory.productionOrders
  */
 export type Factory$productionOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2802,6 +2778,30 @@ export type Factory$productionOrdersArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.ProductionOrderScalarFieldEnum | Prisma.ProductionOrderScalarFieldEnum[]
+}
+
+/**
+ * Factory.users
+ */
+export type Factory$usersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[]
+  cursor?: Prisma.UserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
 }
 
 /**
@@ -2829,27 +2829,27 @@ export type Factory$userAccessArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Factory.preferredByBuyers
+ * Factory.warehouses
  */
-export type Factory$preferredByBuyersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Factory$warehousesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the BuyerPreferredFactory
+   * Select specific fields to fetch from the Warehouse
    */
-  select?: Prisma.BuyerPreferredFactorySelect<ExtArgs> | null
+  select?: Prisma.WarehouseSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the BuyerPreferredFactory
+   * Omit specific fields from the Warehouse
    */
-  omit?: Prisma.BuyerPreferredFactoryOmit<ExtArgs> | null
+  omit?: Prisma.WarehouseOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.BuyerPreferredFactoryInclude<ExtArgs> | null
-  where?: Prisma.BuyerPreferredFactoryWhereInput
-  orderBy?: Prisma.BuyerPreferredFactoryOrderByWithRelationInput | Prisma.BuyerPreferredFactoryOrderByWithRelationInput[]
-  cursor?: Prisma.BuyerPreferredFactoryWhereUniqueInput
+  include?: Prisma.WarehouseInclude<ExtArgs> | null
+  where?: Prisma.WarehouseWhereInput
+  orderBy?: Prisma.WarehouseOrderByWithRelationInput | Prisma.WarehouseOrderByWithRelationInput[]
+  cursor?: Prisma.WarehouseWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.BuyerPreferredFactoryScalarFieldEnum | Prisma.BuyerPreferredFactoryScalarFieldEnum[]
+  distinct?: Prisma.WarehouseScalarFieldEnum | Prisma.WarehouseScalarFieldEnum[]
 }
 
 /**

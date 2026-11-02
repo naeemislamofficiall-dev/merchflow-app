@@ -198,8 +198,8 @@ export type FloorWhereInput = {
   isActive?: Prisma.BoolFilter<"Floor"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Floor"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Floor"> | Date | string
-  building?: Prisma.XOR<Prisma.BuildingScalarRelationFilter, Prisma.BuildingWhereInput>
   departments?: Prisma.DepartmentListRelationFilter
+  building?: Prisma.XOR<Prisma.BuildingScalarRelationFilter, Prisma.BuildingWhereInput>
   lines?: Prisma.LineListRelationFilter
 }
 
@@ -211,8 +211,8 @@ export type FloorOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  building?: Prisma.BuildingOrderByWithRelationInput
   departments?: Prisma.DepartmentOrderByRelationAggregateInput
+  building?: Prisma.BuildingOrderByWithRelationInput
   lines?: Prisma.LineOrderByRelationAggregateInput
 }
 
@@ -228,8 +228,8 @@ export type FloorWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Floor"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Floor"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Floor"> | Date | string
-  building?: Prisma.XOR<Prisma.BuildingScalarRelationFilter, Prisma.BuildingWhereInput>
   departments?: Prisma.DepartmentListRelationFilter
+  building?: Prisma.XOR<Prisma.BuildingScalarRelationFilter, Prisma.BuildingWhereInput>
   lines?: Prisma.LineListRelationFilter
 }, "id" | "buildingId_code">
 
@@ -266,8 +266,8 @@ export type FloorCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  building: Prisma.BuildingCreateNestedOneWithoutFloorsInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutFloorInput
+  building: Prisma.BuildingCreateNestedOneWithoutFloorsInput
   lines?: Prisma.LineCreateNestedManyWithoutFloorInput
 }
 
@@ -290,8 +290,8 @@ export type FloorUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  building?: Prisma.BuildingUpdateOneRequiredWithoutFloorsNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutFloorNestedInput
+  building?: Prisma.BuildingUpdateOneRequiredWithoutFloorsNestedInput
   lines?: Prisma.LineUpdateManyWithoutFloorNestedInput
 }
 
@@ -591,8 +591,8 @@ export type FloorCreateWithoutLinesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  building: Prisma.BuildingCreateNestedOneWithoutFloorsInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutFloorInput
+  building: Prisma.BuildingCreateNestedOneWithoutFloorsInput
 }
 
 export type FloorUncheckedCreateWithoutLinesInput = {
@@ -629,8 +629,8 @@ export type FloorUpdateWithoutLinesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  building?: Prisma.BuildingUpdateOneRequiredWithoutFloorsNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutFloorNestedInput
+  building?: Prisma.BuildingUpdateOneRequiredWithoutFloorsNestedInput
 }
 
 export type FloorUncheckedUpdateWithoutLinesInput = {
@@ -732,8 +732,8 @@ export type FloorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  building?: boolean | Prisma.BuildingDefaultArgs<ExtArgs>
   departments?: boolean | Prisma.Floor$departmentsArgs<ExtArgs>
+  building?: boolean | Prisma.BuildingDefaultArgs<ExtArgs>
   lines?: boolean | Prisma.Floor$linesArgs<ExtArgs>
   _count?: boolean | Prisma.FloorCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["floor"]>
@@ -772,8 +772,8 @@ export type FloorSelectScalar = {
 
 export type FloorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "buildingId" | "code" | "name" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["floor"]>
 export type FloorInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  building?: boolean | Prisma.BuildingDefaultArgs<ExtArgs>
   departments?: boolean | Prisma.Floor$departmentsArgs<ExtArgs>
+  building?: boolean | Prisma.BuildingDefaultArgs<ExtArgs>
   lines?: boolean | Prisma.Floor$linesArgs<ExtArgs>
   _count?: boolean | Prisma.FloorCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -787,8 +787,8 @@ export type FloorIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type $FloorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Floor"
   objects: {
-    building: Prisma.$BuildingPayload<ExtArgs>
     departments: Prisma.$DepartmentPayload<ExtArgs>[]
+    building: Prisma.$BuildingPayload<ExtArgs>
     lines: Prisma.$LinePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1193,8 +1193,8 @@ readonly fields: FloorFieldRefs;
  */
 export interface Prisma__FloorClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  building<T extends Prisma.BuildingDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BuildingDefaultArgs<ExtArgs>>): Prisma.Prisma__BuildingClient<runtime.Types.Result.GetResult<Prisma.$BuildingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   departments<T extends Prisma.Floor$departmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Floor$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  building<T extends Prisma.BuildingDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BuildingDefaultArgs<ExtArgs>>): Prisma.Prisma__BuildingClient<runtime.Types.Result.GetResult<Prisma.$BuildingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   lines<T extends Prisma.Floor$linesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Floor$linesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.

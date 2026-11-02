@@ -82,3 +82,29 @@ export async function generateBundlesAction(layId: string, bundleSize: number) {
     return { count: rows.length };
   });
 }
+
+export async function addMarkerAction(values: {
+  cutPlanId: string;
+  widthCm: string;
+  length: string;
+  efficiencyPct: string;
+  remarks: string;
+}) {
+  return runAction(async () => {
+    const { widthCm, length, efficiencyPct, ...rest } = dropEmpty(values);
+    const row = await cuttingService.addMarker({
+      ...rest,
+      widthCm: Number(widthCm),
+      length: Number(length),
+      efficiencyPct: Number(efficiencyPct),
+    });
+    return { id: row.id };
+  });
+}
+
+export async function addLayFromMarkerAction(cutPlanId: string, markerId: string, plies: string) {
+  return runAction(async () => {
+    const row = await cuttingService.addLay({ cutPlanId, markerId, plies: Number(plies) });
+    return { id: row.id };
+  });
+}

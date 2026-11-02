@@ -33,6 +33,21 @@ const recordSchema = z.object({
   remarks: z.string().max(500).optional(),
 });
 
+const reportSchema = z
+  .object({
+    cartonsTotal: z.number().int().nonnegative().optional(),
+    cartonsChecked: z.number().int().nonnegative().optional(),
+    packingOk: z.boolean().optional(),
+    labelingOk: z.boolean().optional(),
+    measurementOk: z.boolean().optional(),
+    workmanshipOk: z.boolean().optional(),
+    summary: z.string().min(3).max(2000),
+    inspectedByName: z.string().max(100).optional(),
+  })
+  .refine((r) => r.cartonsChecked === undefined || r.cartonsTotal === undefined || r.cartonsChecked <= r.cartonsTotal, {
+    message: "Cartons checked cannot be more than total cartons",
+  });
+
 // নমুনা আর accept/reject ঠিক করে। না পারলে (অজানা AQL) স্পষ্ট বার্তা দেয়।
 function buildPlan(p: z.infer<typeof planSchema>) {
   const level = p.inspectionLevel ?? "II";
@@ -55,16 +70,20 @@ function buildPlan(p: z.infer<typeof planSchema>) {
 export async function finalInspectionGate(companyId: string, orderIds: string[]) {
   const out: { orderId: string; result: string | null; overridden: boolean; blocked: boolean }[] = [];
   for (const orderId of orderIds) {
-    const last = await prisma.aqlInspection.findFirst({
-      where: { companyId, orderId, stage: "FINAL" },
+    const rows = await prisma.aqlInspection.findMany({
+      where: { companyId, orderId, stage: { in: ["FINAL", "PRESHIPMENT"] } },
       orderBy: { createdAt: "desc" },
     });
-    const overridden = !!last?.overrideById;
+    // prottek stage-er shesh inspection
+    const lasts = ["FINAL", "PRESHIPMENT"]
+      .map((st) => rows.find((r) => r.stage === st))
+      .filter((r): r is (typeof rows)[number] => !!r);
+    const bad = lasts.filter((r) => r.result !== "PASS" && !r.overrideById);
     out.push({
       orderId,
-      result: last?.result ?? null,
-      overridden,
-      blocked: !!last && last.result !== "PASS" && !overridden,
+      result: (bad[0] ?? lasts[0])?.result ?? null,
+      overridden: lasts.some((r) => r.result !== "PASS" && !!r.overrideById),
+      blocked: bad.length > 0,
     });
   }
   return out;
@@ -145,6 +164,10 @@ class AqlService extends BaseService {
     const d = recordSchema.parse(input);
     const { row } = await this.load(id);
     if (row.foundMajor !== null) throw new BusinessRuleError("The result is already recorded. Create a new inspection to correct it");
+    if (row.stage === "PRESHIPMENT") {
+      const rep = await prisma.preshipmentReport.count({ where: { aqlInspectionId: id } });
+      if (rep === 0) throw new BusinessRuleError("Save the pre-shipment report before recording the result");
+    }
     const result = aqlResult({ ...d, rejectMajor: row.rejectMajor, rejectMinor: row.rejectMinor });
     const saved = await prisma.aqlInspection.update({
       where: { id },
@@ -153,7 +176,35 @@ class AqlService extends BaseService {
     await this.audit({ user, action: "UPDATE", entity: "AqlInspection", entityId: id, before: row, after: saved });
     return saved;
   }
+  async preshipmentReport(id: string) {
+    await this.load(id);
+    return prisma.preshipmentReport.findUnique({ where: { aqlInspectionId: id } });
+  }
 
+  async savePreshipmentReport(id: string, input: unknown) {
+    const user = await this.guard("aql.inspect");
+    const d = reportSchema.parse(input);
+    const { row } = await this.load(id);
+    if (row.stage !== "PRESHIPMENT") throw new BusinessRuleError("This is not a pre-shipment inspection");
+    if (row.foundMajor !== null) throw new BusinessRuleError("The result is already recorded, the report is locked");
+    const before = await prisma.preshipmentReport.findUnique({ where: { aqlInspectionId: id } });
+    const saved = await prisma.preshipmentReport.upsert({
+      where: { aqlInspectionId: id },
+      create: { ...d, companyId: row.companyId, aqlInspectionId: id, createdById: user.id },
+      update: d,
+    });
+    await this.audit({ user, action: before ? "UPDATE" : "CREATE", entity: "PreshipmentReport", entityId: saved.id, before: before ?? undefined, after: saved });
+    return saved;
+  }
+
+    async attachments(id: string) {
+    const { row } = await this.load(id);
+    return prisma.attachment.findMany({
+      where: { companyId: row.companyId, entityType: "AqlInspection", entityId: id, deletedAt: null },
+      orderBy: { createdAt: "desc" },
+      select: { id: true, fileName: true, docType: true, storageUrl: true },
+    });
+  }
   // HOLD-এ রাখা (কারণ লাগে)
   async hold(id: string, reason: string) {
     const user = await this.guard("aql.inspect");

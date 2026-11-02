@@ -206,10 +206,10 @@ export type DepartmentWhereInput = {
   isActive?: Prisma.BoolFilter<"Department"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Department"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Department"> | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
   factory?: Prisma.XOR<Prisma.FactoryScalarRelationFilter, Prisma.FactoryWhereInput>
   floor?: Prisma.XOR<Prisma.FloorNullableScalarRelationFilter, Prisma.FloorWhereInput> | null
   lines?: Prisma.LineListRelationFilter
+  purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
   sampleRequests?: Prisma.SampleRequestListRelationFilter
   tnaTasks?: Prisma.TnaTaskListRelationFilter
 }
@@ -223,10 +223,10 @@ export type DepartmentOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  purchaseRequisitions?: Prisma.PurchaseRequisitionOrderByRelationAggregateInput
   factory?: Prisma.FactoryOrderByWithRelationInput
   floor?: Prisma.FloorOrderByWithRelationInput
   lines?: Prisma.LineOrderByRelationAggregateInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionOrderByRelationAggregateInput
   sampleRequests?: Prisma.SampleRequestOrderByRelationAggregateInput
   tnaTasks?: Prisma.TnaTaskOrderByRelationAggregateInput
 }
@@ -244,10 +244,10 @@ export type DepartmentWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Department"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Department"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Department"> | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
   factory?: Prisma.XOR<Prisma.FactoryScalarRelationFilter, Prisma.FactoryWhereInput>
   floor?: Prisma.XOR<Prisma.FloorNullableScalarRelationFilter, Prisma.FloorWhereInput> | null
   lines?: Prisma.LineListRelationFilter
+  purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
   sampleRequests?: Prisma.SampleRequestListRelationFilter
   tnaTasks?: Prisma.TnaTaskListRelationFilter
 }, "id" | "factoryId_code">
@@ -287,10 +287,10 @@ export type DepartmentCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
   tnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutDepartmentInput
 }
@@ -304,8 +304,8 @@ export type DepartmentUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
   tnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutDepartmentInput
 }
@@ -317,10 +317,10 @@ export type DepartmentUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
   tnaTasks?: Prisma.TnaTaskUpdateManyWithoutDepartmentNestedInput
 }
@@ -334,8 +334,8 @@ export type DepartmentUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
   tnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutDepartmentNestedInput
 }
@@ -579,9 +579,9 @@ export type DepartmentCreateWithoutFactoryInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
   tnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutDepartmentInput
 }
@@ -594,8 +594,8 @@ export type DepartmentUncheckedCreateWithoutFactoryInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
   tnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutDepartmentInput
 }
@@ -647,9 +647,9 @@ export type DepartmentCreateWithoutFloorInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
   tnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutDepartmentInput
 }
@@ -662,8 +662,8 @@ export type DepartmentUncheckedCreateWithoutFloorInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
   tnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutDepartmentInput
 }
@@ -701,9 +701,9 @@ export type DepartmentCreateWithoutLinesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
   tnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutDepartmentInput
 }
@@ -745,9 +745,9 @@ export type DepartmentUpdateWithoutLinesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
   tnaTasks?: Prisma.TnaTaskUpdateManyWithoutDepartmentNestedInput
 }
@@ -773,10 +773,10 @@ export type DepartmentCreateWithoutSampleRequestsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   tnaTasks?: Prisma.TnaTaskCreateNestedManyWithoutDepartmentInput
 }
 
@@ -789,8 +789,8 @@ export type DepartmentUncheckedCreateWithoutSampleRequestsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   tnaTasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutDepartmentInput
 }
 
@@ -817,10 +817,10 @@ export type DepartmentUpdateWithoutSampleRequestsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   tnaTasks?: Prisma.TnaTaskUpdateManyWithoutDepartmentNestedInput
 }
 
@@ -833,8 +833,8 @@ export type DepartmentUncheckedUpdateWithoutSampleRequestsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   tnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutDepartmentNestedInput
 }
 
@@ -845,10 +845,10 @@ export type DepartmentCreateWithoutTnaTasksInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   factory: Prisma.FactoryCreateNestedOneWithoutDepartmentsInput
   floor?: Prisma.FloorCreateNestedOneWithoutDepartmentsInput
   lines?: Prisma.LineCreateNestedManyWithoutDepartmentInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestCreateNestedManyWithoutAssignedDepartmentInput
 }
 
@@ -861,8 +861,8 @@ export type DepartmentUncheckedCreateWithoutTnaTasksInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   lines?: Prisma.LineUncheckedCreateNestedManyWithoutDepartmentInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutDepartmentInput
   sampleRequests?: Prisma.SampleRequestUncheckedCreateNestedManyWithoutAssignedDepartmentInput
 }
 
@@ -889,10 +889,10 @@ export type DepartmentUpdateWithoutTnaTasksInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
@@ -905,8 +905,8 @@ export type DepartmentUncheckedUpdateWithoutTnaTasksInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
 }
 
@@ -999,9 +999,9 @@ export type DepartmentUpdateWithoutFactoryInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   floor?: Prisma.FloorUpdateOneWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
   tnaTasks?: Prisma.TnaTaskUpdateManyWithoutDepartmentNestedInput
 }
@@ -1014,8 +1014,8 @@ export type DepartmentUncheckedUpdateWithoutFactoryInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
   tnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutDepartmentNestedInput
 }
@@ -1047,9 +1047,9 @@ export type DepartmentUpdateWithoutFloorInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   factory?: Prisma.FactoryUpdateOneRequiredWithoutDepartmentsNestedInput
   lines?: Prisma.LineUpdateManyWithoutDepartmentNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUpdateManyWithoutAssignedDepartmentNestedInput
   tnaTasks?: Prisma.TnaTaskUpdateManyWithoutDepartmentNestedInput
 }
@@ -1062,8 +1062,8 @@ export type DepartmentUncheckedUpdateWithoutFloorInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   lines?: Prisma.LineUncheckedUpdateManyWithoutDepartmentNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutDepartmentNestedInput
   sampleRequests?: Prisma.SampleRequestUncheckedUpdateManyWithoutAssignedDepartmentNestedInput
   tnaTasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutDepartmentNestedInput
 }
@@ -1084,15 +1084,15 @@ export type DepartmentUncheckedUpdateManyWithoutFloorInput = {
  */
 
 export type DepartmentCountOutputType = {
-  purchaseRequisitions: number
   lines: number
+  purchaseRequisitions: number
   sampleRequests: number
   tnaTasks: number
 }
 
 export type DepartmentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  purchaseRequisitions?: boolean | DepartmentCountOutputTypeCountPurchaseRequisitionsArgs
   lines?: boolean | DepartmentCountOutputTypeCountLinesArgs
+  purchaseRequisitions?: boolean | DepartmentCountOutputTypeCountPurchaseRequisitionsArgs
   sampleRequests?: boolean | DepartmentCountOutputTypeCountSampleRequestsArgs
   tnaTasks?: boolean | DepartmentCountOutputTypeCountTnaTasksArgs
 }
@@ -1110,15 +1110,15 @@ export type DepartmentCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.E
 /**
  * DepartmentCountOutputType without action
  */
-export type DepartmentCountOutputTypeCountPurchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PurchaseRequisitionWhereInput
+export type DepartmentCountOutputTypeCountLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LineWhereInput
 }
 
 /**
  * DepartmentCountOutputType without action
  */
-export type DepartmentCountOutputTypeCountLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.LineWhereInput
+export type DepartmentCountOutputTypeCountPurchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PurchaseRequisitionWhereInput
 }
 
 /**
@@ -1145,10 +1145,10 @@ export type DepartmentSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  purchaseRequisitions?: boolean | Prisma.Department$purchaseRequisitionsArgs<ExtArgs>
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
   floor?: boolean | Prisma.Department$floorArgs<ExtArgs>
   lines?: boolean | Prisma.Department$linesArgs<ExtArgs>
+  purchaseRequisitions?: boolean | Prisma.Department$purchaseRequisitionsArgs<ExtArgs>
   sampleRequests?: boolean | Prisma.Department$sampleRequestsArgs<ExtArgs>
   tnaTasks?: boolean | Prisma.Department$tnaTasksArgs<ExtArgs>
   _count?: boolean | Prisma.DepartmentCountOutputTypeDefaultArgs<ExtArgs>
@@ -1193,10 +1193,10 @@ export type DepartmentSelectScalar = {
 
 export type DepartmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "factoryId" | "floorId" | "code" | "name" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["department"]>
 export type DepartmentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  purchaseRequisitions?: boolean | Prisma.Department$purchaseRequisitionsArgs<ExtArgs>
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
   floor?: boolean | Prisma.Department$floorArgs<ExtArgs>
   lines?: boolean | Prisma.Department$linesArgs<ExtArgs>
+  purchaseRequisitions?: boolean | Prisma.Department$purchaseRequisitionsArgs<ExtArgs>
   sampleRequests?: boolean | Prisma.Department$sampleRequestsArgs<ExtArgs>
   tnaTasks?: boolean | Prisma.Department$tnaTasksArgs<ExtArgs>
   _count?: boolean | Prisma.DepartmentCountOutputTypeDefaultArgs<ExtArgs>
@@ -1213,10 +1213,10 @@ export type DepartmentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.E
 export type $DepartmentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Department"
   objects: {
-    purchaseRequisitions: Prisma.$PurchaseRequisitionPayload<ExtArgs>[]
     factory: Prisma.$FactoryPayload<ExtArgs>
     floor: Prisma.$FloorPayload<ExtArgs> | null
     lines: Prisma.$LinePayload<ExtArgs>[]
+    purchaseRequisitions: Prisma.$PurchaseRequisitionPayload<ExtArgs>[]
     sampleRequests: Prisma.$SampleRequestPayload<ExtArgs>[]
     tnaTasks: Prisma.$TnaTaskPayload<ExtArgs>[]
   }
@@ -1623,10 +1623,10 @@ readonly fields: DepartmentFieldRefs;
  */
 export interface Prisma__DepartmentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  purchaseRequisitions<T extends Prisma.Department$purchaseRequisitionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$purchaseRequisitionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   factory<T extends Prisma.FactoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FactoryDefaultArgs<ExtArgs>>): Prisma.Prisma__FactoryClient<runtime.Types.Result.GetResult<Prisma.$FactoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   floor<T extends Prisma.Department$floorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$floorArgs<ExtArgs>>): Prisma.Prisma__FloorClient<runtime.Types.Result.GetResult<Prisma.$FloorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   lines<T extends Prisma.Department$linesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$linesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  purchaseRequisitions<T extends Prisma.Department$purchaseRequisitionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$purchaseRequisitionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sampleRequests<T extends Prisma.Department$sampleRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$sampleRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SampleRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tnaTasks<T extends Prisma.Department$tnaTasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$tnaTasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaTaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -2067,30 +2067,6 @@ export type DepartmentDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
- * Department.purchaseRequisitions
- */
-export type Department$purchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the PurchaseRequisition
-   */
-  select?: Prisma.PurchaseRequisitionSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the PurchaseRequisition
-   */
-  omit?: Prisma.PurchaseRequisitionOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PurchaseRequisitionInclude<ExtArgs> | null
-  where?: Prisma.PurchaseRequisitionWhereInput
-  orderBy?: Prisma.PurchaseRequisitionOrderByWithRelationInput | Prisma.PurchaseRequisitionOrderByWithRelationInput[]
-  cursor?: Prisma.PurchaseRequisitionWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PurchaseRequisitionScalarFieldEnum | Prisma.PurchaseRequisitionScalarFieldEnum[]
-}
-
-/**
  * Department.floor
  */
 export type Department$floorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2131,6 +2107,30 @@ export type Department$linesArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.LineScalarFieldEnum | Prisma.LineScalarFieldEnum[]
+}
+
+/**
+ * Department.purchaseRequisitions
+ */
+export type Department$purchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PurchaseRequisition
+   */
+  select?: Prisma.PurchaseRequisitionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PurchaseRequisition
+   */
+  omit?: Prisma.PurchaseRequisitionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PurchaseRequisitionInclude<ExtArgs> | null
+  where?: Prisma.PurchaseRequisitionWhereInput
+  orderBy?: Prisma.PurchaseRequisitionOrderByWithRelationInput | Prisma.PurchaseRequisitionOrderByWithRelationInput[]
+  cursor?: Prisma.PurchaseRequisitionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PurchaseRequisitionScalarFieldEnum | Prisma.PurchaseRequisitionScalarFieldEnum[]
 }
 
 /**

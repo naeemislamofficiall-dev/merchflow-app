@@ -182,8 +182,8 @@ export type MaterialCategoryWhereInput = {
   code?: Prisma.StringFilter<"MaterialCategory"> | string
   name?: Prisma.StringFilter<"MaterialCategory"> | string
   createdAt?: Prisma.DateTimeFilter<"MaterialCategory"> | Date | string
-  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   materials?: Prisma.MaterialListRelationFilter
+  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
 }
 
 export type MaterialCategoryOrderByWithRelationInput = {
@@ -192,8 +192,8 @@ export type MaterialCategoryOrderByWithRelationInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  company?: Prisma.CompanyOrderByWithRelationInput
   materials?: Prisma.MaterialOrderByRelationAggregateInput
+  company?: Prisma.CompanyOrderByWithRelationInput
 }
 
 export type MaterialCategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -206,8 +206,8 @@ export type MaterialCategoryWhereUniqueInput = Prisma.AtLeast<{
   code?: Prisma.StringFilter<"MaterialCategory"> | string
   name?: Prisma.StringFilter<"MaterialCategory"> | string
   createdAt?: Prisma.DateTimeFilter<"MaterialCategory"> | Date | string
-  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   materials?: Prisma.MaterialListRelationFilter
+  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
 }, "id" | "companyId_code">
 
 export type MaterialCategoryOrderByWithAggregationInput = {
@@ -237,8 +237,8 @@ export type MaterialCategoryCreateInput = {
   code: string
   name: string
   createdAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutMaterialCategoriesInput
   materials?: Prisma.MaterialCreateNestedManyWithoutCategoryInput
+  company: Prisma.CompanyCreateNestedOneWithoutMaterialCategoriesInput
 }
 
 export type MaterialCategoryUncheckedCreateInput = {
@@ -255,8 +255,8 @@ export type MaterialCategoryUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutMaterialCategoriesNestedInput
   materials?: Prisma.MaterialUpdateManyWithoutCategoryNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutMaterialCategoriesNestedInput
 }
 
 export type MaterialCategoryUncheckedUpdateInput = {
@@ -559,8 +559,8 @@ export type MaterialCategorySelect<ExtArgs extends runtime.Types.Extensions.Inte
   code?: boolean
   name?: boolean
   createdAt?: boolean
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   materials?: boolean | Prisma.MaterialCategory$materialsArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.MaterialCategoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["materialCategory"]>
 
@@ -592,8 +592,8 @@ export type MaterialCategorySelectScalar = {
 
 export type MaterialCategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "code" | "name" | "createdAt", ExtArgs["result"]["materialCategory"]>
 export type MaterialCategoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   materials?: boolean | Prisma.MaterialCategory$materialsArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.MaterialCategoryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MaterialCategoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -606,8 +606,8 @@ export type MaterialCategoryIncludeUpdateManyAndReturn<ExtArgs extends runtime.T
 export type $MaterialCategoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "MaterialCategory"
   objects: {
-    company: Prisma.$CompanyPayload<ExtArgs>
     materials: Prisma.$MaterialPayload<ExtArgs>[]
+    company: Prisma.$CompanyPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1009,8 +1009,8 @@ readonly fields: MaterialCategoryFieldRefs;
  */
 export interface Prisma__MaterialCategoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   materials<T extends Prisma.MaterialCategory$materialsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialCategory$materialsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

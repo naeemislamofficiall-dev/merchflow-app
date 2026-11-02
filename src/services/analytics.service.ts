@@ -1,5 +1,8 @@
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
+import { factoryWhere } from "@/lib/scope";
+import { hourEfficiency } from "@/lib/production-calc";
+import { shipmentBalance } from "@/lib/shipping-calc";
 import { daysBetween, listFilter, startOfDay } from "@/lib/service-helpers";
 import { BaseService } from "./base.service";
 
@@ -226,6 +229,217 @@ class AnalyticsService extends BaseService {
     });
   }
 
+    // ---------- Production ----------
+
+  async dailyProductionReport(input: unknown = {}) {
+    const user = await this.guard("analytics.view");
+    const r = rangeSchema.parse(input);
+    const rows = await prisma.sewingLog.groupBy({
+      by: ["logDate"],
+      where: {
+        ...(await listFilter(user)),
+        ...factoryWhere(await this.scopeOf(user)),
+        logDate: dateRange(r),
+      },
+      _sum: { target: true, output: true, reject: true, rework: true, downtimeMinutes: true },
+      orderBy: { logDate: "asc" },
+    });
+    return rows.map((x) => {
+      const target = x._sum.target ?? 0;
+      const output = x._sum.output ?? 0;
+      return {
+        date: x.logDate,
+        target,
+        output,
+        reject: x._sum.reject ?? 0,
+        rework: x._sum.rework ?? 0,
+        downtimeMinutes: x._sum.downtimeMinutes ?? 0,
+        efficiencyPct: hourEfficiency(target, output),
+      };
+    });
+  }
+
+  async lineOutputReport(input: unknown = {}) {
+    const user = await this.guard("analytics.view");
+    const r = rangeSchema.parse(input);
+    const rows = await prisma.sewingLog.groupBy({
+      by: ["lineId"],
+      where: {
+        ...(await listFilter(user)),
+        ...factoryWhere(await this.scopeOf(user)),
+        logDate: dateRange(r),
+      },
+      _sum: { target: true, output: true, reject: true, rework: true, downtimeMinutes: true },
+    });
+    const lines = await prisma.line.findMany({
+      where: { id: { in: rows.map((x) => x.lineId) } },
+      select: { id: true, code: true, name: true },
+    });
+    const lineOf = new Map(lines.map((l) => [l.id, l]));
+    return rows
+      .map((x) => {
+        const target = x._sum.target ?? 0;
+        const output = x._sum.output ?? 0;
+        const l = lineOf.get(x.lineId);
+        return {
+          line: l ? `${l.code} ${l.name}` : "-",
+          target,
+          output,
+          reject: x._sum.reject ?? 0,
+          rework: x._sum.rework ?? 0,
+          downtimeMinutes: x._sum.downtimeMinutes ?? 0,
+          efficiencyPct: hourEfficiency(target, output),
+        };
+      })
+      .sort((p, q) => q.output - p.output);
+  }
+  // ---------- Shipment ----------
+
+  async shipmentPlanReport(input: unknown = {}) {
+    const user = await this.guard("analytics.view");
+    const r = rangeSchema.parse(input);
+    const list = await prisma.shipment.findMany({
+      where: { ...(await listFilter(user)), plannedShipDate: dateRange(r) },
+      orderBy: { plannedShipDate: "asc" },
+    });
+    const buyers = await prisma.buyer.findMany({
+      where: { id: { in: [...new Set(list.map((s) => s.buyerId))] } },
+      select: { id: true, name: true },
+    });
+    const nameOf = new Map(buyers.map((b) => [b.id, b.name]));
+    const today = startOfDay(new Date());
+    const rows = list.map((s) => {
+      const planned = startOfDay(s.plannedShipDate);
+      const actual = s.actualShipDate ? startOfDay(s.actualShipDate) : null;
+      const onTime = actual ? (actual <= planned ? "On time" : "Late") : planned < today ? "Overdue" : "Pending";
+      const delayDays = actual ? Math.max(daysBetween(planned, actual), 0) : planned < today ? daysBetween(planned, today) : 0;
+      return {
+        shipmentNo: s.shipmentNo,
+        buyer: nameOf.get(s.buyerId) ?? "-",
+        status: s.status,
+        mode: s.mode,
+        destination: s.destination,
+        plannedShipDate: s.plannedShipDate,
+        exFactoryDate: s.exFactoryDate,
+        actualShipDate: s.actualShipDate,
+        delayDays,
+        onTime,
+      };
+    });
+    const shipped = rows.filter((x) => x.onTime === "On time" || x.onTime === "Late");
+    return {
+      rows,
+      onTimePct: shipped.length ? r2((shipped.filter((x) => x.onTime === "On time").length / shipped.length) * 100) : null,
+    };
+  }
+  async shipmentBalanceReport() {
+    const user = await this.guard("analytics.view");
+    const orders = await prisma.order.findMany({
+      where: { ...(await listFilter(user)), status: { not: "DRAFT" } },
+      include: { buyer: { select: { name: true } } },
+      orderBy: { orderNo: "asc" },
+    });
+    const ids = orders.map((o) => o.id);
+    const [lines, cartonLines] = await Promise.all([
+      prisma.orderLine.groupBy({ by: ["orderId"], _sum: { quantity: true }, where: { orderId: { in: ids } } }),
+      prisma.cartonLine.findMany({
+        where: { carton: { orderId: { in: ids }, status: { in: ["CLOSED", "SHIPPED"] } } },
+        select: { quantity: true, carton: { select: { orderId: true, status: true } } },
+      }),
+    ]);
+    const orderedBy = new Map(lines.map((l) => [l.orderId, l._sum.quantity ?? 0]));
+    const shippedBy = new Map<string, number>();
+    const packedBy = new Map<string, number>();
+    for (const c of cartonLines) {
+      const oid = c.carton.orderId ?? "";
+      const target = c.carton.status === "SHIPPED" ? shippedBy : packedBy;
+      target.set(oid, (target.get(oid) ?? 0) + c.quantity);
+    }
+    return orders.map((o) => ({
+      orderNo: o.orderNo,
+      buyer: o.buyer.name,
+      status: o.status,
+      packedNotShipped: packedBy.get(o.id) ?? 0,
+      ...shipmentBalance(orderedBy.get(o.id) ?? 0, shippedBy.get(o.id) ?? 0),
+    }));
+  }
+
+  // ---------- Costing ----------
+
+  async costingReport() {
+    const user = await this.guard("analytics.view");
+    const sheets = await prisma.costSheet.findMany({
+      where: await listFilter(user),
+      include: { style: { select: { styleNo: true } } },
+      orderBy: [{ createdAt: "desc" }],
+    });
+    return sheets.map((s) => ({
+      style: s.style.styleNo,
+      version: s.version,
+      costType: s.costType,
+      status: s.status,
+      currency: s.currency,
+      totalCost: r2(Number(s.totalCost)),
+      quotedPrice: r2(Number(s.quotedPrice)),
+      marginPct: r2(Number(s.marginPct)),
+    }));
+  }
+  // ---------- Finance ----------
+
+  async supplierPayableReport() {
+    const user = await this.guard("analytics.view");
+    const inv = await prisma.supplierInvoice.findMany({
+      where: { ...(await listFilter(user)), status: { in: ["POSTED", "PARTIALLY_PAID"] } },
+      orderBy: { dueDate: "asc" },
+    });
+    const sups = await prisma.supplier.findMany({
+      where: { id: { in: [...new Set(inv.map((i) => i.supplierId))] } },
+      select: { id: true, name: true },
+    });
+    const nameOf = new Map(sups.map((s) => [s.id, s.name]));
+    const today = startOfDay(new Date());
+    const rows = inv.map((i) => {
+      const outstanding = Number(i.totalAmount) - Number(i.paidAmount);
+      return {
+        supplier: nameOf.get(i.supplierId) ?? "-",
+        invoiceNo: i.invoiceNo,
+        supplierInvoiceNo: i.supplierInvoiceNo,
+        dueDate: i.dueDate,
+        currency: i.currency,
+        outstanding: r2(outstanding),
+        outstandingBase: r2(outstanding * xr(i.exchangeRate)),
+        overdueDays: i.dueDate && startOfDay(i.dueDate) < today ? daysBetween(startOfDay(i.dueDate), today) : 0,
+      };
+    });
+    return { rows, totalBase: r2(rows.reduce((s, x) => s + x.outstandingBase, 0)) };
+  }
+
+  async buyerReceivableReport() {
+    const user = await this.guard("analytics.view");
+    const inv = await prisma.buyerInvoice.findMany({
+      where: { ...(await listFilter(user)), status: { in: ["POSTED", "PARTIALLY_PAID"] } },
+      orderBy: { dueDate: "asc" },
+    });
+    const buyers = await prisma.buyer.findMany({
+      where: { id: { in: [...new Set(inv.map((i) => i.buyerId))] } },
+      select: { id: true, name: true },
+    });
+    const nameOf = new Map(buyers.map((b) => [b.id, b.name]));
+    const today = startOfDay(new Date());
+    const rows = inv.map((i) => {
+      const outstanding = Number(i.totalAmount) - Number(i.receivedAmount);
+      return {
+        buyer: nameOf.get(i.buyerId) ?? "-",
+        invoiceNo: i.invoiceNo,
+        dueDate: i.dueDate,
+        currency: i.currency,
+        outstanding: r2(outstanding),
+        outstandingBase: r2(outstanding * xr(i.exchangeRate)),
+        overdueDays: i.dueDate && startOfDay(i.dueDate) < today ? daysBetween(startOfDay(i.dueDate), today) : 0,
+      };
+    });
+    return { rows, totalBase: r2(rows.reduce((s, x) => s + x.outstandingBase, 0)) };
+  }
   // ---------- Inventory ----------
 
   // লট ধরে স্টকের বয়স

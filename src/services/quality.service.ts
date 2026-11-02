@@ -1,9 +1,10 @@
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { BusinessRuleError } from "@/lib/business-rules";
-import { dhu, pareto } from "@/lib/quality-calc";
+import { defectBalance, dhu, pareto, reworkExceedsBalance, reworkPct } from "@/lib/quality-calc";
 import { nextInspectionNo } from "@/lib/numbering";
 import { assertFactoryInScope, factoryWhere } from "@/lib/scope";
+import { TX_OPTIONS, advisoryLock } from "@/lib/stock";
 import { assertRecordInScope, found, listFilter } from "@/lib/service-helpers";
 import { BaseService } from "./base.service";
 
@@ -26,6 +27,17 @@ const occurrenceSchema = z.object({
   rootCause: z.string().max(300).optional(),
   correctiveAction: z.string().max(300).optional(),
 });
+
+const REWORK_STAGES: string[] = ["INLINE", "ENDLINE", "FINISHING"];
+
+const reworkSchema = z
+  .object({
+    occurrenceId: z.string().min(1),
+    repairedQty: z.number().int().nonnegative().default(0),
+    rejectedQty: z.number().int().nonnegative().default(0),
+    remarks: z.string().max(300).optional(),
+  })
+  .refine((v) => v.repairedQty + v.rejectedQty > 0, { message: "Enter a repaired or rejected quantity" });
 
 const inspectionSchema = z.object({
   stage: z.enum(STAGES),
@@ -227,6 +239,65 @@ class QualityService extends BaseService {
     return row;
   }
 
+    // ---------- Rework (inline / end-line / finishing) ----------
+  async addRework(input: unknown) {
+    const user = await this.guard("qc.inspect");
+    const d = reworkSchema.parse(input);
+    const occ = found(
+      await prisma.defectOccurrence.findUnique({ where: { id: d.occurrenceId }, include: { inspection: true } }),
+      "Defect"
+    );
+    const insp = occ.inspection;
+    await assertRecordInScope(user, insp.companyId);
+    assertFactoryInScope(await this.scopeOf(user), insp.factoryId);
+    if (!REWORK_STAGES.includes(insp.stage)) {
+      throw new BusinessRuleError("Rework can be recorded only for inline, end-line or finishing inspections");
+    }
+
+    const row = await prisma.$transaction(async (tx) => {
+      await advisoryLock(tx, `rework:${occ.id}`);
+      const prev = await tx.reworkRecord.findMany({
+        where: { occurrenceId: occ.id },
+        select: { repairedQty: true, rejectedQty: true },
+      });
+      if (reworkExceedsBalance(occ.quantity, prev, d)) {
+        throw new BusinessRuleError(`Only ${defectBalance(occ.quantity, prev)} defect piece(s) are still open`);
+      }
+      return tx.reworkRecord.create({
+        data: {
+          companyId: insp.companyId,
+          factoryId: insp.factoryId,
+          occurrenceId: occ.id,
+          inspectionId: insp.id,
+          productionOrderId: insp.productionOrderId,
+          repairedQty: d.repairedQty,
+          rejectedQty: d.rejectedQty,
+          remarks: d.remarks,
+          reworkedById: user.id,
+        },
+      });
+    }, TX_OPTIONS);
+
+    await this.audit({ user, action: "CREATE", entity: "ReworkRecord", entityId: row.id, after: row });
+    return row;
+  }
+
+  // Inspection-er defect-gulo, rework history ar baki balance
+  async reworkOf(inspectionId: string) {
+    await this.get(inspectionId);
+    const occ = await prisma.defectOccurrence.findMany({
+      where: { inspectionId },
+      include: { defect: true, reworkRecords: { orderBy: { reworkedAt: "asc" } } },
+    });
+    return occ.map((o) => ({
+      id: o.id,
+      defectName: o.defect.name,
+      quantity: o.quantity,
+      records: o.reworkRecords,
+      balance: defectBalance(o.quantity, o.reworkRecords),
+    }));
+  }
+
   private where(company: object, scope: Awaited<ReturnType<BaseService["scopeOf"]>>, f: QualityFilter) {
     return {
       ...company,
@@ -256,12 +327,22 @@ class QualityService extends BaseService {
     const nameOf = new Map(names.map((n) => [n.id, n.name]));
     const defects = occ.reduce((s, o) => s + (o._sum.quantity ?? 0), 0);
     const checked = agg._sum.sampleSize ?? 0;
+    const rw = await prisma.reworkRecord.aggregate({
+      _sum: { repairedQty: true, rejectedQty: true },
+      where: { occurrence: { inspection: where } },
+    });
+    const repaired = rw._sum.repairedQty ?? 0;
+    const rejected = rw._sum.rejectedQty ?? 0;
     return {
       inspections: agg._count,
       checked,
       defectivePieces: agg._sum.defectiveQty ?? 0,
       defects,
       dhu: dhu(defects, checked),
+      repaired,
+      rejected,
+      openDefects: Math.max(0, defects - repaired - rejected),
+      reworkPct: reworkPct(repaired, checked),
       pareto: pareto(occ.map((o) => ({ name: nameOf.get(o.defectId) ?? "Unknown", count: o._sum.quantity ?? 0 }))),
     };
   }

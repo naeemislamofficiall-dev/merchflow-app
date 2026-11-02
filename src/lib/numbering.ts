@@ -164,3 +164,29 @@ export async function nextExpenseNo(companyId: string): Promise<string> {
   const n = await prisma.expense.count({ where: { companyId, expenseNo: { startsWith: prefix } } });
   return withCount(prefix, n);
 }
+
+// ===== T3 Textile (start) =====
+export async function nextKnittingNo(companyId: string): Promise<string> {
+  const prefix = monthPrefix("KNT");
+  const n = await prisma.knittingOrder.count({ where: { companyId, knitNo: { startsWith: prefix } } });
+  return withCount(prefix, n);
+}
+
+export async function nextDyeNo(companyId: string): Promise<string> {
+  const prefix = monthPrefix("DYE");
+  const n = await prisma.dyeBatch.count({ where: { companyId, dyeNo: { startsWith: prefix } } });
+  return withCount(prefix, n);
+}
+
+export async function nextLabDipNo(companyId: string): Promise<string> {
+  const prefix = monthPrefix("LAB");
+  const n = await prisma.labDip.count({ where: { companyId, labDipNo: { startsWith: prefix } } });
+  return withCount(prefix, n);
+}
+
+export async function nextFinishingNo(companyId: string): Promise<string> {
+  const prefix = monthPrefix("FIN");
+  const n = await prisma.fabricFinishing.count({ where: { companyId, finishNo: { startsWith: prefix } } });
+  return withCount(prefix, n);
+}
+// ===== T3 Textile (end) =====

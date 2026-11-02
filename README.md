@@ -1,52 +1,32 @@
-# MERCHFLOW ERP
+# Batch 2
 
-Next.js + TypeScript + Prisma ERP application for garment merchandising and factory operations.
+Ami apnar zip-er copy-te boshiye `prisma generate`, `tsc --noEmit`, `vitest` (178 test pass), `eslint` chalaiyechi: error nai.
+DB-r shathe ar browser-e chalai ni.
 
-## Local setup
+## 0. Ekhonkar duto error ager moto thik korun
+1. `.next/types/validator.ts ... Cannot find module .../attendance/page.js` -> purono build cache:
+       Remove-Item -Recurse -Force .next
+2. `Property 'userMfa' does not exist` -> table ta DB-te nai. `sql/user-mfa.sql` Supabase SQL editor-e chalan, tarpor:
+       npx prisma db pull
+       npx prisma generate
+       npx tsc --noEmit
+   (`migrate dev` chalaben na.)
 
-1. Install Node.js compatible with the Next.js version in `package.json` and PostgreSQL.
-2. Copy `.env.example` to `.env` and set fresh local credentials:
-   - `DATABASE_URL`: pooled/runtime connection if your database provider requires it.
-   - `DIRECT_URL`: direct database connection for Prisma migrations.
-   - `AUTH_SECRET`: a cryptographically random secret.
-3. Install dependencies and generate the Prisma client:
+## 1. File boshan
+- `src/` folder-er shob file apnar project-er `src/`-e copy korun.
+  Overwrite hobe: `src/lib/totp.ts`, `src/lib/totp.test.ts`, `src/services/mfa.service.ts`, `src/app/(app)/account/security/*`. Eigulo amar age-er MFA file, tai thik ache.
+  Notun: `src/instrumentation.ts`, `.../account/security/code-form.tsx`.
+- Login page (`src/app/login/page.tsx`): otp input-ta eibhabe koren (backup code-er jonno 6 digit-er bondhon tulte hobe):
+      <Label htmlFor="otp">Authenticator or backup code (only if two-factor is on)</Label>
+      <Input id="otp" name="otp" maxLength={12} autoComplete="one-time-code" />
+- Alerts-e certificate expiry: `patched-alert-snippet.md` dekhun.
+- `docs/backup-and-recovery.md` ar `docs/golden-demo.md`: `[FILL]` gulo apnake bharte hobe.
 
-   ```bash
-   npm ci
-   npx prisma generate
-   ```
-
-4. Apply migrations to a **development database only**:
-
-   ```bash
-   npx prisma migrate deploy
-   ```
-
-   If this is a fresh local database and migration history is not present, review the migration history first rather than blindly applying production migrations.
-5. Start the app:
-
-   ```bash
-   npm run dev
-   ```
-
-6. Before deployment, run:
-
-   ```bash
-   npm run lint
-   npx tsc --noEmit
-   npm run build
-   ```
-
-## Important security note
-
-The original upload included a `.env` file. It has intentionally been excluded from this archive. Use your own fresh credentials and rotate any real secrets that may have been exposed. Never commit `.env` files.
-
-## Project documentation
-
-- [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md) — implemented changes and remaining scope.
-- [`docs/GOLDEN_DEMO.md`](docs/GOLDEN_DEMO.md) — end-to-end acceptance test plan.
-- [`docs/SECURITY_AND_DEPLOYMENT.md`](docs/SECURITY_AND_DEPLOYMENT.md) — release precautions.
-
-## Scope caveat
-
-This is an implementation update, not a certification that every item in the enterprise master specification is complete. The implementation status document lists areas that still need domain models, workflows, automated tests or external integrations.
+## 2. Ki ki holo
+| Jinish | Ki |
+|---|---|
+| MFA backup code | 8 ta code, ekbar-i dekhay, ekta ekbar-i cholbe. Phone hariye gele ei code diye login ba MFA off kora jay |
+| MFA replay protection | Ekoi 6-digit code 2 bar cholbe na |
+| Certificate expiry alert | `/alerts`-e expired = HIGH, 30 diner moddhe = MEDIUM |
+| Error logging | Server error hole JSON line log, token/query log hoy na |
+| Backup/DR doc, Golden demo script | spec section 80 ar 85 onujayi |

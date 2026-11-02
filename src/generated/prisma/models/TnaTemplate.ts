@@ -182,9 +182,9 @@ export type TnaTemplateWhereInput = {
   name?: Prisma.StringFilter<"TnaTemplate"> | string
   createdAt?: Prisma.DateTimeFilter<"TnaTemplate"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TnaTemplate"> | Date | string
+  plans?: Prisma.TnaPlanListRelationFilter
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   tasks?: Prisma.TnaTemplateTaskListRelationFilter
-  plans?: Prisma.TnaPlanListRelationFilter
 }
 
 export type TnaTemplateOrderByWithRelationInput = {
@@ -193,9 +193,9 @@ export type TnaTemplateOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  plans?: Prisma.TnaPlanOrderByRelationAggregateInput
   company?: Prisma.CompanyOrderByWithRelationInput
   tasks?: Prisma.TnaTemplateTaskOrderByRelationAggregateInput
-  plans?: Prisma.TnaPlanOrderByRelationAggregateInput
 }
 
 export type TnaTemplateWhereUniqueInput = Prisma.AtLeast<{
@@ -208,9 +208,9 @@ export type TnaTemplateWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"TnaTemplate"> | string
   createdAt?: Prisma.DateTimeFilter<"TnaTemplate"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TnaTemplate"> | Date | string
+  plans?: Prisma.TnaPlanListRelationFilter
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   tasks?: Prisma.TnaTemplateTaskListRelationFilter
-  plans?: Prisma.TnaPlanListRelationFilter
 }, "id" | "companyId_name">
 
 export type TnaTemplateOrderByWithAggregationInput = {
@@ -240,9 +240,9 @@ export type TnaTemplateCreateInput = {
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  plans?: Prisma.TnaPlanCreateNestedManyWithoutTemplateInput
   company: Prisma.CompanyCreateNestedOneWithoutTnaTemplatesInput
   tasks?: Prisma.TnaTemplateTaskCreateNestedManyWithoutTemplateInput
-  plans?: Prisma.TnaPlanCreateNestedManyWithoutTemplateInput
 }
 
 export type TnaTemplateUncheckedCreateInput = {
@@ -251,8 +251,8 @@ export type TnaTemplateUncheckedCreateInput = {
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  tasks?: Prisma.TnaTemplateTaskUncheckedCreateNestedManyWithoutTemplateInput
   plans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutTemplateInput
+  tasks?: Prisma.TnaTemplateTaskUncheckedCreateNestedManyWithoutTemplateInput
 }
 
 export type TnaTemplateUpdateInput = {
@@ -260,9 +260,9 @@ export type TnaTemplateUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  plans?: Prisma.TnaPlanUpdateManyWithoutTemplateNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutTnaTemplatesNestedInput
   tasks?: Prisma.TnaTemplateTaskUpdateManyWithoutTemplateNestedInput
-  plans?: Prisma.TnaPlanUpdateManyWithoutTemplateNestedInput
 }
 
 export type TnaTemplateUncheckedUpdateInput = {
@@ -271,8 +271,8 @@ export type TnaTemplateUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tasks?: Prisma.TnaTemplateTaskUncheckedUpdateManyWithoutTemplateNestedInput
   plans?: Prisma.TnaPlanUncheckedUpdateManyWithoutTemplateNestedInput
+  tasks?: Prisma.TnaTemplateTaskUncheckedUpdateManyWithoutTemplateNestedInput
 }
 
 export type TnaTemplateCreateManyInput = {
@@ -424,8 +424,8 @@ export type TnaTemplateCreateWithoutCompanyInput = {
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  tasks?: Prisma.TnaTemplateTaskCreateNestedManyWithoutTemplateInput
   plans?: Prisma.TnaPlanCreateNestedManyWithoutTemplateInput
+  tasks?: Prisma.TnaTemplateTaskCreateNestedManyWithoutTemplateInput
 }
 
 export type TnaTemplateUncheckedCreateWithoutCompanyInput = {
@@ -433,8 +433,8 @@ export type TnaTemplateUncheckedCreateWithoutCompanyInput = {
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  tasks?: Prisma.TnaTemplateTaskUncheckedCreateNestedManyWithoutTemplateInput
   plans?: Prisma.TnaPlanUncheckedCreateNestedManyWithoutTemplateInput
+  tasks?: Prisma.TnaTemplateTaskUncheckedCreateNestedManyWithoutTemplateInput
 }
 
 export type TnaTemplateCreateOrConnectWithoutCompanyInput = {
@@ -479,8 +479,8 @@ export type TnaTemplateCreateWithoutTasksInput = {
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutTnaTemplatesInput
   plans?: Prisma.TnaPlanCreateNestedManyWithoutTemplateInput
+  company: Prisma.CompanyCreateNestedOneWithoutTnaTemplatesInput
 }
 
 export type TnaTemplateUncheckedCreateWithoutTasksInput = {
@@ -513,8 +513,8 @@ export type TnaTemplateUpdateWithoutTasksInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutTnaTemplatesNestedInput
   plans?: Prisma.TnaPlanUpdateManyWithoutTemplateNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutTnaTemplatesNestedInput
 }
 
 export type TnaTemplateUncheckedUpdateWithoutTasksInput = {
@@ -590,8 +590,8 @@ export type TnaTemplateUpdateWithoutCompanyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tasks?: Prisma.TnaTemplateTaskUpdateManyWithoutTemplateNestedInput
   plans?: Prisma.TnaPlanUpdateManyWithoutTemplateNestedInput
+  tasks?: Prisma.TnaTemplateTaskUpdateManyWithoutTemplateNestedInput
 }
 
 export type TnaTemplateUncheckedUpdateWithoutCompanyInput = {
@@ -599,8 +599,8 @@ export type TnaTemplateUncheckedUpdateWithoutCompanyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tasks?: Prisma.TnaTemplateTaskUncheckedUpdateManyWithoutTemplateNestedInput
   plans?: Prisma.TnaPlanUncheckedUpdateManyWithoutTemplateNestedInput
+  tasks?: Prisma.TnaTemplateTaskUncheckedUpdateManyWithoutTemplateNestedInput
 }
 
 export type TnaTemplateUncheckedUpdateManyWithoutCompanyInput = {
@@ -616,13 +616,13 @@ export type TnaTemplateUncheckedUpdateManyWithoutCompanyInput = {
  */
 
 export type TnaTemplateCountOutputType = {
-  tasks: number
   plans: number
+  tasks: number
 }
 
 export type TnaTemplateCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  tasks?: boolean | TnaTemplateCountOutputTypeCountTasksArgs
   plans?: boolean | TnaTemplateCountOutputTypeCountPlansArgs
+  tasks?: boolean | TnaTemplateCountOutputTypeCountTasksArgs
 }
 
 /**
@@ -638,15 +638,15 @@ export type TnaTemplateCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.
 /**
  * TnaTemplateCountOutputType without action
  */
-export type TnaTemplateCountOutputTypeCountTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TnaTemplateTaskWhereInput
+export type TnaTemplateCountOutputTypeCountPlansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TnaPlanWhereInput
 }
 
 /**
  * TnaTemplateCountOutputType without action
  */
-export type TnaTemplateCountOutputTypeCountPlansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TnaPlanWhereInput
+export type TnaTemplateCountOutputTypeCountTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TnaTemplateTaskWhereInput
 }
 
 
@@ -656,9 +656,9 @@ export type TnaTemplateSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   name?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  plans?: boolean | Prisma.TnaTemplate$plansArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   tasks?: boolean | Prisma.TnaTemplate$tasksArgs<ExtArgs>
-  plans?: boolean | Prisma.TnaTemplate$plansArgs<ExtArgs>
   _count?: boolean | Prisma.TnaTemplateCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tnaTemplate"]>
 
@@ -690,9 +690,9 @@ export type TnaTemplateSelectScalar = {
 
 export type TnaTemplateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["tnaTemplate"]>
 export type TnaTemplateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  plans?: boolean | Prisma.TnaTemplate$plansArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   tasks?: boolean | Prisma.TnaTemplate$tasksArgs<ExtArgs>
-  plans?: boolean | Prisma.TnaTemplate$plansArgs<ExtArgs>
   _count?: boolean | Prisma.TnaTemplateCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type TnaTemplateIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -705,9 +705,9 @@ export type TnaTemplateIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.
 export type $TnaTemplatePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "TnaTemplate"
   objects: {
+    plans: Prisma.$TnaPlanPayload<ExtArgs>[]
     company: Prisma.$CompanyPayload<ExtArgs>
     tasks: Prisma.$TnaTemplateTaskPayload<ExtArgs>[]
-    plans: Prisma.$TnaPlanPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1109,9 +1109,9 @@ readonly fields: TnaTemplateFieldRefs;
  */
 export interface Prisma__TnaTemplateClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  plans<T extends Prisma.TnaTemplate$plansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaTemplate$plansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaPlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   tasks<T extends Prisma.TnaTemplate$tasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaTemplate$tasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaTemplateTaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  plans<T extends Prisma.TnaTemplate$plansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaTemplate$plansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaPlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1547,30 +1547,6 @@ export type TnaTemplateDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.I
 }
 
 /**
- * TnaTemplate.tasks
- */
-export type TnaTemplate$tasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the TnaTemplateTask
-   */
-  select?: Prisma.TnaTemplateTaskSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the TnaTemplateTask
-   */
-  omit?: Prisma.TnaTemplateTaskOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.TnaTemplateTaskInclude<ExtArgs> | null
-  where?: Prisma.TnaTemplateTaskWhereInput
-  orderBy?: Prisma.TnaTemplateTaskOrderByWithRelationInput | Prisma.TnaTemplateTaskOrderByWithRelationInput[]
-  cursor?: Prisma.TnaTemplateTaskWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.TnaTemplateTaskScalarFieldEnum | Prisma.TnaTemplateTaskScalarFieldEnum[]
-}
-
-/**
  * TnaTemplate.plans
  */
 export type TnaTemplate$plansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1592,6 +1568,30 @@ export type TnaTemplate$plansArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.TnaPlanScalarFieldEnum | Prisma.TnaPlanScalarFieldEnum[]
+}
+
+/**
+ * TnaTemplate.tasks
+ */
+export type TnaTemplate$tasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TnaTemplateTask
+   */
+  select?: Prisma.TnaTemplateTaskSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TnaTemplateTask
+   */
+  omit?: Prisma.TnaTemplateTaskOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TnaTemplateTaskInclude<ExtArgs> | null
+  where?: Prisma.TnaTemplateTaskWhereInput
+  orderBy?: Prisma.TnaTemplateTaskOrderByWithRelationInput | Prisma.TnaTemplateTaskOrderByWithRelationInput[]
+  cursor?: Prisma.TnaTemplateTaskWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TnaTemplateTaskScalarFieldEnum | Prisma.TnaTemplateTaskScalarFieldEnum[]
 }
 
 /**

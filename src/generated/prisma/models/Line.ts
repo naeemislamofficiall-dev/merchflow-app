@@ -27,15 +27,15 @@ export type AggregateLine = {
 }
 
 export type LineAvgAggregateOutputType = {
-  operators: number | null
   efficiencyPct: runtime.Decimal | null
   minutesPerDay: number | null
+  operators: number | null
 }
 
 export type LineSumAggregateOutputType = {
-  operators: number | null
   efficiencyPct: runtime.Decimal | null
   minutesPerDay: number | null
+  operators: number | null
 }
 
 export type LineMinAggregateOutputType = {
@@ -47,9 +47,9 @@ export type LineMinAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  operators: number | null
   efficiencyPct: runtime.Decimal | null
   minutesPerDay: number | null
+  operators: number | null
 }
 
 export type LineMaxAggregateOutputType = {
@@ -61,9 +61,9 @@ export type LineMaxAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  operators: number | null
   efficiencyPct: runtime.Decimal | null
   minutesPerDay: number | null
+  operators: number | null
 }
 
 export type LineCountAggregateOutputType = {
@@ -75,23 +75,23 @@ export type LineCountAggregateOutputType = {
   isActive: number
   createdAt: number
   updatedAt: number
-  operators: number
   efficiencyPct: number
   minutesPerDay: number
+  operators: number
   _all: number
 }
 
 
 export type LineAvgAggregateInputType = {
-  operators?: true
   efficiencyPct?: true
   minutesPerDay?: true
+  operators?: true
 }
 
 export type LineSumAggregateInputType = {
-  operators?: true
   efficiencyPct?: true
   minutesPerDay?: true
+  operators?: true
 }
 
 export type LineMinAggregateInputType = {
@@ -103,9 +103,9 @@ export type LineMinAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
-  operators?: true
   efficiencyPct?: true
   minutesPerDay?: true
+  operators?: true
 }
 
 export type LineMaxAggregateInputType = {
@@ -117,9 +117,9 @@ export type LineMaxAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
-  operators?: true
   efficiencyPct?: true
   minutesPerDay?: true
+  operators?: true
 }
 
 export type LineCountAggregateInputType = {
@@ -131,9 +131,9 @@ export type LineCountAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
-  operators?: true
   efficiencyPct?: true
   minutesPerDay?: true
+  operators?: true
   _all?: true
 }
 
@@ -232,9 +232,9 @@ export type LineGroupByOutputType = {
   isActive: boolean
   createdAt: Date
   updatedAt: Date
-  operators: number | null
   efficiencyPct: runtime.Decimal | null
   minutesPerDay: number
+  operators: number | null
   _count: LineCountAggregateOutputType | null
   _avg: LineAvgAggregateOutputType | null
   _sum: LineSumAggregateOutputType | null
@@ -269,11 +269,12 @@ export type LineWhereInput = {
   isActive?: Prisma.BoolFilter<"Line"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Line"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Line"> | Date | string
-  operators?: Prisma.IntNullableFilter<"Line"> | number | null
   efficiencyPct?: Prisma.DecimalNullableFilter<"Line"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFilter<"Line"> | number
-  floor?: Prisma.XOR<Prisma.FloorScalarRelationFilter, Prisma.FloorWhereInput>
+  operators?: Prisma.IntNullableFilter<"Line"> | number | null
   department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
+  floor?: Prisma.XOR<Prisma.FloorScalarRelationFilter, Prisma.FloorWhereInput>
+  ppcAllocations?: Prisma.PpcAllocationListRelationFilter
   productionOrders?: Prisma.ProductionOrderListRelationFilter
   sewingLogs?: Prisma.SewingLogListRelationFilter
 }
@@ -287,11 +288,12 @@ export type LineOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  operators?: Prisma.SortOrderInput | Prisma.SortOrder
   efficiencyPct?: Prisma.SortOrderInput | Prisma.SortOrder
   minutesPerDay?: Prisma.SortOrder
-  floor?: Prisma.FloorOrderByWithRelationInput
+  operators?: Prisma.SortOrderInput | Prisma.SortOrder
   department?: Prisma.DepartmentOrderByWithRelationInput
+  floor?: Prisma.FloorOrderByWithRelationInput
+  ppcAllocations?: Prisma.PpcAllocationOrderByRelationAggregateInput
   productionOrders?: Prisma.ProductionOrderOrderByRelationAggregateInput
   sewingLogs?: Prisma.SewingLogOrderByRelationAggregateInput
 }
@@ -309,11 +311,12 @@ export type LineWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Line"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Line"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Line"> | Date | string
-  operators?: Prisma.IntNullableFilter<"Line"> | number | null
   efficiencyPct?: Prisma.DecimalNullableFilter<"Line"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFilter<"Line"> | number
-  floor?: Prisma.XOR<Prisma.FloorScalarRelationFilter, Prisma.FloorWhereInput>
+  operators?: Prisma.IntNullableFilter<"Line"> | number | null
   department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
+  floor?: Prisma.XOR<Prisma.FloorScalarRelationFilter, Prisma.FloorWhereInput>
+  ppcAllocations?: Prisma.PpcAllocationListRelationFilter
   productionOrders?: Prisma.ProductionOrderListRelationFilter
   sewingLogs?: Prisma.SewingLogListRelationFilter
 }, "id" | "floorId_code">
@@ -327,9 +330,9 @@ export type LineOrderByWithAggregationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  operators?: Prisma.SortOrderInput | Prisma.SortOrder
   efficiencyPct?: Prisma.SortOrderInput | Prisma.SortOrder
   minutesPerDay?: Prisma.SortOrder
+  operators?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.LineCountOrderByAggregateInput
   _avg?: Prisma.LineAvgOrderByAggregateInput
   _max?: Prisma.LineMaxOrderByAggregateInput
@@ -349,9 +352,9 @@ export type LineScalarWhereWithAggregatesInput = {
   isActive?: Prisma.BoolWithAggregatesFilter<"Line"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Line"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Line"> | Date | string
-  operators?: Prisma.IntNullableWithAggregatesFilter<"Line"> | number | null
   efficiencyPct?: Prisma.DecimalNullableWithAggregatesFilter<"Line"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntWithAggregatesFilter<"Line"> | number
+  operators?: Prisma.IntNullableWithAggregatesFilter<"Line"> | number | null
 }
 
 export type LineCreateInput = {
@@ -361,11 +364,12 @@ export type LineCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
-  floor: Prisma.FloorCreateNestedOneWithoutLinesInput
+  operators?: number | null
   department?: Prisma.DepartmentCreateNestedOneWithoutLinesInput
+  floor: Prisma.FloorCreateNestedOneWithoutLinesInput
+  ppcAllocations?: Prisma.PpcAllocationCreateNestedManyWithoutLineInput
   productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutLineInput
   sewingLogs?: Prisma.SewingLogCreateNestedManyWithoutLineInput
 }
@@ -379,9 +383,10 @@ export type LineUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
+  operators?: number | null
+  ppcAllocations?: Prisma.PpcAllocationUncheckedCreateNestedManyWithoutLineInput
   productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutLineInput
   sewingLogs?: Prisma.SewingLogUncheckedCreateNestedManyWithoutLineInput
 }
@@ -393,11 +398,12 @@ export type LineUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
-  floor?: Prisma.FloorUpdateOneRequiredWithoutLinesNestedInput
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   department?: Prisma.DepartmentUpdateOneWithoutLinesNestedInput
+  floor?: Prisma.FloorUpdateOneRequiredWithoutLinesNestedInput
+  ppcAllocations?: Prisma.PpcAllocationUpdateManyWithoutLineNestedInput
   productionOrders?: Prisma.ProductionOrderUpdateManyWithoutLineNestedInput
   sewingLogs?: Prisma.SewingLogUpdateManyWithoutLineNestedInput
 }
@@ -411,9 +417,10 @@ export type LineUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ppcAllocations?: Prisma.PpcAllocationUncheckedUpdateManyWithoutLineNestedInput
   productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutLineNestedInput
   sewingLogs?: Prisma.SewingLogUncheckedUpdateManyWithoutLineNestedInput
 }
@@ -427,9 +434,9 @@ export type LineCreateManyInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
+  operators?: number | null
 }
 
 export type LineUpdateManyMutationInput = {
@@ -439,9 +446,9 @@ export type LineUpdateManyMutationInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type LineUncheckedUpdateManyInput = {
@@ -453,9 +460,9 @@ export type LineUncheckedUpdateManyInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type LineListRelationFilter = {
@@ -482,15 +489,15 @@ export type LineCountOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  operators?: Prisma.SortOrder
   efficiencyPct?: Prisma.SortOrder
   minutesPerDay?: Prisma.SortOrder
+  operators?: Prisma.SortOrder
 }
 
 export type LineAvgOrderByAggregateInput = {
-  operators?: Prisma.SortOrder
   efficiencyPct?: Prisma.SortOrder
   minutesPerDay?: Prisma.SortOrder
+  operators?: Prisma.SortOrder
 }
 
 export type LineMaxOrderByAggregateInput = {
@@ -502,9 +509,9 @@ export type LineMaxOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  operators?: Prisma.SortOrder
   efficiencyPct?: Prisma.SortOrder
   minutesPerDay?: Prisma.SortOrder
+  operators?: Prisma.SortOrder
 }
 
 export type LineMinOrderByAggregateInput = {
@@ -516,15 +523,15 @@ export type LineMinOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  operators?: Prisma.SortOrder
   efficiencyPct?: Prisma.SortOrder
   minutesPerDay?: Prisma.SortOrder
+  operators?: Prisma.SortOrder
 }
 
 export type LineSumOrderByAggregateInput = {
-  operators?: Prisma.SortOrder
   efficiencyPct?: Prisma.SortOrder
   minutesPerDay?: Prisma.SortOrder
+  operators?: Prisma.SortOrder
 }
 
 export type LineNullableScalarRelationFilter = {
@@ -667,6 +674,20 @@ export type LineUpdateOneRequiredWithoutSewingLogsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.LineUpdateToOneWithWhereWithoutSewingLogsInput, Prisma.LineUpdateWithoutSewingLogsInput>, Prisma.LineUncheckedUpdateWithoutSewingLogsInput>
 }
 
+export type LineCreateNestedOneWithoutPpcAllocationsInput = {
+  create?: Prisma.XOR<Prisma.LineCreateWithoutPpcAllocationsInput, Prisma.LineUncheckedCreateWithoutPpcAllocationsInput>
+  connectOrCreate?: Prisma.LineCreateOrConnectWithoutPpcAllocationsInput
+  connect?: Prisma.LineWhereUniqueInput
+}
+
+export type LineUpdateOneRequiredWithoutPpcAllocationsNestedInput = {
+  create?: Prisma.XOR<Prisma.LineCreateWithoutPpcAllocationsInput, Prisma.LineUncheckedCreateWithoutPpcAllocationsInput>
+  connectOrCreate?: Prisma.LineCreateOrConnectWithoutPpcAllocationsInput
+  upsert?: Prisma.LineUpsertWithoutPpcAllocationsInput
+  connect?: Prisma.LineWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.LineUpdateToOneWithWhereWithoutPpcAllocationsInput, Prisma.LineUpdateWithoutPpcAllocationsInput>, Prisma.LineUncheckedUpdateWithoutPpcAllocationsInput>
+}
+
 export type LineCreateWithoutFloorInput = {
   id?: string
   code: string
@@ -674,10 +695,11 @@ export type LineCreateWithoutFloorInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
+  operators?: number | null
   department?: Prisma.DepartmentCreateNestedOneWithoutLinesInput
+  ppcAllocations?: Prisma.PpcAllocationCreateNestedManyWithoutLineInput
   productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutLineInput
   sewingLogs?: Prisma.SewingLogCreateNestedManyWithoutLineInput
 }
@@ -690,9 +712,10 @@ export type LineUncheckedCreateWithoutFloorInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
+  operators?: number | null
+  ppcAllocations?: Prisma.PpcAllocationUncheckedCreateNestedManyWithoutLineInput
   productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutLineInput
   sewingLogs?: Prisma.SewingLogUncheckedCreateNestedManyWithoutLineInput
 }
@@ -735,9 +758,9 @@ export type LineScalarWhereInput = {
   isActive?: Prisma.BoolFilter<"Line"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Line"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Line"> | Date | string
-  operators?: Prisma.IntNullableFilter<"Line"> | number | null
   efficiencyPct?: Prisma.DecimalNullableFilter<"Line"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFilter<"Line"> | number
+  operators?: Prisma.IntNullableFilter<"Line"> | number | null
 }
 
 export type LineCreateWithoutDepartmentInput = {
@@ -747,10 +770,11 @@ export type LineCreateWithoutDepartmentInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
+  operators?: number | null
   floor: Prisma.FloorCreateNestedOneWithoutLinesInput
+  ppcAllocations?: Prisma.PpcAllocationCreateNestedManyWithoutLineInput
   productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutLineInput
   sewingLogs?: Prisma.SewingLogCreateNestedManyWithoutLineInput
 }
@@ -763,9 +787,10 @@ export type LineUncheckedCreateWithoutDepartmentInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
+  operators?: number | null
+  ppcAllocations?: Prisma.PpcAllocationUncheckedCreateNestedManyWithoutLineInput
   productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutLineInput
   sewingLogs?: Prisma.SewingLogUncheckedCreateNestedManyWithoutLineInput
 }
@@ -803,11 +828,12 @@ export type LineCreateWithoutProductionOrdersInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
-  floor: Prisma.FloorCreateNestedOneWithoutLinesInput
+  operators?: number | null
   department?: Prisma.DepartmentCreateNestedOneWithoutLinesInput
+  floor: Prisma.FloorCreateNestedOneWithoutLinesInput
+  ppcAllocations?: Prisma.PpcAllocationCreateNestedManyWithoutLineInput
   sewingLogs?: Prisma.SewingLogCreateNestedManyWithoutLineInput
 }
 
@@ -820,9 +846,10 @@ export type LineUncheckedCreateWithoutProductionOrdersInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
+  operators?: number | null
+  ppcAllocations?: Prisma.PpcAllocationUncheckedCreateNestedManyWithoutLineInput
   sewingLogs?: Prisma.SewingLogUncheckedCreateNestedManyWithoutLineInput
 }
 
@@ -849,11 +876,12 @@ export type LineUpdateWithoutProductionOrdersInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
-  floor?: Prisma.FloorUpdateOneRequiredWithoutLinesNestedInput
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   department?: Prisma.DepartmentUpdateOneWithoutLinesNestedInput
+  floor?: Prisma.FloorUpdateOneRequiredWithoutLinesNestedInput
+  ppcAllocations?: Prisma.PpcAllocationUpdateManyWithoutLineNestedInput
   sewingLogs?: Prisma.SewingLogUpdateManyWithoutLineNestedInput
 }
 
@@ -866,9 +894,10 @@ export type LineUncheckedUpdateWithoutProductionOrdersInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ppcAllocations?: Prisma.PpcAllocationUncheckedUpdateManyWithoutLineNestedInput
   sewingLogs?: Prisma.SewingLogUncheckedUpdateManyWithoutLineNestedInput
 }
 
@@ -879,11 +908,12 @@ export type LineCreateWithoutSewingLogsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
-  floor: Prisma.FloorCreateNestedOneWithoutLinesInput
+  operators?: number | null
   department?: Prisma.DepartmentCreateNestedOneWithoutLinesInput
+  floor: Prisma.FloorCreateNestedOneWithoutLinesInput
+  ppcAllocations?: Prisma.PpcAllocationCreateNestedManyWithoutLineInput
   productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutLineInput
 }
 
@@ -896,9 +926,10 @@ export type LineUncheckedCreateWithoutSewingLogsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
+  operators?: number | null
+  ppcAllocations?: Prisma.PpcAllocationUncheckedCreateNestedManyWithoutLineInput
   productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutLineInput
 }
 
@@ -925,11 +956,12 @@ export type LineUpdateWithoutSewingLogsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
-  floor?: Prisma.FloorUpdateOneRequiredWithoutLinesNestedInput
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   department?: Prisma.DepartmentUpdateOneWithoutLinesNestedInput
+  floor?: Prisma.FloorUpdateOneRequiredWithoutLinesNestedInput
+  ppcAllocations?: Prisma.PpcAllocationUpdateManyWithoutLineNestedInput
   productionOrders?: Prisma.ProductionOrderUpdateManyWithoutLineNestedInput
 }
 
@@ -942,10 +974,91 @@ export type LineUncheckedUpdateWithoutSewingLogsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ppcAllocations?: Prisma.PpcAllocationUncheckedUpdateManyWithoutLineNestedInput
   productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutLineNestedInput
+}
+
+export type LineCreateWithoutPpcAllocationsInput = {
+  id?: string
+  code: string
+  name: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  minutesPerDay?: number
+  operators?: number | null
+  department?: Prisma.DepartmentCreateNestedOneWithoutLinesInput
+  floor: Prisma.FloorCreateNestedOneWithoutLinesInput
+  productionOrders?: Prisma.ProductionOrderCreateNestedManyWithoutLineInput
+  sewingLogs?: Prisma.SewingLogCreateNestedManyWithoutLineInput
+}
+
+export type LineUncheckedCreateWithoutPpcAllocationsInput = {
+  id?: string
+  floorId: string
+  departmentId?: string | null
+  code: string
+  name: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  minutesPerDay?: number
+  operators?: number | null
+  productionOrders?: Prisma.ProductionOrderUncheckedCreateNestedManyWithoutLineInput
+  sewingLogs?: Prisma.SewingLogUncheckedCreateNestedManyWithoutLineInput
+}
+
+export type LineCreateOrConnectWithoutPpcAllocationsInput = {
+  where: Prisma.LineWhereUniqueInput
+  create: Prisma.XOR<Prisma.LineCreateWithoutPpcAllocationsInput, Prisma.LineUncheckedCreateWithoutPpcAllocationsInput>
+}
+
+export type LineUpsertWithoutPpcAllocationsInput = {
+  update: Prisma.XOR<Prisma.LineUpdateWithoutPpcAllocationsInput, Prisma.LineUncheckedUpdateWithoutPpcAllocationsInput>
+  create: Prisma.XOR<Prisma.LineCreateWithoutPpcAllocationsInput, Prisma.LineUncheckedCreateWithoutPpcAllocationsInput>
+  where?: Prisma.LineWhereInput
+}
+
+export type LineUpdateToOneWithWhereWithoutPpcAllocationsInput = {
+  where?: Prisma.LineWhereInput
+  data: Prisma.XOR<Prisma.LineUpdateWithoutPpcAllocationsInput, Prisma.LineUncheckedUpdateWithoutPpcAllocationsInput>
+}
+
+export type LineUpdateWithoutPpcAllocationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  department?: Prisma.DepartmentUpdateOneWithoutLinesNestedInput
+  floor?: Prisma.FloorUpdateOneRequiredWithoutLinesNestedInput
+  productionOrders?: Prisma.ProductionOrderUpdateManyWithoutLineNestedInput
+  sewingLogs?: Prisma.SewingLogUpdateManyWithoutLineNestedInput
+}
+
+export type LineUncheckedUpdateWithoutPpcAllocationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  floorId?: Prisma.StringFieldUpdateOperationsInput | string
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutLineNestedInput
+  sewingLogs?: Prisma.SewingLogUncheckedUpdateManyWithoutLineNestedInput
 }
 
 export type LineCreateManyFloorInput = {
@@ -956,9 +1069,9 @@ export type LineCreateManyFloorInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
+  operators?: number | null
 }
 
 export type LineUpdateWithoutFloorInput = {
@@ -968,10 +1081,11 @@ export type LineUpdateWithoutFloorInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   department?: Prisma.DepartmentUpdateOneWithoutLinesNestedInput
+  ppcAllocations?: Prisma.PpcAllocationUpdateManyWithoutLineNestedInput
   productionOrders?: Prisma.ProductionOrderUpdateManyWithoutLineNestedInput
   sewingLogs?: Prisma.SewingLogUpdateManyWithoutLineNestedInput
 }
@@ -984,9 +1098,10 @@ export type LineUncheckedUpdateWithoutFloorInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ppcAllocations?: Prisma.PpcAllocationUncheckedUpdateManyWithoutLineNestedInput
   productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutLineNestedInput
   sewingLogs?: Prisma.SewingLogUncheckedUpdateManyWithoutLineNestedInput
 }
@@ -999,9 +1114,9 @@ export type LineUncheckedUpdateManyWithoutFloorInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type LineCreateManyDepartmentInput = {
@@ -1012,9 +1127,9 @@ export type LineCreateManyDepartmentInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  operators?: number | null
   efficiencyPct?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: number
+  operators?: number | null
 }
 
 export type LineUpdateWithoutDepartmentInput = {
@@ -1024,10 +1139,11 @@ export type LineUpdateWithoutDepartmentInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   floor?: Prisma.FloorUpdateOneRequiredWithoutLinesNestedInput
+  ppcAllocations?: Prisma.PpcAllocationUpdateManyWithoutLineNestedInput
   productionOrders?: Prisma.ProductionOrderUpdateManyWithoutLineNestedInput
   sewingLogs?: Prisma.SewingLogUpdateManyWithoutLineNestedInput
 }
@@ -1040,9 +1156,10 @@ export type LineUncheckedUpdateWithoutDepartmentInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ppcAllocations?: Prisma.PpcAllocationUncheckedUpdateManyWithoutLineNestedInput
   productionOrders?: Prisma.ProductionOrderUncheckedUpdateManyWithoutLineNestedInput
   sewingLogs?: Prisma.SewingLogUncheckedUpdateManyWithoutLineNestedInput
 }
@@ -1055,9 +1172,9 @@ export type LineUncheckedUpdateManyWithoutDepartmentInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   efficiencyPct?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   minutesPerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  operators?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -1066,11 +1183,13 @@ export type LineUncheckedUpdateManyWithoutDepartmentInput = {
  */
 
 export type LineCountOutputType = {
+  ppcAllocations: number
   productionOrders: number
   sewingLogs: number
 }
 
 export type LineCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  ppcAllocations?: boolean | LineCountOutputTypeCountPpcAllocationsArgs
   productionOrders?: boolean | LineCountOutputTypeCountProductionOrdersArgs
   sewingLogs?: boolean | LineCountOutputTypeCountSewingLogsArgs
 }
@@ -1083,6 +1202,13 @@ export type LineCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
    * Select specific fields to fetch from the LineCountOutputType
    */
   select?: Prisma.LineCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * LineCountOutputType without action
+ */
+export type LineCountOutputTypeCountPpcAllocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PpcAllocationWhereInput
 }
 
 /**
@@ -1109,11 +1235,12 @@ export type LineSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  operators?: boolean
   efficiencyPct?: boolean
   minutesPerDay?: boolean
-  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
+  operators?: boolean
   department?: boolean | Prisma.Line$departmentArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
+  ppcAllocations?: boolean | Prisma.Line$ppcAllocationsArgs<ExtArgs>
   productionOrders?: boolean | Prisma.Line$productionOrdersArgs<ExtArgs>
   sewingLogs?: boolean | Prisma.Line$sewingLogsArgs<ExtArgs>
   _count?: boolean | Prisma.LineCountOutputTypeDefaultArgs<ExtArgs>
@@ -1128,11 +1255,11 @@ export type LineSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  operators?: boolean
   efficiencyPct?: boolean
   minutesPerDay?: boolean
-  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
+  operators?: boolean
   department?: boolean | Prisma.Line$departmentArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["line"]>
 
 export type LineSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1144,11 +1271,11 @@ export type LineSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  operators?: boolean
   efficiencyPct?: boolean
   minutesPerDay?: boolean
-  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
+  operators?: boolean
   department?: boolean | Prisma.Line$departmentArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["line"]>
 
 export type LineSelectScalar = {
@@ -1160,33 +1287,35 @@ export type LineSelectScalar = {
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  operators?: boolean
   efficiencyPct?: boolean
   minutesPerDay?: boolean
+  operators?: boolean
 }
 
-export type LineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "floorId" | "departmentId" | "code" | "name" | "isActive" | "createdAt" | "updatedAt" | "operators" | "efficiencyPct" | "minutesPerDay", ExtArgs["result"]["line"]>
+export type LineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "floorId" | "departmentId" | "code" | "name" | "isActive" | "createdAt" | "updatedAt" | "efficiencyPct" | "minutesPerDay" | "operators", ExtArgs["result"]["line"]>
 export type LineInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
   department?: boolean | Prisma.Line$departmentArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
+  ppcAllocations?: boolean | Prisma.Line$ppcAllocationsArgs<ExtArgs>
   productionOrders?: boolean | Prisma.Line$productionOrdersArgs<ExtArgs>
   sewingLogs?: boolean | Prisma.Line$sewingLogsArgs<ExtArgs>
   _count?: boolean | Prisma.LineCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type LineIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
   department?: boolean | Prisma.Line$departmentArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
 }
 export type LineIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
   department?: boolean | Prisma.Line$departmentArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
 }
 
 export type $LinePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Line"
   objects: {
-    floor: Prisma.$FloorPayload<ExtArgs>
     department: Prisma.$DepartmentPayload<ExtArgs> | null
+    floor: Prisma.$FloorPayload<ExtArgs>
+    ppcAllocations: Prisma.$PpcAllocationPayload<ExtArgs>[]
     productionOrders: Prisma.$ProductionOrderPayload<ExtArgs>[]
     sewingLogs: Prisma.$SewingLogPayload<ExtArgs>[]
   }
@@ -1199,9 +1328,9 @@ export type $LinePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     isActive: boolean
     createdAt: Date
     updatedAt: Date
-    operators: number | null
     efficiencyPct: runtime.Decimal | null
     minutesPerDay: number
+    operators: number | null
   }, ExtArgs["result"]["line"]>
   composites: {}
 }
@@ -1596,8 +1725,9 @@ readonly fields: LineFieldRefs;
  */
 export interface Prisma__LineClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  floor<T extends Prisma.FloorDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FloorDefaultArgs<ExtArgs>>): Prisma.Prisma__FloorClient<runtime.Types.Result.GetResult<Prisma.$FloorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   department<T extends Prisma.Line$departmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Line$departmentArgs<ExtArgs>>): Prisma.Prisma__DepartmentClient<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  floor<T extends Prisma.FloorDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FloorDefaultArgs<ExtArgs>>): Prisma.Prisma__FloorClient<runtime.Types.Result.GetResult<Prisma.$FloorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  ppcAllocations<T extends Prisma.Line$ppcAllocationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Line$ppcAllocationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PpcAllocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   productionOrders<T extends Prisma.Line$productionOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Line$productionOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductionOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sewingLogs<T extends Prisma.Line$sewingLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Line$sewingLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SewingLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1637,9 +1767,9 @@ export interface LineFieldRefs {
   readonly isActive: Prisma.FieldRef<"Line", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Line", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Line", 'DateTime'>
-  readonly operators: Prisma.FieldRef<"Line", 'Int'>
   readonly efficiencyPct: Prisma.FieldRef<"Line", 'Decimal'>
   readonly minutesPerDay: Prisma.FieldRef<"Line", 'Int'>
+  readonly operators: Prisma.FieldRef<"Line", 'Int'>
 }
     
 
@@ -2057,6 +2187,30 @@ export type Line$departmentArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   include?: Prisma.DepartmentInclude<ExtArgs> | null
   where?: Prisma.DepartmentWhereInput
+}
+
+/**
+ * Line.ppcAllocations
+ */
+export type Line$ppcAllocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PpcAllocation
+   */
+  select?: Prisma.PpcAllocationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PpcAllocation
+   */
+  omit?: Prisma.PpcAllocationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PpcAllocationInclude<ExtArgs> | null
+  where?: Prisma.PpcAllocationWhereInput
+  orderBy?: Prisma.PpcAllocationOrderByWithRelationInput | Prisma.PpcAllocationOrderByWithRelationInput[]
+  cursor?: Prisma.PpcAllocationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PpcAllocationScalarFieldEnum | Prisma.PpcAllocationScalarFieldEnum[]
 }
 
 /**

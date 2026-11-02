@@ -173,3 +173,52 @@ export const expenseTransitions: TransitionMap = {
   APPROVED: ["CANCELLED"],
   CANCELLED: [],
 };
+// ===== T2 PPC (start) =====
+// ---------- PPC Allocation (সেকশন ২৫) ----------
+export const ppcAllocationTransitions: TransitionMap = {
+  PLANNED: ["RELEASED", "CANCELLED"],
+  RELEASED: ["CANCELLED"],
+  CANCELLED: [],
+};
+// ===== T2 PPC (end) =====
+
+
+
+// ===== T3 Textile (start) =====
+// ---------- Knitting (সেকশন ২০) ----------
+export const knittingTransitions: TransitionMap = {
+  PLANNED: ["YARN_ISSUED", "CANCELLED"],
+  YARN_ISSUED: ["COMPLETED"], // yarn dewar por cancel nai, stock ferot dorkar hole adjustment
+  COMPLETED: ["CLOSED"],
+  CLOSED: [],
+  CANCELLED: [],
+};
+
+// ---------- Dye batch ----------
+export const dyeBatchTransitions: TransitionMap = {
+  PLANNED: ["IN_PROCESS", "CANCELLED"],
+  IN_PROCESS: ["COMPLETED"],
+  COMPLETED: ["CLOSED"],
+  CLOSED: [],
+  CANCELLED: [],
+};
+
+// ---------- Lab dip: Request → Dyeing → Lab Dip → Buyer Review → Approved/Rejected → Bulk Dyeing ----------
+export const labDipTransitions: TransitionMap = {
+  REQUEST: ["DYEING"],
+  DYEING: ["LAB_DIP"],
+  LAB_DIP: ["BUYER_REVIEW"],
+  BUYER_REVIEW: ["APPROVED", "REJECTED"],
+  APPROVED: ["BULK_DYEING"],
+  REJECTED: ["DYEING"], // resubmission: abar dye kore pathano
+  BULK_DYEING: [],
+};
+
+// ---------- Fabric finishing ----------
+export const fabricFinishingTransitions: TransitionMap = {
+  PLANNED: ["IN_PROCESS", "CANCELLED"],
+  IN_PROCESS: ["COMPLETED"],
+  COMPLETED: [],
+  CANCELLED: [],
+};
+// ===== T3 Textile (end) =====

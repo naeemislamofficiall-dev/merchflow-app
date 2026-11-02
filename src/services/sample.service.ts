@@ -3,10 +3,11 @@ import { prisma } from "@/lib/prisma";
 import { BusinessRuleError, assertRejectionReason, assertStyleOpen } from "@/lib/business-rules";
 import { assertTransition, sampleTransitions } from "@/lib/status-rules";
 import { nextSampleNo } from "@/lib/numbering";
-import { assertRecordInScope, found, listFilter } from "@/lib/service-helpers";
+import { assertApprovalAllows, assertRecordInScope, found, listFilter } from "@/lib/service-helpers";
 import type { SessionUser } from "@/lib/permissions";
 import type { SampleStatus } from "@/generated/prisma/enums";
 import { BaseService } from "./base.service";
+
 
 const sampleTypes = [
   "PROTO", "FIT", "SIZE_SET", "SALESMAN", "SMS", "PP", "TOP", "SHIPMENT", "PHOTO", "WASH_TEST",
@@ -132,6 +133,7 @@ class SampleService extends BaseService {
     if (s.status !== "BUYER_REVIEW") {
       throw new BusinessRuleError("The sample must be in buyer review first");
     }
+    if (decision === "APPROVED") await assertApprovalAllows(s.companyId, "SampleRequest", id);
     if (decision === "REJECTED") assertRejectionReason(comments);
 
     const round = (await prisma.sampleApproval.count({ where: { sampleId: id } })) + 1;

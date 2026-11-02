@@ -87,3 +87,39 @@ export function aqlResult(f: AqlFound): "PASS" | "FAIL" {
   if (f.foundMinor >= f.rejectMinor) return "FAIL";
   return "PASS";
 }
+
+// ===== T6 Rework (start) =====
+
+// Rework % = rework hoye jawa piece / checked piece x 100. checked 0 hole null
+export function reworkPct(reworkQty: number, checked: number): number | null {
+  if (checked <= 0) return null;
+  return round1((reworkQty / checked) * 100);
+}
+
+// Defect balance = occurrence qty - (repaired + rejected). 0-r niche jabe na
+export function defectBalance(
+  occurrenceQty: number,
+  records: { repairedQty: number; rejectedQty: number }[]
+): number {
+  const done = records.reduce((s, r) => s + r.repairedQty + r.rejectedQty, 0);
+  return Math.max(0, occurrenceQty - done);
+}
+
+// Notun rework entry ager-gulor sathe milie balance-er beshi hobe kina
+export function reworkExceedsBalance(
+  occurrenceQty: number,
+  records: { repairedQty: number; rejectedQty: number }[],
+  add: { repairedQty: number; rejectedQty: number }
+): boolean {
+  return add.repairedQty + add.rejectedQty > defectBalance(occurrenceQty, records);
+}
+
+// WIP effect: repaired piece line-e phire jay (WIP-te thake), rejected piece WIP theke bad
+export function reworkWipEffect(records: { repairedQty: number; rejectedQty: number }[]) {
+  return {
+    returnedToWip: records.reduce((s, r) => s + r.repairedQty, 0),
+    removedFromWip: records.reduce((s, r) => s + r.rejectedQty, 0),
+  };
+}
+
+// ===== T6 Rework (end) =====

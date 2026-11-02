@@ -182,9 +182,9 @@ export type RfqSupplierWhereInput = {
   supplierId?: Prisma.StringFilter<"RfqSupplier"> | string
   sentAt?: Prisma.DateTimeNullableFilter<"RfqSupplier"> | Date | string | null
   materialId?: Prisma.StringNullableFilter<"RfqSupplier"> | string | null
+  material?: Prisma.XOR<Prisma.MaterialNullableScalarRelationFilter, Prisma.MaterialWhereInput> | null
   rfq?: Prisma.XOR<Prisma.RfqScalarRelationFilter, Prisma.RfqWhereInput>
   supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
-  material?: Prisma.XOR<Prisma.MaterialNullableScalarRelationFilter, Prisma.MaterialWhereInput> | null
 }
 
 export type RfqSupplierOrderByWithRelationInput = {
@@ -193,9 +193,9 @@ export type RfqSupplierOrderByWithRelationInput = {
   supplierId?: Prisma.SortOrder
   sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   materialId?: Prisma.SortOrderInput | Prisma.SortOrder
+  material?: Prisma.MaterialOrderByWithRelationInput
   rfq?: Prisma.RfqOrderByWithRelationInput
   supplier?: Prisma.SupplierOrderByWithRelationInput
-  material?: Prisma.MaterialOrderByWithRelationInput
 }
 
 export type RfqSupplierWhereUniqueInput = Prisma.AtLeast<{
@@ -208,9 +208,9 @@ export type RfqSupplierWhereUniqueInput = Prisma.AtLeast<{
   supplierId?: Prisma.StringFilter<"RfqSupplier"> | string
   sentAt?: Prisma.DateTimeNullableFilter<"RfqSupplier"> | Date | string | null
   materialId?: Prisma.StringNullableFilter<"RfqSupplier"> | string | null
+  material?: Prisma.XOR<Prisma.MaterialNullableScalarRelationFilter, Prisma.MaterialWhereInput> | null
   rfq?: Prisma.XOR<Prisma.RfqScalarRelationFilter, Prisma.RfqWhereInput>
   supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
-  material?: Prisma.XOR<Prisma.MaterialNullableScalarRelationFilter, Prisma.MaterialWhereInput> | null
 }, "id" | "rfqId_supplierId">
 
 export type RfqSupplierOrderByWithAggregationInput = {
@@ -238,9 +238,9 @@ export type RfqSupplierScalarWhereWithAggregatesInput = {
 export type RfqSupplierCreateInput = {
   id?: string
   sentAt?: Date | string | null
+  material?: Prisma.MaterialCreateNestedOneWithoutRfqInvitesInput
   rfq: Prisma.RfqCreateNestedOneWithoutSuppliersInput
   supplier: Prisma.SupplierCreateNestedOneWithoutRfqInvitesInput
-  material?: Prisma.MaterialCreateNestedOneWithoutRfqInvitesInput
 }
 
 export type RfqSupplierUncheckedCreateInput = {
@@ -254,9 +254,9 @@ export type RfqSupplierUncheckedCreateInput = {
 export type RfqSupplierUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  material?: Prisma.MaterialUpdateOneWithoutRfqInvitesNestedInput
   rfq?: Prisma.RfqUpdateOneRequiredWithoutSuppliersNestedInput
   supplier?: Prisma.SupplierUpdateOneRequiredWithoutRfqInvitesNestedInput
-  material?: Prisma.MaterialUpdateOneWithoutRfqInvitesNestedInput
 }
 
 export type RfqSupplierUncheckedUpdateInput = {
@@ -507,8 +507,8 @@ export type RfqSupplierScalarWhereInput = {
 export type RfqSupplierCreateWithoutSupplierInput = {
   id?: string
   sentAt?: Date | string | null
-  rfq: Prisma.RfqCreateNestedOneWithoutSuppliersInput
   material?: Prisma.MaterialCreateNestedOneWithoutRfqInvitesInput
+  rfq: Prisma.RfqCreateNestedOneWithoutSuppliersInput
 }
 
 export type RfqSupplierUncheckedCreateWithoutSupplierInput = {
@@ -547,8 +547,8 @@ export type RfqSupplierUpdateManyWithWhereWithoutSupplierInput = {
 export type RfqSupplierCreateWithoutRfqInput = {
   id?: string
   sentAt?: Date | string | null
-  supplier: Prisma.SupplierCreateNestedOneWithoutRfqInvitesInput
   material?: Prisma.MaterialCreateNestedOneWithoutRfqInvitesInput
+  supplier: Prisma.SupplierCreateNestedOneWithoutRfqInvitesInput
 }
 
 export type RfqSupplierUncheckedCreateWithoutRfqInput = {
@@ -622,8 +622,8 @@ export type RfqSupplierCreateManySupplierInput = {
 export type RfqSupplierUpdateWithoutSupplierInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rfq?: Prisma.RfqUpdateOneRequiredWithoutSuppliersNestedInput
   material?: Prisma.MaterialUpdateOneWithoutRfqInvitesNestedInput
+  rfq?: Prisma.RfqUpdateOneRequiredWithoutSuppliersNestedInput
 }
 
 export type RfqSupplierUncheckedUpdateWithoutSupplierInput = {
@@ -650,8 +650,8 @@ export type RfqSupplierCreateManyRfqInput = {
 export type RfqSupplierUpdateWithoutRfqInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  supplier?: Prisma.SupplierUpdateOneRequiredWithoutRfqInvitesNestedInput
   material?: Prisma.MaterialUpdateOneWithoutRfqInvitesNestedInput
+  supplier?: Prisma.SupplierUpdateOneRequiredWithoutRfqInvitesNestedInput
 }
 
 export type RfqSupplierUncheckedUpdateWithoutRfqInput = {
@@ -676,9 +676,9 @@ export type RfqSupplierSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   supplierId?: boolean
   sentAt?: boolean
   materialId?: boolean
+  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
   rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
-  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
 }, ExtArgs["result"]["rfqSupplier"]>
 
 export type RfqSupplierSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -687,9 +687,9 @@ export type RfqSupplierSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   supplierId?: boolean
   sentAt?: boolean
   materialId?: boolean
+  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
   rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
-  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
 }, ExtArgs["result"]["rfqSupplier"]>
 
 export type RfqSupplierSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -698,9 +698,9 @@ export type RfqSupplierSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   supplierId?: boolean
   sentAt?: boolean
   materialId?: boolean
+  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
   rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
-  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
 }, ExtArgs["result"]["rfqSupplier"]>
 
 export type RfqSupplierSelectScalar = {
@@ -713,27 +713,27 @@ export type RfqSupplierSelectScalar = {
 
 export type RfqSupplierOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "rfqId" | "supplierId" | "sentAt" | "materialId", ExtArgs["result"]["rfqSupplier"]>
 export type RfqSupplierInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
   rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
-  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
 }
 export type RfqSupplierIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
   rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
-  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
 }
 export type RfqSupplierIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
   rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
-  material?: boolean | Prisma.RfqSupplier$materialArgs<ExtArgs>
 }
 
 export type $RfqSupplierPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "RfqSupplier"
   objects: {
+    material: Prisma.$MaterialPayload<ExtArgs> | null
     rfq: Prisma.$RfqPayload<ExtArgs>
     supplier: Prisma.$SupplierPayload<ExtArgs>
-    material: Prisma.$MaterialPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1135,9 +1135,9 @@ readonly fields: RfqSupplierFieldRefs;
  */
 export interface Prisma__RfqSupplierClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  material<T extends Prisma.RfqSupplier$materialArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RfqSupplier$materialArgs<ExtArgs>>): Prisma.Prisma__MaterialClient<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   rfq<T extends Prisma.RfqDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RfqDefaultArgs<ExtArgs>>): Prisma.Prisma__RfqClient<runtime.Types.Result.GetResult<Prisma.$RfqPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   supplier<T extends Prisma.SupplierDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupplierDefaultArgs<ExtArgs>>): Prisma.Prisma__SupplierClient<runtime.Types.Result.GetResult<Prisma.$SupplierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  material<T extends Prisma.RfqSupplier$materialArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RfqSupplier$materialArgs<ExtArgs>>): Prisma.Prisma__MaterialClient<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

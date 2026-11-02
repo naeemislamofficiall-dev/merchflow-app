@@ -10,6 +10,9 @@ declare module "next-auth" {
     companyId?: string;
     roleId?: string;
     permissions?: string[];
+    portalType?: "SUPPLIER" | "BUYER";
+    supplierId?: string;
+    buyerId?: string;
   }
   interface Session {
     user: {
@@ -17,6 +20,9 @@ declare module "next-auth" {
       companyId: string;
       roleId: string;
       permissions: string[];
+      portalType?: "SUPPLIER" | "BUYER";
+      supplierId?: string;
+      buyerId?: string;
     } & DefaultSession["user"];
   }
 }
@@ -43,6 +49,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const user = await prisma.user.findUnique({
           where: { email },
           include: {
+            portalAccount: true,
             role: {
               include: { permissions: { include: { permission: true } } },
             },
@@ -59,7 +66,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           return null;
         }
 
-        const permissions = user.role.permissions.map((rp) => rp.permission.key);
+        const portal = user.portalAccount;
+        // Portal user-er kono internal permission thakbe na
+        const permissions = portal ? [] : user.role.permissions.map((rp) => rp.permission.key);
 
         // লগইন সফল: শেষ লগইনের সময় আর audit লেখা (এটা ব্যর্থ হলেও লগইন আটকাবে না)
         await prisma.user
@@ -82,6 +91,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           id: user.id,
           email: user.email,
           name: user.name,
+          portalType: portal?.type,
+          supplierId: portal?.supplierId ?? undefined,
+          buyerId: portal?.buyerId ?? undefined,
           companyId: user.companyId ?? undefined,
           roleId: user.roleId,
           permissions,
@@ -96,6 +108,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.companyId = user.companyId;
         token.roleId = user.roleId;
         token.permissions = user.permissions;
+        token.portalType = user.portalType;
+        token.supplierId = user.supplierId;
+        token.buyerId = user.buyerId;
       }
       return token;
     },
@@ -104,6 +119,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       session.user.companyId = String(token.companyId ?? "");
       session.user.roleId = String(token.roleId ?? "");
       session.user.permissions = (token.permissions as string[] | undefined) ?? [];
+      session.user.portalType = (token.portalType as "SUPPLIER" | "BUYER" | undefined) ?? undefined;
+      session.user.supplierId = (token.supplierId as string | undefined) ?? undefined;
+      session.user.buyerId = (token.buyerId as string | undefined) ?? undefined;
       return session;
     },
   },

@@ -9,6 +9,7 @@ import { DetailPage, SidePanelSection, type DetailTab } from "@/components/detai
 import { StatusBadge } from "@/components/detail/status-badge";
 import { sampleService } from "@/services/sample.service";
 import { SampleActions } from "./sample-actions";
+import { RequestApprovalButton } from "@/app/(app)/approvals/request-approval-button";
 
 const TABS: DetailTab[] = [
   { key: "overview", label: "Overview" },
@@ -60,7 +61,18 @@ export default async function SampleDetailPage(props: {
       basePath={`/samples/${id}`}
       tabs={TABS}
       activeTab={tab}
-      actions={<SampleActions sampleId={id} status={sample.status} next={next} />}
+      actions={
+        <div className="flex items-start gap-2">
+          {sample.status === "BUYER_REVIEW" && (
+            <RequestApprovalButton
+              entityType="SampleRequest"
+              entityId={id}
+              title={`Sample ${sample.sampleNo} approval`}
+            />
+          )}
+          <SampleActions sampleId={id} status={sample.status} next={next} />
+        </div>
+      }
       kpis={[
         { label: "Type", value: typeLabel(sample.sampleType) },
         { label: "Quantity", value: sample.quantity },

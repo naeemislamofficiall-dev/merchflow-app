@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { DetailPage, SidePanelSection, type DetailTab } from "@/components/detail/detail-page";
 import { qualityService } from "@/services/quality.service";
+import { ReworkPanel, type ReworkRow } from "./rework-panel";
 
 const TABS: DetailTab[] = [{ key: "defects", label: "Defects" }];
 
@@ -20,6 +21,17 @@ export default async function InspectionDetailPage(props: { params: Promise<{ id
   const defects = insp.occurrences.reduce((s, o) => s + o.quantity, 0);
   const dhu = insp.sampleSize > 0 ? `${((defects / insp.sampleSize) * 100).toFixed(1)}%` : "-";
 
+    const canRework = ["INLINE", "ENDLINE", "FINISHING"].includes(insp.stage);
+    const reworkRows: ReworkRow[] = canRework
+    ? (await qualityService.reworkOf(id)).map((r) => ({
+        id: r.id,
+        defectName: r.defectName,
+        quantity: r.quantity,
+        repaired: r.records.reduce((s, x) => s + x.repairedQty, 0),
+        rejected: r.records.reduce((s, x) => s + x.rejectedQty, 0),
+        balance: r.balance,
+      }))
+    : [];
   return (
     <DetailPage
       code={insp.stage.toLowerCase()}
@@ -95,6 +107,7 @@ export default async function InspectionDetailPage(props: { params: Promise<{ id
           </Table>
         </CardContent>
       </Card>
+     {canRework && <ReworkPanel rows={reworkRows} />}
     </DetailPage>
   );
 }

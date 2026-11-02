@@ -36,3 +36,14 @@ export async function recordInspectionAction(values: InspectionValues) {
     return { id: row.id };
   });
 }
+
+export async function addReworkAction(values: { occurrenceId: string; repairedQty: string; rejectedQty: string }) {
+  return runAction(async () => {
+    const row = await qualityService.addRework({
+      occurrenceId: values.occurrenceId,
+      repairedQty: Number(values.repairedQty || 0),
+      rejectedQty: Number(values.rejectedQty || 0),
+    });
+    return { id: row.id };
+  });
+}

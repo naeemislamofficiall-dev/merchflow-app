@@ -6,6 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { DetailPage, SidePanelSection, type DetailTab } from "@/components/detail/detail-page";
 import { aqlService } from "@/services/aql.service";
 import { AqlActions } from "./aql-actions";
+import { PreshipmentPanel } from "./preshipment-panel";
 
 const TABS: DetailTab[] = [{ key: "plan", label: "Plan and result" }];
 
@@ -19,6 +20,10 @@ export default async function AqlDetailPage(props: { params: Promise<{ id: strin
   if (!a) notFound();
 
   const recorded = a.foundMajor !== null;
+  const isPre = a.stage === "PRESHIPMENT";
+  const rep = isPre ? await aqlService.preshipmentReport(id) : null;
+  const files = isPre ? await aqlService.attachments(id) : [];
+  const yn = (v: boolean | null | undefined) => (v === null || v === undefined ? "" : v ? "yes" : "no");
 
   return (
     <DetailPage
@@ -69,6 +74,7 @@ export default async function AqlDetailPage(props: { params: Promise<{ id: strin
         </>
       }
     >
+      <div className="space-y-4">
       <Card>
         <CardHeader>
           <CardTitle>Accept and reject numbers</CardTitle>
@@ -106,6 +112,28 @@ export default async function AqlDetailPage(props: { params: Promise<{ id: strin
           </Table>
         </CardContent>
       </Card>
+       {isPre && (
+        <PreshipmentPanel
+          aqlId={id}
+          locked={recorded}
+          files={files}
+          initial={
+            rep
+              ? {
+                  cartonsTotal: rep.cartonsTotal?.toString() ?? "",
+                  cartonsChecked: rep.cartonsChecked?.toString() ?? "",
+                  packingOk: yn(rep.packingOk),
+                  labelingOk: yn(rep.labelingOk),
+                  measurementOk: yn(rep.measurementOk),
+                  workmanshipOk: yn(rep.workmanshipOk),
+                  summary: rep.summary,
+                  inspectedByName: rep.inspectedByName ?? "",
+                }
+              : null
+          }
+        />
+      )}
+       </div>
     </DetailPage>
   );
 }

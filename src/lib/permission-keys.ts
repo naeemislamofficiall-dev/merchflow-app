@@ -6,6 +6,7 @@ const MODULES: Record<string, readonly string[]> = {
   buyer: ["view", "create", "edit"],
   enquiry: ["view", "create", "edit", "approve"],
   style: ["view", "create", "edit", "approve"],
+  season: ["view", "create", "edit"],
   order: ["view", "create", "edit", "approve"],
   sample: ["view", "create", "edit"],
   tna: ["view", "create", "edit"],
@@ -30,9 +31,10 @@ const MODULES: Record<string, readonly string[]> = {
   commercial: ["view", "create", "edit"],
   dashboard: ["view"],
   alert: ["view"],
-  analytics: ["view"],
+  analytics: ["view", "export"],
   scan: ["use"],
   production: ["view", "create", "edit", "release", "complete", "overproduce"],
+  ppc: ["view", "plan", "release"],
   routing: ["view", "manage"],
   ie: ["view", "manage"],
   cutting: ["view", "create", "edit", "cut"],
@@ -47,6 +49,11 @@ const MODULES: Record<string, readonly string[]> = {
   user: ["view", "create", "edit"],
   role: ["view", "manage"],
   audit: ["view"],
+  job: ["view", "run"],
+  reportschedule: ["view", "manage"],
+  import: ["run"],
+  textile: ["view", "create", "edit", "approve", "close"],
+    portaluser: ["view", "create"],
 };
 
 export const ALL_PERMISSION_KEYS: string[] = Object.entries(MODULES).flatMap(

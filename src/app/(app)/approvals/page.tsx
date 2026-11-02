@@ -8,12 +8,14 @@ import { can, requireUser } from "@/lib/permissions";
 import { approvalService } from "@/services/approval.service";
 import { ApprovalButtons } from "./approval-buttons";
 import { WorkflowForm } from "./workflow-form";
+import { DelegationPanel, EscalationPanel } from "./delegation-panel";
 
 const ENTITY_HREF: Record<string, (id: string) => string> = {
   PurchaseOrder: (id) => `/purchase-orders/${id}`,
   PurchaseRequisition: (id) => `/prs/${id}`,
   CostSheet: (id) => `/costing/${id}`,
   Shipment: (id) => `/shipments/${id}`,
+  SampleRequest: (id) => `/samples/${id}`,
 };
 
 const day = (d: Date) => d.toISOString().slice(0, 10);
@@ -34,7 +36,16 @@ export default async function ApprovalsPage() {
   const roles = canManage
     ? await prisma.role.findMany({ select: { id: true, name: true }, orderBy: { name: "asc" } })
     : [];
-
+    const delegation = canDecide ? await approvalService.listDelegations() : null;
+  const delegateUsers = canDecide
+    ? await prisma.user.findMany({
+        where: { companyId: user.companyId, status: "ACTIVE", id: { not: user.id } },
+        select: { id: true, name: true, email: true },
+        orderBy: { name: "asc" },
+      })
+    : [];
+  const mapDel = (list: { id: string; startDate: Date; endDate: Date; reason: string; isActive: boolean }[], who: (i: number) => string) =>
+    list.map((d, i) => ({ id: d.id, who: who(i), start: day(d.startDate), end: day(d.endDate), reason: d.reason, active: d.isActive }));
   const requesterIds = pending ? [...new Set(pending.map((r) => r.requestedById))] : [];
   const requesters = requesterIds.length
     ? await prisma.user.findMany({ where: { id: { in: requesterIds } }, select: { id: true, email: true } })
@@ -105,7 +116,13 @@ export default async function ApprovalsPage() {
           </CardContent>
         </Card>
       )}
-
+      {delegation && (
+        <DelegationPanel
+          users={delegateUsers.map((u) => ({ id: u.id, label: `${u.name} (${u.email})` }))}
+          given={mapDel(delegation.given, (i) => delegation.given[i].toUser.name)}
+          received={mapDel(delegation.received, (i) => delegation.received[i].fromUser.name)}
+        />
+      )}
       {mine && (
         <Card>
           <CardHeader>
@@ -195,6 +212,7 @@ export default async function ApprovalsPage() {
           </Card>
 
           <WorkflowForm roles={roles} />
+          <EscalationPanel workflows={workflows.map((w) => ({ id: w.id, name: w.name, days: w.escalateAfterDays }))} />
         </>
       )}
     </div>

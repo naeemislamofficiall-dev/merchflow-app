@@ -216,9 +216,9 @@ export type StyleSizeWhereInput = {
   label?: Prisma.StringFilter<"StyleSize"> | string
   sortOrder?: Prisma.IntFilter<"StyleSize"> | number
   createdAt?: Prisma.DateTimeFilter<"StyleSize"> | Date | string
-  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
-  matrix?: Prisma.StyleMatrixQtyListRelationFilter
   orderLineQties?: Prisma.OrderLineQtyListRelationFilter
+  matrix?: Prisma.StyleMatrixQtyListRelationFilter
+  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
 }
 
 export type StyleSizeOrderByWithRelationInput = {
@@ -227,9 +227,9 @@ export type StyleSizeOrderByWithRelationInput = {
   label?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  style?: Prisma.StyleOrderByWithRelationInput
-  matrix?: Prisma.StyleMatrixQtyOrderByRelationAggregateInput
   orderLineQties?: Prisma.OrderLineQtyOrderByRelationAggregateInput
+  matrix?: Prisma.StyleMatrixQtyOrderByRelationAggregateInput
+  style?: Prisma.StyleOrderByWithRelationInput
 }
 
 export type StyleSizeWhereUniqueInput = Prisma.AtLeast<{
@@ -242,9 +242,9 @@ export type StyleSizeWhereUniqueInput = Prisma.AtLeast<{
   label?: Prisma.StringFilter<"StyleSize"> | string
   sortOrder?: Prisma.IntFilter<"StyleSize"> | number
   createdAt?: Prisma.DateTimeFilter<"StyleSize"> | Date | string
-  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
-  matrix?: Prisma.StyleMatrixQtyListRelationFilter
   orderLineQties?: Prisma.OrderLineQtyListRelationFilter
+  matrix?: Prisma.StyleMatrixQtyListRelationFilter
+  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
 }, "id" | "styleId_label">
 
 export type StyleSizeOrderByWithAggregationInput = {
@@ -276,9 +276,9 @@ export type StyleSizeCreateInput = {
   label: string
   sortOrder?: number
   createdAt?: Date | string
-  style: Prisma.StyleCreateNestedOneWithoutSizesInput
-  matrix?: Prisma.StyleMatrixQtyCreateNestedManyWithoutSizeInput
   orderLineQties?: Prisma.OrderLineQtyCreateNestedManyWithoutSizeInput
+  matrix?: Prisma.StyleMatrixQtyCreateNestedManyWithoutSizeInput
+  style: Prisma.StyleCreateNestedOneWithoutSizesInput
 }
 
 export type StyleSizeUncheckedCreateInput = {
@@ -287,8 +287,8 @@ export type StyleSizeUncheckedCreateInput = {
   label: string
   sortOrder?: number
   createdAt?: Date | string
-  matrix?: Prisma.StyleMatrixQtyUncheckedCreateNestedManyWithoutSizeInput
   orderLineQties?: Prisma.OrderLineQtyUncheckedCreateNestedManyWithoutSizeInput
+  matrix?: Prisma.StyleMatrixQtyUncheckedCreateNestedManyWithoutSizeInput
 }
 
 export type StyleSizeUpdateInput = {
@@ -296,9 +296,9 @@ export type StyleSizeUpdateInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  style?: Prisma.StyleUpdateOneRequiredWithoutSizesNestedInput
-  matrix?: Prisma.StyleMatrixQtyUpdateManyWithoutSizeNestedInput
   orderLineQties?: Prisma.OrderLineQtyUpdateManyWithoutSizeNestedInput
+  matrix?: Prisma.StyleMatrixQtyUpdateManyWithoutSizeNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutSizesNestedInput
 }
 
 export type StyleSizeUncheckedUpdateInput = {
@@ -307,8 +307,8 @@ export type StyleSizeUncheckedUpdateInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  matrix?: Prisma.StyleMatrixQtyUncheckedUpdateManyWithoutSizeNestedInput
   orderLineQties?: Prisma.OrderLineQtyUncheckedUpdateManyWithoutSizeNestedInput
+  matrix?: Prisma.StyleMatrixQtyUncheckedUpdateManyWithoutSizeNestedInput
 }
 
 export type StyleSizeCreateManyInput = {
@@ -461,8 +461,8 @@ export type StyleSizeCreateWithoutStyleInput = {
   label: string
   sortOrder?: number
   createdAt?: Date | string
-  matrix?: Prisma.StyleMatrixQtyCreateNestedManyWithoutSizeInput
   orderLineQties?: Prisma.OrderLineQtyCreateNestedManyWithoutSizeInput
+  matrix?: Prisma.StyleMatrixQtyCreateNestedManyWithoutSizeInput
 }
 
 export type StyleSizeUncheckedCreateWithoutStyleInput = {
@@ -470,8 +470,8 @@ export type StyleSizeUncheckedCreateWithoutStyleInput = {
   label: string
   sortOrder?: number
   createdAt?: Date | string
-  matrix?: Prisma.StyleMatrixQtyUncheckedCreateNestedManyWithoutSizeInput
   orderLineQties?: Prisma.OrderLineQtyUncheckedCreateNestedManyWithoutSizeInput
+  matrix?: Prisma.StyleMatrixQtyUncheckedCreateNestedManyWithoutSizeInput
 }
 
 export type StyleSizeCreateOrConnectWithoutStyleInput = {
@@ -516,8 +516,8 @@ export type StyleSizeCreateWithoutMatrixInput = {
   label: string
   sortOrder?: number
   createdAt?: Date | string
-  style: Prisma.StyleCreateNestedOneWithoutSizesInput
   orderLineQties?: Prisma.OrderLineQtyCreateNestedManyWithoutSizeInput
+  style: Prisma.StyleCreateNestedOneWithoutSizesInput
 }
 
 export type StyleSizeUncheckedCreateWithoutMatrixInput = {
@@ -550,8 +550,8 @@ export type StyleSizeUpdateWithoutMatrixInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  style?: Prisma.StyleUpdateOneRequiredWithoutSizesNestedInput
   orderLineQties?: Prisma.OrderLineQtyUpdateManyWithoutSizeNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutSizesNestedInput
 }
 
 export type StyleSizeUncheckedUpdateWithoutMatrixInput = {
@@ -568,8 +568,8 @@ export type StyleSizeCreateWithoutOrderLineQtiesInput = {
   label: string
   sortOrder?: number
   createdAt?: Date | string
-  style: Prisma.StyleCreateNestedOneWithoutSizesInput
   matrix?: Prisma.StyleMatrixQtyCreateNestedManyWithoutSizeInput
+  style: Prisma.StyleCreateNestedOneWithoutSizesInput
 }
 
 export type StyleSizeUncheckedCreateWithoutOrderLineQtiesInput = {
@@ -602,8 +602,8 @@ export type StyleSizeUpdateWithoutOrderLineQtiesInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  style?: Prisma.StyleUpdateOneRequiredWithoutSizesNestedInput
   matrix?: Prisma.StyleMatrixQtyUpdateManyWithoutSizeNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutSizesNestedInput
 }
 
 export type StyleSizeUncheckedUpdateWithoutOrderLineQtiesInput = {
@@ -627,8 +627,8 @@ export type StyleSizeUpdateWithoutStyleInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  matrix?: Prisma.StyleMatrixQtyUpdateManyWithoutSizeNestedInput
   orderLineQties?: Prisma.OrderLineQtyUpdateManyWithoutSizeNestedInput
+  matrix?: Prisma.StyleMatrixQtyUpdateManyWithoutSizeNestedInput
 }
 
 export type StyleSizeUncheckedUpdateWithoutStyleInput = {
@@ -636,8 +636,8 @@ export type StyleSizeUncheckedUpdateWithoutStyleInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  matrix?: Prisma.StyleMatrixQtyUncheckedUpdateManyWithoutSizeNestedInput
   orderLineQties?: Prisma.OrderLineQtyUncheckedUpdateManyWithoutSizeNestedInput
+  matrix?: Prisma.StyleMatrixQtyUncheckedUpdateManyWithoutSizeNestedInput
 }
 
 export type StyleSizeUncheckedUpdateManyWithoutStyleInput = {
@@ -653,13 +653,13 @@ export type StyleSizeUncheckedUpdateManyWithoutStyleInput = {
  */
 
 export type StyleSizeCountOutputType = {
-  matrix: number
   orderLineQties: number
+  matrix: number
 }
 
 export type StyleSizeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  matrix?: boolean | StyleSizeCountOutputTypeCountMatrixArgs
   orderLineQties?: boolean | StyleSizeCountOutputTypeCountOrderLineQtiesArgs
+  matrix?: boolean | StyleSizeCountOutputTypeCountMatrixArgs
 }
 
 /**
@@ -675,15 +675,15 @@ export type StyleSizeCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
 /**
  * StyleSizeCountOutputType without action
  */
-export type StyleSizeCountOutputTypeCountMatrixArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.StyleMatrixQtyWhereInput
+export type StyleSizeCountOutputTypeCountOrderLineQtiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderLineQtyWhereInput
 }
 
 /**
  * StyleSizeCountOutputType without action
  */
-export type StyleSizeCountOutputTypeCountOrderLineQtiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.OrderLineQtyWhereInput
+export type StyleSizeCountOutputTypeCountMatrixArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StyleMatrixQtyWhereInput
 }
 
 
@@ -693,9 +693,9 @@ export type StyleSizeSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   label?: boolean
   sortOrder?: boolean
   createdAt?: boolean
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
-  matrix?: boolean | Prisma.StyleSize$matrixArgs<ExtArgs>
   orderLineQties?: boolean | Prisma.StyleSize$orderLineQtiesArgs<ExtArgs>
+  matrix?: boolean | Prisma.StyleSize$matrixArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.StyleSizeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["styleSize"]>
 
@@ -727,9 +727,9 @@ export type StyleSizeSelectScalar = {
 
 export type StyleSizeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "styleId" | "label" | "sortOrder" | "createdAt", ExtArgs["result"]["styleSize"]>
 export type StyleSizeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
-  matrix?: boolean | Prisma.StyleSize$matrixArgs<ExtArgs>
   orderLineQties?: boolean | Prisma.StyleSize$orderLineQtiesArgs<ExtArgs>
+  matrix?: boolean | Prisma.StyleSize$matrixArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.StyleSizeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StyleSizeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -742,9 +742,9 @@ export type StyleSizeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type $StyleSizePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "StyleSize"
   objects: {
-    style: Prisma.$StylePayload<ExtArgs>
-    matrix: Prisma.$StyleMatrixQtyPayload<ExtArgs>[]
     orderLineQties: Prisma.$OrderLineQtyPayload<ExtArgs>[]
+    matrix: Prisma.$StyleMatrixQtyPayload<ExtArgs>[]
+    style: Prisma.$StylePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1146,9 +1146,9 @@ readonly fields: StyleSizeFieldRefs;
  */
 export interface Prisma__StyleSizeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  style<T extends Prisma.StyleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleDefaultArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  matrix<T extends Prisma.StyleSize$matrixArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleSize$matrixArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StyleMatrixQtyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   orderLineQties<T extends Prisma.StyleSize$orderLineQtiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleSize$orderLineQtiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderLineQtyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  matrix<T extends Prisma.StyleSize$matrixArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleSize$matrixArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StyleMatrixQtyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  style<T extends Prisma.StyleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleDefaultArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1584,30 +1584,6 @@ export type StyleSizeDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * StyleSize.matrix
- */
-export type StyleSize$matrixArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the StyleMatrixQty
-   */
-  select?: Prisma.StyleMatrixQtySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the StyleMatrixQty
-   */
-  omit?: Prisma.StyleMatrixQtyOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.StyleMatrixQtyInclude<ExtArgs> | null
-  where?: Prisma.StyleMatrixQtyWhereInput
-  orderBy?: Prisma.StyleMatrixQtyOrderByWithRelationInput | Prisma.StyleMatrixQtyOrderByWithRelationInput[]
-  cursor?: Prisma.StyleMatrixQtyWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.StyleMatrixQtyScalarFieldEnum | Prisma.StyleMatrixQtyScalarFieldEnum[]
-}
-
-/**
  * StyleSize.orderLineQties
  */
 export type StyleSize$orderLineQtiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1629,6 +1605,30 @@ export type StyleSize$orderLineQtiesArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.OrderLineQtyScalarFieldEnum | Prisma.OrderLineQtyScalarFieldEnum[]
+}
+
+/**
+ * StyleSize.matrix
+ */
+export type StyleSize$matrixArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StyleMatrixQty
+   */
+  select?: Prisma.StyleMatrixQtySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StyleMatrixQty
+   */
+  omit?: Prisma.StyleMatrixQtyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StyleMatrixQtyInclude<ExtArgs> | null
+  where?: Prisma.StyleMatrixQtyWhereInput
+  orderBy?: Prisma.StyleMatrixQtyOrderByWithRelationInput | Prisma.StyleMatrixQtyOrderByWithRelationInput[]
+  cursor?: Prisma.StyleMatrixQtyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StyleMatrixQtyScalarFieldEnum | Prisma.StyleMatrixQtyScalarFieldEnum[]
 }
 
 /**

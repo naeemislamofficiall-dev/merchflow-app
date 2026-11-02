@@ -8,6 +8,8 @@ import { cuttingService } from "@/services/cutting.service";
 import { materialService } from "@/services/material.service";
 import { CutPlanActions } from "./cut-plan-actions";
 import { LaySection, type LayItem } from "./lay-section";
+import { markerUsage } from "@/lib/cutting-calc";
+import { MarkerSection, type MarkerItem } from "./marker-section";
 
 const TABS: DetailTab[] = [{ key: "lays", label: "Lays and bundles" }];
 
@@ -35,6 +37,36 @@ export default async function CutPlanDetailPage(props: { params: Promise<{ id: s
   const material = materials.find((m) => m.id === plan.materialId);
   const ratio = (plan.sizeRatio ?? {}) as Record<string, number>;
   const withBundles = new Set(bundles.map((b) => b.layId));
+
+    const bundleByLay = new Map<string, { count: number; pieces: number }>();
+  for (const b of bundles) {
+    const cur = bundleByLay.get(b.layId) ?? { count: 0, pieces: 0 };
+    bundleByLay.set(b.layId, { count: cur.count + 1, pieces: cur.pieces + b.quantity });
+  }
+  const markers: MarkerItem[] = plan.markers.map((m) => {
+    const mr = (m.sizeRatio ?? {}) as Record<string, number>;
+    const mlays = plan.lays.filter((l) => l.markerId === m.id);
+    const u = markerUsage(mr, Number(m.length), mlays.map((l) => ({ plies: l.plies, actualPlies: l.actualPlies, status: l.status })));
+    return {
+      id: m.id,
+      markerNo: m.markerNo,
+      widthCm: Number(m.widthCm),
+      length: Number(m.length),
+      efficiencyPct: Number(m.efficiencyPct),
+      ratio: Object.entries(mr).map(([s, n]) => `${s}:${n}`).join(", "),
+      plannedPlies: u.plannedPlies,
+      cutPlies: u.cutPlies,
+      plannedPieces: u.plannedPieces,
+      plannedFabric: u.plannedFabric,
+      lays: mlays.map((l) => ({
+        layNo: l.layNo,
+        plies: l.plies,
+        status: l.status,
+        bundles: bundleByLay.get(l.id)?.count ?? 0,
+        pieces: bundleByLay.get(l.id)?.pieces ?? 0,
+      })),
+    };
+  });
 
   const lays: LayItem[] = plan.lays.map((l) => ({
     id: l.id,
@@ -94,6 +126,7 @@ export default async function CutPlanDetailPage(props: { params: Promise<{ id: s
       }
     >
       <div className="space-y-4">
+        <MarkerSection planId={id} planStatus={plan.status} markers={markers} />
         <LaySection planId={id} planStatus={plan.status} lays={lays} />
 
         <Card>

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import { REPORTS } from "./reports";
+import { can, requireUser } from "@/lib/permissions";
 
 const okDate = (s?: string) => (s && /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : undefined);
 
@@ -22,12 +23,13 @@ export default async function AnalyticsPage(props: {
   searchParams: Promise<{ report?: string; from?: string; to?: string }>;
 }) {
   const sp = await props.searchParams;
+  const canExport = can(await requireUser(), "analytics.export");
   const def = REPORTS.find((r) => r.key === sp.report) ?? REPORTS[0];
   const from = okDate(sp.from);
   const to = okDate(sp.to);
   const result = await def.run({ from, to });
 
-  const groups = ["Merchandising", "Procurement", "Inventory"] as const;
+  const groups = ["Merchandising", "Procurement", "Inventory", "Production", "Quality", "Shipment", "Finance"] as const;
 
   return (
     <div className="space-y-4">
@@ -76,6 +78,24 @@ export default async function AnalyticsPage(props: {
           )}
 
           {result.summary && <p className="text-sm font-medium">{result.summary}</p>}
+
+          <div className={canExport ? "flex gap-2" : "hidden"}>
+            {(["csv", "xlsx"] as const).map((f) => (
+              <a
+                key={f}
+                href={`/analytics/export?report=${def.key}&format=${f}${from ? `&from=${from}` : ""}${to ? `&to=${to}` : ""}`}
+                className="rounded-md border px-3 py-1.5 text-xs font-medium hover:bg-muted"
+              >
+                Export {f === "csv" ? "CSV" : "Excel"}
+              </a>
+            ))}
+            <a
+              href={`/analytics/print?report=${def.key}${from ? `&from=${from}` : ""}${to ? `&to=${to}` : ""}`}
+              className="rounded-md border px-3 py-1.5 text-xs font-medium hover:bg-muted"
+            >
+              PDF / Print
+            </a>
+          </div>
 
           <Card>
             <CardContent className="overflow-x-auto p-0">

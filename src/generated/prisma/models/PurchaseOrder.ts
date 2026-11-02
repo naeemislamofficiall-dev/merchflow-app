@@ -27,13 +27,13 @@ export type AggregatePurchaseOrder = {
 }
 
 export type PurchaseOrderAvgAggregateOutputType = {
-  exchangeRate: runtime.Decimal | null
   baseTotal: runtime.Decimal | null
+  exchangeRate: runtime.Decimal | null
 }
 
 export type PurchaseOrderSumAggregateOutputType = {
-  exchangeRate: runtime.Decimal | null
   baseTotal: runtime.Decimal | null
+  exchangeRate: runtime.Decimal | null
 }
 
 export type PurchaseOrderMinAggregateOutputType = {
@@ -54,9 +54,9 @@ export type PurchaseOrderMinAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   baseCurrency: string | null
+  baseTotal: runtime.Decimal | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseTotal: runtime.Decimal | null
 }
 
 export type PurchaseOrderMaxAggregateOutputType = {
@@ -77,9 +77,9 @@ export type PurchaseOrderMaxAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   baseCurrency: string | null
+  baseTotal: runtime.Decimal | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseTotal: runtime.Decimal | null
 }
 
 export type PurchaseOrderCountAggregateOutputType = {
@@ -100,21 +100,21 @@ export type PurchaseOrderCountAggregateOutputType = {
   createdAt: number
   updatedAt: number
   baseCurrency: number
+  baseTotal: number
   exchangeRate: number
   rateDate: number
-  baseTotal: number
   _all: number
 }
 
 
 export type PurchaseOrderAvgAggregateInputType = {
-  exchangeRate?: true
   baseTotal?: true
+  exchangeRate?: true
 }
 
 export type PurchaseOrderSumAggregateInputType = {
-  exchangeRate?: true
   baseTotal?: true
+  exchangeRate?: true
 }
 
 export type PurchaseOrderMinAggregateInputType = {
@@ -135,9 +135,9 @@ export type PurchaseOrderMinAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   baseCurrency?: true
+  baseTotal?: true
   exchangeRate?: true
   rateDate?: true
-  baseTotal?: true
 }
 
 export type PurchaseOrderMaxAggregateInputType = {
@@ -158,9 +158,9 @@ export type PurchaseOrderMaxAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   baseCurrency?: true
+  baseTotal?: true
   exchangeRate?: true
   rateDate?: true
-  baseTotal?: true
 }
 
 export type PurchaseOrderCountAggregateInputType = {
@@ -181,9 +181,9 @@ export type PurchaseOrderCountAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   baseCurrency?: true
+  baseTotal?: true
   exchangeRate?: true
   rateDate?: true
-  baseTotal?: true
   _all?: true
 }
 
@@ -291,9 +291,9 @@ export type PurchaseOrderGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   baseCurrency: string | null
+  baseTotal: runtime.Decimal | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseTotal: runtime.Decimal | null
   _count: PurchaseOrderCountAggregateOutputType | null
   _avg: PurchaseOrderAvgAggregateOutputType | null
   _sum: PurchaseOrderSumAggregateOutputType | null
@@ -337,15 +337,15 @@ export type PurchaseOrderWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"PurchaseOrder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PurchaseOrder"> | Date | string
   baseCurrency?: Prisma.StringNullableFilter<"PurchaseOrder"> | string | null
+  baseTotal?: Prisma.DecimalNullableFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"PurchaseOrder"> | Date | string | null
-  baseTotal?: Prisma.DecimalNullableFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnListRelationFilter
+  followUps?: Prisma.PoFollowUpListRelationFilter
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
   lines?: Prisma.PurchaseOrderLineListRelationFilter
-  followUps?: Prisma.PoFollowUpListRelationFilter
   proformaInvoices?: Prisma.SupplierPiListRelationFilter
-  grns?: Prisma.GrnListRelationFilter
 }
 
 export type PurchaseOrderOrderByWithRelationInput = {
@@ -366,15 +366,15 @@ export type PurchaseOrderOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
+  baseTotal?: Prisma.SortOrderInput | Prisma.SortOrder
   exchangeRate?: Prisma.SortOrderInput | Prisma.SortOrder
   rateDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseTotal?: Prisma.SortOrderInput | Prisma.SortOrder
+  grns?: Prisma.GrnOrderByRelationAggregateInput
+  followUps?: Prisma.PoFollowUpOrderByRelationAggregateInput
   company?: Prisma.CompanyOrderByWithRelationInput
   supplier?: Prisma.SupplierOrderByWithRelationInput
   lines?: Prisma.PurchaseOrderLineOrderByRelationAggregateInput
-  followUps?: Prisma.PoFollowUpOrderByRelationAggregateInput
   proformaInvoices?: Prisma.SupplierPiOrderByRelationAggregateInput
-  grns?: Prisma.GrnOrderByRelationAggregateInput
 }
 
 export type PurchaseOrderWhereUniqueInput = Prisma.AtLeast<{
@@ -399,15 +399,15 @@ export type PurchaseOrderWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"PurchaseOrder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PurchaseOrder"> | Date | string
   baseCurrency?: Prisma.StringNullableFilter<"PurchaseOrder"> | string | null
+  baseTotal?: Prisma.DecimalNullableFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"PurchaseOrder"> | Date | string | null
-  baseTotal?: Prisma.DecimalNullableFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnListRelationFilter
+  followUps?: Prisma.PoFollowUpListRelationFilter
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
   lines?: Prisma.PurchaseOrderLineListRelationFilter
-  followUps?: Prisma.PoFollowUpListRelationFilter
   proformaInvoices?: Prisma.SupplierPiListRelationFilter
-  grns?: Prisma.GrnListRelationFilter
 }, "id" | "companyId_poNo">
 
 export type PurchaseOrderOrderByWithAggregationInput = {
@@ -428,9 +428,9 @@ export type PurchaseOrderOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
+  baseTotal?: Prisma.SortOrderInput | Prisma.SortOrder
   exchangeRate?: Prisma.SortOrderInput | Prisma.SortOrder
   rateDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseTotal?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.PurchaseOrderCountOrderByAggregateInput
   _avg?: Prisma.PurchaseOrderAvgOrderByAggregateInput
   _max?: Prisma.PurchaseOrderMaxOrderByAggregateInput
@@ -459,9 +459,9 @@ export type PurchaseOrderScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PurchaseOrder"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PurchaseOrder"> | Date | string
   baseCurrency?: Prisma.StringNullableWithAggregatesFilter<"PurchaseOrder"> | string | null
+  baseTotal?: Prisma.DecimalNullableWithAggregatesFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableWithAggregatesFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableWithAggregatesFilter<"PurchaseOrder"> | Date | string | null
-  baseTotal?: Prisma.DecimalNullableWithAggregatesFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type PurchaseOrderCreateInput = {
@@ -480,15 +480,15 @@ export type PurchaseOrderCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
+  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseOrdersInput
   supplier: Prisma.SupplierCreateNestedOneWithoutPurchaseOrdersInput
   lines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutPoInput
-  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutPoInput
-  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderUncheckedCreateInput = {
@@ -509,13 +509,13 @@ export type PurchaseOrderUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
-  followUps?: Prisma.PoFollowUpUncheckedCreateNestedManyWithoutPoInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutPoInput
   grns?: Prisma.GrnUncheckedCreateNestedManyWithoutPoInput
+  followUps?: Prisma.PoFollowUpUncheckedCreateNestedManyWithoutPoInput
+  lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderUpdateInput = {
@@ -534,15 +534,15 @@ export type PurchaseOrderUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
+  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   supplier?: Prisma.SupplierUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   lines?: Prisma.PurchaseOrderLineUpdateManyWithoutPoNestedInput
-  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutPoNestedInput
-  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderUncheckedUpdateInput = {
@@ -563,13 +563,13 @@ export type PurchaseOrderUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
-  followUps?: Prisma.PoFollowUpUncheckedUpdateManyWithoutPoNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutPoNestedInput
   grns?: Prisma.GrnUncheckedUpdateManyWithoutPoNestedInput
+  followUps?: Prisma.PoFollowUpUncheckedUpdateManyWithoutPoNestedInput
+  lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderCreateManyInput = {
@@ -590,9 +590,9 @@ export type PurchaseOrderCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type PurchaseOrderUpdateManyMutationInput = {
@@ -611,9 +611,9 @@ export type PurchaseOrderUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type PurchaseOrderUncheckedUpdateManyInput = {
@@ -634,9 +634,9 @@ export type PurchaseOrderUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type PurchaseOrderListRelationFilter = {
@@ -672,14 +672,14 @@ export type PurchaseOrderCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
+  baseTotal?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseTotal?: Prisma.SortOrder
 }
 
 export type PurchaseOrderAvgOrderByAggregateInput = {
-  exchangeRate?: Prisma.SortOrder
   baseTotal?: Prisma.SortOrder
+  exchangeRate?: Prisma.SortOrder
 }
 
 export type PurchaseOrderMaxOrderByAggregateInput = {
@@ -700,9 +700,9 @@ export type PurchaseOrderMaxOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
+  baseTotal?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseTotal?: Prisma.SortOrder
 }
 
 export type PurchaseOrderMinOrderByAggregateInput = {
@@ -723,14 +723,14 @@ export type PurchaseOrderMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
+  baseTotal?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseTotal?: Prisma.SortOrder
 }
 
 export type PurchaseOrderSumOrderByAggregateInput = {
-  exchangeRate?: Prisma.SortOrder
   baseTotal?: Prisma.SortOrder
+  exchangeRate?: Prisma.SortOrder
 }
 
 export type PurchaseOrderScalarRelationFilter = {
@@ -905,14 +905,14 @@ export type PurchaseOrderCreateWithoutCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
+  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   supplier: Prisma.SupplierCreateNestedOneWithoutPurchaseOrdersInput
   lines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutPoInput
-  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutPoInput
-  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderUncheckedCreateWithoutCompanyInput = {
@@ -932,13 +932,13 @@ export type PurchaseOrderUncheckedCreateWithoutCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
-  followUps?: Prisma.PoFollowUpUncheckedCreateNestedManyWithoutPoInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutPoInput
   grns?: Prisma.GrnUncheckedCreateNestedManyWithoutPoInput
+  followUps?: Prisma.PoFollowUpUncheckedCreateNestedManyWithoutPoInput
+  lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderCreateOrConnectWithoutCompanyInput = {
@@ -988,9 +988,9 @@ export type PurchaseOrderScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"PurchaseOrder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PurchaseOrder"> | Date | string
   baseCurrency?: Prisma.StringNullableFilter<"PurchaseOrder"> | string | null
+  baseTotal?: Prisma.DecimalNullableFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"PurchaseOrder"> | Date | string | null
-  baseTotal?: Prisma.DecimalNullableFilter<"PurchaseOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type PurchaseOrderCreateWithoutSupplierInput = {
@@ -1009,14 +1009,14 @@ export type PurchaseOrderCreateWithoutSupplierInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
+  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseOrdersInput
   lines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutPoInput
-  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutPoInput
-  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderUncheckedCreateWithoutSupplierInput = {
@@ -1036,13 +1036,13 @@ export type PurchaseOrderUncheckedCreateWithoutSupplierInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
-  followUps?: Prisma.PoFollowUpUncheckedCreateNestedManyWithoutPoInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutPoInput
   grns?: Prisma.GrnUncheckedCreateNestedManyWithoutPoInput
+  followUps?: Prisma.PoFollowUpUncheckedCreateNestedManyWithoutPoInput
+  lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderCreateOrConnectWithoutSupplierInput = {
@@ -1087,14 +1087,14 @@ export type PurchaseOrderCreateWithoutLinesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
+  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseOrdersInput
   supplier: Prisma.SupplierCreateNestedOneWithoutPurchaseOrdersInput
-  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutPoInput
-  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderUncheckedCreateWithoutLinesInput = {
@@ -1115,12 +1115,12 @@ export type PurchaseOrderUncheckedCreateWithoutLinesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutPoInput
   followUps?: Prisma.PoFollowUpUncheckedCreateNestedManyWithoutPoInput
   proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutPoInput
-  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderCreateOrConnectWithoutLinesInput = {
@@ -1155,14 +1155,14 @@ export type PurchaseOrderUpdateWithoutLinesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
+  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   supplier?: Prisma.SupplierUpdateOneRequiredWithoutPurchaseOrdersNestedInput
-  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutPoNestedInput
-  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderUncheckedUpdateWithoutLinesInput = {
@@ -1183,12 +1183,12 @@ export type PurchaseOrderUncheckedUpdateWithoutLinesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnUncheckedUpdateManyWithoutPoNestedInput
   followUps?: Prisma.PoFollowUpUncheckedUpdateManyWithoutPoNestedInput
   proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutPoNestedInput
-  grns?: Prisma.GrnUncheckedUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderCreateWithoutProformaInvoicesInput = {
@@ -1207,14 +1207,14 @@ export type PurchaseOrderCreateWithoutProformaInvoicesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
+  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseOrdersInput
   supplier: Prisma.SupplierCreateNestedOneWithoutPurchaseOrdersInput
   lines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutPoInput
-  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
-  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderUncheckedCreateWithoutProformaInvoicesInput = {
@@ -1235,12 +1235,12 @@ export type PurchaseOrderUncheckedCreateWithoutProformaInvoicesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
-  followUps?: Prisma.PoFollowUpUncheckedCreateNestedManyWithoutPoInput
   grns?: Prisma.GrnUncheckedCreateNestedManyWithoutPoInput
+  followUps?: Prisma.PoFollowUpUncheckedCreateNestedManyWithoutPoInput
+  lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderCreateOrConnectWithoutProformaInvoicesInput = {
@@ -1275,14 +1275,14 @@ export type PurchaseOrderUpdateWithoutProformaInvoicesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
+  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   supplier?: Prisma.SupplierUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   lines?: Prisma.PurchaseOrderLineUpdateManyWithoutPoNestedInput
-  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
-  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderUncheckedUpdateWithoutProformaInvoicesInput = {
@@ -1303,12 +1303,12 @@ export type PurchaseOrderUncheckedUpdateWithoutProformaInvoicesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
-  followUps?: Prisma.PoFollowUpUncheckedUpdateManyWithoutPoNestedInput
   grns?: Prisma.GrnUncheckedUpdateManyWithoutPoNestedInput
+  followUps?: Prisma.PoFollowUpUncheckedUpdateManyWithoutPoNestedInput
+  lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderCreateWithoutFollowUpsInput = {
@@ -1327,14 +1327,14 @@ export type PurchaseOrderCreateWithoutFollowUpsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseOrdersInput
   supplier: Prisma.SupplierCreateNestedOneWithoutPurchaseOrdersInput
   lines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutPoInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutPoInput
-  grns?: Prisma.GrnCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderUncheckedCreateWithoutFollowUpsInput = {
@@ -1355,12 +1355,12 @@ export type PurchaseOrderUncheckedCreateWithoutFollowUpsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutPoInput
   lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
   proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutPoInput
-  grns?: Prisma.GrnUncheckedCreateNestedManyWithoutPoInput
 }
 
 export type PurchaseOrderCreateOrConnectWithoutFollowUpsInput = {
@@ -1395,14 +1395,14 @@ export type PurchaseOrderUpdateWithoutFollowUpsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   supplier?: Prisma.SupplierUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   lines?: Prisma.PurchaseOrderLineUpdateManyWithoutPoNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutPoNestedInput
-  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderUncheckedUpdateWithoutFollowUpsInput = {
@@ -1423,12 +1423,12 @@ export type PurchaseOrderUncheckedUpdateWithoutFollowUpsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnUncheckedUpdateManyWithoutPoNestedInput
   lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
   proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutPoNestedInput
-  grns?: Prisma.GrnUncheckedUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderCreateWithoutGrnsInput = {
@@ -1447,13 +1447,13 @@ export type PurchaseOrderCreateWithoutGrnsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseOrdersInput
   supplier: Prisma.SupplierCreateNestedOneWithoutPurchaseOrdersInput
   lines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutPoInput
-  followUps?: Prisma.PoFollowUpCreateNestedManyWithoutPoInput
   proformaInvoices?: Prisma.SupplierPiCreateNestedManyWithoutPoInput
 }
 
@@ -1475,11 +1475,11 @@ export type PurchaseOrderUncheckedCreateWithoutGrnsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
   followUps?: Prisma.PoFollowUpUncheckedCreateNestedManyWithoutPoInput
+  lines?: Prisma.PurchaseOrderLineUncheckedCreateNestedManyWithoutPoInput
   proformaInvoices?: Prisma.SupplierPiUncheckedCreateNestedManyWithoutPoInput
 }
 
@@ -1515,13 +1515,13 @@ export type PurchaseOrderUpdateWithoutGrnsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   supplier?: Prisma.SupplierUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   lines?: Prisma.PurchaseOrderLineUpdateManyWithoutPoNestedInput
-  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutPoNestedInput
 }
 
@@ -1543,11 +1543,11 @@ export type PurchaseOrderUncheckedUpdateWithoutGrnsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
   followUps?: Prisma.PoFollowUpUncheckedUpdateManyWithoutPoNestedInput
+  lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
   proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutPoNestedInput
 }
 
@@ -1568,9 +1568,9 @@ export type PurchaseOrderCreateManyCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type PurchaseOrderUpdateWithoutCompanyInput = {
@@ -1589,14 +1589,14 @@ export type PurchaseOrderUpdateWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
+  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   supplier?: Prisma.SupplierUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   lines?: Prisma.PurchaseOrderLineUpdateManyWithoutPoNestedInput
-  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutPoNestedInput
-  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderUncheckedUpdateWithoutCompanyInput = {
@@ -1616,13 +1616,13 @@ export type PurchaseOrderUncheckedUpdateWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
-  followUps?: Prisma.PoFollowUpUncheckedUpdateManyWithoutPoNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutPoNestedInput
   grns?: Prisma.GrnUncheckedUpdateManyWithoutPoNestedInput
+  followUps?: Prisma.PoFollowUpUncheckedUpdateManyWithoutPoNestedInput
+  lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderUncheckedUpdateManyWithoutCompanyInput = {
@@ -1642,9 +1642,9 @@ export type PurchaseOrderUncheckedUpdateManyWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type PurchaseOrderCreateManySupplierInput = {
@@ -1664,9 +1664,9 @@ export type PurchaseOrderCreateManySupplierInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type PurchaseOrderUpdateWithoutSupplierInput = {
@@ -1685,14 +1685,14 @@ export type PurchaseOrderUpdateWithoutSupplierInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
+  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseOrdersNestedInput
   lines?: Prisma.PurchaseOrderLineUpdateManyWithoutPoNestedInput
-  followUps?: Prisma.PoFollowUpUpdateManyWithoutPoNestedInput
   proformaInvoices?: Prisma.SupplierPiUpdateManyWithoutPoNestedInput
-  grns?: Prisma.GrnUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderUncheckedUpdateWithoutSupplierInput = {
@@ -1712,13 +1712,13 @@ export type PurchaseOrderUncheckedUpdateWithoutSupplierInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
-  followUps?: Prisma.PoFollowUpUncheckedUpdateManyWithoutPoNestedInput
-  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutPoNestedInput
   grns?: Prisma.GrnUncheckedUpdateManyWithoutPoNestedInput
+  followUps?: Prisma.PoFollowUpUncheckedUpdateManyWithoutPoNestedInput
+  lines?: Prisma.PurchaseOrderLineUncheckedUpdateManyWithoutPoNestedInput
+  proformaInvoices?: Prisma.SupplierPiUncheckedUpdateManyWithoutPoNestedInput
 }
 
 export type PurchaseOrderUncheckedUpdateManyWithoutSupplierInput = {
@@ -1738,9 +1738,9 @@ export type PurchaseOrderUncheckedUpdateManyWithoutSupplierInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseTotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 
@@ -1749,17 +1749,17 @@ export type PurchaseOrderUncheckedUpdateManyWithoutSupplierInput = {
  */
 
 export type PurchaseOrderCountOutputType = {
-  lines: number
-  followUps: number
-  proformaInvoices: number
   grns: number
+  followUps: number
+  lines: number
+  proformaInvoices: number
 }
 
 export type PurchaseOrderCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  lines?: boolean | PurchaseOrderCountOutputTypeCountLinesArgs
-  followUps?: boolean | PurchaseOrderCountOutputTypeCountFollowUpsArgs
-  proformaInvoices?: boolean | PurchaseOrderCountOutputTypeCountProformaInvoicesArgs
   grns?: boolean | PurchaseOrderCountOutputTypeCountGrnsArgs
+  followUps?: boolean | PurchaseOrderCountOutputTypeCountFollowUpsArgs
+  lines?: boolean | PurchaseOrderCountOutputTypeCountLinesArgs
+  proformaInvoices?: boolean | PurchaseOrderCountOutputTypeCountProformaInvoicesArgs
 }
 
 /**
@@ -1775,8 +1775,8 @@ export type PurchaseOrderCountOutputTypeDefaultArgs<ExtArgs extends runtime.Type
 /**
  * PurchaseOrderCountOutputType without action
  */
-export type PurchaseOrderCountOutputTypeCountLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PurchaseOrderLineWhereInput
+export type PurchaseOrderCountOutputTypeCountGrnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GrnWhereInput
 }
 
 /**
@@ -1789,15 +1789,15 @@ export type PurchaseOrderCountOutputTypeCountFollowUpsArgs<ExtArgs extends runti
 /**
  * PurchaseOrderCountOutputType without action
  */
-export type PurchaseOrderCountOutputTypeCountProformaInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SupplierPiWhereInput
+export type PurchaseOrderCountOutputTypeCountLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PurchaseOrderLineWhereInput
 }
 
 /**
  * PurchaseOrderCountOutputType without action
  */
-export type PurchaseOrderCountOutputTypeCountGrnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.GrnWhereInput
+export type PurchaseOrderCountOutputTypeCountProformaInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupplierPiWhereInput
 }
 
 
@@ -1819,15 +1819,15 @@ export type PurchaseOrderSelect<ExtArgs extends runtime.Types.Extensions.Interna
   createdAt?: boolean
   updatedAt?: boolean
   baseCurrency?: boolean
+  baseTotal?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseTotal?: boolean
+  grns?: boolean | Prisma.PurchaseOrder$grnsArgs<ExtArgs>
+  followUps?: boolean | Prisma.PurchaseOrder$followUpsArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   lines?: boolean | Prisma.PurchaseOrder$linesArgs<ExtArgs>
-  followUps?: boolean | Prisma.PurchaseOrder$followUpsArgs<ExtArgs>
   proformaInvoices?: boolean | Prisma.PurchaseOrder$proformaInvoicesArgs<ExtArgs>
-  grns?: boolean | Prisma.PurchaseOrder$grnsArgs<ExtArgs>
   _count?: boolean | Prisma.PurchaseOrderCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseOrder"]>
 
@@ -1849,9 +1849,9 @@ export type PurchaseOrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   createdAt?: boolean
   updatedAt?: boolean
   baseCurrency?: boolean
+  baseTotal?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseTotal?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseOrder"]>
@@ -1874,9 +1874,9 @@ export type PurchaseOrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   createdAt?: boolean
   updatedAt?: boolean
   baseCurrency?: boolean
+  baseTotal?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseTotal?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseOrder"]>
@@ -1899,19 +1899,19 @@ export type PurchaseOrderSelectScalar = {
   createdAt?: boolean
   updatedAt?: boolean
   baseCurrency?: boolean
+  baseTotal?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseTotal?: boolean
 }
 
-export type PurchaseOrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "poNo" | "supplierId" | "currency" | "paymentTerms" | "incoterms" | "destination" | "deliveryDate" | "status" | "rejectionReason" | "approvedAt" | "sentAt" | "createdById" | "createdAt" | "updatedAt" | "baseCurrency" | "exchangeRate" | "rateDate" | "baseTotal", ExtArgs["result"]["purchaseOrder"]>
+export type PurchaseOrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "poNo" | "supplierId" | "currency" | "paymentTerms" | "incoterms" | "destination" | "deliveryDate" | "status" | "rejectionReason" | "approvedAt" | "sentAt" | "createdById" | "createdAt" | "updatedAt" | "baseCurrency" | "baseTotal" | "exchangeRate" | "rateDate", ExtArgs["result"]["purchaseOrder"]>
 export type PurchaseOrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  grns?: boolean | Prisma.PurchaseOrder$grnsArgs<ExtArgs>
+  followUps?: boolean | Prisma.PurchaseOrder$followUpsArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   lines?: boolean | Prisma.PurchaseOrder$linesArgs<ExtArgs>
-  followUps?: boolean | Prisma.PurchaseOrder$followUpsArgs<ExtArgs>
   proformaInvoices?: boolean | Prisma.PurchaseOrder$proformaInvoicesArgs<ExtArgs>
-  grns?: boolean | Prisma.PurchaseOrder$grnsArgs<ExtArgs>
   _count?: boolean | Prisma.PurchaseOrderCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PurchaseOrderIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1926,12 +1926,12 @@ export type PurchaseOrderIncludeUpdateManyAndReturn<ExtArgs extends runtime.Type
 export type $PurchaseOrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PurchaseOrder"
   objects: {
+    grns: Prisma.$GrnPayload<ExtArgs>[]
+    followUps: Prisma.$PoFollowUpPayload<ExtArgs>[]
     company: Prisma.$CompanyPayload<ExtArgs>
     supplier: Prisma.$SupplierPayload<ExtArgs>
     lines: Prisma.$PurchaseOrderLinePayload<ExtArgs>[]
-    followUps: Prisma.$PoFollowUpPayload<ExtArgs>[]
     proformaInvoices: Prisma.$SupplierPiPayload<ExtArgs>[]
-    grns: Prisma.$GrnPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1951,9 +1951,9 @@ export type $PurchaseOrderPayload<ExtArgs extends runtime.Types.Extensions.Inter
     createdAt: Date
     updatedAt: Date
     baseCurrency: string | null
+    baseTotal: runtime.Decimal | null
     exchangeRate: runtime.Decimal | null
     rateDate: Date | null
-    baseTotal: runtime.Decimal | null
   }, ExtArgs["result"]["purchaseOrder"]>
   composites: {}
 }
@@ -2348,12 +2348,12 @@ readonly fields: PurchaseOrderFieldRefs;
  */
 export interface Prisma__PurchaseOrderClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  grns<T extends Prisma.PurchaseOrder$grnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrder$grnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GrnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  followUps<T extends Prisma.PurchaseOrder$followUpsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrder$followUpsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PoFollowUpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   supplier<T extends Prisma.SupplierDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupplierDefaultArgs<ExtArgs>>): Prisma.Prisma__SupplierClient<runtime.Types.Result.GetResult<Prisma.$SupplierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   lines<T extends Prisma.PurchaseOrder$linesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrder$linesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  followUps<T extends Prisma.PurchaseOrder$followUpsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrder$followUpsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PoFollowUpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   proformaInvoices<T extends Prisma.PurchaseOrder$proformaInvoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrder$proformaInvoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierPiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  grns<T extends Prisma.PurchaseOrder$grnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrder$grnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GrnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2400,9 +2400,9 @@ export interface PurchaseOrderFieldRefs {
   readonly createdAt: Prisma.FieldRef<"PurchaseOrder", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"PurchaseOrder", 'DateTime'>
   readonly baseCurrency: Prisma.FieldRef<"PurchaseOrder", 'String'>
+  readonly baseTotal: Prisma.FieldRef<"PurchaseOrder", 'Decimal'>
   readonly exchangeRate: Prisma.FieldRef<"PurchaseOrder", 'Decimal'>
   readonly rateDate: Prisma.FieldRef<"PurchaseOrder", 'DateTime'>
-  readonly baseTotal: Prisma.FieldRef<"PurchaseOrder", 'Decimal'>
 }
     
 
@@ -2804,27 +2804,27 @@ export type PurchaseOrderDeleteManyArgs<ExtArgs extends runtime.Types.Extensions
 }
 
 /**
- * PurchaseOrder.lines
+ * PurchaseOrder.grns
  */
-export type PurchaseOrder$linesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type PurchaseOrder$grnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the PurchaseOrderLine
+   * Select specific fields to fetch from the Grn
    */
-  select?: Prisma.PurchaseOrderLineSelect<ExtArgs> | null
+  select?: Prisma.GrnSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the PurchaseOrderLine
+   * Omit specific fields from the Grn
    */
-  omit?: Prisma.PurchaseOrderLineOmit<ExtArgs> | null
+  omit?: Prisma.GrnOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.PurchaseOrderLineInclude<ExtArgs> | null
-  where?: Prisma.PurchaseOrderLineWhereInput
-  orderBy?: Prisma.PurchaseOrderLineOrderByWithRelationInput | Prisma.PurchaseOrderLineOrderByWithRelationInput[]
-  cursor?: Prisma.PurchaseOrderLineWhereUniqueInput
+  include?: Prisma.GrnInclude<ExtArgs> | null
+  where?: Prisma.GrnWhereInput
+  orderBy?: Prisma.GrnOrderByWithRelationInput | Prisma.GrnOrderByWithRelationInput[]
+  cursor?: Prisma.GrnWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.PurchaseOrderLineScalarFieldEnum | Prisma.PurchaseOrderLineScalarFieldEnum[]
+  distinct?: Prisma.GrnScalarFieldEnum | Prisma.GrnScalarFieldEnum[]
 }
 
 /**
@@ -2852,6 +2852,30 @@ export type PurchaseOrder$followUpsArgs<ExtArgs extends runtime.Types.Extensions
 }
 
 /**
+ * PurchaseOrder.lines
+ */
+export type PurchaseOrder$linesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PurchaseOrderLine
+   */
+  select?: Prisma.PurchaseOrderLineSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PurchaseOrderLine
+   */
+  omit?: Prisma.PurchaseOrderLineOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PurchaseOrderLineInclude<ExtArgs> | null
+  where?: Prisma.PurchaseOrderLineWhereInput
+  orderBy?: Prisma.PurchaseOrderLineOrderByWithRelationInput | Prisma.PurchaseOrderLineOrderByWithRelationInput[]
+  cursor?: Prisma.PurchaseOrderLineWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PurchaseOrderLineScalarFieldEnum | Prisma.PurchaseOrderLineScalarFieldEnum[]
+}
+
+/**
  * PurchaseOrder.proformaInvoices
  */
 export type PurchaseOrder$proformaInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2873,30 +2897,6 @@ export type PurchaseOrder$proformaInvoicesArgs<ExtArgs extends runtime.Types.Ext
   take?: number
   skip?: number
   distinct?: Prisma.SupplierPiScalarFieldEnum | Prisma.SupplierPiScalarFieldEnum[]
-}
-
-/**
- * PurchaseOrder.grns
- */
-export type PurchaseOrder$grnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Grn
-   */
-  select?: Prisma.GrnSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Grn
-   */
-  omit?: Prisma.GrnOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.GrnInclude<ExtArgs> | null
-  where?: Prisma.GrnWhereInput
-  orderBy?: Prisma.GrnOrderByWithRelationInput | Prisma.GrnOrderByWithRelationInput[]
-  cursor?: Prisma.GrnWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.GrnScalarFieldEnum | Prisma.GrnScalarFieldEnum[]
 }
 
 /**

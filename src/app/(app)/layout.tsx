@@ -5,6 +5,7 @@ import { listSwitchOptions } from "@/services/context.service";
 import { notificationService } from "@/services/notification.service";
 import { AppShell } from "@/components/layout/app-shell";
 import { NAV, type NavGroupData } from "@/components/layout/nav-config";
+import { isTextileEnabled } from "@/lib/textile-flag";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   // Only "not logged in" (AuthError) goes to /login. Any other error is shown, not hidden.
@@ -23,9 +24,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     notificationService.unreadCount(),
     notificationService.list(false, 8),
   ]);
-
+  const textileEnabled = await isTextileEnabled(user.id);
   // যে permission নেই, সেই মেনু দেখানো হয় না
-  const groups: NavGroupData[] = NAV.map((g) => ({
+    const groups: NavGroupData[] = NAV.filter((g) => g.feature !== "textile" || textileEnabled).map((g) => ({
     label: g.label,
     items: g.items.filter((i) => !i.permission || can(user, i.permission)),
   })).filter((g) => g.items.length > 0);

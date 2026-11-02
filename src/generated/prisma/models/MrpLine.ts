@@ -29,17 +29,17 @@ export type AggregateMrpLine = {
 export type MrpLineAvgAggregateOutputType = {
   grossQty: runtime.Decimal | null
   stockQty: runtime.Decimal | null
+  netQty: runtime.Decimal | null
   incomingQty: runtime.Decimal | null
   reservedQty: runtime.Decimal | null
-  netQty: runtime.Decimal | null
 }
 
 export type MrpLineSumAggregateOutputType = {
   grossQty: runtime.Decimal | null
   stockQty: runtime.Decimal | null
+  netQty: runtime.Decimal | null
   incomingQty: runtime.Decimal | null
   reservedQty: runtime.Decimal | null
-  netQty: runtime.Decimal | null
 }
 
 export type MrpLineMinAggregateOutputType = {
@@ -48,9 +48,9 @@ export type MrpLineMinAggregateOutputType = {
   bomItemId: string | null
   grossQty: runtime.Decimal | null
   stockQty: runtime.Decimal | null
+  netQty: runtime.Decimal | null
   incomingQty: runtime.Decimal | null
   reservedQty: runtime.Decimal | null
-  netQty: runtime.Decimal | null
 }
 
 export type MrpLineMaxAggregateOutputType = {
@@ -59,9 +59,9 @@ export type MrpLineMaxAggregateOutputType = {
   bomItemId: string | null
   grossQty: runtime.Decimal | null
   stockQty: runtime.Decimal | null
+  netQty: runtime.Decimal | null
   incomingQty: runtime.Decimal | null
   reservedQty: runtime.Decimal | null
-  netQty: runtime.Decimal | null
 }
 
 export type MrpLineCountAggregateOutputType = {
@@ -70,9 +70,9 @@ export type MrpLineCountAggregateOutputType = {
   bomItemId: number
   grossQty: number
   stockQty: number
+  netQty: number
   incomingQty: number
   reservedQty: number
-  netQty: number
   _all: number
 }
 
@@ -80,17 +80,17 @@ export type MrpLineCountAggregateOutputType = {
 export type MrpLineAvgAggregateInputType = {
   grossQty?: true
   stockQty?: true
+  netQty?: true
   incomingQty?: true
   reservedQty?: true
-  netQty?: true
 }
 
 export type MrpLineSumAggregateInputType = {
   grossQty?: true
   stockQty?: true
+  netQty?: true
   incomingQty?: true
   reservedQty?: true
-  netQty?: true
 }
 
 export type MrpLineMinAggregateInputType = {
@@ -99,9 +99,9 @@ export type MrpLineMinAggregateInputType = {
   bomItemId?: true
   grossQty?: true
   stockQty?: true
+  netQty?: true
   incomingQty?: true
   reservedQty?: true
-  netQty?: true
 }
 
 export type MrpLineMaxAggregateInputType = {
@@ -110,9 +110,9 @@ export type MrpLineMaxAggregateInputType = {
   bomItemId?: true
   grossQty?: true
   stockQty?: true
+  netQty?: true
   incomingQty?: true
   reservedQty?: true
-  netQty?: true
 }
 
 export type MrpLineCountAggregateInputType = {
@@ -121,9 +121,9 @@ export type MrpLineCountAggregateInputType = {
   bomItemId?: true
   grossQty?: true
   stockQty?: true
+  netQty?: true
   incomingQty?: true
   reservedQty?: true
-  netQty?: true
   _all?: true
 }
 
@@ -219,9 +219,9 @@ export type MrpLineGroupByOutputType = {
   bomItemId: string
   grossQty: runtime.Decimal
   stockQty: runtime.Decimal
+  netQty: runtime.Decimal
   incomingQty: runtime.Decimal
   reservedQty: runtime.Decimal
-  netQty: runtime.Decimal
   _count: MrpLineCountAggregateOutputType | null
   _avg: MrpLineAvgAggregateOutputType | null
   _sum: MrpLineSumAggregateOutputType | null
@@ -253,11 +253,11 @@ export type MrpLineWhereInput = {
   bomItemId?: Prisma.StringFilter<"MrpLine"> | string
   grossQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  mrpRun?: Prisma.XOR<Prisma.MrpRunScalarRelationFilter, Prisma.MrpRunWhereInput>
   bomItem?: Prisma.XOR<Prisma.BomItemScalarRelationFilter, Prisma.BomItemWhereInput>
+  mrpRun?: Prisma.XOR<Prisma.MrpRunScalarRelationFilter, Prisma.MrpRunWhereInput>
 }
 
 export type MrpLineOrderByWithRelationInput = {
@@ -266,11 +266,11 @@ export type MrpLineOrderByWithRelationInput = {
   bomItemId?: Prisma.SortOrder
   grossQty?: Prisma.SortOrder
   stockQty?: Prisma.SortOrder
+  netQty?: Prisma.SortOrder
   incomingQty?: Prisma.SortOrder
   reservedQty?: Prisma.SortOrder
-  netQty?: Prisma.SortOrder
-  mrpRun?: Prisma.MrpRunOrderByWithRelationInput
   bomItem?: Prisma.BomItemOrderByWithRelationInput
+  mrpRun?: Prisma.MrpRunOrderByWithRelationInput
 }
 
 export type MrpLineWhereUniqueInput = Prisma.AtLeast<{
@@ -282,11 +282,11 @@ export type MrpLineWhereUniqueInput = Prisma.AtLeast<{
   bomItemId?: Prisma.StringFilter<"MrpLine"> | string
   grossQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  mrpRun?: Prisma.XOR<Prisma.MrpRunScalarRelationFilter, Prisma.MrpRunWhereInput>
   bomItem?: Prisma.XOR<Prisma.BomItemScalarRelationFilter, Prisma.BomItemWhereInput>
+  mrpRun?: Prisma.XOR<Prisma.MrpRunScalarRelationFilter, Prisma.MrpRunWhereInput>
 }, "id">
 
 export type MrpLineOrderByWithAggregationInput = {
@@ -295,9 +295,9 @@ export type MrpLineOrderByWithAggregationInput = {
   bomItemId?: Prisma.SortOrder
   grossQty?: Prisma.SortOrder
   stockQty?: Prisma.SortOrder
+  netQty?: Prisma.SortOrder
   incomingQty?: Prisma.SortOrder
   reservedQty?: Prisma.SortOrder
-  netQty?: Prisma.SortOrder
   _count?: Prisma.MrpLineCountOrderByAggregateInput
   _avg?: Prisma.MrpLineAvgOrderByAggregateInput
   _max?: Prisma.MrpLineMaxOrderByAggregateInput
@@ -314,20 +314,20 @@ export type MrpLineScalarWhereWithAggregatesInput = {
   bomItemId?: Prisma.StringWithAggregatesFilter<"MrpLine"> | string
   grossQty?: Prisma.DecimalWithAggregatesFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalWithAggregatesFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalWithAggregatesFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalWithAggregatesFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalWithAggregatesFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalWithAggregatesFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineCreateInput = {
   id?: string
   grossQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
-  mrpRun: Prisma.MrpRunCreateNestedOneWithoutLinesInput
   bomItem: Prisma.BomItemCreateNestedOneWithoutMrpLinesInput
+  mrpRun: Prisma.MrpRunCreateNestedOneWithoutLinesInput
 }
 
 export type MrpLineUncheckedCreateInput = {
@@ -336,20 +336,20 @@ export type MrpLineUncheckedCreateInput = {
   bomItemId: string
   grossQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   grossQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  mrpRun?: Prisma.MrpRunUpdateOneRequiredWithoutLinesNestedInput
   bomItem?: Prisma.BomItemUpdateOneRequiredWithoutMrpLinesNestedInput
+  mrpRun?: Prisma.MrpRunUpdateOneRequiredWithoutLinesNestedInput
 }
 
 export type MrpLineUncheckedUpdateInput = {
@@ -358,9 +358,9 @@ export type MrpLineUncheckedUpdateInput = {
   bomItemId?: Prisma.StringFieldUpdateOperationsInput | string
   grossQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineCreateManyInput = {
@@ -369,18 +369,18 @@ export type MrpLineCreateManyInput = {
   bomItemId: string
   grossQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   grossQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineUncheckedUpdateManyInput = {
@@ -389,9 +389,9 @@ export type MrpLineUncheckedUpdateManyInput = {
   bomItemId?: Prisma.StringFieldUpdateOperationsInput | string
   grossQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineListRelationFilter = {
@@ -410,17 +410,17 @@ export type MrpLineCountOrderByAggregateInput = {
   bomItemId?: Prisma.SortOrder
   grossQty?: Prisma.SortOrder
   stockQty?: Prisma.SortOrder
+  netQty?: Prisma.SortOrder
   incomingQty?: Prisma.SortOrder
   reservedQty?: Prisma.SortOrder
-  netQty?: Prisma.SortOrder
 }
 
 export type MrpLineAvgOrderByAggregateInput = {
   grossQty?: Prisma.SortOrder
   stockQty?: Prisma.SortOrder
+  netQty?: Prisma.SortOrder
   incomingQty?: Prisma.SortOrder
   reservedQty?: Prisma.SortOrder
-  netQty?: Prisma.SortOrder
 }
 
 export type MrpLineMaxOrderByAggregateInput = {
@@ -429,9 +429,9 @@ export type MrpLineMaxOrderByAggregateInput = {
   bomItemId?: Prisma.SortOrder
   grossQty?: Prisma.SortOrder
   stockQty?: Prisma.SortOrder
+  netQty?: Prisma.SortOrder
   incomingQty?: Prisma.SortOrder
   reservedQty?: Prisma.SortOrder
-  netQty?: Prisma.SortOrder
 }
 
 export type MrpLineMinOrderByAggregateInput = {
@@ -440,17 +440,17 @@ export type MrpLineMinOrderByAggregateInput = {
   bomItemId?: Prisma.SortOrder
   grossQty?: Prisma.SortOrder
   stockQty?: Prisma.SortOrder
+  netQty?: Prisma.SortOrder
   incomingQty?: Prisma.SortOrder
   reservedQty?: Prisma.SortOrder
-  netQty?: Prisma.SortOrder
 }
 
 export type MrpLineSumOrderByAggregateInput = {
   grossQty?: Prisma.SortOrder
   stockQty?: Prisma.SortOrder
+  netQty?: Prisma.SortOrder
   incomingQty?: Prisma.SortOrder
   reservedQty?: Prisma.SortOrder
-  netQty?: Prisma.SortOrder
 }
 
 export type MrpLineCreateNestedManyWithoutBomItemInput = {
@@ -541,9 +541,9 @@ export type MrpLineCreateWithoutBomItemInput = {
   id?: string
   grossQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   mrpRun: Prisma.MrpRunCreateNestedOneWithoutLinesInput
 }
 
@@ -552,9 +552,9 @@ export type MrpLineUncheckedCreateWithoutBomItemInput = {
   mrpRunId: string
   grossQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineCreateOrConnectWithoutBomItemInput = {
@@ -592,18 +592,18 @@ export type MrpLineScalarWhereInput = {
   bomItemId?: Prisma.StringFilter<"MrpLine"> | string
   grossQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFilter<"MrpLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineCreateWithoutMrpRunInput = {
   id?: string
   grossQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   bomItem: Prisma.BomItemCreateNestedOneWithoutMrpLinesInput
 }
 
@@ -612,9 +612,9 @@ export type MrpLineUncheckedCreateWithoutMrpRunInput = {
   bomItemId: string
   grossQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineCreateOrConnectWithoutMrpRunInput = {
@@ -648,18 +648,18 @@ export type MrpLineCreateManyBomItemInput = {
   mrpRunId: string
   grossQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineUpdateWithoutBomItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   grossQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   mrpRun?: Prisma.MrpRunUpdateOneRequiredWithoutLinesNestedInput
 }
 
@@ -668,9 +668,9 @@ export type MrpLineUncheckedUpdateWithoutBomItemInput = {
   mrpRunId?: Prisma.StringFieldUpdateOperationsInput | string
   grossQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineUncheckedUpdateManyWithoutBomItemInput = {
@@ -678,9 +678,9 @@ export type MrpLineUncheckedUpdateManyWithoutBomItemInput = {
   mrpRunId?: Prisma.StringFieldUpdateOperationsInput | string
   grossQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineCreateManyMrpRunInput = {
@@ -688,18 +688,18 @@ export type MrpLineCreateManyMrpRunInput = {
   bomItemId: string
   grossQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineUpdateWithoutMrpRunInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   grossQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bomItem?: Prisma.BomItemUpdateOneRequiredWithoutMrpLinesNestedInput
 }
 
@@ -708,9 +708,9 @@ export type MrpLineUncheckedUpdateWithoutMrpRunInput = {
   bomItemId?: Prisma.StringFieldUpdateOperationsInput | string
   grossQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type MrpLineUncheckedUpdateManyWithoutMrpRunInput = {
@@ -718,9 +718,9 @@ export type MrpLineUncheckedUpdateManyWithoutMrpRunInput = {
   bomItemId?: Prisma.StringFieldUpdateOperationsInput | string
   grossQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stockQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   incomingQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reservedQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  netQty?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 
@@ -731,11 +731,11 @@ export type MrpLineSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   bomItemId?: boolean
   grossQty?: boolean
   stockQty?: boolean
+  netQty?: boolean
   incomingQty?: boolean
   reservedQty?: boolean
-  netQty?: boolean
-  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
   bomItem?: boolean | Prisma.BomItemDefaultArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["mrpLine"]>
 
 export type MrpLineSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -744,11 +744,11 @@ export type MrpLineSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   bomItemId?: boolean
   grossQty?: boolean
   stockQty?: boolean
+  netQty?: boolean
   incomingQty?: boolean
   reservedQty?: boolean
-  netQty?: boolean
-  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
   bomItem?: boolean | Prisma.BomItemDefaultArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["mrpLine"]>
 
 export type MrpLineSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -757,11 +757,11 @@ export type MrpLineSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   bomItemId?: boolean
   grossQty?: boolean
   stockQty?: boolean
+  netQty?: boolean
   incomingQty?: boolean
   reservedQty?: boolean
-  netQty?: boolean
-  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
   bomItem?: boolean | Prisma.BomItemDefaultArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["mrpLine"]>
 
 export type MrpLineSelectScalar = {
@@ -770,30 +770,30 @@ export type MrpLineSelectScalar = {
   bomItemId?: boolean
   grossQty?: boolean
   stockQty?: boolean
+  netQty?: boolean
   incomingQty?: boolean
   reservedQty?: boolean
-  netQty?: boolean
 }
 
-export type MrpLineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "mrpRunId" | "bomItemId" | "grossQty" | "stockQty" | "incomingQty" | "reservedQty" | "netQty", ExtArgs["result"]["mrpLine"]>
+export type MrpLineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "mrpRunId" | "bomItemId" | "grossQty" | "stockQty" | "netQty" | "incomingQty" | "reservedQty", ExtArgs["result"]["mrpLine"]>
 export type MrpLineInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
   bomItem?: boolean | Prisma.BomItemDefaultArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
 }
 export type MrpLineIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
   bomItem?: boolean | Prisma.BomItemDefaultArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
 }
 export type MrpLineIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
   bomItem?: boolean | Prisma.BomItemDefaultArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.MrpRunDefaultArgs<ExtArgs>
 }
 
 export type $MrpLinePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "MrpLine"
   objects: {
-    mrpRun: Prisma.$MrpRunPayload<ExtArgs>
     bomItem: Prisma.$BomItemPayload<ExtArgs>
+    mrpRun: Prisma.$MrpRunPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -801,9 +801,9 @@ export type $MrpLinePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     bomItemId: string
     grossQty: runtime.Decimal
     stockQty: runtime.Decimal
+    netQty: runtime.Decimal
     incomingQty: runtime.Decimal
     reservedQty: runtime.Decimal
-    netQty: runtime.Decimal
   }, ExtArgs["result"]["mrpLine"]>
   composites: {}
 }
@@ -1198,8 +1198,8 @@ readonly fields: MrpLineFieldRefs;
  */
 export interface Prisma__MrpLineClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  mrpRun<T extends Prisma.MrpRunDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MrpRunDefaultArgs<ExtArgs>>): Prisma.Prisma__MrpRunClient<runtime.Types.Result.GetResult<Prisma.$MrpRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   bomItem<T extends Prisma.BomItemDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BomItemDefaultArgs<ExtArgs>>): Prisma.Prisma__BomItemClient<runtime.Types.Result.GetResult<Prisma.$BomItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  mrpRun<T extends Prisma.MrpRunDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MrpRunDefaultArgs<ExtArgs>>): Prisma.Prisma__MrpRunClient<runtime.Types.Result.GetResult<Prisma.$MrpRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1234,9 +1234,9 @@ export interface MrpLineFieldRefs {
   readonly bomItemId: Prisma.FieldRef<"MrpLine", 'String'>
   readonly grossQty: Prisma.FieldRef<"MrpLine", 'Decimal'>
   readonly stockQty: Prisma.FieldRef<"MrpLine", 'Decimal'>
+  readonly netQty: Prisma.FieldRef<"MrpLine", 'Decimal'>
   readonly incomingQty: Prisma.FieldRef<"MrpLine", 'Decimal'>
   readonly reservedQty: Prisma.FieldRef<"MrpLine", 'Decimal'>
-  readonly netQty: Prisma.FieldRef<"MrpLine", 'Decimal'>
 }
     
 

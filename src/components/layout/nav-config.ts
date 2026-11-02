@@ -1,8 +1,18 @@
 export type NavItem = { label: string; href: string; permission?: string; ready: boolean };
-export type NavGroupData = { label: string; items: NavItem[] };
+export type NavGroupData = { label: string; items: NavItem[]; feature?: "textile" };
 
 // নতুন পেজ বানালে শুধু ready: true করে দিন
 export const NAV: NavGroupData[] = [
+  {
+    label: "Executive",
+    items: [
+      { label: "Dashboard", href: "/dashboard", permission: "dashboard.view", ready: true },
+      { label: "Alerts", href: "/alerts", permission: "alert.view", ready: true },
+      { label: "Analytics", href: "/analytics", permission: "analytics.view", ready: true },
+      { label: "Approvals", href: "/approvals", ready: true },
+      { label: "Notifications", href: "/notifications", ready: true },
+    ],
+  },
   {
     label: "Finance",
     items: [
@@ -12,14 +22,17 @@ export const NAV: NavGroupData[] = [
       { label: "Profitability", href: "/finance/profitability", permission: "profitability.view", ready: true },
     ],
   },
+  
+
   {
-    label: "Executive",
+    label: "Textile",
+    feature: "textile",
     items: [
-      { label: "Dashboard", href: "/dashboard", permission: "dashboard.view", ready: true },
-      { label: "Alerts", href: "/alerts", permission: "alert.view", ready: true },
-      { label: "Analytics", href: "/analytics", permission: "analytics.view", ready: true },
-      { label: "Approvals", href: "/approvals", ready: true },
-      { label: "Notifications", href: "/notifications", ready: true },
+      { label: "Yarn", href: "/textile/yarn", permission: "textile.view", ready: false },
+      { label: "Knitting", href: "/textile/knitting", permission: "textile.view", ready: false },
+      { label: "Lab dips", href: "/textile/lab-dips", permission: "textile.view", ready: false },
+      { label: "Dyeing", href: "/textile/dyeing", permission: "textile.view", ready: false },
+      { label: "Finishing", href: "/textile/finishing", permission: "textile.view", ready: false },
     ],
   },
   {
@@ -34,6 +47,7 @@ export const NAV: NavGroupData[] = [
       { label: "T&A", href: "/tna", permission: "tna.view", ready: true },
       { label: "Costing", href: "/costing", permission: "costing.view", ready: true },
       { label: "BOM", href: "/bom", permission: "bom.view", ready: true },
+      { label: "Seasons", href: "/seasons", permission: "season.view", ready: true },
     ],
   },
   {
@@ -56,6 +70,7 @@ export const NAV: NavGroupData[] = [
       { label: "Warehouses", href: "/warehouses", permission: "warehouse.view", ready: true },
       { label: "Stock", href: "/inventory", permission: "inventory.view", ready: true },
       { label: "Stock adjustments", href: "/inventory/adjustments", permission: "inventory.view", ready: true },
+      { label: "Stock transfers", href: "/inventory/transfers", permission: "inventory.view", ready: true },
       { label: "Material returns", href: "/material-returns", permission: "inventory.view", ready: true },
       { label: "Fabric rolls", href: "/fabric-rolls", permission: "inventory.view", ready: true },
       { label: "Goods receipts", href: "/goods-receipts", permission: "grn.view", ready: true },
@@ -67,6 +82,8 @@ export const NAV: NavGroupData[] = [
     label: "Production",
     items: [
       { label: "Production orders", href: "/production-orders", permission: "production.view", ready: true },
+      { label: "Production planning", href: "/ppc", permission: "ppc.view", ready: true },
+      { label: "Capacity vs load", href: "/ppc/capacity", permission: "ppc.view", ready: true },
       { label: "Cutting", href: "/cutting", permission: "cutting.view", ready: true },
       { label: "Sewing", href: "/sewing", permission: "sewing.view", ready: true },
       { label: "WIP", href: "/wip", permission: "wip.view", ready: true },
@@ -99,6 +116,10 @@ export const NAV: NavGroupData[] = [
       { label: "Users", href: "/admin/users", permission: "user.view", ready: true },
       { label: "Roles", href: "/admin/roles", permission: "role.view", ready: true },
       { label: "Audit log", href: "/admin/audit-logs", permission: "audit.view", ready: true },
+      { label: "Background jobs", href: "/admin/jobs", permission: "job.view", ready: true },
+      { label: "Scheduled reports", href: "/admin/scheduled-reports", permission: "reportschedule.view", ready: true },
+      { label: "Data import", href: "/import", permission: "import.run", ready: true },
+      { label: "Portal users", href: "/admin/portal-users", permission: "portaluser.view", ready: true },
     ],
   },
   {

@@ -53,6 +53,9 @@ export default async function ProductionDetailPage(props: { params: Promise<{ id
             </Link>
             <p className="text-muted-foreground">Factory: {po.factory.code}</p>
             <p className="text-muted-foreground">Line: {po.line?.code ?? "-"}</p>
+            <Link href={`/ppc?factoryId=${po.factoryId}`} className="block text-denim-700 hover:underline">
+              Open in production planning
+            </Link>
           </SidePanelSection>
           <SidePanelSection title="Cutting">
             <p className="text-muted-foreground">Allowance: {Number(po.allowancePct)}%</p>

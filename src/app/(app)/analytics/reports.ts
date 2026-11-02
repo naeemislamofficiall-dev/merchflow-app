@@ -1,11 +1,16 @@
 import { analyticsService as a } from "@/services/analytics.service";
-
+import { qualityService } from "@/services/quality.service";
+import { aqlService } from "@/services/aql.service";
+import { wipService } from "@/services/wip.service";
+import { profitabilityService } from "@/services/profitability.service";
+import { round2 } from "@/lib/finance-calc";
+import { ppcService } from "@/services/ppc.service";
 export type Range = { from?: string; to?: string };
 export type Column = { key: string; label: string; right?: boolean };
 export type ReportResult = { columns: Column[]; rows: Record<string, unknown>[]; summary?: string };
 export type ReportDef = {
   key: string;
-  group: "Merchandising" | "Procurement" | "Inventory";
+  group: "Merchandising" | "Procurement" | "Inventory" | "Production" | "Quality" | "Shipment" | "Finance";
   title: string;
   ranged: boolean; // তারিখ-ফিল্টার চলে কিনা
   run: (r: Range) => Promise<ReportResult>;
@@ -147,7 +152,266 @@ export const REPORTS: ReportDef[] = [
       rows: await a.openPoReport(),
     }),
   },
+  // ---------- Quality ----------
+  {
+    key: "quality-summary", group: "Quality", title: "DHU, rework and reject summary", ranged: false,
+    run: async () => {
+      const s = await qualityService.summary();
+      return {
+        columns: [
+          { key: "metric", label: "Metric" },
+          { key: "value", label: "Value", right: true },
+        ],
+        rows: [
+          { metric: "Inspections", value: s.inspections },
+          { metric: "Pieces checked", value: s.checked },
+          { metric: "Defective pieces", value: s.defectivePieces },
+          { metric: "Total defects", value: s.defects },
+          { metric: "DHU", value: s.dhu },
+          { metric: "Repaired", value: s.repaired },
+          { metric: "Rejected", value: s.rejected },
+          { metric: "Open defects", value: s.openDefects },
+          { metric: "Rework %", value: s.reworkPct },
+        ],
+      };
+    },
+  },
+  {
+    key: "aql-pass-rate", group: "Quality", title: "AQL pass rate", ranged: false,
+    run: async () => {
+      const p = await aqlService.passRate();
+      return {
+        columns: [
+          { key: "metric", label: "Metric" },
+          { key: "value", label: "Value", right: true },
+        ],
+        rows: [
+          { metric: "Inspections", value: p.total },
+          { metric: "Passed", value: p.passed },
+          { metric: "Pass rate %", value: p.passRatePct },
+        ],
+      };
+    },
+  },
 
+    {
+    key: "defect-pareto", group: "Quality", title: "Defect Pareto", ranged: false,
+    run: async () => ({
+      columns: [
+        { key: "name", label: "Defect" },
+        { key: "count", label: "Count", right: true },
+        { key: "pct", label: "%", right: true },
+        { key: "cumulativePct", label: "Cumulative %", right: true },
+      ],
+      rows: (await qualityService.summary()).pareto,
+    }),
+  },
+
+  // ---------- Production ----------
+  {
+    key: "wip", group: "Production", title: "WIP by production order", ranged: false,
+    run: async () => ({
+      columns: [
+        { key: "productionNo", label: "Production" },
+        { key: "orderNo", label: "Order" },
+        { key: "styleNo", label: "Style" },
+        { key: "status", label: "Status" },
+        { key: "planned", label: "Planned", right: true },
+        { key: "cut", label: "Cut", right: true },
+        { key: "sewn", label: "Sewn", right: true },
+        { key: "sewingReject", label: "Sewing reject", right: true },
+        { key: "sewingRework", label: "Sewing rework", right: true },
+        { key: "finished", label: "Finished", right: true },
+        { key: "packed", label: "Packed", right: true },
+        { key: "shipped", label: "Shipped", right: true },
+      ],
+      rows: await wipService.open(),
+    }),
+  },
+  {
+    key: "daily-production", group: "Production", title: "Daily production", ranged: true,
+    run: async (r) => ({
+      columns: [
+        { key: "date", label: "Date" },
+        { key: "target", label: "Target", right: true },
+        { key: "output", label: "Output", right: true },
+        { key: "reject", label: "Reject", right: true },
+        { key: "rework", label: "Rework", right: true },
+        { key: "downtimeMinutes", label: "Downtime (min)", right: true },
+        { key: "efficiencyPct", label: "Efficiency %", right: true },
+      ],
+      rows: await a.dailyProductionReport(input(r)),
+    }),
+  },
+  {
+    key: "line-output", group: "Production", title: "Line output and efficiency", ranged: true,
+    run: async (r) => ({
+      columns: [
+        { key: "line", label: "Line" },
+        { key: "target", label: "Target", right: true },
+        { key: "output", label: "Output", right: true },
+        { key: "reject", label: "Reject", right: true },
+        { key: "rework", label: "Rework", right: true },
+        { key: "downtimeMinutes", label: "Downtime (min)", right: true },
+        { key: "efficiencyPct", label: "Efficiency %", right: true },
+      ],
+      rows: await a.lineOutputReport(input(r)),
+    }),
+  },
+
+    {
+    key: "capacity-utilization", group: "Production", title: "Capacity utilization (by line, weekly)", ranged: true,
+    run: async (r) => {
+      const iso = (d: Date) => d.toISOString().slice(0, 10);
+      const today = new Date();
+      const from = r.from ?? iso(today);
+      const to = r.to ?? iso(new Date(today.getTime() + 29 * 86_400_000));
+      const opts = await ppcService.formOptions();
+      const rows: Record<string, unknown>[] = [];
+      for (const f of opts.factories) {
+        const t = await ppcService.capacityTable({ factoryId: f.id, from, to, mode: "weekly" });
+        for (const x of t.rows) {
+          rows.push({
+            factory: f.code,
+            period: x.bucket,
+            line: x.code,
+            availableMinutes: x.availableMinutes,
+            plannedMinutes: x.plannedMinutes,
+            gapMinutes: x.gapMinutes,
+            loadPct: x.loadPct,
+            overloaded: x.overloaded ? "Yes" : "No",
+          });
+        }
+      }
+      return {
+        columns: [
+          { key: "factory", label: "Factory" },
+          { key: "period", label: "Period" },
+          { key: "line", label: "Line" },
+          { key: "availableMinutes", label: "Available (min)", right: true },
+          { key: "plannedMinutes", label: "Planned (min)", right: true },
+          { key: "gapMinutes", label: "Gap (min)", right: true },
+          { key: "loadPct", label: "Load %", right: true },
+          { key: "overloaded", label: "Overloaded" },
+        ],
+        rows,
+        summary: `Period: ${from} to ${to}`,
+      };
+    },
+  },
+  // ---------- Shipment ----------
+  {
+    key: "shipment-plan", group: "Shipment", title: "Shipment plan and on-time", ranged: true,
+    run: async (r) => {
+      const res = await a.shipmentPlanReport(input(r));
+      return {
+        columns: [
+          { key: "shipmentNo", label: "Shipment" },
+          { key: "buyer", label: "Buyer" },
+          { key: "status", label: "Status" },
+          { key: "mode", label: "Mode" },
+          { key: "destination", label: "Destination" },
+          { key: "plannedShipDate", label: "Planned ship" },
+          { key: "exFactoryDate", label: "Ex-factory" },
+          { key: "actualShipDate", label: "Actual ship" },
+          { key: "delayDays", label: "Delay (days)", right: true },
+          { key: "onTime", label: "On time?" },
+        ],
+        rows: res.rows,
+        summary: `On-time shipment rate: ${res.onTimePct === null ? "-" : `${res.onTimePct}%`}`,
+      };
+    },
+  },
+  {
+    key: "shipment-balance", group: "Shipment", title: "Shipment balance by order", ranged: false,
+    run: async () => ({
+      columns: [
+        { key: "orderNo", label: "Order" },
+        { key: "buyer", label: "Buyer" },
+        { key: "status", label: "Status" },
+        { key: "ordered", label: "Ordered", right: true },
+        { key: "packedNotShipped", label: "Packed, not shipped", right: true },
+        { key: "shipped", label: "Shipped", right: true },
+        { key: "balance", label: "Balance", right: true },
+      ],
+      rows: await a.shipmentBalanceReport(),
+    }),
+  },
+  {
+    key: "costing", group: "Finance", title: "Costing summary", ranged: false,
+    run: async () => ({
+      columns: [
+        { key: "style", label: "Style" },
+        { key: "version", label: "Version", right: true },
+        { key: "costType", label: "Type" },
+        { key: "status", label: "Status" },
+        { key: "currency", label: "Currency" },
+        { key: "totalCost", label: "Total cost", right: true },
+        { key: "quotedPrice", label: "Quoted price", right: true },
+        { key: "marginPct", label: "Margin %", right: true },
+      ],
+      rows: await a.costingReport(),
+    }),
+  },
+  // ---------- Finance ----------
+  {
+    key: "supplier-payable", group: "Finance", title: "Supplier payable", ranged: false,
+    run: async () => {
+      const res = await a.supplierPayableReport();
+      return {
+        columns: [
+          { key: "supplier", label: "Supplier" },
+          { key: "invoiceNo", label: "Invoice" },
+          { key: "supplierInvoiceNo", label: "Supplier invoice" },
+          { key: "dueDate", label: "Due" },
+          { key: "currency", label: "Currency" },
+          { key: "outstanding", label: "Outstanding", right: true },
+          { key: "outstandingBase", label: "Outstanding (base)", right: true },
+          { key: "overdueDays", label: "Overdue (days)", right: true },
+        ],
+        rows: res.rows,
+        summary: `Total payable (base): ${new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(res.totalBase)}`,
+      };
+    },
+  },
+  {
+    key: "buyer-receivable", group: "Finance", title: "Buyer receivable", ranged: false,
+    run: async () => {
+      const res = await a.buyerReceivableReport();
+      return {
+        columns: [
+          { key: "buyer", label: "Buyer" },
+          { key: "invoiceNo", label: "Invoice" },
+          { key: "dueDate", label: "Due" },
+          { key: "currency", label: "Currency" },
+          { key: "outstanding", label: "Outstanding", right: true },
+          { key: "outstandingBase", label: "Outstanding (base)", right: true },
+          { key: "overdueDays", label: "Overdue (days)", right: true },
+        ],
+        rows: res.rows,
+        summary: `Total receivable (base): ${new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(res.totalBase)}`,
+      };
+    },
+  },
+  {
+    key: "order-profitability", group: "Finance", title: "Order profitability", ranged: false,
+    run: async () => ({
+      columns: [
+        { key: "orderNo", label: "Order" },
+        { key: "revenue", label: "Revenue (base)", right: true },
+        { key: "cost", label: "Cost (base)", right: true },
+        { key: "margin", label: "Margin (base)", right: true },
+        { key: "marginPct", label: "Margin %", right: true },
+      ],
+      rows: (await profitabilityService.byBuyer()).orders.map((o) => ({
+        orderNo: o.orderNo,
+        revenue: round2(o.revenue),
+        cost: round2(o.cost),
+        margin: round2(o.revenue - o.cost),
+        marginPct: o.revenue > 0 ? round2(((o.revenue - o.cost) / o.revenue) * 100) : null,
+      })),
+    }),
+  },
   // ---------- Inventory ----------
   {
     key: "stock-aging", group: "Inventory", title: "Stock aging (by lot)", ranged: false,

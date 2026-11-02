@@ -1,0 +1,190 @@
+// ==========================================================================
+// Steps 2-10 er notun model. Eta apnar prisma/schema.prisma-r SHESH-e paste korun.
+// Kono existing model bodlanor dorkar nai (shob relation nijeder moddhe, baki
+// jaygay shudhu plain String id). Tarpor:  npx prisma migrate dev --name steps_2_10
+// ==========================================================================
+
+// ---------- Step 2: Stock count ----------
+model StockCount {
+  id          String   @id @default(cuid())
+  companyId   String
+  countNo     String
+  warehouseId String
+  status      String   @default("DRAFT") // DRAFT | POSTED | CANCELLED
+  remarks     String?
+  createdById String?
+  postedById  String?
+  postedAt    DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  lines StockCountLine[]
+
+  @@unique([companyId, countNo])
+  @@index([companyId, status])
+}
+
+model StockCountLine {
+  id           String   @id @default(cuid())
+  countId      String
+  materialId   String
+  systemQty    Decimal  @db.Decimal(14, 4) // snapshot jokhon count shuru hoy
+  countedQty   Decimal? @db.Decimal(14, 4)
+  adjustedQty  Decimal? @db.Decimal(14, 4) // post-er shomoy ashol adjustment
+  note         String?
+
+  count StockCount @relation(fields: [countId], references: [id], onDelete: Cascade)
+
+  @@unique([countId, materialId])
+  @@index([countId])
+}
+
+// ---------- Step 7: Compliance certificate ----------
+model ComplianceCertificate {
+  id          String    @id @default(cuid())
+  companyId   String
+  factoryId   String?
+  supplierId  String?
+  certType    String // e.g. BUYER_AUDIT, SOCIAL, FIRE_SAFETY, ENVIRONMENTAL, TRADE_LICENSE, OEKO_TEX
+  title       String
+  issuer      String?
+  certNo      String?
+  issueDate   DateTime?
+  expiryDate  DateTime
+  documentUrl String?
+  remarks     String?
+  isActive    Boolean   @default(true)
+  createdById String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([companyId, expiryDate])
+}
+
+// ---------- Step 8: Budget ----------
+model Budget {
+  id          String   @id @default(cuid())
+  companyId   String
+  factoryId   String?
+  category    String // ExpenseCategory-r nam: FACTORY | PRODUCTION | FREIGHT | SAMPLE | OTHER
+  year        Int
+  month       Int // 1-12
+  amount      Decimal  @db.Decimal(16, 2)
+  currency    String   @default("BDT")
+  note        String?
+  createdById String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([companyId, category, year, month])
+  @@index([companyId, year, month])
+}
+
+// ---------- Step 9: MFA ----------
+model UserMfa {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  secretEnc String // AES-256-GCM diye encrypt kora TOTP secret
+  enabled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ---------- Step 10: HR ----------
+model Employee {
+  id          String    @id @default(cuid())
+  companyId   String
+  factoryId   String?
+  empNo       String
+  name        String
+  designation String?
+  department  String?
+  shift       String?
+  skillLevel  String? // e.g. A / B / C
+  phone       String?
+  joinDate    DateTime  @default(now())
+  basicSalary Decimal   @default(0) @db.Decimal(14, 2)
+  status      String    @default("ACTIVE") // ACTIVE | INACTIVE
+  leftDate    DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  attendance AttendanceRecord[]
+  leaves     LeaveRequest[]
+  payLines   PayrollLine[]
+
+  @@unique([companyId, empNo])
+  @@index([companyId, status])
+}
+
+model AttendanceRecord {
+  id            String   @id @default(cuid())
+  employeeId    String
+  date          DateTime @db.Date
+  status        String // PRESENT | ABSENT | LEAVE | LATE | HOLIDAY
+  inTime        String?
+  outTime       String?
+  overtimeHours Decimal  @default(0) @db.Decimal(5, 2)
+  createdById   String?
+  createdAt     DateTime @default(now())
+
+  employee Employee @relation(fields: [employeeId], references: [id])
+
+  @@unique([employeeId, date])
+  @@index([date])
+}
+
+model LeaveRequest {
+  id          String    @id @default(cuid())
+  companyId   String
+  employeeId  String
+  leaveType   String // CASUAL | SICK | ANNUAL | MATERNITY | UNPAID
+  fromDate    DateTime  @db.Date
+  toDate      DateTime  @db.Date
+  days        Int
+  reason      String?
+  status      String    @default("PENDING") // PENDING | APPROVED | REJECTED
+  decidedById String?
+  decidedAt   DateTime?
+  createdById String?
+  createdAt   DateTime  @default(now())
+
+  employee Employee @relation(fields: [employeeId], references: [id])
+
+  @@index([companyId, status])
+}
+
+model PayrollRun {
+  id          String    @id @default(cuid())
+  companyId   String
+  year        Int
+  month       Int
+  status      String    @default("DRAFT") // DRAFT | APPROVED
+  totalNet    Decimal   @default(0) @db.Decimal(16, 2)
+  createdById String?
+  approvedById String?
+  approvedAt  DateTime?
+  createdAt   DateTime  @default(now())
+
+  lines PayrollLine[]
+
+  @@unique([companyId, year, month])
+}
+
+model PayrollLine {
+  id              String  @id @default(cuid())
+  runId           String
+  employeeId      String
+  basic           Decimal @db.Decimal(14, 2)
+  absentDays      Int     @default(0)
+  unpaidLeaveDays Int     @default(0)
+  overtimeHours   Decimal @default(0) @db.Decimal(7, 2)
+  overtimePay     Decimal @default(0) @db.Decimal(14, 2)
+  deduction       Decimal @default(0) @db.Decimal(14, 2)
+  net             Decimal @db.Decimal(14, 2)
+
+  run      PayrollRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  employee Employee   @relation(fields: [employeeId], references: [id])
+
+  @@unique([runId, employeeId])
+}

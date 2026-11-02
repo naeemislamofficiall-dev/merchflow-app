@@ -596,3 +596,213 @@ export type Expense = Prisma.ExpenseModel
  * 
  */
 export type CostAllocation = Prisma.CostAllocationModel
+/**
+ * Model PpcAllocation
+ * 
+ */
+export type PpcAllocation = Prisma.PpcAllocationModel
+/**
+ * Model FactoryHoliday
+ * 
+ */
+export type FactoryHoliday = Prisma.FactoryHolidayModel
+/**
+ * Model Marker
+ * 
+ */
+export type Marker = Prisma.MarkerModel
+/**
+ * Model ReworkRecord
+ * 
+ */
+export type ReworkRecord = Prisma.ReworkRecordModel
+/**
+ * Model PreshipmentReport
+ * 
+ */
+export type PreshipmentReport = Prisma.PreshipmentReportModel
+/**
+ * Model ApprovalDelegation
+ * 
+ */
+export type ApprovalDelegation = Prisma.ApprovalDelegationModel
+/**
+ * Model ApprovalEscalation
+ * 
+ */
+export type ApprovalEscalation = Prisma.ApprovalEscalationModel
+/**
+ * Model Yarn
+ * 
+ */
+export type Yarn = Prisma.YarnModel
+/**
+ * Model KnittingOrder
+ * 
+ */
+export type KnittingOrder = Prisma.KnittingOrderModel
+/**
+ * Model KnittingOutput
+ * 
+ */
+export type KnittingOutput = Prisma.KnittingOutputModel
+/**
+ * Model LabDip
+ * 
+ */
+export type LabDip = Prisma.LabDipModel
+/**
+ * Model LabDipSubmission
+ * 
+ */
+export type LabDipSubmission = Prisma.LabDipSubmissionModel
+/**
+ * Model DyeBatch
+ * 
+ */
+export type DyeBatch = Prisma.DyeBatchModel
+/**
+ * Model FabricFinishing
+ * 
+ */
+export type FabricFinishing = Prisma.FabricFinishingModel
+/**
+ * Model JobRun
+ * 
+ */
+export type JobRun = Prisma.JobRunModel
+/**
+ * Model ScheduledReport
+ * 
+ */
+export type ScheduledReport = Prisma.ScheduledReportModel
+/**
+ * Model KpiSnapshot
+ * 
+ */
+export type KpiSnapshot = Prisma.KpiSnapshotModel
+/**
+ * Model ImportBatch
+ * 
+ */
+export type ImportBatch = Prisma.ImportBatchModel
+/**
+ * Model ImportRow
+ * 
+ */
+export type ImportRow = Prisma.ImportRowModel
+/**
+ * Model PortalAccount
+ * 
+ */
+export type PortalAccount = Prisma.PortalAccountModel
+/**
+ * Model PoShipmentUpdate
+ * 
+ */
+export type PoShipmentUpdate = Prisma.PoShipmentUpdateModel
+/**
+ * Model AttendanceRecord
+ * 
+ */
+export type AttendanceRecord = Prisma.AttendanceRecordModel
+/**
+ * Model Budget
+ * 
+ */
+export type Budget = Prisma.BudgetModel
+/**
+ * Model Certificate
+ * 
+ */
+export type Certificate = Prisma.CertificateModel
+/**
+ * Model CertificateType
+ * 
+ */
+export type CertificateType = Prisma.CertificateTypeModel
+/**
+ * Model ComplianceAudit
+ * 
+ */
+export type ComplianceAudit = Prisma.ComplianceAuditModel
+/**
+ * Model ComplianceAuditType
+ * 
+ */
+export type ComplianceAuditType = Prisma.ComplianceAuditTypeModel
+/**
+ * Model Designation
+ * 
+ */
+export type Designation = Prisma.DesignationModel
+/**
+ * Model Employee
+ * 
+ */
+export type Employee = Prisma.EmployeeModel
+/**
+ * Model EmployeeSkill
+ * 
+ */
+export type EmployeeSkill = Prisma.EmployeeSkillModel
+/**
+ * Model LeaveRequest
+ * 
+ */
+export type LeaveRequest = Prisma.LeaveRequestModel
+/**
+ * Model LeaveType
+ * 
+ */
+export type LeaveType = Prisma.LeaveTypeModel
+/**
+ * Model OperatorAllocation
+ * 
+ */
+export type OperatorAllocation = Prisma.OperatorAllocationModel
+/**
+ * Model PackingList
+ * 
+ */
+export type PackingList = Prisma.PackingListModel
+/**
+ * Model PayrollLine
+ * 
+ */
+export type PayrollLine = Prisma.PayrollLineModel
+/**
+ * Model PayrollRun
+ * 
+ */
+export type PayrollRun = Prisma.PayrollRunModel
+/**
+ * Model Shift
+ * 
+ */
+export type Shift = Prisma.ShiftModel
+/**
+ * Model StockCount
+ * 
+ */
+export type StockCount = Prisma.StockCountModel
+/**
+ * Model StockCountLine
+ * 
+ */
+export type StockCountLine = Prisma.StockCountLineModel
+/**
+ * Model StockTransfer
+ * 
+ */
+export type StockTransfer = Prisma.StockTransferModel
+/**
+ * Model StockTransferLine
+ * 
+ */
+export type StockTransferLine = Prisma.StockTransferLineModel
+/**
+ * Model UserMfa
+ * 
+ */
+export type UserMfa = Prisma.UserMfaModel

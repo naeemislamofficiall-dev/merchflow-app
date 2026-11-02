@@ -177,3 +177,195 @@ export async function getStockPosition(
   ]);
   return { stock, incoming, reserved };
 }
+
+// ===== T3 Textile (start) =====
+
+// Textile stock write: only this file writes StockTransaction for yarn / greige / dyed fabric.
+// ISSUE takes stock out (quantity saved as negative), PRODUCTION_IN puts produced stock in.
+export async function postStockTx(
+  db: Db,
+  p: {
+    companyId: string;
+    materialId: string;
+    warehouseId: string;
+    type: "ISSUE" | "PRODUCTION_IN";
+    quantity: number; // always positive
+    unit: string;
+    lotId?: string;
+    rollId?: string;
+    binId?: string;
+    orderId?: string;
+    refType: string;
+    refId: string;
+    userId?: string;
+    remarks?: string;
+  }
+) {
+  if (!(p.quantity > 0)) throw new BusinessRuleError("Quantity must be more than zero");
+  await lockMaterials(db, p.companyId, [p.materialId]);
+
+  if (p.type === "ISSUE") {
+    const negOk = await negativeStockAllowed(db, p.companyId);
+    const have = await onHand(db, {
+      companyId: p.companyId,
+      materialId: p.materialId,
+      warehouseId: p.warehouseId,
+      lotId: p.lotId,
+      rollId: p.rollId,
+      binId: p.binId,
+    });
+    if (!negOk && p.quantity > have + EPS) {
+      throw new BusinessRuleError(`Not enough stock: only ${have} available, requested ${p.quantity}`);
+    }
+  }
+
+  return db.stockTransaction.create({
+    data: {
+      companyId: p.companyId,
+      materialId: p.materialId,
+      lotId: p.lotId,
+      rollId: p.rollId,
+      warehouseId: p.warehouseId,
+      binId: p.binId,
+      type: p.type,
+      quantity: p.type === "ISSUE" ? -p.quantity : p.quantity,
+      unit: p.unit,
+      orderId: p.orderId,
+      refType: p.refType,
+      refId: p.refId,
+      remarks: p.remarks,
+      createdById: p.userId,
+    },
+  });
+}
+
+// Produced fabric (greige from knitting, dyed from dyeing): lot + roll + PRODUCTION_IN in one go.
+// Roll starts as PENDING, so the normal fabric inspection flow still applies before cutting.
+export async function postProducedRoll(
+  db: Db,
+  p: {
+    companyId: string;
+    materialId: string;
+    warehouseId: string;
+    binId?: string;
+    lotNo: string;
+    rollNo: string;
+    color?: string;
+    shade?: string;
+    gsm?: number;
+    widthCm?: number;
+    weightKg?: number;
+    quantity: number;
+    unit: string;
+    orderId?: string;
+    refType: string;
+    refId: string;
+    userId?: string;
+    remarks?: string;
+  }
+) {
+  if (!(p.quantity > 0)) throw new BusinessRuleError("Quantity must be more than zero");
+  await lockMaterials(db, p.companyId, [p.materialId]);
+
+  const lot = await db.inventoryLot.upsert({
+    where: {
+      companyId_materialId_lotNo: { companyId: p.companyId, materialId: p.materialId, lotNo: p.lotNo },
+    },
+    update: {},
+    create: {
+      companyId: p.companyId,
+      materialId: p.materialId,
+      lotNo: p.lotNo,
+      color: p.color,
+      shade: p.shade,
+    },
+  });
+
+  const dup = await db.fabricRoll.findUnique({
+    where: { companyId_rollNo: { companyId: p.companyId, rollNo: p.rollNo } },
+  });
+  if (dup) throw new BusinessRuleError(`Roll number ${p.rollNo} already exists`);
+
+  const roll = await db.fabricRoll.create({
+    data: {
+      companyId: p.companyId,
+      rollNo: p.rollNo,
+      materialId: p.materialId,
+      lotId: lot.id,
+      color: p.color,
+      shade: p.shade,
+      gsm: p.gsm,
+      widthCm: p.widthCm,
+      weightKg: p.weightKg,
+      quantity: p.quantity,
+      warehouseId: p.warehouseId,
+      binId: p.binId,
+    },
+  });
+
+  await postStockTx(db, {
+    companyId: p.companyId,
+    materialId: p.materialId,
+    warehouseId: p.warehouseId,
+    type: "PRODUCTION_IN",
+    quantity: p.quantity,
+    unit: p.unit,
+    lotId: lot.id,
+    rollId: roll.id,
+    binId: p.binId,
+    orderId: p.orderId,
+    refType: p.refType,
+    refId: p.refId,
+    userId: p.userId,
+    remarks: p.remarks,
+  });
+
+  return { lot, roll };
+}
+
+// ===== T3 Textile (end) =====
+
+// ===== T5 Import (start) =====
+// Opening balance: only way import writes StockTransaction. Type ADJUSTMENT, refType OPENING_BALANCE.
+export async function postOpeningBalance(
+  db: Db,
+  p: {
+    companyId: string;
+    materialId: string;
+    warehouseId: string;
+    quantity: number;
+    unit: string;
+    lotNo?: string;
+    refId: string;
+    userId?: string;
+    remarks?: string;
+  }
+) {
+  if (!(p.quantity > 0)) throw new BusinessRuleError("Quantity must be more than zero");
+  await lockMaterials(db, p.companyId, [p.materialId]);
+  let lotId: string | undefined;
+  if (p.lotNo) {
+    const lot = await db.inventoryLot.upsert({
+      where: { companyId_materialId_lotNo: { companyId: p.companyId, materialId: p.materialId, lotNo: p.lotNo } },
+      update: {},
+      create: { companyId: p.companyId, materialId: p.materialId, lotNo: p.lotNo },
+    });
+    lotId = lot.id;
+  }
+  return db.stockTransaction.create({
+    data: {
+      companyId: p.companyId,
+      materialId: p.materialId,
+      lotId,
+      warehouseId: p.warehouseId,
+      type: "ADJUSTMENT",
+      quantity: p.quantity,
+      unit: p.unit,
+      refType: "OPENING_BALANCE",
+      refId: p.refId,
+      remarks: `Opening balance${p.remarks ? `: ${p.remarks}` : ""}`,
+      createdById: p.userId,
+    },
+  });
+}
+// ===== T5 Import (end) =====

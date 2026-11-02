@@ -166,16 +166,16 @@ export type UserFactoryAccessWhereInput = {
   userId?: Prisma.StringFilter<"UserFactoryAccess"> | string
   factoryId?: Prisma.StringFilter<"UserFactoryAccess"> | string
   createdAt?: Prisma.DateTimeFilter<"UserFactoryAccess"> | Date | string
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   factory?: Prisma.XOR<Prisma.FactoryScalarRelationFilter, Prisma.FactoryWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type UserFactoryAccessOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   factoryId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  user?: Prisma.UserOrderByWithRelationInput
   factory?: Prisma.FactoryOrderByWithRelationInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type UserFactoryAccessWhereUniqueInput = Prisma.AtLeast<{
@@ -186,8 +186,8 @@ export type UserFactoryAccessWhereUniqueInput = Prisma.AtLeast<{
   userId?: Prisma.StringFilter<"UserFactoryAccess"> | string
   factoryId?: Prisma.StringFilter<"UserFactoryAccess"> | string
   createdAt?: Prisma.DateTimeFilter<"UserFactoryAccess"> | Date | string
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   factory?: Prisma.XOR<Prisma.FactoryScalarRelationFilter, Prisma.FactoryWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "userId_factoryId">
 
 export type UserFactoryAccessOrderByWithAggregationInput = {
@@ -210,8 +210,8 @@ export type UserFactoryAccessScalarWhereWithAggregatesInput = {
 
 export type UserFactoryAccessCreateInput = {
   createdAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutExtraFactoriesInput
   factory: Prisma.FactoryCreateNestedOneWithoutUserAccessInput
+  user: Prisma.UserCreateNestedOneWithoutExtraFactoriesInput
 }
 
 export type UserFactoryAccessUncheckedCreateInput = {
@@ -222,8 +222,8 @@ export type UserFactoryAccessUncheckedCreateInput = {
 
 export type UserFactoryAccessUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutExtraFactoriesNestedInput
   factory?: Prisma.FactoryUpdateOneRequiredWithoutUserAccessNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutExtraFactoriesNestedInput
 }
 
 export type UserFactoryAccessUncheckedUpdateInput = {
@@ -492,24 +492,24 @@ export type UserFactoryAccessSelect<ExtArgs extends runtime.Types.Extensions.Int
   userId?: boolean
   factoryId?: boolean
   createdAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["userFactoryAccess"]>
 
 export type UserFactoryAccessSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   userId?: boolean
   factoryId?: boolean
   createdAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["userFactoryAccess"]>
 
 export type UserFactoryAccessSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   userId?: boolean
   factoryId?: boolean
   createdAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["userFactoryAccess"]>
 
 export type UserFactoryAccessSelectScalar = {
@@ -520,23 +520,23 @@ export type UserFactoryAccessSelectScalar = {
 
 export type UserFactoryAccessOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"userId" | "factoryId" | "createdAt", ExtArgs["result"]["userFactoryAccess"]>
 export type UserFactoryAccessInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type UserFactoryAccessIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type UserFactoryAccessIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   factory?: boolean | Prisma.FactoryDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $UserFactoryAccessPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "UserFactoryAccess"
   objects: {
-    user: Prisma.$UserPayload<ExtArgs>
     factory: Prisma.$FactoryPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     userId: string
@@ -936,8 +936,8 @@ readonly fields: UserFactoryAccessFieldRefs;
  */
 export interface Prisma__UserFactoryAccessClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   factory<T extends Prisma.FactoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FactoryDefaultArgs<ExtArgs>>): Prisma.Prisma__FactoryClient<runtime.Types.Result.GetResult<Prisma.$FactoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

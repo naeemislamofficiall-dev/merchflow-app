@@ -264,9 +264,9 @@ export type PurchaseRequisitionWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"PurchaseRequisition"> | Date | string
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
+  mrpRun?: Prisma.XOR<Prisma.MrpRunNullableScalarRelationFilter, Prisma.MrpRunWhereInput> | null
   order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
   style?: Prisma.XOR<Prisma.StyleNullableScalarRelationFilter, Prisma.StyleWhereInput> | null
-  mrpRun?: Prisma.XOR<Prisma.MrpRunNullableScalarRelationFilter, Prisma.MrpRunWhereInput> | null
   lines?: Prisma.PurchaseRequisitionLineListRelationFilter
   rfqs?: Prisma.RfqListRelationFilter
 }
@@ -289,9 +289,9 @@ export type PurchaseRequisitionOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   company?: Prisma.CompanyOrderByWithRelationInput
   department?: Prisma.DepartmentOrderByWithRelationInput
+  mrpRun?: Prisma.MrpRunOrderByWithRelationInput
   order?: Prisma.OrderOrderByWithRelationInput
   style?: Prisma.StyleOrderByWithRelationInput
-  mrpRun?: Prisma.MrpRunOrderByWithRelationInput
   lines?: Prisma.PurchaseRequisitionLineOrderByRelationAggregateInput
   rfqs?: Prisma.RfqOrderByRelationAggregateInput
 }
@@ -318,9 +318,9 @@ export type PurchaseRequisitionWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"PurchaseRequisition"> | Date | string
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
+  mrpRun?: Prisma.XOR<Prisma.MrpRunNullableScalarRelationFilter, Prisma.MrpRunWhereInput> | null
   order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
   style?: Prisma.XOR<Prisma.StyleNullableScalarRelationFilter, Prisma.StyleWhereInput> | null
-  mrpRun?: Prisma.XOR<Prisma.MrpRunNullableScalarRelationFilter, Prisma.MrpRunWhereInput> | null
   lines?: Prisma.PurchaseRequisitionLineListRelationFilter
   rfqs?: Prisma.RfqListRelationFilter
 }, "id" | "companyId_prNo">
@@ -380,9 +380,9 @@ export type PurchaseRequisitionCreateInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseRequisitionsInput
   department?: Prisma.DepartmentCreateNestedOneWithoutPurchaseRequisitionsInput
+  mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseRequisitionsInput
   style?: Prisma.StyleCreateNestedOneWithoutPurchaseRequisitionsInput
-  mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
   lines?: Prisma.PurchaseRequisitionLineCreateNestedManyWithoutPrInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutPrInput
 }
@@ -420,9 +420,9 @@ export type PurchaseRequisitionUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseRequisitionsNestedInput
   department?: Prisma.DepartmentUpdateOneWithoutPurchaseRequisitionsNestedInput
+  mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseRequisitionsNestedInput
   style?: Prisma.StyleUpdateOneWithoutPurchaseRequisitionsNestedInput
-  mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
   lines?: Prisma.PurchaseRequisitionLineUpdateManyWithoutPrNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutPrNestedInput
 }
@@ -839,9 +839,9 @@ export type PurchaseRequisitionCreateWithoutCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   department?: Prisma.DepartmentCreateNestedOneWithoutPurchaseRequisitionsInput
+  mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseRequisitionsInput
   style?: Prisma.StyleCreateNestedOneWithoutPurchaseRequisitionsInput
-  mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
   lines?: Prisma.PurchaseRequisitionLineCreateNestedManyWithoutPrInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutPrInput
 }
@@ -924,9 +924,9 @@ export type PurchaseRequisitionCreateWithoutDepartmentInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseRequisitionsInput
+  mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseRequisitionsInput
   style?: Prisma.StyleCreateNestedOneWithoutPurchaseRequisitionsInput
-  mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
   lines?: Prisma.PurchaseRequisitionLineCreateNestedManyWithoutPrInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutPrInput
 }
@@ -989,8 +989,8 @@ export type PurchaseRequisitionCreateWithoutStyleInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseRequisitionsInput
   department?: Prisma.DepartmentCreateNestedOneWithoutPurchaseRequisitionsInput
-  order?: Prisma.OrderCreateNestedOneWithoutPurchaseRequisitionsInput
   mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
+  order?: Prisma.OrderCreateNestedOneWithoutPurchaseRequisitionsInput
   lines?: Prisma.PurchaseRequisitionLineCreateNestedManyWithoutPrInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutPrInput
 }
@@ -1117,8 +1117,8 @@ export type PurchaseRequisitionCreateWithoutOrderInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseRequisitionsInput
   department?: Prisma.DepartmentCreateNestedOneWithoutPurchaseRequisitionsInput
-  style?: Prisma.StyleCreateNestedOneWithoutPurchaseRequisitionsInput
   mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
+  style?: Prisma.StyleCreateNestedOneWithoutPurchaseRequisitionsInput
   lines?: Prisma.PurchaseRequisitionLineCreateNestedManyWithoutPrInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutPrInput
 }
@@ -1181,9 +1181,9 @@ export type PurchaseRequisitionCreateWithoutLinesInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseRequisitionsInput
   department?: Prisma.DepartmentCreateNestedOneWithoutPurchaseRequisitionsInput
+  mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseRequisitionsInput
   style?: Prisma.StyleCreateNestedOneWithoutPurchaseRequisitionsInput
-  mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
   rfqs?: Prisma.RfqCreateNestedManyWithoutPrInput
 }
 
@@ -1235,9 +1235,9 @@ export type PurchaseRequisitionUpdateWithoutLinesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseRequisitionsNestedInput
   department?: Prisma.DepartmentUpdateOneWithoutPurchaseRequisitionsNestedInput
+  mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseRequisitionsNestedInput
   style?: Prisma.StyleUpdateOneWithoutPurchaseRequisitionsNestedInput
-  mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutPrNestedInput
 }
 
@@ -1273,9 +1273,9 @@ export type PurchaseRequisitionCreateWithoutRfqsInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutPurchaseRequisitionsInput
   department?: Prisma.DepartmentCreateNestedOneWithoutPurchaseRequisitionsInput
+  mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseRequisitionsInput
   style?: Prisma.StyleCreateNestedOneWithoutPurchaseRequisitionsInput
-  mrpRun?: Prisma.MrpRunCreateNestedOneWithoutPurchaseRequisitionsInput
   lines?: Prisma.PurchaseRequisitionLineCreateNestedManyWithoutPrInput
 }
 
@@ -1327,9 +1327,9 @@ export type PurchaseRequisitionUpdateWithoutRfqsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseRequisitionsNestedInput
   department?: Prisma.DepartmentUpdateOneWithoutPurchaseRequisitionsNestedInput
+  mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseRequisitionsNestedInput
   style?: Prisma.StyleUpdateOneWithoutPurchaseRequisitionsNestedInput
-  mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
   lines?: Prisma.PurchaseRequisitionLineUpdateManyWithoutPrNestedInput
 }
 
@@ -1381,9 +1381,9 @@ export type PurchaseRequisitionUpdateWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   department?: Prisma.DepartmentUpdateOneWithoutPurchaseRequisitionsNestedInput
+  mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseRequisitionsNestedInput
   style?: Prisma.StyleUpdateOneWithoutPurchaseRequisitionsNestedInput
-  mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
   lines?: Prisma.PurchaseRequisitionLineUpdateManyWithoutPrNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutPrNestedInput
 }
@@ -1453,9 +1453,9 @@ export type PurchaseRequisitionUpdateWithoutDepartmentInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseRequisitionsNestedInput
+  mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseRequisitionsNestedInput
   style?: Prisma.StyleUpdateOneWithoutPurchaseRequisitionsNestedInput
-  mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
   lines?: Prisma.PurchaseRequisitionLineUpdateManyWithoutPrNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutPrNestedInput
 }
@@ -1526,8 +1526,8 @@ export type PurchaseRequisitionUpdateWithoutStyleInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseRequisitionsNestedInput
   department?: Prisma.DepartmentUpdateOneWithoutPurchaseRequisitionsNestedInput
-  order?: Prisma.OrderUpdateOneWithoutPurchaseRequisitionsNestedInput
   mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
+  order?: Prisma.OrderUpdateOneWithoutPurchaseRequisitionsNestedInput
   lines?: Prisma.PurchaseRequisitionLineUpdateManyWithoutPrNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutPrNestedInput
 }
@@ -1670,8 +1670,8 @@ export type PurchaseRequisitionUpdateWithoutOrderInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutPurchaseRequisitionsNestedInput
   department?: Prisma.DepartmentUpdateOneWithoutPurchaseRequisitionsNestedInput
-  style?: Prisma.StyleUpdateOneWithoutPurchaseRequisitionsNestedInput
   mrpRun?: Prisma.MrpRunUpdateOneWithoutPurchaseRequisitionsNestedInput
+  style?: Prisma.StyleUpdateOneWithoutPurchaseRequisitionsNestedInput
   lines?: Prisma.PurchaseRequisitionLineUpdateManyWithoutPrNestedInput
   rfqs?: Prisma.RfqUpdateManyWithoutPrNestedInput
 }
@@ -1770,9 +1770,9 @@ export type PurchaseRequisitionSelect<ExtArgs extends runtime.Types.Extensions.I
   updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   department?: boolean | Prisma.PurchaseRequisition$departmentArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseRequisition$orderArgs<ExtArgs>
   style?: boolean | Prisma.PurchaseRequisition$styleArgs<ExtArgs>
-  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
   lines?: boolean | Prisma.PurchaseRequisition$linesArgs<ExtArgs>
   rfqs?: boolean | Prisma.PurchaseRequisition$rfqsArgs<ExtArgs>
   _count?: boolean | Prisma.PurchaseRequisitionCountOutputTypeDefaultArgs<ExtArgs>
@@ -1796,9 +1796,9 @@ export type PurchaseRequisitionSelectCreateManyAndReturn<ExtArgs extends runtime
   updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   department?: boolean | Prisma.PurchaseRequisition$departmentArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseRequisition$orderArgs<ExtArgs>
   style?: boolean | Prisma.PurchaseRequisition$styleArgs<ExtArgs>
-  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseRequisition"]>
 
 export type PurchaseRequisitionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1819,9 +1819,9 @@ export type PurchaseRequisitionSelectUpdateManyAndReturn<ExtArgs extends runtime
   updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   department?: boolean | Prisma.PurchaseRequisition$departmentArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseRequisition$orderArgs<ExtArgs>
   style?: boolean | Prisma.PurchaseRequisition$styleArgs<ExtArgs>
-  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseRequisition"]>
 
 export type PurchaseRequisitionSelectScalar = {
@@ -1846,9 +1846,9 @@ export type PurchaseRequisitionOmit<ExtArgs extends runtime.Types.Extensions.Int
 export type PurchaseRequisitionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   department?: boolean | Prisma.PurchaseRequisition$departmentArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseRequisition$orderArgs<ExtArgs>
   style?: boolean | Prisma.PurchaseRequisition$styleArgs<ExtArgs>
-  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
   lines?: boolean | Prisma.PurchaseRequisition$linesArgs<ExtArgs>
   rfqs?: boolean | Prisma.PurchaseRequisition$rfqsArgs<ExtArgs>
   _count?: boolean | Prisma.PurchaseRequisitionCountOutputTypeDefaultArgs<ExtArgs>
@@ -1856,16 +1856,16 @@ export type PurchaseRequisitionInclude<ExtArgs extends runtime.Types.Extensions.
 export type PurchaseRequisitionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   department?: boolean | Prisma.PurchaseRequisition$departmentArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseRequisition$orderArgs<ExtArgs>
   style?: boolean | Prisma.PurchaseRequisition$styleArgs<ExtArgs>
-  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
 }
 export type PurchaseRequisitionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   department?: boolean | Prisma.PurchaseRequisition$departmentArgs<ExtArgs>
+  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseRequisition$orderArgs<ExtArgs>
   style?: boolean | Prisma.PurchaseRequisition$styleArgs<ExtArgs>
-  mrpRun?: boolean | Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>
 }
 
 export type $PurchaseRequisitionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1873,9 +1873,9 @@ export type $PurchaseRequisitionPayload<ExtArgs extends runtime.Types.Extensions
   objects: {
     company: Prisma.$CompanyPayload<ExtArgs>
     department: Prisma.$DepartmentPayload<ExtArgs> | null
+    mrpRun: Prisma.$MrpRunPayload<ExtArgs> | null
     order: Prisma.$OrderPayload<ExtArgs> | null
     style: Prisma.$StylePayload<ExtArgs> | null
-    mrpRun: Prisma.$MrpRunPayload<ExtArgs> | null
     lines: Prisma.$PurchaseRequisitionLinePayload<ExtArgs>[]
     rfqs: Prisma.$RfqPayload<ExtArgs>[]
   }
@@ -2291,9 +2291,9 @@ export interface Prisma__PurchaseRequisitionClient<T, Null = never, ExtArgs exte
   readonly [Symbol.toStringTag]: "PrismaPromise"
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   department<T extends Prisma.PurchaseRequisition$departmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseRequisition$departmentArgs<ExtArgs>>): Prisma.Prisma__DepartmentClient<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  mrpRun<T extends Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>>): Prisma.Prisma__MrpRunClient<runtime.Types.Result.GetResult<Prisma.$MrpRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   order<T extends Prisma.PurchaseRequisition$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseRequisition$orderArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   style<T extends Prisma.PurchaseRequisition$styleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseRequisition$styleArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  mrpRun<T extends Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseRequisition$mrpRunArgs<ExtArgs>>): Prisma.Prisma__MrpRunClient<runtime.Types.Result.GetResult<Prisma.$MrpRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   lines<T extends Prisma.PurchaseRequisition$linesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseRequisition$linesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   rfqs<T extends Prisma.PurchaseRequisition$rfqsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseRequisition$rfqsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RfqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -2760,6 +2760,25 @@ export type PurchaseRequisition$departmentArgs<ExtArgs extends runtime.Types.Ext
 }
 
 /**
+ * PurchaseRequisition.mrpRun
+ */
+export type PurchaseRequisition$mrpRunArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MrpRun
+   */
+  select?: Prisma.MrpRunSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MrpRun
+   */
+  omit?: Prisma.MrpRunOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MrpRunInclude<ExtArgs> | null
+  where?: Prisma.MrpRunWhereInput
+}
+
+/**
  * PurchaseRequisition.order
  */
 export type PurchaseRequisition$orderArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2795,25 +2814,6 @@ export type PurchaseRequisition$styleArgs<ExtArgs extends runtime.Types.Extensio
    */
   include?: Prisma.StyleInclude<ExtArgs> | null
   where?: Prisma.StyleWhereInput
-}
-
-/**
- * PurchaseRequisition.mrpRun
- */
-export type PurchaseRequisition$mrpRunArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the MrpRun
-   */
-  select?: Prisma.MrpRunSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the MrpRun
-   */
-  omit?: Prisma.MrpRunOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MrpRunInclude<ExtArgs> | null
-  where?: Prisma.MrpRunWhereInput
 }
 
 /**

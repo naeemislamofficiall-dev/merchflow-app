@@ -40,11 +40,11 @@ export type StyleRevisionMinAggregateOutputType = {
   revisionNo: number | null
   changeNote: string | null
   createdById: string | null
-  reason: string | null
-  attachmentUrl: string | null
-  approvedById: string | null
-  approvedAt: Date | null
   createdAt: Date | null
+  approvedAt: Date | null
+  approvedById: string | null
+  attachmentUrl: string | null
+  reason: string | null
 }
 
 export type StyleRevisionMaxAggregateOutputType = {
@@ -53,11 +53,11 @@ export type StyleRevisionMaxAggregateOutputType = {
   revisionNo: number | null
   changeNote: string | null
   createdById: string | null
-  reason: string | null
-  attachmentUrl: string | null
-  approvedById: string | null
-  approvedAt: Date | null
   createdAt: Date | null
+  approvedAt: Date | null
+  approvedById: string | null
+  attachmentUrl: string | null
+  reason: string | null
 }
 
 export type StyleRevisionCountAggregateOutputType = {
@@ -66,12 +66,12 @@ export type StyleRevisionCountAggregateOutputType = {
   revisionNo: number
   changeNote: number
   createdById: number
+  createdAt: number
+  approvedAt: number
+  approvedById: number
+  attachmentUrl: number
   changedFields: number
   reason: number
-  attachmentUrl: number
-  approvedById: number
-  approvedAt: number
-  createdAt: number
   _all: number
 }
 
@@ -90,11 +90,11 @@ export type StyleRevisionMinAggregateInputType = {
   revisionNo?: true
   changeNote?: true
   createdById?: true
-  reason?: true
-  attachmentUrl?: true
-  approvedById?: true
-  approvedAt?: true
   createdAt?: true
+  approvedAt?: true
+  approvedById?: true
+  attachmentUrl?: true
+  reason?: true
 }
 
 export type StyleRevisionMaxAggregateInputType = {
@@ -103,11 +103,11 @@ export type StyleRevisionMaxAggregateInputType = {
   revisionNo?: true
   changeNote?: true
   createdById?: true
-  reason?: true
-  attachmentUrl?: true
-  approvedById?: true
-  approvedAt?: true
   createdAt?: true
+  approvedAt?: true
+  approvedById?: true
+  attachmentUrl?: true
+  reason?: true
 }
 
 export type StyleRevisionCountAggregateInputType = {
@@ -116,12 +116,12 @@ export type StyleRevisionCountAggregateInputType = {
   revisionNo?: true
   changeNote?: true
   createdById?: true
+  createdAt?: true
+  approvedAt?: true
+  approvedById?: true
+  attachmentUrl?: true
   changedFields?: true
   reason?: true
-  attachmentUrl?: true
-  approvedById?: true
-  approvedAt?: true
-  createdAt?: true
   _all?: true
 }
 
@@ -217,12 +217,12 @@ export type StyleRevisionGroupByOutputType = {
   revisionNo: number
   changeNote: string | null
   createdById: string | null
+  createdAt: Date
+  approvedAt: Date | null
+  approvedById: string | null
+  attachmentUrl: string | null
   changedFields: runtime.JsonValue | null
   reason: string | null
-  attachmentUrl: string | null
-  approvedById: string | null
-  approvedAt: Date | null
-  createdAt: Date
   _count: StyleRevisionCountAggregateOutputType | null
   _avg: StyleRevisionAvgAggregateOutputType | null
   _sum: StyleRevisionSumAggregateOutputType | null
@@ -254,12 +254,12 @@ export type StyleRevisionWhereInput = {
   revisionNo?: Prisma.IntFilter<"StyleRevision"> | number
   changeNote?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
   createdById?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"StyleRevision"> | Date | string
+  approvedAt?: Prisma.DateTimeNullableFilter<"StyleRevision"> | Date | string | null
+  approvedById?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
+  attachmentUrl?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
   changedFields?: Prisma.JsonNullableFilter<"StyleRevision">
   reason?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
-  attachmentUrl?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
-  approvedById?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
-  approvedAt?: Prisma.DateTimeNullableFilter<"StyleRevision"> | Date | string | null
-  createdAt?: Prisma.DateTimeFilter<"StyleRevision"> | Date | string
   style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
 }
 
@@ -269,12 +269,12 @@ export type StyleRevisionOrderByWithRelationInput = {
   revisionNo?: Prisma.SortOrder
   changeNote?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  approvedById?: Prisma.SortOrderInput | Prisma.SortOrder
+  attachmentUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   changedFields?: Prisma.SortOrderInput | Prisma.SortOrder
   reason?: Prisma.SortOrderInput | Prisma.SortOrder
-  attachmentUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  approvedById?: Prisma.SortOrderInput | Prisma.SortOrder
-  approvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   style?: Prisma.StyleOrderByWithRelationInput
 }
 
@@ -288,12 +288,12 @@ export type StyleRevisionWhereUniqueInput = Prisma.AtLeast<{
   revisionNo?: Prisma.IntFilter<"StyleRevision"> | number
   changeNote?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
   createdById?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"StyleRevision"> | Date | string
+  approvedAt?: Prisma.DateTimeNullableFilter<"StyleRevision"> | Date | string | null
+  approvedById?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
+  attachmentUrl?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
   changedFields?: Prisma.JsonNullableFilter<"StyleRevision">
   reason?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
-  attachmentUrl?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
-  approvedById?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
-  approvedAt?: Prisma.DateTimeNullableFilter<"StyleRevision"> | Date | string | null
-  createdAt?: Prisma.DateTimeFilter<"StyleRevision"> | Date | string
   style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
 }, "id" | "styleId_revisionNo">
 
@@ -303,12 +303,12 @@ export type StyleRevisionOrderByWithAggregationInput = {
   revisionNo?: Prisma.SortOrder
   changeNote?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  approvedById?: Prisma.SortOrderInput | Prisma.SortOrder
+  attachmentUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   changedFields?: Prisma.SortOrderInput | Prisma.SortOrder
   reason?: Prisma.SortOrderInput | Prisma.SortOrder
-  attachmentUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  approvedById?: Prisma.SortOrderInput | Prisma.SortOrder
-  approvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   _count?: Prisma.StyleRevisionCountOrderByAggregateInput
   _avg?: Prisma.StyleRevisionAvgOrderByAggregateInput
   _max?: Prisma.StyleRevisionMaxOrderByAggregateInput
@@ -325,12 +325,12 @@ export type StyleRevisionScalarWhereWithAggregatesInput = {
   revisionNo?: Prisma.IntWithAggregatesFilter<"StyleRevision"> | number
   changeNote?: Prisma.StringNullableWithAggregatesFilter<"StyleRevision"> | string | null
   createdById?: Prisma.StringNullableWithAggregatesFilter<"StyleRevision"> | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"StyleRevision"> | Date | string
+  approvedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"StyleRevision"> | Date | string | null
+  approvedById?: Prisma.StringNullableWithAggregatesFilter<"StyleRevision"> | string | null
+  attachmentUrl?: Prisma.StringNullableWithAggregatesFilter<"StyleRevision"> | string | null
   changedFields?: Prisma.JsonNullableWithAggregatesFilter<"StyleRevision">
   reason?: Prisma.StringNullableWithAggregatesFilter<"StyleRevision"> | string | null
-  attachmentUrl?: Prisma.StringNullableWithAggregatesFilter<"StyleRevision"> | string | null
-  approvedById?: Prisma.StringNullableWithAggregatesFilter<"StyleRevision"> | string | null
-  approvedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"StyleRevision"> | Date | string | null
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"StyleRevision"> | Date | string
 }
 
 export type StyleRevisionCreateInput = {
@@ -338,12 +338,12 @@ export type StyleRevisionCreateInput = {
   revisionNo: number
   changeNote?: string | null
   createdById?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  approvedById?: string | null
+  attachmentUrl?: string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: string | null
-  attachmentUrl?: string | null
-  approvedById?: string | null
-  approvedAt?: Date | string | null
-  createdAt?: Date | string
   style: Prisma.StyleCreateNestedOneWithoutRevisionsInput
 }
 
@@ -353,12 +353,12 @@ export type StyleRevisionUncheckedCreateInput = {
   revisionNo: number
   changeNote?: string | null
   createdById?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  approvedById?: string | null
+  attachmentUrl?: string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: string | null
-  attachmentUrl?: string | null
-  approvedById?: string | null
-  approvedAt?: Date | string | null
-  createdAt?: Date | string
 }
 
 export type StyleRevisionUpdateInput = {
@@ -366,12 +366,12 @@ export type StyleRevisionUpdateInput = {
   revisionNo?: Prisma.IntFieldUpdateOperationsInput | number
   changeNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   style?: Prisma.StyleUpdateOneRequiredWithoutRevisionsNestedInput
 }
 
@@ -381,12 +381,12 @@ export type StyleRevisionUncheckedUpdateInput = {
   revisionNo?: Prisma.IntFieldUpdateOperationsInput | number
   changeNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StyleRevisionCreateManyInput = {
@@ -395,12 +395,12 @@ export type StyleRevisionCreateManyInput = {
   revisionNo: number
   changeNote?: string | null
   createdById?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  approvedById?: string | null
+  attachmentUrl?: string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: string | null
-  attachmentUrl?: string | null
-  approvedById?: string | null
-  approvedAt?: Date | string | null
-  createdAt?: Date | string
 }
 
 export type StyleRevisionUpdateManyMutationInput = {
@@ -408,12 +408,12 @@ export type StyleRevisionUpdateManyMutationInput = {
   revisionNo?: Prisma.IntFieldUpdateOperationsInput | number
   changeNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StyleRevisionUncheckedUpdateManyInput = {
@@ -422,12 +422,12 @@ export type StyleRevisionUncheckedUpdateManyInput = {
   revisionNo?: Prisma.IntFieldUpdateOperationsInput | number
   changeNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StyleRevisionListRelationFilter = {
@@ -451,12 +451,12 @@ export type StyleRevisionCountOrderByAggregateInput = {
   revisionNo?: Prisma.SortOrder
   changeNote?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrder
+  approvedById?: Prisma.SortOrder
+  attachmentUrl?: Prisma.SortOrder
   changedFields?: Prisma.SortOrder
   reason?: Prisma.SortOrder
-  attachmentUrl?: Prisma.SortOrder
-  approvedById?: Prisma.SortOrder
-  approvedAt?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
 }
 
 export type StyleRevisionAvgOrderByAggregateInput = {
@@ -469,11 +469,11 @@ export type StyleRevisionMaxOrderByAggregateInput = {
   revisionNo?: Prisma.SortOrder
   changeNote?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
-  reason?: Prisma.SortOrder
-  attachmentUrl?: Prisma.SortOrder
-  approvedById?: Prisma.SortOrder
-  approvedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrder
+  approvedById?: Prisma.SortOrder
+  attachmentUrl?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
 }
 
 export type StyleRevisionMinOrderByAggregateInput = {
@@ -482,11 +482,11 @@ export type StyleRevisionMinOrderByAggregateInput = {
   revisionNo?: Prisma.SortOrder
   changeNote?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
-  reason?: Prisma.SortOrder
-  attachmentUrl?: Prisma.SortOrder
-  approvedById?: Prisma.SortOrder
-  approvedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrder
+  approvedById?: Prisma.SortOrder
+  attachmentUrl?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
 }
 
 export type StyleRevisionSumOrderByAggregateInput = {
@@ -540,12 +540,12 @@ export type StyleRevisionCreateWithoutStyleInput = {
   revisionNo: number
   changeNote?: string | null
   createdById?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  approvedById?: string | null
+  attachmentUrl?: string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: string | null
-  attachmentUrl?: string | null
-  approvedById?: string | null
-  approvedAt?: Date | string | null
-  createdAt?: Date | string
 }
 
 export type StyleRevisionUncheckedCreateWithoutStyleInput = {
@@ -553,12 +553,12 @@ export type StyleRevisionUncheckedCreateWithoutStyleInput = {
   revisionNo: number
   changeNote?: string | null
   createdById?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  approvedById?: string | null
+  attachmentUrl?: string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: string | null
-  attachmentUrl?: string | null
-  approvedById?: string | null
-  approvedAt?: Date | string | null
-  createdAt?: Date | string
 }
 
 export type StyleRevisionCreateOrConnectWithoutStyleInput = {
@@ -596,12 +596,12 @@ export type StyleRevisionScalarWhereInput = {
   revisionNo?: Prisma.IntFilter<"StyleRevision"> | number
   changeNote?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
   createdById?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"StyleRevision"> | Date | string
+  approvedAt?: Prisma.DateTimeNullableFilter<"StyleRevision"> | Date | string | null
+  approvedById?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
+  attachmentUrl?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
   changedFields?: Prisma.JsonNullableFilter<"StyleRevision">
   reason?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
-  attachmentUrl?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
-  approvedById?: Prisma.StringNullableFilter<"StyleRevision"> | string | null
-  approvedAt?: Prisma.DateTimeNullableFilter<"StyleRevision"> | Date | string | null
-  createdAt?: Prisma.DateTimeFilter<"StyleRevision"> | Date | string
 }
 
 export type StyleRevisionCreateManyStyleInput = {
@@ -609,12 +609,12 @@ export type StyleRevisionCreateManyStyleInput = {
   revisionNo: number
   changeNote?: string | null
   createdById?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  approvedById?: string | null
+  attachmentUrl?: string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: string | null
-  attachmentUrl?: string | null
-  approvedById?: string | null
-  approvedAt?: Date | string | null
-  createdAt?: Date | string
 }
 
 export type StyleRevisionUpdateWithoutStyleInput = {
@@ -622,12 +622,12 @@ export type StyleRevisionUpdateWithoutStyleInput = {
   revisionNo?: Prisma.IntFieldUpdateOperationsInput | number
   changeNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StyleRevisionUncheckedUpdateWithoutStyleInput = {
@@ -635,12 +635,12 @@ export type StyleRevisionUncheckedUpdateWithoutStyleInput = {
   revisionNo?: Prisma.IntFieldUpdateOperationsInput | number
   changeNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StyleRevisionUncheckedUpdateManyWithoutStyleInput = {
@@ -648,12 +648,12 @@ export type StyleRevisionUncheckedUpdateManyWithoutStyleInput = {
   revisionNo?: Prisma.IntFieldUpdateOperationsInput | number
   changeNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   changedFields?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  attachmentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -664,12 +664,12 @@ export type StyleRevisionSelect<ExtArgs extends runtime.Types.Extensions.Interna
   revisionNo?: boolean
   changeNote?: boolean
   createdById?: boolean
+  createdAt?: boolean
+  approvedAt?: boolean
+  approvedById?: boolean
+  attachmentUrl?: boolean
   changedFields?: boolean
   reason?: boolean
-  attachmentUrl?: boolean
-  approvedById?: boolean
-  approvedAt?: boolean
-  createdAt?: boolean
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["styleRevision"]>
 
@@ -679,12 +679,12 @@ export type StyleRevisionSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   revisionNo?: boolean
   changeNote?: boolean
   createdById?: boolean
+  createdAt?: boolean
+  approvedAt?: boolean
+  approvedById?: boolean
+  attachmentUrl?: boolean
   changedFields?: boolean
   reason?: boolean
-  attachmentUrl?: boolean
-  approvedById?: boolean
-  approvedAt?: boolean
-  createdAt?: boolean
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["styleRevision"]>
 
@@ -694,12 +694,12 @@ export type StyleRevisionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   revisionNo?: boolean
   changeNote?: boolean
   createdById?: boolean
+  createdAt?: boolean
+  approvedAt?: boolean
+  approvedById?: boolean
+  attachmentUrl?: boolean
   changedFields?: boolean
   reason?: boolean
-  attachmentUrl?: boolean
-  approvedById?: boolean
-  approvedAt?: boolean
-  createdAt?: boolean
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["styleRevision"]>
 
@@ -709,15 +709,15 @@ export type StyleRevisionSelectScalar = {
   revisionNo?: boolean
   changeNote?: boolean
   createdById?: boolean
+  createdAt?: boolean
+  approvedAt?: boolean
+  approvedById?: boolean
+  attachmentUrl?: boolean
   changedFields?: boolean
   reason?: boolean
-  attachmentUrl?: boolean
-  approvedById?: boolean
-  approvedAt?: boolean
-  createdAt?: boolean
 }
 
-export type StyleRevisionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "styleId" | "revisionNo" | "changeNote" | "createdById" | "changedFields" | "reason" | "attachmentUrl" | "approvedById" | "approvedAt" | "createdAt", ExtArgs["result"]["styleRevision"]>
+export type StyleRevisionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "styleId" | "revisionNo" | "changeNote" | "createdById" | "createdAt" | "approvedAt" | "approvedById" | "attachmentUrl" | "changedFields" | "reason", ExtArgs["result"]["styleRevision"]>
 export type StyleRevisionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }
@@ -739,12 +739,12 @@ export type $StyleRevisionPayload<ExtArgs extends runtime.Types.Extensions.Inter
     revisionNo: number
     changeNote: string | null
     createdById: string | null
+    createdAt: Date
+    approvedAt: Date | null
+    approvedById: string | null
+    attachmentUrl: string | null
     changedFields: runtime.JsonValue | null
     reason: string | null
-    attachmentUrl: string | null
-    approvedById: string | null
-    approvedAt: Date | null
-    createdAt: Date
   }, ExtArgs["result"]["styleRevision"]>
   composites: {}
 }
@@ -1174,12 +1174,12 @@ export interface StyleRevisionFieldRefs {
   readonly revisionNo: Prisma.FieldRef<"StyleRevision", 'Int'>
   readonly changeNote: Prisma.FieldRef<"StyleRevision", 'String'>
   readonly createdById: Prisma.FieldRef<"StyleRevision", 'String'>
+  readonly createdAt: Prisma.FieldRef<"StyleRevision", 'DateTime'>
+  readonly approvedAt: Prisma.FieldRef<"StyleRevision", 'DateTime'>
+  readonly approvedById: Prisma.FieldRef<"StyleRevision", 'String'>
+  readonly attachmentUrl: Prisma.FieldRef<"StyleRevision", 'String'>
   readonly changedFields: Prisma.FieldRef<"StyleRevision", 'Json'>
   readonly reason: Prisma.FieldRef<"StyleRevision", 'String'>
-  readonly attachmentUrl: Prisma.FieldRef<"StyleRevision", 'String'>
-  readonly approvedById: Prisma.FieldRef<"StyleRevision", 'String'>
-  readonly approvedAt: Prisma.FieldRef<"StyleRevision", 'DateTime'>
-  readonly createdAt: Prisma.FieldRef<"StyleRevision", 'DateTime'>
 }
     
 

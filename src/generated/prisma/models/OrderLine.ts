@@ -236,9 +236,9 @@ export type OrderLineWhereInput = {
   unitPrice?: Prisma.DecimalFilter<"OrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   shipDate?: Prisma.DateTimeNullableFilter<"OrderLine"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"OrderLine"> | Date | string
-  matrix?: Prisma.OrderLineQtyListRelationFilter
   order?: Prisma.XOR<Prisma.OrderScalarRelationFilter, Prisma.OrderWhereInput>
   style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
+  matrix?: Prisma.OrderLineQtyListRelationFilter
 }
 
 export type OrderLineOrderByWithRelationInput = {
@@ -249,9 +249,9 @@ export type OrderLineOrderByWithRelationInput = {
   unitPrice?: Prisma.SortOrder
   shipDate?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  matrix?: Prisma.OrderLineQtyOrderByRelationAggregateInput
   order?: Prisma.OrderOrderByWithRelationInput
   style?: Prisma.StyleOrderByWithRelationInput
+  matrix?: Prisma.OrderLineQtyOrderByRelationAggregateInput
 }
 
 export type OrderLineWhereUniqueInput = Prisma.AtLeast<{
@@ -265,9 +265,9 @@ export type OrderLineWhereUniqueInput = Prisma.AtLeast<{
   unitPrice?: Prisma.DecimalFilter<"OrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   shipDate?: Prisma.DateTimeNullableFilter<"OrderLine"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"OrderLine"> | Date | string
-  matrix?: Prisma.OrderLineQtyListRelationFilter
   order?: Prisma.XOR<Prisma.OrderScalarRelationFilter, Prisma.OrderWhereInput>
   style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
+  matrix?: Prisma.OrderLineQtyListRelationFilter
 }, "id">
 
 export type OrderLineOrderByWithAggregationInput = {
@@ -304,9 +304,9 @@ export type OrderLineCreateInput = {
   unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string
   shipDate?: Date | string | null
   createdAt?: Date | string
-  matrix?: Prisma.OrderLineQtyCreateNestedManyWithoutOrderLineInput
   order: Prisma.OrderCreateNestedOneWithoutLinesInput
   style: Prisma.StyleCreateNestedOneWithoutOrderLinesInput
+  matrix?: Prisma.OrderLineQtyCreateNestedManyWithoutOrderLineInput
 }
 
 export type OrderLineUncheckedCreateInput = {
@@ -326,9 +326,9 @@ export type OrderLineUpdateInput = {
   unitPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   shipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  matrix?: Prisma.OrderLineQtyUpdateManyWithoutOrderLineNestedInput
   order?: Prisma.OrderUpdateOneRequiredWithoutLinesNestedInput
   style?: Prisma.StyleUpdateOneRequiredWithoutOrderLinesNestedInput
+  matrix?: Prisma.OrderLineQtyUpdateManyWithoutOrderLineNestedInput
 }
 
 export type OrderLineUncheckedUpdateInput = {
@@ -529,8 +529,8 @@ export type OrderLineCreateWithoutStyleInput = {
   unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string
   shipDate?: Date | string | null
   createdAt?: Date | string
-  matrix?: Prisma.OrderLineQtyCreateNestedManyWithoutOrderLineInput
   order: Prisma.OrderCreateNestedOneWithoutLinesInput
+  matrix?: Prisma.OrderLineQtyCreateNestedManyWithoutOrderLineInput
 }
 
 export type OrderLineUncheckedCreateWithoutStyleInput = {
@@ -588,8 +588,8 @@ export type OrderLineCreateWithoutOrderInput = {
   unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string
   shipDate?: Date | string | null
   createdAt?: Date | string
-  matrix?: Prisma.OrderLineQtyCreateNestedManyWithoutOrderLineInput
   style: Prisma.StyleCreateNestedOneWithoutOrderLinesInput
+  matrix?: Prisma.OrderLineQtyCreateNestedManyWithoutOrderLineInput
 }
 
 export type OrderLineUncheckedCreateWithoutOrderInput = {
@@ -699,8 +699,8 @@ export type OrderLineUpdateWithoutStyleInput = {
   unitPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   shipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  matrix?: Prisma.OrderLineQtyUpdateManyWithoutOrderLineNestedInput
   order?: Prisma.OrderUpdateOneRequiredWithoutLinesNestedInput
+  matrix?: Prisma.OrderLineQtyUpdateManyWithoutOrderLineNestedInput
 }
 
 export type OrderLineUncheckedUpdateWithoutStyleInput = {
@@ -737,8 +737,8 @@ export type OrderLineUpdateWithoutOrderInput = {
   unitPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   shipDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  matrix?: Prisma.OrderLineQtyUpdateManyWithoutOrderLineNestedInput
   style?: Prisma.StyleUpdateOneRequiredWithoutOrderLinesNestedInput
+  matrix?: Prisma.OrderLineQtyUpdateManyWithoutOrderLineNestedInput
 }
 
 export type OrderLineUncheckedUpdateWithoutOrderInput = {
@@ -799,9 +799,9 @@ export type OrderLineSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   unitPrice?: boolean
   shipDate?: boolean
   createdAt?: boolean
-  matrix?: boolean | Prisma.OrderLine$matrixArgs<ExtArgs>
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
+  matrix?: boolean | Prisma.OrderLine$matrixArgs<ExtArgs>
   _count?: boolean | Prisma.OrderLineCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["orderLine"]>
 
@@ -841,9 +841,9 @@ export type OrderLineSelectScalar = {
 
 export type OrderLineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "orderId" | "styleId" | "quantity" | "unitPrice" | "shipDate" | "createdAt", ExtArgs["result"]["orderLine"]>
 export type OrderLineInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  matrix?: boolean | Prisma.OrderLine$matrixArgs<ExtArgs>
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
   style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
+  matrix?: boolean | Prisma.OrderLine$matrixArgs<ExtArgs>
   _count?: boolean | Prisma.OrderLineCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrderLineIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -858,9 +858,9 @@ export type OrderLineIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type $OrderLinePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "OrderLine"
   objects: {
-    matrix: Prisma.$OrderLineQtyPayload<ExtArgs>[]
     order: Prisma.$OrderPayload<ExtArgs>
     style: Prisma.$StylePayload<ExtArgs>
+    matrix: Prisma.$OrderLineQtyPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1264,9 +1264,9 @@ readonly fields: OrderLineFieldRefs;
  */
 export interface Prisma__OrderLineClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  matrix<T extends Prisma.OrderLine$matrixArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrderLine$matrixArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderLineQtyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   order<T extends Prisma.OrderDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrderDefaultArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   style<T extends Prisma.StyleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleDefaultArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  matrix<T extends Prisma.OrderLine$matrixArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrderLine$matrixArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderLineQtyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

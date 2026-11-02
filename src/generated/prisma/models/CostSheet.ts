@@ -31,8 +31,8 @@ export type CostSheetAvgAggregateOutputType = {
   marginPct: runtime.Decimal | null
   totalCost: runtime.Decimal | null
   quotedPrice: runtime.Decimal | null
-  exchangeRate: runtime.Decimal | null
   baseQuotedPrice: runtime.Decimal | null
+  exchangeRate: runtime.Decimal | null
 }
 
 export type CostSheetSumAggregateOutputType = {
@@ -40,8 +40,8 @@ export type CostSheetSumAggregateOutputType = {
   marginPct: runtime.Decimal | null
   totalCost: runtime.Decimal | null
   quotedPrice: runtime.Decimal | null
-  exchangeRate: runtime.Decimal | null
   baseQuotedPrice: runtime.Decimal | null
+  exchangeRate: runtime.Decimal | null
 }
 
 export type CostSheetMinAggregateOutputType = {
@@ -57,9 +57,9 @@ export type CostSheetMinAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   baseCurrency: string | null
+  baseQuotedPrice: runtime.Decimal | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseQuotedPrice: runtime.Decimal | null
   costType: $Enums.CostSheetType | null
   orderId: string | null
   sourceCostSheetId: string | null
@@ -78,9 +78,9 @@ export type CostSheetMaxAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   baseCurrency: string | null
+  baseQuotedPrice: runtime.Decimal | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseQuotedPrice: runtime.Decimal | null
   costType: $Enums.CostSheetType | null
   orderId: string | null
   sourceCostSheetId: string | null
@@ -99,9 +99,9 @@ export type CostSheetCountAggregateOutputType = {
   createdAt: number
   updatedAt: number
   baseCurrency: number
+  baseQuotedPrice: number
   exchangeRate: number
   rateDate: number
-  baseQuotedPrice: number
   costType: number
   orderId: number
   sourceCostSheetId: number
@@ -114,8 +114,8 @@ export type CostSheetAvgAggregateInputType = {
   marginPct?: true
   totalCost?: true
   quotedPrice?: true
-  exchangeRate?: true
   baseQuotedPrice?: true
+  exchangeRate?: true
 }
 
 export type CostSheetSumAggregateInputType = {
@@ -123,8 +123,8 @@ export type CostSheetSumAggregateInputType = {
   marginPct?: true
   totalCost?: true
   quotedPrice?: true
-  exchangeRate?: true
   baseQuotedPrice?: true
+  exchangeRate?: true
 }
 
 export type CostSheetMinAggregateInputType = {
@@ -140,9 +140,9 @@ export type CostSheetMinAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   baseCurrency?: true
+  baseQuotedPrice?: true
   exchangeRate?: true
   rateDate?: true
-  baseQuotedPrice?: true
   costType?: true
   orderId?: true
   sourceCostSheetId?: true
@@ -161,9 +161,9 @@ export type CostSheetMaxAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   baseCurrency?: true
+  baseQuotedPrice?: true
   exchangeRate?: true
   rateDate?: true
-  baseQuotedPrice?: true
   costType?: true
   orderId?: true
   sourceCostSheetId?: true
@@ -182,9 +182,9 @@ export type CostSheetCountAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   baseCurrency?: true
+  baseQuotedPrice?: true
   exchangeRate?: true
   rateDate?: true
-  baseQuotedPrice?: true
   costType?: true
   orderId?: true
   sourceCostSheetId?: true
@@ -290,9 +290,9 @@ export type CostSheetGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   baseCurrency: string | null
+  baseQuotedPrice: runtime.Decimal | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseQuotedPrice: runtime.Decimal | null
   costType: $Enums.CostSheetType
   orderId: string | null
   sourceCostSheetId: string | null
@@ -334,16 +334,16 @@ export type CostSheetWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"CostSheet"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CostSheet"> | Date | string
   baseCurrency?: Prisma.StringNullableFilter<"CostSheet"> | string | null
+  baseQuotedPrice?: Prisma.DecimalNullableFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"CostSheet"> | Date | string | null
-  baseQuotedPrice?: Prisma.DecimalNullableFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFilter<"CostSheet"> | $Enums.CostSheetType
   orderId?: Prisma.StringNullableFilter<"CostSheet"> | string | null
   sourceCostSheetId?: Prisma.StringNullableFilter<"CostSheet"> | string | null
-  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
-  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
   items?: Prisma.CostItemListRelationFilter
+  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
 }
 
 export type CostSheetOrderByWithRelationInput = {
@@ -359,16 +359,16 @@ export type CostSheetOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
+  baseQuotedPrice?: Prisma.SortOrderInput | Prisma.SortOrder
   exchangeRate?: Prisma.SortOrderInput | Prisma.SortOrder
   rateDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseQuotedPrice?: Prisma.SortOrderInput | Prisma.SortOrder
   costType?: Prisma.SortOrder
   orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   sourceCostSheetId?: Prisma.SortOrderInput | Prisma.SortOrder
-  company?: Prisma.CompanyOrderByWithRelationInput
-  style?: Prisma.StyleOrderByWithRelationInput
   items?: Prisma.CostItemOrderByRelationAggregateInput
+  company?: Prisma.CompanyOrderByWithRelationInput
   order?: Prisma.OrderOrderByWithRelationInput
+  style?: Prisma.StyleOrderByWithRelationInput
 }
 
 export type CostSheetWhereUniqueInput = Prisma.AtLeast<{
@@ -388,16 +388,16 @@ export type CostSheetWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"CostSheet"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CostSheet"> | Date | string
   baseCurrency?: Prisma.StringNullableFilter<"CostSheet"> | string | null
+  baseQuotedPrice?: Prisma.DecimalNullableFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"CostSheet"> | Date | string | null
-  baseQuotedPrice?: Prisma.DecimalNullableFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFilter<"CostSheet"> | $Enums.CostSheetType
   orderId?: Prisma.StringNullableFilter<"CostSheet"> | string | null
   sourceCostSheetId?: Prisma.StringNullableFilter<"CostSheet"> | string | null
-  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
-  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
   items?: Prisma.CostItemListRelationFilter
+  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
 }, "id" | "styleId_version">
 
 export type CostSheetOrderByWithAggregationInput = {
@@ -413,9 +413,9 @@ export type CostSheetOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
+  baseQuotedPrice?: Prisma.SortOrderInput | Prisma.SortOrder
   exchangeRate?: Prisma.SortOrderInput | Prisma.SortOrder
   rateDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseQuotedPrice?: Prisma.SortOrderInput | Prisma.SortOrder
   costType?: Prisma.SortOrder
   orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   sourceCostSheetId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -442,9 +442,9 @@ export type CostSheetScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CostSheet"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CostSheet"> | Date | string
   baseCurrency?: Prisma.StringNullableWithAggregatesFilter<"CostSheet"> | string | null
+  baseQuotedPrice?: Prisma.DecimalNullableWithAggregatesFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableWithAggregatesFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableWithAggregatesFilter<"CostSheet"> | Date | string | null
-  baseQuotedPrice?: Prisma.DecimalNullableWithAggregatesFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeWithAggregatesFilter<"CostSheet"> | $Enums.CostSheetType
   orderId?: Prisma.StringNullableWithAggregatesFilter<"CostSheet"> | string | null
   sourceCostSheetId?: Prisma.StringNullableWithAggregatesFilter<"CostSheet"> | string | null
@@ -461,15 +461,15 @@ export type CostSheetCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   sourceCostSheetId?: string | null
-  company: Prisma.CompanyCreateNestedOneWithoutCostSheetsInput
-  style: Prisma.StyleCreateNestedOneWithoutCostSheetsInput
   items?: Prisma.CostItemCreateNestedManyWithoutCostSheetInput
+  company: Prisma.CompanyCreateNestedOneWithoutCostSheetsInput
   order?: Prisma.OrderCreateNestedOneWithoutCostSheetsInput
+  style: Prisma.StyleCreateNestedOneWithoutCostSheetsInput
 }
 
 export type CostSheetUncheckedCreateInput = {
@@ -485,9 +485,9 @@ export type CostSheetUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   orderId?: string | null
   sourceCostSheetId?: string | null
@@ -505,15 +505,15 @@ export type CostSheetUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company?: Prisma.CompanyUpdateOneRequiredWithoutCostSheetsNestedInput
-  style?: Prisma.StyleUpdateOneRequiredWithoutCostSheetsNestedInput
   items?: Prisma.CostItemUpdateManyWithoutCostSheetNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutCostSheetsNestedInput
   order?: Prisma.OrderUpdateOneWithoutCostSheetsNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutCostSheetsNestedInput
 }
 
 export type CostSheetUncheckedUpdateInput = {
@@ -529,9 +529,9 @@ export type CostSheetUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -551,9 +551,9 @@ export type CostSheetCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   orderId?: string | null
   sourceCostSheetId?: string | null
@@ -570,9 +570,9 @@ export type CostSheetUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -590,9 +590,9 @@ export type CostSheetUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -626,9 +626,9 @@ export type CostSheetCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
+  baseQuotedPrice?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseQuotedPrice?: Prisma.SortOrder
   costType?: Prisma.SortOrder
   orderId?: Prisma.SortOrder
   sourceCostSheetId?: Prisma.SortOrder
@@ -639,8 +639,8 @@ export type CostSheetAvgOrderByAggregateInput = {
   marginPct?: Prisma.SortOrder
   totalCost?: Prisma.SortOrder
   quotedPrice?: Prisma.SortOrder
-  exchangeRate?: Prisma.SortOrder
   baseQuotedPrice?: Prisma.SortOrder
+  exchangeRate?: Prisma.SortOrder
 }
 
 export type CostSheetMaxOrderByAggregateInput = {
@@ -656,9 +656,9 @@ export type CostSheetMaxOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
+  baseQuotedPrice?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseQuotedPrice?: Prisma.SortOrder
   costType?: Prisma.SortOrder
   orderId?: Prisma.SortOrder
   sourceCostSheetId?: Prisma.SortOrder
@@ -677,9 +677,9 @@ export type CostSheetMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
+  baseQuotedPrice?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseQuotedPrice?: Prisma.SortOrder
   costType?: Prisma.SortOrder
   orderId?: Prisma.SortOrder
   sourceCostSheetId?: Prisma.SortOrder
@@ -690,8 +690,8 @@ export type CostSheetSumOrderByAggregateInput = {
   marginPct?: Prisma.SortOrder
   totalCost?: Prisma.SortOrder
   quotedPrice?: Prisma.SortOrder
-  exchangeRate?: Prisma.SortOrder
   baseQuotedPrice?: Prisma.SortOrder
+  exchangeRate?: Prisma.SortOrder
 }
 
 export type CostSheetScalarRelationFilter = {
@@ -866,14 +866,14 @@ export type CostSheetCreateWithoutCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   sourceCostSheetId?: string | null
-  style: Prisma.StyleCreateNestedOneWithoutCostSheetsInput
   items?: Prisma.CostItemCreateNestedManyWithoutCostSheetInput
   order?: Prisma.OrderCreateNestedOneWithoutCostSheetsInput
+  style: Prisma.StyleCreateNestedOneWithoutCostSheetsInput
 }
 
 export type CostSheetUncheckedCreateWithoutCompanyInput = {
@@ -888,9 +888,9 @@ export type CostSheetUncheckedCreateWithoutCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   orderId?: string | null
   sourceCostSheetId?: string | null
@@ -939,9 +939,9 @@ export type CostSheetScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"CostSheet"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CostSheet"> | Date | string
   baseCurrency?: Prisma.StringNullableFilter<"CostSheet"> | string | null
+  baseQuotedPrice?: Prisma.DecimalNullableFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"CostSheet"> | Date | string | null
-  baseQuotedPrice?: Prisma.DecimalNullableFilter<"CostSheet"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFilter<"CostSheet"> | $Enums.CostSheetType
   orderId?: Prisma.StringNullableFilter<"CostSheet"> | string | null
   sourceCostSheetId?: Prisma.StringNullableFilter<"CostSheet"> | string | null
@@ -958,13 +958,13 @@ export type CostSheetCreateWithoutStyleInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   sourceCostSheetId?: string | null
-  company: Prisma.CompanyCreateNestedOneWithoutCostSheetsInput
   items?: Prisma.CostItemCreateNestedManyWithoutCostSheetInput
+  company: Prisma.CompanyCreateNestedOneWithoutCostSheetsInput
   order?: Prisma.OrderCreateNestedOneWithoutCostSheetsInput
 }
 
@@ -980,9 +980,9 @@ export type CostSheetUncheckedCreateWithoutStyleInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   orderId?: string | null
   sourceCostSheetId?: string | null
@@ -1026,14 +1026,14 @@ export type CostSheetCreateWithoutItemsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   sourceCostSheetId?: string | null
   company: Prisma.CompanyCreateNestedOneWithoutCostSheetsInput
-  style: Prisma.StyleCreateNestedOneWithoutCostSheetsInput
   order?: Prisma.OrderCreateNestedOneWithoutCostSheetsInput
+  style: Prisma.StyleCreateNestedOneWithoutCostSheetsInput
 }
 
 export type CostSheetUncheckedCreateWithoutItemsInput = {
@@ -1049,9 +1049,9 @@ export type CostSheetUncheckedCreateWithoutItemsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   orderId?: string | null
   sourceCostSheetId?: string | null
@@ -1084,14 +1084,14 @@ export type CostSheetUpdateWithoutItemsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutCostSheetsNestedInput
-  style?: Prisma.StyleUpdateOneRequiredWithoutCostSheetsNestedInput
   order?: Prisma.OrderUpdateOneWithoutCostSheetsNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutCostSheetsNestedInput
 }
 
 export type CostSheetUncheckedUpdateWithoutItemsInput = {
@@ -1107,9 +1107,9 @@ export type CostSheetUncheckedUpdateWithoutItemsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1126,14 +1126,14 @@ export type CostSheetCreateWithoutOrderInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   sourceCostSheetId?: string | null
+  items?: Prisma.CostItemCreateNestedManyWithoutCostSheetInput
   company: Prisma.CompanyCreateNestedOneWithoutCostSheetsInput
   style: Prisma.StyleCreateNestedOneWithoutCostSheetsInput
-  items?: Prisma.CostItemCreateNestedManyWithoutCostSheetInput
 }
 
 export type CostSheetUncheckedCreateWithoutOrderInput = {
@@ -1149,9 +1149,9 @@ export type CostSheetUncheckedCreateWithoutOrderInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   sourceCostSheetId?: string | null
   items?: Prisma.CostItemUncheckedCreateNestedManyWithoutCostSheetInput
@@ -1195,9 +1195,9 @@ export type CostSheetCreateManyCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   orderId?: string | null
   sourceCostSheetId?: string | null
@@ -1214,14 +1214,14 @@ export type CostSheetUpdateWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  style?: Prisma.StyleUpdateOneRequiredWithoutCostSheetsNestedInput
   items?: Prisma.CostItemUpdateManyWithoutCostSheetNestedInput
   order?: Prisma.OrderUpdateOneWithoutCostSheetsNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutCostSheetsNestedInput
 }
 
 export type CostSheetUncheckedUpdateWithoutCompanyInput = {
@@ -1236,9 +1236,9 @@ export type CostSheetUncheckedUpdateWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1257,9 +1257,9 @@ export type CostSheetUncheckedUpdateManyWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1277,9 +1277,9 @@ export type CostSheetCreateManyStyleInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   orderId?: string | null
   sourceCostSheetId?: string | null
@@ -1296,13 +1296,13 @@ export type CostSheetUpdateWithoutStyleInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company?: Prisma.CompanyUpdateOneRequiredWithoutCostSheetsNestedInput
   items?: Prisma.CostItemUpdateManyWithoutCostSheetNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutCostSheetsNestedInput
   order?: Prisma.OrderUpdateOneWithoutCostSheetsNestedInput
 }
 
@@ -1318,9 +1318,9 @@ export type CostSheetUncheckedUpdateWithoutStyleInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1339,9 +1339,9 @@ export type CostSheetUncheckedUpdateManyWithoutStyleInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1360,9 +1360,9 @@ export type CostSheetCreateManyOrderInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseQuotedPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: $Enums.CostSheetType
   sourceCostSheetId?: string | null
 }
@@ -1378,14 +1378,14 @@ export type CostSheetUpdateWithoutOrderInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  items?: Prisma.CostItemUpdateManyWithoutCostSheetNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutCostSheetsNestedInput
   style?: Prisma.StyleUpdateOneRequiredWithoutCostSheetsNestedInput
-  items?: Prisma.CostItemUpdateManyWithoutCostSheetNestedInput
 }
 
 export type CostSheetUncheckedUpdateWithoutOrderInput = {
@@ -1401,9 +1401,9 @@ export type CostSheetUncheckedUpdateWithoutOrderInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   items?: Prisma.CostItemUncheckedUpdateManyWithoutCostSheetNestedInput
@@ -1422,9 +1422,9 @@ export type CostSheetUncheckedUpdateManyWithoutOrderInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseQuotedPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   costType?: Prisma.EnumCostSheetTypeFieldUpdateOperationsInput | $Enums.CostSheetType
   sourceCostSheetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -1473,16 +1473,16 @@ export type CostSheetSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   createdAt?: boolean
   updatedAt?: boolean
   baseCurrency?: boolean
+  baseQuotedPrice?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseQuotedPrice?: boolean
   costType?: boolean
   orderId?: boolean
   sourceCostSheetId?: boolean
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   items?: boolean | Prisma.CostSheet$itemsArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   order?: boolean | Prisma.CostSheet$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.CostSheetCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["costSheet"]>
 
@@ -1499,15 +1499,15 @@ export type CostSheetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   createdAt?: boolean
   updatedAt?: boolean
   baseCurrency?: boolean
+  baseQuotedPrice?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseQuotedPrice?: boolean
   costType?: boolean
   orderId?: boolean
   sourceCostSheetId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   order?: boolean | Prisma.CostSheet$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["costSheet"]>
 
 export type CostSheetSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1523,15 +1523,15 @@ export type CostSheetSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   createdAt?: boolean
   updatedAt?: boolean
   baseCurrency?: boolean
+  baseQuotedPrice?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseQuotedPrice?: boolean
   costType?: boolean
   orderId?: boolean
   sourceCostSheetId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   order?: boolean | Prisma.CostSheet$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["costSheet"]>
 
 export type CostSheetSelectScalar = {
@@ -1547,40 +1547,40 @@ export type CostSheetSelectScalar = {
   createdAt?: boolean
   updatedAt?: boolean
   baseCurrency?: boolean
+  baseQuotedPrice?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseQuotedPrice?: boolean
   costType?: boolean
   orderId?: boolean
   sourceCostSheetId?: boolean
 }
 
-export type CostSheetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "styleId" | "version" | "currency" | "marginPct" | "totalCost" | "quotedPrice" | "status" | "createdAt" | "updatedAt" | "baseCurrency" | "exchangeRate" | "rateDate" | "baseQuotedPrice" | "costType" | "orderId" | "sourceCostSheetId", ExtArgs["result"]["costSheet"]>
+export type CostSheetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "styleId" | "version" | "currency" | "marginPct" | "totalCost" | "quotedPrice" | "status" | "createdAt" | "updatedAt" | "baseCurrency" | "baseQuotedPrice" | "exchangeRate" | "rateDate" | "costType" | "orderId" | "sourceCostSheetId", ExtArgs["result"]["costSheet"]>
 export type CostSheetInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   items?: boolean | Prisma.CostSheet$itemsArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   order?: boolean | Prisma.CostSheet$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.CostSheetCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CostSheetIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   order?: boolean | Prisma.CostSheet$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }
 export type CostSheetIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   order?: boolean | Prisma.CostSheet$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
 }
 
 export type $CostSheetPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CostSheet"
   objects: {
-    company: Prisma.$CompanyPayload<ExtArgs>
-    style: Prisma.$StylePayload<ExtArgs>
     items: Prisma.$CostItemPayload<ExtArgs>[]
+    company: Prisma.$CompanyPayload<ExtArgs>
     order: Prisma.$OrderPayload<ExtArgs> | null
+    style: Prisma.$StylePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1595,9 +1595,9 @@ export type $CostSheetPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     createdAt: Date
     updatedAt: Date
     baseCurrency: string | null
+    baseQuotedPrice: runtime.Decimal | null
     exchangeRate: runtime.Decimal | null
     rateDate: Date | null
-    baseQuotedPrice: runtime.Decimal | null
     costType: $Enums.CostSheetType
     orderId: string | null
     sourceCostSheetId: string | null
@@ -1995,10 +1995,10 @@ readonly fields: CostSheetFieldRefs;
  */
 export interface Prisma__CostSheetClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  style<T extends Prisma.StyleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleDefaultArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   items<T extends Prisma.CostSheet$itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CostSheet$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CostItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   order<T extends Prisma.CostSheet$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CostSheet$orderArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  style<T extends Prisma.StyleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleDefaultArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2040,9 +2040,9 @@ export interface CostSheetFieldRefs {
   readonly createdAt: Prisma.FieldRef<"CostSheet", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"CostSheet", 'DateTime'>
   readonly baseCurrency: Prisma.FieldRef<"CostSheet", 'String'>
+  readonly baseQuotedPrice: Prisma.FieldRef<"CostSheet", 'Decimal'>
   readonly exchangeRate: Prisma.FieldRef<"CostSheet", 'Decimal'>
   readonly rateDate: Prisma.FieldRef<"CostSheet", 'DateTime'>
-  readonly baseQuotedPrice: Prisma.FieldRef<"CostSheet", 'Decimal'>
   readonly costType: Prisma.FieldRef<"CostSheet", 'CostSheetType'>
   readonly orderId: Prisma.FieldRef<"CostSheet", 'String'>
   readonly sourceCostSheetId: Prisma.FieldRef<"CostSheet", 'String'>

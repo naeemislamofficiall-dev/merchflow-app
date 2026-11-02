@@ -28,33 +28,33 @@ export type TnaPlanMinAggregateOutputType = {
   id: string | null
   companyId: string | null
   styleId: string | null
-  orderId: string | null
   templateId: string | null
   shipDate: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  orderId: string | null
 }
 
 export type TnaPlanMaxAggregateOutputType = {
   id: string | null
   companyId: string | null
   styleId: string | null
-  orderId: string | null
   templateId: string | null
   shipDate: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  orderId: string | null
 }
 
 export type TnaPlanCountAggregateOutputType = {
   id: number
   companyId: number
   styleId: number
-  orderId: number
   templateId: number
   shipDate: number
   createdAt: number
   updatedAt: number
+  orderId: number
   _all: number
 }
 
@@ -63,33 +63,33 @@ export type TnaPlanMinAggregateInputType = {
   id?: true
   companyId?: true
   styleId?: true
-  orderId?: true
   templateId?: true
   shipDate?: true
   createdAt?: true
   updatedAt?: true
+  orderId?: true
 }
 
 export type TnaPlanMaxAggregateInputType = {
   id?: true
   companyId?: true
   styleId?: true
-  orderId?: true
   templateId?: true
   shipDate?: true
   createdAt?: true
   updatedAt?: true
+  orderId?: true
 }
 
 export type TnaPlanCountAggregateInputType = {
   id?: true
   companyId?: true
   styleId?: true
-  orderId?: true
   templateId?: true
   shipDate?: true
   createdAt?: true
   updatedAt?: true
+  orderId?: true
   _all?: true
 }
 
@@ -169,11 +169,11 @@ export type TnaPlanGroupByOutputType = {
   id: string
   companyId: string
   styleId: string
-  orderId: string | null
   templateId: string | null
   shipDate: Date
   createdAt: Date
   updatedAt: Date
+  orderId: string | null
   _count: TnaPlanCountAggregateOutputType | null
   _min: TnaPlanMinAggregateOutputType | null
   _max: TnaPlanMaxAggregateOutputType | null
@@ -201,14 +201,14 @@ export type TnaPlanWhereInput = {
   id?: Prisma.StringFilter<"TnaPlan"> | string
   companyId?: Prisma.StringFilter<"TnaPlan"> | string
   styleId?: Prisma.StringFilter<"TnaPlan"> | string
-  orderId?: Prisma.StringNullableFilter<"TnaPlan"> | string | null
   templateId?: Prisma.StringNullableFilter<"TnaPlan"> | string | null
   shipDate?: Prisma.DateTimeFilter<"TnaPlan"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"TnaPlan"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TnaPlan"> | Date | string
+  orderId?: Prisma.StringNullableFilter<"TnaPlan"> | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
-  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
   order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
   template?: Prisma.XOR<Prisma.TnaTemplateNullableScalarRelationFilter, Prisma.TnaTemplateWhereInput> | null
   tasks?: Prisma.TnaTaskListRelationFilter
 }
@@ -217,14 +217,14 @@ export type TnaPlanOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   companyId?: Prisma.SortOrder
   styleId?: Prisma.SortOrder
-  orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   templateId?: Prisma.SortOrderInput | Prisma.SortOrder
   shipDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   company?: Prisma.CompanyOrderByWithRelationInput
-  style?: Prisma.StyleOrderByWithRelationInput
   order?: Prisma.OrderOrderByWithRelationInput
+  style?: Prisma.StyleOrderByWithRelationInput
   template?: Prisma.TnaTemplateOrderByWithRelationInput
   tasks?: Prisma.TnaTaskOrderByRelationAggregateInput
 }
@@ -236,14 +236,14 @@ export type TnaPlanWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.TnaPlanWhereInput | Prisma.TnaPlanWhereInput[]
   companyId?: Prisma.StringFilter<"TnaPlan"> | string
   styleId?: Prisma.StringFilter<"TnaPlan"> | string
-  orderId?: Prisma.StringNullableFilter<"TnaPlan"> | string | null
   templateId?: Prisma.StringNullableFilter<"TnaPlan"> | string | null
   shipDate?: Prisma.DateTimeFilter<"TnaPlan"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"TnaPlan"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TnaPlan"> | Date | string
+  orderId?: Prisma.StringNullableFilter<"TnaPlan"> | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
-  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
   order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  style?: Prisma.XOR<Prisma.StyleScalarRelationFilter, Prisma.StyleWhereInput>
   template?: Prisma.XOR<Prisma.TnaTemplateNullableScalarRelationFilter, Prisma.TnaTemplateWhereInput> | null
   tasks?: Prisma.TnaTaskListRelationFilter
 }, "id">
@@ -252,11 +252,11 @@ export type TnaPlanOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   companyId?: Prisma.SortOrder
   styleId?: Prisma.SortOrder
-  orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   templateId?: Prisma.SortOrderInput | Prisma.SortOrder
   shipDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.TnaPlanCountOrderByAggregateInput
   _max?: Prisma.TnaPlanMaxOrderByAggregateInput
   _min?: Prisma.TnaPlanMinOrderByAggregateInput
@@ -269,11 +269,11 @@ export type TnaPlanScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"TnaPlan"> | string
   companyId?: Prisma.StringWithAggregatesFilter<"TnaPlan"> | string
   styleId?: Prisma.StringWithAggregatesFilter<"TnaPlan"> | string
-  orderId?: Prisma.StringNullableWithAggregatesFilter<"TnaPlan"> | string | null
   templateId?: Prisma.StringNullableWithAggregatesFilter<"TnaPlan"> | string | null
   shipDate?: Prisma.DateTimeWithAggregatesFilter<"TnaPlan"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TnaPlan"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TnaPlan"> | Date | string
+  orderId?: Prisma.StringNullableWithAggregatesFilter<"TnaPlan"> | string | null
 }
 
 export type TnaPlanCreateInput = {
@@ -282,8 +282,8 @@ export type TnaPlanCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutTnaPlansInput
-  style: Prisma.StyleCreateNestedOneWithoutTnaPlansInput
   order?: Prisma.OrderCreateNestedOneWithoutTnaPlansInput
+  style: Prisma.StyleCreateNestedOneWithoutTnaPlansInput
   template?: Prisma.TnaTemplateCreateNestedOneWithoutPlansInput
   tasks?: Prisma.TnaTaskCreateNestedManyWithoutPlanInput
 }
@@ -292,11 +292,11 @@ export type TnaPlanUncheckedCreateInput = {
   id?: string
   companyId: string
   styleId: string
-  orderId?: string | null
   templateId?: string | null
   shipDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  orderId?: string | null
   tasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutPlanInput
 }
 
@@ -306,8 +306,8 @@ export type TnaPlanUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutTnaPlansNestedInput
-  style?: Prisma.StyleUpdateOneRequiredWithoutTnaPlansNestedInput
   order?: Prisma.OrderUpdateOneWithoutTnaPlansNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutTnaPlansNestedInput
   template?: Prisma.TnaTemplateUpdateOneWithoutPlansNestedInput
   tasks?: Prisma.TnaTaskUpdateManyWithoutPlanNestedInput
 }
@@ -316,11 +316,11 @@ export type TnaPlanUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   styleId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shipDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutPlanNestedInput
 }
 
@@ -328,11 +328,11 @@ export type TnaPlanCreateManyInput = {
   id?: string
   companyId: string
   styleId: string
-  orderId?: string | null
   templateId?: string | null
   shipDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  orderId?: string | null
 }
 
 export type TnaPlanUpdateManyMutationInput = {
@@ -346,11 +346,11 @@ export type TnaPlanUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   styleId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shipDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TnaPlanListRelationFilter = {
@@ -367,33 +367,33 @@ export type TnaPlanCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   companyId?: Prisma.SortOrder
   styleId?: Prisma.SortOrder
-  orderId?: Prisma.SortOrder
   templateId?: Prisma.SortOrder
   shipDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  orderId?: Prisma.SortOrder
 }
 
 export type TnaPlanMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   companyId?: Prisma.SortOrder
   styleId?: Prisma.SortOrder
-  orderId?: Prisma.SortOrder
   templateId?: Prisma.SortOrder
   shipDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  orderId?: Prisma.SortOrder
 }
 
 export type TnaPlanMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   companyId?: Prisma.SortOrder
   styleId?: Prisma.SortOrder
-  orderId?: Prisma.SortOrder
   templateId?: Prisma.SortOrder
   shipDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  orderId?: Prisma.SortOrder
 }
 
 export type TnaPlanScalarRelationFilter = {
@@ -588,8 +588,8 @@ export type TnaPlanCreateWithoutCompanyInput = {
   shipDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
-  style: Prisma.StyleCreateNestedOneWithoutTnaPlansInput
   order?: Prisma.OrderCreateNestedOneWithoutTnaPlansInput
+  style: Prisma.StyleCreateNestedOneWithoutTnaPlansInput
   template?: Prisma.TnaTemplateCreateNestedOneWithoutPlansInput
   tasks?: Prisma.TnaTaskCreateNestedManyWithoutPlanInput
 }
@@ -597,11 +597,11 @@ export type TnaPlanCreateWithoutCompanyInput = {
 export type TnaPlanUncheckedCreateWithoutCompanyInput = {
   id?: string
   styleId: string
-  orderId?: string | null
   templateId?: string | null
   shipDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  orderId?: string | null
   tasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutPlanInput
 }
 
@@ -638,11 +638,11 @@ export type TnaPlanScalarWhereInput = {
   id?: Prisma.StringFilter<"TnaPlan"> | string
   companyId?: Prisma.StringFilter<"TnaPlan"> | string
   styleId?: Prisma.StringFilter<"TnaPlan"> | string
-  orderId?: Prisma.StringNullableFilter<"TnaPlan"> | string | null
   templateId?: Prisma.StringNullableFilter<"TnaPlan"> | string | null
   shipDate?: Prisma.DateTimeFilter<"TnaPlan"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"TnaPlan"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TnaPlan"> | Date | string
+  orderId?: Prisma.StringNullableFilter<"TnaPlan"> | string | null
 }
 
 export type TnaPlanCreateWithoutStyleInput = {
@@ -659,11 +659,11 @@ export type TnaPlanCreateWithoutStyleInput = {
 export type TnaPlanUncheckedCreateWithoutStyleInput = {
   id?: string
   companyId: string
-  orderId?: string | null
   templateId?: string | null
   shipDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  orderId?: string | null
   tasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutPlanInput
 }
 
@@ -699,8 +699,8 @@ export type TnaPlanCreateWithoutTemplateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutTnaPlansInput
-  style: Prisma.StyleCreateNestedOneWithoutTnaPlansInput
   order?: Prisma.OrderCreateNestedOneWithoutTnaPlansInput
+  style: Prisma.StyleCreateNestedOneWithoutTnaPlansInput
   tasks?: Prisma.TnaTaskCreateNestedManyWithoutPlanInput
 }
 
@@ -708,10 +708,10 @@ export type TnaPlanUncheckedCreateWithoutTemplateInput = {
   id?: string
   companyId: string
   styleId: string
-  orderId?: string | null
   shipDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  orderId?: string | null
   tasks?: Prisma.TnaTaskUncheckedCreateNestedManyWithoutPlanInput
 }
 
@@ -747,8 +747,8 @@ export type TnaPlanCreateWithoutTasksInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutTnaPlansInput
-  style: Prisma.StyleCreateNestedOneWithoutTnaPlansInput
   order?: Prisma.OrderCreateNestedOneWithoutTnaPlansInput
+  style: Prisma.StyleCreateNestedOneWithoutTnaPlansInput
   template?: Prisma.TnaTemplateCreateNestedOneWithoutPlansInput
 }
 
@@ -756,11 +756,11 @@ export type TnaPlanUncheckedCreateWithoutTasksInput = {
   id?: string
   companyId: string
   styleId: string
-  orderId?: string | null
   templateId?: string | null
   shipDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  orderId?: string | null
 }
 
 export type TnaPlanCreateOrConnectWithoutTasksInput = {
@@ -785,8 +785,8 @@ export type TnaPlanUpdateWithoutTasksInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutTnaPlansNestedInput
-  style?: Prisma.StyleUpdateOneRequiredWithoutTnaPlansNestedInput
   order?: Prisma.OrderUpdateOneWithoutTnaPlansNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutTnaPlansNestedInput
   template?: Prisma.TnaTemplateUpdateOneWithoutPlansNestedInput
 }
 
@@ -794,11 +794,11 @@ export type TnaPlanUncheckedUpdateWithoutTasksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   styleId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shipDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TnaPlanCreateWithoutOrderInput = {
@@ -852,11 +852,11 @@ export type TnaPlanUpdateManyWithWhereWithoutOrderInput = {
 export type TnaPlanCreateManyCompanyInput = {
   id?: string
   styleId: string
-  orderId?: string | null
   templateId?: string | null
   shipDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  orderId?: string | null
 }
 
 export type TnaPlanUpdateWithoutCompanyInput = {
@@ -864,8 +864,8 @@ export type TnaPlanUpdateWithoutCompanyInput = {
   shipDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  style?: Prisma.StyleUpdateOneRequiredWithoutTnaPlansNestedInput
   order?: Prisma.OrderUpdateOneWithoutTnaPlansNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutTnaPlansNestedInput
   template?: Prisma.TnaTemplateUpdateOneWithoutPlansNestedInput
   tasks?: Prisma.TnaTaskUpdateManyWithoutPlanNestedInput
 }
@@ -873,32 +873,32 @@ export type TnaPlanUpdateWithoutCompanyInput = {
 export type TnaPlanUncheckedUpdateWithoutCompanyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   styleId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shipDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutPlanNestedInput
 }
 
 export type TnaPlanUncheckedUpdateManyWithoutCompanyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   styleId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shipDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TnaPlanCreateManyStyleInput = {
   id?: string
   companyId: string
-  orderId?: string | null
   templateId?: string | null
   shipDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  orderId?: string | null
 }
 
 export type TnaPlanUpdateWithoutStyleInput = {
@@ -915,32 +915,32 @@ export type TnaPlanUpdateWithoutStyleInput = {
 export type TnaPlanUncheckedUpdateWithoutStyleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shipDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutPlanNestedInput
 }
 
 export type TnaPlanUncheckedUpdateManyWithoutStyleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shipDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TnaPlanCreateManyTemplateInput = {
   id?: string
   companyId: string
   styleId: string
-  orderId?: string | null
   shipDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  orderId?: string | null
 }
 
 export type TnaPlanUpdateWithoutTemplateInput = {
@@ -949,8 +949,8 @@ export type TnaPlanUpdateWithoutTemplateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutTnaPlansNestedInput
-  style?: Prisma.StyleUpdateOneRequiredWithoutTnaPlansNestedInput
   order?: Prisma.OrderUpdateOneWithoutTnaPlansNestedInput
+  style?: Prisma.StyleUpdateOneRequiredWithoutTnaPlansNestedInput
   tasks?: Prisma.TnaTaskUpdateManyWithoutPlanNestedInput
 }
 
@@ -958,10 +958,10 @@ export type TnaPlanUncheckedUpdateWithoutTemplateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   styleId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shipDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tasks?: Prisma.TnaTaskUncheckedUpdateManyWithoutPlanNestedInput
 }
 
@@ -969,10 +969,10 @@ export type TnaPlanUncheckedUpdateManyWithoutTemplateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   styleId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shipDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TnaPlanCreateManyOrderInput = {
@@ -1052,14 +1052,14 @@ export type TnaPlanSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   id?: boolean
   companyId?: boolean
   styleId?: boolean
-  orderId?: boolean
   templateId?: boolean
   shipDate?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  orderId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   order?: boolean | Prisma.TnaPlan$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   template?: boolean | Prisma.TnaPlan$templateArgs<ExtArgs>
   tasks?: boolean | Prisma.TnaPlan$tasksArgs<ExtArgs>
   _count?: boolean | Prisma.TnaPlanCountOutputTypeDefaultArgs<ExtArgs>
@@ -1069,14 +1069,14 @@ export type TnaPlanSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   companyId?: boolean
   styleId?: boolean
-  orderId?: boolean
   templateId?: boolean
   shipDate?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  orderId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   order?: boolean | Prisma.TnaPlan$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   template?: boolean | Prisma.TnaPlan$templateArgs<ExtArgs>
 }, ExtArgs["result"]["tnaPlan"]>
 
@@ -1084,14 +1084,14 @@ export type TnaPlanSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   companyId?: boolean
   styleId?: boolean
-  orderId?: boolean
   templateId?: boolean
   shipDate?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  orderId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   order?: boolean | Prisma.TnaPlan$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   template?: boolean | Prisma.TnaPlan$templateArgs<ExtArgs>
 }, ExtArgs["result"]["tnaPlan"]>
 
@@ -1099,32 +1099,32 @@ export type TnaPlanSelectScalar = {
   id?: boolean
   companyId?: boolean
   styleId?: boolean
-  orderId?: boolean
   templateId?: boolean
   shipDate?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  orderId?: boolean
 }
 
-export type TnaPlanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "styleId" | "orderId" | "templateId" | "shipDate" | "createdAt" | "updatedAt", ExtArgs["result"]["tnaPlan"]>
+export type TnaPlanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "styleId" | "templateId" | "shipDate" | "createdAt" | "updatedAt" | "orderId", ExtArgs["result"]["tnaPlan"]>
 export type TnaPlanInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   order?: boolean | Prisma.TnaPlan$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   template?: boolean | Prisma.TnaPlan$templateArgs<ExtArgs>
   tasks?: boolean | Prisma.TnaPlan$tasksArgs<ExtArgs>
   _count?: boolean | Prisma.TnaPlanCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type TnaPlanIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   order?: boolean | Prisma.TnaPlan$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   template?: boolean | Prisma.TnaPlan$templateArgs<ExtArgs>
 }
 export type TnaPlanIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   order?: boolean | Prisma.TnaPlan$orderArgs<ExtArgs>
+  style?: boolean | Prisma.StyleDefaultArgs<ExtArgs>
   template?: boolean | Prisma.TnaPlan$templateArgs<ExtArgs>
 }
 
@@ -1132,8 +1132,8 @@ export type $TnaPlanPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "TnaPlan"
   objects: {
     company: Prisma.$CompanyPayload<ExtArgs>
-    style: Prisma.$StylePayload<ExtArgs>
     order: Prisma.$OrderPayload<ExtArgs> | null
+    style: Prisma.$StylePayload<ExtArgs>
     template: Prisma.$TnaTemplatePayload<ExtArgs> | null
     tasks: Prisma.$TnaTaskPayload<ExtArgs>[]
   }
@@ -1141,11 +1141,11 @@ export type $TnaPlanPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     id: string
     companyId: string
     styleId: string
-    orderId: string | null
     templateId: string | null
     shipDate: Date
     createdAt: Date
     updatedAt: Date
+    orderId: string | null
   }, ExtArgs["result"]["tnaPlan"]>
   composites: {}
 }
@@ -1541,8 +1541,8 @@ readonly fields: TnaPlanFieldRefs;
 export interface Prisma__TnaPlanClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  style<T extends Prisma.StyleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleDefaultArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   order<T extends Prisma.TnaPlan$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaPlan$orderArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  style<T extends Prisma.StyleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StyleDefaultArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   template<T extends Prisma.TnaPlan$templateArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaPlan$templateArgs<ExtArgs>>): Prisma.Prisma__TnaTemplateClient<runtime.Types.Result.GetResult<Prisma.$TnaTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   tasks<T extends Prisma.TnaPlan$tasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TnaPlan$tasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TnaTaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1577,11 +1577,11 @@ export interface TnaPlanFieldRefs {
   readonly id: Prisma.FieldRef<"TnaPlan", 'String'>
   readonly companyId: Prisma.FieldRef<"TnaPlan", 'String'>
   readonly styleId: Prisma.FieldRef<"TnaPlan", 'String'>
-  readonly orderId: Prisma.FieldRef<"TnaPlan", 'String'>
   readonly templateId: Prisma.FieldRef<"TnaPlan", 'String'>
   readonly shipDate: Prisma.FieldRef<"TnaPlan", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"TnaPlan", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"TnaPlan", 'DateTime'>
+  readonly orderId: Prisma.FieldRef<"TnaPlan", 'String'>
 }
     
 

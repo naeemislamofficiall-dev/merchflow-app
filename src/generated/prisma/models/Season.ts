@@ -182,9 +182,9 @@ export type SeasonWhereInput = {
   code?: Prisma.StringFilter<"Season"> | string
   name?: Prisma.StringFilter<"Season"> | string
   createdAt?: Prisma.DateTimeFilter<"Season"> | Date | string
+  orders?: Prisma.OrderListRelationFilter
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   styles?: Prisma.StyleListRelationFilter
-  orders?: Prisma.OrderListRelationFilter
 }
 
 export type SeasonOrderByWithRelationInput = {
@@ -193,9 +193,9 @@ export type SeasonOrderByWithRelationInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  orders?: Prisma.OrderOrderByRelationAggregateInput
   company?: Prisma.CompanyOrderByWithRelationInput
   styles?: Prisma.StyleOrderByRelationAggregateInput
-  orders?: Prisma.OrderOrderByRelationAggregateInput
 }
 
 export type SeasonWhereUniqueInput = Prisma.AtLeast<{
@@ -208,9 +208,9 @@ export type SeasonWhereUniqueInput = Prisma.AtLeast<{
   code?: Prisma.StringFilter<"Season"> | string
   name?: Prisma.StringFilter<"Season"> | string
   createdAt?: Prisma.DateTimeFilter<"Season"> | Date | string
+  orders?: Prisma.OrderListRelationFilter
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   styles?: Prisma.StyleListRelationFilter
-  orders?: Prisma.OrderListRelationFilter
 }, "id" | "companyId_code">
 
 export type SeasonOrderByWithAggregationInput = {
@@ -240,9 +240,9 @@ export type SeasonCreateInput = {
   code: string
   name: string
   createdAt?: Date | string
+  orders?: Prisma.OrderCreateNestedManyWithoutSeasonInput
   company: Prisma.CompanyCreateNestedOneWithoutSeasonsInput
   styles?: Prisma.StyleCreateNestedManyWithoutSeasonRefInput
-  orders?: Prisma.OrderCreateNestedManyWithoutSeasonInput
 }
 
 export type SeasonUncheckedCreateInput = {
@@ -251,8 +251,8 @@ export type SeasonUncheckedCreateInput = {
   code: string
   name: string
   createdAt?: Date | string
-  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutSeasonRefInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutSeasonInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutSeasonRefInput
 }
 
 export type SeasonUpdateInput = {
@@ -260,9 +260,9 @@ export type SeasonUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orders?: Prisma.OrderUpdateManyWithoutSeasonNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutSeasonsNestedInput
   styles?: Prisma.StyleUpdateManyWithoutSeasonRefNestedInput
-  orders?: Prisma.OrderUpdateManyWithoutSeasonNestedInput
 }
 
 export type SeasonUncheckedUpdateInput = {
@@ -271,8 +271,8 @@ export type SeasonUncheckedUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  styles?: Prisma.StyleUncheckedUpdateManyWithoutSeasonRefNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutSeasonNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutSeasonRefNestedInput
 }
 
 export type SeasonCreateManyInput = {
@@ -421,8 +421,8 @@ export type SeasonCreateWithoutCompanyInput = {
   code: string
   name: string
   createdAt?: Date | string
-  styles?: Prisma.StyleCreateNestedManyWithoutSeasonRefInput
   orders?: Prisma.OrderCreateNestedManyWithoutSeasonInput
+  styles?: Prisma.StyleCreateNestedManyWithoutSeasonRefInput
 }
 
 export type SeasonUncheckedCreateWithoutCompanyInput = {
@@ -430,8 +430,8 @@ export type SeasonUncheckedCreateWithoutCompanyInput = {
   code: string
   name: string
   createdAt?: Date | string
-  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutSeasonRefInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutSeasonInput
+  styles?: Prisma.StyleUncheckedCreateNestedManyWithoutSeasonRefInput
 }
 
 export type SeasonCreateOrConnectWithoutCompanyInput = {
@@ -476,8 +476,8 @@ export type SeasonCreateWithoutStylesInput = {
   code: string
   name: string
   createdAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutSeasonsInput
   orders?: Prisma.OrderCreateNestedManyWithoutSeasonInput
+  company: Prisma.CompanyCreateNestedOneWithoutSeasonsInput
 }
 
 export type SeasonUncheckedCreateWithoutStylesInput = {
@@ -510,8 +510,8 @@ export type SeasonUpdateWithoutStylesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutSeasonsNestedInput
   orders?: Prisma.OrderUpdateManyWithoutSeasonNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutSeasonsNestedInput
 }
 
 export type SeasonUncheckedUpdateWithoutStylesInput = {
@@ -587,8 +587,8 @@ export type SeasonUpdateWithoutCompanyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  styles?: Prisma.StyleUpdateManyWithoutSeasonRefNestedInput
   orders?: Prisma.OrderUpdateManyWithoutSeasonNestedInput
+  styles?: Prisma.StyleUpdateManyWithoutSeasonRefNestedInput
 }
 
 export type SeasonUncheckedUpdateWithoutCompanyInput = {
@@ -596,8 +596,8 @@ export type SeasonUncheckedUpdateWithoutCompanyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  styles?: Prisma.StyleUncheckedUpdateManyWithoutSeasonRefNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutSeasonNestedInput
+  styles?: Prisma.StyleUncheckedUpdateManyWithoutSeasonRefNestedInput
 }
 
 export type SeasonUncheckedUpdateManyWithoutCompanyInput = {
@@ -613,13 +613,13 @@ export type SeasonUncheckedUpdateManyWithoutCompanyInput = {
  */
 
 export type SeasonCountOutputType = {
-  styles: number
   orders: number
+  styles: number
 }
 
 export type SeasonCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  styles?: boolean | SeasonCountOutputTypeCountStylesArgs
   orders?: boolean | SeasonCountOutputTypeCountOrdersArgs
+  styles?: boolean | SeasonCountOutputTypeCountStylesArgs
 }
 
 /**
@@ -635,15 +635,15 @@ export type SeasonCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
 /**
  * SeasonCountOutputType without action
  */
-export type SeasonCountOutputTypeCountStylesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.StyleWhereInput
+export type SeasonCountOutputTypeCountOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderWhereInput
 }
 
 /**
  * SeasonCountOutputType without action
  */
-export type SeasonCountOutputTypeCountOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.OrderWhereInput
+export type SeasonCountOutputTypeCountStylesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StyleWhereInput
 }
 
 
@@ -653,9 +653,9 @@ export type SeasonSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   code?: boolean
   name?: boolean
   createdAt?: boolean
+  orders?: boolean | Prisma.Season$ordersArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   styles?: boolean | Prisma.Season$stylesArgs<ExtArgs>
-  orders?: boolean | Prisma.Season$ordersArgs<ExtArgs>
   _count?: boolean | Prisma.SeasonCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["season"]>
 
@@ -687,9 +687,9 @@ export type SeasonSelectScalar = {
 
 export type SeasonOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "code" | "name" | "createdAt", ExtArgs["result"]["season"]>
 export type SeasonInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  orders?: boolean | Prisma.Season$ordersArgs<ExtArgs>
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   styles?: boolean | Prisma.Season$stylesArgs<ExtArgs>
-  orders?: boolean | Prisma.Season$ordersArgs<ExtArgs>
   _count?: boolean | Prisma.SeasonCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SeasonIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -702,9 +702,9 @@ export type SeasonIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type $SeasonPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Season"
   objects: {
+    orders: Prisma.$OrderPayload<ExtArgs>[]
     company: Prisma.$CompanyPayload<ExtArgs>
     styles: Prisma.$StylePayload<ExtArgs>[]
-    orders: Prisma.$OrderPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1106,9 +1106,9 @@ readonly fields: SeasonFieldRefs;
  */
 export interface Prisma__SeasonClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  orders<T extends Prisma.Season$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Season$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   styles<T extends Prisma.Season$stylesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Season$stylesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  orders<T extends Prisma.Season$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Season$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1544,30 +1544,6 @@ export type SeasonDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
- * Season.styles
- */
-export type Season$stylesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Style
-   */
-  select?: Prisma.StyleSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Style
-   */
-  omit?: Prisma.StyleOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.StyleInclude<ExtArgs> | null
-  where?: Prisma.StyleWhereInput
-  orderBy?: Prisma.StyleOrderByWithRelationInput | Prisma.StyleOrderByWithRelationInput[]
-  cursor?: Prisma.StyleWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.StyleScalarFieldEnum | Prisma.StyleScalarFieldEnum[]
-}
-
-/**
  * Season.orders
  */
 export type Season$ordersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1589,6 +1565,30 @@ export type Season$ordersArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
+}
+
+/**
+ * Season.styles
+ */
+export type Season$stylesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Style
+   */
+  select?: Prisma.StyleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Style
+   */
+  omit?: Prisma.StyleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StyleInclude<ExtArgs> | null
+  where?: Prisma.StyleWhereInput
+  orderBy?: Prisma.StyleOrderByWithRelationInput | Prisma.StyleOrderByWithRelationInput[]
+  cursor?: Prisma.StyleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StyleScalarFieldEnum | Prisma.StyleScalarFieldEnum[]
 }
 
 /**

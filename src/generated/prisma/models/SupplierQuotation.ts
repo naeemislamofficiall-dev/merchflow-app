@@ -32,8 +32,8 @@ export type SupplierQuotationAvgAggregateOutputType = {
   leadTimeDays: number | null
   qualityRating: number | null
   score: runtime.Decimal | null
-  exchangeRate: runtime.Decimal | null
   baseUnitPrice: runtime.Decimal | null
+  exchangeRate: runtime.Decimal | null
 }
 
 export type SupplierQuotationSumAggregateOutputType = {
@@ -42,8 +42,8 @@ export type SupplierQuotationSumAggregateOutputType = {
   leadTimeDays: number | null
   qualityRating: number | null
   score: runtime.Decimal | null
-  exchangeRate: runtime.Decimal | null
   baseUnitPrice: runtime.Decimal | null
+  exchangeRate: runtime.Decimal | null
 }
 
 export type SupplierQuotationMinAggregateOutputType = {
@@ -65,11 +65,11 @@ export type SupplierQuotationMinAggregateOutputType = {
   notes: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  rfqId: string | null
   baseCurrency: string | null
+  baseUnitPrice: runtime.Decimal | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseUnitPrice: runtime.Decimal | null
+  rfqId: string | null
 }
 
 export type SupplierQuotationMaxAggregateOutputType = {
@@ -91,11 +91,11 @@ export type SupplierQuotationMaxAggregateOutputType = {
   notes: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  rfqId: string | null
   baseCurrency: string | null
+  baseUnitPrice: runtime.Decimal | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseUnitPrice: runtime.Decimal | null
+  rfqId: string | null
 }
 
 export type SupplierQuotationCountAggregateOutputType = {
@@ -117,11 +117,11 @@ export type SupplierQuotationCountAggregateOutputType = {
   notes: number
   createdAt: number
   updatedAt: number
-  rfqId: number
   baseCurrency: number
+  baseUnitPrice: number
   exchangeRate: number
   rateDate: number
-  baseUnitPrice: number
+  rfqId: number
   _all: number
 }
 
@@ -132,8 +132,8 @@ export type SupplierQuotationAvgAggregateInputType = {
   leadTimeDays?: true
   qualityRating?: true
   score?: true
-  exchangeRate?: true
   baseUnitPrice?: true
+  exchangeRate?: true
 }
 
 export type SupplierQuotationSumAggregateInputType = {
@@ -142,8 +142,8 @@ export type SupplierQuotationSumAggregateInputType = {
   leadTimeDays?: true
   qualityRating?: true
   score?: true
-  exchangeRate?: true
   baseUnitPrice?: true
+  exchangeRate?: true
 }
 
 export type SupplierQuotationMinAggregateInputType = {
@@ -165,11 +165,11 @@ export type SupplierQuotationMinAggregateInputType = {
   notes?: true
   createdAt?: true
   updatedAt?: true
-  rfqId?: true
   baseCurrency?: true
+  baseUnitPrice?: true
   exchangeRate?: true
   rateDate?: true
-  baseUnitPrice?: true
+  rfqId?: true
 }
 
 export type SupplierQuotationMaxAggregateInputType = {
@@ -191,11 +191,11 @@ export type SupplierQuotationMaxAggregateInputType = {
   notes?: true
   createdAt?: true
   updatedAt?: true
-  rfqId?: true
   baseCurrency?: true
+  baseUnitPrice?: true
   exchangeRate?: true
   rateDate?: true
-  baseUnitPrice?: true
+  rfqId?: true
 }
 
 export type SupplierQuotationCountAggregateInputType = {
@@ -217,11 +217,11 @@ export type SupplierQuotationCountAggregateInputType = {
   notes?: true
   createdAt?: true
   updatedAt?: true
-  rfqId?: true
   baseCurrency?: true
+  baseUnitPrice?: true
   exchangeRate?: true
   rateDate?: true
-  baseUnitPrice?: true
+  rfqId?: true
   _all?: true
 }
 
@@ -330,11 +330,11 @@ export type SupplierQuotationGroupByOutputType = {
   notes: string | null
   createdAt: Date
   updatedAt: Date
-  rfqId: string | null
   baseCurrency: string | null
+  baseUnitPrice: runtime.Decimal | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseUnitPrice: runtime.Decimal | null
+  rfqId: string | null
   _count: SupplierQuotationCountAggregateOutputType | null
   _avg: SupplierQuotationAvgAggregateOutputType | null
   _sum: SupplierQuotationSumAggregateOutputType | null
@@ -379,15 +379,15 @@ export type SupplierQuotationWhereInput = {
   notes?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SupplierQuotation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SupplierQuotation"> | Date | string
-  rfqId?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
   baseCurrency?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
+  baseUnitPrice?: Prisma.DecimalNullableFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"SupplierQuotation"> | Date | string | null
-  baseUnitPrice?: Prisma.DecimalNullableFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
-  supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
   material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
   rfq?: Prisma.XOR<Prisma.RfqNullableScalarRelationFilter, Prisma.RfqWhereInput> | null
+  supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
 }
 
 export type SupplierQuotationOrderByWithRelationInput = {
@@ -409,15 +409,15 @@ export type SupplierQuotationOrderByWithRelationInput = {
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  rfqId?: Prisma.SortOrderInput | Prisma.SortOrder
   baseCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
+  baseUnitPrice?: Prisma.SortOrderInput | Prisma.SortOrder
   exchangeRate?: Prisma.SortOrderInput | Prisma.SortOrder
   rateDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseUnitPrice?: Prisma.SortOrderInput | Prisma.SortOrder
+  rfqId?: Prisma.SortOrderInput | Prisma.SortOrder
   company?: Prisma.CompanyOrderByWithRelationInput
-  supplier?: Prisma.SupplierOrderByWithRelationInput
   material?: Prisma.MaterialOrderByWithRelationInput
   rfq?: Prisma.RfqOrderByWithRelationInput
+  supplier?: Prisma.SupplierOrderByWithRelationInput
 }
 
 export type SupplierQuotationWhereUniqueInput = Prisma.AtLeast<{
@@ -443,15 +443,15 @@ export type SupplierQuotationWhereUniqueInput = Prisma.AtLeast<{
   notes?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SupplierQuotation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SupplierQuotation"> | Date | string
-  rfqId?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
   baseCurrency?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
+  baseUnitPrice?: Prisma.DecimalNullableFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"SupplierQuotation"> | Date | string | null
-  baseUnitPrice?: Prisma.DecimalNullableFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
-  supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
   material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
   rfq?: Prisma.XOR<Prisma.RfqNullableScalarRelationFilter, Prisma.RfqWhereInput> | null
+  supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
 }, "id" | "companyId_quotationNo_revisionNo">
 
 export type SupplierQuotationOrderByWithAggregationInput = {
@@ -473,11 +473,11 @@ export type SupplierQuotationOrderByWithAggregationInput = {
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  rfqId?: Prisma.SortOrderInput | Prisma.SortOrder
   baseCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
+  baseUnitPrice?: Prisma.SortOrderInput | Prisma.SortOrder
   exchangeRate?: Prisma.SortOrderInput | Prisma.SortOrder
   rateDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseUnitPrice?: Prisma.SortOrderInput | Prisma.SortOrder
+  rfqId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.SupplierQuotationCountOrderByAggregateInput
   _avg?: Prisma.SupplierQuotationAvgOrderByAggregateInput
   _max?: Prisma.SupplierQuotationMaxOrderByAggregateInput
@@ -507,11 +507,11 @@ export type SupplierQuotationScalarWhereWithAggregatesInput = {
   notes?: Prisma.StringNullableWithAggregatesFilter<"SupplierQuotation"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SupplierQuotation"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"SupplierQuotation"> | Date | string
-  rfqId?: Prisma.StringNullableWithAggregatesFilter<"SupplierQuotation"> | string | null
   baseCurrency?: Prisma.StringNullableWithAggregatesFilter<"SupplierQuotation"> | string | null
+  baseUnitPrice?: Prisma.DecimalNullableWithAggregatesFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableWithAggregatesFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableWithAggregatesFilter<"SupplierQuotation"> | Date | string | null
-  baseUnitPrice?: Prisma.DecimalNullableWithAggregatesFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.StringNullableWithAggregatesFilter<"SupplierQuotation"> | string | null
 }
 
 export type SupplierQuotationCreateInput = {
@@ -531,13 +531,13 @@ export type SupplierQuotationCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   company: Prisma.CompanyCreateNestedOneWithoutSupplierQuotationsInput
-  supplier: Prisma.SupplierCreateNestedOneWithoutQuotationsInput
   material: Prisma.MaterialCreateNestedOneWithoutQuotationsInput
   rfq?: Prisma.RfqCreateNestedOneWithoutQuotationsInput
+  supplier: Prisma.SupplierCreateNestedOneWithoutQuotationsInput
 }
 
 export type SupplierQuotationUncheckedCreateInput = {
@@ -559,11 +559,11 @@ export type SupplierQuotationUncheckedCreateInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  rfqId?: string | null
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: string | null
 }
 
 export type SupplierQuotationUpdateInput = {
@@ -583,13 +583,13 @@ export type SupplierQuotationUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutSupplierQuotationsNestedInput
-  supplier?: Prisma.SupplierUpdateOneRequiredWithoutQuotationsNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutQuotationsNestedInput
   rfq?: Prisma.RfqUpdateOneWithoutQuotationsNestedInput
+  supplier?: Prisma.SupplierUpdateOneRequiredWithoutQuotationsNestedInput
 }
 
 export type SupplierQuotationUncheckedUpdateInput = {
@@ -611,11 +611,11 @@ export type SupplierQuotationUncheckedUpdateInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SupplierQuotationCreateManyInput = {
@@ -637,11 +637,11 @@ export type SupplierQuotationCreateManyInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  rfqId?: string | null
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: string | null
 }
 
 export type SupplierQuotationUpdateManyMutationInput = {
@@ -661,9 +661,9 @@ export type SupplierQuotationUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierQuotationUncheckedUpdateManyInput = {
@@ -685,11 +685,11 @@ export type SupplierQuotationUncheckedUpdateManyInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SupplierQuotationListRelationFilter = {
@@ -727,11 +727,11 @@ export type SupplierQuotationCountOrderByAggregateInput = {
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  rfqId?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
+  baseUnitPrice?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseUnitPrice?: Prisma.SortOrder
+  rfqId?: Prisma.SortOrder
 }
 
 export type SupplierQuotationAvgOrderByAggregateInput = {
@@ -740,8 +740,8 @@ export type SupplierQuotationAvgOrderByAggregateInput = {
   leadTimeDays?: Prisma.SortOrder
   qualityRating?: Prisma.SortOrder
   score?: Prisma.SortOrder
-  exchangeRate?: Prisma.SortOrder
   baseUnitPrice?: Prisma.SortOrder
+  exchangeRate?: Prisma.SortOrder
 }
 
 export type SupplierQuotationMaxOrderByAggregateInput = {
@@ -763,11 +763,11 @@ export type SupplierQuotationMaxOrderByAggregateInput = {
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  rfqId?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
+  baseUnitPrice?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseUnitPrice?: Prisma.SortOrder
+  rfqId?: Prisma.SortOrder
 }
 
 export type SupplierQuotationMinOrderByAggregateInput = {
@@ -789,11 +789,11 @@ export type SupplierQuotationMinOrderByAggregateInput = {
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  rfqId?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
+  baseUnitPrice?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseUnitPrice?: Prisma.SortOrder
+  rfqId?: Prisma.SortOrder
 }
 
 export type SupplierQuotationSumOrderByAggregateInput = {
@@ -802,8 +802,8 @@ export type SupplierQuotationSumOrderByAggregateInput = {
   leadTimeDays?: Prisma.SortOrder
   qualityRating?: Prisma.SortOrder
   score?: Prisma.SortOrder
-  exchangeRate?: Prisma.SortOrder
   baseUnitPrice?: Prisma.SortOrder
+  exchangeRate?: Prisma.SortOrder
 }
 
 export type SupplierQuotationCreateNestedManyWithoutCompanyInput = {
@@ -995,12 +995,12 @@ export type SupplierQuotationCreateWithoutCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  supplier: Prisma.SupplierCreateNestedOneWithoutQuotationsInput
   material: Prisma.MaterialCreateNestedOneWithoutQuotationsInput
   rfq?: Prisma.RfqCreateNestedOneWithoutQuotationsInput
+  supplier: Prisma.SupplierCreateNestedOneWithoutQuotationsInput
 }
 
 export type SupplierQuotationUncheckedCreateWithoutCompanyInput = {
@@ -1021,11 +1021,11 @@ export type SupplierQuotationUncheckedCreateWithoutCompanyInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  rfqId?: string | null
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: string | null
 }
 
 export type SupplierQuotationCreateOrConnectWithoutCompanyInput = {
@@ -1076,11 +1076,11 @@ export type SupplierQuotationScalarWhereInput = {
   notes?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SupplierQuotation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SupplierQuotation"> | Date | string
-  rfqId?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
   baseCurrency?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
+  baseUnitPrice?: Prisma.DecimalNullableFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"SupplierQuotation"> | Date | string | null
-  baseUnitPrice?: Prisma.DecimalNullableFilter<"SupplierQuotation"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.StringNullableFilter<"SupplierQuotation"> | string | null
 }
 
 export type SupplierQuotationCreateWithoutMaterialInput = {
@@ -1100,12 +1100,12 @@ export type SupplierQuotationCreateWithoutMaterialInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   company: Prisma.CompanyCreateNestedOneWithoutSupplierQuotationsInput
-  supplier: Prisma.SupplierCreateNestedOneWithoutQuotationsInput
   rfq?: Prisma.RfqCreateNestedOneWithoutQuotationsInput
+  supplier: Prisma.SupplierCreateNestedOneWithoutQuotationsInput
 }
 
 export type SupplierQuotationUncheckedCreateWithoutMaterialInput = {
@@ -1126,11 +1126,11 @@ export type SupplierQuotationUncheckedCreateWithoutMaterialInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  rfqId?: string | null
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: string | null
 }
 
 export type SupplierQuotationCreateOrConnectWithoutMaterialInput = {
@@ -1176,9 +1176,9 @@ export type SupplierQuotationCreateWithoutSupplierInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   company: Prisma.CompanyCreateNestedOneWithoutSupplierQuotationsInput
   material: Prisma.MaterialCreateNestedOneWithoutQuotationsInput
   rfq?: Prisma.RfqCreateNestedOneWithoutQuotationsInput
@@ -1202,11 +1202,11 @@ export type SupplierQuotationUncheckedCreateWithoutSupplierInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  rfqId?: string | null
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: string | null
 }
 
 export type SupplierQuotationCreateOrConnectWithoutSupplierInput = {
@@ -1252,12 +1252,12 @@ export type SupplierQuotationCreateWithoutRfqInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   company: Prisma.CompanyCreateNestedOneWithoutSupplierQuotationsInput
-  supplier: Prisma.SupplierCreateNestedOneWithoutQuotationsInput
   material: Prisma.MaterialCreateNestedOneWithoutQuotationsInput
+  supplier: Prisma.SupplierCreateNestedOneWithoutQuotationsInput
 }
 
 export type SupplierQuotationUncheckedCreateWithoutRfqInput = {
@@ -1280,9 +1280,9 @@ export type SupplierQuotationUncheckedCreateWithoutRfqInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierQuotationCreateOrConnectWithoutRfqInput = {
@@ -1329,11 +1329,11 @@ export type SupplierQuotationCreateManyCompanyInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  rfqId?: string | null
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: string | null
 }
 
 export type SupplierQuotationUpdateWithoutCompanyInput = {
@@ -1353,12 +1353,12 @@ export type SupplierQuotationUpdateWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  supplier?: Prisma.SupplierUpdateOneRequiredWithoutQuotationsNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutQuotationsNestedInput
   rfq?: Prisma.RfqUpdateOneWithoutQuotationsNestedInput
+  supplier?: Prisma.SupplierUpdateOneRequiredWithoutQuotationsNestedInput
 }
 
 export type SupplierQuotationUncheckedUpdateWithoutCompanyInput = {
@@ -1379,11 +1379,11 @@ export type SupplierQuotationUncheckedUpdateWithoutCompanyInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SupplierQuotationUncheckedUpdateManyWithoutCompanyInput = {
@@ -1404,11 +1404,11 @@ export type SupplierQuotationUncheckedUpdateManyWithoutCompanyInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SupplierQuotationCreateManyMaterialInput = {
@@ -1429,11 +1429,11 @@ export type SupplierQuotationCreateManyMaterialInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  rfqId?: string | null
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: string | null
 }
 
 export type SupplierQuotationUpdateWithoutMaterialInput = {
@@ -1453,12 +1453,12 @@ export type SupplierQuotationUpdateWithoutMaterialInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutSupplierQuotationsNestedInput
-  supplier?: Prisma.SupplierUpdateOneRequiredWithoutQuotationsNestedInput
   rfq?: Prisma.RfqUpdateOneWithoutQuotationsNestedInput
+  supplier?: Prisma.SupplierUpdateOneRequiredWithoutQuotationsNestedInput
 }
 
 export type SupplierQuotationUncheckedUpdateWithoutMaterialInput = {
@@ -1479,11 +1479,11 @@ export type SupplierQuotationUncheckedUpdateWithoutMaterialInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SupplierQuotationUncheckedUpdateManyWithoutMaterialInput = {
@@ -1504,11 +1504,11 @@ export type SupplierQuotationUncheckedUpdateManyWithoutMaterialInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SupplierQuotationCreateManySupplierInput = {
@@ -1529,11 +1529,11 @@ export type SupplierQuotationCreateManySupplierInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  rfqId?: string | null
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: string | null
 }
 
 export type SupplierQuotationUpdateWithoutSupplierInput = {
@@ -1553,9 +1553,9 @@ export type SupplierQuotationUpdateWithoutSupplierInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutSupplierQuotationsNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutQuotationsNestedInput
   rfq?: Prisma.RfqUpdateOneWithoutQuotationsNestedInput
@@ -1579,11 +1579,11 @@ export type SupplierQuotationUncheckedUpdateWithoutSupplierInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SupplierQuotationUncheckedUpdateManyWithoutSupplierInput = {
@@ -1604,11 +1604,11 @@ export type SupplierQuotationUncheckedUpdateManyWithoutSupplierInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  rfqId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SupplierQuotationCreateManyRfqInput = {
@@ -1631,9 +1631,9 @@ export type SupplierQuotationCreateManyRfqInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   baseCurrency?: string | null
+  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseUnitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierQuotationUpdateWithoutRfqInput = {
@@ -1653,12 +1653,12 @@ export type SupplierQuotationUpdateWithoutRfqInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutSupplierQuotationsNestedInput
-  supplier?: Prisma.SupplierUpdateOneRequiredWithoutQuotationsNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutQuotationsNestedInput
+  supplier?: Prisma.SupplierUpdateOneRequiredWithoutQuotationsNestedInput
 }
 
 export type SupplierQuotationUncheckedUpdateWithoutRfqInput = {
@@ -1681,9 +1681,9 @@ export type SupplierQuotationUncheckedUpdateWithoutRfqInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierQuotationUncheckedUpdateManyWithoutRfqInput = {
@@ -1706,9 +1706,9 @@ export type SupplierQuotationUncheckedUpdateManyWithoutRfqInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseUnitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 
@@ -1732,15 +1732,15 @@ export type SupplierQuotationSelect<ExtArgs extends runtime.Types.Extensions.Int
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  rfqId?: boolean
   baseCurrency?: boolean
+  baseUnitPrice?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseUnitPrice?: boolean
+  rfqId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   rfq?: boolean | Prisma.SupplierQuotation$rfqArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["supplierQuotation"]>
 
 export type SupplierQuotationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1762,15 +1762,15 @@ export type SupplierQuotationSelectCreateManyAndReturn<ExtArgs extends runtime.T
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  rfqId?: boolean
   baseCurrency?: boolean
+  baseUnitPrice?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseUnitPrice?: boolean
+  rfqId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   rfq?: boolean | Prisma.SupplierQuotation$rfqArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["supplierQuotation"]>
 
 export type SupplierQuotationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1792,15 +1792,15 @@ export type SupplierQuotationSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  rfqId?: boolean
   baseCurrency?: boolean
+  baseUnitPrice?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseUnitPrice?: boolean
+  rfqId?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   rfq?: boolean | Prisma.SupplierQuotation$rfqArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["supplierQuotation"]>
 
 export type SupplierQuotationSelectScalar = {
@@ -1822,40 +1822,40 @@ export type SupplierQuotationSelectScalar = {
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  rfqId?: boolean
   baseCurrency?: boolean
+  baseUnitPrice?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseUnitPrice?: boolean
+  rfqId?: boolean
 }
 
-export type SupplierQuotationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "quotationNo" | "revisionNo" | "rfqNo" | "supplierId" | "materialId" | "unitPrice" | "currency" | "leadTimeDays" | "qualityRating" | "paymentTerms" | "validUntil" | "score" | "status" | "notes" | "createdAt" | "updatedAt" | "rfqId" | "baseCurrency" | "exchangeRate" | "rateDate" | "baseUnitPrice", ExtArgs["result"]["supplierQuotation"]>
+export type SupplierQuotationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "quotationNo" | "revisionNo" | "rfqNo" | "supplierId" | "materialId" | "unitPrice" | "currency" | "leadTimeDays" | "qualityRating" | "paymentTerms" | "validUntil" | "score" | "status" | "notes" | "createdAt" | "updatedAt" | "baseCurrency" | "baseUnitPrice" | "exchangeRate" | "rateDate" | "rfqId", ExtArgs["result"]["supplierQuotation"]>
 export type SupplierQuotationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   rfq?: boolean | Prisma.SupplierQuotation$rfqArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }
 export type SupplierQuotationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   rfq?: boolean | Prisma.SupplierQuotation$rfqArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }
 export type SupplierQuotationIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   rfq?: boolean | Prisma.SupplierQuotation$rfqArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }
 
 export type $SupplierQuotationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "SupplierQuotation"
   objects: {
     company: Prisma.$CompanyPayload<ExtArgs>
-    supplier: Prisma.$SupplierPayload<ExtArgs>
     material: Prisma.$MaterialPayload<ExtArgs>
     rfq: Prisma.$RfqPayload<ExtArgs> | null
+    supplier: Prisma.$SupplierPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1876,11 +1876,11 @@ export type $SupplierQuotationPayload<ExtArgs extends runtime.Types.Extensions.I
     notes: string | null
     createdAt: Date
     updatedAt: Date
-    rfqId: string | null
     baseCurrency: string | null
+    baseUnitPrice: runtime.Decimal | null
     exchangeRate: runtime.Decimal | null
     rateDate: Date | null
-    baseUnitPrice: runtime.Decimal | null
+    rfqId: string | null
   }, ExtArgs["result"]["supplierQuotation"]>
   composites: {}
 }
@@ -2276,9 +2276,9 @@ readonly fields: SupplierQuotationFieldRefs;
 export interface Prisma__SupplierQuotationClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  supplier<T extends Prisma.SupplierDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupplierDefaultArgs<ExtArgs>>): Prisma.Prisma__SupplierClient<runtime.Types.Result.GetResult<Prisma.$SupplierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   material<T extends Prisma.MaterialDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialDefaultArgs<ExtArgs>>): Prisma.Prisma__MaterialClient<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   rfq<T extends Prisma.SupplierQuotation$rfqArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupplierQuotation$rfqArgs<ExtArgs>>): Prisma.Prisma__RfqClient<runtime.Types.Result.GetResult<Prisma.$RfqPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  supplier<T extends Prisma.SupplierDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupplierDefaultArgs<ExtArgs>>): Prisma.Prisma__SupplierClient<runtime.Types.Result.GetResult<Prisma.$SupplierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2326,11 +2326,11 @@ export interface SupplierQuotationFieldRefs {
   readonly notes: Prisma.FieldRef<"SupplierQuotation", 'String'>
   readonly createdAt: Prisma.FieldRef<"SupplierQuotation", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"SupplierQuotation", 'DateTime'>
-  readonly rfqId: Prisma.FieldRef<"SupplierQuotation", 'String'>
   readonly baseCurrency: Prisma.FieldRef<"SupplierQuotation", 'String'>
+  readonly baseUnitPrice: Prisma.FieldRef<"SupplierQuotation", 'Decimal'>
   readonly exchangeRate: Prisma.FieldRef<"SupplierQuotation", 'Decimal'>
   readonly rateDate: Prisma.FieldRef<"SupplierQuotation", 'DateTime'>
-  readonly baseUnitPrice: Prisma.FieldRef<"SupplierQuotation", 'Decimal'>
+  readonly rfqId: Prisma.FieldRef<"SupplierQuotation", 'String'>
 }
     
 

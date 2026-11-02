@@ -224,8 +224,8 @@ export type RfqLineWhereInput = {
   quantity?: Prisma.DecimalFilter<"RfqLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   unit?: Prisma.StringFilter<"RfqLine"> | string
   requiredDate?: Prisma.DateTimeNullableFilter<"RfqLine"> | Date | string | null
-  rfq?: Prisma.XOR<Prisma.RfqScalarRelationFilter, Prisma.RfqWhereInput>
   material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
+  rfq?: Prisma.XOR<Prisma.RfqScalarRelationFilter, Prisma.RfqWhereInput>
 }
 
 export type RfqLineOrderByWithRelationInput = {
@@ -235,8 +235,8 @@ export type RfqLineOrderByWithRelationInput = {
   quantity?: Prisma.SortOrder
   unit?: Prisma.SortOrder
   requiredDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  rfq?: Prisma.RfqOrderByWithRelationInput
   material?: Prisma.MaterialOrderByWithRelationInput
+  rfq?: Prisma.RfqOrderByWithRelationInput
 }
 
 export type RfqLineWhereUniqueInput = Prisma.AtLeast<{
@@ -249,8 +249,8 @@ export type RfqLineWhereUniqueInput = Prisma.AtLeast<{
   quantity?: Prisma.DecimalFilter<"RfqLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   unit?: Prisma.StringFilter<"RfqLine"> | string
   requiredDate?: Prisma.DateTimeNullableFilter<"RfqLine"> | Date | string | null
-  rfq?: Prisma.XOR<Prisma.RfqScalarRelationFilter, Prisma.RfqWhereInput>
   material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
+  rfq?: Prisma.XOR<Prisma.RfqScalarRelationFilter, Prisma.RfqWhereInput>
 }, "id">
 
 export type RfqLineOrderByWithAggregationInput = {
@@ -284,8 +284,8 @@ export type RfqLineCreateInput = {
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
   unit?: string
   requiredDate?: Date | string | null
-  rfq: Prisma.RfqCreateNestedOneWithoutLinesInput
   material: Prisma.MaterialCreateNestedOneWithoutRfqLinesInput
+  rfq: Prisma.RfqCreateNestedOneWithoutLinesInput
 }
 
 export type RfqLineUncheckedCreateInput = {
@@ -302,8 +302,8 @@ export type RfqLineUpdateInput = {
   quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   requiredDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rfq?: Prisma.RfqUpdateOneRequiredWithoutLinesNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutRfqLinesNestedInput
+  rfq?: Prisma.RfqUpdateOneRequiredWithoutLinesNestedInput
 }
 
 export type RfqLineUncheckedUpdateInput = {
@@ -638,8 +638,8 @@ export type RfqLineSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   quantity?: boolean
   unit?: boolean
   requiredDate?: boolean
-  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["rfqLine"]>
 
 export type RfqLineSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -649,8 +649,8 @@ export type RfqLineSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   quantity?: boolean
   unit?: boolean
   requiredDate?: boolean
-  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["rfqLine"]>
 
 export type RfqLineSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -660,8 +660,8 @@ export type RfqLineSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   quantity?: boolean
   unit?: boolean
   requiredDate?: boolean
-  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["rfqLine"]>
 
 export type RfqLineSelectScalar = {
@@ -675,23 +675,23 @@ export type RfqLineSelectScalar = {
 
 export type RfqLineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "rfqId" | "materialId" | "quantity" | "unit" | "requiredDate", ExtArgs["result"]["rfqLine"]>
 export type RfqLineInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
 }
 export type RfqLineIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
 }
 export type RfqLineIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  rfq?: boolean | Prisma.RfqDefaultArgs<ExtArgs>
 }
 
 export type $RfqLinePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "RfqLine"
   objects: {
-    rfq: Prisma.$RfqPayload<ExtArgs>
     material: Prisma.$MaterialPayload<ExtArgs>
+    rfq: Prisma.$RfqPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1094,8 +1094,8 @@ readonly fields: RfqLineFieldRefs;
  */
 export interface Prisma__RfqLineClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  rfq<T extends Prisma.RfqDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RfqDefaultArgs<ExtArgs>>): Prisma.Prisma__RfqClient<runtime.Types.Result.GetResult<Prisma.$RfqPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   material<T extends Prisma.MaterialDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialDefaultArgs<ExtArgs>>): Prisma.Prisma__MaterialClient<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  rfq<T extends Prisma.RfqDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RfqDefaultArgs<ExtArgs>>): Prisma.Prisma__RfqClient<runtime.Types.Result.GetResult<Prisma.$RfqPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

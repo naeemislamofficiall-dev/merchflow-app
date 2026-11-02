@@ -1,10 +1,12 @@
 import { prisma } from "@/lib/prisma";
 import { delayAlertMessage, delayDays } from "@/lib/calculations";
 import { can } from "@/lib/permissions";
+import { delegationCovers } from "@/lib/approval-calc";
 import { listFilter, startOfDay } from "@/lib/service-helpers";
 import { BaseService } from "./base.service";
 import { factoryWhere } from "@/lib/scope";
 import { toDateOnly } from "./currency.service";
+import { ppcService } from "./ppc.service";
 
 export type Severity = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW";
 
@@ -143,17 +145,28 @@ class AlertService extends BaseService {
       });
     }
 
-    // আমার অনুমোদনের অপেক্ষায় (MEDIUM)
+       // আমার (বা আমার delegate করা) অনুমোদনের অপেক্ষায় (MEDIUM, escalate হলে HIGH)
+    const myDelegations = await prisma.approvalDelegation.findMany({
+      where: { companyId: user.companyId, toUserId: user.id, isActive: true },
+      include: { fromUser: { select: { roleId: true, status: true } } },
+    });
+    const roleIds = new Set([
+      user.roleId,
+      ...myDelegations
+        .filter((d) => d.fromUser.status === "ACTIVE" && delegationCovers(d, new Date()))
+        .map((d) => d.fromUser.roleId),
+    ]);
     const pending = await prisma.approvalRequest.findMany({
       where: { ...where, status: "PENDING" },
-      include: { workflow: { include: { steps: true } } },
+      include: { workflow: { include: { steps: true } }, escalations: true },
     });
     for (const a of pending) {
       const step = a.workflow?.steps.find((s) => s.stepOrder === a.currentStep);
-      if (step && (step.approverRoleId === user.roleId || can(user, "*"))) {
+      if (step && (roleIds.has(step.approverRoleId) || can(user, "*"))) {
+        const escalated = a.escalations.some((e) => e.stepOrder === a.currentStep);
         alerts.push({
-          id: `approval:${a.id}`, severity: "MEDIUM", category: "Approval",
-          title: "Approval pending", message: a.title,
+          id: `approval:${a.id}`, severity: escalated ? "HIGH" : "MEDIUM", category: "Approval",
+          title: escalated ? "Approval overdue" : "Approval pending", message: a.title,
           href: `/approvals/${a.id}`, entityType: "ApprovalRequest", entityId: a.id, since: a.requestedAt,
         });
       }
@@ -208,6 +221,49 @@ class AlertService extends BaseService {
       }
     }
     
+     // Line overloaded (HIGH): PPC allocation line-er capacity chharale
+    for (const o of await ppcService.overloadAlerts()) {
+      alerts.push({
+        id: `ppcover:${o.lineId}:${o.dateKey}`, severity: "HIGH", category: "Production",
+        title: "Line overloaded",
+        message: `Line ${o.lineCode} is overloaded on ${o.dateKey}: ${o.plannedMinutes} min planned, ${o.availableMinutes} available`,
+        href: `/ppc?factoryId=${o.factoryId}&from=${o.dateKey}`, entityType: "Line", entityId: o.lineId,
+        since: new Date(`${o.dateKey}T00:00:00.000Z`),
+      });
+    }
+
+    // Certificate expired (HIGH) ba 30 diner moddhe expire hobe (MEDIUM)
+    {
+      const horizon = new Date(today.getTime() + 30 * 86_400_000);
+      const certs = await prisma.certificate.findMany({
+        where: { companyId: user.companyId, expiryDate: { lt: horizon } },
+        select: { id: true, typeId: true, expiryDate: true },
+        orderBy: { expiryDate: "asc" },
+        take: 200,
+      });
+      const types = await prisma.certificateType.findMany({
+        where: { id: { in: certs.map((c) => c.typeId).filter((x): x is string => !!x) } },
+        select: { id: true, code: true },
+      });
+      const typeCode = new Map(types.map((t) => [t.id, t.code]));
+      for (const c of certs) {
+        if (!c.expiryDate) continue;
+        const expired = c.expiryDate < today;
+        const label = (c.typeId && typeCode.get(c.typeId)) || "Certificate";
+        alerts.push({
+          id: `cert:${c.id}`,
+          severity: expired ? "HIGH" : "MEDIUM",
+          category: "Compliance",
+          title: expired ? "Certificate expired" : "Certificate expiring soon",
+          message: `${label} ${expired ? "expired on" : "expires on"} ${c.expiryDate.toISOString().slice(0, 10)}`,
+          href: "/compliance",
+          entityType: "Certificate",
+          entityId: c.id,
+          since: c.expiryDate,
+        });
+      }
+    }
+
     return alerts
       .filter((a) => !filter.severity || a.severity === filter.severity)
       .sort((a, b) => ORDER[a.severity] - ORDER[b.severity] || a.since.getTime() - b.since.getTime());

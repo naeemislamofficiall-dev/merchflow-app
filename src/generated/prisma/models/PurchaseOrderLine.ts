@@ -284,12 +284,12 @@ export type PurchaseOrderLineWhereInput = {
   taxPct?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.DateTimeNullableFilter<"PurchaseOrderLine"> | Date | string | null
   styleId?: Prisma.StringNullableFilter<"PurchaseOrderLine"> | string | null
-  po?: Prisma.XOR<Prisma.PurchaseOrderScalarRelationFilter, Prisma.PurchaseOrderWhereInput>
-  material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
-  prLine?: Prisma.XOR<Prisma.PurchaseRequisitionLineNullableScalarRelationFilter, Prisma.PurchaseRequisitionLineWhereInput> | null
-  order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
-  style?: Prisma.XOR<Prisma.StyleNullableScalarRelationFilter, Prisma.StyleWhereInput> | null
   grnLines?: Prisma.GrnLineListRelationFilter
+  material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
+  order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  po?: Prisma.XOR<Prisma.PurchaseOrderScalarRelationFilter, Prisma.PurchaseOrderWhereInput>
+  prLine?: Prisma.XOR<Prisma.PurchaseRequisitionLineNullableScalarRelationFilter, Prisma.PurchaseRequisitionLineWhereInput> | null
+  style?: Prisma.XOR<Prisma.StyleNullableScalarRelationFilter, Prisma.StyleWhereInput> | null
 }
 
 export type PurchaseOrderLineOrderByWithRelationInput = {
@@ -305,12 +305,12 @@ export type PurchaseOrderLineOrderByWithRelationInput = {
   taxPct?: Prisma.SortOrder
   deliveryDate?: Prisma.SortOrderInput | Prisma.SortOrder
   styleId?: Prisma.SortOrderInput | Prisma.SortOrder
-  po?: Prisma.PurchaseOrderOrderByWithRelationInput
-  material?: Prisma.MaterialOrderByWithRelationInput
-  prLine?: Prisma.PurchaseRequisitionLineOrderByWithRelationInput
-  order?: Prisma.OrderOrderByWithRelationInput
-  style?: Prisma.StyleOrderByWithRelationInput
   grnLines?: Prisma.GrnLineOrderByRelationAggregateInput
+  material?: Prisma.MaterialOrderByWithRelationInput
+  order?: Prisma.OrderOrderByWithRelationInput
+  po?: Prisma.PurchaseOrderOrderByWithRelationInput
+  prLine?: Prisma.PurchaseRequisitionLineOrderByWithRelationInput
+  style?: Prisma.StyleOrderByWithRelationInput
 }
 
 export type PurchaseOrderLineWhereUniqueInput = Prisma.AtLeast<{
@@ -329,12 +329,12 @@ export type PurchaseOrderLineWhereUniqueInput = Prisma.AtLeast<{
   taxPct?: Prisma.DecimalFilter<"PurchaseOrderLine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.DateTimeNullableFilter<"PurchaseOrderLine"> | Date | string | null
   styleId?: Prisma.StringNullableFilter<"PurchaseOrderLine"> | string | null
-  po?: Prisma.XOR<Prisma.PurchaseOrderScalarRelationFilter, Prisma.PurchaseOrderWhereInput>
-  material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
-  prLine?: Prisma.XOR<Prisma.PurchaseRequisitionLineNullableScalarRelationFilter, Prisma.PurchaseRequisitionLineWhereInput> | null
-  order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
-  style?: Prisma.XOR<Prisma.StyleNullableScalarRelationFilter, Prisma.StyleWhereInput> | null
   grnLines?: Prisma.GrnLineListRelationFilter
+  material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
+  order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  po?: Prisma.XOR<Prisma.PurchaseOrderScalarRelationFilter, Prisma.PurchaseOrderWhereInput>
+  prLine?: Prisma.XOR<Prisma.PurchaseRequisitionLineNullableScalarRelationFilter, Prisma.PurchaseRequisitionLineWhereInput> | null
+  style?: Prisma.XOR<Prisma.StyleNullableScalarRelationFilter, Prisma.StyleWhereInput> | null
 }, "id">
 
 export type PurchaseOrderLineOrderByWithAggregationInput = {
@@ -383,12 +383,12 @@ export type PurchaseOrderLineCreateInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
-  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
-  material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
-  prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
-  order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
-  style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
   grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
+  material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
+  order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
+  prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
+  style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
 }
 
 export type PurchaseOrderLineUncheckedCreateInput = {
@@ -415,12 +415,12 @@ export type PurchaseOrderLineUpdateInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
-  material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
-  prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
-  order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
-  style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
   grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
+  material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
+  order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
+  prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
+  style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateInput = {
@@ -785,11 +785,11 @@ export type PurchaseOrderLineCreateWithoutStyleInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
-  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
-  material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
-  prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
-  order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
   grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
+  material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
+  order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
+  prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
 }
 
 export type PurchaseOrderLineUncheckedCreateWithoutStyleInput = {
@@ -859,11 +859,11 @@ export type PurchaseOrderLineCreateWithoutOrderInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
-  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
   material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
+  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
   prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
   style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
-  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineUncheckedCreateWithoutOrderInput = {
@@ -915,11 +915,11 @@ export type PurchaseOrderLineCreateWithoutMaterialInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
+  order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
   po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
   prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
-  order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
   style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
-  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineUncheckedCreateWithoutMaterialInput = {
@@ -971,11 +971,11 @@ export type PurchaseOrderLineCreateWithoutPrLineInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
-  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
+  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
   material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
   style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
-  grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
 }
 
 export type PurchaseOrderLineUncheckedCreateWithoutPrLineInput = {
@@ -1027,11 +1027,11 @@ export type PurchaseOrderLineCreateWithoutPoInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
-  material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
-  prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
-  order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
-  style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
   grnLines?: Prisma.GrnLineCreateNestedManyWithoutPoLineInput
+  material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
+  order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
+  style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
 }
 
 export type PurchaseOrderLineUncheckedCreateWithoutPoInput = {
@@ -1083,10 +1083,10 @@ export type PurchaseOrderLineCreateWithoutGrnLinesInput = {
   rate: runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Date | string | null
-  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
   material: Prisma.MaterialCreateNestedOneWithoutPoLinesInput
-  prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
   order?: Prisma.OrderCreateNestedOneWithoutPurchaseOrderLinesInput
+  po: Prisma.PurchaseOrderCreateNestedOneWithoutLinesInput
+  prLine?: Prisma.PurchaseRequisitionLineCreateNestedOneWithoutPoLinesInput
   style?: Prisma.StyleCreateNestedOneWithoutPoLinesInput
 }
 
@@ -1129,10 +1129,10 @@ export type PurchaseOrderLineUpdateWithoutGrnLinesInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
-  prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
+  prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
   style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
 }
 
@@ -1173,11 +1173,11 @@ export type PurchaseOrderLineUpdateWithoutStyleInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
-  material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
-  prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
-  order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
   grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
+  material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
+  order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
+  prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateWithoutStyleInput = {
@@ -1231,11 +1231,11 @@ export type PurchaseOrderLineUpdateWithoutOrderInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
+  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
   prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
   style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
-  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateWithoutOrderInput = {
@@ -1289,11 +1289,11 @@ export type PurchaseOrderLineUpdateWithoutMaterialInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
+  order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
   po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
   prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
-  order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
   style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
-  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateWithoutMaterialInput = {
@@ -1347,11 +1347,11 @@ export type PurchaseOrderLineUpdateWithoutPrLineInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
+  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
   order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  po?: Prisma.PurchaseOrderUpdateOneRequiredWithoutLinesNestedInput
   style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
-  grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateWithoutPrLineInput = {
@@ -1405,11 +1405,11 @@ export type PurchaseOrderLineUpdateWithoutPoInput = {
   rate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   taxPct?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
-  prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
-  order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
-  style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
   grnLines?: Prisma.GrnLineUpdateManyWithoutPoLineNestedInput
+  material?: Prisma.MaterialUpdateOneRequiredWithoutPoLinesNestedInput
+  order?: Prisma.OrderUpdateOneWithoutPurchaseOrderLinesNestedInput
+  prLine?: Prisma.PurchaseRequisitionLineUpdateOneWithoutPoLinesNestedInput
+  style?: Prisma.StyleUpdateOneWithoutPoLinesNestedInput
 }
 
 export type PurchaseOrderLineUncheckedUpdateWithoutPoInput = {
@@ -1485,12 +1485,12 @@ export type PurchaseOrderLineSelect<ExtArgs extends runtime.Types.Extensions.Int
   taxPct?: boolean
   deliveryDate?: boolean
   styleId?: boolean
-  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
-  material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
-  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
-  order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
-  style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
   grnLines?: boolean | Prisma.PurchaseOrderLine$grnLinesArgs<ExtArgs>
+  material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
+  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
+  style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
   _count?: boolean | Prisma.PurchaseOrderLineCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseOrderLine"]>
 
@@ -1507,10 +1507,10 @@ export type PurchaseOrderLineSelectCreateManyAndReturn<ExtArgs extends runtime.T
   taxPct?: boolean
   deliveryDate?: boolean
   styleId?: boolean
-  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
-  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
+  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseOrderLine"]>
 
@@ -1527,10 +1527,10 @@ export type PurchaseOrderLineSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   taxPct?: boolean
   deliveryDate?: boolean
   styleId?: boolean
-  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
-  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
+  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseOrderLine"]>
 
@@ -1551,38 +1551,38 @@ export type PurchaseOrderLineSelectScalar = {
 
 export type PurchaseOrderLineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "poId" | "materialId" | "prLineId" | "orderId" | "quantity" | "receivedQty" | "unit" | "rate" | "taxPct" | "deliveryDate" | "styleId", ExtArgs["result"]["purchaseOrderLine"]>
 export type PurchaseOrderLineInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
-  material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
-  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
-  order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
-  style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
   grnLines?: boolean | Prisma.PurchaseOrderLine$grnLinesArgs<ExtArgs>
+  material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
+  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
+  style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
   _count?: boolean | Prisma.PurchaseOrderLineCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PurchaseOrderLineIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
-  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
+  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
 }
 export type PurchaseOrderLineIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
-  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   order?: boolean | Prisma.PurchaseOrderLine$orderArgs<ExtArgs>
+  po?: boolean | Prisma.PurchaseOrderDefaultArgs<ExtArgs>
+  prLine?: boolean | Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>
   style?: boolean | Prisma.PurchaseOrderLine$styleArgs<ExtArgs>
 }
 
 export type $PurchaseOrderLinePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PurchaseOrderLine"
   objects: {
-    po: Prisma.$PurchaseOrderPayload<ExtArgs>
-    material: Prisma.$MaterialPayload<ExtArgs>
-    prLine: Prisma.$PurchaseRequisitionLinePayload<ExtArgs> | null
-    order: Prisma.$OrderPayload<ExtArgs> | null
-    style: Prisma.$StylePayload<ExtArgs> | null
     grnLines: Prisma.$GrnLinePayload<ExtArgs>[]
+    material: Prisma.$MaterialPayload<ExtArgs>
+    order: Prisma.$OrderPayload<ExtArgs> | null
+    po: Prisma.$PurchaseOrderPayload<ExtArgs>
+    prLine: Prisma.$PurchaseRequisitionLinePayload<ExtArgs> | null
+    style: Prisma.$StylePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1991,12 +1991,12 @@ readonly fields: PurchaseOrderLineFieldRefs;
  */
 export interface Prisma__PurchaseOrderLineClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  po<T extends Prisma.PurchaseOrderDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderDefaultArgs<ExtArgs>>): Prisma.Prisma__PurchaseOrderClient<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  material<T extends Prisma.MaterialDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialDefaultArgs<ExtArgs>>): Prisma.Prisma__MaterialClient<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  prLine<T extends Prisma.PurchaseOrderLine$prLineArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>>): Prisma.Prisma__PurchaseRequisitionLineClient<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionLinePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  order<T extends Prisma.PurchaseOrderLine$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$orderArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  style<T extends Prisma.PurchaseOrderLine$styleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$styleArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   grnLines<T extends Prisma.PurchaseOrderLine$grnLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$grnLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GrnLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  material<T extends Prisma.MaterialDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialDefaultArgs<ExtArgs>>): Prisma.Prisma__MaterialClient<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  order<T extends Prisma.PurchaseOrderLine$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$orderArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  po<T extends Prisma.PurchaseOrderDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderDefaultArgs<ExtArgs>>): Prisma.Prisma__PurchaseOrderClient<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  prLine<T extends Prisma.PurchaseOrderLine$prLineArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$prLineArgs<ExtArgs>>): Prisma.Prisma__PurchaseRequisitionLineClient<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionLinePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  style<T extends Prisma.PurchaseOrderLine$styleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseOrderLine$styleArgs<ExtArgs>>): Prisma.Prisma__StyleClient<runtime.Types.Result.GetResult<Prisma.$StylePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2439,22 +2439,27 @@ export type PurchaseOrderLineDeleteManyArgs<ExtArgs extends runtime.Types.Extens
 }
 
 /**
- * PurchaseOrderLine.prLine
+ * PurchaseOrderLine.grnLines
  */
-export type PurchaseOrderLine$prLineArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type PurchaseOrderLine$grnLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the PurchaseRequisitionLine
+   * Select specific fields to fetch from the GrnLine
    */
-  select?: Prisma.PurchaseRequisitionLineSelect<ExtArgs> | null
+  select?: Prisma.GrnLineSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the PurchaseRequisitionLine
+   * Omit specific fields from the GrnLine
    */
-  omit?: Prisma.PurchaseRequisitionLineOmit<ExtArgs> | null
+  omit?: Prisma.GrnLineOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.PurchaseRequisitionLineInclude<ExtArgs> | null
-  where?: Prisma.PurchaseRequisitionLineWhereInput
+  include?: Prisma.GrnLineInclude<ExtArgs> | null
+  where?: Prisma.GrnLineWhereInput
+  orderBy?: Prisma.GrnLineOrderByWithRelationInput | Prisma.GrnLineOrderByWithRelationInput[]
+  cursor?: Prisma.GrnLineWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GrnLineScalarFieldEnum | Prisma.GrnLineScalarFieldEnum[]
 }
 
 /**
@@ -2477,6 +2482,25 @@ export type PurchaseOrderLine$orderArgs<ExtArgs extends runtime.Types.Extensions
 }
 
 /**
+ * PurchaseOrderLine.prLine
+ */
+export type PurchaseOrderLine$prLineArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PurchaseRequisitionLine
+   */
+  select?: Prisma.PurchaseRequisitionLineSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PurchaseRequisitionLine
+   */
+  omit?: Prisma.PurchaseRequisitionLineOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PurchaseRequisitionLineInclude<ExtArgs> | null
+  where?: Prisma.PurchaseRequisitionLineWhereInput
+}
+
+/**
  * PurchaseOrderLine.style
  */
 export type PurchaseOrderLine$styleArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2493,30 +2517,6 @@ export type PurchaseOrderLine$styleArgs<ExtArgs extends runtime.Types.Extensions
    */
   include?: Prisma.StyleInclude<ExtArgs> | null
   where?: Prisma.StyleWhereInput
-}
-
-/**
- * PurchaseOrderLine.grnLines
- */
-export type PurchaseOrderLine$grnLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the GrnLine
-   */
-  select?: Prisma.GrnLineSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the GrnLine
-   */
-  omit?: Prisma.GrnLineOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.GrnLineInclude<ExtArgs> | null
-  where?: Prisma.GrnLineWhereInput
-  orderBy?: Prisma.GrnLineOrderByWithRelationInput | Prisma.GrnLineOrderByWithRelationInput[]
-  cursor?: Prisma.GrnLineWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.GrnLineScalarFieldEnum | Prisma.GrnLineScalarFieldEnum[]
 }
 
 /**

@@ -232,9 +232,9 @@ export type PurchaseRequisitionLineWhereInput = {
   unit?: Prisma.StringFilter<"PurchaseRequisitionLine"> | string
   requiredDate?: Prisma.DateTimeNullableFilter<"PurchaseRequisitionLine"> | Date | string | null
   remarks?: Prisma.StringNullableFilter<"PurchaseRequisitionLine"> | string | null
-  pr?: Prisma.XOR<Prisma.PurchaseRequisitionScalarRelationFilter, Prisma.PurchaseRequisitionWhereInput>
-  material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
   poLines?: Prisma.PurchaseOrderLineListRelationFilter
+  material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
+  pr?: Prisma.XOR<Prisma.PurchaseRequisitionScalarRelationFilter, Prisma.PurchaseRequisitionWhereInput>
 }
 
 export type PurchaseRequisitionLineOrderByWithRelationInput = {
@@ -245,9 +245,9 @@ export type PurchaseRequisitionLineOrderByWithRelationInput = {
   unit?: Prisma.SortOrder
   requiredDate?: Prisma.SortOrderInput | Prisma.SortOrder
   remarks?: Prisma.SortOrderInput | Prisma.SortOrder
-  pr?: Prisma.PurchaseRequisitionOrderByWithRelationInput
-  material?: Prisma.MaterialOrderByWithRelationInput
   poLines?: Prisma.PurchaseOrderLineOrderByRelationAggregateInput
+  material?: Prisma.MaterialOrderByWithRelationInput
+  pr?: Prisma.PurchaseRequisitionOrderByWithRelationInput
 }
 
 export type PurchaseRequisitionLineWhereUniqueInput = Prisma.AtLeast<{
@@ -261,9 +261,9 @@ export type PurchaseRequisitionLineWhereUniqueInput = Prisma.AtLeast<{
   unit?: Prisma.StringFilter<"PurchaseRequisitionLine"> | string
   requiredDate?: Prisma.DateTimeNullableFilter<"PurchaseRequisitionLine"> | Date | string | null
   remarks?: Prisma.StringNullableFilter<"PurchaseRequisitionLine"> | string | null
-  pr?: Prisma.XOR<Prisma.PurchaseRequisitionScalarRelationFilter, Prisma.PurchaseRequisitionWhereInput>
-  material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
   poLines?: Prisma.PurchaseOrderLineListRelationFilter
+  material?: Prisma.XOR<Prisma.MaterialScalarRelationFilter, Prisma.MaterialWhereInput>
+  pr?: Prisma.XOR<Prisma.PurchaseRequisitionScalarRelationFilter, Prisma.PurchaseRequisitionWhereInput>
 }, "id">
 
 export type PurchaseRequisitionLineOrderByWithAggregationInput = {
@@ -300,9 +300,9 @@ export type PurchaseRequisitionLineCreateInput = {
   unit?: string
   requiredDate?: Date | string | null
   remarks?: string | null
-  pr: Prisma.PurchaseRequisitionCreateNestedOneWithoutLinesInput
-  material: Prisma.MaterialCreateNestedOneWithoutPrLinesInput
   poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutPrLineInput
+  material: Prisma.MaterialCreateNestedOneWithoutPrLinesInput
+  pr: Prisma.PurchaseRequisitionCreateNestedOneWithoutLinesInput
 }
 
 export type PurchaseRequisitionLineUncheckedCreateInput = {
@@ -322,9 +322,9 @@ export type PurchaseRequisitionLineUpdateInput = {
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   requiredDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pr?: Prisma.PurchaseRequisitionUpdateOneRequiredWithoutLinesNestedInput
-  material?: Prisma.MaterialUpdateOneRequiredWithoutPrLinesNestedInput
   poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutPrLineNestedInput
+  material?: Prisma.MaterialUpdateOneRequiredWithoutPrLinesNestedInput
+  pr?: Prisma.PurchaseRequisitionUpdateOneRequiredWithoutLinesNestedInput
 }
 
 export type PurchaseRequisitionLineUncheckedUpdateInput = {
@@ -525,8 +525,8 @@ export type PurchaseRequisitionLineCreateWithoutMaterialInput = {
   unit?: string
   requiredDate?: Date | string | null
   remarks?: string | null
-  pr: Prisma.PurchaseRequisitionCreateNestedOneWithoutLinesInput
   poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutPrLineInput
+  pr: Prisma.PurchaseRequisitionCreateNestedOneWithoutLinesInput
 }
 
 export type PurchaseRequisitionLineUncheckedCreateWithoutMaterialInput = {
@@ -584,8 +584,8 @@ export type PurchaseRequisitionLineCreateWithoutPrInput = {
   unit?: string
   requiredDate?: Date | string | null
   remarks?: string | null
-  material: Prisma.MaterialCreateNestedOneWithoutPrLinesInput
   poLines?: Prisma.PurchaseOrderLineCreateNestedManyWithoutPrLineInput
+  material: Prisma.MaterialCreateNestedOneWithoutPrLinesInput
 }
 
 export type PurchaseRequisitionLineUncheckedCreateWithoutPrInput = {
@@ -630,8 +630,8 @@ export type PurchaseRequisitionLineCreateWithoutPoLinesInput = {
   unit?: string
   requiredDate?: Date | string | null
   remarks?: string | null
-  pr: Prisma.PurchaseRequisitionCreateNestedOneWithoutLinesInput
   material: Prisma.MaterialCreateNestedOneWithoutPrLinesInput
+  pr: Prisma.PurchaseRequisitionCreateNestedOneWithoutLinesInput
 }
 
 export type PurchaseRequisitionLineUncheckedCreateWithoutPoLinesInput = {
@@ -666,8 +666,8 @@ export type PurchaseRequisitionLineUpdateWithoutPoLinesInput = {
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   requiredDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pr?: Prisma.PurchaseRequisitionUpdateOneRequiredWithoutLinesNestedInput
   material?: Prisma.MaterialUpdateOneRequiredWithoutPrLinesNestedInput
+  pr?: Prisma.PurchaseRequisitionUpdateOneRequiredWithoutLinesNestedInput
 }
 
 export type PurchaseRequisitionLineUncheckedUpdateWithoutPoLinesInput = {
@@ -695,8 +695,8 @@ export type PurchaseRequisitionLineUpdateWithoutMaterialInput = {
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   requiredDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pr?: Prisma.PurchaseRequisitionUpdateOneRequiredWithoutLinesNestedInput
   poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutPrLineNestedInput
+  pr?: Prisma.PurchaseRequisitionUpdateOneRequiredWithoutLinesNestedInput
 }
 
 export type PurchaseRequisitionLineUncheckedUpdateWithoutMaterialInput = {
@@ -733,8 +733,8 @@ export type PurchaseRequisitionLineUpdateWithoutPrInput = {
   unit?: Prisma.StringFieldUpdateOperationsInput | string
   requiredDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  material?: Prisma.MaterialUpdateOneRequiredWithoutPrLinesNestedInput
   poLines?: Prisma.PurchaseOrderLineUpdateManyWithoutPrLineNestedInput
+  material?: Prisma.MaterialUpdateOneRequiredWithoutPrLinesNestedInput
 }
 
 export type PurchaseRequisitionLineUncheckedUpdateWithoutPrInput = {
@@ -795,9 +795,9 @@ export type PurchaseRequisitionLineSelect<ExtArgs extends runtime.Types.Extensio
   unit?: boolean
   requiredDate?: boolean
   remarks?: boolean
-  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
-  material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   poLines?: boolean | Prisma.PurchaseRequisitionLine$poLinesArgs<ExtArgs>
+  material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.PurchaseRequisitionLineCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseRequisitionLine"]>
 
@@ -809,8 +809,8 @@ export type PurchaseRequisitionLineSelectCreateManyAndReturn<ExtArgs extends run
   unit?: boolean
   requiredDate?: boolean
   remarks?: boolean
-  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseRequisitionLine"]>
 
 export type PurchaseRequisitionLineSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -821,8 +821,8 @@ export type PurchaseRequisitionLineSelectUpdateManyAndReturn<ExtArgs extends run
   unit?: boolean
   requiredDate?: boolean
   remarks?: boolean
-  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseRequisitionLine"]>
 
 export type PurchaseRequisitionLineSelectScalar = {
@@ -837,26 +837,26 @@ export type PurchaseRequisitionLineSelectScalar = {
 
 export type PurchaseRequisitionLineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "prId" | "materialId" | "quantity" | "unit" | "requiredDate" | "remarks", ExtArgs["result"]["purchaseRequisitionLine"]>
 export type PurchaseRequisitionLineInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
-  material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
   poLines?: boolean | Prisma.PurchaseRequisitionLine$poLinesArgs<ExtArgs>
+  material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.PurchaseRequisitionLineCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PurchaseRequisitionLineIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
 }
 export type PurchaseRequisitionLineIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
   material?: boolean | Prisma.MaterialDefaultArgs<ExtArgs>
+  pr?: boolean | Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>
 }
 
 export type $PurchaseRequisitionLinePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PurchaseRequisitionLine"
   objects: {
-    pr: Prisma.$PurchaseRequisitionPayload<ExtArgs>
-    material: Prisma.$MaterialPayload<ExtArgs>
     poLines: Prisma.$PurchaseOrderLinePayload<ExtArgs>[]
+    material: Prisma.$MaterialPayload<ExtArgs>
+    pr: Prisma.$PurchaseRequisitionPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1260,9 +1260,9 @@ readonly fields: PurchaseRequisitionLineFieldRefs;
  */
 export interface Prisma__PurchaseRequisitionLineClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  pr<T extends Prisma.PurchaseRequisitionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>>): Prisma.Prisma__PurchaseRequisitionClient<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  material<T extends Prisma.MaterialDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialDefaultArgs<ExtArgs>>): Prisma.Prisma__MaterialClient<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   poLines<T extends Prisma.PurchaseRequisitionLine$poLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseRequisitionLine$poLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  material<T extends Prisma.MaterialDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialDefaultArgs<ExtArgs>>): Prisma.Prisma__MaterialClient<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  pr<T extends Prisma.PurchaseRequisitionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseRequisitionDefaultArgs<ExtArgs>>): Prisma.Prisma__PurchaseRequisitionClient<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

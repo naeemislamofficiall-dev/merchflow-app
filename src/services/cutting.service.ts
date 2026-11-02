@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { BusinessRuleError, assertRejectionReason } from "@/lib/business-rules";
 import { buildCode } from "@/lib/barcode";
 import { grossRequirement } from "@/lib/calculations";
+import { ratioMatches } from "@/lib/cutting-calc";
 import { nextCutPlanNo } from "@/lib/numbering";
 import { type SessionUser } from "@/lib/permissions";
 import { assertFactoryInScope, factoryWhere } from "@/lib/scope";
@@ -23,8 +24,19 @@ const planSchema = z.object({
   remarks: z.string().max(500).optional(),
 });
 
+const markerSchema = z.object({
+  cutPlanId: z.string().min(1),
+  widthCm: z.number().positive(),
+  length: z.number().positive(), // meters per ply
+  efficiencyPct: z.number().positive().max(100),
+  sizeRatio: z.record(z.string(), z.number().int().positive()).optional(), // na dile cut plan-er ratio
+  remarks: z.string().max(500).optional(),
+});
+
+
 const laySchema = z.object({
   cutPlanId: z.string().min(1),
+  markerId: z.string().min(1).optional(),
   plies: z.number().int().positive(),
   markerLength: z.number().positive().optional(),
   markerWidthCm: z.number().positive().optional(),
@@ -76,7 +88,11 @@ class CuttingService extends BaseService {
     await this.loadPlan(user, id);
     return prisma.cutPlan.findUnique({
       where: { id },
-      include: { productionOrder: true, lays: { orderBy: { layNo: "asc" } } },
+      include: {
+        productionOrder: true,
+        markers: { orderBy: { markerNo: "asc" } },
+        lays: { orderBy: { layNo: "asc" } },
+      },
     });
   }
 
@@ -235,12 +251,55 @@ class CuttingService extends BaseService {
 
   // ---------- Lay / Marker ----------
 
+    // Marker planning: width, length, efficiency %, size ratio
+  async addMarker(input: unknown) {
+    const user = await this.guard("cutting.edit");
+    const d = markerSchema.parse(input);
+    const plan = await this.loadPlan(user, d.cutPlanId);
+    if (plan.status === "CANCELLED" || plan.status === "COMPLETED") {
+      throw new BusinessRuleError("Markers cannot be added to a completed or cancelled cut plan");
+    }
+    const planRatio = z.record(z.string(), z.number()).parse(plan.sizeRatio);
+    const ratio = d.sizeRatio ?? planRatio;
+    if (!ratioMatches(ratio, planRatio)) {
+      throw new BusinessRuleError("The marker size ratio must match the cut plan size ratio");
+    }
+
+    const row = await prisma.$transaction(async (tx) => {
+      await advisoryLock(tx, `cutplan:${plan.id}`);
+      const max = await tx.marker.aggregate({ _max: { markerNo: true }, where: { cutPlanId: plan.id } });
+      return tx.marker.create({
+        data: {
+          companyId: plan.companyId,
+          cutPlanId: plan.id,
+          markerNo: (max._max.markerNo ?? 0) + 1,
+          widthCm: d.widthCm,
+          length: d.length,
+          efficiencyPct: d.efficiencyPct,
+          sizeRatio: ratio,
+          remarks: d.remarks,
+          createdById: user.id,
+        },
+      });
+    }, TX_OPTIONS);
+
+    await this.audit({ user, action: "CREATE", entity: "Marker", entityId: row.id, after: row });
+    return row;
+  }
+
   async addLay(input: unknown) {
     const user = await this.guard("cutting.edit");
     const d = laySchema.parse(input);
     const plan = await this.loadPlan(user, d.cutPlanId);
     if (plan.status !== "FABRIC_RESERVED" && plan.status !== "CUTTING") {
       throw new BusinessRuleError("Reserve the fabric before planning lays");
+    }
+
+    let marker: { id: string; length: unknown; widthCm: unknown; efficiencyPct: unknown } | null = null;
+    if (d.markerId) {
+      const m = found(await prisma.marker.findUnique({ where: { id: d.markerId } }), "Marker");
+      if (m.cutPlanId !== plan.id) throw new BusinessRuleError("This marker belongs to another cut plan");
+      marker = m;
     }
 
     const row = await prisma.$transaction(async (tx) => {
@@ -261,9 +320,10 @@ class CuttingService extends BaseService {
           cutPlanId: plan.id,
           layNo: (sum._max.layNo ?? 0) + 1,
           plies: d.plies,
-          markerLength: d.markerLength,
-          markerWidthCm: d.markerWidthCm,
-          markerEfficiencyPct: d.markerEfficiencyPct,
+          markerId: marker ? (marker as { id: string }).id : undefined,
+          markerLength: marker ? Number(marker.length) : d.markerLength,
+          markerWidthCm: marker ? Number(marker.widthCm) : d.markerWidthCm,
+          markerEfficiencyPct: marker ? Number(marker.efficiencyPct) : d.markerEfficiencyPct,
         },
       });
     }, TX_OPTIONS);

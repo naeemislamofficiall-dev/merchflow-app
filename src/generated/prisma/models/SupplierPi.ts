@@ -28,14 +28,14 @@ export type AggregateSupplierPi = {
 
 export type SupplierPiAvgAggregateOutputType = {
   amount: runtime.Decimal | null
-  exchangeRate: runtime.Decimal | null
   baseAmount: runtime.Decimal | null
+  exchangeRate: runtime.Decimal | null
 }
 
 export type SupplierPiSumAggregateOutputType = {
   amount: runtime.Decimal | null
-  exchangeRate: runtime.Decimal | null
   baseAmount: runtime.Decimal | null
+  exchangeRate: runtime.Decimal | null
 }
 
 export type SupplierPiMinAggregateOutputType = {
@@ -48,10 +48,10 @@ export type SupplierPiMinAggregateOutputType = {
   currency: string | null
   fileUrl: string | null
   createdAt: Date | null
+  baseAmount: runtime.Decimal | null
   baseCurrency: string | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseAmount: runtime.Decimal | null
 }
 
 export type SupplierPiMaxAggregateOutputType = {
@@ -64,10 +64,10 @@ export type SupplierPiMaxAggregateOutputType = {
   currency: string | null
   fileUrl: string | null
   createdAt: Date | null
+  baseAmount: runtime.Decimal | null
   baseCurrency: string | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseAmount: runtime.Decimal | null
 }
 
 export type SupplierPiCountAggregateOutputType = {
@@ -80,24 +80,24 @@ export type SupplierPiCountAggregateOutputType = {
   currency: number
   fileUrl: number
   createdAt: number
+  baseAmount: number
   baseCurrency: number
   exchangeRate: number
   rateDate: number
-  baseAmount: number
   _all: number
 }
 
 
 export type SupplierPiAvgAggregateInputType = {
   amount?: true
-  exchangeRate?: true
   baseAmount?: true
+  exchangeRate?: true
 }
 
 export type SupplierPiSumAggregateInputType = {
   amount?: true
-  exchangeRate?: true
   baseAmount?: true
+  exchangeRate?: true
 }
 
 export type SupplierPiMinAggregateInputType = {
@@ -110,10 +110,10 @@ export type SupplierPiMinAggregateInputType = {
   currency?: true
   fileUrl?: true
   createdAt?: true
+  baseAmount?: true
   baseCurrency?: true
   exchangeRate?: true
   rateDate?: true
-  baseAmount?: true
 }
 
 export type SupplierPiMaxAggregateInputType = {
@@ -126,10 +126,10 @@ export type SupplierPiMaxAggregateInputType = {
   currency?: true
   fileUrl?: true
   createdAt?: true
+  baseAmount?: true
   baseCurrency?: true
   exchangeRate?: true
   rateDate?: true
-  baseAmount?: true
 }
 
 export type SupplierPiCountAggregateInputType = {
@@ -142,10 +142,10 @@ export type SupplierPiCountAggregateInputType = {
   currency?: true
   fileUrl?: true
   createdAt?: true
+  baseAmount?: true
   baseCurrency?: true
   exchangeRate?: true
   rateDate?: true
-  baseAmount?: true
   _all?: true
 }
 
@@ -245,10 +245,10 @@ export type SupplierPiGroupByOutputType = {
   currency: string
   fileUrl: string | null
   createdAt: Date
+  baseAmount: runtime.Decimal | null
   baseCurrency: string | null
   exchangeRate: runtime.Decimal | null
   rateDate: Date | null
-  baseAmount: runtime.Decimal | null
   _count: SupplierPiCountAggregateOutputType | null
   _avg: SupplierPiAvgAggregateOutputType | null
   _sum: SupplierPiSumAggregateOutputType | null
@@ -284,12 +284,12 @@ export type SupplierPiWhereInput = {
   currency?: Prisma.StringFilter<"SupplierPi"> | string
   fileUrl?: Prisma.StringNullableFilter<"SupplierPi"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SupplierPi"> | Date | string
+  baseAmount?: Prisma.DecimalNullableFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.StringNullableFilter<"SupplierPi"> | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"SupplierPi"> | Date | string | null
-  baseAmount?: Prisma.DecimalNullableFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
   po?: Prisma.XOR<Prisma.PurchaseOrderNullableScalarRelationFilter, Prisma.PurchaseOrderWhereInput> | null
+  supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
 }
 
 export type SupplierPiOrderByWithRelationInput = {
@@ -302,12 +302,12 @@ export type SupplierPiOrderByWithRelationInput = {
   currency?: Prisma.SortOrder
   fileUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  baseAmount?: Prisma.SortOrderInput | Prisma.SortOrder
   baseCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
   exchangeRate?: Prisma.SortOrderInput | Prisma.SortOrder
   rateDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseAmount?: Prisma.SortOrderInput | Prisma.SortOrder
-  supplier?: Prisma.SupplierOrderByWithRelationInput
   po?: Prisma.PurchaseOrderOrderByWithRelationInput
+  supplier?: Prisma.SupplierOrderByWithRelationInput
 }
 
 export type SupplierPiWhereUniqueInput = Prisma.AtLeast<{
@@ -324,12 +324,12 @@ export type SupplierPiWhereUniqueInput = Prisma.AtLeast<{
   currency?: Prisma.StringFilter<"SupplierPi"> | string
   fileUrl?: Prisma.StringNullableFilter<"SupplierPi"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SupplierPi"> | Date | string
+  baseAmount?: Prisma.DecimalNullableFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.StringNullableFilter<"SupplierPi"> | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"SupplierPi"> | Date | string | null
-  baseAmount?: Prisma.DecimalNullableFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
   po?: Prisma.XOR<Prisma.PurchaseOrderNullableScalarRelationFilter, Prisma.PurchaseOrderWhereInput> | null
+  supplier?: Prisma.XOR<Prisma.SupplierScalarRelationFilter, Prisma.SupplierWhereInput>
 }, "id" | "supplierId_piNo">
 
 export type SupplierPiOrderByWithAggregationInput = {
@@ -342,10 +342,10 @@ export type SupplierPiOrderByWithAggregationInput = {
   currency?: Prisma.SortOrder
   fileUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  baseAmount?: Prisma.SortOrderInput | Prisma.SortOrder
   baseCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
   exchangeRate?: Prisma.SortOrderInput | Prisma.SortOrder
   rateDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseAmount?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.SupplierPiCountOrderByAggregateInput
   _avg?: Prisma.SupplierPiAvgOrderByAggregateInput
   _max?: Prisma.SupplierPiMaxOrderByAggregateInput
@@ -366,10 +366,10 @@ export type SupplierPiScalarWhereWithAggregatesInput = {
   currency?: Prisma.StringWithAggregatesFilter<"SupplierPi"> | string
   fileUrl?: Prisma.StringNullableWithAggregatesFilter<"SupplierPi"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SupplierPi"> | Date | string
+  baseAmount?: Prisma.DecimalNullableWithAggregatesFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.StringNullableWithAggregatesFilter<"SupplierPi"> | string | null
   exchangeRate?: Prisma.DecimalNullableWithAggregatesFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableWithAggregatesFilter<"SupplierPi"> | Date | string | null
-  baseAmount?: Prisma.DecimalNullableWithAggregatesFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiCreateInput = {
@@ -380,12 +380,12 @@ export type SupplierPiCreateInput = {
   currency?: string
   fileUrl?: string | null
   createdAt?: Date | string
+  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  supplier: Prisma.SupplierCreateNestedOneWithoutProformaInvoicesInput
   po?: Prisma.PurchaseOrderCreateNestedOneWithoutProformaInvoicesInput
+  supplier: Prisma.SupplierCreateNestedOneWithoutProformaInvoicesInput
 }
 
 export type SupplierPiUncheckedCreateInput = {
@@ -398,10 +398,10 @@ export type SupplierPiUncheckedCreateInput = {
   currency?: string
   fileUrl?: string | null
   createdAt?: Date | string
+  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiUpdateInput = {
@@ -412,12 +412,12 @@ export type SupplierPiUpdateInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  supplier?: Prisma.SupplierUpdateOneRequiredWithoutProformaInvoicesNestedInput
   po?: Prisma.PurchaseOrderUpdateOneWithoutProformaInvoicesNestedInput
+  supplier?: Prisma.SupplierUpdateOneRequiredWithoutProformaInvoicesNestedInput
 }
 
 export type SupplierPiUncheckedUpdateInput = {
@@ -430,10 +430,10 @@ export type SupplierPiUncheckedUpdateInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiCreateManyInput = {
@@ -446,10 +446,10 @@ export type SupplierPiCreateManyInput = {
   currency?: string
   fileUrl?: string | null
   createdAt?: Date | string
+  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiUpdateManyMutationInput = {
@@ -460,10 +460,10 @@ export type SupplierPiUpdateManyMutationInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiUncheckedUpdateManyInput = {
@@ -476,10 +476,10 @@ export type SupplierPiUncheckedUpdateManyInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiListRelationFilter = {
@@ -507,16 +507,16 @@ export type SupplierPiCountOrderByAggregateInput = {
   currency?: Prisma.SortOrder
   fileUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  baseAmount?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseAmount?: Prisma.SortOrder
 }
 
 export type SupplierPiAvgOrderByAggregateInput = {
   amount?: Prisma.SortOrder
-  exchangeRate?: Prisma.SortOrder
   baseAmount?: Prisma.SortOrder
+  exchangeRate?: Prisma.SortOrder
 }
 
 export type SupplierPiMaxOrderByAggregateInput = {
@@ -529,10 +529,10 @@ export type SupplierPiMaxOrderByAggregateInput = {
   currency?: Prisma.SortOrder
   fileUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  baseAmount?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseAmount?: Prisma.SortOrder
 }
 
 export type SupplierPiMinOrderByAggregateInput = {
@@ -545,16 +545,16 @@ export type SupplierPiMinOrderByAggregateInput = {
   currency?: Prisma.SortOrder
   fileUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  baseAmount?: Prisma.SortOrder
   baseCurrency?: Prisma.SortOrder
   exchangeRate?: Prisma.SortOrder
   rateDate?: Prisma.SortOrder
-  baseAmount?: Prisma.SortOrder
 }
 
 export type SupplierPiSumOrderByAggregateInput = {
   amount?: Prisma.SortOrder
-  exchangeRate?: Prisma.SortOrder
   baseAmount?: Prisma.SortOrder
+  exchangeRate?: Prisma.SortOrder
 }
 
 export type SupplierPiCreateNestedManyWithoutSupplierInput = {
@@ -649,10 +649,10 @@ export type SupplierPiCreateWithoutSupplierInput = {
   currency?: string
   fileUrl?: string | null
   createdAt?: Date | string
+  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   po?: Prisma.PurchaseOrderCreateNestedOneWithoutProformaInvoicesInput
 }
 
@@ -665,10 +665,10 @@ export type SupplierPiUncheckedCreateWithoutSupplierInput = {
   currency?: string
   fileUrl?: string | null
   createdAt?: Date | string
+  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiCreateOrConnectWithoutSupplierInput = {
@@ -710,10 +710,10 @@ export type SupplierPiScalarWhereInput = {
   currency?: Prisma.StringFilter<"SupplierPi"> | string
   fileUrl?: Prisma.StringNullableFilter<"SupplierPi"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SupplierPi"> | Date | string
+  baseAmount?: Prisma.DecimalNullableFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.StringNullableFilter<"SupplierPi"> | string | null
   exchangeRate?: Prisma.DecimalNullableFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.DateTimeNullableFilter<"SupplierPi"> | Date | string | null
-  baseAmount?: Prisma.DecimalNullableFilter<"SupplierPi"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiCreateWithoutPoInput = {
@@ -724,10 +724,10 @@ export type SupplierPiCreateWithoutPoInput = {
   currency?: string
   fileUrl?: string | null
   createdAt?: Date | string
+  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   supplier: Prisma.SupplierCreateNestedOneWithoutProformaInvoicesInput
 }
 
@@ -740,10 +740,10 @@ export type SupplierPiUncheckedCreateWithoutPoInput = {
   currency?: string
   fileUrl?: string | null
   createdAt?: Date | string
+  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiCreateOrConnectWithoutPoInput = {
@@ -781,10 +781,10 @@ export type SupplierPiCreateManySupplierInput = {
   currency?: string
   fileUrl?: string | null
   createdAt?: Date | string
+  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiUpdateWithoutSupplierInput = {
@@ -795,10 +795,10 @@ export type SupplierPiUpdateWithoutSupplierInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   po?: Prisma.PurchaseOrderUpdateOneWithoutProformaInvoicesNestedInput
 }
 
@@ -811,10 +811,10 @@ export type SupplierPiUncheckedUpdateWithoutSupplierInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiUncheckedUpdateManyWithoutSupplierInput = {
@@ -826,10 +826,10 @@ export type SupplierPiUncheckedUpdateManyWithoutSupplierInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiCreateManyPoInput = {
@@ -841,10 +841,10 @@ export type SupplierPiCreateManyPoInput = {
   currency?: string
   fileUrl?: string | null
   createdAt?: Date | string
+  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: string | null
   exchangeRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Date | string | null
-  baseAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiUpdateWithoutPoInput = {
@@ -855,10 +855,10 @@ export type SupplierPiUpdateWithoutPoInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   supplier?: Prisma.SupplierUpdateOneRequiredWithoutProformaInvoicesNestedInput
 }
 
@@ -871,10 +871,10 @@ export type SupplierPiUncheckedUpdateWithoutPoInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type SupplierPiUncheckedUpdateManyWithoutPoInput = {
@@ -886,10 +886,10 @@ export type SupplierPiUncheckedUpdateManyWithoutPoInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   baseCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   exchangeRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   rateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  baseAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 
@@ -904,12 +904,12 @@ export type SupplierPiSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   currency?: boolean
   fileUrl?: boolean
   createdAt?: boolean
+  baseAmount?: boolean
   baseCurrency?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseAmount?: boolean
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   po?: boolean | Prisma.SupplierPi$poArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["supplierPi"]>
 
 export type SupplierPiSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -922,12 +922,12 @@ export type SupplierPiSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   currency?: boolean
   fileUrl?: boolean
   createdAt?: boolean
+  baseAmount?: boolean
   baseCurrency?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseAmount?: boolean
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   po?: boolean | Prisma.SupplierPi$poArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["supplierPi"]>
 
 export type SupplierPiSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -940,12 +940,12 @@ export type SupplierPiSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   currency?: boolean
   fileUrl?: boolean
   createdAt?: boolean
+  baseAmount?: boolean
   baseCurrency?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseAmount?: boolean
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   po?: boolean | Prisma.SupplierPi$poArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["supplierPi"]>
 
 export type SupplierPiSelectScalar = {
@@ -958,31 +958,31 @@ export type SupplierPiSelectScalar = {
   currency?: boolean
   fileUrl?: boolean
   createdAt?: boolean
+  baseAmount?: boolean
   baseCurrency?: boolean
   exchangeRate?: boolean
   rateDate?: boolean
-  baseAmount?: boolean
 }
 
-export type SupplierPiOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "supplierId" | "poId" | "piNo" | "piDate" | "amount" | "currency" | "fileUrl" | "createdAt" | "baseCurrency" | "exchangeRate" | "rateDate" | "baseAmount", ExtArgs["result"]["supplierPi"]>
+export type SupplierPiOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "supplierId" | "poId" | "piNo" | "piDate" | "amount" | "currency" | "fileUrl" | "createdAt" | "baseAmount" | "baseCurrency" | "exchangeRate" | "rateDate", ExtArgs["result"]["supplierPi"]>
 export type SupplierPiInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   po?: boolean | Prisma.SupplierPi$poArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }
 export type SupplierPiIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   po?: boolean | Prisma.SupplierPi$poArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }
 export type SupplierPiIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
   po?: boolean | Prisma.SupplierPi$poArgs<ExtArgs>
+  supplier?: boolean | Prisma.SupplierDefaultArgs<ExtArgs>
 }
 
 export type $SupplierPiPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "SupplierPi"
   objects: {
-    supplier: Prisma.$SupplierPayload<ExtArgs>
     po: Prisma.$PurchaseOrderPayload<ExtArgs> | null
+    supplier: Prisma.$SupplierPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -994,10 +994,10 @@ export type $SupplierPiPayload<ExtArgs extends runtime.Types.Extensions.Internal
     currency: string
     fileUrl: string | null
     createdAt: Date
+    baseAmount: runtime.Decimal | null
     baseCurrency: string | null
     exchangeRate: runtime.Decimal | null
     rateDate: Date | null
-    baseAmount: runtime.Decimal | null
   }, ExtArgs["result"]["supplierPi"]>
   composites: {}
 }
@@ -1392,8 +1392,8 @@ readonly fields: SupplierPiFieldRefs;
  */
 export interface Prisma__SupplierPiClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  supplier<T extends Prisma.SupplierDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupplierDefaultArgs<ExtArgs>>): Prisma.Prisma__SupplierClient<runtime.Types.Result.GetResult<Prisma.$SupplierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   po<T extends Prisma.SupplierPi$poArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupplierPi$poArgs<ExtArgs>>): Prisma.Prisma__PurchaseOrderClient<runtime.Types.Result.GetResult<Prisma.$PurchaseOrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  supplier<T extends Prisma.SupplierDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupplierDefaultArgs<ExtArgs>>): Prisma.Prisma__SupplierClient<runtime.Types.Result.GetResult<Prisma.$SupplierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1432,10 +1432,10 @@ export interface SupplierPiFieldRefs {
   readonly currency: Prisma.FieldRef<"SupplierPi", 'String'>
   readonly fileUrl: Prisma.FieldRef<"SupplierPi", 'String'>
   readonly createdAt: Prisma.FieldRef<"SupplierPi", 'DateTime'>
+  readonly baseAmount: Prisma.FieldRef<"SupplierPi", 'Decimal'>
   readonly baseCurrency: Prisma.FieldRef<"SupplierPi", 'String'>
   readonly exchangeRate: Prisma.FieldRef<"SupplierPi", 'Decimal'>
   readonly rateDate: Prisma.FieldRef<"SupplierPi", 'DateTime'>
-  readonly baseAmount: Prisma.FieldRef<"SupplierPi", 'Decimal'>
 }
     
 

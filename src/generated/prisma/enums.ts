@@ -70,9 +70,9 @@ export const SampleType = {
   PROTO: 'PROTO',
   FIT: 'FIT',
   SIZE_SET: 'SIZE_SET',
+  PP: 'PP',
   SALESMAN: 'SALESMAN',
   SMS: 'SMS',
-  PP: 'PP',
   TOP: 'TOP',
   SHIPMENT: 'SHIPMENT',
   PHOTO: 'PHOTO',
@@ -130,18 +130,18 @@ export type BomStatus = (typeof BomStatus)[keyof typeof BomStatus]
 
 export const CostCategory = {
   FABRIC: 'FABRIC',
-  YARN: 'YARN',
   TRIM: 'TRIM',
   CM: 'CM',
   WASH: 'WASH',
   PRINT_EMB: 'PRINT_EMB',
+  OVERHEAD: 'OVERHEAD',
+  OTHER: 'OTHER',
+  YARN: 'YARN',
   PACKING: 'PACKING',
   TESTING: 'TESTING',
-  OVERHEAD: 'OVERHEAD',
   COMMERCIAL: 'COMMERCIAL',
   COMMISSION: 'COMMISSION',
-  FREIGHT: 'FREIGHT',
-  OTHER: 'OTHER'
+  FREIGHT: 'FREIGHT'
 } as const
 
 export type CostCategory = (typeof CostCategory)[keyof typeof CostCategory]
@@ -149,9 +149,9 @@ export type CostCategory = (typeof CostCategory)[keyof typeof CostCategory]
 
 export const BomItemType = {
   FABRIC: 'FABRIC',
-  YARN: 'YARN',
   TRIM: 'TRIM',
-  PACKING: 'PACKING'
+  PACKING: 'PACKING',
+  YARN: 'YARN'
 } as const
 
 export type BomItemType = (typeof BomItemType)[keyof typeof BomItemType]
@@ -343,7 +343,8 @@ export const StockTxnType = {
   ADJUSTMENT: 'ADJUSTMENT',
   STOCK_COUNT: 'STOCK_COUNT',
   DAMAGE: 'DAMAGE',
-  SCRAP: 'SCRAP'
+  SCRAP: 'SCRAP',
+  PRODUCTION_IN: 'PRODUCTION_IN'
 } as const
 
 export type StockTxnType = (typeof StockTxnType)[keyof typeof StockTxnType]
@@ -604,3 +605,229 @@ export const ExpenseStatus = {
 } as const
 
 export type ExpenseStatus = (typeof ExpenseStatus)[keyof typeof ExpenseStatus]
+
+
+export const PpcAllocationStatus = {
+  PLANNED: 'PLANNED',
+  RELEASED: 'RELEASED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type PpcAllocationStatus = (typeof PpcAllocationStatus)[keyof typeof PpcAllocationStatus]
+
+
+export const KnittingStatus = {
+  PLANNED: 'PLANNED',
+  YARN_ISSUED: 'YARN_ISSUED',
+  COMPLETED: 'COMPLETED',
+  CLOSED: 'CLOSED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type KnittingStatus = (typeof KnittingStatus)[keyof typeof KnittingStatus]
+
+
+export const DyeBatchStatus = {
+  PLANNED: 'PLANNED',
+  IN_PROCESS: 'IN_PROCESS',
+  COMPLETED: 'COMPLETED',
+  CLOSED: 'CLOSED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type DyeBatchStatus = (typeof DyeBatchStatus)[keyof typeof DyeBatchStatus]
+
+
+export const LabDipStatus = {
+  REQUEST: 'REQUEST',
+  DYEING: 'DYEING',
+  LAB_DIP: 'LAB_DIP',
+  BUYER_REVIEW: 'BUYER_REVIEW',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  BULK_DYEING: 'BULK_DYEING'
+} as const
+
+export type LabDipStatus = (typeof LabDipStatus)[keyof typeof LabDipStatus]
+
+
+export const FinishingStatus = {
+  PLANNED: 'PLANNED',
+  IN_PROCESS: 'IN_PROCESS',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type FinishingStatus = (typeof FinishingStatus)[keyof typeof FinishingStatus]
+
+
+export const JobRunStatus = {
+  QUEUED: 'QUEUED',
+  RUNNING: 'RUNNING',
+  SUCCESS: 'SUCCESS',
+  FAILED: 'FAILED'
+} as const
+
+export type JobRunStatus = (typeof JobRunStatus)[keyof typeof JobRunStatus]
+
+
+export const JobTriggerType = {
+  CRON: 'CRON',
+  MANUAL: 'MANUAL'
+} as const
+
+export type JobTriggerType = (typeof JobTriggerType)[keyof typeof JobTriggerType]
+
+
+export const ScheduledReportFormat = {
+  CSV: 'CSV',
+  XLSX: 'XLSX'
+} as const
+
+export type ScheduledReportFormat = (typeof ScheduledReportFormat)[keyof typeof ScheduledReportFormat]
+
+
+export const ImportBatchType = {
+  BUYERS: 'BUYERS',
+  SUPPLIERS: 'SUPPLIERS',
+  MATERIALS: 'MATERIALS',
+  STYLES: 'STYLES',
+  ORDERS: 'ORDERS',
+  OPENING_STOCK: 'OPENING_STOCK',
+  OPEN_POS: 'OPEN_POS',
+  SHIPMENT_BALANCES: 'SHIPMENT_BALANCES'
+} as const
+
+export type ImportBatchType = (typeof ImportBatchType)[keyof typeof ImportBatchType]
+
+
+export const ImportBatchStatus = {
+  VALIDATED: 'VALIDATED',
+  HAS_ERRORS: 'HAS_ERRORS',
+  IMPORTED: 'IMPORTED',
+  FAILED: 'FAILED'
+} as const
+
+export type ImportBatchStatus = (typeof ImportBatchStatus)[keyof typeof ImportBatchStatus]
+
+
+export const ImportRowStatus = {
+  OK: 'OK',
+  ERROR: 'ERROR',
+  SKIPPED: 'SKIPPED'
+} as const
+
+export type ImportRowStatus = (typeof ImportRowStatus)[keyof typeof ImportRowStatus]
+
+
+export const PortalType = {
+  SUPPLIER: 'SUPPLIER',
+  BUYER: 'BUYER'
+} as const
+
+export type PortalType = (typeof PortalType)[keyof typeof PortalType]
+
+
+export const AttendanceStatus = {
+  PRESENT: 'PRESENT',
+  ABSENT: 'ABSENT',
+  LATE: 'LATE',
+  HALF_DAY: 'HALF_DAY',
+  LEAVE: 'LEAVE',
+  HOLIDAY: 'HOLIDAY',
+  WEEKEND: 'WEEKEND'
+} as const
+
+export type AttendanceStatus = (typeof AttendanceStatus)[keyof typeof AttendanceStatus]
+
+
+export const BudgetStatus = {
+  DRAFT: 'DRAFT',
+  APPROVED: 'APPROVED',
+  CLOSED: 'CLOSED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type BudgetStatus = (typeof BudgetStatus)[keyof typeof BudgetStatus]
+
+
+export const CertificateStatus = {
+  ACTIVE: 'ACTIVE',
+  REVOKED: 'REVOKED'
+} as const
+
+export type CertificateStatus = (typeof CertificateStatus)[keyof typeof CertificateStatus]
+
+
+export const ComplianceAuditStatus = {
+  PLANNED: 'PLANNED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type ComplianceAuditStatus = (typeof ComplianceAuditStatus)[keyof typeof ComplianceAuditStatus]
+
+
+export const ComplianceResult = {
+  PASS: 'PASS',
+  CONDITIONAL: 'CONDITIONAL',
+  FAIL: 'FAIL'
+} as const
+
+export type ComplianceResult = (typeof ComplianceResult)[keyof typeof ComplianceResult]
+
+
+export const EmployeeStatus = {
+  ACTIVE: 'ACTIVE',
+  RESIGNED: 'RESIGNED',
+  TERMINATED: 'TERMINATED'
+} as const
+
+export type EmployeeStatus = (typeof EmployeeStatus)[keyof typeof EmployeeStatus]
+
+
+export const LeaveStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type LeaveStatus = (typeof LeaveStatus)[keyof typeof LeaveStatus]
+
+
+export const PackingListStatus = {
+  DRAFT: 'DRAFT',
+  ISSUED: 'ISSUED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type PackingListStatus = (typeof PackingListStatus)[keyof typeof PackingListStatus]
+
+
+export const PayrollStatus = {
+  DRAFT: 'DRAFT',
+  APPROVED: 'APPROVED',
+  PAID: 'PAID',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type PayrollStatus = (typeof PayrollStatus)[keyof typeof PayrollStatus]
+
+
+export const StockCountStatus = {
+  DRAFT: 'DRAFT',
+  POSTED: 'POSTED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type StockCountStatus = (typeof StockCountStatus)[keyof typeof StockCountStatus]
+
+
+export const TransferStatus = {
+  DRAFT: 'DRAFT',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type TransferStatus = (typeof TransferStatus)[keyof typeof TransferStatus]

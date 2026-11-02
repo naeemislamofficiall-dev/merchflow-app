@@ -38,30 +38,30 @@ export type MrpRunMinAggregateOutputType = {
   id: string | null
   companyId: string | null
   bomId: string | null
-  orderId: string | null
   orderQty: number | null
   runDate: Date | null
   createdAt: Date | null
+  orderId: string | null
 }
 
 export type MrpRunMaxAggregateOutputType = {
   id: string | null
   companyId: string | null
   bomId: string | null
-  orderId: string | null
   orderQty: number | null
   runDate: Date | null
   createdAt: Date | null
+  orderId: string | null
 }
 
 export type MrpRunCountAggregateOutputType = {
   id: number
   companyId: number
   bomId: number
-  orderId: number
   orderQty: number
   runDate: number
   createdAt: number
+  orderId: number
   _all: number
 }
 
@@ -78,30 +78,30 @@ export type MrpRunMinAggregateInputType = {
   id?: true
   companyId?: true
   bomId?: true
-  orderId?: true
   orderQty?: true
   runDate?: true
   createdAt?: true
+  orderId?: true
 }
 
 export type MrpRunMaxAggregateInputType = {
   id?: true
   companyId?: true
   bomId?: true
-  orderId?: true
   orderQty?: true
   runDate?: true
   createdAt?: true
+  orderId?: true
 }
 
 export type MrpRunCountAggregateInputType = {
   id?: true
   companyId?: true
   bomId?: true
-  orderId?: true
   orderQty?: true
   runDate?: true
   createdAt?: true
+  orderId?: true
   _all?: true
 }
 
@@ -195,10 +195,10 @@ export type MrpRunGroupByOutputType = {
   id: string
   companyId: string
   bomId: string
-  orderId: string | null
   orderQty: number
   runDate: Date
   createdAt: Date
+  orderId: string | null
   _count: MrpRunCountAggregateOutputType | null
   _avg: MrpRunAvgAggregateOutputType | null
   _sum: MrpRunSumAggregateOutputType | null
@@ -228,30 +228,30 @@ export type MrpRunWhereInput = {
   id?: Prisma.StringFilter<"MrpRun"> | string
   companyId?: Prisma.StringFilter<"MrpRun"> | string
   bomId?: Prisma.StringFilter<"MrpRun"> | string
-  orderId?: Prisma.StringNullableFilter<"MrpRun"> | string | null
   orderQty?: Prisma.IntFilter<"MrpRun"> | number
   runDate?: Prisma.DateTimeFilter<"MrpRun"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"MrpRun"> | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
-  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
-  bom?: Prisma.XOR<Prisma.BomScalarRelationFilter, Prisma.BomWhereInput>
-  order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  orderId?: Prisma.StringNullableFilter<"MrpRun"> | string | null
   lines?: Prisma.MrpLineListRelationFilter
+  bom?: Prisma.XOR<Prisma.BomScalarRelationFilter, Prisma.BomWhereInput>
+  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
+  order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
 }
 
 export type MrpRunOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   companyId?: Prisma.SortOrder
   bomId?: Prisma.SortOrder
-  orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   orderQty?: Prisma.SortOrder
   runDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  purchaseRequisitions?: Prisma.PurchaseRequisitionOrderByRelationAggregateInput
-  company?: Prisma.CompanyOrderByWithRelationInput
-  bom?: Prisma.BomOrderByWithRelationInput
-  order?: Prisma.OrderOrderByWithRelationInput
+  orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   lines?: Prisma.MrpLineOrderByRelationAggregateInput
+  bom?: Prisma.BomOrderByWithRelationInput
+  company?: Prisma.CompanyOrderByWithRelationInput
+  order?: Prisma.OrderOrderByWithRelationInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionOrderByRelationAggregateInput
 }
 
 export type MrpRunWhereUniqueInput = Prisma.AtLeast<{
@@ -261,25 +261,25 @@ export type MrpRunWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.MrpRunWhereInput | Prisma.MrpRunWhereInput[]
   companyId?: Prisma.StringFilter<"MrpRun"> | string
   bomId?: Prisma.StringFilter<"MrpRun"> | string
-  orderId?: Prisma.StringNullableFilter<"MrpRun"> | string | null
   orderQty?: Prisma.IntFilter<"MrpRun"> | number
   runDate?: Prisma.DateTimeFilter<"MrpRun"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"MrpRun"> | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
-  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
-  bom?: Prisma.XOR<Prisma.BomScalarRelationFilter, Prisma.BomWhereInput>
-  order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  orderId?: Prisma.StringNullableFilter<"MrpRun"> | string | null
   lines?: Prisma.MrpLineListRelationFilter
+  bom?: Prisma.XOR<Prisma.BomScalarRelationFilter, Prisma.BomWhereInput>
+  company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
+  order?: Prisma.XOR<Prisma.OrderNullableScalarRelationFilter, Prisma.OrderWhereInput> | null
+  purchaseRequisitions?: Prisma.PurchaseRequisitionListRelationFilter
 }, "id">
 
 export type MrpRunOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   companyId?: Prisma.SortOrder
   bomId?: Prisma.SortOrder
-  orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   orderQty?: Prisma.SortOrder
   runDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  orderId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.MrpRunCountOrderByAggregateInput
   _avg?: Prisma.MrpRunAvgOrderByAggregateInput
   _max?: Prisma.MrpRunMaxOrderByAggregateInput
@@ -294,10 +294,10 @@ export type MrpRunScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"MrpRun"> | string
   companyId?: Prisma.StringWithAggregatesFilter<"MrpRun"> | string
   bomId?: Prisma.StringWithAggregatesFilter<"MrpRun"> | string
-  orderId?: Prisma.StringNullableWithAggregatesFilter<"MrpRun"> | string | null
   orderQty?: Prisma.IntWithAggregatesFilter<"MrpRun"> | number
   runDate?: Prisma.DateTimeWithAggregatesFilter<"MrpRun"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"MrpRun"> | Date | string
+  orderId?: Prisma.StringNullableWithAggregatesFilter<"MrpRun"> | string | null
 }
 
 export type MrpRunCreateInput = {
@@ -305,23 +305,23 @@ export type MrpRunCreateInput = {
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutMrpRunInput
-  company: Prisma.CompanyCreateNestedOneWithoutMrpRunsInput
-  bom: Prisma.BomCreateNestedOneWithoutMrpRunsInput
-  order?: Prisma.OrderCreateNestedOneWithoutMrpRunsInput
   lines?: Prisma.MrpLineCreateNestedManyWithoutMrpRunInput
+  bom: Prisma.BomCreateNestedOneWithoutMrpRunsInput
+  company: Prisma.CompanyCreateNestedOneWithoutMrpRunsInput
+  order?: Prisma.OrderCreateNestedOneWithoutMrpRunsInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutMrpRunInput
 }
 
 export type MrpRunUncheckedCreateInput = {
   id?: string
   companyId: string
   bomId: string
-  orderId?: string | null
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutMrpRunInput
+  orderId?: string | null
   lines?: Prisma.MrpLineUncheckedCreateNestedManyWithoutMrpRunInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutMrpRunInput
 }
 
 export type MrpRunUpdateInput = {
@@ -329,33 +329,33 @@ export type MrpRunUpdateInput = {
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutMrpRunNestedInput
-  company?: Prisma.CompanyUpdateOneRequiredWithoutMrpRunsNestedInput
-  bom?: Prisma.BomUpdateOneRequiredWithoutMrpRunsNestedInput
-  order?: Prisma.OrderUpdateOneWithoutMrpRunsNestedInput
   lines?: Prisma.MrpLineUpdateManyWithoutMrpRunNestedInput
+  bom?: Prisma.BomUpdateOneRequiredWithoutMrpRunsNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutMrpRunsNestedInput
+  order?: Prisma.OrderUpdateOneWithoutMrpRunsNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutMrpRunNestedInput
 }
 
 export type MrpRunUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   bomId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutMrpRunNestedInput
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lines?: Prisma.MrpLineUncheckedUpdateManyWithoutMrpRunNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutMrpRunNestedInput
 }
 
 export type MrpRunCreateManyInput = {
   id?: string
   companyId: string
   bomId: string
-  orderId?: string | null
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
+  orderId?: string | null
 }
 
 export type MrpRunUpdateManyMutationInput = {
@@ -369,10 +369,10 @@ export type MrpRunUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   bomId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MrpRunListRelationFilter = {
@@ -389,10 +389,10 @@ export type MrpRunCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   companyId?: Prisma.SortOrder
   bomId?: Prisma.SortOrder
-  orderId?: Prisma.SortOrder
   orderQty?: Prisma.SortOrder
   runDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  orderId?: Prisma.SortOrder
 }
 
 export type MrpRunAvgOrderByAggregateInput = {
@@ -403,20 +403,20 @@ export type MrpRunMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   companyId?: Prisma.SortOrder
   bomId?: Prisma.SortOrder
-  orderId?: Prisma.SortOrder
   orderQty?: Prisma.SortOrder
   runDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  orderId?: Prisma.SortOrder
 }
 
 export type MrpRunMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   companyId?: Prisma.SortOrder
   bomId?: Prisma.SortOrder
-  orderId?: Prisma.SortOrder
   orderQty?: Prisma.SortOrder
   runDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  orderId?: Prisma.SortOrder
 }
 
 export type MrpRunSumOrderByAggregateInput = {
@@ -594,21 +594,21 @@ export type MrpRunCreateWithoutCompanyInput = {
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutMrpRunInput
+  lines?: Prisma.MrpLineCreateNestedManyWithoutMrpRunInput
   bom: Prisma.BomCreateNestedOneWithoutMrpRunsInput
   order?: Prisma.OrderCreateNestedOneWithoutMrpRunsInput
-  lines?: Prisma.MrpLineCreateNestedManyWithoutMrpRunInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutMrpRunInput
 }
 
 export type MrpRunUncheckedCreateWithoutCompanyInput = {
   id?: string
   bomId: string
-  orderId?: string | null
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutMrpRunInput
+  orderId?: string | null
   lines?: Prisma.MrpLineUncheckedCreateNestedManyWithoutMrpRunInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutMrpRunInput
 }
 
 export type MrpRunCreateOrConnectWithoutCompanyInput = {
@@ -644,10 +644,10 @@ export type MrpRunScalarWhereInput = {
   id?: Prisma.StringFilter<"MrpRun"> | string
   companyId?: Prisma.StringFilter<"MrpRun"> | string
   bomId?: Prisma.StringFilter<"MrpRun"> | string
-  orderId?: Prisma.StringNullableFilter<"MrpRun"> | string | null
   orderQty?: Prisma.IntFilter<"MrpRun"> | number
   runDate?: Prisma.DateTimeFilter<"MrpRun"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"MrpRun"> | Date | string
+  orderId?: Prisma.StringNullableFilter<"MrpRun"> | string | null
 }
 
 export type MrpRunCreateWithoutBomInput = {
@@ -655,21 +655,21 @@ export type MrpRunCreateWithoutBomInput = {
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutMrpRunInput
+  lines?: Prisma.MrpLineCreateNestedManyWithoutMrpRunInput
   company: Prisma.CompanyCreateNestedOneWithoutMrpRunsInput
   order?: Prisma.OrderCreateNestedOneWithoutMrpRunsInput
-  lines?: Prisma.MrpLineCreateNestedManyWithoutMrpRunInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutMrpRunInput
 }
 
 export type MrpRunUncheckedCreateWithoutBomInput = {
   id?: string
   companyId: string
-  orderId?: string | null
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutMrpRunInput
+  orderId?: string | null
   lines?: Prisma.MrpLineUncheckedCreateNestedManyWithoutMrpRunInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutMrpRunInput
 }
 
 export type MrpRunCreateOrConnectWithoutBomInput = {
@@ -703,20 +703,20 @@ export type MrpRunCreateWithoutLinesInput = {
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutMrpRunInput
-  company: Prisma.CompanyCreateNestedOneWithoutMrpRunsInput
   bom: Prisma.BomCreateNestedOneWithoutMrpRunsInput
+  company: Prisma.CompanyCreateNestedOneWithoutMrpRunsInput
   order?: Prisma.OrderCreateNestedOneWithoutMrpRunsInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutMrpRunInput
 }
 
 export type MrpRunUncheckedCreateWithoutLinesInput = {
   id?: string
   companyId: string
   bomId: string
-  orderId?: string | null
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
+  orderId?: string | null
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutMrpRunInput
 }
 
@@ -741,20 +741,20 @@ export type MrpRunUpdateWithoutLinesInput = {
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutMrpRunNestedInput
-  company?: Prisma.CompanyUpdateOneRequiredWithoutMrpRunsNestedInput
   bom?: Prisma.BomUpdateOneRequiredWithoutMrpRunsNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutMrpRunsNestedInput
   order?: Prisma.OrderUpdateOneWithoutMrpRunsNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutMrpRunNestedInput
 }
 
 export type MrpRunUncheckedUpdateWithoutLinesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   bomId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutMrpRunNestedInput
 }
 
@@ -763,10 +763,10 @@ export type MrpRunCreateWithoutOrderInput = {
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutMrpRunInput
-  company: Prisma.CompanyCreateNestedOneWithoutMrpRunsInput
-  bom: Prisma.BomCreateNestedOneWithoutMrpRunsInput
   lines?: Prisma.MrpLineCreateNestedManyWithoutMrpRunInput
+  bom: Prisma.BomCreateNestedOneWithoutMrpRunsInput
+  company: Prisma.CompanyCreateNestedOneWithoutMrpRunsInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionCreateNestedManyWithoutMrpRunInput
 }
 
 export type MrpRunUncheckedCreateWithoutOrderInput = {
@@ -776,8 +776,8 @@ export type MrpRunUncheckedCreateWithoutOrderInput = {
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutMrpRunInput
   lines?: Prisma.MrpLineUncheckedCreateNestedManyWithoutMrpRunInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedCreateNestedManyWithoutMrpRunInput
 }
 
 export type MrpRunCreateOrConnectWithoutOrderInput = {
@@ -811,20 +811,20 @@ export type MrpRunCreateWithoutPurchaseRequisitionsInput = {
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
-  company: Prisma.CompanyCreateNestedOneWithoutMrpRunsInput
-  bom: Prisma.BomCreateNestedOneWithoutMrpRunsInput
-  order?: Prisma.OrderCreateNestedOneWithoutMrpRunsInput
   lines?: Prisma.MrpLineCreateNestedManyWithoutMrpRunInput
+  bom: Prisma.BomCreateNestedOneWithoutMrpRunsInput
+  company: Prisma.CompanyCreateNestedOneWithoutMrpRunsInput
+  order?: Prisma.OrderCreateNestedOneWithoutMrpRunsInput
 }
 
 export type MrpRunUncheckedCreateWithoutPurchaseRequisitionsInput = {
   id?: string
   companyId: string
   bomId: string
-  orderId?: string | null
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
+  orderId?: string | null
   lines?: Prisma.MrpLineUncheckedCreateNestedManyWithoutMrpRunInput
 }
 
@@ -849,30 +849,30 @@ export type MrpRunUpdateWithoutPurchaseRequisitionsInput = {
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.CompanyUpdateOneRequiredWithoutMrpRunsNestedInput
-  bom?: Prisma.BomUpdateOneRequiredWithoutMrpRunsNestedInput
-  order?: Prisma.OrderUpdateOneWithoutMrpRunsNestedInput
   lines?: Prisma.MrpLineUpdateManyWithoutMrpRunNestedInput
+  bom?: Prisma.BomUpdateOneRequiredWithoutMrpRunsNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutMrpRunsNestedInput
+  order?: Prisma.OrderUpdateOneWithoutMrpRunsNestedInput
 }
 
 export type MrpRunUncheckedUpdateWithoutPurchaseRequisitionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
   bomId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lines?: Prisma.MrpLineUncheckedUpdateManyWithoutMrpRunNestedInput
 }
 
 export type MrpRunCreateManyCompanyInput = {
   id?: string
   bomId: string
-  orderId?: string | null
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
+  orderId?: string | null
 }
 
 export type MrpRunUpdateWithoutCompanyInput = {
@@ -880,39 +880,39 @@ export type MrpRunUpdateWithoutCompanyInput = {
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutMrpRunNestedInput
+  lines?: Prisma.MrpLineUpdateManyWithoutMrpRunNestedInput
   bom?: Prisma.BomUpdateOneRequiredWithoutMrpRunsNestedInput
   order?: Prisma.OrderUpdateOneWithoutMrpRunsNestedInput
-  lines?: Prisma.MrpLineUpdateManyWithoutMrpRunNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutMrpRunNestedInput
 }
 
 export type MrpRunUncheckedUpdateWithoutCompanyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   bomId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutMrpRunNestedInput
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lines?: Prisma.MrpLineUncheckedUpdateManyWithoutMrpRunNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutMrpRunNestedInput
 }
 
 export type MrpRunUncheckedUpdateManyWithoutCompanyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   bomId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MrpRunCreateManyBomInput = {
   id?: string
   companyId: string
-  orderId?: string | null
   orderQty: number
   runDate?: Date | string
   createdAt?: Date | string
+  orderId?: string | null
 }
 
 export type MrpRunUpdateWithoutBomInput = {
@@ -920,30 +920,30 @@ export type MrpRunUpdateWithoutBomInput = {
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutMrpRunNestedInput
+  lines?: Prisma.MrpLineUpdateManyWithoutMrpRunNestedInput
   company?: Prisma.CompanyUpdateOneRequiredWithoutMrpRunsNestedInput
   order?: Prisma.OrderUpdateOneWithoutMrpRunsNestedInput
-  lines?: Prisma.MrpLineUpdateManyWithoutMrpRunNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutMrpRunNestedInput
 }
 
 export type MrpRunUncheckedUpdateWithoutBomInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutMrpRunNestedInput
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lines?: Prisma.MrpLineUncheckedUpdateManyWithoutMrpRunNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutMrpRunNestedInput
 }
 
 export type MrpRunUncheckedUpdateManyWithoutBomInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MrpRunCreateManyOrderInput = {
@@ -960,10 +960,10 @@ export type MrpRunUpdateWithoutOrderInput = {
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutMrpRunNestedInput
-  company?: Prisma.CompanyUpdateOneRequiredWithoutMrpRunsNestedInput
-  bom?: Prisma.BomUpdateOneRequiredWithoutMrpRunsNestedInput
   lines?: Prisma.MrpLineUpdateManyWithoutMrpRunNestedInput
+  bom?: Prisma.BomUpdateOneRequiredWithoutMrpRunsNestedInput
+  company?: Prisma.CompanyUpdateOneRequiredWithoutMrpRunsNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUpdateManyWithoutMrpRunNestedInput
 }
 
 export type MrpRunUncheckedUpdateWithoutOrderInput = {
@@ -973,8 +973,8 @@ export type MrpRunUncheckedUpdateWithoutOrderInput = {
   orderQty?: Prisma.IntFieldUpdateOperationsInput | number
   runDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutMrpRunNestedInput
   lines?: Prisma.MrpLineUncheckedUpdateManyWithoutMrpRunNestedInput
+  purchaseRequisitions?: Prisma.PurchaseRequisitionUncheckedUpdateManyWithoutMrpRunNestedInput
 }
 
 export type MrpRunUncheckedUpdateManyWithoutOrderInput = {
@@ -992,13 +992,13 @@ export type MrpRunUncheckedUpdateManyWithoutOrderInput = {
  */
 
 export type MrpRunCountOutputType = {
-  purchaseRequisitions: number
   lines: number
+  purchaseRequisitions: number
 }
 
 export type MrpRunCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  purchaseRequisitions?: boolean | MrpRunCountOutputTypeCountPurchaseRequisitionsArgs
   lines?: boolean | MrpRunCountOutputTypeCountLinesArgs
+  purchaseRequisitions?: boolean | MrpRunCountOutputTypeCountPurchaseRequisitionsArgs
 }
 
 /**
@@ -1014,15 +1014,15 @@ export type MrpRunCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
 /**
  * MrpRunCountOutputType without action
  */
-export type MrpRunCountOutputTypeCountPurchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PurchaseRequisitionWhereInput
+export type MrpRunCountOutputTypeCountLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MrpLineWhereInput
 }
 
 /**
  * MrpRunCountOutputType without action
  */
-export type MrpRunCountOutputTypeCountLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.MrpLineWhereInput
+export type MrpRunCountOutputTypeCountPurchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PurchaseRequisitionWhereInput
 }
 
 
@@ -1030,15 +1030,15 @@ export type MrpRunSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   id?: boolean
   companyId?: boolean
   bomId?: boolean
-  orderId?: boolean
   orderQty?: boolean
   runDate?: boolean
   createdAt?: boolean
-  purchaseRequisitions?: boolean | Prisma.MrpRun$purchaseRequisitionsArgs<ExtArgs>
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
-  order?: boolean | Prisma.MrpRun$orderArgs<ExtArgs>
+  orderId?: boolean
   lines?: boolean | Prisma.MrpRun$linesArgs<ExtArgs>
+  bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
+  order?: boolean | Prisma.MrpRun$orderArgs<ExtArgs>
+  purchaseRequisitions?: boolean | Prisma.MrpRun$purchaseRequisitionsArgs<ExtArgs>
   _count?: boolean | Prisma.MrpRunCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["mrpRun"]>
 
@@ -1046,12 +1046,12 @@ export type MrpRunSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   id?: boolean
   companyId?: boolean
   bomId?: boolean
-  orderId?: boolean
   orderQty?: boolean
   runDate?: boolean
   createdAt?: boolean
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
+  orderId?: boolean
   bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   order?: boolean | Prisma.MrpRun$orderArgs<ExtArgs>
 }, ExtArgs["result"]["mrpRun"]>
 
@@ -1059,12 +1059,12 @@ export type MrpRunSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   id?: boolean
   companyId?: boolean
   bomId?: boolean
-  orderId?: boolean
   orderQty?: boolean
   runDate?: boolean
   createdAt?: boolean
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
+  orderId?: boolean
   bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   order?: boolean | Prisma.MrpRun$orderArgs<ExtArgs>
 }, ExtArgs["result"]["mrpRun"]>
 
@@ -1072,49 +1072,49 @@ export type MrpRunSelectScalar = {
   id?: boolean
   companyId?: boolean
   bomId?: boolean
-  orderId?: boolean
   orderQty?: boolean
   runDate?: boolean
   createdAt?: boolean
+  orderId?: boolean
 }
 
-export type MrpRunOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "bomId" | "orderId" | "orderQty" | "runDate" | "createdAt", ExtArgs["result"]["mrpRun"]>
+export type MrpRunOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "bomId" | "orderQty" | "runDate" | "createdAt" | "orderId", ExtArgs["result"]["mrpRun"]>
 export type MrpRunInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  purchaseRequisitions?: boolean | Prisma.MrpRun$purchaseRequisitionsArgs<ExtArgs>
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
-  bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
-  order?: boolean | Prisma.MrpRun$orderArgs<ExtArgs>
   lines?: boolean | Prisma.MrpRun$linesArgs<ExtArgs>
+  bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
+  order?: boolean | Prisma.MrpRun$orderArgs<ExtArgs>
+  purchaseRequisitions?: boolean | Prisma.MrpRun$purchaseRequisitionsArgs<ExtArgs>
   _count?: boolean | Prisma.MrpRunCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MrpRunIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   order?: boolean | Prisma.MrpRun$orderArgs<ExtArgs>
 }
 export type MrpRunIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   bom?: boolean | Prisma.BomDefaultArgs<ExtArgs>
+  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   order?: boolean | Prisma.MrpRun$orderArgs<ExtArgs>
 }
 
 export type $MrpRunPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "MrpRun"
   objects: {
-    purchaseRequisitions: Prisma.$PurchaseRequisitionPayload<ExtArgs>[]
-    company: Prisma.$CompanyPayload<ExtArgs>
-    bom: Prisma.$BomPayload<ExtArgs>
-    order: Prisma.$OrderPayload<ExtArgs> | null
     lines: Prisma.$MrpLinePayload<ExtArgs>[]
+    bom: Prisma.$BomPayload<ExtArgs>
+    company: Prisma.$CompanyPayload<ExtArgs>
+    order: Prisma.$OrderPayload<ExtArgs> | null
+    purchaseRequisitions: Prisma.$PurchaseRequisitionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     companyId: string
     bomId: string
-    orderId: string | null
     orderQty: number
     runDate: Date
     createdAt: Date
+    orderId: string | null
   }, ExtArgs["result"]["mrpRun"]>
   composites: {}
 }
@@ -1509,11 +1509,11 @@ readonly fields: MrpRunFieldRefs;
  */
 export interface Prisma__MrpRunClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  purchaseRequisitions<T extends Prisma.MrpRun$purchaseRequisitionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MrpRun$purchaseRequisitionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  bom<T extends Prisma.BomDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BomDefaultArgs<ExtArgs>>): Prisma.Prisma__BomClient<runtime.Types.Result.GetResult<Prisma.$BomPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  order<T extends Prisma.MrpRun$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MrpRun$orderArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   lines<T extends Prisma.MrpRun$linesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MrpRun$linesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MrpLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  bom<T extends Prisma.BomDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BomDefaultArgs<ExtArgs>>): Prisma.Prisma__BomClient<runtime.Types.Result.GetResult<Prisma.$BomPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  order<T extends Prisma.MrpRun$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MrpRun$orderArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  purchaseRequisitions<T extends Prisma.MrpRun$purchaseRequisitionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MrpRun$purchaseRequisitionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseRequisitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1546,10 +1546,10 @@ export interface MrpRunFieldRefs {
   readonly id: Prisma.FieldRef<"MrpRun", 'String'>
   readonly companyId: Prisma.FieldRef<"MrpRun", 'String'>
   readonly bomId: Prisma.FieldRef<"MrpRun", 'String'>
-  readonly orderId: Prisma.FieldRef<"MrpRun", 'String'>
   readonly orderQty: Prisma.FieldRef<"MrpRun", 'Int'>
   readonly runDate: Prisma.FieldRef<"MrpRun", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"MrpRun", 'DateTime'>
+  readonly orderId: Prisma.FieldRef<"MrpRun", 'String'>
 }
     
 
@@ -1951,27 +1951,27 @@ export type MrpRunDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
- * MrpRun.purchaseRequisitions
+ * MrpRun.lines
  */
-export type MrpRun$purchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type MrpRun$linesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the PurchaseRequisition
+   * Select specific fields to fetch from the MrpLine
    */
-  select?: Prisma.PurchaseRequisitionSelect<ExtArgs> | null
+  select?: Prisma.MrpLineSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the PurchaseRequisition
+   * Omit specific fields from the MrpLine
    */
-  omit?: Prisma.PurchaseRequisitionOmit<ExtArgs> | null
+  omit?: Prisma.MrpLineOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.PurchaseRequisitionInclude<ExtArgs> | null
-  where?: Prisma.PurchaseRequisitionWhereInput
-  orderBy?: Prisma.PurchaseRequisitionOrderByWithRelationInput | Prisma.PurchaseRequisitionOrderByWithRelationInput[]
-  cursor?: Prisma.PurchaseRequisitionWhereUniqueInput
+  include?: Prisma.MrpLineInclude<ExtArgs> | null
+  where?: Prisma.MrpLineWhereInput
+  orderBy?: Prisma.MrpLineOrderByWithRelationInput | Prisma.MrpLineOrderByWithRelationInput[]
+  cursor?: Prisma.MrpLineWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.PurchaseRequisitionScalarFieldEnum | Prisma.PurchaseRequisitionScalarFieldEnum[]
+  distinct?: Prisma.MrpLineScalarFieldEnum | Prisma.MrpLineScalarFieldEnum[]
 }
 
 /**
@@ -1994,27 +1994,27 @@ export type MrpRun$orderArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 }
 
 /**
- * MrpRun.lines
+ * MrpRun.purchaseRequisitions
  */
-export type MrpRun$linesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type MrpRun$purchaseRequisitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the MrpLine
+   * Select specific fields to fetch from the PurchaseRequisition
    */
-  select?: Prisma.MrpLineSelect<ExtArgs> | null
+  select?: Prisma.PurchaseRequisitionSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the MrpLine
+   * Omit specific fields from the PurchaseRequisition
    */
-  omit?: Prisma.MrpLineOmit<ExtArgs> | null
+  omit?: Prisma.PurchaseRequisitionOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.MrpLineInclude<ExtArgs> | null
-  where?: Prisma.MrpLineWhereInput
-  orderBy?: Prisma.MrpLineOrderByWithRelationInput | Prisma.MrpLineOrderByWithRelationInput[]
-  cursor?: Prisma.MrpLineWhereUniqueInput
+  include?: Prisma.PurchaseRequisitionInclude<ExtArgs> | null
+  where?: Prisma.PurchaseRequisitionWhereInput
+  orderBy?: Prisma.PurchaseRequisitionOrderByWithRelationInput | Prisma.PurchaseRequisitionOrderByWithRelationInput[]
+  cursor?: Prisma.PurchaseRequisitionWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.MrpLineScalarFieldEnum | Prisma.MrpLineScalarFieldEnum[]
+  distinct?: Prisma.PurchaseRequisitionScalarFieldEnum | Prisma.PurchaseRequisitionScalarFieldEnum[]
 }
 
 /**

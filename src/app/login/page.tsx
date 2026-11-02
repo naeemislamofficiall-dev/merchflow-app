@@ -21,11 +21,12 @@ export default function LoginPage() {
     const res = await signIn("credentials", {
       email: form.get("email"),
       password: form.get("password"),
+      otp: form.get("otp") ?? "",
       redirect: false,
     });
     setLoading(false);
     if (res?.error) {
-      setError("Email or password is wrong");
+      setError("Email, password or code is wrong");
       return;
     }
     router.push("/");
@@ -48,6 +49,10 @@ export default function LoginPage() {
         <div className="space-y-1.5">
           <Label htmlFor="password">Password</Label>
           <Input id="password" name="password" type="password" required autoComplete="current-password" />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="otp">Authenticator or backup code (only if two-factor is on)</Label>
+          <Input id="otp" name="otp" maxLength={12} autoComplete="one-time-code" />
         </div>
         <div className="text-right">
           <Link href="/forgot-password" className="text-xs text-denim-700 hover:underline">
