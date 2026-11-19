@@ -30,3 +30,10 @@ export async function runEscalationAction() {
     return { escalated: r.escalated };
   });
 }
+
+export async function setWorkflowActiveAction(workflowId: string, active: boolean) {
+  return runAction(async () => {
+    await approvalService.setWorkflowActive(workflowId, active);
+    return { id: workflowId };
+  });
+}

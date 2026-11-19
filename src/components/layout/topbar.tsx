@@ -1,9 +1,10 @@
 "use client";
 
-import { Building2, LogOut, Menu } from "lucide-react";
+import { Building2, ChevronDown, LogOut, Menu } from "lucide-react";
 import { logoutAction, switchCompanyAction } from "@/app/(app)/actions";
 import { SearchBox } from "./search-box";
 import { NotificationBell, type BellItem } from "./notification-bell";
+import { UserMenu } from "./user-menu";
 
 export function Topbar({
   onMenu,
@@ -11,6 +12,9 @@ export function Topbar({
   companies,
   activeCompanyId,
   userEmail,
+  userName,
+  userRole,
+  avatarUrl,
   unreadCount,
   notifications,
 }: {
@@ -19,6 +23,9 @@ export function Topbar({
   companies: { id: string; name: string }[];
   activeCompanyId: string;
   userEmail: string;
+  userName: string;
+  userRole: string;
+  avatarUrl: string | null;
   unreadCount: number;
   notifications: BellItem[];
 }) {
@@ -28,15 +35,15 @@ export function Topbar({
         <Menu className="h-5 w-5" />
       </button>
 
-      <div className="flex items-center gap-2 text-sm">
-        <Building2 className="h-4 w-4 text-muted-foreground" />
+      <div className="flex h-10 items-center gap-2 rounded-xl border bg-card px-3 text-sm shadow-card">
+        <Building2 className="h-4 w-4 text-navy-800" />
         {companies.length > 1 ? (
-          <form action={switchCompanyAction}>
+          <form action={switchCompanyAction} className="flex items-center gap-1">
             <select
               name="companyId"
               defaultValue={activeCompanyId}
               onChange={(e) => e.currentTarget.form?.requestSubmit()}
-              className="rounded-md border bg-card px-2 py-1 text-sm"
+              className="cursor-pointer appearance-none bg-transparent pr-1 text-sm font-semibold text-navy-800 outline-none"
             >
               {companies.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -44,9 +51,10 @@ export function Topbar({
                 </option>
               ))}
             </select>
+            <ChevronDown className="h-4 w-4 text-slate-500" />
           </form>
         ) : (
-          <span className="font-medium">{companyName}</span>
+          <span className="font-semibold text-navy-800">{companyName}</span>
         )}
       </div>
 
@@ -58,7 +66,7 @@ export function Topbar({
           unreadCount={unreadCount}
           items={notifications}
         />
-        <span className="hidden text-sm text-muted-foreground sm:inline">{userEmail}</span>
+        <UserMenu name={userName} email={userEmail} role={userRole} avatarUrl={avatarUrl} />
         <form action={logoutAction}>
           <button className="inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-sm hover:bg-muted">
             <LogOut className="h-4 w-4" />

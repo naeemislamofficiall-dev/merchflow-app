@@ -12,6 +12,9 @@ export function AppShell({
   companies,
   activeCompanyId,
   userEmail,
+  userName,
+  userRole,
+  avatarUrl,
   unreadCount,
   notifications,
   children,
@@ -21,6 +24,9 @@ export function AppShell({
   companies: { id: string; name: string }[];
   activeCompanyId: string;
   userEmail: string;
+  userName: string;
+  userRole: string;
+  avatarUrl: string | null;
   unreadCount: number;
   notifications: BellItem[];
   children: React.ReactNode;
@@ -30,13 +36,16 @@ export function AppShell({
   return (
     <div className="flex min-h-screen">
       <Sidebar groups={groups} open={open} onClose={() => setOpen(false)} />
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex min-w-0 flex-1 flex-col overflow-x-clip">
         <Topbar
           onMenu={() => setOpen(true)}
           companyName={companyName}
           companies={companies}
           activeCompanyId={activeCompanyId}
           userEmail={userEmail}
+          userName={userName}
+          userRole={userRole}
+          avatarUrl={avatarUrl}
           unreadCount={unreadCount}
           notifications={notifications}
         />

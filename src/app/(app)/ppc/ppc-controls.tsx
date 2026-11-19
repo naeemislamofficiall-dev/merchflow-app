@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
+import { Plus } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import {
   addHolidayAction,
@@ -12,7 +13,7 @@ import {
   removeHolidayAction,
 } from "./actions";
 
-const input = "h-9 rounded-md border bg-background px-2 text-sm";
+const input ="h-11 rounded-lg border border-slate-200 bg-white px-3 text-sm shadow-xs focus:border-blue-500 focus:outline-none focus:ring-3 focus:ring-blue-500/20";
 const btn = buttonVariants({ variant: "outline", size: "sm" });
 
 type Outcome = { ok: boolean; message: string; warnings: string[] };
@@ -56,15 +57,23 @@ export function AllocateForm({
   orders,
   lines,
   defaultDate,
+  defaultOrderId,
 }: {
   orders: Opt[];
   lines: Opt[];
   defaultDate: string;
+  defaultOrderId?: string;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
   const [out, setOut] = useState<Outcome | null>(null);
-  const [v, setV] = useState({ productionOrderId: "", lineId: "", date: defaultDate, plannedQty: "", remarks: "" });
+  const [v, setV] = useState({
+    productionOrderId: defaultOrderId ?? "",
+    lineId: "",
+    date: defaultDate,
+    plannedQty: "",
+    remarks: "",
+  });
   const set = (k: keyof typeof v) => (e: { target: { value: string } }) => setV({ ...v, [k]: e.target.value });
 
   function submit(e: React.FormEvent) {
@@ -123,8 +132,12 @@ export function AllocateForm({
           <span className="block text-muted-foreground">Remarks</span>
           <input className={`${input} w-48`} value={v.remarks} onChange={set("remarks")} />
         </label>
-        <button type="submit" disabled={pending} className={buttonVariants()}>
-          {pending ? "Saving…" : "Add allocation"}
+        <button
+          type="submit"
+          disabled={pending}
+          className="inline-flex h-11 items-center gap-2 rounded-lg bg-blue-600 px-5 text-sm font-semibold text-white shadow-md shadow-blue-900/20 transition-transform hover:-translate-y-0.5 hover:bg-blue-700 disabled:opacity-60"
+        >
+          <Plus className="h-4 w-4" strokeWidth={2.5} /> {pending ? "Saving…" : "Add Allocation"}
         </button>
       </div>
       <Feedback out={out} />

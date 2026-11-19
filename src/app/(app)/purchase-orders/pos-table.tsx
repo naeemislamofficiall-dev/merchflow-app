@@ -1,10 +1,9 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import Link from "next/link";
-import type { ColumnDef } from "@tanstack/react-table";
-import type { AppTableFeatures } from "@/components/data/table-features";
-import { DataTable } from "@/components/data/data-table";
-import { StatusBadge } from "@/components/detail/status-badge";
+import { ChevronDown, ChevronLeft, ChevronRight, Eye, Inbox, Search } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export type PoRow = {
   id: string;
@@ -13,41 +12,263 @@ export type PoRow = {
   currency: string;
   total: string;
   lines: number;
-  deliveryDate: string;
-  createdAt: string;
+  deliveryDate: string; // YYYY-MM-DD ba ""
+  createdAt: string; // YYYY-MM-DD
   status: string;
 };
 
-const columns: ColumnDef<AppTableFeatures, PoRow>[] = [
-  {
-    accessorKey: "poNo",
-    header: "PO no",
-    cell: ({ row }) => (
-      <Link href={`/purchase-orders/${row.original.id}`} className="font-medium text-denim-700 hover:underline">
-        {row.original.poNo}
-      </Link>
-    ),
-  },
-  { accessorKey: "supplier", header: "Supplier" },
-  { accessorKey: "lines", header: "Lines" },
-  {
-    accessorKey: "total",
-    header: "Total",
-    cell: ({ row }) => (
-      <span>
-        {row.original.total} {row.original.currency}
-      </span>
-    ),
-  },
-  { accessorKey: "deliveryDate", header: "Delivery" },
-  { accessorKey: "createdAt", header: "Created" },
-  {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }) => <StatusBadge status={row.original.status} />,
-  },
-];
+const PAGE_SIZE = 10;
+
+const ST: Record<string, { label: string; pill: string; dot: string }> = {
+  DRAFT: { label: "Draft", pill: "bg-slate-100 text-slate-600", dot: "bg-slate-400" },
+  SUBMITTED: { label: "Submitted", pill: "bg-amber-100 text-amber-700", dot: "bg-amber-500" },
+  APPROVED: { label: "Approved", pill: "bg-emerald-100 text-emerald-700", dot: "bg-emerald-500" },
+  REJECTED: { label: "Rejected", pill: "bg-rose-100 text-rose-600", dot: "bg-rose-500" },
+  REVISION: { label: "Revision", pill: "bg-violet-100 text-violet-700", dot: "bg-violet-500" },
+  SENT: { label: "Sent", pill: "bg-blue-100 text-blue-700", dot: "bg-blue-500" },
+  ACKNOWLEDGED: { label: "Acknowledged", pill: "bg-violet-100 text-violet-700", dot: "bg-violet-500" },
+  PARTIAL_RECEIPT: { label: "Partial Receipt", pill: "bg-amber-100 text-amber-700", dot: "bg-amber-500" },
+  COMPLETE: { label: "Complete", pill: "bg-emerald-100 text-emerald-700", dot: "bg-emerald-500" },
+  CLOSED: { label: "Closed", pill: "bg-slate-100 text-slate-500", dot: "bg-slate-400" },
+  CANCELLED: { label: "Cancelled", pill: "bg-rose-100 text-rose-600", dot: "bg-rose-500" },
+};
+const stOf = (s: string) =>
+  ST[s] ?? {
+    label: s.replace(/_/g, " ").toLowerCase().replace(/^./, (c) => c.toUpperCase()),
+    pill: "bg-blue-100 text-blue-700",
+    dot: "bg-blue-500",
+  };
+
+const FALLBACK = ["bg-navy-800", "bg-emerald-600", "bg-violet-600", "bg-rose-500", "bg-teal-600", "bg-orange-500", "bg-blue-600"];
+const colorOf = (name: string) => FALLBACK[[...name].reduce((a, c) => a + c.charCodeAt(0), 0) % FALLBACK.length];
+const initials = (name: string) => {
+  const p = name.trim().split(/\s+/).filter(Boolean);
+  return ((p[0]?.[0] ?? "?") + (p[1]?.[0] ?? "")).toUpperCase();
+};
+
+function pageList(cur: number, total: number): (number | "…")[] {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const set = new Set([1, total, cur - 1, cur, cur + 1]);
+  const nums = [...set].filter((n) => n >= 1 && n <= total).sort((a, b) => a - b);
+  const out: (number | "…")[] = [];
+  nums.forEach((n, i) => {
+    if (i > 0 && n - nums[i - 1] > 1) out.push("…");
+    out.push(n);
+  });
+  return out;
+}
+
+const TH = "px-4 py-3 text-[13px] font-semibold uppercase tracking-wide text-navy-800";
+const SELECT =
+  "h-11 w-full appearance-none rounded-lg border bg-card pl-4 pr-10 text-sm font-medium text-navy-800 outline-none focus:ring-2 focus:ring-blue-200";
 
 export function PosTable({ rows }: { rows: PoRow[] }) {
-  return <DataTable columns={columns} data={rows} searchPlaceholder="Search POs..." emptyText="No purchase orders yet" />;
+  const [q, setQ] = useState("");
+  const [supplier, setSupplier] = useState("ALL");
+  const [status, setStatus] = useState("ALL");
+  const [page, setPage] = useState(1);
+
+  const suppliers = useMemo(() => [...new Set(rows.map((r) => r.supplier))].sort(), [rows]);
+  const statuses = useMemo(() => [...new Set(rows.map((r) => r.status))].sort(), [rows]);
+
+  const list = useMemo(() => {
+    const s = q.trim().toLowerCase();
+    return rows.filter(
+      (r) =>
+        (supplier === "ALL" || r.supplier === supplier) &&
+        (status === "ALL" || r.status === status) &&
+        (!s || `${r.poNo} ${r.supplier}`.toLowerCase().includes(s))
+    );
+  }, [rows, q, supplier, status]);
+
+  const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+  const cur = Math.min(page, pages);
+  const shown = list.slice((cur - 1) * PAGE_SIZE, cur * PAGE_SIZE);
+
+  return (
+    <section className="rounded-card border bg-card p-5 shadow-card">
+      <div className="mb-4 flex flex-wrap items-center gap-2.5">
+        <div className="relative min-w-60 flex-1">
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-blue-600" />
+          <input
+            value={q}
+            onChange={(e) => {
+              setQ(e.target.value);
+              setPage(1);
+            }}
+            placeholder="Search PO..."
+            className="h-11 w-full rounded-lg border bg-card pl-10 pr-3 text-sm outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-blue-200"
+          />
+        </div>
+        <div className="relative w-full sm:w-52">
+          <select
+            value={supplier}
+            onChange={(e) => {
+              setSupplier(e.target.value);
+              setPage(1);
+            }}
+            aria-label="Supplier filter"
+            className={SELECT}
+          >
+            <option value="ALL">All suppliers</option>
+            {suppliers.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-800" />
+        </div>
+        <div className="relative w-full sm:w-48">
+          <select
+            value={status}
+            onChange={(e) => {
+              setStatus(e.target.value);
+              setPage(1);
+            }}
+            aria-label="Status filter"
+            className={SELECT}
+          >
+            <option value="ALL">All statuses</option>
+            {statuses.map((s) => (
+              <option key={s} value={s}>
+                {stOf(s).label}
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-800" />
+        </div>
+      </div>
+
+      <div className="overflow-x-auto rounded-xl">
+        <table className="w-full min-w-[960px] text-sm">
+          <thead>
+            <tr className="bg-slate-50">
+              <th className={cn(TH, "rounded-l-lg text-left")}>PO no</th>
+              <th className={cn(TH, "text-left")}>Supplier</th>
+              <th className={cn(TH, "text-right")}>Lines</th>
+              <th className={cn(TH, "text-right")}>Total</th>
+              <th className={cn(TH, "text-left")}>Delivery</th>
+              <th className={cn(TH, "text-left")}>Created</th>
+              <th className={cn(TH, "text-left")}>Status</th>
+              <th className={cn(TH, "rounded-r-lg text-right")}>Action</th>
+            </tr>
+          </thead>
+          <tbody key={`${supplier}-${status}-${q}-${cur}`} className="stagger stagger-fast">
+            {shown.map((r) => {
+              const S = stOf(r.status);
+              return (
+                <tr key={r.id} className="border-b border-slate-100 last:border-0">
+                  <td className="px-4 py-3">
+                    <Link
+                      href={`/purchase-orders/${r.id}`}
+                      className="text-[15px] font-semibold text-navy-800 hover:text-blue-600 hover:underline"
+                    >
+                      {r.poNo}
+                    </Link>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span className="flex items-center gap-3 text-[15px] font-semibold text-navy-800">
+                      <span
+                        className={cn(
+                          "flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white",
+                          colorOf(r.supplier)
+                        )}
+                      >
+                        {initials(r.supplier)}
+                      </span>
+                      {r.supplier}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-right text-[15px] tabular-nums text-navy-800">{r.lines}</td>
+                  <td className="whitespace-nowrap px-4 py-3 text-right text-[15px] font-medium tabular-nums text-navy-800">
+                    {r.total} {r.currency}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-3 text-[15px] text-navy-800">{r.deliveryDate || "-"}</td>
+                  <td className="whitespace-nowrap px-4 py-3 text-[15px] text-navy-800">{r.createdAt}</td>
+                  <td className="px-4 py-3">
+                    <span
+                      className={cn(
+                        "inline-flex items-center gap-2 whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-semibold",
+                        S.pill
+                      )}
+                    >
+                      <span className={cn("h-2 w-2 rounded-full", S.dot)} />
+                      {S.label}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span className="flex items-center justify-end">
+                      <Link
+                        href={`/purchase-orders/${r.id}`}
+                        className="inline-flex h-8 items-center gap-1.5 rounded-lg bg-blue-50 px-3.5 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-100"
+                      >
+                        <Eye className="h-4 w-4" strokeWidth={2.5} />
+                        View
+                      </Link>
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+
+        {shown.length === 0 && (
+          <div className="flex flex-col items-center gap-3 py-12 text-sm text-slate-500">
+            <Inbox className="h-9 w-9 animate-float text-slate-300" />
+            {rows.length === 0 ? "No purchase orders yet" : "No purchase orders match your filters"}
+          </div>
+        )}
+      </div>
+
+      {list.length > 0 && (
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 px-1">
+          <p className="text-[15px] font-semibold text-navy-800">
+            {list.length} purchase orders · Page {cur} of {pages}
+          </p>
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              disabled={cur === 1}
+              onClick={() => setPage(cur - 1)}
+              aria-label="Previous page"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border text-slate-600 hover:bg-slate-50 disabled:opacity-40"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            {pageList(cur, pages).map((p, i) =>
+              p === "…" ? (
+                <span key={`e${i}`} className="px-1 text-slate-400">
+                  …
+                </span>
+              ) : (
+                <button
+                  key={p}
+                  type="button"
+                  onClick={() => setPage(p)}
+                  aria-current={p === cur ? "page" : undefined}
+                  className={cn(
+                    "flex h-9 min-w-9 items-center justify-center rounded-lg border px-2 text-sm font-medium",
+                    p === cur ? "border-blue-600 bg-blue-600 text-white" : "text-slate-600 hover:bg-slate-50"
+                  )}
+                >
+                  {p}
+                </button>
+              )
+            )}
+            <button
+              type="button"
+              disabled={cur === pages}
+              onClick={() => setPage(cur + 1)}
+              aria-label="Next page"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border text-slate-600 hover:bg-slate-50 disabled:opacity-40"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
+    </section>
+  );
 }

@@ -21,7 +21,12 @@ export function ReorderButton() {
 
   return (
     <div className="flex flex-col items-end gap-1">
-      <Button variant="outline" disabled={pending} onClick={create}>
+      <Button
+        variant="outline"
+        disabled={pending}
+        onClick={create}
+        className="h-12 rounded-lg px-5 text-sm font-semibold"
+      >
         {pending ? "Creating..." : "PR from reorder points"}
       </Button>
       {error && <p className="max-w-xs text-right text-xs text-destructive">{error}</p>}

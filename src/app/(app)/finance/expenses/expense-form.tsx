@@ -1,13 +1,9 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
-import { FormField } from "@/components/forms/form-field";
+import { useForm, useWatch } from "react-hook-form";
+import { ChevronDown, LayoutGrid, Plus, Send } from "lucide-react";
 import { createExpenseAction } from "../actions";
 
 type Values = {
@@ -22,12 +18,37 @@ type Values = {
 };
 
 const CATEGORIES = ["FACTORY", "PRODUCTION", "FREIGHT", "SAMPLE", "OTHER"];
+const SYM: Record<string, string> = { USD: "$", EUR: "€", GBP: "£", BDT: "৳" };
+
+const FIELD =
+  "h-12 w-full rounded-lg border bg-card px-4 text-sm text-navy-800 outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-blue-200";
+
+function Field({
+  label, htmlFor, required, hint, children,
+}: {
+  label: string;
+  htmlFor: string;
+  required?: boolean;
+  hint?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <label htmlFor={htmlFor} className="block text-sm font-semibold text-navy-800">
+        {label}
+        {required && <span className="ml-1 text-rose-500">*</span>}
+      </label>
+      {children}
+      {hint && <p className="text-xs text-slate-500">{hint}</p>}
+    </div>
+  );
+}
 
 export function ExpenseForm({ orders }: { orders: { id: string; label: string }[] }) {
   const router = useRouter();
   const [error, setError] = useState("");
   const [pending, start] = useTransition();
-  const { register, handleSubmit, reset } = useForm<Values>({
+  const { register, handleSubmit, reset, control } = useForm<Values>({
     defaultValues: {
       category: "FACTORY",
       expenseDate: "",
@@ -39,6 +60,7 @@ export function ExpenseForm({ orders }: { orders: { id: string; label: string }[
       vendorName: "",
     },
   });
+  const cur = (useWatch({ control, name: "currency" }) ?? "").trim().toUpperCase();
 
   function onSubmit(v: Values) {
     setError("");
@@ -67,54 +89,105 @@ export function ExpenseForm({ orders }: { orders: { id: string; label: string }[
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Card>
-        <CardHeader>
-          <CardTitle>Add expense</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-4">
-            <FormField label="Category" htmlFor="category" required>
-              <Select id="category" {...register("category")}>
+      <section className="rounded-card border bg-card p-6 shadow-card">
+        <h2 className="mb-5 flex items-center gap-3 font-heading text-xl font-semibold text-navy-800">
+          <span className="h-6 w-1 rounded-full bg-blue-600" />
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white">
+            <Plus className="h-4 w-4" strokeWidth={3} />
+          </span>
+          Add Expense
+        </h2>
+
+        <div className="grid gap-x-5 gap-y-5 sm:grid-cols-2 xl:grid-cols-4">
+          <Field label="Category" htmlFor="category" required>
+            <div className="relative">
+              <LayoutGrid className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+              <select id="category" {...register("category")} className={`${FIELD} appearance-none pl-11 pr-10 capitalize`}>
                 {CATEGORIES.map((c) => (
                   <option key={c} value={c}>
                     {c.toLowerCase()}
                   </option>
                 ))}
-              </Select>
-            </FormField>
-            <FormField label="Date" htmlFor="expenseDate" required>
-              <Input id="expenseDate" type="date" {...register("expenseDate")} />
-            </FormField>
-            <FormField label="Amount" htmlFor="amount" required>
-              <Input id="amount" type="number" step="any" min="0" {...register("amount")} />
-            </FormField>
-            <FormField label="Currency" htmlFor="currency" required>
-              <Input id="currency" maxLength={3} {...register("currency")} />
-            </FormField>
-            <FormField label="Exchange rate to base" htmlFor="exchangeRate">
-              <Input id="exchangeRate" type="number" step="any" min="0" {...register("exchangeRate")} />
-            </FormField>
-            <FormField label="Order" htmlFor="orderId" hint="Approved expenses with an order go to its cost">
-              <Select id="orderId" {...register("orderId")}>
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-800" />
+            </div>
+          </Field>
+
+          <Field label="Date" htmlFor="expenseDate" required>
+            <input id="expenseDate" type="date" {...register("expenseDate")} className={FIELD} />
+          </Field>
+
+          <Field label="Amount" htmlFor="amount" required>
+            <div className="relative">
+              <input
+                id="amount"
+                type="number"
+                step="any"
+                min="0"
+                placeholder="Enter amount"
+                {...register("amount")}
+                className={`${FIELD} pr-16`}
+              />
+              <span className="pointer-events-none absolute right-1.5 top-1.5 flex h-9 min-w-9 items-center justify-center rounded-md bg-blue-50 px-2 text-xs font-bold text-navy-800">
+                {SYM[cur] ?? (cur || "?")}
+              </span>
+            </div>
+          </Field>
+
+          <Field label="Currency" htmlFor="currency" required>
+            <input id="currency" maxLength={3} {...register("currency")} className={`${FIELD} uppercase`} />
+          </Field>
+
+          <Field label="Exchange rate to base" htmlFor="exchangeRate">
+            <input id="exchangeRate" type="number" step="any" min="0" {...register("exchangeRate")} className={FIELD} />
+          </Field>
+
+          <Field label="Order" htmlFor="orderId" hint="Approved expenses with an order go to its cost">
+            <div className="relative">
+              <select id="orderId" {...register("orderId")} className={`${FIELD} appearance-none pr-10`}>
                 <option value="">None</option>
                 {orders.map((o) => (
                   <option key={o.id} value={o.id}>
                     {o.label}
                   </option>
                 ))}
-              </Select>
-            </FormField>
-            <FormField label="Vendor" htmlFor="vendorName">
-              <Input id="vendorName" maxLength={120} {...register("vendorName")} />
-            </FormField>
-            <FormField label="Description" htmlFor="description" required>
-              <Input id="description" maxLength={300} {...register("description")} />
-            </FormField>
-          </div>
-          {error && <p className="text-sm text-destructive">{error}</p>}
-          <Button disabled={pending}>{pending ? "Saving..." : "Add expense"}</Button>
-        </CardContent>
-      </Card>
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-800" />
+            </div>
+          </Field>
+
+          <Field label="Vendor" htmlFor="vendorName">
+            <input
+              id="vendorName"
+              maxLength={120}
+              placeholder="Enter vendor name"
+              {...register("vendorName")}
+              className={FIELD}
+            />
+          </Field>
+
+          <Field label="Description" htmlFor="description" required>
+            <input
+              id="description"
+              maxLength={300}
+              placeholder="Enter description..."
+              {...register("description")}
+              className={FIELD}
+            />
+          </Field>
+        </div>
+
+        {error && <p className="mt-4 text-sm text-destructive">{error}</p>}
+
+        <button
+          type="submit"
+          disabled={pending}
+          className="mt-6 inline-flex h-12 items-center gap-2.5 rounded-lg bg-navy-800 px-6 text-sm font-semibold text-white shadow-md shadow-blue-900/20 transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+        >
+          <Send className="h-4 w-4" />
+          {pending ? "Saving..." : "Add expense"}
+        </button>
+      </section>
     </form>
   );
 }

@@ -402,6 +402,18 @@ class ApprovalService extends BaseService {
     return saved;
   }
   
+    async setWorkflowActive(workflowId: string, active: boolean) {
+    const user = await this.guard("approval.manage");
+    const before = await prisma.workflow.findUnique({ where: { id: workflowId } });
+    if (!before || before.companyId !== user.companyId) throw new BusinessRuleError("Workflow not found");
+    const saved = await prisma.workflow.update({ where: { id: workflowId }, data: { isActive: active } });
+    await this.audit({
+      user, action: "UPDATE", entity: "Workflow", entityId: workflowId,
+      before: { isActive: before.isActive }, after: { isActive: saved.isActive },
+    });
+    return saved;
+  }
+
   async cancel(requestId: string) {
     const user = await this.guard("approval.request");
     const req = await prisma.approvalRequest.findUnique({ where: { id: requestId } });
@@ -419,3 +431,5 @@ class ApprovalService extends BaseService {
 }
 
 export const approvalService = new ApprovalService();
+
+

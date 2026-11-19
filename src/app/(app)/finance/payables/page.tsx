@@ -1,95 +1,133 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
-import { PageHeader } from "@/components/layout/page-header";
-import { Card, CardContent } from "@/components/ui/card";
-import { StatusBadge } from "@/components/detail/status-badge";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { CalendarDays, CircleCheck, FileText, Plus } from "lucide-react";
+import { prisma } from "@/lib/prisma";
+import { can, requireUser } from "@/lib/permissions";
 import { apService } from "@/services/ap.service";
-import { supplierService } from "@/services/supplier.service";
+import { getBaseCurrency } from "@/services/currency.service";
+import { CardArt, PageBand, StatCard } from "@/components/approvals/ui";
+import { PayablesView, type PayRow } from "@/components/payables/payables-view";
 
-const money = (n: number) => new Intl.NumberFormat("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
-const day = (d: Date | null | undefined) => (d ? d.toISOString().slice(0, 10) : "-");
+const TZ = "Asia/Dhaka";
+const LIVE = ["POSTED", "PARTIALLY_PAID"];
+const fmt2 = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 export default async function PayablesPage() {
-  const [list, overdue, suppliers] = await Promise.all([
-    apService.list(),
-    apService.overdue(),
-    supplierService.list({ activeOnly: true }).catch(() => []),
-  ]);
-  const supplierName = new Map(suppliers.map((s) => [s.id, s.name]));
-  const overdueTotal = overdue.reduce((s, r) => s + r.outstanding * Number(r.exchangeRate), 0);
+  const user = await requireUser();
 
+  let invoices: Awaited<ReturnType<typeof apService.list>> | null = null;
+  try {
+    invoices = await apService.list();
+  } catch {
+    invoices = null; // ap.view permission nei
+  }
+  if (!invoices) return <p className="text-muted-foreground">You do not have access to payables.</p>;
+
+  const now = new Date();
+  const todayKey = now.toLocaleDateString("en-CA", { timeZone: TZ });
+  const monthKey = todayKey.slice(0, 7);
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+
+  const [suppliers, payments, base] = await Promise.all([
+    prisma.supplier.findMany({
+      where: { id: { in: [...new Set(invoices.map((i) => i.supplierId))] } },
+      select: { id: true, name: true },
+    }),
+    prisma.payment.findMany({
+      where: { companyId: user.companyId, direction: "OUT", paymentDate: { gte: monthStart } },
+      select: { amount: true, supplierInvoiceId: true },
+    }),
+    getBaseCurrency(user.companyId),
+  ]);
+
+  const rate = new Map(invoices.map((i) => [i.id, Number(i.exchangeRate)]));
+  const paidThisMonth = payments.reduce(
+    (s, p) => s + Number(p.amount) * (rate.get(p.supplierInvoiceId ?? "") ?? 1),
+    0
+  );
+
+  const rows: (PayRow & { outstandingBase: number })[] = invoices.map((i) => {
+    const status = String(i.status);
+    const live = LIVE.includes(status);
+    const dueKey = i.dueDate ? i.dueDate.toISOString().slice(0, 10) : null;
+    return {
+      id: i.id,
+      invoiceNo: i.invoiceNo,
+      supplier: suppliers.find((s) => s.id === i.supplierId)?.name ?? "-",
+      supplierInvoiceNo: i.supplierInvoiceNo,
+      total: Number(i.totalAmount),
+      paid: Number(i.paidAmount),
+      currency: i.currency,
+      due: dueKey,
+      status,
+      overdue: live && !!dueKey && dueKey < todayKey,
+      dueThisMonth: live && !!dueKey && dueKey.startsWith(monthKey),
+      outstandingBase: (Number(i.totalAmount) - Number(i.paidAmount)) * Number(i.exchangeRate),
+    };
+  });
+
+  const overdueRows = rows.filter((r) => r.overdue);
+  const overdueCount = overdueRows.length;
+  const overdueAmount = overdueRows.reduce((s, r) => s + r.outstandingBase, 0);
+  const dueMonthAmount = rows.filter((r) => r.dueThisMonth).reduce((s, r) => s + r.outstandingBase, 0);
+
+  const canCreate = can(user, "ap.create");
+
+  
   return (
-    <div className="space-y-4">
-      <PageHeader
-        title="Payables"
-        description="Supplier invoices: enter, match with the PO, post, then pay"
-        actions={
-          <Link href="/finance/payables/new" className={buttonVariants()}>
-            New supplier invoice
-          </Link>
-        }
-      />
-      <div className="grid gap-3 md:grid-cols-2">
-        <Card>
-          <CardContent className="p-4">
-            <p className="text-xs text-muted-foreground">Overdue invoices</p>
-            <p className="text-2xl font-semibold">{overdue.length}</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-4">
-            <p className="text-xs text-muted-foreground">Overdue amount (base currency)</p>
-            <p className="text-2xl font-semibold">{money(overdueTotal)}</p>
-          </CardContent>
-        </Card>
+    <div className="stagger space-y-5">
+      <PageBand>
+        <header className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <CardArt />
+            <div>
+              <h1 className="font-heading text-3xl font-semibold text-navy-800">Payables</h1>
+              <p className="text-sm text-slate-500">Supplier invoices, match with PO, post, then pay</p>
+            </div>
+          </div>
+          {canCreate && (
+            <Link
+              href="/finance/payables/new"
+              className="inline-flex h-12 items-center gap-2 rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-md shadow-blue-900/20 transition-transform hover:-translate-y-0.5"
+            >
+              <Plus className="h-4 w-4" strokeWidth={2.5} /> New Supplier Invoice
+            </Link>
+          )}
+        </header>
+      </PageBand>
+
+      <div className="stagger grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-4">
+        <StatCard
+          big
+          wave
+          theme="pink"
+          icon={FileText}
+          label="Overdue Invoices"
+          value={String(overdueCount)}
+          sub={overdueCount > 0 ? `${fmt2.format(overdueAmount)} ${base} overdue` : "Nothing overdue"}
+        />
+        <StatCard
+          big
+          wave
+          theme="green"
+          icon={CalendarDays}
+          label="Due This Month"
+          value={fmt2.format(dueMonthAmount)}
+          unit={base}
+          sub="Still to pay this month"
+        />
+        <StatCard
+          big
+          wave
+          theme="violet"
+          icon={CircleCheck}
+          label="Paid This Month"
+          value={fmt2.format(paidThisMonth)}
+          unit={base}
+          sub="Payments made to suppliers"
+        />
       </div>
-      <Card>
-        <CardContent className="p-0">
-          <Table>
-            <TableHeader>
-              <TableRow className="hover:bg-transparent">
-                <TableHead>Invoice</TableHead>
-                <TableHead>Supplier</TableHead>
-                <TableHead>Supplier invoice no</TableHead>
-                <TableHead className="text-right">Total</TableHead>
-                <TableHead className="text-right">Paid</TableHead>
-                <TableHead>Due</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {list.length === 0 ? (
-                <TableRow className="hover:bg-transparent">
-                  <TableCell colSpan={7} className="h-20 text-center text-muted-foreground">
-                    No supplier invoices yet
-                  </TableCell>
-                </TableRow>
-              ) : (
-                list.map((i) => (
-                  <TableRow key={i.id}>
-                    <TableCell>
-                      <Link href={`/finance/payables/${i.id}`} className="font-medium text-denim-700 hover:underline">
-                        {i.invoiceNo}
-                      </Link>
-                    </TableCell>
-                    <TableCell>{supplierName.get(i.supplierId) ?? "-"}</TableCell>
-                    <TableCell>{i.supplierInvoiceNo}</TableCell>
-                    <TableCell className="text-right">
-                      {money(Number(i.totalAmount))} {i.currency}
-                    </TableCell>
-                    <TableCell className="text-right">{money(Number(i.paidAmount))}</TableCell>
-                    <TableCell>{day(i.dueDate)}</TableCell>
-                    <TableCell>
-                      <StatusBadge status={i.status} />
-                    </TableCell>
-                  </TableRow>
-                ))
-              )}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+
+      <PayablesView rows={rows} canCreate={canCreate} />
     </div>
   );
 }

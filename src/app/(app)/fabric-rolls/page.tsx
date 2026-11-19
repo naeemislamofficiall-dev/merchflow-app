@@ -1,7 +1,6 @@
-import { PageHeader } from "@/components/layout/page-header";
-import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react";
+import { PageBand } from "@/components/approvals/ui";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StatusBadge } from "@/components/detail/status-badge";
 import { fabricInspectionService } from "@/services/fabric-inspection.service";
@@ -11,6 +10,18 @@ import { InspectionForm } from "./inspection-form";
 const fmt = (n: number) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 }).format(n);
 const when = (d: Date) => d.toISOString().slice(0, 16).replace("T", " ");
 
+// SHUDHU SAJANO: kapoder roll-er icon. Kono data nei.
+function RollArt() {
+  return (
+    <svg viewBox="0 0 40 40" className="h-9 w-9" aria-hidden="true">
+      <g transform="rotate(-30 20 20)">
+        <rect x="6" y="12" width="26" height="16" rx="8" fill="#bfdbfe" stroke="#2563eb" strokeWidth="2.5" />
+        <circle cx="14" cy="20" r="8" fill="#ffffff" stroke="#2563eb" strokeWidth="2.5" />
+        <circle cx="14" cy="20" r="3" fill="#2563eb" />
+      </g>
+    </svg>
+  );
+}
 export default async function FabricRollsPage(props: { searchParams: Promise<{ rollNo?: string }> }) {
   const { rollNo } = await props.searchParams;
   const query = rollNo?.trim() ?? "";
@@ -20,12 +31,38 @@ export default async function FabricRollsPage(props: { searchParams: Promise<{ r
     : [];
 
   return (
-    <div className="max-w-5xl space-y-4">
-      <PageHeader title="Fabric rolls" description="Scan or type a roll number to see its full history" />
+        <div className="stagger space-y-4">
+      <PageBand>
+        <header className="flex items-center gap-4">
+          <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-blue-200 bg-white shadow-card">
+            <RollArt />
+          </span>
+          <div>
+            <h1 className="font-heading text-3xl font-semibold text-navy-800">Fabric rolls</h1>
+            <p className="text-sm text-slate-500">Scan or type a roll number to see its full history</p>
+          </div>
+        </header>
+      </PageBand>
 
-      <form method="get" className="flex max-w-md gap-2">
-        <Input name="rollNo" defaultValue={query} placeholder="Roll no" />
-        <Button type="submit">Find</Button>
+      <form
+        method="get"
+        className="flex flex-wrap items-center gap-3 rounded-card border border-slate-100 bg-white p-4 shadow-card"
+      >
+        <div className="relative w-full max-w-md">
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
+          <input
+            name="rollNo"
+            defaultValue={query}
+            placeholder="Roll no"
+            className="h-12 w-full rounded-lg border border-slate-200 bg-white pl-11 pr-3 text-sm text-ink shadow-xs placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-3 focus:ring-blue-500/20"
+          />
+        </div>
+        <button
+          type="submit"
+          className="inline-flex h-12 items-center gap-2 rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white shadow-md shadow-blue-900/20 transition-transform hover:-translate-y-0.5 hover:bg-blue-700"
+        >
+          <Search className="h-4 w-4" strokeWidth={2.5} /> Find
+        </button>
       </form>
 
       {query && !result && <p className="text-sm text-destructive">No roll found with number {query}.</p>}

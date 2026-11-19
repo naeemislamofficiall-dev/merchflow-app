@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
-import { Bell } from "lucide-react";
+import { Bell, CheckCheck, ChevronRight } from "lucide-react";
 import { markAllNotificationsReadAction, markNotificationReadAction } from "@/app/(app)/actions";
+import { TypeIcon, timeAgo, typeBox } from "@/components/notifications/meta";
 import { cn } from "@/lib/utils";
 
 export type BellItem = {
   id: string;
+  type?: string;
   title: string;
   message: string;
   href: string | null;
@@ -16,13 +18,14 @@ export type BellItem = {
   createdAt: string; // ISO
 };
 
-// টপবারের ঘণ্টা: অপঠিত সংখ্যা + সর্বশেষ ৮টি। ড্রপডাউন খুললেই শুধু তারিখ আঁকা হয় (hydration mismatch এড়াতে)
-// সার্ভার থেকে নতুন ডাটা এলে topbar.tsx-এর key বদলে কম্পোনেন্ট নতুন করে শুরু হয়, তাই এখানে sync effect লাগে না
+// topbar-er ghonta: unread thakle lal dot, dropdown-e shesh 8 ta. "ekhon"-er somoy shudhu dropdown khulle neya hoy (hydration mismatch ere)
+// server theke notun data ashle topbar.tsx-er key bodle component notun kore shuru hoy, tai sync effect lage na
 export function NotificationBell({ unreadCount, items }: { unreadCount: number; items: BellItem[] }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [list, setList] = useState(items);
   const [unread, setUnread] = useState(unreadCount);
+  const [nowMs, setNowMs] = useState(0);
   const [, start] = useTransition();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -30,9 +33,21 @@ export function NotificationBell({ unreadCount, items }: { unreadCount: number; 
     function onDown(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
     }
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
     document.addEventListener("mousedown", onDown);
-    return () => document.removeEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
   }, []);
+
+  function toggle() {
+    setNowMs(Date.now());
+    setOpen((o) => !o);
+  }
 
   function openItem(n: BellItem) {
     setOpen(false);
@@ -57,42 +72,66 @@ export function NotificationBell({ unreadCount, items }: { unreadCount: number; 
   return (
     <div ref={ref} className="relative">
       <button
-        onClick={() => setOpen((o) => !o)}
-        className="relative rounded-md border p-1.5 hover:bg-muted"
+        type="button"
+        onClick={toggle}
+        aria-expanded={open}
         aria-label={`Notifications, ${unread} unread`}
+        className="relative flex h-10 w-10 items-center justify-center rounded-full text-navy-800 transition-colors hover:bg-muted"
       >
-        <Bell className="h-4 w-4" />
+        <Bell className={cn("h-5 w-5 origin-top", unread > 0 && "motion-safe:animate-bell-ring")} />
         {unread > 0 && (
-          <span className="absolute -right-1.5 -top-1.5 min-w-4 rounded-full bg-destructive px-1 text-center text-[10px] font-semibold leading-4 text-white">
-            {unread > 99 ? "99+" : unread}
+          <span className="absolute right-2.5 top-2 flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-60" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
           </span>
         )}
       </button>
 
       {open && (
-        <div className="absolute right-0 top-10 z-30 w-80 rounded-md border bg-card shadow-lg">
-          <div className="flex items-center justify-between border-b px-3 py-2">
-            <span className="text-sm font-semibold">Notifications</span>
+        <div className="absolute right-0 top-12 z-30 w-[22rem] overflow-hidden rounded-2xl border bg-card shadow-xl [animation:rise_0.2s_ease-out]">
+          <div className="flex items-center justify-between border-b px-4 py-3">
+            <span className="flex items-center gap-2 text-sm font-semibold text-navy-800">
+              Notifications
+              {unread > 0 && (
+                <span className="rounded-full bg-red-100 px-2 py-0.5 text-[11px] font-semibold text-red-600">
+                  {unread} new
+                </span>
+              )}
+            </span>
             {unread > 0 && (
-              <button onClick={readAll} className="text-xs text-denim-700 hover:underline">
-                Mark all read
+              <button
+                type="button"
+                onClick={readAll}
+                className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline"
+              >
+                <CheckCheck className="h-3.5 w-3.5" /> Mark all read
               </button>
             )}
           </div>
 
-          <ul className="max-h-96 overflow-y-auto">
-            {list.length === 0 && <li className="p-4 text-center text-sm text-muted-foreground">Nothing yet</li>}
+          <ul className="max-h-96 overflow-y-auto p-1.5">
+            {list.length === 0 && <li className="p-6 text-center text-sm text-muted-foreground">Nothing yet</li>}
             {list.map((n) => (
               <li key={n.id}>
                 <button
+                  type="button"
                   onClick={() => openItem(n)}
-                  className={cn("block w-full border-b px-3 py-2 text-left hover:bg-muted", !n.read && "bg-denim-100/40")}
+                  className={cn(
+                    "flex w-full items-start gap-3 rounded-xl px-2.5 py-2.5 text-left transition-colors",
+                    n.read ? "hover:bg-slate-50" : "bg-blue-50/60 hover:bg-blue-50"
+                  )}
                 >
-                  <p className={cn("text-sm", !n.read && "font-semibold")}>{n.title}</p>
-                  <p className="line-clamp-2 text-xs text-muted-foreground">{n.message}</p>
-                  <p className="mt-0.5 text-[11px] text-muted-foreground">
-                    {new Date(n.createdAt).toLocaleString()}
-                  </p>
+                  <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-xl", typeBox(n.type))}>
+                    <TypeIcon type={n.type} className="h-4 w-4" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className={cn("block text-sm text-navy-800", !n.read && "font-semibold")}>{n.title}</span>
+                    <span className="line-clamp-2 block text-xs text-slate-500">{n.message}</span>
+                    <span className="mt-0.5 block text-[11px] text-slate-400">
+                      {timeAgo(Date.parse(n.createdAt), nowMs)}
+                    </span>
+                  </span>
+                  {!n.read && <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-600" aria-label="Unread" />}
                 </button>
               </li>
             ))}
@@ -101,9 +140,9 @@ export function NotificationBell({ unreadCount, items }: { unreadCount: number; 
           <Link
             href="/notifications"
             onClick={() => setOpen(false)}
-            className="block px-3 py-2 text-center text-sm text-denim-700 hover:bg-muted"
+            className="flex items-center justify-center gap-1 border-t px-4 py-3 text-sm font-semibold text-blue-600 hover:bg-blue-50/60"
           >
-            See all and preferences
+            View all notifications <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
       )}

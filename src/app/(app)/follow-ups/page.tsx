@@ -1,95 +1,72 @@
-import Link from "next/link";
-import { PageHeader } from "@/components/layout/page-header";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { KpiCard } from "@/components/detail/kpi-card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { AlertTriangle, Clock, Handshake } from "lucide-react";
+import { DocFillIcon, FinCard, PageBand } from "@/components/approvals/ui";
 import { followUpService } from "@/services/followup.service";
-import { RefreshButton, RowActions } from "./follow-up-controls";
+import { RefreshButton } from "./follow-up-controls";
+import { FollowUpsTable, type FollowRow } from "./follow-ups-table";
 
 const day = (d: Date) => d.toISOString().slice(0, 10);
 
 export default async function FollowUpsPage() {
-  const rows = await followUpService.listOpen();
-  const late = rows.filter((r) => r.liveDelayDays > 0).length;
-  const escalated = rows.filter((r) => r.isEscalated).length;
+  const list = await followUpService.listOpen();
+  const late = list.filter((r) => r.liveDelayDays > 0).length;
+  const escalated = list.filter((r) => r.isEscalated).length;
+
+  const rows: FollowRow[] = list.map((f) => {
+    const last = f.contacts.length
+      ? f.contacts.reduce((a, b) => (a.contactedAt > b.contactedAt ? a : b))
+      : null;
+    return {
+      id: f.id,
+      poId: f.po.id,
+      poNo: f.po.poNo,
+      supplier: f.po.supplier.name,
+      firstPromise: day(f.supplierPromisedDate),
+      latestPromise: day(f.latestPromisedDate),
+      delayDays: f.liveDelayDays,
+      escalated: f.isEscalated,
+      escalationNote: f.escalationNote ?? "",
+      lastContact: last ? `${day(last.contactedAt)} · ${last.method}` : "",
+    };
+  });
 
   return (
-    <div className="space-y-4">
-      <PageHeader
-        title="Supplier follow-ups"
-        description="Every open purchase order, with the supplier's promise and the delay so far"
-        actions={<RefreshButton />}
-      />
+    <div className="stagger space-y-5">
+      <PageBand>
+        <header className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <span className="flex h-22 w-22 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-blue-50 to-blue-100 text-blue-600 shadow-lg shadow-blue-200/60 ring-1 ring-white">
+              <Handshake className="h-10 w-10" strokeWidth={2} />
+            </span>
+            <div>
+              <h1 className="font-heading text-3xl font-semibold text-navy-800">Supplier follow-ups</h1>
+              <p className="text-sm text-navy-800">
+                Every open purchase order, with the supplier&apos;s promise and the delay so far
+              </p>
+            </div>
+          </div>
+          <RefreshButton />
+        </header>
+      </PageBand>
 
-      <div className="grid grid-cols-3 gap-3">
-        <KpiCard label="Open" value={rows.length} />
-        <KpiCard label="Late" value={late} tone={late > 0 ? "bad" : "default"} />
-        <KpiCard label="Escalated" value={escalated} tone={escalated > 0 ? "warn" : "default"} />
+      <div className="stagger grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-4">
+        <FinCard theme="violet" wave={false} art={<DocFillIcon />} label="Open" value={String(list.length)} />
+        <FinCard
+          theme="overdue"
+          wave={false}
+          art={<Clock className="h-8 w-8" strokeWidth={2.4} />}
+          label="Late"
+          value={String(late)}
+        />
+        <FinCard
+          theme="orange"
+          wave={false}
+          art={<AlertTriangle className="h-8 w-8" strokeWidth={2.4} />}
+          label="Escalated"
+          value={String(escalated)}
+        />
       </div>
 
-      <Card>
-        <CardContent className="p-0">
-          <Table>
-            <TableHeader>
-              <TableRow className="hover:bg-transparent">
-                <TableHead>PO</TableHead>
-                <TableHead>Supplier</TableHead>
-                <TableHead>First promise</TableHead>
-                <TableHead>Latest promise</TableHead>
-                <TableHead>Delay</TableHead>
-                <TableHead>Last contact</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {rows.length === 0 ? (
-                <TableRow className="hover:bg-transparent">
-                  <TableCell colSpan={7} className="h-20 text-center text-muted-foreground">
-                    No open follow-ups. A follow-up is created when a PO is sent to the supplier
-                  </TableCell>
-                </TableRow>
-              ) : (
-                rows.map((f) => {
-                  const last = f.contacts.length
-                    ? f.contacts.reduce((a, b) => (a.contactedAt > b.contactedAt ? a : b))
-                    : null;
-                  return (
-                    <TableRow key={f.id}>
-                      <TableCell>
-                        <Link href={`/purchase-orders/${f.po.id}`} className="font-medium text-denim-700 hover:underline">
-                          {f.po.poNo}
-                        </Link>
-                      </TableCell>
-                      <TableCell>{f.po.supplier.name}</TableCell>
-                      <TableCell>{day(f.supplierPromisedDate)}</TableCell>
-                      <TableCell>{day(f.latestPromisedDate)}</TableCell>
-                      <TableCell>
-                        {f.liveDelayDays > 0 ? (
-                          <Badge variant="danger">{f.liveDelayDays} days late</Badge>
-                        ) : (
-                          <Badge variant="success">On time</Badge>
-                        )}
-                        {f.isEscalated && (
-                          <Badge variant="warning" className="ml-1" title={f.escalationNote ?? ""}>
-                            escalated
-                          </Badge>
-                        )}
-                      </TableCell>
-                      <TableCell className="whitespace-nowrap">
-                        {last ? `${day(last.contactedAt)} · ${last.method}` : "-"}
-                      </TableCell>
-                      <TableCell>
-                        <RowActions id={f.id} latest={day(f.latestPromisedDate)} escalated={f.isEscalated} />
-                      </TableCell>
-                    </TableRow>
-                  );
-                })
-              )}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+      <FollowUpsTable rows={rows} />
     </div>
   );
 }

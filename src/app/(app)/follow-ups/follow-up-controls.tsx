@@ -2,9 +2,8 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
+import { ArrowUpRight, CalendarDays, Check, Phone, RefreshCw } from "lucide-react";
+import { cn } from "@/lib/utils";
 import {
   addContactAction,
   escalateAction,
@@ -14,6 +13,13 @@ import {
 } from "./actions";
 
 type Res = { ok: true } | { ok: false; error: string };
+
+const OUTLINE =
+  "inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-lg border bg-card px-3 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-50 disabled:opacity-60";
+const SOLID =
+  "inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-lg bg-blue-600 px-3.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:opacity-60";
+const INPUT =
+  "h-10 w-full rounded-lg border bg-card px-3 text-sm text-navy-800 outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-blue-200";
 
 export function RefreshButton() {
   const router = useRouter();
@@ -33,11 +39,17 @@ export function RefreshButton() {
   }
 
   return (
-    <div className="flex items-center gap-2">
-      {msg && <span className="text-xs text-muted-foreground">{msg}</span>}
-      <Button variant="outline" onClick={refresh} disabled={pending}>
+    <div className="flex items-center gap-3">
+      {msg && <span className="text-xs text-slate-500">{msg}</span>}
+      <button
+        type="button"
+        onClick={refresh}
+        disabled={pending}
+        className="inline-flex h-11 items-center gap-2 rounded-lg border bg-card px-4 text-sm font-semibold text-blue-600 shadow-card transition-colors hover:bg-blue-50 disabled:opacity-60"
+      >
+        <RefreshCw className={cn("h-4 w-4", pending && "animate-spin")} />
         {pending ? "Checking..." : "Recalculate delays"}
-      </Button>
+      </button>
     </div>
   );
 }
@@ -98,36 +110,36 @@ export function RowActions({ id, latest, escalated }: { id: string; latest: stri
 
   return (
     <div className="space-y-2">
-      <div className="flex flex-wrap gap-1">
-        <Button size="sm" variant="outline" disabled={pending} onClick={() => setShowContact((s) => !s)}>
-          Log contact
-        </Button>
-        <Button size="sm" variant="outline" disabled={pending} onClick={revise}>
-          New date
-        </Button>
+      <div className="flex flex-wrap gap-1.5">
+        <button type="button" className={OUTLINE} disabled={pending} onClick={() => setShowContact((s) => !s)}>
+          <Phone className="h-4 w-4" /> Log Contact
+        </button>
+        <button type="button" className={OUTLINE} disabled={pending} onClick={revise}>
+          <CalendarDays className="h-4 w-4" /> New Date
+        </button>
         {!escalated && (
-          <Button size="sm" variant="outline" disabled={pending} onClick={escalate}>
-            Escalate
-          </Button>
+          <button type="button" className={OUTLINE} disabled={pending} onClick={escalate}>
+            <ArrowUpRight className="h-4 w-4" /> Escalate
+          </button>
         )}
-        <Button size="sm" disabled={pending} onClick={received}>
-          Received
-        </Button>
+        <button type="button" className={SOLID} disabled={pending} onClick={received}>
+          <Check className="h-4 w-4" strokeWidth={3} /> Received
+        </button>
       </div>
 
       {showContact && (
-        <form onSubmit={submitContact} className="grid gap-2 rounded-md border bg-muted p-2 md:w-72">
-          <Select name="method" defaultValue="phone">
+        <form onSubmit={submitContact} className="grid gap-2 rounded-xl border bg-slate-50 p-3 md:w-80">
+          <select name="method" defaultValue="phone" className={INPUT}>
             <option value="phone">Phone</option>
             <option value="email">Email</option>
             <option value="whatsapp">WhatsApp</option>
             <option value="visit">Visit</option>
-          </Select>
-          <Input name="contactPerson" placeholder="Spoke to" maxLength={100} />
-          <Input name="notes" placeholder="Notes" maxLength={1000} />
-          <Button size="sm" disabled={pending}>
+          </select>
+          <input name="contactPerson" placeholder="Spoke to" maxLength={100} className={INPUT} />
+          <input name="notes" placeholder="Notes" maxLength={1000} className={INPUT} />
+          <button type="submit" disabled={pending} className={SOLID}>
             Save contact
-          </Button>
+          </button>
         </form>
       )}
 
