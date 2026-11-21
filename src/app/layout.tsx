@@ -15,7 +15,10 @@ const heading = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "MERCHFLOW",
+  title: {
+    default: "MerchFlow | Garments & Textile ERP",
+    template: "%s | MerchFlow",
+  },
   description: "Garments and textile ERP",
 };
 

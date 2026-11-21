@@ -2,14 +2,15 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
-import { FormField } from "@/components/forms/form-field";
+import { FilePlus2 } from "lucide-react";
 import { registerDocumentAction } from "./actions";
 
 const ENTITY_TYPES = ["Supplier", "Buyer", "Order", "Style", "Material", "PurchaseOrder", "Shipment", "Factory"];
+
+const field =
+  "h-11 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-navy-800 shadow-xs placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-3 focus:ring-blue-500/20";
+const lbl = "block text-sm font-semibold text-navy-800";
+const hint = "text-xs text-slate-500";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -42,50 +43,83 @@ export function RegisterForm() {
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <Card>
-        <CardHeader>
-          <CardTitle>Register a document</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-4">
-            <FormField label="Belongs to" htmlFor="doc-etype" required>
-              <Input id="doc-etype" name="entityType" list="entity-types" placeholder="Supplier" />
-              <datalist id="entity-types">
-                {ENTITY_TYPES.map((t) => (
-                  <option key={t} value={t} />
-                ))}
-              </datalist>
-            </FormField>
-            <FormField label="Record id" htmlFor="doc-eid" required hint="The id from the record's page address">
-              <Input id="doc-eid" name="entityId" />
-            </FormField>
-            <FormField label="Document name" htmlFor="doc-name" required>
-              <Input id="doc-name" name="fileName" placeholder="BSCI-certificate-2026.pdf" />
-            </FormField>
-            <FormField label="Kind" htmlFor="doc-kind" hint="Certificate, Contract...">
-              <Input id="doc-kind" name="docType" maxLength={60} />
-            </FormField>
-            <div className="md:col-span-2">
-              <FormField label="File link" htmlFor="doc-url" hint="Drive / SharePoint / any web link">
-                <Input id="doc-url" name="storageUrl" type="url" placeholder="https://..." />
-              </FormField>
-            </div>
-            <FormField label="Expiry date" htmlFor="doc-exp">
-              <Input id="doc-exp" name="expiryDate" type="date" />
-            </FormField>
-            <FormField label="Who can see" htmlFor="doc-acc">
-              <Select id="doc-acc" name="access" defaultValue="COMPANY">
-                <option value="COMPANY">Whole company</option>
-                <option value="FACTORY">Factory</option>
-                <option value="PRIVATE">Only me</option>
-              </Select>
-            </FormField>
-          </div>
-          {error && <p className="text-sm text-destructive">{error}</p>}
-          <Button disabled={pending}>{pending ? "Saving..." : "Register"}</Button>
-        </CardContent>
-      </Card>
+    <form
+      id="register-document"
+      onSubmit={onSubmit}
+      className="scroll-mt-6 space-y-4 rounded-card border border-slate-100 bg-white p-5 shadow-card"
+    >
+      <div className="flex items-center gap-3">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+          <FilePlus2 className="h-5 w-5" />
+        </span>
+        <h2 className="font-heading text-lg font-semibold text-navy-800">Register a Document</h2>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-4">
+        <div className="space-y-1">
+          <label htmlFor="doc-etype" className={lbl}>
+            Belongs to <span className="text-red-500">*</span>
+          </label>
+          <input id="doc-etype" name="entityType" list="entity-types" placeholder="Supplier" className={field} />
+          <datalist id="entity-types">
+            {ENTITY_TYPES.map((t) => (
+              <option key={t} value={t} />
+            ))}
+          </datalist>
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="doc-eid" className={lbl}>
+            Record id <span className="text-red-500">*</span>
+          </label>
+          <input id="doc-eid" name="entityId" className={field} />
+          <p className={hint}>The id from the record&apos;s page address</p>
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="doc-name" className={lbl}>
+            Document name <span className="text-red-500">*</span>
+          </label>
+          <input id="doc-name" name="fileName" placeholder="BSCI-certificate-2026.pdf" className={field} />
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="doc-kind" className={lbl}>
+            Kind
+          </label>
+          <input id="doc-kind" name="docType" maxLength={60} className={field} />
+          <p className={hint}>Certificate, Contract...</p>
+        </div>
+        <div className="space-y-1 md:col-span-2">
+          <label htmlFor="doc-url" className={lbl}>
+            File link
+          </label>
+          <input id="doc-url" name="storageUrl" type="url" placeholder="https://..." className={field} />
+          <p className={hint}>Drive / SharePoint / any web link</p>
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="doc-exp" className={lbl}>
+            Expiry date
+          </label>
+          <input id="doc-exp" name="expiryDate" type="date" className={field} />
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="doc-acc" className={lbl}>
+            Who can see
+          </label>
+          <select id="doc-acc" name="access" defaultValue="COMPANY" className={field}>
+            <option value="COMPANY">Whole company</option>
+            <option value="FACTORY">Factory</option>
+            <option value="PRIVATE">Only me</option>
+          </select>
+        </div>
+      </div>
+
+      {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+      <button
+        type="submit"
+        disabled={pending}
+        className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-md shadow-blue-900/20 transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+      >
+        {pending ? "Saving..." : "Register"}
+      </button>
     </form>
   );
 }

@@ -28,6 +28,8 @@ export function DataTable<TData extends RowData>({
   liveSearch = false,
   toolbar,
   pageNumber = false,
+  noSearch = false,
+  rowLabel = "rows",
 }: {
   columns: ColumnDef<AppTableFeatures, TData>[];
   data: TData[];
@@ -48,6 +50,9 @@ export function DataTable<TData extends RowData>({
   toolbar?: React.ReactNode;
   // true hole Previous ar Next-er majhe current page number dekhay
   pageNumber?: boolean;
+  noSearch?: boolean;
+  // footer-e "N rows" er "rows" shobdo
+  rowLabel?: string;
 }) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [filter, setFilter] = useState("");
@@ -183,7 +188,7 @@ export function DataTable<TData extends RowData>({
           </>
         ) : (
           <>
-            {total} rows · page {pageIndex + 1} of {Math.max(table.getPageCount(), 1)}
+            {total} {rowLabel} · page {pageIndex + 1} of {Math.max(table.getPageCount(), 1)}
           </>
         )}
       </span>
@@ -205,7 +210,7 @@ export function DataTable<TData extends RowData>({
 
   return (
     <div className="space-y-3">
-      {search}
+      {!noSearch && search}
       {rich ? (
         <div className="overflow-hidden rounded-card border border-slate-100 bg-white shadow-card">
           {tableBox}

@@ -4,7 +4,15 @@ import { BaseService } from "./base.service";
 
 export const AUDIT_PAGE_SIZE = 50;
 
-export type AuditFilter = { entity?: string; action?: string; actor?: string; page?: number };
+// from / to: "YYYY-MM-DD" (Dhaka time, duto-i dhore)
+export type AuditFilter = {
+  entity?: string;
+  action?: string;
+  actor?: string;
+  from?: string;
+  to?: string;
+  page?: number;
+};
 
 class AuditService extends BaseService {
   async list(filter: AuditFilter = {}) {
@@ -23,6 +31,8 @@ class AuditService extends BaseService {
         ...(filter.entity ? [{ entity: { contains: filter.entity, mode: "insensitive" as const } }] : []),
         ...(filter.action ? [{ action: filter.action }] : []),
         ...(filter.actor ? [{ actor: { email: { contains: filter.actor, mode: "insensitive" as const } } }] : []),
+        ...(filter.from ? [{ createdAt: { gte: new Date(`${filter.from}T00:00:00+06:00`) } }] : []),
+        ...(filter.to ? [{ createdAt: { lte: new Date(`${filter.to}T23:59:59.999+06:00`) } }] : []),
       ],
     };
 

@@ -1,14 +1,14 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
-import { PageHeader } from "@/components/layout/page-header";
-import { Card, CardContent } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { CloudUpload } from "lucide-react";
+import { PageBand } from "@/components/approvals/ui";
 import { IMPORTERS } from "@/lib/import-schemas";
 import { can, requireUser } from "@/lib/permissions";
 import { importService } from "@/services/import.service";
+import { BatchesTable, type BatchRow } from "./batches-table";
 import { UploadForm } from "./upload-form";
 
-const fmt = (d: Date | null) => (d ? `${d.toISOString().slice(0, 16).replace("T", " ")} UTC` : "-");
+const fmt = (d: Date) =>
+  new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Dhaka", dateStyle: "medium", timeStyle: "short" }).format(d);
 
 export default async function ImportPage() {
   const user = await requireUser();
@@ -16,45 +16,39 @@ export default async function ImportPage() {
   const batches = await importService.listBatches();
   const types = Object.entries(IMPORTERS).map(([key, v]) => ({ key, label: v.label }));
 
+  const rows: BatchRow[] = batches.map((b) => {
+    const label = (IMPORTERS as Record<string, { label: string }>)[b.type]?.label ?? b.type;
+    return {
+      id: b.id,
+      type: label.split(" (")[0],
+      fileName: b.fileName,
+      status: b.status,
+      totalRows: b.totalRows,
+      okRows: b.okRows,
+      errorRows: b.errorRows,
+      skippedRows: b.skippedRows,
+      uploaded: fmt(b.createdAt),
+    };
+  });
+
   return (
-    <div className="space-y-4">
-      <PageHeader title="Data import" description="Upload, validate, preview errors, confirm. Nothing is imported until you confirm." />
+    <div className="stagger space-y-5">
+      <PageBand>
+        <header className="flex items-center gap-4">
+          <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-blue-200 bg-white text-blue-600 shadow-card">
+            <CloudUpload className="h-8 w-8" strokeWidth={2.2} />
+          </span>
+          <div>
+            <h1 className="font-heading text-3xl font-semibold text-navy-800">Data Import</h1>
+            <p className="text-sm text-slate-500">
+              Upload, validate, preview errors, confirm. Nothing is imported until you confirm.
+            </p>
+          </div>
+        </header>
+      </PageBand>
+
       <UploadForm types={types} />
-      <h2 className="text-sm font-semibold">Recent batches</h2>
-      <Card>
-        <CardContent className="overflow-x-auto p-0">
-          <Table>
-            <TableHeader>
-              <TableRow className="hover:bg-transparent">
-                <TableHead>Type</TableHead><TableHead>File</TableHead><TableHead>Status</TableHead>
-                <TableHead className="text-right">Rows</TableHead><TableHead className="text-right">OK</TableHead>
-                <TableHead className="text-right">Errors</TableHead><TableHead className="text-right">Skipped</TableHead>
-                <TableHead>Uploaded</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {batches.length === 0 ? (
-                <TableRow className="hover:bg-transparent">
-                  <TableCell colSpan={8} className="h-20 text-center text-muted-foreground">No imports yet</TableCell>
-                </TableRow>
-              ) : (
-                batches.map((b) => (
-                  <TableRow key={b.id}>
-                    <TableCell>{b.type}</TableCell>
-                    <TableCell><Link className="underline" href={`/import/${b.id}`}>{b.fileName}</Link></TableCell>
-                    <TableCell>{b.status}</TableCell>
-                    <TableCell className="text-right">{b.totalRows}</TableCell>
-                    <TableCell className="text-right">{b.okRows}</TableCell>
-                    <TableCell className="text-right">{b.errorRows}</TableCell>
-                    <TableCell className="text-right">{b.skippedRows}</TableCell>
-                    <TableCell>{fmt(b.createdAt)}</TableCell>
-                  </TableRow>
-                ))
-              )}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+      <BatchesTable rows={rows} />
     </div>
   );
 }

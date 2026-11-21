@@ -1,50 +1,49 @@
-import { PageHeader } from "@/components/layout/page-header";
-import { Card, CardContent } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import Link from "next/link";
+import { Plus, ShieldCheck } from "lucide-react";
+import { PageBand } from "@/components/approvals/ui";
 import { qualityService } from "@/services/quality.service";
 import { DefectForm } from "./defect-form";
+import { DefectsTable, type DefectRow } from "./defects-table";
 
 export default async function DefectsPage() {
   const defects = await qualityService.listDefects(true);
 
+  const rows: DefectRow[] = defects.map((d) => ({
+    id: d.id,
+    code: d.code,
+    name: d.name,
+    category: d.category ?? "",
+    severity: d.severity,
+    isActive: d.isActive,
+  }));
+
   return (
-    <div className="max-w-4xl space-y-4">
-      <PageHeader title="Defects" description="The defect list inspectors choose from" />
-      <Card>
-        <CardContent className="p-0">
-          <Table>
-            <TableHeader>
-              <TableRow className="hover:bg-transparent">
-                <TableHead>Code</TableHead>
-                <TableHead>Name</TableHead>
-                <TableHead>Category</TableHead>
-                <TableHead>Severity</TableHead>
-                <TableHead>Active</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {defects.length === 0 ? (
-                <TableRow className="hover:bg-transparent">
-                  <TableCell colSpan={5} className="h-20 text-center text-muted-foreground">
-                    No defects yet. Add the common ones before you record an inspection.
-                  </TableCell>
-                </TableRow>
-              ) : (
-                defects.map((d) => (
-                  <TableRow key={d.id}>
-                    <TableCell className="font-medium">{d.code}</TableCell>
-                    <TableCell>{d.name}</TableCell>
-                    <TableCell>{d.category ?? "-"}</TableCell>
-                    <TableCell className="capitalize">{d.severity.toLowerCase()}</TableCell>
-                    <TableCell>{d.isActive ? "Yes" : "No"}</TableCell>
-                  </TableRow>
-                ))
-              )}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-      <DefectForm />
+    <div className="stagger space-y-5">
+      <PageBand>
+        <header className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-blue-200 bg-white text-blue-600 shadow-card">
+              <ShieldCheck className="h-8 w-8" strokeWidth={2.2} />
+            </span>
+            <div>
+              <h1 className="font-heading text-3xl font-semibold text-navy-800">Defects</h1>
+              <p className="text-sm text-slate-500">The defect list inspectors choose from</p>
+            </div>
+          </div>
+          <Link
+            href="#add-defect"
+            className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-md shadow-blue-900/20 transition-transform hover:-translate-y-0.5"
+          >
+            <Plus className="h-4 w-4" strokeWidth={2.5} /> Add Defect
+          </Link>
+        </header>
+      </PageBand>
+
+      <DefectsTable rows={rows} />
+
+      <div id="add-defect" className="scroll-mt-6">
+        <DefectForm />
+      </div>
     </div>
   );
 }

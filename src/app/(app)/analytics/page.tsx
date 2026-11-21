@@ -1,14 +1,17 @@
 import Link from "next/link";
-import { PageHeader } from "@/components/layout/page-header";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { ChartColumn, Download, FileText, Filter, Info, Printer, RotateCcw } from "lucide-react";
+import { PageBand } from "@/components/approvals/ui";
+import { can, requireUser } from "@/lib/permissions";
 import { cn } from "@/lib/utils";
 import { REPORTS } from "./reports";
-import { can, requireUser } from "@/lib/permissions";
+import { ReportTable } from "./report-table";
 
 const okDate = (s?: string) => (s && /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : undefined);
+
+const field =
+  "h-11 rounded-lg border border-slate-200 bg-white px-3 text-sm text-navy-800 shadow-xs focus:border-blue-500 focus:outline-none focus:ring-3 focus:ring-blue-500/20";
+const btnOutline =
+  "inline-flex h-11 items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 text-sm font-semibold text-navy-800 hover:bg-slate-50";
 
 function cell(v: unknown): string {
   if (v === null || v === undefined || v === "") return "-";
@@ -31,23 +34,44 @@ export default async function AnalyticsPage(props: {
 
   const groups = ["Merchandising", "Procurement", "Inventory", "Production", "Quality", "Shipment", "Finance"] as const;
 
-  return (
-    <div className="space-y-4">
-      <PageHeader title="Analytics" description="Reports calculated live from your data" />
+  const rows = result.rows.map((row) => {
+    const out: Record<string, string> = {};
+    for (const c of result.columns) out[c.key] = cell(row[c.key]);
+    return out;
+  });
 
-      <div className="grid gap-4 md:grid-cols-[14rem_1fr]">
-        <nav className="space-y-4">
+  const q = `${from ? `&from=${from}` : ""}${to ? `&to=${to}` : ""}`;
+
+  return (
+    <div className="stagger space-y-5">
+      <PageBand>
+        <header className="flex items-center gap-4">
+          <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-blue-200 bg-white text-blue-600 shadow-card">
+            <ChartColumn className="h-8 w-8" strokeWidth={2.4} />
+          </span>
+          <div>
+            <h1 className="font-heading text-3xl font-semibold text-navy-800">Analytics</h1>
+            <p className="text-sm text-slate-500">Reports calculated live from your data</p>
+          </div>
+        </header>
+      </PageBand>
+
+      <div className="grid gap-5 lg:grid-cols-[16rem_minmax(0,1fr)]">
+        <nav className="space-y-5 self-start rounded-card border border-slate-100 bg-white p-5 shadow-card">
+          <h2 className="flex items-center gap-2 font-heading text-lg font-semibold text-navy-800">
+            <Filter className="h-5 w-5 text-blue-600" /> Reports
+          </h2>
           {groups.map((g) => (
             <div key={g}>
-              <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{g}</p>
+              <p className="pb-1.5 text-xs font-semibold uppercase tracking-wider text-blue-600">{g}</p>
               <ul className="space-y-0.5">
                 {REPORTS.filter((r) => r.group === g).map((r) => (
                   <li key={r.key}>
                     <Link
                       href={`/analytics?report=${r.key}`}
                       className={cn(
-                        "block rounded-md px-2 py-1.5 text-sm hover:bg-muted",
-                        r.key === def.key && "bg-denim-100 font-medium"
+                        "block rounded-lg px-3 py-2 text-sm text-navy-800 hover:bg-slate-50",
+                        r.key === def.key && "bg-blue-50 font-semibold text-blue-700"
                       )}
                     >
                       {r.title}
@@ -59,78 +83,64 @@ export default async function AnalyticsPage(props: {
           ))}
         </nav>
 
-        <div className="min-w-0 space-y-3">
-          <h2 className="text-lg font-semibold">{def.title}</h2>
+        <div className="min-w-0 space-y-5">
+          <div className="space-y-4 rounded-card border border-slate-100 bg-white p-5 shadow-card">
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                <FileText className="h-5 w-5" />
+              </span>
+              <h2 className="font-heading text-xl font-semibold text-navy-800">{def.title}</h2>
+            </div>
 
-          {def.ranged && (
-            <form method="get" className="flex flex-wrap items-end gap-2">
-              <input type="hidden" name="report" value={def.key} />
-              <label className="text-xs text-muted-foreground">
-                From
-                <Input name="from" type="date" defaultValue={from ?? ""} className="mt-1" />
-              </label>
-              <label className="text-xs text-muted-foreground">
-                To
-                <Input name="to" type="date" defaultValue={to ?? ""} className="mt-1" />
-              </label>
-              <Button>Apply</Button>
-            </form>
-          )}
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              {def.ranged ? (
+                <form method="get" className="flex flex-wrap items-end gap-3">
+                  <input type="hidden" name="report" value={def.key} />
+                  <label className="space-y-1 text-sm">
+                    <span className="block font-semibold text-navy-800">From</span>
+                    <input name="from" type="date" defaultValue={from ?? ""} className={field} />
+                  </label>
+                  <label className="space-y-1 text-sm">
+                    <span className="block font-semibold text-navy-800">To</span>
+                    <input name="to" type="date" defaultValue={to ?? ""} className={field} />
+                  </label>
+                  <button
+                    type="submit"
+                    className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-md shadow-blue-900/20 transition-transform hover:-translate-y-0.5"
+                  >
+                    <Filter className="h-4 w-4" /> Apply
+                  </button>
+                  <Link href={`/analytics?report=${def.key}`} className={btnOutline}>
+                    <RotateCcw className="h-4 w-4" /> Reset
+                  </Link>
+                </form>
+              ) : (
+                <p className="text-sm text-slate-500">This report has no date filter.</p>
+              )}
 
-          {result.summary && <p className="text-sm font-medium">{result.summary}</p>}
+              {canExport && (
+                <div className="flex flex-wrap gap-2">
+                  <a href={`/analytics/export?report=${def.key}&format=csv${q}`} className={btnOutline}>
+                    <Download className="h-4 w-4" /> Export CSV
+                  </a>
+                  <a href={`/analytics/export?report=${def.key}&format=xlsx${q}`} className={btnOutline}>
+                    <Download className="h-4 w-4" /> Export Excel
+                  </a>
+                  <a href={`/analytics/print?report=${def.key}${q}`} className={btnOutline}>
+                    <Printer className="h-4 w-4" /> PDF / Print
+                  </a>
+                </div>
+              )}
+            </div>
 
-          <div className={canExport ? "flex gap-2" : "hidden"}>
-            {(["csv", "xlsx"] as const).map((f) => (
-              <a
-                key={f}
-                href={`/analytics/export?report=${def.key}&format=${f}${from ? `&from=${from}` : ""}${to ? `&to=${to}` : ""}`}
-                className="rounded-md border px-3 py-1.5 text-xs font-medium hover:bg-muted"
-              >
-                Export {f === "csv" ? "CSV" : "Excel"}
-              </a>
-            ))}
-            <a
-              href={`/analytics/print?report=${def.key}${from ? `&from=${from}` : ""}${to ? `&to=${to}` : ""}`}
-              className="rounded-md border px-3 py-1.5 text-xs font-medium hover:bg-muted"
-            >
-              PDF / Print
-            </a>
+            {result.summary && (
+              <p className="flex items-center gap-2.5 rounded-lg bg-blue-50 px-4 py-3 text-sm font-medium text-blue-700">
+                <Info className="h-5 w-5 shrink-0" /> {result.summary}
+              </p>
+            )}
           </div>
 
-          <Card>
-            <CardContent className="overflow-x-auto p-0">
-              <Table>
-                <TableHeader>
-                  <TableRow className="hover:bg-transparent">
-                    {result.columns.map((c) => (
-                      <TableHead key={c.key} className={c.right ? "text-right" : undefined}>
-                        {c.label}
-                      </TableHead>
-                    ))}
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {result.rows.length === 0 ? (
-                    <TableRow className="hover:bg-transparent">
-                      <TableCell colSpan={result.columns.length} className="h-20 text-center text-muted-foreground">
-                        No data for this report
-                      </TableCell>
-                    </TableRow>
-                  ) : (
-                    result.rows.map((row, i) => (
-                      <TableRow key={i}>
-                        {result.columns.map((c) => (
-                          <TableCell key={c.key} className={c.right ? "text-right" : undefined}>
-                            {cell(row[c.key])}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
+          <ReportTable key={`${def.key}|${from ?? ""}|${to ?? ""}`} columns={result.columns} rows={rows} />
         </div>
       </div>
     </div>

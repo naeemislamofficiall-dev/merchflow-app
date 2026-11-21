@@ -322,3 +322,12 @@ button:not(:disabled):active {
 [data-reveal-root] :is(.donut-seg, .ring-prog, .grow-x, .grow-y, .draw-line, .fade-in, .item-in) {
   animation-delay: calc(var(--d, 0ms) + var(--land, 650ms));
 }
+
+/* login: browser autofill-er holud rong bad */
+.lg-form input:-webkit-autofill,
+.lg-form input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #f8fafc inset;
+  -webkit-text-fill-color: #0f2a5c;
+  caret-color: #0f2a5c;
+  transition: background-color 9999s ease-out 0s;
+}
