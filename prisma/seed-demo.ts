@@ -30,7 +30,7 @@ const DAY = 86_400_000;
 const now = new Date();
 const daysFromNow = (n: number) => new Date(now.getTime() + n * DAY);
 const dateOnly = (d: Date) => new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-const pick = <T,>(arr: T[], i: number) => arr[i % arr.length];
+
 
 const USD_BDT = 122.5;
 const P = "SEED-";
@@ -110,7 +110,7 @@ async function main() {
       })
     );
   }
-  const wh = await prisma.warehouse.upsert({
+   await prisma.warehouse.upsert({
     where: { factoryId_code: { factoryId: factory.id, code: "WH1" } },
     update: {},
     create: { factoryId: factory.id, code: "WH1", name: "Main Store" },

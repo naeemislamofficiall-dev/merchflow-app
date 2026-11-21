@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -47,13 +47,13 @@ export function UserForm({
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors },
   } = useForm<Values>({
     resolver: zodResolver(schema),
     defaultValues: { password: "", ...(initial ?? { name: "", email: "", roleId: "", scope: "COMPANY", factoryId: "", status: "ACTIVE" }) },
   });
-  const scope = watch("scope");
+    const scope = useWatch({ control, name: "scope" });
 
   function onSubmit(values: Values) {
     setServerError("");

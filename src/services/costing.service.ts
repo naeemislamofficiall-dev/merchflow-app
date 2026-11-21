@@ -45,7 +45,7 @@ const createSchema = z.object({
   items: z.array(itemSchema).optional(),
 });
 
-type ItemInput = z.infer<typeof itemSchema>;
+
 
 function toLine(i: { consumption?: number; unitPrice: number; wastagePct?: number }) {
   return { consumption: i.consumption ?? 1, unitPrice: i.unitPrice, wastagePct: i.wastagePct ?? 0 };
