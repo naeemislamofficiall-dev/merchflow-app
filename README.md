@@ -4,7 +4,7 @@
 
 **Garments & Textile ERP for modern export factories**
 
-Buyer enquiry theke shipment ar invoice porjonto, shob kichu ekta connected system-e.
+From buyer enquiry to shipment and invoice, everything in one connected system.
 
 <br>
 
@@ -19,7 +19,7 @@ Buyer enquiry theke shipment ar invoice porjonto, shob kichu ekta connected syst
 
 **One order → one connected operational truth**
 
-[Parichoy](#-parichoy) • [Features](#-key-features) • [Modules](#-modules) • [Tech Stack](#-tech-stack) • [Quick Start](#-quick-start) • [Docs](#-documentation)
+[Introduction](#-introduction) • [Features](#-key-features) • [Modules](#-modules) • [Tech Stack](#-tech-stack) • [Quick Start](#-quick-start) • [Docs](#-documentation)
 
 <br>
 
@@ -31,8 +31,8 @@ Buyer enquiry theke shipment ar invoice porjonto, shob kichu ekta connected syst
 
 ## 📋 Table of Contents
 
-1. [Parichoy](#-parichoy)
-2. [MERCHFLOW ki proshner uttor dey](#-merchflow-ki-proshner-uttor-dey)
+1. [Introduction](#-introduction)
+2. [Questions MERCHFLOW Answers](#-questions-merchflow-answers)
 3. [Business Flow](#-business-flow)
 4. [Key Features](#-key-features)
 5. [Modules](#-modules)
@@ -50,35 +50,35 @@ Buyer enquiry theke shipment ar invoice porjonto, shob kichu ekta connected syst
 
 ---
 
-## 🚀 Parichoy
+## 🚀 Introduction
 
-MERCHFLOW ekta garments ar textile manufacturing ERP, Bangladesh-er RMG / export-oriented / composite factory-r jonno banano.
+MERCHFLOW is an ERP for garments and textile manufacturing, built for Bangladeshi RMG, export-oriented and composite factories.
 
-Eta alada alada CRUD page-er collection na. Prottek record Company, Factory, Buyer, Order, Style, Color, Size, Material, Supplier-er sathe connected thake. Ekbar data dile (buyer, style, order qty, BOM) porer step gulo oi data reuse kore, abar type korte hoy na.
+It is not a collection of separate CRUD pages. Every record is connected to the Company, Factory, Buyer, Order, Style, Color, Size, Material and Supplier it belongs to. Data is entered once (buyer, style, order quantity, BOM) and every later step reuses it, so nothing has to be typed twice.
 
 | | |
 |---|---|
 | **Industry** | Garments / Apparel / Textile |
-| **Target** | Bangladesh RMG, export factory, composite factory |
+| **Target** | Bangladeshi RMG, export-oriented and composite factories |
 | **Scope** | Multi-company, multi-factory, multi-line |
 | **Core principle** | One order → one connected operational truth |
-| **Language** | English + Bangla |
+| **Languages** | English and Bangla |
 
 ---
 
-## 🎯 MERCHFLOW ki proshner uttor dey
+## 🎯 Questions MERCHFLOW Answers
 
-- Kon buyer-er kon order ekhon cholche?
-- Kon style shipment miss korar jhunkite ache?
-- Kon sample buyer approval-er opekkhay?
-- Fabric koto lagbe, koto book hoyeche, koto ashche, koto ache?
-- Kon supplier late?
-- Kon production order-e material short?
-- Kon line overloaded? Aj cutting / sewing / finishing output koto?
-- Line efficiency koto? Kon defect barche?
-- Order-er koto ongsho pack hoyeche, shipment balance koto?
-- Kon order ar kon buyer profitable?
-- Kono material, PO ba shipment-er exact history ki?
+- Which buyer's order is running right now?
+- Which styles are at risk of missing their shipment date?
+- Which samples are waiting for buyer approval?
+- How much fabric is required, booked, on the way and in stock?
+- Which suppliers are late?
+- Which production orders are short of material?
+- Which lines are overloaded? What was today's cutting, sewing and finishing output?
+- What is the line efficiency? Which defects are increasing?
+- How much of an order is packed, and what is the remaining shipment balance?
+- Which orders and buyers are profitable?
+- What is the exact history of a material, a PO or a shipment?
 
 ---
 
@@ -105,14 +105,14 @@ flowchart TD
 
 ### Design principles
 
-| Principle | Mane |
+| Principle | Meaning |
 |---|---|
-| **Order-centric** | Central object holo Order. Downstream record order/style-er sathe traceable |
-| **No duplicate entry** | Order qty → MRP, BOM → procurement, GRN → inventory, output → WIP, packing → finished goods |
-| **Configuration over hard-coding** | Approval rule, T&A template, production route, buyer config configurable |
-| **Full audit** | Actor, time, before/after, reason record hoy |
-| **Exception-first** | Delay, shortage, late supplier, failed inspection dashboard-e uthe ashe |
-| **Server-side security** | Permission check server-e, frontend-er upor nirbhor na |
+| **Order-centric** | The Order is the central object. Every downstream record stays traceable to its order and style |
+| **No duplicate entry** | Order quantity → MRP, BOM → procurement, GRN → inventory, output → WIP, packing → finished goods |
+| **Configuration over hard-coding** | Approval rules, T&A templates, production routes and buyer settings are configurable |
+| **Full audit** | Actor, time, before/after values and reason are recorded |
+| **Exception-first** | Delays, shortages, late suppliers and failed inspections surface on the dashboard |
+| **Server-side security** | Permissions are enforced on the server, never trusting the frontend |
 
 ---
 
@@ -120,15 +120,15 @@ flowchart TD
 
 ### 📊 Exception-first Dashboard
 
-Manager-ke prottek record kholte hoy na. Dashboard-e dekhay: order status, order progress, shipment risk, material shortage, material exposure, production vs target, alerts, top buyers, upcoming shipment ar T&A, receivables.
+Managers do not have to open every record. The dashboard shows order status, order progress, shipment risk, material shortage, material exposure, production vs target, alerts, top buyers, upcoming shipments and T&A milestones, and receivables.
 
 `/dashboard` • `/alerts` • `/analytics`
 
 <img src="docs/images/dashboard.png" alt="Dashboard" width="100%">
 
-### 🗓️ Order & T&A
+### 🗓️ Orders & T&A
 
-Order matrix (color × size), amendment history, T&A milestone, calendar ar delay risk. T&A delay hole shipment-risk alert uthe.
+Order matrix (color × size), amendment history, T&A milestones, calendar and delay risk. A delayed T&A milestone raises a shipment-risk alert.
 
 `/orders` • `/tna` • `/tna/calendar` • `/tna/risk` • `/tna/templates`
 
@@ -136,7 +136,7 @@ Order matrix (color × size), amendment history, T&A milestone, calendar ar dela
 
 ### 💰 Costing & BOM
 
-Versioned costing sheet, margin ar price calculation, Pre costing ar Post costing (estimate vs actual variance). Approved costing bodlano jay na, notun version lage. Multi-currency: transaction currency, base currency, exchange rate ar rate date save hoy.
+Versioned cost sheets with margin and price calculation, pre-costing and post-costing (estimate vs actual variance). An approved cost sheet cannot be edited; a new version is required. Multi-currency: the transaction currency, base currency, exchange rate and rate date are stored with each record.
 
 `/costing` • `/bom` • `/currency`
 
@@ -144,7 +144,7 @@ Versioned costing sheet, margin ar price calculation, Pre costing ar Post costin
 
 ### 🛒 Procurement
 
-BOM theke MRP, tarpor PR → RFQ / Quotation → PO → GRN. Supplier follow-up, late delivery, proforma invoice.
+MRP from the BOM, then PR → RFQ / Quotation → PO → GRN. Includes supplier follow-up, late-delivery tracking and proforma invoices.
 
 `/material-requirements` • `/prs` • `/rfqs` • `/quotations` • `/purchase-orders` • `/goods-receipts` • `/follow-ups`
 
@@ -152,7 +152,7 @@ BOM theke MRP, tarpor PR → RFQ / Quotation → PO → GRN. Supplier follow-up,
 
 ### 🏭 Production Floor
 
-PPC ar capacity, production order, cutting (bundle), hourly sewing log (target, output, reject, rework, downtime), finishing, WIP, subcontract.
+PPC and capacity planning, production orders, cutting with bundles, hourly sewing logs (target, output, reject, rework, downtime), finishing, WIP and subcontracting.
 
 `/ppc` • `/production-orders` • `/cutting` • `/sewing` • `/finishing` • `/wip` • `/subcontract`
 
@@ -160,23 +160,23 @@ PPC ar capacity, production order, cutting (bundle), hourly sewing log (target, 
 
 ### ✅ Quality
 
-Inspection, AQL / final inspection, defect library, DHU, CAPA. Final inspection fail hole alert uthe.
+Inspections, AQL / final inspection, defect library, DHU and CAPA. A failed final inspection raises an alert.
 
 `/quality/inspections` • `/quality/aql` • `/quality/defects` • `/quality/dhu` • `/quality/capa`
 
 <img src="docs/images/quality.png" alt="Quality" width="100%">
 
-### 🌐 Buyer & Supplier Portal
+### 🌐 Buyer & Supplier Portals
 
-Buyer: style, sample status, approval, order, T&A, shipment. Supplier: RFQ, PO, confirm, shipment update, document, invoice. Dui portal alada, supplier factory-r internal data dekhe na.
+Buyers see styles, sample status and approvals, orders, T&A and shipments. Suppliers handle RFQs, POs, confirmations, shipment updates, documents and invoices. The two portals are separate, and suppliers never see internal factory data.
 
 `/portal/buyer` • `/portal/supplier`
 
 <img src="docs/images/portal.png" alt="Portal" width="100%">
 
-### 🔐 Security, Approval & Audit
+### 🔐 Security, Approvals & Audit
 
-Role + Permission + Scope, MFA (authenticator + backup code), approval engine, audit log.
+Role + permission + scope access control, MFA (authenticator app + backup codes), a configurable approval engine and a full audit log.
 
 `/admin/users` • `/admin/roles` • `/approvals` • `/admin/audit-logs` • `/account/security`
 
@@ -191,13 +191,13 @@ Role + Permission + Scope, MFA (authenticator + backup code), approval engine, a
 |---|---|
 | Login, forgot / reset password | `/login`, `/forgot-password`, `/reset-password` |
 | Profile, MFA | `/account/profile`, `/account/security` |
-| Users, Roles, Portal users | `/admin/users`, `/admin/roles`, `/admin/portal-users` |
+| Users, roles, portal users | `/admin/users`, `/admin/roles`, `/admin/portal-users` |
 | Audit log | `/admin/audit-logs` |
 | Approval engine + rules | `/approvals`, `/approvals/rules` |
-| Notifications, Alerts | `/notifications`, `/alerts` |
-| Documents, Import | `/documents`, `/import` |
-| Jobs, Scheduled reports | `/admin/jobs`, `/admin/scheduled-reports` |
-| Organization, Warehouses, Currency | `/organization`, `/warehouses`, `/currency` |
+| Notifications, alerts | `/notifications`, `/alerts` |
+| Documents, data import | `/documents`, `/import` |
+| Jobs, scheduled reports | `/admin/jobs`, `/admin/scheduled-reports` |
+| Organization, warehouses, currency | `/organization`, `/warehouses`, `/currency` |
 | QR / barcode scan | `/scan` |
 
 </details>
@@ -247,7 +247,7 @@ Role + Permission + Scope, MFA (authenticator + backup code), approval engine, a
 | Knitting | `/textile/knitting` |
 | Dyeing | `/textile/dyeing` |
 | Fabric finishing | `/textile/finishing` |
-| Lab dip | `/textile/lab-dips` |
+| Lab dips | `/textile/lab-dips` |
 
 </details>
 
@@ -257,7 +257,7 @@ Role + Permission + Scope, MFA (authenticator + backup code), approval engine, a
 | Module | Route |
 |---|---|
 | PPC + capacity | `/ppc`, `/ppc/capacity` |
-| Production order + routes | `/production-orders`, `/production-orders/routes` |
+| Production orders + routes | `/production-orders`, `/production-orders/routes` |
 | Cutting + bundles | `/cutting`, `/cutting/bundles/[id]` |
 | Sewing | `/sewing` |
 | Finishing | `/finishing` |
@@ -281,7 +281,7 @@ Role + Permission + Scope, MFA (authenticator + backup code), approval engine, a
 </details>
 
 <details>
-<summary><b>🚢 Packing, Shipment & Commercial</b></summary>
+<summary><b>🚢 Packing, Shipment & Export Documents</b></summary>
 
 | Module | Route |
 |---|---|
@@ -318,7 +318,7 @@ Role + Permission + Scope, MFA (authenticator + backup code), approval engine, a
 <details>
 <summary><b>🔌 API</b></summary>
 
-| Endpoint | Kaj |
+| Endpoint | Purpose |
 |---|---|
 | `/api/health` | Health check |
 | `/api/jobs/run` | Background job trigger |
@@ -333,26 +333,26 @@ Role + Permission + Scope, MFA (authenticator + backup code), approval engine, a
 
 ## 🧱 Tech Stack
 
-| Layer | Library / tool | Kaj |
+| Layer | Library / tool | Purpose |
 |---|---|---|
-| Framework | Next.js 16 (App Router, Turbopack), React 19, TypeScript 5 | App, server action, route handler |
-| Styling | Tailwind CSS v4 + `@tailwindcss/postcss` | Token `src/app/globals.css`-er `@theme`-e, `tailwind.config` nai |
-| UI helpers | `class-variance-authority`, `clsx`, `tailwind-merge`, `lucide-react` | shadcn-style component, class merge, icon |
-| Forms & validation | `react-hook-form`, `@hookform/resolvers`, `zod` 4 | Form, schema validation |
-| Table | `@tanstack/react-table` | Data table |
-| Database | PostgreSQL (Supabase) | Main database |
-| ORM | Prisma 7 (`prisma`, `@prisma/client`) + `@prisma/adapter-pg` + `pg` | Query; client `src/generated/prisma`-te generated (edit korbe na) |
-| Auth | `next-auth` v5 (beta) | Login session |
-| Security | `bcryptjs`, TOTP MFA + backup code (`src/lib/totp.ts`) | Password hash, two-factor |
-| QR code | `qrcode` | QR code generate |
-| Excel | `exceljs` | Excel file toiri / porha |
-| 3D | `three` 0.187, `@react-three/fiber`, `@types/three` | 3D graphics. [FILL] kon page-e ar ki dekhate use hoy |
-| Charts | Hand-made SVG / CSS | Recharts nai |
-| Env | `dotenv` | `.env` load (script-e) |
-| Test | Vitest 5 | `npm test` |
-| Lint / type | ESLint 9 + `eslint-config-next`, TypeScript | Code check |
-| Script runner | `tsx` | `npx tsx scripts/...`, seed |
-| Language | English + Bangla | `src/messages/en.ts`, `bn.ts` |
+| Framework | Next.js 16 (App Router, Turbopack), React 19, TypeScript 5 | App, server actions, route handlers |
+| Styling | Tailwind CSS v4 + `@tailwindcss/postcss` | Design tokens live in `@theme` in `src/app/globals.css`; there is no `tailwind.config` |
+| UI helpers | `class-variance-authority`, `clsx`, `tailwind-merge`, `lucide-react` | shadcn-style components, class merging, icons |
+| Forms & validation | `react-hook-form`, `@hookform/resolvers`, `zod` 4 | Forms and schema validation |
+| Tables | `@tanstack/react-table` | Data tables |
+| Database | PostgreSQL (Supabase) | Primary database |
+| ORM | Prisma 7 (`prisma`, `@prisma/client`) + `@prisma/adapter-pg` + `pg` | Queries; the client is generated into `src/generated/prisma` (do not edit) |
+| Auth | `next-auth` v5 (beta) | Sessions and login |
+| Security | `bcryptjs`, TOTP MFA + backup codes (`src/lib/totp.ts`) | Password hashing, two-factor authentication |
+| QR codes | `qrcode` | QR code generation |
+| Excel | `exceljs` | Excel import / export |
+| 3D | `three`, `@react-three/fiber`, `@types/three` | 3D rendering |
+| Charts | Hand-made SVG / CSS | No charting library |
+| Environment | `dotenv` | Loads `.env` in scripts |
+| Testing | Vitest 5 | `npm test` |
+| Lint / types | ESLint 9 + `eslint-config-next`, TypeScript | Code quality |
+| Script runner | `tsx` | `npx tsx scripts/...`, seeding |
+| Localization | English + Bangla | `src/messages/en.ts`, `bn.ts` |
 
 ---
 
@@ -368,18 +368,18 @@ flowchart LR
   SV --> AU[Audit Log]
 ```
 
-- Business logic UI component-e na, `src/services/*.service.ts`-e.
-- Service gulo `BaseService` extend kore. Prottek method:
-  1. `this.guard("permission.key")` diye permission check
-  2. `listFilter(user)` diye company / factory scope
-  3. rule check (`src/lib/business-rules.ts`, `status-rules.ts`)
-  4. kaj korar por `this.audit(...)`
-- Server action gulo `runAction` (`src/lib/action-result.ts`) diye wrap kora.
-- Status change `assertTransition` diye, jekhane khushi status bodlano jay na.
-- Money: transaction currency, base currency, exchange rate, rate date save hoy. Purano transaction aj-er rate diye abar hisab hoy na.
+- Business logic lives in `src/services/*.service.ts`, not in UI components.
+- Services extend `BaseService`. Every method:
+  1. checks permission with `this.guard("permission.key")`
+  2. applies company / factory scope with `listFilter(user)`
+  3. enforces rules (`src/lib/business-rules.ts`, `status-rules.ts`)
+  4. records the change with `this.audit(...)`
+- Server actions are wrapped with `runAction` (`src/lib/action-result.ts`).
+- Status changes go through `assertTransition`, so a record cannot jump to an arbitrary status.
+- Money: the transaction currency, base currency, exchange rate and rate date are stored, so old transactions are never recalculated at today's rate.
 
 <details>
-<summary><b>🔁 Status flow</b></summary>
+<summary><b>🔁 Status flows</b></summary>
 
 | Entity | Flow |
 |---|---|
@@ -395,10 +395,10 @@ flowchart LR
 <details>
 <summary><b>📏 Coding rules (ESLint / React Compiler)</b></summary>
 
-- Render-er bhitore component toiri korbe na (module-level map ba `createElement` use koro).
-- Render-er bhitore variable reassign korbe na (`reduce` / `filter` use koro).
-- `useEffect`-er bhitore synchronous `setState` korbe na.
-- `watch()` er bodole `useWatch` use koro.
+- Do not create components during render (use a module-level map or `createElement`).
+- Do not reassign variables during render (use `reduce` / `filter`).
+- Do not call `setState` synchronously inside `useEffect`.
+- Use `useWatch` instead of `watch()`.
 
 </details>
 
@@ -406,78 +406,78 @@ flowchart LR
 
 ## 🔒 Security
 
-- ✅ Role + Permission + Scope (Company / Factory)
-- ✅ Server-side permission check
-- ✅ Optional MFA: authenticator code + backup code, replay protection
+- ✅ Role + permission + scope access control (Company / Factory)
+- ✅ Server-side permission checks
+- ✅ Optional MFA: authenticator code + backup codes, with replay protection
 - ✅ Audit log
-- ✅ Buyer ar supplier portal alada boundary-te
-- ✅ Password hash (`bcryptjs`)
+- ✅ Separate security boundaries for the buyer and supplier portals
+- ✅ Password hashing (`bcryptjs`)
 
 ---
 
 ## ⚡ Quick Start
 
-Requirement: Node.js, PostgreSQL database (Supabase), PowerShell / VS Code.
+**Requirements:** Node.js, a PostgreSQL database (Supabase), PowerShell / VS Code.
 
-### Step 1: Clone
+### 1. Clone
 
 ```powershell
 git clone https://github.com/naeemislamofficiall-dev/merchflow-app.git
 cd merchflow-app
-# [FILL] project jodi nested folder-e thake (amar machine-e merchflow-app\merchflow) tahole: cd merchflow
 ```
 
-### Step 2: Install
+If the app lives in a nested `merchflow` folder, `cd merchflow` as well.
+
+### 2. Install
 
 ```powershell
 npm install
 ```
 
-### Step 3: `.env` toiri koro
+### 3. Create `.env`
 
-Secret kokhono git-e commit korbe na.
+Never commit secrets.
 
 ```
 DATABASE_URL="postgresql://..."
-# [FILL] baki variable (auth secret etc.) .env theke dekhe likho
 ```
 
-### Step 4: Prisma client generate
+Add any other variables your setup needs (for example the auth secret).
+
+### 4. Generate the Prisma client
 
 ```powershell
 npx prisma generate
 ```
 
-### Step 5: Setup script
+### 5. Run the setup scripts
 
-`scripts/` folder-e `create-admin.ts`, `seed-permissions.ts`, `seed-currency.ts`, `seed-rate.ts` ache.
+The `scripts/` folder contains `create-admin.ts`, `seed-permissions.ts`, `seed-currency.ts` and `seed-rate.ts`.
 
 ```powershell
 npx tsx scripts/<file>.ts
 ```
 
-[FILL] prothom setup-er sothik order ekhane likho.
-
-### Step 6: Run
+### 6. Start the app
 
 ```powershell
 npm run dev
 ```
 
-App: http://localhost:3000
+Open http://localhost:3000
 
 <details>
-<summary><b>🗄️ Database kaj korar niyom</b></summary>
+<summary><b>🗄️ Working with the database</b></summary>
 
-- Schema change hole SQL Supabase SQL editor-e chalao, tarpor:
+- After a schema change, run the SQL in the Supabase SQL editor, then:
   ```powershell
   npx prisma db pull
   npx prisma generate
   npm run typecheck
   ```
-- **`prisma migrate dev` chalabe na.**
-- `Property 'userMfa' does not exist` error mane table DB-te nai. `sql/user-mfa.sql` chalao.
-- `.next/types/validator.ts ... Cannot find module` error mane purono build cache:
+- **Do not run `prisma migrate dev`.**
+- `Property 'userMfa' does not exist` means the table is missing in the database. Run `sql/user-mfa.sql`.
+- `.next/types/validator.ts ... Cannot find module` means a stale build cache:
   ```powershell
   Remove-Item -Recurse -Force .next
   ```
@@ -489,26 +489,26 @@ App: http://localhost:3000
 ## 🌱 Demo Data
 
 ```powershell
-npx tsx prisma/seed-demo.ts           # demo data bosao
-npx tsx prisma/seed-demo.ts --reset   # sheta muche abar bosao
+npx tsx prisma/seed-demo.ts           # load demo data
+npx tsx prisma/seed-demo.ts --reset   # wipe it and load again
 ```
 
-Eta shudhu `SEED-` diye shuru hoya record chhuye. Master data (buyer, style, supplier, material) upsert hoy, delete hoy na. Tarpor `/dashboard` kholo.
+The seed only touches records whose number starts with `SEED-`. Master data (buyers, styles, suppliers, materials) is upserted and never deleted. Then open `/dashboard`.
 
 ---
 
 ## 🛠️ Development Commands
 
-| Command | Kaj |
+| Command | Purpose |
 |---|---|
-| `npm run dev` | Dev server |
+| `npm run dev` | Development server |
 | `npm run build` | Production build |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | Type check (`tsc --noEmit`) |
-| `npm test` | Unit test (Vitest) |
+| `npm test` | Unit tests (Vitest) |
 | `npm run check:structure` | Project structure check |
 
-Prottek change-er por chalao: `npm run typecheck` ar `npm run lint` (0 error), tarpor `npm run build`.
+After every change run `npm run typecheck` and `npm run lint` (0 errors expected), then `npm run build`.
 
 ---
 
@@ -516,40 +516,40 @@ Prottek change-er por chalao: `npm run typecheck` ar `npm run lint` (0 error), t
 
 ```
 src/
-├── app/(app)/<module>/page.tsx      server page; client part alada file-e
-├── app/(app)/<module>/actions.ts    server actions (runAction diye wrapped)
+├── app/(app)/<module>/page.tsx      server page; client parts in separate files
+├── app/(app)/<module>/actions.ts    server actions (wrapped with runAction)
 ├── app/api/                         route handlers
-├── services/*.service.ts            business logic (BaseService extend kore)
+├── services/*.service.ts            business logic (extends BaseService)
 ├── lib/                             rules, calculations, helpers, tests
 ├── components/ui                    shadcn-style base components
 ├── components/{layout,dashboard,approvals,detail,forms}
 ├── messages/                        en.ts, bn.ts
 └── generated/prisma/                Prisma client (generated)
 prisma/                              schema + seed
-scripts/                             admin / setup script
-sql/                                 manual SQL (Supabase SQL editor-e chalate hoy)
+scripts/                             admin / setup scripts
+sql/                                 manual SQL (run in the Supabase SQL editor)
 docs/                                documentation, images, archive
-public/  storage/                    static file, uploaded avatar
+public/  storage/                    static files, uploaded avatars
 ```
 
 ---
 
 ## 📚 Documentation
 
-- `docs/backup-and-recovery.md`, `docs/golden-demo.md` ([FILL] gulo bharte hobe)
-- `docs/archive/` purano patch note ar SQL, ekhon ar lage na
+- `docs/backup-and-recovery.md` and `docs/golden-demo.md` (contain placeholders to complete)
+- `docs/archive/` holds old patch notes and SQL that are no longer needed
 - Master spec: `MERCHFLOW_Enterprise_Garments_ERP_Master_Specification.docx`
 
 ---
 
 ## 🗺️ Roadmap
 
-Ei page gulo spec-e ache kintu ekhon build-er route list-e nai:
+These pages are in the specification but not yet in the current build:
 
 - [ ] HR: `/employees`, `/attendance`, `/leave`, `/payroll`
-- [ ] Stock transfer / stock count alada page, `/suppliers/performance`, `/ie/*` alada sub-page
-- [ ] Offline / poor network support (spec-e Phase 2)
-- [ ] Golden demo scenario (Buyer → Order → ... → Shipment) full end-to-end test
+- [ ] Dedicated stock transfer / stock count pages, `/suppliers/performance`, separate `/ie/*` sub-pages
+- [ ] Offline / poor-network support (spec Phase 2)
+- [ ] Full end-to-end golden demo scenario (Buyer → Order → ... → Shipment)
 
 ---
 
@@ -563,19 +563,19 @@ fix: prevent shipment over-allocation
 test: add mrp calculation tests
 ```
 
-Notun change-er age `npm run typecheck`, `npm run lint`, `npm test` chalao.
+Before opening a change, run `npm run typecheck`, `npm run lint` and `npm test`.
 
 ---
 
 ## 📄 License
 
-[FILL] License likho (MIT / Private / Proprietary).
+No open-source license has been granted. All rights reserved.
 
 ---
 
 <div align="center">
 
-Made with ❤️ by [Naeem Islam]
+Built by [naeemislamofficiall-dev](https://github.com/naeemislamofficiall-dev)
 
 [⬆ Back to Top](#-table-of-contents)
 
