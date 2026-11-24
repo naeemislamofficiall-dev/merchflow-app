@@ -1,3 +1,4 @@
+import { loginRatelimit } from "@/lib/ratelimit";
 import NextAuth, { type DefaultSession, type User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
@@ -32,18 +33,26 @@ const loginSchema = z.object({
   password: z.string().min(6),
 });
 
+const DUMMY_HASH = "$2a$10$abcdefghijklmnopqrstuv";
+
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
   pages: { signIn: "/login" },
   providers: [
     Credentials({
       credentials: { email: {}, password: {} },
-      async authorize(raw): Promise<User | null> {
+      async authorize(raw, request): Promise<User | null> {
+          const ip =
+          request?.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+          "unknown";
+
+        const { success } = await loginRatelimit.limit(ip);
+        if (!success) return null;
         const parsed = loginSchema.safeParse(raw);
         if (!parsed.success) return null;
         const email = parsed.data.email.toLowerCase();
 
-        // অনেকবার ভুল চেষ্টা হলে কিছুক্ষণের জন্য আটকে দেয়
         if (await isLoginLocked(email)) return null;
 
         const user = await prisma.user.findUnique({
@@ -56,6 +65,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           },
         });
         if (!user || user.status !== "ACTIVE") {
+          await bcrypt.compare(parsed.data.password, DUMMY_HASH);
           await recordLoginFailure(email, user?.id).catch(() => undefined);
           return null;
         }
@@ -70,7 +80,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         // Portal user-er kono internal permission thakbe na
         const permissions = portal ? [] : user.role.permissions.map((rp) => rp.permission.key);
 
-        // লগইন সফল: শেষ লগইনের সময় আর audit লেখা (এটা ব্যর্থ হলেও লগইন আটকাবে না)
+        
         await prisma.user
           .update({ where: { id: user.id }, data: { lastLoginAt: new Date() } })
           .catch(() => undefined);
