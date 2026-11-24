@@ -2,7 +2,7 @@ import "dotenv/config";
 import { prisma } from "../src/lib/prisma";
 import { saveRate } from "../src/services/currency.service";
 
-// নিচের রেটগুলো উদাহরণ, আসল রেট বসিয়ে নিন
+
 const RATES = [
   { fromCode: "USD", toCode: "BDT", rate: 120 },
   { fromCode: "EUR", toCode: "BDT", rate: 130 },

@@ -16,7 +16,7 @@ export type BuyerRow = {
   status: string;
 };
 
-// কলাম-এর সংজ্ঞা (cell-এ ফাংশন আছে) তাই এটা client ফাইলে থাকতে হয়
+
 const columns: ColumnDef<AppTableFeatures, BuyerRow>[] = [
   { accessorKey: "code", header: "Code" },
   {

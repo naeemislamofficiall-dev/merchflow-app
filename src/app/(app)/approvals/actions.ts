@@ -6,7 +6,7 @@ import { approvalService } from "@/services/approval.service";
 
 function refresh() {
   revalidatePath("/approvals");
-  revalidatePath("/", "layout"); // টপবারের ঘণ্টা
+  revalidatePath("/", "layout"); 
 }
 
 export async function decideApprovalAction(id: string, decision: "APPROVED" | "REJECTED", note: string) {

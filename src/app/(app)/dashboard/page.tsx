@@ -23,7 +23,7 @@ const fmtDate = (d: Date | null) =>
 const fmtShort = (d: Date | null) =>
   d ? new Date(d).toLocaleDateString("en-GB", { day: "2-digit", month: "short" }) : "-";
 
-// কোনো অংশের permission না থাকলে ওই অংশ বাদ, পুরো পেজ ভাঙে না
+
 async function safe<T>(fn: () => Promise<T>): Promise<T | null> {
   try {
     return await fn();
@@ -622,7 +622,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* ---------- Row 6: Business performance & insights ---------- */}
-            {/* ---------- Row 6: Business performance & insights ---------- */}
+            
       {trend && (
         <Panel
           icon={TrendingUp}

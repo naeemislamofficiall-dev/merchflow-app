@@ -161,7 +161,7 @@ export default async function ApprovalsPage() {
             <EmptyState>Nothing waiting for you</EmptyState>
           ) : (
             <div className="overflow-x-auto rounded-xl">
-              <table className="w-full min-w-[860px] text-sm">
+              <table className="w-full min-w-860px text-sm">
                 <thead>
                   <tr className="bg-blue-50/70">
                     <th className={`${TH} rounded-l-lg`}>ID</th>
@@ -229,7 +229,7 @@ export default async function ApprovalsPage() {
             <EmptyState>You have not sent any request</EmptyState>
           ) : (
             <div className="overflow-x-auto rounded-xl">
-              <table className="w-full min-w-[720px] text-sm">
+              <table className="w-full min-w-720px text-sm">
                 <thead>
                   <tr className="bg-blue-50/70">
                     <th className={`${TH} rounded-l-lg`}>Request</th>
@@ -330,7 +330,7 @@ export default async function ApprovalsPage() {
             </EmptyState>
           ) : (
             <div className="overflow-x-auto rounded-xl">
-              <table className="w-full min-w-[760px] text-sm">
+              <table className="w-full min-w-760px text-sm">
                 <thead>
                   <tr className="bg-blue-50/70">
                     <th className={`${TH} rounded-l-lg`}>Code</th>

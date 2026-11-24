@@ -19,7 +19,7 @@ export default async function LotDetailPage(props: { params: Promise<{ id: strin
     where: { id },
     include: {
       material: { select: { code: true, name: true, unit: true } },
-      // শুধু যে factory-র স্টক দেখার অনুমতি আছে
+     
       rolls: {
         where: { warehouse: { factoryId: { in: scope.factoryIds } } },
         include: { warehouse: { select: { code: true } } },

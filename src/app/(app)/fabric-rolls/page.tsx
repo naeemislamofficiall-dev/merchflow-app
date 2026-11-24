@@ -10,7 +10,7 @@ import { InspectionForm } from "./inspection-form";
 const fmt = (n: number) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 }).format(n);
 const when = (d: Date) => d.toISOString().slice(0, 16).replace("T", " ");
 
-// SHUDHU SAJANO: kapoder roll-er icon. Kono data nei.
+
 function RollArt() {
   return (
     <svg viewBox="0 0 40 40" className="h-9 w-9" aria-hidden="true">

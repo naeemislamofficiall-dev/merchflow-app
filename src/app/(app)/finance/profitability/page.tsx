@@ -194,7 +194,7 @@ export default async function ProfitabilityPage(props: {
               <EmptyState>No invoiced styles for this order</EmptyState>
             ) : (
               <div className="overflow-x-auto rounded-xl">
-                <table className="w-full min-w-[560px] text-sm">
+                <table className="w-full min-w-560px text-sm">
                   <thead>
                     <tr className="bg-slate-50 text-[13px] font-semibold text-navy-800">
                       <th className="rounded-l-lg px-4 py-3 text-left">Style</th>

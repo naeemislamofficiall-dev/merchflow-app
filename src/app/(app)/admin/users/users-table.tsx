@@ -20,7 +20,7 @@ export type UserRow = {
 
 const AVATAR_COLORS = ["bg-blue-600", "bg-violet-500", "bg-emerald-500", "bg-orange-400", "bg-teal-500", "bg-pink-500"];
 
-// naam theke fixed rong (render-er shomoy kono variable bodlay na)
+
 const avatarColor = (name: string) =>
   AVATAR_COLORS[[...name].reduce((s, c) => s + c.charCodeAt(0), 0) % AVATAR_COLORS.length];
 

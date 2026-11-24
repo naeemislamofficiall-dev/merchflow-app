@@ -88,7 +88,7 @@ export function NotificationBell({ unreadCount, items }: { unreadCount: number; 
       </button>
 
       {open && (
-        <div className="absolute right-0 top-12 z-30 w-[22rem] overflow-hidden rounded-2xl border bg-card shadow-xl [animation:rise_0.2s_ease-out]">
+        <div className="absolute right-0 top-12 z-30 w-22rem overflow-hidden rounded-2xl border bg-card shadow-xl animation:rise_0.2s_ease-out">
           <div className="flex items-center justify-between border-b px-4 py-3">
             <span className="flex items-center gap-2 text-sm font-semibold text-navy-800">
               Notifications

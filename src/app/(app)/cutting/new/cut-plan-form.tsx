@@ -16,7 +16,7 @@ type Values = {
   plannedPlies: string;
   fabricRequirement: string;
   remarks: string;
-  ratio: string[]; // sizes-এর ক্রমে
+  ratio: string[]; 
 };
 
 export function CutPlanForm({

@@ -153,7 +153,7 @@ export function CostingTable({ rows }: { rows: SheetRow[] }) {
       </div>
 
       <div className="overflow-x-auto rounded-xl">
-        <table className="w-full min-w-[980px] text-sm">
+        <table className="w-full min-w-980px text-sm">
           <thead>
             <tr className="bg-slate-50">
               <th className={cn(TH, "rounded-l-lg text-left")}>Style</th>

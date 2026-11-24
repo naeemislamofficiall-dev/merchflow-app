@@ -15,7 +15,7 @@ export default async function AlertsPage() {
       since: new Date(a.since).toISOString(),
     }));
   } catch {
-    rows = null; // alert.view permission nei
+    rows = null; 
   }
 
   if (!rows) return <p className="text-muted-foreground">You do not have access to alerts.</p>;

@@ -20,7 +20,7 @@ export function RoleForm({
   id?: string;
   initial?: { name: string; description: string; keys: string[] };
   groups: Group[];
-  grantable: string[]; // এই ইউজার যে permission-গুলো দিতে পারে ("*" থাকলে সব)
+  grantable: string[]; 
   readOnly?: boolean;
 }) {
   const router = useRouter();

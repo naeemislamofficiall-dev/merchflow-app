@@ -172,7 +172,7 @@ export default async function StockAdjustmentsPage({ searchParams }: { searchPar
           Recent adjustments
         </h2>
         <div className="overflow-x-auto rounded-xl">
-          <table className="w-full min-w-[860px] text-sm">
+          <table className="w-full min-w-860px text-sm">
             <thead>
               <tr className="bg-slate-50">
                 <th className={`${TH} rounded-l-lg text-left`}>Reference</th>

@@ -53,7 +53,7 @@ export function ExpenseBoard({ rows }: { rows: ExpenseItem[] }) {
       </h2>
 
       <div className="overflow-x-auto rounded-xl">
-        <table className="w-full min-w-[880px] text-sm">
+        <table className="w-full min-w-880px text-sm">
           <thead>
             <tr className="bg-slate-50">
               <th className={cn(TH, "rounded-l-lg text-left")}>Expense</th>

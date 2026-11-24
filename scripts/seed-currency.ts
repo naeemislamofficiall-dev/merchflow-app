@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { prisma } from "../src/lib/prisma";
 
-// সাধারণ মুদ্রার তালিকা (আগে থেকে থাকলে আপডেট হবে, ডুপ্লিকেট হবে না)
+
 const list = [
   { code: "BDT", name: "Bangladeshi Taka", symbol: "৳" },
   { code: "USD", name: "US Dollar", symbol: "$" },

@@ -12,7 +12,7 @@ export type ReportDef = {
   key: string;
   group: "Merchandising" | "Procurement" | "Inventory" | "Production" | "Quality" | "Shipment" | "Finance";
   title: string;
-  ranged: boolean; // তারিখ-ফিল্টার চলে কিনা
+  ranged: boolean; 
   run: (r: Range) => Promise<ReportResult>;
 };
 

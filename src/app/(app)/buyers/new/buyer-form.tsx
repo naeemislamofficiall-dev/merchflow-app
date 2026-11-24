@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { FormField } from "@/components/forms/form-field";
 import { createBuyerAction } from "../actions";
 
-// ব্রাউজারের দ্রুত যাচাই। আসল যাচাই সার্ভারের সার্ভিসে হয়।
+
 const schema = z.object({
   code: z.string().min(1, "Required").max(20),
   name: z.string().min(1, "Required").max(150),

@@ -10,7 +10,7 @@ export async function createBomAction(styleId: string) {
   });
 }
 
-// সংখ্যার ঘর ফর্মে string, সার্ভিসে number
+
 function toItemInput(values: Record<string, string>) {
   const { rate, consumption, wastagePct, currency, ...rest } = dropEmpty(values);
   return {

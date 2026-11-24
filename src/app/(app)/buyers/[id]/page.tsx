@@ -39,7 +39,7 @@ export default async function BuyerDetailPage(props: {
   if (!buyer) notFound();
 
   const summary = await buyerService.summary(id);
-  // Orders tab: order.view permission না থাকলে ফাঁকা
+ 
   const orders = tab === "transactions" ? await orderService.list({ buyerId: id }).catch(() => []) : [];
 
   return (

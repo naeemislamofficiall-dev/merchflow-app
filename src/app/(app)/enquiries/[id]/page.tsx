@@ -54,7 +54,7 @@ export default async function EnquiryDetailPage(props: {
   });
   if (!enq) notFound();
 
-  // CONVERTED-এ যাওয়া হয় শুধু "Create order" দিয়ে, তাই বোতামের তালিকা থেকে বাদ
+  
   const next = (enquiryTransitions[enq.status] as EnquiryStatus[]).filter((s) => s !== "CONVERTED");
   const open = enq.status !== "CONVERTED" && enq.status !== "CANCELLED";
 

@@ -11,7 +11,7 @@ type GrnLineValues = {
   shade: string;
   binId: string;
   overReason: string;
-  rolls: string; // প্রতি লাইনে একটা রোল: "পরিমাণ" বা "পরিমাণ, shade"
+  rolls: string; 
 };
 type GrnValues = {
   poId: string;
