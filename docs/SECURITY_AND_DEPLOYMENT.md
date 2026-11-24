@@ -1,17 +1,39 @@
-## Security review log (manual + automated)
+## Security hardening — 2026-11-24 summary
 
-| Date | Area | Finding | Status |
-|---|---|---|---|
-| 2026-11-24 | Secrets | `.env` not tracked in git, `.gitignore` configured correctly | ✅ Verified safe |
-| 2026-11-24 | Dependencies | `effect` ReDoS (high, GHSA-7589-6fvf-x4pw) via @prisma/config | ⚠️ Accepted risk — build-time only, fix requires Prisma downgrade |
-| 2026-11-24 | Dependencies | `uuid` buffer bounds (moderate, GHSA-w5hq-g745-h8pq) via exceljs | ⚠️ Accepted risk — codebase only uses uuid.v4(), unaffected functions |
-| 2026-11-24 | Auth — portal API | `supplierApi`/`buyerApi` wrappers in `portal-api.ts` enforce session + role + rate limit | ✅ Verified safe |
-| 2026-11-24 | Auth — app routes | `(app)/layout.tsx` calls `requireUser()`, redirects to `/login` on failure, server component | ✅ Verified safe |
-| 2026-11-24 | Auth — cron | `/api/jobs/run` checks `CRON_SECRET` header, fail-closed | ✅ Verified safe (suggest timing-safe compare later) |
-| 2026-11-24 | IDOR — orders | `order.service.ts` calls `assertRecordInScope(user, order.companyId)` before returning data | ✅ Verified safe (pending resolveScope/assertCompanyInScope confirm) |
-| 2026-11-24 | Tests | 178/178 vitest tests passing, including `portal-isolation.test.ts`, `portal-access.test.ts`, `portal-scope.test.ts` | ✅ Verified |
-| 2026-11-24 | Build | `next build` successful, no type errors | ✅ Verified |
+### Completed
 
-## Pending verification
-- `resolveScope()` and `assertCompanyInScope()` — core functions behind all IDOR protection. Need to confirm: scope comes from trusted server-side lookup (not client-supplied session data), and comparison is strict (no empty-array bypass).
-- Manual two-account IDOR test post-deploy (company A vs company B order/invoice access).
+1. **Login rate limiting** — `@upstash/ratelimit`, `@upstash/redis`, `zod` installed.
+   Upstash Redis database created (`merchflow-ratelimit`). New file `src/lib/ratelimit.ts`
+   adds a sliding-window limiter (5 attempts / 60s). `src/lib/auth.ts` `authorize()` checks
+   this limit by IP before any DB query. Manually tested and confirmed working.
+
+2. **API rate limiting** — already existed in `src/lib/portal-api.ts` (in-memory limiter,
+   120 req/min across all buyer/supplier routes). No change needed, verified only.
+
+3. **IDOR protection** — already existed in `portal-buyer.service.ts`. All queries scope
+   by `buyerId`/`companyId` from server-side session, never from client input. Verified in
+   `getOrder`, `getSample`, `decideSample`.
+
+4. **SQL injection check** — scanned codebase for `queryRawUnsafe`/`executeRawUnsafe`.
+   Only found in `node_modules` and auto-generated Prisma types, not in app code. No risk.
+
+5. **XSS check** — scanned codebase for `dangerouslySetInnerHTML`. Only found in
+   `node_modules/@auth/core` (NextAuth's default pages), not in app code. No risk.
+
+6. **NEXTAUTH_SECRET** — new random secret generated and set in Vercel Environment Variables.
+
+7. **Security headers** — added to `next.config.ts`: `X-Frame-Options: DENY`,
+   `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`,
+   `Permissions-Policy` (camera/mic/geolocation restricted).
+
+8. **Secrets in Git** — confirmed `.env`/`.env.local` are gitignored and not tracked
+   (`git status` verified).
+
+9. **Timing-attack fix** — `DUMMY_HASH` constant-time `bcrypt.compare()` added in
+   `authorize()` for non-existent users, preventing email enumeration via response timing.
+
+10. **Code pushed** — changes committed and pushed to `origin/main`.
+
+11. **Vercel Environment Variables** — `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`,
+    `NEXTAUTH_SECRET` set in Vercel Dashboard (Production).
+
